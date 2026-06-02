@@ -4,6 +4,15 @@ import { parseCeapsCsv, type LinhaCeaps } from './ceaps-csv.js'
 import type { FonteDados, Politico, Despesa } from './types.js'
 
 const BASE_LISTA = 'https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura'
+const CEAPS_DOC_BASE = 'https://www6g.senado.leg.br/transparencia/sen/download/ceaps/documento'
+
+// O id de download da nota no portal = COD_DOCUMENTO - 2.000.000 (faixa 2.000.001–2.999.999).
+// Fora dessa faixa (docs antigos / codigos atipicos) nao ha imagem disponivel na base aberta.
+export function urlNotaCeaps(codDocumento: string): string | undefined {
+  const cod = Number(codDocumento)
+  if (!Number.isInteger(cod) || cod <= 2_000_000 || cod >= 3_000_000) return undefined
+  return `${CEAPS_DOC_BASE}/${cod - 2_000_000}`
+}
 
 interface IdentApi {
   CodigoParlamentar: number | string
@@ -93,7 +102,7 @@ export class FonteSenado implements FonteDados {
           categoria: l.TIPO_DESPESA,
           fornecedor: { nome: l.FORNECEDOR, cnpjCpf: l.CNPJ_CPF || undefined },
           valor: l.valorNumerico,
-          urlDocumento: undefined,
+          urlDocumento: urlNotaCeaps(l.COD_DOCUMENTO),
         }
       })
   }

@@ -47,6 +47,22 @@ describe('FonteSenado.buscarDespesas', () => {
     expect(ds[0].data).toBe('')
   })
 
+  it('monta o link da nota a partir do COD_DOCUMENTO (COD - 2.000.000) e ignora fora da faixa', async () => {
+    const csv = [
+      '"ULTIMA ATUALIZACAO";"x"',
+      '"ANO";"MES";"SENADOR";"TIPO_DESPESA";"CNPJ_CPF";"FORNECEDOR";"DOCUMENTO";"DATA";"DETALHAMENTO";"VALOR_REEMBOLSADO";"COD_DOCUMENTO"',
+      '"2026";"3";"VENEZIANO VITAL DO REGO";"Combustivel";"00";"POSTO";"1";"16/03/2026";"";"100,00";"2284455"', // na faixa
+      '"2011";"5";"VENEZIANO VITAL DO REGO";"Cat";"00";"ACME";"2";"10/05/2011";"";"50,00";"466775"',          // antigo, fora da faixa
+      '',
+    ].join('\n')
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(Buffer.from(csv, 'utf-8'), { status: 200 })))
+    const ds = await new FonteSenado([57], 2026).buscarDespesas(veneziano, 2026, 'utf-8')
+    const recente = ds.find((d) => d.id === 'senado-2284455')!
+    const antigo = ds.find((d) => d.id === 'senado-466775')!
+    expect(recente.urlDocumento).toBe('https://www6g.senado.leg.br/transparencia/sen/download/ceaps/documento/284455')
+    expect(antigo.urlDocumento).toBeUndefined()
+  })
+
   it('cacheia o CSV: baixa só uma vez mesmo consultando 2 senadores no mesmo ano', async () => {
     const f = vi.fn(async () => new Response(csvBuf, { status: 200 }))
     vi.stubGlobal('fetch', f)
