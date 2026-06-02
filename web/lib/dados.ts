@@ -74,6 +74,13 @@ export function getBranding(): Branding {
   return lerJson<{ branding: Branding }>(configPath()).branding
 }
 
+// Token do Cloudflare Web Analytics (opcional, por instância). Vazio = sem analytics.
+// É um token público (aparece no HTML); cada fork pluga o seu em config/state.json.
+export function getCloudflareToken(): string | null {
+  const cfg = lerJson<{ analytics?: { cloudflareToken?: string } }>(configPath())
+  return cfg.analytics?.cloudflareToken?.trim() || null
+}
+
 export function getCustos(): CustosMandato {
   return lerJson<CustosMandato>(custosPath())
 }

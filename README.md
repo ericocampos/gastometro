@@ -48,12 +48,16 @@ fontes/arquivos oficiais ──(coletor, local)──> /data/*.json ──(Next 
      "nomeEstado": "Paraíba",
      "branding": { "titulo": "Gastômetro PB", "cor": "#0a7d52" },
      "legislaturasCamara": [53, 54, 55, 56, 57],
-     "anoInicial": 2008
+     "anoInicial": 2008,
+     "analytics": { "cloudflareToken": "" }
    }
    ```
    As fontes filtram por UF, então funcionam para qualquer estado. `legislaturasCamara` define
    quais legislaturas listar (também usadas como referência para o Senado); `anoInicial` é o
-   primeiro ano de despesas a coletar.
+   primeiro ano de despesas a coletar. `analytics.cloudflareToken` é **opcional**: cole aqui o
+   token do **Cloudflare Web Analytics** (sem cookie, sem dado pessoal) da *sua* instância para
+   medir visitas; vazio = nenhum analytics injetado. Por ser por instância, um fork não envia
+   dados para a origem.
 3. Edite **`config/custos-mandato.json`** — a **cota da Câmara (CEAP) varia por UF** (depende do
    preço das passagens até Brasília). Atualize o valor da cota do seu estado (veja o Anexo do
    Ato da Mesa 43/2009) e confira as demais referências/datas.
