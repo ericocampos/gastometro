@@ -1,5 +1,6 @@
 import { XMLParser } from 'fast-xml-parser'
-import { fetchText } from '../http.js'
+import { fetchText, fetchBuffer } from '../http.js'
+import { parseCeapsCsv, type LinhaCeaps } from './ceaps-csv.js'
 import type { FonteDados, Politico, Despesa } from './types.js'
 
 const BASE_LISTA = 'https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura'
@@ -20,6 +21,7 @@ export function normalizarNome(nome: string): string {
 export class FonteSenado implements FonteDados {
   readonly casa = 'senado' as const
   private readonly parser = new XMLParser({ ignoreAttributes: true })
+  private cacheAno = new Map<number, LinhaCeaps[]>()
   constructor(private readonly legislaturas: number[], private readonly anoFinal: number) {}
 
   async listarPoliticos(uf: string): Promise<Politico[]> {
@@ -52,7 +54,34 @@ export class FonteSenado implements FonteDados {
     return [...porId.values()]
   }
 
-  async buscarDespesas(_politico: Politico, _ano: number): Promise<Despesa[]> {
-    throw new Error('não implementado (Task 10)')
+  private async carregarAno(ano: number, encoding: 'latin1' | 'utf-8' = 'latin1'): Promise<LinhaCeaps[]> {
+    const cache = this.cacheAno.get(ano)
+    if (cache) return cache
+    const url = `https://www.senado.leg.br/transparencia/LAI/verba/despesa_ceaps_${ano}.csv`
+    const buf = await fetchBuffer(url)
+    const linhas = parseCeapsCsv(buf, encoding)
+    this.cacheAno.set(ano, linhas)
+    return linhas
+  }
+
+  async buscarDespesas(politico: Politico, ano: number, encoding: 'latin1' | 'utf-8' = 'latin1'): Promise<Despesa[]> {
+    const alvo = normalizarNome(politico.nome)
+    const linhas = await this.carregarAno(ano, encoding)
+    return linhas
+      .filter((l) => normalizarNome(l.SENADOR) === alvo)
+      .map((l) => {
+        const [dia, mes, anoData] = l.DATA.split('/')
+        return {
+          id: `senado-${l.COD_DOCUMENTO}`,
+          politicoId: politico.id,
+          data: `${anoData}-${mes}-${dia}`,
+          ano: Number(l.ANO),
+          mes: Number(l.MES),
+          categoria: l.TIPO_DESPESA,
+          fornecedor: { nome: l.FORNECEDOR, cnpjCpf: l.CNPJ_CPF || undefined },
+          valor: l.valorNumerico,
+          urlDocumento: undefined,
+        }
+      })
   }
 }
