@@ -26,7 +26,7 @@ import { ProposicoesView } from './ProposicoesView'
 const casaLonga = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara dos Deputados' : 'Senado Federal')
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, assessores,
+  politico, despesas, series, perfil, custos, assessores, alertas,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -34,6 +34,7 @@ export function PerfilView({
   perfil: PerfilParlamentar | null
   custos: CustosMandato
   assessores: { quantidade: number | null; atualizadoEm?: string }
+  alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -42,10 +43,11 @@ export function PerfilView({
   const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
 
   function setPeriodo(v: string) {
+    // grava sempre o período (inclusive "tudo"), senão ele se confunde com "sem seleção"
+    // e cai no padrão (ano mais recente)
     const params = new URLSearchParams()
-    if (v !== 'tudo') params.set('periodo', v)
-    const qs = params.toString()
-    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
+    params.set('periodo', v)
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
   }
 
   const anos = useMemo(
@@ -114,6 +116,20 @@ export function PerfilView({
           </p>
         </div>
       </header>
+
+      {alertas.quantidade > 0 && (
+        <Link
+          href={`/alertas?politico=${politico.id}`}
+          className="mb-8 flex items-center justify-between gap-3 rounded-lg border border-borda border-l-4 bg-superficie p-3 text-sm transition-colors hover:border-marca"
+          style={{ borderLeftColor: alertas.temAlta ? '#c0392b' : alertas.temMedia ? '#c87f1a' : 'var(--marca)' }}
+        >
+          <span className="flex items-center gap-2 text-tinta">
+            <span aria-hidden>⚠</span>
+            <span><strong className="font-semibold">{alertas.quantidade}</strong> {alertas.quantidade === 1 ? 'ponto de atenção' : 'pontos de atenção'} neste parlamentar</span>
+          </span>
+          <span className="shrink-0 font-medium text-marca">ver →</span>
+        </Link>
+      )}
 
       <PerfilCabecalho perfil={perfil} />
 

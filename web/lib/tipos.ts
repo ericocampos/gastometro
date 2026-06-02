@@ -46,14 +46,20 @@ export interface Despesa {
   urlDocumento?: string
 }
 
+export interface Evidencia { despesaId?: string; descricao: string; valor?: number; data?: string; url?: string }
+
 export interface Alerta {
   id: string
   politicoId: string
+  parlamentarNome?: string
+  fotoUrl?: string
+  casa?: 'camara' | 'senado'
   severidade: 'baixa' | 'media' | 'alta'
   tipo: string
   titulo: string
   explicacao: string
-  evidencias: { despesaId?: string; descricao: string; valor?: number }[]
+  anos?: number[]
+  evidencias: Evidencia[]
   geradoEm: string
 }
 

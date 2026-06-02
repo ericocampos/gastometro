@@ -14,7 +14,12 @@ export function agregarPerfil(despesas: Despesa[], periodo: Periodo): AgregadoPe
 
   const mensal = new Map<string, number>()
   for (const d of ds) {
-    const k = `${d.ano}-${String(d.mes).padStart(2, '0')}`
+    // agrupa pelo mês da DATA do documento (o que aparece no detalhamento), e não pelo
+    // mês de referência da cota (numMes), que às vezes difere. Cai no mês de referência
+    // quando a data falta ou é de outro ano.
+    const k = d.data && d.data.slice(0, 4) === String(d.ano)
+      ? d.data.slice(0, 7)
+      : `${d.ano}-${String(d.mes).padStart(2, '0')}`
     mensal.set(k, (mensal.get(k) ?? 0) + d.valor)
   }
   const serieMensal = [...mensal.entries()]

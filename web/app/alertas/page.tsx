@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getAlertas } from '@/lib/dados'
 import { AlertasView } from '@/components/AlertasView'
 
@@ -9,7 +10,9 @@ export default function AlertasPage() {
       <p className="mb-6 text-sm text-tinta-suave">
         Padrões estatísticos detectados nos gastos. Indícios, não acusações.
       </p>
-      <AlertasView alertas={alertas} />
+      <Suspense fallback={null}>
+        <AlertasView alertas={alertas} />
+      </Suspense>
     </div>
   )
 }
