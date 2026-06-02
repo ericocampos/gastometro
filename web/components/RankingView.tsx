@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { brl } from '@/lib/formato'
 import {
   type SerieParlamentar,
-  rankingNoPeriodo, resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, parsePeriodoValor,
+  rankingNoPeriodo, resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, parsePeriodoValor, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { SeletorPeriodo } from './SeletorPeriodo'
 
 export function RankingView({ series }: { series: SerieParlamentar[] }) {
-  const [periodoVal, setPeriodoVal] = useState('tudo')
+  const [periodoVal, setPeriodoVal] = useState(() => valorPeriodoPadrao(series))
   const [casa, setCasa] = useState<'todas' | 'camara' | 'senado'>('todas')
   const [partido, setPartido] = useState('todos')
   const [busca, setBusca] = useState('')

@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { type SerieParlamentar, parsePeriodoValor, anosDisponiveis, mandatosDisponiveis } from '@/lib/periodo'
+import { type SerieParlamentar, parsePeriodoValor, anosDisponiveis, mandatosDisponiveis, valorPeriodoPadrao } from '@/lib/periodo'
 import { serieComparada, resumosComparados } from '@/lib/comparar'
 import { brl } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
@@ -16,7 +16,7 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const periodoVal = searchParams.get('periodo') ?? 'tudo'
+  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(series)
   const ids = useMemo(
     () => (searchParams.get('ids') ?? '').split(',').filter(Boolean),
     [searchParams],

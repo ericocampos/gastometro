@@ -89,6 +89,13 @@ export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   return [...anos].sort((a, b) => b - a)
 }
 
+// Valor padrão do filtro: o ano mais recente com dados (ex.: "ano:2026").
+// Se não houver dados, cai para "tudo".
+export function valorPeriodoPadrao(series: SerieParlamentar[]): string {
+  const anos = anosDisponiveis(series)
+  return anos.length ? `ano:${anos[0]}` : 'tudo'
+}
+
 export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {
   const legs = new Set<number>()
   for (const s of series) for (const l of s.legislaturas) legs.add(l)

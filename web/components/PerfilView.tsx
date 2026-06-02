@@ -4,7 +4,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import type { Despesa, Politico } from '@/lib/tipos'
 import {
   type SerieParlamentar,
-  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo,
+  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { brl } from '@/lib/formato'
@@ -25,7 +25,7 @@ export function PerfilView({
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const periodoVal = searchParams.get('periodo') ?? 'tudo'
+  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(series)
   const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
 
   function setPeriodo(v: string) {
