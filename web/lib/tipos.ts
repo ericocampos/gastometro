@@ -1,0 +1,50 @@
+export interface Politico {
+  id: string
+  nome: string
+  casa: 'camara' | 'senado'
+  partido: string
+  uf: string
+  legislaturas: number[]
+  fotoUrl?: string
+}
+
+export interface ItemRanking {
+  politicoId: string
+  nome: string
+  partido: string
+  casa: 'camara' | 'senado'
+  total: number
+}
+
+export interface PontoMensal { anoMes: string; total: number }
+export interface ItemCategoria { categoria: string; total: number }
+export interface ItemFornecedor { nome: string; cnpjCpf?: string; total: number }
+
+export interface ResumoPolitico {
+  politico: Politico
+  total: number
+  serieMensal: PontoMensal[]
+  porCategoria: ItemCategoria[]
+  porFornecedor: ItemFornecedor[]
+}
+
+export interface Agregados {
+  ranking: ItemRanking[]
+  porPolitico: Record<string, ResumoPolitico>
+  fornecedores: ItemFornecedor[]
+}
+
+export interface Alerta {
+  id: string
+  politicoId: string
+  severidade: 'baixa' | 'media' | 'alta'
+  tipo: string
+  titulo: string
+  explicacao: string
+  evidencias: { despesaId?: string; descricao: string; valor?: number }[]
+  geradoEm: string
+}
+
+export interface Branding { titulo: string; cor: string }
+
+export interface ResumoTotais { totalGeral: number; numParlamentares: number }
