@@ -1,0 +1,27 @@
+{
+  "atualizadoEm": "2026-06",
+  "observacao": "Valores de referência do custo mensal do mandato (salário + cota + pessoal de gabinete). A cota da Câmara (CEAP) varia por UF — o valor abaixo é o da Paraíba. No Senado a cota (CEAPS) tem parcela fixa (verba indenizatória) mais transporte aéreo variável, e não há verba de gabinete fixa (até 50 assessores em estrutura variável). Edite por UF ao forkar.",
+  "casas": {
+    "camara": {
+      "rotulo": "Deputado Federal",
+      "salario": 46366.19,
+      "cota": { "valor": 47826.36, "rotulo": "CEAP mensal · Paraíba", "aproximado": false },
+      "gabinete": { "valor": 165806.07, "rotulo": "Até 25 assessores/mês", "aproximado": false },
+      "fontes": [
+        { "nome": "Câmara · salário de deputados", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/salario-de-deputados" },
+        { "nome": "Câmara · cota parlamentar (CEAP)", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar" },
+        { "nome": "Câmara · verba de gabinete", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/verba-de-gabinete" }
+      ]
+    },
+    "senado": {
+      "rotulo": "Senador",
+      "salario": 46366.19,
+      "cota": { "valor": 15000, "rotulo": "CEAPS · VI fixa + transporte aéreo (variável)", "aproximado": true },
+      "gabinete": { "valor": null, "rotulo": "Até 50 assessores · estrutura variável", "aproximado": true },
+      "fontes": [
+        { "nome": "Senado · CEAPS (cota)", "url": "https://www12.senado.leg.br/transparencia" },
+        { "nome": "Senado · estrutura remuneratória", "url": "https://www12.senado.leg.br/transparencia/rh/segp/estrutura-remuneratoria" }
+      ]
+    }
+  }
+}

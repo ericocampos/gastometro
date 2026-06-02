@@ -1,64 +1,95 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
-import { dirname, resolve } from 'node:path'
+import { deflateRawSync } from 'node:zlib'
 import { FonteCamara } from '../sources/camara.js'
 import type { Politico } from '../sources/types.js'
 
-const here = dirname(fileURLToPath(import.meta.url))
-const ler = (n: string) => readFileSync(resolve(here, `fixtures/${n}`), 'utf-8')
-
 afterEach(() => vi.restoreAllMocks())
+
+// monta um zip (1 arquivo, deflate) como os que a Câmara publica em Ano-{ano}.csv.zip
+function zipar(csv: string): Buffer {
+  const dados = deflateRawSync(Buffer.from(csv, 'utf8'))
+  const nome = Buffer.from('Ano.csv')
+  const head = Buffer.alloc(30)
+  head.writeUInt32LE(0x04034b50, 0)
+  head.writeUInt16LE(8, 8)               // método: deflate
+  head.writeUInt32LE(dados.length, 18)   // compSize
+  head.writeUInt32LE(csv.length, 22)     // uncompSize (não usado)
+  head.writeUInt16LE(nome.length, 26)
+  head.writeUInt16LE(0, 28)
+  return Buffer.concat([head, nome, dados])
+}
 
 const aguinaldo: Politico = {
   id: 'camara-160527', nome: 'Aguinaldo Ribeiro', casa: 'camara',
   partido: 'PP', uf: 'PB', legislaturas: [57],
 }
 
-describe('FonteCamara.buscarDespesas', () => {
-  it('segue a paginação (rel=next) e mapeia para Despesa', async () => {
-    const f = vi.fn()
-      .mockResolvedValueOnce(new Response(ler('camara-despesas-p1.json'), { status: 200 }))
-      .mockResolvedValueOnce(new Response(ler('camara-despesas-p2.json'), { status: 200 }))
+// arquivo anual reduzido: só as colunas que lemos (csv-parse ignora as ausentes)
+const CSV = `"ideCadastro";"sgUF";"txtDescricao";"txtFornecedor";"txtCNPJCPF";"datEmissao";"vlrLiquido";"numMes";"numAno";"ideDocumento";"urlDocumento"
+"160527";"PB";"DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.";"STRATEGIA COMUNICACAO";"13326511000140";"2024-12-26T00:00:00";"17000";"12";"2024";"7889187";"https://www.camara.leg.br/cota-parlamentar/documentos/publ/x/2024/7889187.pdf"
+"160527";"PB";"TELEFONIA";"STARLINK";"00";"2024-03-03T00:00:00";"576";"3";"2024";"8076419";""
+"999";"SP";"COMBUSTÍVEL";"POSTO SP";"01";"2024-01-01T00:00:00";"50";"1";"2024";"123";"https://orig/doc.pdf"
+"160527";"PB";"MANUTENÇÃO DE ESCRITÓRIO";"FORNEC SEM DOC";"02";"";"63.49";"5";"2024";"";""
+`
+
+describe('FonteCamara.buscarDespesas (arquivo anual)', () => {
+  it('baixa o arquivo do ano uma vez, filtra a UF e mapeia para Despesa', async () => {
+    const f = vi.fn(async () => new Response(zipar(CSV)))
     vi.stubGlobal('fetch', f)
 
-    const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2024)
+    const fonte = new FonteCamara([57])
+    const ds = await fonte.buscarDespesas(aguinaldo, 2024)
 
-    expect(ds).toHaveLength(2)
+    // só as 3 linhas PB do deputado (a linha SP é descartada)
+    expect(ds).toHaveLength(3)
     expect(ds[0]).toMatchObject({
       politicoId: 'camara-160527',
       ano: 2024, mes: 12,
       categoria: 'DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.',
       valor: 17000,
-      data: '2025-03-26',
+      data: '2024-12-26',
       fornecedor: { nome: 'STRATEGIA COMUNICACAO', cnpjCpf: '13326511000140' },
     })
     expect(ds[0].id).toBe('camara-7889187')
-    expect(f).toHaveBeenCalledTimes(2)
+    expect(ds[0].urlDocumento).toBe('https://www.camara.leg.br/cota-parlamentar/documentos/publ/x/2024/7889187.pdf')
+
+    // segunda chamada (mesmo ano) reaproveita o download
+    await fonte.buscarDespesas(aguinaldo, 2024)
+    expect(f).toHaveBeenCalledTimes(1)
   })
 
-  it('não quebra quando dataDocumento vem null', async () => {
-    const corpo = JSON.stringify({
-      dados: [{ ano: 2024, mes: 1, tipoDespesa: 'X', codDocumento: '1', dataDocumento: null, valorLiquido: 5, nomeFornecedor: 'ACME', cnpjCpfFornecedor: '00' }],
-      links: [{ rel: 'self', href: '.' }],
-    })
-    vi.stubGlobal('fetch', vi.fn(async () => new Response(corpo, { status: 200 })))
+  it('reconstrói urlDocumento quando o arquivo não traz a URL mas tem ideDocumento', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(zipar(CSV))))
     const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2024)
-    expect(ds).toHaveLength(1)
-    expect(ds[0].data).toBe('')
+    const telefonia = ds.find((d) => d.categoria === 'TELEFONIA')!
+    expect(telefonia.urlDocumento).toBe('https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
   })
 
-  it('reconstrói urlDocumento via codDocumento quando a API manda nulo', async () => {
-    const corpo = JSON.stringify({
-      dados: [
-        { ano: 2026, mes: 3, tipoDespesa: 'TELEFONIA', codDocumento: '8076419', dataDocumento: '2026-03-03T00:00:00', valorLiquido: 576, nomeFornecedor: 'STARLINK', cnpjCpfFornecedor: '00', urlDocumento: null },
-        { ano: 2026, mes: 4, tipoDespesa: 'COMBUSTÍVEL', codDocumento: '999', dataDocumento: '2026-04-01T00:00:00', valorLiquido: 50, nomeFornecedor: 'POSTO', cnpjCpfFornecedor: '01', urlDocumento: 'https://orig/doc.pdf' },
-      ],
+  it('não quebra quando datEmissao e ideDocumento vêm vazios', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(zipar(CSV))))
+    const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2024)
+    const semDoc = ds.find((d) => d.fornecedor.nome === 'FORNEC SEM DOC')!
+    expect(semDoc.data).toBe('')
+    expect(semDoc.valor).toBeCloseTo(63.49)
+    expect(semDoc.urlDocumento).toBeUndefined()
+    expect(semDoc.id.startsWith('camara-s2024')).toBe(true)
+  })
+
+  it('cai na API por deputado quando o arquivo anual não existe (404)', async () => {
+    const apiBody = JSON.stringify({
+      dados: [{ ano: 2026, mes: 1, tipoDespesa: 'COMBUSTÍVEL', codDocumento: '8076419', dataDocumento: '2026-01-10T00:00:00', valorLiquido: 200, nomeFornecedor: 'POSTO', cnpjCpfFornecedor: '00', urlDocumento: null }],
       links: [{ rel: 'self', href: '.' }],
     })
-    vi.stubGlobal('fetch', vi.fn(async () => new Response(corpo, { status: 200 })))
+    const f = vi.fn(async (url: string) =>
+      url.includes('/cotas/Ano-')
+        ? new Response('', { status: 404 })
+        : new Response(apiBody, { status: 200 }),
+    )
+    vi.stubGlobal('fetch', f)
+
     const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2026)
+    expect(ds).toHaveLength(1)
+    expect(ds[0]).toMatchObject({ politicoId: 'camara-160527', ano: 2026, categoria: 'COMBUSTÍVEL', valor: 200 })
     expect(ds[0].urlDocumento).toBe('https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
-    expect(ds[1].urlDocumento).toBe('https://orig/doc.pdf')
   })
 })

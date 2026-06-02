@@ -23,4 +23,30 @@ describe('FonteSenado.listarPoliticos', () => {
       uf: 'PB',
     })
   })
+
+  it('usa a UF do mandato quando IdentificacaoParlamentar não traz UfParlamentar', async () => {
+    // na listagem por legislatura, a UF costuma faltar no Identificacao e só existir no Mandato
+    const xmlMandato = `<?xml version="1.0" encoding="UTF-8"?>
+<ListaParlamentarLegislatura><Parlamentares>
+  <Parlamentar>
+    <IdentificacaoParlamentar>
+      <CodigoParlamentar>3811</CodigoParlamentar>
+      <NomeParlamentar>Wilson Santiago</NomeParlamentar>
+      <SiglaPartidoParlamentar>REPUBLICANOS</SiglaPartidoParlamentar>
+    </IdentificacaoParlamentar>
+    <Mandatos><Mandato><UfParlamentar>PB</UfParlamentar></Mandato></Mandatos>
+  </Parlamentar>
+  <Parlamentar>
+    <IdentificacaoParlamentar>
+      <CodigoParlamentar>999</CodigoParlamentar>
+      <NomeParlamentar>Outro de SP</NomeParlamentar>
+    </IdentificacaoParlamentar>
+    <Mandatos><Mandato><UfParlamentar>SP</UfParlamentar></Mandato></Mandatos>
+  </Parlamentar>
+</Parlamentares></ListaParlamentarLegislatura>`
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(xmlMandato, { status: 200 })))
+    const ps = await new FonteSenado([55], 2024).listarPoliticos('PB')
+    expect(ps).toHaveLength(1)
+    expect(ps[0]).toMatchObject({ id: 'senado-3811', nome: 'Wilson Santiago', uf: 'PB' })
+  })
 })
