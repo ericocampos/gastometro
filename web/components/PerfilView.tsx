@@ -1,7 +1,7 @@
 'use client'
 import { useMemo } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Despesa, Politico } from '@/lib/tipos'
+import type { Despesa, Politico, PerfilParlamentar } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -14,13 +14,16 @@ import { GraficoCategorias } from './GraficoCategorias'
 import { GraficoGeralAnual } from './GraficoGeralAnual'
 import { PerfilFornecedores } from './PerfilFornecedores'
 import { DetalhamentoGastos } from './DetalhamentoGastos'
+import { PerfilCabecalho } from './PerfilCabecalho'
+import { ProposicoesView } from './ProposicoesView'
 
 export function PerfilView({
-  politico, despesas, series,
+  politico, despesas, series, perfil,
 }: {
   politico: Politico
   despesas: Despesa[]
   series: SerieParlamentar[]
+  perfil: PerfilParlamentar | null
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -82,6 +85,8 @@ export function PerfilView({
         </div>
       </header>
 
+      <PerfilCabecalho perfil={perfil} />
+
       <div className="mb-6">
         <SeletorPeriodo valor={periodoVal} onChange={setPeriodo} anos={anos} mandatos={mandatos} />
       </div>
@@ -135,6 +140,13 @@ export function PerfilView({
             <GraficoGeralAnual dados={anual} />
           </section>
         </>
+      )}
+
+      {perfil && perfil.proposicoes.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Proposições apresentadas</h2>
+          <ProposicoesView proposicoes={perfil.proposicoes} />
+        </section>
       )}
     </article>
   )
