@@ -1,0 +1,12 @@
+# Documentação interna — não publicar
+docs/
+
+# Dependências e build
+node_modules/
+.next/
+out/
+.vercel/
+
+# Misc
+*.log
+.DS_Store
