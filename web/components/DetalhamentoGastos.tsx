@@ -16,8 +16,9 @@ const ROTULO_TIPO: Record<string, string> = {
   duplicados: 'pagamentos repetidos no mês',
 }
 
+// paleta de "atenção" (âmbar/vermelho) — o verde da marca não lê como alerta
 const corSeveridade = (s: MarcaAlerta['severidade']) =>
-  s === 'alta' ? '#c0392b' : s === 'media' ? '#c87f1a' : 'var(--marca)'
+  s === 'alta' ? '#c0392b' : s === 'media' ? '#c87f1a' : '#caa12f'
 
 // fundo bem sutil da linha marcada, na cor da severidade
 const fundoMarca = (s: MarcaAlerta['severidade']) => ({
@@ -127,8 +128,8 @@ export function DetalhamentoGastos({
       <p className="mb-2 text-xs text-tinta-suave">{filtradas.length} lançamentos</p>
 
       {temMarcadas && (
-        <p className="mb-3 rounded-md border-l-2 border-marca bg-marca/5 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
-          <span className="font-bold text-marca">⚠</span>{' '}
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <span className="font-bold text-amber-600 dark:text-amber-400">⚠</span>{' '}
           Lançamentos com este sinal entraram em um <strong className="text-tinta">ponto de atenção</strong> —
           vale conferir a nota.{' '}
           {politicoId && (
@@ -185,7 +186,10 @@ export function DetalhamentoGastos({
               return (
               <tr key={d.id} className="border-t border-borda align-top" style={marca ? fundoMarca(marca.severidade) : undefined}>
                 <td className="py-1.5 pr-2 whitespace-nowrap tabular-nums text-tinta-suave">
-                  {marca && <MarcaAlertaIcone marca={marca} />}{marca ? ' ' : ''}{dataBR(d.data)}
+                  <span className="flex items-center gap-1.5">
+                    {marca && <MarcaAlertaIcone marca={marca} />}
+                    {dataBR(d.data)}
+                  </span>
                 </td>
                 <td className="py-1.5 pr-2 text-tinta-suave">{d.categoria}</td>
                 <td className="py-1.5 pr-2 text-tinta">
