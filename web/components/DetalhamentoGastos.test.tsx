@@ -16,16 +16,17 @@ const despesas: Despesa[] = [
 describe('DetalhamentoGastos', () => {
   it('lista lançamentos ordenados por data (desc) com link pra nota quando há', () => {
     render(<DetalhamentoGastos despesas={despesas} />)
-    expect(screen.getByText('POSTO A')).toBeInTheDocument()
-    expect(screen.getByText(/R\$ 500,00/)).toBeInTheDocument()
-    const link = screen.getByRole('link', { name: /nota/i })
-    expect(link).toHaveAttribute('href', 'https://x/1.pdf')
+    // layouts mobile (card) + desktop (tabela) renderizam ambos → cada texto aparece 2x
+    expect(screen.getAllByText('POSTO A').length).toBeGreaterThanOrEqual(1)
+    expect(screen.getAllByText(/R\$ 500,00/).length).toBeGreaterThanOrEqual(1)
+    const links = screen.getAllByRole('link', { name: /nota/i })
+    expect(links[0]).toHaveAttribute('href', 'https://x/1.pdf')
   })
 
   it('filtra por tipo de despesa', () => {
     render(<DetalhamentoGastos despesas={despesas} />)
     fireEvent.change(screen.getByLabelText('Tipo de despesa'), { target: { value: 'Divulgação' } })
-    expect(screen.getByText('GRAFICA B')).toBeInTheDocument()
+    expect(screen.getAllByText('GRAFICA B').length).toBeGreaterThanOrEqual(1)
     expect(screen.queryByText('POSTO A')).not.toBeInTheDocument()
   })
 

@@ -47,17 +47,17 @@ function Card({
 }) {
   return (
     <div
-      className={`rounded-xl border bg-superficie p-4 ${destaque ? 'shadow-carta' : 'border-borda'}`}
+      className={`rounded-xl border bg-superficie p-3 sm:p-4 ${destaque ? 'shadow-carta' : 'border-borda'}`}
       style={destaque ? { borderColor: cor } : undefined}
     >
       <div className="flex items-center gap-2">
-        <span className="grid h-8 w-8 place-items-center rounded-lg" style={{ color: cor, background: `color-mix(in srgb, ${cor} 14%, transparent)` }}>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg" style={{ color: cor, background: `color-mix(in srgb, ${cor} 14%, transparent)` }}>
           {icone}
         </span>
         <span className="text-[11px] font-semibold uppercase tracking-wider text-tinta-suave">{rotulo}</span>
       </div>
       <p
-        className="mt-3 font-display text-2xl font-semibold leading-none tabular-nums sm:text-3xl"
+        className="mt-3 font-display text-lg font-semibold leading-none tabular-nums sm:text-2xl lg:text-3xl"
         style={destaque ? { color: cor } : { color: 'var(--tinta)' }}
       >
         {valor}

@@ -18,7 +18,7 @@ export default function Home() {
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">
           Cota parlamentar · Paraíba
         </p>
-        <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight text-tinta sm:text-5xl">
+        <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl lg:text-5xl">
           Quanto seus parlamentares
           <br className="hidden sm:block" /> gastam com a cota
         </h1>

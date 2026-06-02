@@ -20,7 +20,7 @@ export function CotaVsTeto({
 
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <Card rotulo="Teto da cota / mês" valor={tetoTxt} legenda={cota.aproximado ? `${cota.rotulo} (aprox.)` : cota.rotulo} />
         <Card rotulo="Cota gasta / mês" valor={brl(mediaMensal)} legenda="média no período" cor={cor} destaque />
         <Card
