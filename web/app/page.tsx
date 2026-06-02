@@ -1,10 +1,8 @@
-import { getRanking, getResumoTotais } from '@/lib/dados'
+import { getSeriesParlamentares } from '@/lib/dados'
 import { RankingView } from '@/components/RankingView'
-import { brl } from '@/lib/formato'
 
 export default function Home() {
-  const itens = getRanking()
-  const totais = getResumoTotais()
+  const series = getSeriesParlamentares()
   return (
     <div>
       <section className="mb-8">
@@ -12,11 +10,10 @@ export default function Home() {
           Quanto seus parlamentares gastam com a cota
         </h1>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-          {totais.numParlamentares} parlamentares · {brl(totais.totalGeral)} no total · dados
-          públicos da Câmara e do Senado.
+          Filtre por ano ou mandato. Dados públicos da Câmara e do Senado.
         </p>
       </section>
-      <RankingView itens={itens} />
+      <RankingView series={series} />
     </div>
   )
 }

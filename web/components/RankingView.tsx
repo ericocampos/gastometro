@@ -1,40 +1,85 @@
 'use client'
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import type { ItemRanking } from '@/lib/tipos'
 import { brl } from '@/lib/formato'
+import {
+  type SerieParlamentar, type Periodo,
+  rankingNoPeriodo, resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, rotuloMandato,
+} from '@/lib/periodo'
 
-export function RankingView({ itens }: { itens: ItemRanking[] }) {
+function parsePeriodo(valor: string): Periodo {
+  if (valor === 'tudo') return { tipo: 'tudo' }
+  const [tipo, n] = valor.split(':')
+  if (tipo === 'ano') return { tipo: 'ano', ano: Number(n) }
+  return { tipo: 'mandato', legislatura: Number(n) }
+}
+
+export function RankingView({ series }: { series: SerieParlamentar[] }) {
+  const [periodoVal, setPeriodoVal] = useState('tudo')
   const [casa, setCasa] = useState<'todas' | 'camara' | 'senado'>('todas')
   const [partido, setPartido] = useState('todos')
   const [busca, setBusca] = useState('')
 
+  const periodo = useMemo(() => parsePeriodo(periodoVal), [periodoVal])
+  const anos = useMemo(() => anosDisponiveis(series), [series])
+  const mandatos = useMemo(() => mandatosDisponiveis(series), [series])
   const partidos = useMemo(
-    () => ['todos', ...Array.from(new Set(itens.map((i) => i.partido))).sort()],
-    [itens],
+    () => ['todos', ...Array.from(new Set(series.map((s) => s.partido))).sort()],
+    [series],
   )
+
+  // ranking recalculado para o período (base para posição e resumo)
+  const rankingPeriodo = useMemo(() => rankingNoPeriodo(series, periodo), [series, periodo])
+  const rankPorId = useMemo(
+    () => new Map(rankingPeriodo.map((l, idx) => [l.politicoId, idx + 1])),
+    [rankingPeriodo],
+  )
+
+  const porCasaPartido = useMemo(
+    () => rankingPeriodo.filter(
+      (l) => (casa === 'todas' || l.casa === casa) && (partido === 'todos' || l.partido === partido),
+    ),
+    [rankingPeriodo, casa, partido],
+  )
+
+  const resumo = useMemo(() => resumoNoPeriodo(porCasaPartido), [porCasaPartido])
 
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase()
-    return itens.filter(
-      (i) =>
-        (casa === 'todas' || i.casa === casa) &&
-        (partido === 'todos' || i.partido === partido) &&
-        (q === '' || i.nome.toLowerCase().includes(q)),
-    )
-  }, [itens, casa, partido, busca])
+    const base = q === '' ? porCasaPartido : porCasaPartido.filter((l) => l.nome.toLowerCase().includes(q))
+    // num período específico, ocultar quem não gastou nada
+    return periodo.tipo === 'tudo' ? base : base.filter((l) => l.total > 0)
+  }, [porCasaPartido, busca, periodo])
 
-  // posição real no ranking completo (não reseta ao filtrar)
-  const rankPorId = useMemo(
-    () => new Map(itens.map((i, idx) => [i.politicoId, idx + 1])),
-    [itens],
-  )
-
-  const max = Math.max(1, ...filtrados.map((i) => i.total))
+  const max = Math.max(1, ...filtrados.map((l) => l.total))
 
   return (
     <div>
+      {/* resumo reativo */}
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <Estatistica rotulo="Total no período" valor={brl(resumo.totalGeral)} />
+        <Estatistica rotulo="Parlamentares com gasto" valor={String(resumo.numComGasto)} />
+        <Estatistica rotulo="Média por parlamentar" valor={brl(resumo.media)} />
+      </div>
+
       <div className="mb-6 flex flex-wrap gap-3">
+        <label className="text-sm">
+          Período
+          <select
+            aria-label="Período"
+            value={periodoVal}
+            onChange={(e) => setPeriodoVal(e.target.value)}
+            className="ml-1 rounded border border-slate-300 bg-transparent px-2 py-1 dark:border-slate-700"
+          >
+            <option value="tudo">Todo o período</option>
+            <optgroup label="Por ano">
+              {anos.map((a) => <option key={a} value={`ano:${a}`}>{a}</option>)}
+            </optgroup>
+            <optgroup label="Por mandato">
+              {mandatos.map((l) => <option key={l} value={`mandato:${l}`}>{rotuloMandato(l)}</option>)}
+            </optgroup>
+          </select>
+        </label>
         <label className="text-sm">
           Casa
           <select
@@ -92,6 +137,18 @@ export function RankingView({ itens }: { itens: ItemRanking[] }) {
           </li>
         ))}
       </ol>
+      {filtrados.length === 0 && (
+        <p className="text-sm text-slate-500">Nenhum parlamentar com gasto neste período/filtro.</p>
+      )}
+    </div>
+  )
+}
+
+function Estatistica({ rotulo, valor }: { rotulo: string; valor: string }) {
+  return (
+    <div className="rounded-lg border border-slate-200 p-3 dark:border-slate-800">
+      <div className="text-xs text-slate-500">{rotulo}</div>
+      <div className="mt-0.5 font-semibold tabular-nums">{valor}</div>
     </div>
   )
 }

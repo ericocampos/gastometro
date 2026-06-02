@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import type { Agregados, Alerta, Branding, ItemFornecedor, ItemRanking, ResumoPolitico, ResumoTotais } from './tipos'
+import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
   return process.env.GASTOMETRO_DATA_DIR ?? resolve(process.cwd(), '..', 'data')
@@ -21,6 +22,18 @@ function agregados(): Agregados {
 
 export function getRanking(): ItemRanking[] {
   return agregados().ranking
+}
+
+export function getSeriesParlamentares(): SerieParlamentar[] {
+  const { porPolitico } = agregados()
+  return Object.values(porPolitico).map((r) => ({
+    politicoId: r.politico.id,
+    nome: r.politico.nome,
+    partido: r.politico.partido,
+    casa: r.politico.casa,
+    legislaturas: r.politico.legislaturas,
+    serieMensal: r.serieMensal,
+  }))
 }
 
 export function getResumoTotais(): ResumoTotais {
