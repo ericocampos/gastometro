@@ -18,6 +18,7 @@ Instância inicial: **Gastômetro PB** — Paraíba.
 - [Fontes de dados (detalhado)](#fontes-de-dados-detalhado)
 - [Decisões e armadilhas que descobrimos](#decisões-e-armadilhas-que-descobrimos)
 - [Custo do mandato (valores de referência)](#custo-do-mandato-valores-de-referência)
+- [Pontos de atenção (alertas)](#pontos-de-atenção-alertas)
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Scripts](#scripts)
 - [Publicação (GitHub Pages)](#publicação-github-pages)
@@ -61,6 +62,7 @@ fontes/arquivos oficiais ──(coletor, local)──> /data/*.json ──(Next 
    npm install
    npm run collect            # despesas + perfis (Câmara e Senado)
    npm run coletar:assessores # nº de assessores por deputado (Câmara)
+   npm run analisar           # gera os pontos de atenção (alertas)
    ```
 5. Rode o site localmente (`cd web && npm install && npm run dev`) e publique (veja abaixo).
 
@@ -135,18 +137,48 @@ Ficam em **`config/custos-mandato.json`** (com fontes e data de referência). Va
 
 ---
 
+## Pontos de atenção (alertas)
+
+Análises **determinísticas e estatísticas** sobre o dataset, geradas por `npm run analisar`
+(→ `data/analysis/alerts.json`, lido pela página `/alertas`). São **indicadores para conferência —
+nunca acusações**; muitos têm explicação legítima, e cada alerta contextualiza o dado e leva ao
+perfil para conferir as notas. Parâmetros (limiares, preço de combustível etc.) em
+**`config/analise.json`**, editáveis ao forkar.
+
+| Padrão | O que sinaliza |
+|---|---|
+| **Combustível → km** | Converte o gasto de combustível em litros e km/dia, à referência de preço e consumo. Só Câmara (a categoria do Senado é mista). |
+| **Valores redondos** | Mesmo fornecedor pago várias vezes em valores "cheios" (sem centavos), listando os valores reais. |
+| **Picos vs. própria média** | Mês de uma categoria muito acima (≥3×) da média histórica do próprio parlamentar. |
+| **Concentração** | Um único fornecedor concentra grande parte (≥60%) do gasto total. |
+| **Repetidos no mês** | Mesmo valor + categoria pagos 2+ vezes no mesmo mês (mesmo fornecedor ou diferentes) — cara de contrato fixo, duplicidade ou fracionamento. |
+
+Cada alerta tem severidade (alta/média/baixa), os anos que abrange e evidências. A página permite
+filtrar por tipo, severidade, ano e parlamentar (filtros em cascata), e o perfil exibe um indicador
+quando o parlamentar tem alertas.
+
+> **Mês de referência × data:** a CEAP tem o mês de competência (`numMes`) e a data do documento,
+> que às vezes diferem. As análises e o gráfico mensal usam a **data do documento** (o que aparece
+> no detalhamento) para manter tudo coerente.
+
+---
+
 ## Estrutura do projeto
 
 ```
 collector/            Coletor (Node + TS, ESM)
   sources/            Fontes: camara.ts, senado.ts, cota-csv.ts, ceaps-csv.ts
   enriquecimento/     Perfis (bio + proposições)
-  collect.ts          Orquestrador → /data
+  analise/            Analisadores dos pontos de atenção
+  collect.ts          Orquestrador da coleta → /data
   coletarAssessores.ts  Nº de assessores (Câmara)
+  analisar.ts         Gera os alertas → /data/analysis
 config/
   state.json          UF, branding, legislaturas, ano inicial
   custos-mandato.json Valores de referência do custo do mandato
+  analise.json        Parâmetros das análises (limiares, referências)
 data/                 Dataset versionado (consumido pelo site)
+  analysis/           Pontos de atenção (alerts.json)
   raw/                Cache bruto da coleta (NÃO versionado)
 web/                  Site (Next.js, static export, Tailwind)
 .github/workflows/    deploy-pages.yml (build + deploy)
@@ -163,6 +195,7 @@ Na raiz (coletor):
 |---|---|
 | `npm run collect` | Coleta despesas + perfis (Câmara e Senado) → `/data` |
 | `npm run coletar:assessores` | Gera `/data/assessores.json` (nº de assessores por deputado) |
+| `npm run analisar` | Gera os pontos de atenção → `/data/analysis/alerts.json` |
 | `npm test` | Testes do coletor |
 
 Em `web/` (site):
