@@ -81,6 +81,11 @@ export function PerfilView({
 
   // linha de teto no gráfico mensal — só quando o teto da cota é exato (Câmara/CEAP por UF)
   const custoCasa = custos.casas[politico.casa]
+  // o Senado não expõe a nota individual na base aberta → link p/ a prestação de contas do senador
+  const portalSenado =
+    politico.casa === 'senado'
+      ? `https://www6g.senado.leg.br/transparencia/sen/${politico.id.replace('senado-', '')}`
+      : undefined
   const refCota =
     !custoCasa.cota.aproximado && custoCasa.cota.valor != null
       ? { valor: custoCasa.cota.valor, rotulo: 'Teto da cota/mês', cor: corCasa(politico.casa) }
@@ -122,7 +127,7 @@ export function PerfilView({
         </p>
       ) : (
         <>
-          <div className="mb-8 grid grid-cols-3 gap-3">
+          <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
             <Estatistica rotulo="Total no período" valor={brl(ag.total)} destaque />
             <Estatistica rotulo="Posição no ranking" valor={posicao ? `${posicao}º de ${totalRanqueados}` : '—'} />
             <Estatistica
@@ -189,7 +194,7 @@ export function PerfilView({
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
                 <div className="rounded-xl border border-borda bg-superficie p-4">
-                  <DetalhamentoGastos despesas={despesasPeriodo} />
+                  <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} />
                 </div>
               </section>
             </>

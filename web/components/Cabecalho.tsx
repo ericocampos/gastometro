@@ -12,7 +12,7 @@ export function Cabecalho() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-borda bg-papel/85 backdrop-blur supports-[backdrop-filter]:bg-papel/70">
-      <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="group flex items-baseline gap-2">
           <span className="font-display text-xl font-semibold tracking-tight text-tinta">
             {nome}
@@ -25,7 +25,7 @@ export function Cabecalho() {
         </Link>
         <nav
           aria-label="Navegação principal"
-          className="ml-auto flex items-center gap-5 text-sm font-medium"
+          className="ml-auto flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-sm font-medium"
         >
           <NavLinks />
           <ThemeToggle />

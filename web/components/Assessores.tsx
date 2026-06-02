@@ -23,12 +23,12 @@ export function Assessores({
           <div className="text-xs text-tinta-suave">Assessores no gabinete</div>
           {quantidade == null ? (
             <>
-              <div className="mt-0.5 font-display text-2xl font-semibold text-tinta sm:text-3xl">—</div>
+              <div className="mt-0.5 font-display text-xl font-semibold text-tinta sm:text-2xl lg:text-3xl">—</div>
               <div className="mt-0.5 text-xs text-tinta-tenue">não divulgado por parlamentar</div>
             </>
           ) : (
             <>
-              <div className="mt-0.5 font-display text-2xl font-semibold tabular-nums text-tinta sm:text-3xl">{quantidade}</div>
+              <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{quantidade}</div>
               <div className="mt-0.5 text-xs text-tinta-tenue">
                 secretários hoje{atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}
               </div>
@@ -37,7 +37,7 @@ export function Assessores({
         </div>
         <div className="rounded-lg border border-borda bg-superficie p-3 sm:p-4">
           <div className="text-xs text-tinta-suave">Verba de gabinete (teto)</div>
-          <div className="mt-0.5 font-display text-2xl font-semibold tabular-nums text-tinta sm:text-3xl">
+          <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">
             {teto ?? '—'}
           </div>
           <div className="mt-0.5 text-xs text-tinta-tenue">{gabinete.rotulo}</div>
