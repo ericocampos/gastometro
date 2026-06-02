@@ -16,20 +16,40 @@ export interface LinhaCeaps {
   valorNumerico: number
 }
 
+function parseLinha(linha: string): string[] | null {
+  try {
+    const out = parse(linha, { delimiter: ';', relax_quotes: true, trim: true }) as string[][]
+    return out[0] ?? null
+  } catch {
+    return null
+  }
+}
+
 // O CSV tem 1 linha de metadado antes do cabeçalho real. encoding: 'latin1' em produção.
+// Parseamos linha a linha (não em stream) porque os CSVs do CEAPS contêm aspas não
+// escapadas (ex: "Raul"s Eventos"). Em stream, uma aspa solta desbalanceia o parser e
+// engole milhares de linhas seguintes num único campo; isolando por linha, o estrago de
+// uma linha corrompida fica restrito a ela.
 export function parseCeapsCsv(buf: Buffer, encoding: 'latin1' | 'utf-8' = 'latin1'): LinhaCeaps[] {
   const texto = iconv.decode(buf, encoding)
-  const semMetadado = texto.slice(texto.indexOf('\n') + 1) // remove a 1a linha
-  const registros = parse(semMetadado, {
-    delimiter: ';',
-    columns: true,
-    skip_empty_lines: true,
-    relax_quotes: true,
-    trim: true,
-  }) as Record<string, string>[]
+  const linhas = texto.split(/\r?\n/)
+  if (linhas.length < 2) return []
 
-  return registros.map((r) => ({
-    ...(r as unknown as LinhaCeaps),
-    valorNumerico: Number((r.VALOR_REEMBOLSADO ?? '0').replace(/\./g, '').replace(',', '.')),
-  }))
+  const header = parseLinha(linhas[1]) // linha 0 = metadado, linha 1 = cabeçalho
+  if (!header) return []
+
+  const out: LinhaCeaps[] = []
+  for (let i = 2; i < linhas.length; i++) {
+    if (!linhas[i].trim()) continue
+    const cols = parseLinha(linhas[i])
+    if (!cols) continue // pula linha corrompida sem derrubar o resto
+
+    const r: Record<string, string> = {}
+    header.forEach((h, idx) => { r[h] = cols[idx] ?? '' })
+    out.push({
+      ...(r as unknown as LinhaCeaps),
+      valorNumerico: Number((r.VALOR_REEMBOLSADO ?? '0').replace(/\./g, '').replace(',', '.')),
+    })
+  }
+  return out
 }
