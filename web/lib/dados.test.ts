@@ -44,4 +44,11 @@ describe('dados', () => {
     const { getBranding } = await import('./dados')
     expect(getBranding().titulo).toBe('Gastômetro PB')
   })
+
+  it('getPerfil lê o perfil quando existe e null quando não', async () => {
+    const { getPerfil } = await import('./dados')
+    expect(getPerfil('camara-1')?.nomeCivil).toBe('Fulano de Tal')
+    expect(getPerfil('camara-1')?.proposicoes).toHaveLength(1)
+    expect(getPerfil('nao-existe')).toBeNull()
+  })
 })

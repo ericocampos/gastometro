@@ -60,3 +60,24 @@ export interface Alerta {
 export interface Branding { titulo: string; cor: string }
 
 export interface ResumoTotais { totalGeral: number; numParlamentares: number }
+
+export interface ProposicaoResumo {
+  tipo: string
+  numero: string
+  ano: number
+  ementa: string
+  data?: string
+  url?: string
+}
+
+export interface PerfilParlamentar {
+  id: string
+  nomeCivil?: string
+  nascimento?: string
+  naturalidade?: string
+  escolaridade?: string
+  situacao?: string
+  site?: string
+  redes: string[]
+  proposicoes: ProposicaoResumo[]
+}

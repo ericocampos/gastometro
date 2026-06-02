@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Branding, Despesa, ItemFornecedor, ItemRanking, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Branding, Despesa, ItemFornecedor, ItemRanking, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -67,4 +67,10 @@ export function getAlertas(): Alerta[] {
 
 export function getBranding(): Branding {
   return lerJson<{ branding: Branding }>(configPath()).branding
+}
+
+export function getPerfil(id: string): PerfilParlamentar | null {
+  const caminho = resolve(dataDir(), 'perfis', `${id}.json`)
+  if (!existsSync(caminho)) return null
+  return lerJson<PerfilParlamentar>(caminho)
 }
