@@ -3,16 +3,10 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { brl } from '@/lib/formato'
 import {
-  type SerieParlamentar, type Periodo,
-  rankingNoPeriodo, resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, rotuloMandato,
+  type SerieParlamentar,
+  rankingNoPeriodo, resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, parsePeriodoValor,
 } from '@/lib/periodo'
-
-function parsePeriodo(valor: string): Periodo {
-  if (valor === 'tudo') return { tipo: 'tudo' }
-  const [tipo, n] = valor.split(':')
-  if (tipo === 'ano') return { tipo: 'ano', ano: Number(n) }
-  return { tipo: 'mandato', legislatura: Number(n) }
-}
+import { SeletorPeriodo } from './SeletorPeriodo'
 
 export function RankingView({ series }: { series: SerieParlamentar[] }) {
   const [periodoVal, setPeriodoVal] = useState('tudo')
@@ -20,7 +14,7 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
   const [partido, setPartido] = useState('todos')
   const [busca, setBusca] = useState('')
 
-  const periodo = useMemo(() => parsePeriodo(periodoVal), [periodoVal])
+  const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
   const anos = useMemo(() => anosDisponiveis(series), [series])
   const mandatos = useMemo(() => mandatosDisponiveis(series), [series])
   const partidos = useMemo(
@@ -63,23 +57,7 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
       </div>
 
       <div className="mb-6 flex flex-wrap gap-3">
-        <label className="text-sm">
-          Período
-          <select
-            aria-label="Período"
-            value={periodoVal}
-            onChange={(e) => setPeriodoVal(e.target.value)}
-            className="ml-1 rounded border border-slate-300 bg-transparent px-2 py-1 dark:border-slate-700"
-          >
-            <option value="tudo">Todo o período</option>
-            <optgroup label="Por ano">
-              {anos.map((a) => <option key={a} value={`ano:${a}`}>{a}</option>)}
-            </optgroup>
-            <optgroup label="Por mandato">
-              {mandatos.map((l) => <option key={l} value={`mandato:${l}`}>{rotuloMandato(l)}</option>)}
-            </optgroup>
-          </select>
-        </label>
+        <SeletorPeriodo valor={periodoVal} onChange={setPeriodoVal} anos={anos} mandatos={mandatos} />
         <label className="text-sm">
           Casa
           <select
@@ -119,7 +97,10 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
         {filtrados.map((i) => (
           <li key={i.politicoId}>
             <Link
-              href={`/parlamentar/${i.politicoId}`}
+              href={{
+                pathname: `/parlamentar/${i.politicoId}`,
+                query: periodoVal !== 'tudo' ? { periodo: periodoVal } : undefined,
+              }}
               className="block rounded-lg border border-slate-200 p-3 hover:border-marca dark:border-slate-800"
             >
               <div className="flex items-baseline justify-between gap-2">

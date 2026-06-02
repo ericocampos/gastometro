@@ -34,11 +34,14 @@ export function anosDaLegislatura(leg: number): number[] {
   return [inicio, inicio + 1, inicio + 2, inicio + 3]
 }
 
-export function pontoNoPeriodo(anoMes: string, periodo: Periodo): boolean {
+export function anoNoPeriodo(ano: number, periodo: Periodo): boolean {
   if (periodo.tipo === 'tudo') return true
-  const ano = Number(anoMes.slice(0, 4))
   if (periodo.tipo === 'ano') return ano === periodo.ano
   return anosDaLegislatura(periodo.legislatura).includes(ano)
+}
+
+export function pontoNoPeriodo(anoMes: string, periodo: Periodo): boolean {
+  return anoNoPeriodo(Number(anoMes.slice(0, 4)), periodo)
 }
 
 export function totalNoPeriodo(serie: PontoMensal[], periodo: Periodo): number {
@@ -95,4 +98,16 @@ export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {
 export function rotuloMandato(leg: number): string {
   const anos = anosDaLegislatura(leg)
   return `${leg}ª legislatura (${anos[0]}–${anos[3]})`
+}
+
+export function parsePeriodoValor(valor: string): Periodo {
+  if (valor === 'ano' || valor.startsWith('ano:')) return { tipo: 'ano', ano: Number(valor.split(':')[1]) }
+  if (valor.startsWith('mandato:')) return { tipo: 'mandato', legislatura: Number(valor.split(':')[1]) }
+  return { tipo: 'tudo' }
+}
+
+export function periodoParaValor(p: Periodo): string {
+  if (p.tipo === 'ano') return `ano:${p.ano}`
+  if (p.tipo === 'mandato') return `mandato:${p.legislatura}`
+  return 'tudo'
 }

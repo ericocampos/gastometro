@@ -1,0 +1,47 @@
+import type { Despesa, ItemCategoria, ItemFornecedor, PontoMensal } from './tipos'
+import { type Periodo, type TotalAnual, anoNoPeriodo } from './periodo'
+
+export interface AgregadoPerfil {
+  total: number
+  serieMensal: PontoMensal[]
+  porCategoria: ItemCategoria[]
+  porFornecedor: ItemFornecedor[]
+}
+
+export function agregarPerfil(despesas: Despesa[], periodo: Periodo): AgregadoPerfil {
+  const ds = despesas.filter((d) => anoNoPeriodo(d.ano, periodo))
+  const total = ds.reduce((s, d) => s + d.valor, 0)
+
+  const mensal = new Map<string, number>()
+  for (const d of ds) {
+    const k = `${d.ano}-${String(d.mes).padStart(2, '0')}`
+    mensal.set(k, (mensal.get(k) ?? 0) + d.valor)
+  }
+  const serieMensal = [...mensal.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([anoMes, t]) => ({ anoMes, total: t }))
+
+  const cat = new Map<string, number>()
+  for (const d of ds) cat.set(d.categoria, (cat.get(d.categoria) ?? 0) + d.valor)
+  const porCategoria = [...cat.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([categoria, t]) => ({ categoria, total: t }))
+
+  const forn = new Map<string, { cnpjCpf?: string; total: number }>()
+  for (const d of ds) {
+    const e = forn.get(d.fornecedor.nome) ?? { cnpjCpf: d.fornecedor.cnpjCpf, total: 0 }
+    e.total += d.valor
+    forn.set(d.fornecedor.nome, e)
+  }
+  const porFornecedor = [...forn.entries()]
+    .sort((a, b) => b[1].total - a[1].total)
+    .map(([nome, e]) => ({ nome, cnpjCpf: e.cnpjCpf, total: e.total }))
+
+  return { total, serieMensal, porCategoria, porFornecedor }
+}
+
+export function totalAnualParlamentar(despesas: Despesa[]): TotalAnual[] {
+  const m = new Map<number, number>()
+  for (const d of despesas) m.set(d.ano, (m.get(d.ano) ?? 0) + d.valor)
+  return [...m.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, total }))
+}

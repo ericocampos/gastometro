@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Branding, ItemFornecedor, ItemRanking, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Branding, Despesa, ItemFornecedor, ItemRanking, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -47,6 +47,12 @@ export function getParlamentar(id: string): ResumoPolitico | null {
 
 export function getTodosIds(): string[] {
   return Object.keys(agregados().porPolitico)
+}
+
+export function getDespesasParlamentar(id: string): Despesa[] {
+  const caminho = resolve(dataDir(), 'despesas', `${id}.json`)
+  if (!existsSync(caminho)) return []
+  return lerJson<Despesa[]>(caminho)
 }
 
 export function getFornecedores(): ItemFornecedor[] {

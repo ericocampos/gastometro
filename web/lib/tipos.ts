@@ -34,6 +34,18 @@ export interface Agregados {
   fornecedores: ItemFornecedor[]
 }
 
+export interface Despesa {
+  id: string
+  politicoId: string
+  data: string
+  ano: number
+  mes: number
+  categoria: string
+  fornecedor: { nome: string; cnpjCpf?: string }
+  valor: number
+  urlDocumento?: string
+}
+
 export interface Alerta {
   id: string
   politicoId: string
