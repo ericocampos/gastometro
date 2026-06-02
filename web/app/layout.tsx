@@ -22,6 +22,13 @@ const sans = Public_Sans({
 // Aplica o tema antes da pintura para evitar flash de tema errado.
 const scriptTema = `(function(){try{var s=localStorage.getItem('tema');var e=s?s==='escuro':matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',e)}catch(_){}})()`
 
+// Carrega o beacon do Cloudflare Web Analytics via loader inline. Importante: NÃO renderizar
+// como <script src> no <head>, porque o React trata isso como recurso "hoistable" e o reordena
+// na hidratação, gerando mismatch (#418/#423) que faz o React re-renderizar o <html> e apagar a
+// classe `dark` aplicada pelo script de tema. Inline (como o de tema) o React não mexe.
+const beaconCloudflare = (token: string) =>
+  `(function(){try{var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon',${JSON.stringify(JSON.stringify({ token }))});document.head.appendChild(s)}catch(_){}})()`
+
 export function generateMetadata() {
   return { title: getBranding().titulo, description: 'Gastos de cota parlamentar' }
 }
@@ -34,13 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-BR" suppressHydrationWarning className={`${display.variable} ${sans.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
-        {cfToken && (
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={JSON.stringify({ token: cfToken })}
-          />
-        )}
+        {cfToken && <script dangerouslySetInnerHTML={{ __html: beaconCloudflare(cfToken) }} />}
       </head>
       <body>
         <Cabecalho />
