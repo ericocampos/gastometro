@@ -1,11 +1,12 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { type SerieParlamentar, parsePeriodoValor, anosDisponiveis, mandatosDisponiveis, valorPeriodoPadrao } from '@/lib/periodo'
 import { serieComparada, resumosComparados } from '@/lib/comparar'
 import { brl } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
+import { SecaoTitulo } from './SecaoTitulo'
 import { GraficoComparado, CORES_COMPARACAO } from './GraficoComparado'
 
 const MAX = 4
@@ -63,25 +64,24 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-end gap-3">
-        <label className="text-sm">
-          Adicionar parlamentar
-          <select
-            aria-label="Adicionar parlamentar"
-            disabled={ids.length >= MAX}
-            value=""
-            onChange={(e) => adicionar(e.target.value)}
-            className="ml-1 max-w-[320px] rounded border border-slate-300 bg-transparent px-2 py-1 disabled:opacity-50 dark:border-slate-700"
-          >
-            <option value="">{ids.length >= MAX ? `Máximo de ${MAX} selecionados` : 'Selecione um nome…'}</option>
-            {disponiveis.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
-          </select>
-        </label>
+      <div className="mb-5 flex flex-wrap items-center gap-2 text-sm">
+        <label className="sr-only" htmlFor="comp-add">Adicionar parlamentar</label>
+        <select
+          id="comp-add"
+          aria-label="Adicionar parlamentar"
+          disabled={ids.length >= MAX}
+          value=""
+          onChange={(e) => adicionar(e.target.value)}
+          className="max-w-[320px] rounded-md border border-borda bg-superficie px-2.5 py-1.5 text-tinta transition-colors hover:border-marca focus:border-marca disabled:opacity-50"
+        >
+          <option value="">{ids.length >= MAX ? `Máximo de ${MAX} selecionados` : 'Adicionar parlamentar…'}</option>
+          {disponiveis.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+        </select>
         <SeletorPeriodo valor={periodoVal} onChange={(v) => navega(ids, v)} anos={anos} mandatos={mandatos} />
       </div>
 
       {selecionados.length === 0 ? (
-        <p className="rounded-lg border border-slate-200 p-4 text-sm text-slate-600 dark:border-slate-800 dark:text-slate-300">
+        <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
           Adicione 2 ou mais parlamentares para comparar gastos lado a lado.
         </p>
       ) : (
@@ -90,48 +90,50 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
             {selecionados.map((s) => (
               <span
                 key={s.politicoId}
-                className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm"
+                className="inline-flex items-center gap-2 rounded-full border bg-superficie px-3 py-1 text-sm text-tinta"
                 style={{ borderColor: corPorId.get(s.politicoId) }}
               >
                 <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: corPorId.get(s.politicoId) }} />
                 {s.nome}
-                <span className="text-xs text-slate-500 dark:text-slate-400">{s.partido} · {casaLabel(s.casa)}</span>
+                <span className="text-xs text-tinta-suave">{s.partido} · {casaLabel(s.casa)}</span>
                 <button
                   aria-label={`Remover ${s.nome}`}
                   onClick={() => navega(ids.filter((id) => id !== s.politicoId))}
-                  className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                  className="text-tinta-tenue hover:text-tinta"
                 >×</button>
               </span>
             ))}
           </div>
 
-          <div className="mb-8 overflow-x-auto">
+          <div className="mb-10 overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-slate-500 dark:text-slate-400">
-                  <th className="py-1 pr-2">Parlamentar</th>
-                  <th className="py-1 pr-2 text-right">Total no período</th>
-                  <th className="py-1 pr-2 text-right">Média mensal</th>
+                <tr className="text-left text-[11px] uppercase tracking-wide text-tinta-tenue">
+                  <th className="py-1.5 pr-2 font-medium">Parlamentar</th>
+                  <th className="py-1.5 pr-2 text-right font-medium">Total no período</th>
+                  <th className="py-1.5 pr-2 text-right font-medium">Média mensal</th>
                 </tr>
               </thead>
               <tbody>
                 {resumos.map((r) => (
-                  <tr key={r.politicoId} className="border-t border-slate-100 dark:border-slate-800">
-                    <td className="py-1 pr-2">
+                  <tr key={r.politicoId} className="border-t border-borda">
+                    <td className="py-1.5 pr-2 text-tinta">
                       <span className="mr-2 inline-block h-2.5 w-2.5 rounded-full align-middle" style={{ background: corPorId.get(r.politicoId) }} />
                       <Link href={`/parlamentar/${r.politicoId}`} className="hover:underline">{r.nome}</Link>
-                      <span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{r.partido} · {r.casa === 'camara' ? 'Câmara' : 'Senado'}</span>
+                      <span className="ml-2 text-xs text-tinta-suave">{r.partido} · {r.casa === 'camara' ? 'Câmara' : 'Senado'}</span>
                     </td>
-                    <td className="py-1 pr-2 text-right tabular-nums font-semibold">{brl(r.total)}</td>
-                    <td className="py-1 pr-2 text-right tabular-nums">{brl(r.mediaMensal)}</td>
+                    <td className="py-1.5 pr-2 text-right font-semibold tabular-nums text-tinta">{brl(r.total)}</td>
+                    <td className="py-1.5 pr-2 text-right tabular-nums text-tinta">{brl(r.mediaMensal)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Evolução mensal comparada</h2>
-          <GraficoComparado pontos={pontos} linhas={linhas} />
+          <SecaoTitulo>Evolução mensal comparada</SecaoTitulo>
+          <div className="rounded-xl border border-borda bg-superficie p-4">
+            <GraficoComparado pontos={pontos} linhas={linhas} />
+          </div>
         </>
       )}
     </div>

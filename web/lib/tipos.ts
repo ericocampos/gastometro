@@ -59,6 +59,27 @@ export interface Alerta {
 
 export interface Branding { titulo: string; cor: string }
 
+export interface ItemCusto { valor: number | null; rotulo: string; aproximado: boolean }
+export interface CustoCasa {
+  rotulo: string
+  salario: number
+  cota: ItemCusto
+  gabinete: ItemCusto
+  fontes: { nome: string; url: string }[]
+}
+export interface CustosMandato {
+  atualizadoEm: string
+  observacao: string
+  casas: Record<'camara' | 'senado', CustoCasa>
+}
+
+export interface Assessores {
+  atualizadoEm: string
+  fonte: string
+  descricao: string
+  porPolitico: Record<string, number>
+}
+
 export interface ResumoTotais { totalGeral: number; numParlamentares: number }
 
 export interface ProposicaoResumo {

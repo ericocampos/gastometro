@@ -4,6 +4,11 @@ export function brl(valor: number): string {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
 }
 
+// versão sem centavos, para números grandes de referência (ex.: custo do mandato)
+export function brlInteiro(valor: number): string {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(valor)
+}
+
 export function mesAno(anoMes: string): string {
   const [ano, mes] = anoMes.split('-')
   const i = Number(mes) - 1

@@ -15,8 +15,8 @@ export function GraficoGeralAnual({ dados }: { dados: TotalAnual[] }) {
     <div style={{ width: '100%', height: 220 }}>
       <ResponsiveContainer>
         <BarChart data={dados} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
-          <XAxis dataKey="ano" tick={{ fontSize: 11 }} />
-          <YAxis tick={{ fontSize: 11 }} width={64} tickFormatter={(v) => compacto(Number(v))} />
+          <XAxis dataKey="ano" tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} />
+          <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => compacto(Number(v))} />
           <Tooltip
             formatter={(v) => brl(Number(v))}
             labelFormatter={(l) => `Ano ${l}`}
@@ -24,7 +24,7 @@ export function GraficoGeralAnual({ dados }: { dados: TotalAnual[] }) {
             labelStyle={tooltipLabelStyle}
             itemStyle={tooltipItemStyle}
           />
-          <Bar dataKey="total" fill="#0a7d52" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="total" fill="var(--marca)" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

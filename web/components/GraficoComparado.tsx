@@ -16,8 +16,8 @@ export function GraficoComparado({
     <div style={{ width: '100%', height: 300 }}>
       <ResponsiveContainer>
         <LineChart data={pontos} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
-          <XAxis dataKey="mes" tick={{ fontSize: 11 }} minTickGap={24} />
-          <YAxis tick={{ fontSize: 11 }} width={70} tickFormatter={(v) => brl(Number(v))} />
+          <XAxis dataKey="mes" tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} minTickGap={24} />
+          <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={70} tickFormatter={(v) => brl(Number(v))} />
           <Tooltip
             formatter={(v) => brl(Number(v))}
             contentStyle={tooltipContentStyle}

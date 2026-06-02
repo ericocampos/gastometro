@@ -21,20 +21,37 @@ export function PerfilCabecalho({ perfil }: { perfil: PerfilParlamentar | null }
   if (itens.length === 0 && !perfil.site && perfil.redes.length === 0) return null
 
   return (
-    <section className="mb-8 rounded-lg border border-slate-200 p-4 dark:border-slate-800">
-      <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
+    <section className="mb-8 rounded-xl border border-borda bg-superficie p-5">
+      <dl className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm sm:grid-cols-3">
         {itens.map((i) => (
           <div key={i.rotulo}>
-            <dt className="text-xs text-slate-500 dark:text-slate-400">{i.rotulo}</dt>
-            <dd className="text-slate-800 dark:text-slate-100">{i.valor}</dd>
+            <dt className="text-[11px] uppercase tracking-wide text-tinta-tenue">{i.rotulo}</dt>
+            <dd className="mt-0.5 text-tinta">{i.valor}</dd>
           </div>
         ))}
       </dl>
       {(perfil.site || perfil.redes.length > 0) && (
-        <div className="mt-3 flex flex-wrap gap-3 text-sm">
-          {perfil.site && <a href={perfil.site} target="_blank" rel="noopener noreferrer" className="text-marca underline">site oficial</a>}
+        <div className="mt-4 flex flex-wrap gap-2 border-t border-borda pt-4 text-sm">
+          {perfil.site && (
+            <a
+              href={perfil.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-borda px-3 py-1 text-tinta-suave transition-colors hover:border-marca hover:text-marca"
+            >
+              site oficial ↗
+            </a>
+          )}
           {perfil.redes.map((r) => (
-            <a key={r} href={r} target="_blank" rel="noopener noreferrer" className="text-marca underline">{rotuloRede(r)}</a>
+            <a
+              key={r}
+              href={r}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-borda px-3 py-1 text-tinta-suave transition-colors hover:border-marca hover:text-marca"
+            >
+              {rotuloRede(r)} ↗
+            </a>
           ))}
         </div>
       )}

@@ -12,6 +12,7 @@ export interface SerieParlamentar {
   casa: 'camara' | 'senado'
   legislaturas: number[]
   serieMensal: PontoMensal[]
+  fotoUrl?: string
 }
 
 export interface LinhaRanking {
@@ -20,6 +21,7 @@ export interface LinhaRanking {
   partido: string
   casa: 'camara' | 'senado'
   total: number
+  fotoUrl?: string
 }
 
 export interface ResumoPeriodo {
@@ -56,6 +58,7 @@ export function rankingNoPeriodo(series: SerieParlamentar[], periodo: Periodo): 
       partido: s.partido,
       casa: s.casa,
       total: totalNoPeriodo(s.serieMensal, periodo),
+      fotoUrl: s.fotoUrl,
     }))
     .sort((a, b) => b.total - a.total)
 }

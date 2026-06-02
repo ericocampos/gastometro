@@ -10,15 +10,15 @@ export function GraficoCategorias({ categorias }: { categorias: ItemCategoria[] 
     <div style={{ width: '100%', height: 280 }}>
       <ResponsiveContainer>
         <BarChart data={dados} layout="vertical" margin={{ left: 8, right: 16 }}>
-          <XAxis type="number" tick={{ fontSize: 11 }} tickFormatter={(v) => brl(Number(v))} />
-          <YAxis type="category" dataKey="categoria" width={160} tick={{ fontSize: 11 }} />
+          <XAxis type="number" tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} tickFormatter={(v) => brl(Number(v))} />
+          <YAxis type="category" dataKey="categoria" width={160} tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} />
           <Tooltip
             formatter={(v) => brl(Number(v))}
             contentStyle={tooltipContentStyle}
             labelStyle={tooltipLabelStyle}
             itemStyle={tooltipItemStyle}
           />
-          <Bar dataKey="total" fill="#0a7d52" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="total" fill="var(--marca)" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

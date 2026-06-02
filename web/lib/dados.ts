@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Branding, Despesa, ItemFornecedor, ItemRanking, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -9,6 +9,10 @@ function dataDir(): string {
 
 function configPath(): string {
   return process.env.GASTOMETRO_CONFIG ?? resolve(process.cwd(), '..', 'config', 'state.json')
+}
+
+function custosPath(): string {
+  return process.env.GASTOMETRO_CUSTOS ?? resolve(process.cwd(), '..', 'config', 'custos-mandato.json')
 }
 
 function lerJson<T>(caminho: string): T {
@@ -33,6 +37,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     casa: r.politico.casa,
     legislaturas: r.politico.legislaturas,
     serieMensal: r.serieMensal,
+    fotoUrl: r.politico.fotoUrl,
   }))
 }
 
@@ -67,6 +72,16 @@ export function getAlertas(): Alerta[] {
 
 export function getBranding(): Branding {
   return lerJson<{ branding: Branding }>(configPath()).branding
+}
+
+export function getCustos(): CustosMandato {
+  return lerJson<CustosMandato>(custosPath())
+}
+
+export function getAssessores(): Assessores | null {
+  const caminho = resolve(dataDir(), 'assessores.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<Assessores>(caminho)
 }
 
 export function getPerfil(id: string): PerfilParlamentar | null {

@@ -1,19 +1,19 @@
 // Estilo compartilhado do tooltip do Recharts.
-// Fundo branco com texto escuro funciona como "card" flutuante em tema claro e escuro;
-// o rótulo precisa ser escuro (o padrão do Recharts fica quase invisível no fundo branco).
+// Usa as variáveis de tema (superfície/tinta) para combinar com claro e escuro;
+// o rótulo precisa de cor explícita (o padrão do Recharts fica quase invisível).
 export const tooltipContentStyle: React.CSSProperties = {
-  background: '#ffffff',
-  border: '1px solid #cbd5e1',
+  background: 'var(--superficie)',
+  border: '1px solid var(--borda)',
   borderRadius: 8,
-  boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+  boxShadow: '0 8px 24px -10px rgba(0,0,0,0.35)',
 }
 
 export const tooltipLabelStyle: React.CSSProperties = {
-  color: '#0f172a',
+  color: 'var(--tinta)',
   fontWeight: 600,
   marginBottom: 2,
 }
 
 export const tooltipItemStyle: React.CSSProperties = {
-  color: '#0a7d52',
+  color: 'var(--marca)',
 }

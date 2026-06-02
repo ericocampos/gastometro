@@ -1,8 +1,8 @@
 export function Disclaimer() {
   return (
-    <p className="text-xs text-slate-500 dark:text-slate-400">
+    <p className="text-xs leading-relaxed text-tinta-tenue">
       Dados públicos das APIs de Dados Abertos da Câmara e do Senado. Os indicadores são
-      estatísticos e <strong>não constituem acusação de irregularidade</strong>.
+      estatísticos e <strong className="text-tinta-suave">não constituem acusação de irregularidade</strong>.
     </p>
   )
 }
