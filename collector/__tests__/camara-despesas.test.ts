@@ -47,4 +47,18 @@ describe('FonteCamara.buscarDespesas', () => {
     expect(ds).toHaveLength(1)
     expect(ds[0].data).toBe('')
   })
+
+  it('reconstrói urlDocumento via codDocumento quando a API manda nulo', async () => {
+    const corpo = JSON.stringify({
+      dados: [
+        { ano: 2026, mes: 3, tipoDespesa: 'TELEFONIA', codDocumento: '8076419', dataDocumento: '2026-03-03T00:00:00', valorLiquido: 576, nomeFornecedor: 'STARLINK', cnpjCpfFornecedor: '00', urlDocumento: null },
+        { ano: 2026, mes: 4, tipoDespesa: 'COMBUSTÍVEL', codDocumento: '999', dataDocumento: '2026-04-01T00:00:00', valorLiquido: 50, nomeFornecedor: 'POSTO', cnpjCpfFornecedor: '01', urlDocumento: 'https://orig/doc.pdf' },
+      ],
+      links: [{ rel: 'self', href: '.' }],
+    })
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(corpo, { status: 200 })))
+    const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2026)
+    expect(ds[0].urlDocumento).toBe('http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
+    expect(ds[1].urlDocumento).toBe('https://orig/doc.pdf')
+  })
 })

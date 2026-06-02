@@ -21,7 +21,7 @@ interface DespesaApi {
   valorLiquido: number
   nomeFornecedor: string
   cnpjCpfFornecedor: string
-  urlDocumento?: string
+  urlDocumento?: string | null
 }
 
 export class FonteCamara implements FonteDados {
@@ -71,7 +71,13 @@ export class FonteCamara implements FonteDados {
           categoria: d.tipoDespesa,
           fornecedor: { nome: d.nomeFornecedor, cnpjCpf: d.cnpjCpfFornecedor || undefined },
           valor: d.valorLiquido,
-          urlDocumento: d.urlDocumento || undefined,
+          urlDocumento: (() => {
+            const urlBruta = d.urlDocumento || undefined
+            const urlReconstruida = d.codDocumento
+              ? `http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=${d.codDocumento}`
+              : undefined
+            return urlBruta ?? urlReconstruida
+          })(),
         })
       }
       const temProxima = resp.links?.some((l) => l.rel === 'next')
