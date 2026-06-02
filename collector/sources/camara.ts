@@ -74,7 +74,7 @@ export class FonteCamara implements FonteDados {
           urlDocumento: (() => {
             const urlBruta = d.urlDocumento || undefined
             const urlReconstruida = d.codDocumento
-              ? `http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=${d.codDocumento}`
+              ? `https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=${d.codDocumento}`
               : undefined
             return urlBruta ?? urlReconstruida
           })(),

@@ -58,7 +58,7 @@ describe('FonteCamara.buscarDespesas', () => {
     })
     vi.stubGlobal('fetch', vi.fn(async () => new Response(corpo, { status: 200 })))
     const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2026)
-    expect(ds[0].urlDocumento).toBe('http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
+    expect(ds[0].urlDocumento).toBe('https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
     expect(ds[1].urlDocumento).toBe('https://orig/doc.pdf')
   })
 })

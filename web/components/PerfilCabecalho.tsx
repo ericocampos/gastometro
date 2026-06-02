@@ -1,6 +1,15 @@
 import type { PerfilParlamentar } from '@/lib/tipos'
 import { dataBR } from '@/lib/formato'
 
+// rótulo amigável da rede; se não for uma URL válida, mostra o texto cru
+function rotuloRede(r: string): string {
+  try {
+    return new URL(r).hostname.replace('www.', '')
+  } catch {
+    return r
+  }
+}
+
 export function PerfilCabecalho({ perfil }: { perfil: PerfilParlamentar | null }) {
   if (!perfil) return null
   const itens: { rotulo: string; valor: string }[] = []
@@ -25,7 +34,7 @@ export function PerfilCabecalho({ perfil }: { perfil: PerfilParlamentar | null }
         <div className="mt-3 flex flex-wrap gap-3 text-sm">
           {perfil.site && <a href={perfil.site} target="_blank" rel="noopener noreferrer" className="text-marca underline">site oficial</a>}
           {perfil.redes.map((r) => (
-            <a key={r} href={r} target="_blank" rel="noopener noreferrer" className="text-marca underline">{new URL(r).hostname.replace('www.', '')}</a>
+            <a key={r} href={r} target="_blank" rel="noopener noreferrer" className="text-marca underline">{rotuloRede(r)}</a>
           ))}
         </div>
       )}

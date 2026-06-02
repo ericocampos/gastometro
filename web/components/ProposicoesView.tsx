@@ -43,6 +43,10 @@ export function ProposicoesView({ proposicoes }: { proposicoes: ProposicaoResumo
         <span className="text-sm text-slate-500 dark:text-slate-400">{filtradas.length} proposições</span>
       </div>
 
+      {filtradas.length === 0 && (
+        <p className="text-sm text-slate-500 dark:text-slate-400">Nenhuma proposição do tipo selecionado.</p>
+      )}
+
       <ul className="space-y-2">
         {visiveis.map((p, i) => (
           <li key={`${p.tipo}-${p.numero}-${p.ano}-${i}`} className="border-t border-slate-100 py-2 text-sm dark:border-slate-800">
