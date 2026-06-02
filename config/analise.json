@@ -1,0 +1,30 @@
+{
+  "atualizadoEm": "2026-06",
+  "observacao": "Parâmetros das análises que geram pontos de atenção. São indicadores estatísticos para conferência — nunca acusações. Edite ao forkar.",
+  "combustivel": {
+    "categoriaCamara": "COMBUSTÍVEIS E LUBRIFICANTES.",
+    "precoLitro": 6.0,
+    "kmPorLitro": 10,
+    "kmDiaAtencao": 350,
+    "kmDiaAlta": 450,
+    "fonte": "Referências aproximadas: preço médio da gasolina (ANP) e consumo misto típico."
+  },
+  "valoresRedondos": {
+    "multiplo": 1000,
+    "minOcorrencias": 4,
+    "categoriasIgnoradas": ["MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR"]
+  },
+  "pico": {
+    "fator": 3,
+    "minValorMes": 8000,
+    "minMesesHistorico": 6
+  },
+  "concentracaoFornecedor": {
+    "minParticipacao": 0.6,
+    "minTotal": 100000
+  },
+  "duplicados": {
+    "minValor": 2000,
+    "severidadeMediaAcima": 5000
+  }
+}
