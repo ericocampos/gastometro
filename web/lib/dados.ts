@@ -14,8 +14,9 @@ function lerJson<T>(caminho: string): T {
   return JSON.parse(readFileSync(caminho, 'utf-8')) as T
 }
 
+let cacheAgregados: Agregados | null = null
 function agregados(): Agregados {
-  return lerJson<Agregados>(resolve(dataDir(), 'agregados.json'))
+  return (cacheAgregados ??= lerJson<Agregados>(resolve(dataDir(), 'agregados.json')))
 }
 
 export function getRanking(): ItemRanking[] {

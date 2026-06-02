@@ -22,6 +22,7 @@ export function FornecedoresView({ itens }: { itens: ItemFornecedor[] }) {
   return (
     <div>
       <input
+        aria-label="Buscar fornecedor"
         placeholder="Buscar fornecedor…"
         value={busca}
         onChange={(e) => { setBusca(e.target.value); setPagina(0) }}

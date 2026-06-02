@@ -24,6 +24,12 @@ export function RankingView({ itens }: { itens: ItemRanking[] }) {
     )
   }, [itens, casa, partido, busca])
 
+  // posição real no ranking completo (não reseta ao filtrar)
+  const rankPorId = useMemo(
+    () => new Map(itens.map((i, idx) => [i.politicoId, idx + 1])),
+    [itens],
+  )
+
   const max = Math.max(1, ...filtrados.map((i) => i.total))
 
   return (
@@ -56,6 +62,7 @@ export function RankingView({ itens }: { itens: ItemRanking[] }) {
           </select>
         </label>
         <input
+          aria-label="Buscar por nome"
           placeholder="Buscar por nome…"
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
@@ -64,7 +71,7 @@ export function RankingView({ itens }: { itens: ItemRanking[] }) {
       </div>
 
       <ol className="space-y-3">
-        {filtrados.map((i, idx) => (
+        {filtrados.map((i) => (
           <li key={i.politicoId}>
             <Link
               href={`/parlamentar/${i.politicoId}`}
@@ -72,7 +79,7 @@ export function RankingView({ itens }: { itens: ItemRanking[] }) {
             >
               <div className="flex items-baseline justify-between gap-2">
                 <span className="font-medium">
-                  <span className="mr-2 text-slate-400">{idx + 1}.</span>
+                  <span className="mr-2 text-slate-400">{rankPorId.get(i.politicoId)}.</span>
                   {i.nome}
                   <span className="ml-2 text-xs text-slate-500">{i.partido} · {i.casa === 'camara' ? 'Câmara' : 'Senado'}</span>
                 </span>

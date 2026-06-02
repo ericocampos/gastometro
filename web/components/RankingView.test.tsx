@@ -28,4 +28,12 @@ describe('RankingView', () => {
     expect(screen.queryByText('Fulano Senador')).not.toBeInTheDocument()
     expect(screen.getByText('Beltrano Deputado')).toBeInTheDocument()
   })
+
+  it('preserva a posição real do ranking ao filtrar', () => {
+    render(<RankingView itens={itens} />)
+    // Beltrano é o 2º no ranking completo; ao filtrar só Câmara, deve continuar "2."
+    fireEvent.change(screen.getByLabelText('Casa'), { target: { value: 'camara' } })
+    expect(screen.getByText('2.')).toBeInTheDocument()
+    expect(screen.queryByText('1.')).not.toBeInTheDocument()
+  })
 })

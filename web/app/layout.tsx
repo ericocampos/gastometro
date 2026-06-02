@@ -2,8 +2,11 @@ import './globals.css'
 import type { ReactNode } from 'react'
 import { Cabecalho } from '@/components/Cabecalho'
 import { Rodape } from '@/components/Rodape'
+import { getBranding } from '@/lib/dados'
 
-export const metadata = { title: 'Gastômetro', description: 'Gastos de cota parlamentar' }
+export function generateMetadata() {
+  return { title: getBranding().titulo, description: 'Gastos de cota parlamentar' }
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

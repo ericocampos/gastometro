@@ -11,7 +11,7 @@ export function Cabecalho() {
           <span className="inline-block h-4 w-4 rounded bg-marca" />
           {branding.titulo}
         </Link>
-        <nav className="ml-auto flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+        <nav aria-label="Navegação principal" className="ml-auto flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
           <Link href="/">Ranking</Link>
           <Link href="/fornecedores">Fornecedores</Link>
           <Link href="/alertas">Alertas</Link>
