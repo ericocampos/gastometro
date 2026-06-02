@@ -36,7 +36,7 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
   function navega(novosIds: string[], novoPeriodo = periodoVal) {
     const params = new URLSearchParams()
     if (novosIds.length) params.set('ids', novosIds.join(','))
-    if (novoPeriodo !== 'tudo') params.set('periodo', novoPeriodo)
+    params.set('periodo', novoPeriodo) // grava sempre, inclusive "tudo"
     const qs = params.toString()
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
   }

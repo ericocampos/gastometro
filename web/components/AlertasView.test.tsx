@@ -1,7 +1,9 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { AlertasView } from './AlertasView'
 import type { Alerta } from '@/lib/tipos'
+
+vi.mock('next/navigation', () => ({ useSearchParams: () => new URLSearchParams() }))
 
 describe('AlertasView', () => {
   it('mostra placeholder quando não há alertas', () => {
@@ -17,6 +19,7 @@ describe('AlertasView', () => {
     }]
     render(<AlertasView alertas={alertas} />)
     expect(screen.getByText('Valores redondos recorrentes')).toBeInTheDocument()
-    expect(screen.getByText(/alta/i)).toBeInTheDocument()
+    // "alta" aparece na pílula de severidade (e também no filtro) → basta haver ao menos uma
+    expect(screen.getAllByText(/alta/i).length).toBeGreaterThanOrEqual(1)
   })
 })

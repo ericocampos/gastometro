@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores } from '@/lib/dados'
+import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas } from '@/lib/dados'
 import { PerfilView } from '@/components/PerfilView'
 
 export function generateStaticParams() {
@@ -19,10 +19,16 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
     quantidade: assessoresData?.porPolitico[params.id] ?? null,
     atualizadoEm: assessoresData?.atualizadoEm,
   }
+  const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
+  const alertas = {
+    quantidade: dosAlertas.length,
+    temAlta: dosAlertas.some((a) => a.severidade === 'alta'),
+    temMedia: dosAlertas.some((a) => a.severidade === 'media'),
+  }
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} assessores={assessores} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} assessores={assessores} alertas={alertas} />
     </Suspense>
   )
 }
