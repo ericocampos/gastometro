@@ -19,17 +19,18 @@ function anoMesDoc(d: Despesa): { ano: number; mes: number } {
   return { ano: d.ano, mes: d.mes }
 }
 
-// agrupa por "ano-mes" somando valores (e guardando a maior despesa para o link)
+// agrupa por "ano-mes" somando valores (guardando a maior despesa para o link e todas as do grupo)
 function porMes(ds: Despesa[]) {
-  const m = new Map<string, { total: number; ano: number; mes: number; principal: Despesa }>()
+  const m = new Map<string, { total: number; ano: number; mes: number; principal: Despesa; ds: Despesa[] }>()
   for (const d of ds) {
     const k = `${d.ano}-${String(d.mes).padStart(2, '0')}`
     const e = m.get(k)
     if (e) {
       e.total += d.valor
+      e.ds.push(d)
       if (d.valor > e.principal.valor) e.principal = d
     } else {
-      m.set(k, { total: d.valor, ano: d.ano, mes: d.mes, principal: d })
+      m.set(k, { total: d.valor, ano: d.ano, mes: d.mes, principal: d, ds: [d] })
     }
   }
   return m
@@ -42,6 +43,7 @@ export function alertasCombustivel(p: Politico, ds: Despesa[], cfg: CfgAnalise, 
   const meses = porMes(ds.filter((d) => d.categoria === cfg.combustivel.categoriaCamara))
   const evidencias: Evidencia[] = []
   const anos = new Set<number>()
+  const despesaIds = new Set<string>()
   let maxKmDia = 0
   for (const [k, e] of [...meses].sort()) {
     const litros = e.total / precoLitro
@@ -50,6 +52,7 @@ export function alertasCombustivel(p: Politico, ds: Despesa[], cfg: CfgAnalise, 
     if (kmDia < kmDiaAtencao) continue
     maxKmDia = Math.max(maxKmDia, kmDia)
     anos.add(e.ano)
+    e.ds.forEach((d) => despesaIds.add(d.id))
     evidencias.push({
       despesaId: e.principal.id,
       url: e.principal.urlDocumento,
@@ -66,7 +69,7 @@ export function alertasCombustivel(p: Politico, ds: Despesa[], cfg: CfgAnalise, 
     tipo: 'combustivel',
     titulo: 'Combustível equivale a quilometragem alta',
     explicacao: `Meses em que o reembolso de combustível, à referência de ${brl(precoLitro)}/litro e ${kmPorLitro} km/litro, equivaleria a uma rodagem elevada. Indicador para conferência das notas — não é acusação.`,
-    anos: [...anos].sort(), evidencias, geradoEm,
+    anos: [...anos].sort(), despesaIds: [...despesaIds], evidencias, geradoEm,
   }]
 }
 
@@ -83,9 +86,10 @@ export function alertasValoresRedondos(p: Politico, ds: Despesa[], cfg: CfgAnali
   }
   const evidencias: Evidencia[] = []
   const anos = new Set<number>()
+  const despesaIds = new Set<string>()
   for (const [forn, lista] of porForn) {
     if (lista.length < minOcorrencias) continue
-    lista.forEach((d) => anos.add(d.ano))
+    lista.forEach((d) => { anos.add(d.ano); despesaIds.add(d.id) })
     const ordenados = lista.slice().sort((a, b) => b.valor - a.valor)
     const total = ordenados.reduce((s, d) => s + d.valor, 0)
     const valoresStr = ordenados.slice(0, 6).map((d) => brl(d.valor)).join(' · ') + (ordenados.length > 6 ? ' …' : '')
@@ -104,7 +108,7 @@ export function alertasValoresRedondos(p: Politico, ds: Despesa[], cfg: CfgAnali
     tipo: 'valores-redondos',
     titulo: 'Pagamentos em valores redondos recorrentes',
     explicacao: `Pagamentos repetidos em valores "redondos" (sem centavos, em milhares cheios — múltiplos de ${brl(multiplo)}) ao mesmo fornecedor. Pode ser legítimo (contratos fixos), mas vale conferir as notas.`,
-    anos: [...anos].sort(), evidencias, geradoEm,
+    anos: [...anos].sort(), despesaIds: [...despesaIds], evidencias, geradoEm,
   }]
 }
 
@@ -119,6 +123,7 @@ export function alertasPico(p: Politico, ds: Despesa[], cfg: CfgAnalise, geradoE
   }
   const evidencias: Evidencia[] = []
   const anos = new Set<number>()
+  const despesaIds = new Set<string>()
   let maxFator = 0
   for (const [categoria, lista] of porCategoria) {
     const meses = porMes(lista)
@@ -130,6 +135,7 @@ export function alertasPico(p: Politico, ds: Despesa[], cfg: CfgAnalise, geradoE
       if (e.total < minValorMes || e.total < fator * media) continue
       maxFator = Math.max(maxFator, e.total / media)
       anos.add(e.ano)
+      e.ds.forEach((d) => despesaIds.add(d.id))
       evidencias.push({
         despesaId: e.principal.id,
         url: e.principal.urlDocumento,
@@ -147,7 +153,7 @@ export function alertasPico(p: Politico, ds: Despesa[], cfg: CfgAnalise, geradoE
     tipo: 'pico',
     titulo: 'Gasto muito acima do padrão do parlamentar',
     explicacao: `Meses em que uma categoria ficou pelo menos ${fator}× acima da média histórica do próprio parlamentar. Indicador de variação atípica para conferência.`,
-    anos: [...anos].sort(), evidencias, geradoEm,
+    anos: [...anos].sort(), despesaIds: [...despesaIds], evidencias, geradoEm,
   }]
 }
 
@@ -161,7 +167,8 @@ export function alertasConcentracao(p: Politico, ds: Despesa[], cfg: CfgAnalise,
   const [forn, val] = [...porForn].sort((a, b) => b[1] - a[1])[0] ?? ['', 0]
   const part = val / total
   if (part < minParticipacao) return []
-  const anos = [...new Set(ds.filter((d) => d.fornecedor.nome === forn).map((d) => d.ano))].sort()
+  const doForn = ds.filter((d) => d.fornecedor.nome === forn)
+  const anos = [...new Set(doForn.map((d) => d.ano))].sort()
   return [{
     id: `concentracao-${p.id}`,
     politicoId: p.id, parlamentarNome: p.nome, casa: p.casa,
@@ -170,6 +177,7 @@ export function alertasConcentracao(p: Politico, ds: Despesa[], cfg: CfgAnalise,
     titulo: 'Gasto concentrado em um fornecedor',
     explicacao: `Um único fornecedor concentra ${Math.round(part * 100)}% de todo o gasto histórico do parlamentar.`,
     anos,
+    despesaIds: doForn.map((d) => d.id),
     evidencias: [{ descricao: `${forn}: ${brl(val)} de ${brl(total)} (${Math.round(part * 100)}% do total)`, valor: val }],
     geradoEm,
   }]
@@ -191,10 +199,12 @@ export function alertasDuplicados(p: Politico, ds: Despesa[], cfg: CfgAnalise, g
 
   const evidencias: Evidencia[] = []
   const anos = new Set<number>()
+  const despesaIds = new Set<string>()
   let maxValor = 0
   for (const g of grupos.values()) {
     if (g.ds.length < 2) continue
     anos.add(g.ano)
+    g.ds.forEach((d) => despesaIds.add(d.id))
     maxValor = Math.max(maxValor, g.valor)
     const fornecedores = [...new Set(g.ds.map((d) => d.fornecedor.nome))]
     const fornStr = fornecedores.length === 1
@@ -217,6 +227,6 @@ export function alertasDuplicados(p: Politico, ds: Despesa[], cfg: CfgAnalise, g
     tipo: 'duplicados',
     titulo: 'Pagamentos iguais repetidos no mesmo mês',
     explicacao: 'Mais de um pagamento do mesmo valor e categoria no mesmo mês (mesmo fornecedor ou fornecedores diferentes) — padrão que pode indicar contrato fixo, duplicidade ou fracionamento. Vale conferir as notas.',
-    anos: [...anos].sort(), evidencias, geradoEm,
+    anos: [...anos].sort(), despesaIds: [...despesaIds], evidencias, geradoEm,
   }]
 }

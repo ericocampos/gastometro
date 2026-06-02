@@ -1,11 +1,43 @@
 'use client'
 import { useMemo, useState } from 'react'
-import type { Despesa } from '@/lib/tipos'
+import Link from 'next/link'
+import type { Despesa, MarcaAlerta } from '@/lib/tipos'
 import { brl, dataBR } from '@/lib/formato'
 
 const POR_PAGINA = 25
 const controle =
   'rounded-md border border-borda bg-superficie px-2.5 py-1.5 text-tinta transition-colors hover:border-marca focus:border-marca'
+
+const ROTULO_TIPO: Record<string, string> = {
+  combustivel: 'combustível',
+  'valores-redondos': 'valores redondos',
+  pico: 'pico de gasto',
+  concentracao: 'concentração em fornecedor',
+  duplicados: 'pagamentos repetidos no mês',
+}
+
+const corSeveridade = (s: MarcaAlerta['severidade']) =>
+  s === 'alta' ? '#c0392b' : s === 'media' ? '#c87f1a' : 'var(--marca)'
+
+// fundo bem sutil da linha marcada, na cor da severidade
+const fundoMarca = (s: MarcaAlerta['severidade']) => ({
+  background: `color-mix(in srgb, ${corSeveridade(s)} 7%, transparent)`,
+})
+
+// ⚠ que sinaliza que a linha entrou em um ou mais pontos de atenção
+function MarcaAlertaIcone({ marca }: { marca: MarcaAlerta }) {
+  const titulo = `Esta despesa entrou em ${marca.tipos.length === 1 ? 'um ponto de atenção' : `${marca.tipos.length} pontos de atenção`}: ${marca.tipos.map((t) => ROTULO_TIPO[t] ?? t).join(', ')}. Confira a nota.`
+  return (
+    <span
+      title={titulo}
+      aria-label={titulo}
+      className="cursor-help select-none align-middle text-xs font-bold leading-none"
+      style={{ color: corSeveridade(marca.severidade) }}
+    >
+      ⚠
+    </span>
+  )
+}
 
 // Link do documento: nota fiscal real (Câmara/Senado recente), senão portal do senador, senão —
 function LinkDoc({ d, portalSenado }: { d: Despesa; portalSenado?: string }) {
@@ -19,11 +51,14 @@ function LinkDoc({ d, portalSenado }: { d: Despesa; portalSenado?: string }) {
 }
 
 export function DetalhamentoGastos({
-  despesas, portalSenado,
+  despesas, portalSenado, alertasPorDespesa, politicoId,
 }: {
   despesas: Despesa[]
   // URL da prestação de contas do senador no portal (Senado não expõe a nota individual na base aberta)
   portalSenado?: string
+  // despesaId → marca, para destacar as linhas que geraram ponto de atenção
+  alertasPorDespesa?: Record<string, MarcaAlerta>
+  politicoId?: string
 }) {
   const [categoria, setCategoria] = useState('todas')
   const [busca, setBusca] = useState('')
@@ -46,6 +81,12 @@ export function DetalhamentoGastos({
   const inicio = pagina * POR_PAGINA
   const visiveis = filtradas.slice(inicio, inicio + POR_PAGINA)
   const totalPaginas = Math.ceil(filtradas.length / POR_PAGINA)
+
+  const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
+  const temMarcadas = useMemo(
+    () => !!alertasPorDespesa && filtradas.some((d) => alertasPorDespesa[d.id]),
+    [alertasPorDespesa, filtradas],
+  )
 
   if (despesas.length === 0) {
     return <p className="text-sm text-tinta-suave">Nenhuma despesa neste período.</p>
@@ -85,12 +126,34 @@ export function DetalhamentoGastos({
 
       <p className="mb-2 text-xs text-tinta-suave">{filtradas.length} lançamentos</p>
 
+      {temMarcadas && (
+        <p className="mb-3 rounded-md border-l-2 border-marca bg-marca/5 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <span className="font-bold text-marca">⚠</span>{' '}
+          Lançamentos com este sinal entraram em um <strong className="text-tinta">ponto de atenção</strong> —
+          vale conferir a nota.{' '}
+          {politicoId && (
+            <Link href={`/alertas?politico=${politicoId}`} className="text-marca underline">
+              ver a análise →
+            </Link>
+          )}
+        </p>
+      )}
+
       {/* Mobile: cada lançamento como card (tudo visível, sem scroll horizontal) */}
       <ul className="space-y-2 sm:hidden">
-        {visiveis.map((d) => (
-          <li key={d.id} className="rounded-lg border border-borda bg-superficie p-3">
+        {visiveis.map((d) => {
+          const marca = marcaDe(d)
+          return (
+          <li
+            key={d.id}
+            className={`rounded-lg border border-borda bg-superficie p-3 ${marca ? 'border-l-2' : ''}`}
+            style={marca ? { ...fundoMarca(marca.severidade), borderLeftColor: corSeveridade(marca.severidade) } : undefined}
+          >
             <div className="flex items-baseline justify-between gap-3">
-              <span className="text-xs tabular-nums text-tinta-suave">{dataBR(d.data)}</span>
+              <span className="flex items-center gap-1.5 text-xs tabular-nums text-tinta-suave">
+                {marca && <MarcaAlertaIcone marca={marca} />}
+                {dataBR(d.data)}
+              </span>
               <span className="font-display text-base font-semibold tabular-nums text-tinta">{brl(d.valor)}</span>
             </div>
             <p className="mt-1 text-sm text-tinta">{d.fornecedor.nome}</p>
@@ -100,7 +163,8 @@ export function DetalhamentoGastos({
               <span className="shrink-0 text-sm"><LinkDoc d={d} portalSenado={portalSenado} /></span>
             </div>
           </li>
-        ))}
+          )
+        })}
       </ul>
 
       {/* Desktop: tabela */}
@@ -116,9 +180,13 @@ export function DetalhamentoGastos({
             </tr>
           </thead>
           <tbody>
-            {visiveis.map((d) => (
-              <tr key={d.id} className="border-t border-borda align-top">
-                <td className="py-1.5 pr-2 whitespace-nowrap tabular-nums text-tinta-suave">{dataBR(d.data)}</td>
+            {visiveis.map((d) => {
+              const marca = marcaDe(d)
+              return (
+              <tr key={d.id} className="border-t border-borda align-top" style={marca ? fundoMarca(marca.severidade) : undefined}>
+                <td className="py-1.5 pr-2 whitespace-nowrap tabular-nums text-tinta-suave">
+                  {marca && <MarcaAlertaIcone marca={marca} />}{marca ? ' ' : ''}{dataBR(d.data)}
+                </td>
                 <td className="py-1.5 pr-2 text-tinta-suave">{d.categoria}</td>
                 <td className="py-1.5 pr-2 text-tinta">
                   {d.fornecedor.nome}
@@ -129,7 +197,8 @@ export function DetalhamentoGastos({
                 <td className="py-1.5 pr-2 text-right tabular-nums text-tinta">{brl(d.valor)}</td>
                 <td className="py-1.5 whitespace-nowrap"><LinkDoc d={d} portalSenado={portalSenado} /></td>
               </tr>
-            ))}
+              )
+            })}
           </tbody>
         </table>
       </div>

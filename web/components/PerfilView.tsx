@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Despesa, Politico, PerfilParlamentar, CustosMandato } from '@/lib/tipos'
+import type { Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -26,7 +26,7 @@ import { ProposicoesView } from './ProposicoesView'
 const casaLonga = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara dos Deputados' : 'Senado Federal')
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, assessores, alertas,
+  politico, despesas, series, perfil, custos, assessores, alertas, alertasPorDespesa,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -35,6 +35,7 @@ export function PerfilView({
   custos: CustosMandato
   assessores: { quantidade: number | null; atualizadoEm?: string }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
+  alertasPorDespesa: Record<string, MarcaAlerta>
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -210,7 +211,7 @@ export function PerfilView({
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
                 <div className="rounded-xl border border-borda bg-superficie p-4">
-                  <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} />
+                  <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
                 </div>
               </section>
             </>

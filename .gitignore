@@ -6,6 +6,7 @@ node_modules/
 .next/
 out/
 .vercel/
+*.tsbuildinfo
 
 # Cache bruto da coleta (regenerável) — só o /data normalizado é versionado
 /data/raw/
