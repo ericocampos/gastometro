@@ -6,7 +6,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "collect": "tsx collector/collect.ts"
+    "collect": "tsx collector/collect.ts",
+    "coletar:assessores": "tsx collector/coletarAssessores.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",

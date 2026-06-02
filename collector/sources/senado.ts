@@ -13,6 +13,18 @@ interface IdentApi {
   UrlFotoParlamentar?: string
 }
 
+interface MandatoApi { UfParlamentar?: string }
+
+// A UF na listagem por legislatura quase sempre falta em IdentificacaoParlamentar;
+// vem confiável em Mandatos.Mandato.UfParlamentar. Tenta ident e cai no mandato.
+function ufDoParlamentar(p: { IdentificacaoParlamentar?: IdentApi; Mandatos?: { Mandato?: MandatoApi | MandatoApi[] } }): string | undefined {
+  const direto = p.IdentificacaoParlamentar?.UfParlamentar
+  if (direto) return direto
+  const m = p.Mandatos?.Mandato
+  const arr = Array.isArray(m) ? m : m ? [m] : []
+  return arr.find((x) => x?.UfParlamentar)?.UfParlamentar
+}
+
 export function normalizarNome(nome: string): string {
   // remove acentos (diacríticos combinantes U+0300–U+036F)
   return nome.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/\s+/g, ' ').trim()
@@ -33,7 +45,7 @@ export class FonteSenado implements FonteDados {
       const arr = Array.isArray(lista) ? lista : [lista]
       for (const p of arr) {
         const ident: IdentApi = p.IdentificacaoParlamentar
-        if (!ident || ident.UfParlamentar !== uf) continue
+        if (!ident || ufDoParlamentar(p) !== uf) continue
         const id = `senado-${ident.CodigoParlamentar}`
         const existente = porId.get(id)
         if (existente) {
@@ -44,7 +56,7 @@ export class FonteSenado implements FonteDados {
             nome: ident.NomeParlamentar,
             casa: 'senado',
             partido: ident.SiglaPartidoParlamentar ?? '',
-            uf: ident.UfParlamentar ?? uf,
+            uf,
             legislaturas: [leg],
             fotoUrl: ident.UrlFotoParlamentar,
           })

@@ -2,8 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light dark; }
+:root {
+  color-scheme: light;
+  --papel: #f6f3ea;
+  --superficie: #fffdf7;
+  --superficie-2: #efeadd;
+  --tinta: #1b1a16;
+  --tinta-suave: #56514a;
+  --tinta-tenue: #8a847a;
+  --borda: #e3ddcd;
+  --marca: #0a7d52;
+}
+
+.dark {
+  color-scheme: dark;
+  --papel: #0d1310;
+  --superficie: #141c18;
+  --superficie-2: #1c2620;
+  --tinta: #eef1ec;
+  --tinta-suave: #a7b0a8;
+  --tinta-tenue: #6f7a72;
+  --borda: #243029;
+  --marca: #34d399;
+}
 
 body {
-  @apply bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  @apply bg-papel font-sans text-tinta antialiased;
+  /* textura sutil de "papel": grão claríssimo que dá profundidade sem poluir */
+  background-image:
+    radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--marca) 7%, transparent), transparent 55%);
+  background-attachment: fixed;
+  font-feature-settings: 'ss01', 'cv01';
+}
+
+/* algarismos alinhados para valores monetários */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* foco visível e acessível em toda a interface */
+:focus-visible {
+  outline: 2px solid var(--marca);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* revelação suave no carregamento (escalonada via animation-delay) */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.surgir {
+  animation: surgir 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
