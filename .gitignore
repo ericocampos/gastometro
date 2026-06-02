@@ -7,6 +7,9 @@ node_modules/
 out/
 .vercel/
 
+# Cache bruto da coleta (regenerável) — só o /data normalizado é versionado
+/data/raw/
+
 # Misc
 *.log
 .DS_Store
