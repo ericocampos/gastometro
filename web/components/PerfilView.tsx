@@ -4,7 +4,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import type { Despesa, Politico } from '@/lib/tipos'
 import {
   type SerieParlamentar,
-  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo,
+  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { brl } from '@/lib/formato'
@@ -13,6 +13,7 @@ import { GraficoMensal } from './GraficoMensal'
 import { GraficoCategorias } from './GraficoCategorias'
 import { GraficoGeralAnual } from './GraficoGeralAnual'
 import { PerfilFornecedores } from './PerfilFornecedores'
+import { DetalhamentoGastos } from './DetalhamentoGastos'
 
 export function PerfilView({
   politico, despesas, series,
@@ -42,6 +43,10 @@ export function PerfilView({
 
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
   const anual = useMemo(() => totalAnualParlamentar(despesas), [despesas])
+  const despesasPeriodo = useMemo(
+    () => despesas.filter((d) => anoNoPeriodo(d.ano, periodo)),
+    [despesas, periodo],
+  )
 
   const { posicao, totalRanqueados, mediaGeral } = useMemo(() => {
     const r = rankingNoPeriodo(series, periodo)
@@ -115,6 +120,10 @@ export function PerfilView({
               <section>
                 <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Principais fornecedores</h2>
                 <PerfilFornecedores itens={ag.porFornecedor} />
+              </section>
+              <section>
+                <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Detalhamento de gastos</h2>
+                <DetalhamentoGastos despesas={despesasPeriodo} />
               </section>
             </div>
           )}
