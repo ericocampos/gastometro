@@ -101,13 +101,13 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
                 pathname: `/parlamentar/${i.politicoId}`,
                 query: periodoVal !== 'tudo' ? { periodo: periodoVal } : undefined,
               }}
-              className="block rounded-lg border border-slate-200 p-3 hover:border-marca dark:border-slate-800"
+              className="block rounded-lg border border-slate-200 p-3 transition-colors hover:border-marca hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
             >
               <div className="flex items-baseline justify-between gap-2">
-                <span className="font-medium">
-                  <span className="mr-2 text-slate-400">{rankPorId.get(i.politicoId)}.</span>
+                <span className="font-medium text-slate-900 dark:text-slate-100">
+                  <span className="mr-2 text-slate-400 dark:text-slate-500">{rankPorId.get(i.politicoId)}.</span>
                   {i.nome}
-                  <span className="ml-2 text-xs text-slate-500">{i.partido} · {i.casa === 'camara' ? 'Câmara' : 'Senado'}</span>
+                  <span className="ml-2 text-xs text-slate-500 dark:text-slate-400">{i.partido} · {i.casa === 'camara' ? 'Câmara' : 'Senado'}</span>
                 </span>
                 <span className="font-semibold tabular-nums">{brl(i.total)}</span>
               </div>
