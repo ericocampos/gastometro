@@ -67,6 +67,19 @@ export function resumoNoPeriodo(linhas: LinhaRanking[]): ResumoPeriodo {
   }
 }
 
+export interface TotalAnual { ano: number; total: number }
+
+export function totalGeralPorAno(series: SerieParlamentar[]): TotalAnual[] {
+  const porAno = new Map<number, number>()
+  for (const s of series) {
+    for (const p of s.serieMensal) {
+      const ano = Number(p.anoMes.slice(0, 4))
+      porAno.set(ano, (porAno.get(ano) ?? 0) + p.total)
+    }
+  }
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, total }))
+}
+
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   const anos = new Set<number>()
   for (const s of series) for (const p of s.serieMensal) anos.add(Number(p.anoMes.slice(0, 4)))

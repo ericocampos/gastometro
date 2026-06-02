@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import {
   anosDaLegislatura, pontoNoPeriodo, totalNoPeriodo, rankingNoPeriodo,
-  resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, type SerieParlamentar,
+  resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, totalGeralPorAno,
+  type SerieParlamentar,
 } from './periodo'
 
 const series: SerieParlamentar[] = [
@@ -64,5 +65,12 @@ describe('periodo', () => {
   it('anosDisponiveis (desc) e mandatosDisponiveis (desc)', () => {
     expect(anosDisponiveis(series)).toEqual([2024, 2022])
     expect(mandatosDisponiveis(series)).toEqual([57, 56, 55])
+  })
+
+  it('totalGeralPorAno soma todos os parlamentares por ano (cronológico)', () => {
+    expect(totalGeralPorAno(series)).toEqual([
+      { ano: 2022, total: 100 },        // A
+      { ano: 2024, total: 350 },        // A 300 + B 50
+    ])
   })
 })
