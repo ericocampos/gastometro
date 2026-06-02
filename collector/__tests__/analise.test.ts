@@ -73,4 +73,25 @@ describe('analisadores', () => {
     expect(a).toHaveLength(1)
     expect(a[0].explicacao).toMatch(/67%|66%/)
   })
+
+  it('despesaIds: cada alerta lista as despesas que o dispararam (para marcar no perfil)', () => {
+    // duplicados: as duas despesas do grupo
+    const dup = [
+      d({ id: 'A', categoria: 'DIVULGAÇÃO', valor: 20000, data: '2026-04-02', ano: 2026, mes: 4, fornecedor: { nome: 'X' } }),
+      d({ id: 'B', categoria: 'DIVULGAÇÃO', valor: 20000, data: '2026-04-20', ano: 2026, mes: 4, fornecedor: { nome: 'Y' } }),
+    ]
+    expect(alertasDuplicados(dep, dup, cfg, '2026-06-02')[0].despesaIds.sort()).toEqual(['A', 'B'])
+
+    // valores redondos: todas as ocorrências ao fornecedor
+    const red = Array.from({ length: 4 }, (_, i) => d({ id: `r${i}`, fornecedor: { nome: 'POSTO X' }, valor: 1000, mes: i + 1 }))
+    expect(alertasValoresRedondos(dep, red, cfg, '2026-06-02')[0].despesaIds.sort()).toEqual(['r0', 'r1', 'r2', 'r3'])
+
+    // concentração: todas as despesas do fornecedor dominante
+    const con = [d({ id: 'big', fornecedor: { nome: 'BIG' }, valor: 80000 }), d({ id: 'outro', fornecedor: { nome: 'OUTRO' }, valor: 40000 })]
+    expect(alertasConcentracao(dep, con, cfg, '2026-06-02')[0].despesaIds).toEqual(['big'])
+
+    // combustível: a despesa do mês sinalizado
+    const comb = [d({ id: 'c1', categoria: 'COMBUSTÍVEIS E LUBRIFICANTES.', valor: 9000 })]
+    expect(alertasCombustivel(dep, comb, cfg, '2026-06-02')[0].despesaIds).toEqual(['c1'])
+  })
 })

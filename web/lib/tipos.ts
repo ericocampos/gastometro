@@ -59,8 +59,15 @@ export interface Alerta {
   titulo: string
   explicacao: string
   anos?: number[]
+  despesaIds?: string[]
   evidencias: Evidencia[]
   geradoEm: string
+}
+
+// marcação de uma despesa que entrou em algum ponto de atenção (para destacar a linha no perfil)
+export interface MarcaAlerta {
+  severidade: 'baixa' | 'media' | 'alta'
+  tipos: string[]
 }
 
 export interface Branding { titulo: string; cor: string }

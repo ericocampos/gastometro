@@ -18,6 +18,7 @@ export interface Alerta {
   titulo: string
   explicacao: string
   anos: number[] // anos que o alerta abrange (para o filtro por ano)
+  despesaIds: string[] // todas as despesas que entraram no alerta (para marcar as linhas no perfil)
   evidencias: Evidencia[]
   geradoEm: string
 }

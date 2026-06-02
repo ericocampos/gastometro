@@ -34,4 +34,21 @@ describe('DetalhamentoGastos', () => {
     render(<DetalhamentoGastos despesas={[]} />)
     expect(screen.getByText(/nenhuma despesa/i)).toBeInTheDocument()
   })
+
+  it('marca as linhas que geraram ponto de atenção e mostra a legenda', () => {
+    render(
+      <DetalhamentoGastos
+        despesas={despesas}
+        politicoId="camara-1"
+        alertasPorDespesa={{ '1': { severidade: 'media', tipos: ['duplicados'] } }}
+      />,
+    )
+    // legenda + link para a análise
+    expect(screen.getByText(/ponto de atenção/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /ver a análise/i })).toHaveAttribute('href', '/alertas?politico=camara-1')
+    // a despesa '1' (POSTO A) é marcada nos dois layouts; a '2' não
+    const marcas = screen.getAllByLabelText(/entrou em um ponto de atenção/i)
+    expect(marcas.length).toBeGreaterThanOrEqual(1)
+    marcas.forEach((m) => expect(m).toHaveTextContent('⚠'))
+  })
 })
