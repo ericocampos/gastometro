@@ -65,7 +65,7 @@ export class FonteCamara implements FonteDados {
         despesas.push({
           id: `camara-${d.codDocumento}`,
           politicoId: politico.id,
-          data: d.dataDocumento.slice(0, 10),
+          data: d.dataDocumento?.slice(0, 10) ?? '',
           ano: d.ano,
           mes: d.mes,
           categoria: d.tipoDespesa,

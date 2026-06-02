@@ -36,4 +36,15 @@ describe('FonteCamara.buscarDespesas', () => {
     expect(ds[0].id).toBe('camara-7889187')
     expect(f).toHaveBeenCalledTimes(2)
   })
+
+  it('não quebra quando dataDocumento vem null', async () => {
+    const corpo = JSON.stringify({
+      dados: [{ ano: 2024, mes: 1, tipoDespesa: 'X', codDocumento: '1', dataDocumento: null, valorLiquido: 5, nomeFornecedor: 'ACME', cnpjCpfFornecedor: '00' }],
+      links: [{ rel: 'self', href: '.' }],
+    })
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(corpo, { status: 200 })))
+    const ds = await new FonteCamara([57]).buscarDespesas(aguinaldo, 2024)
+    expect(ds).toHaveLength(1)
+    expect(ds[0].data).toBe('')
+  })
 })

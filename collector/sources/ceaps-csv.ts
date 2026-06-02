@@ -46,9 +46,10 @@ export function parseCeapsCsv(buf: Buffer, encoding: 'latin1' | 'utf-8' = 'latin
 
     const r: Record<string, string> = {}
     header.forEach((h, idx) => { r[h] = cols[idx] ?? '' })
+    const n = Number((r.VALOR_REEMBOLSADO ?? '0').replace(/\./g, '').replace(',', '.'))
     out.push({
       ...(r as unknown as LinhaCeaps),
-      valorNumerico: Number((r.VALOR_REEMBOLSADO ?? '0').replace(/\./g, '').replace(',', '.')),
+      valorNumerico: Number.isFinite(n) ? n : 0,
     })
   }
   return out

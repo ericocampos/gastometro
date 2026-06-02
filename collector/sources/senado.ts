@@ -70,11 +70,12 @@ export class FonteSenado implements FonteDados {
     return linhas
       .filter((l) => normalizarNome(l.SENADOR) === alvo)
       .map((l) => {
-        const [dia, mes, anoData] = l.DATA.split('/')
+        const partes = (l.DATA ?? '').split('/')
+        const data = partes.length === 3 ? `${partes[2]}-${partes[1]}-${partes[0]}` : ''
         return {
           id: `senado-${l.COD_DOCUMENTO}`,
           politicoId: politico.id,
-          data: `${anoData}-${mes}-${dia}`,
+          data,
           ano: Number(l.ANO),
           mes: Number(l.MES),
           categoria: l.TIPO_DESPESA,

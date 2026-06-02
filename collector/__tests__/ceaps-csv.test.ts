@@ -21,6 +21,17 @@ describe('parseCeapsCsv', () => {
     expect(linhas[1].valorNumerico).toBeCloseTo(800)
   })
 
+  it('valorNumerico vira 0 quando VALOR_REEMBOLSADO não é numérico', () => {
+    const sujo = [
+      '"ULTIMA ATUALIZACAO";"x"',
+      '"ANO";"MES";"SENADOR";"TIPO_DESPESA";"CNPJ_CPF";"FORNECEDOR";"DOCUMENTO";"DATA";"DETALHAMENTO";"VALOR_REEMBOLSADO";"COD_DOCUMENTO"',
+      '"2024";"1";"FULANO";"Cat";"00";"OK LTDA";"1";"01/01/2024";"";"N/D";"a1"',
+      '',
+    ].join('\n')
+    const linhas = parseCeapsCsv(Buffer.from(sujo, 'utf-8'), 'utf-8')
+    expect(linhas[0].valorNumerico).toBe(0)
+  })
+
   it('pula linhas com aspas malformadas (lixo do CSV) sem derrubar o resto', () => {
     // a 2a linha de dados tem aspa não escapada ("Raul"s ...), comum no CEAPS real
     const sujo = [

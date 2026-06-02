@@ -34,6 +34,19 @@ describe('FonteSenado.buscarDespesas', () => {
     expect(ds[0].id).toBe('senado-999001')
   })
 
+  it('lida com DATA em branco sem gerar data corrompida', async () => {
+    const csvSemData = [
+      '"ULTIMA ATUALIZACAO";"x"',
+      '"ANO";"MES";"SENADOR";"TIPO_DESPESA";"CNPJ_CPF";"FORNECEDOR";"DOCUMENTO";"DATA";"DETALHAMENTO";"VALOR_REEMBOLSADO";"COD_DOCUMENTO"',
+      '"2024";"5";"VENEZIANO VITAL DO REGO";"Cat";"00";"ACME";"1";"";"";"10,00";"z1"',
+      '',
+    ].join('\n')
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(Buffer.from(csvSemData, 'utf-8'), { status: 200 })))
+    const ds = await new FonteSenado([57], 2024).buscarDespesas(veneziano, 2024, 'utf-8')
+    expect(ds).toHaveLength(1)
+    expect(ds[0].data).toBe('')
+  })
+
   it('cacheia o CSV: baixa só uma vez mesmo consultando 2 senadores no mesmo ano', async () => {
     const f = vi.fn(async () => new Response(csvBuf, { status: 200 }))
     vi.stubGlobal('fetch', f)
