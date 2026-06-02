@@ -9,12 +9,12 @@ import { SeletorPeriodo } from './SeletorPeriodo'
 import { GraficoComparado, CORES_COMPARACAO } from './GraficoComparado'
 
 const MAX = 4
+const casaLabel = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara' : 'Senado')
 
 export function CompararView({ series }: { series: SerieParlamentar[] }) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const [texto, setTexto] = useState('')
 
   const periodoVal = searchParams.get('periodo') ?? 'tudo'
   const ids = useMemo(
@@ -40,16 +40,16 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
   }
 
-  function adicionar(nome: string) {
-    const achado = series.find((s) => s.nome === nome)
-    if (achado && !ids.includes(achado.politicoId) && ids.length < MAX) {
-      navega([...ids, achado.politicoId])
-    }
-    setTexto('')
+  function adicionar(id: string) {
+    if (id && !ids.includes(id) && ids.length < MAX) navega([...ids, id])
   }
 
   const disponiveis = useMemo(
-    () => series.filter((s) => !ids.includes(s.politicoId)).map((s) => s.nome).sort(),
+    () =>
+      series
+        .filter((s) => !ids.includes(s.politicoId))
+        .map((s) => ({ id: s.politicoId, label: `${s.nome} · ${s.partido} · ${casaLabel(s.casa)}` }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
     [series, ids],
   )
 
@@ -66,18 +66,16 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
       <div className="mb-4 flex flex-wrap items-end gap-3">
         <label className="text-sm">
           Adicionar parlamentar
-          <input
-            list="lista-parlamentares"
+          <select
             aria-label="Adicionar parlamentar"
-            placeholder={ids.length >= MAX ? `Máximo de ${MAX}` : 'Digite um nome…'}
             disabled={ids.length >= MAX}
-            value={texto}
-            onChange={(e) => { setTexto(e.target.value); adicionar(e.target.value) }}
-            className="ml-1 rounded border border-slate-300 bg-transparent px-3 py-1 disabled:opacity-50 dark:border-slate-700"
-          />
-          <datalist id="lista-parlamentares">
-            {disponiveis.map((n) => <option key={n} value={n} />)}
-          </datalist>
+            value=""
+            onChange={(e) => adicionar(e.target.value)}
+            className="ml-1 max-w-[320px] rounded border border-slate-300 bg-transparent px-2 py-1 disabled:opacity-50 dark:border-slate-700"
+          >
+            <option value="">{ids.length >= MAX ? `Máximo de ${MAX} selecionados` : 'Selecione um nome…'}</option>
+            {disponiveis.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+          </select>
         </label>
         <SeletorPeriodo valor={periodoVal} onChange={(v) => navega(ids, v)} anos={anos} mandatos={mandatos} />
       </div>
@@ -97,6 +95,7 @@ export function CompararView({ series }: { series: SerieParlamentar[] }) {
               >
                 <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: corPorId.get(s.politicoId) }} />
                 {s.nome}
+                <span className="text-xs text-slate-500 dark:text-slate-400">{s.partido} · {casaLabel(s.casa)}</span>
                 <button
                   aria-label={`Remover ${s.nome}`}
                   onClick={() => navega(ids.filter((id) => id !== s.politicoId))}
