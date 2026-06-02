@@ -45,6 +45,11 @@ describe('dados', () => {
     expect(getBranding().titulo).toBe('Gastômetro PB')
   })
 
+  it('getCloudflareToken devolve null quando não há analytics configurado', async () => {
+    const { getCloudflareToken } = await import('./dados')
+    expect(getCloudflareToken()).toBeNull()
+  })
+
   it('getPerfil lê o perfil quando existe e null quando não', async () => {
     const { getPerfil } = await import('./dados')
     expect(getPerfil('camara-1')?.nomeCivil).toBe('Fulano de Tal')
