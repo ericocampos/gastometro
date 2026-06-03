@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta } from '@/lib/tipos'
+import type { Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta, SecretarioGabinete } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -38,7 +38,14 @@ export function PerfilView({
   series: SerieParlamentar[]
   perfil: PerfilParlamentar | null
   custos: CustosMandato
-  assessores: { quantidade: number | null; atualizadoEm?: string }
+  assessores: {
+    quantidade: number | null
+    folha?: number | null
+    secretarios?: SecretarioGabinete[]
+    verbaGabinete?: number | null
+    consultaExataUrl?: string
+    atualizadoEm?: string
+  }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
 }) {
@@ -192,6 +199,10 @@ export function PerfilView({
             <SecaoTitulo>Assessores · verba de gabinete</SecaoTitulo>
             <Assessores
               quantidade={assessores.quantidade}
+              folha={assessores.folha}
+              secretarios={assessores.secretarios}
+              verbaGabinete={assessores.verbaGabinete}
+              consultaExataUrl={assessores.consultaExataUrl}
               atualizadoEm={assessores.atualizadoEm}
               gabinete={custoCasa.gabinete}
               casa={politico.casa}

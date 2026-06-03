@@ -16,8 +16,13 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
   const perfil = getPerfil(params.id)
   const custos = getCustos()
   const assessoresData = getAssessores()
+  const gab = assessoresData?.porPolitico[params.id]
   const assessores = {
-    quantidade: assessoresData?.porPolitico[params.id] ?? null,
+    quantidade: gab?.total ?? null,
+    folha: gab?.folha ?? null,
+    secretarios: gab?.secretarios ?? [],
+    verbaGabinete: assessoresData?.tabela?.verbaGabinete ?? null,
+    consultaExataUrl: assessoresData?.tabela?.consultaExataUrl,
     atualizadoEm: assessoresData?.atualizadoEm,
   }
   const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
