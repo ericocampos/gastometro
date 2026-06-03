@@ -5,7 +5,7 @@
 //   - Roster + foto + partido: cards .deputado-card da home (apontam pro SAPL).
 //   - nome completo (pra casar com o nome de REGISTRO da VIAP): SAPL.
 import { inflateRawSync } from 'node:zlib'
-import { fetchText, fetchBuffer } from '../http.js'
+import { fetchText, fetchBuffer, fetchJson } from '../http.js'
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
@@ -220,14 +220,21 @@ export async function rosterHome(): Promise<CardHome[]> {
   return [...seen.values()]
 }
 
-// ---------- SAPL: nome completo (pro de-para com o nome de registro da VIAP) ----------
+// ---------- SAPL: roster autoritativo (todos os parlamentares, atuais e históricos) ----------
 // Só roda onde o sapl3 é acessível (máquina do Erico; bloqueado no sandbox do Claude).
-export async function nomeCompletoSapl(saplId: string): Promise<string | null> {
-  try {
-    const j = await fetchText(`https://sapl3.al.pb.leg.br/api/parlamentares/parlamentar/${saplId}/?format=json`, { headers: H })
-    const nc = /"nome_completo"\s*:\s*"([^"]+)"/.exec(j)?.[1]
-    return nc ? desescapar(nc).trim() : null
-  } catch {
-    return null
-  }
+// `?get_all=true` devolve a lista inteira de uma vez. Casa-se a VIAP por `nome_completo`.
+const SAPL = 'https://sapl3.al.pb.leg.br'
+export interface ParlamentarSapl { saplId: string; nomeCompleto: string; nomeParlamentar: string; fotoUrl?: string; ativo: boolean }
+interface SaplRaw { id: number; nome_completo?: string; nome_parlamentar?: string; fotografia?: string | null; ativo?: boolean }
+
+export async function rosterSapl(): Promise<ParlamentarSapl[]> {
+  const lista = await fetchJson<SaplRaw[]>(`${SAPL}/api/parlamentares/parlamentar/?get_all=true`, { headers: H })
+  return lista.map((p) => ({
+    saplId: String(p.id),
+    nomeCompleto: (p.nome_completo ?? '').trim(),
+    nomeParlamentar: (p.nome_parlamentar ?? '').trim(),
+    // `fotografia` é o caminho sob /media/ (ou null); o site é http → Avatar reescreve p/ https
+    fotoUrl: p.fotografia ? `${SAPL}/media/${p.fotografia}` : undefined,
+    ativo: !!p.ativo,
+  }))
 }

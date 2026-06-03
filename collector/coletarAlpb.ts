@@ -10,8 +10,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CacheBruto } from './cache.js'
 import {
-  type DeputadoViap, type DespesaAlpb, type CardHome,
-  deputadosViap, linkOds, baixarOds, parseOds, rosterHome, nomeCompletoSapl,
+  type DeputadoViap, type DespesaAlpb, type CardHome, type ParlamentarSapl,
+  deputadosViap, linkOds, baixarOds, parseOds, rosterHome, rosterSapl,
 } from './sources/alpb.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -37,43 +37,43 @@ interface DeputadoAlpb {
   partido?: string
   fotoUrl?: string
   saplId?: string
-  matchVia: 'exato' | 'tokens' | 'sapl' | 'sem-match'
+  matchVia: 'sapl-completo' | 'sapl-parlamentar' | 'sapl-tokens' | 'home' | 'sem-match'
 }
 
-// casa os deputados da VIAP (nome de registro) com os cards da home (nome parlamentar)
-async function casar(viap: DeputadoViap[], cards: CardHome[]): Promise<DeputadoAlpb[]> {
-  const usados = new Set<string>()
-  const res: DeputadoAlpb[] = viap.map((v) => ({ politicoId: `alpb-${v.viapId}`, viapId: v.viapId, nomeRegistro: v.nomeRegistro, matchVia: 'sem-match' }))
-  const aplicar = (d: DeputadoAlpb, c: CardHome, via: DeputadoAlpb['matchVia']) => {
-    d.nomeParlamentar = c.nomeParlamentar; d.partido = c.partido; d.fotoUrl = c.fotoUrl; d.saplId = c.saplId; d.matchVia = via
-    usados.add(c.saplId)
-  }
-  // 1) exato pelo nome parlamentar
-  const porNome = new Map(cards.map((c) => [norm(c.nomeParlamentar), c]))
-  for (const d of res) { const c = porNome.get(norm(d.nomeRegistro)); if (c && !usados.has(c.saplId)) aplicar(d, c, 'exato') }
-  // 2) maior sobreposição de tokens (única e inequívoca)
-  for (const d of res) {
-    if (d.matchVia !== 'sem-match') continue
-    const vt = toks(d.nomeRegistro)
-    const rank = cards.filter((c) => !usados.has(c.saplId))
-      .map((c) => [[...toks(c.nomeParlamentar)].filter((t) => vt.has(t)).length, c] as const)
-      // exige 2+ tokens em comum: 1 sobrenome só (ex.: "Mendes") é ambíguo e fica pro SAPL
-      .filter(([s]) => s >= 2).sort((a, b) => b[0] - a[0])
-    if (rank.length && (rank.length === 1 || rank[0][0] > rank[1][0])) aplicar(d, rank[0][1], 'tokens')
-  }
-  // 3) SAPL nome_completo (só onde o sapl3 responde; resolve os nomes de registro "difíceis")
-  const faltam = res.filter((d) => d.matchVia === 'sem-match')
-  if (faltam.length) {
-    console.log(`  tentando SAPL p/ ${faltam.length} sem-match (precisa do sapl3 acessível)...`)
-    for (const c of cards.filter((c) => !usados.has(c.saplId))) {
-      const nc = await nomeCompletoSapl(c.saplId)
-      if (!nc) continue
-      const alvo = faltam.find((d) => d.matchVia === 'sem-match' && (norm(d.nomeRegistro) === norm(nc) || [...toks(d.nomeRegistro)].filter((t) => toks(nc).has(t)).length >= 2))
-      if (alvo) aplicar(alvo, c, 'sapl')
-      await dormir(150)
+// Casa a VIAP (nome de REGISTRO) com o roster autoritativo do SAPL (nome_completo).
+// O SAPL tem todos (atuais + históricos); a home só serve de fallback de foto/partido.
+function casar(viap: DeputadoViap[], sapl: ParlamentarSapl[], cards: CardHome[]): DeputadoAlpb[] {
+  const homeBySapl = new Map(cards.map((c) => [c.saplId, c]))
+  const porCompleto = new Map(sapl.filter((s) => s.nomeCompleto).map((s) => [norm(s.nomeCompleto), s]))
+  const porParlamentar = new Map(sapl.filter((s) => s.nomeParlamentar).map((s) => [norm(s.nomeParlamentar), s]))
+
+  return viap.map((v) => {
+    const d: DeputadoAlpb = { politicoId: `alpb-${v.viapId}`, viapId: v.viapId, nomeRegistro: v.nomeRegistro, matchVia: 'sem-match' }
+    let s: ParlamentarSapl | undefined
+    let via: DeputadoAlpb['matchVia'] = 'sem-match'
+    s = porCompleto.get(norm(v.nomeRegistro)); if (s) via = 'sapl-completo'
+    if (!s) { s = porParlamentar.get(norm(v.nomeRegistro)); if (s) via = 'sapl-parlamentar' }
+    if (!s) {
+      // sobreposição de tokens vs nome_completo (2+, único) — pega variações de grafia
+      const vt = toks(v.nomeRegistro)
+      const rank = sapl
+        .map((p) => [[...toks(p.nomeCompleto)].filter((t) => vt.has(t)).length, p] as const)
+        .filter(([n]) => n >= 2).sort((a, b) => b[0] - a[0])
+      if (rank.length && (rank.length === 1 || rank[0][0] > rank[1][0])) { s = rank[0][1]; via = 'sapl-tokens' }
     }
-  }
-  return res
+    if (s) {
+      const home = homeBySapl.get(s.saplId)
+      d.matchVia = via; d.saplId = s.saplId
+      d.nomeParlamentar = s.nomeParlamentar || home?.nomeParlamentar
+      d.fotoUrl = s.fotoUrl ?? home?.fotoUrl
+      d.partido = home?.partido // partido só vem fácil da home (atuais); histórico fica sem
+    } else {
+      // fallback: nome parlamentar da home (caso o SAPL falhe/varie)
+      const c = cards.find((c) => norm(c.nomeParlamentar) === norm(v.nomeRegistro))
+      if (c) { d.matchVia = 'home'; d.saplId = c.saplId; d.nomeParlamentar = c.nomeParlamentar; d.partido = c.partido; d.fotoUrl = c.fotoUrl }
+    }
+    return d
+  })
 }
 
 async function main() {
@@ -92,10 +92,13 @@ async function main() {
   const viap = [...viapMap.values()]
   console.log(`  VIAP: ${viap.length} deputados (união dos períodos)`)
 
-  // 2) roster da home (foto/partido/sapl) + match
+  // 2) roster autoritativo do SAPL (todos) + home (fallback de foto/partido) + match
+  let sapl: ParlamentarSapl[] = []
+  try { sapl = await rosterSapl(); console.log(`  SAPL: ${sapl.length} parlamentares`) }
+  catch (e) { console.error(`  ! SAPL indisponível (${(e as Error).message}) — usando só a home como fallback`) }
   const cards = await rosterHome()
-  console.log(`  Home/SAPL: ${cards.length} cards`)
-  const deputados = await casar(viap, cards)
+  console.log(`  Home: ${cards.length} cards`)
+  const deputados = casar(viap, sapl, cards)
 
   // 3) despesas por deputado/mês (.ods)
   const todas: DespesaAlpb[] = []
