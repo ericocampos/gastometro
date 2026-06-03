@@ -26,7 +26,10 @@ const MESES = process.env.ALPB_MESES
   : Array.from({ length: 12 }, (_, i) => i + 1)
 
 const STOP = new Set(['de', 'da', 'do', 'dos', 'das', 'e', 'dr', 'dra', 'doutora', 'doutor', 'del', 'delegado', 'junior', 'neto', 'segundo', 'filho', 'sargento'])
-const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim().toLowerCase()
+const norm = (s: string) =>
+  s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ') // tira pontuação/símbolos (ex.: "Dr." == "Dr", "Drª" -> "dr")
+    .replace(/\s+/g, ' ').trim()
 const toks = (s: string) => new Set(norm(s).split(' ').filter((t) => t.length > 2 && !STOP.has(t)))
 
 interface DeputadoAlpb {
