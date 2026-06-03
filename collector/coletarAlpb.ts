@@ -19,7 +19,9 @@ const saidaDir = resolve(here, '../data/alpb')
 const cache = new CacheBruto(resolve(here, '../data/raw/alpb'))
 const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-const ANO_INI = Number(process.env.ALPB_ANO_INI) || 2022
+// Padrão: legislatura ATUAL (começou em fev/2023). Pra incluir o histórico (2022 = fim da
+// legislatura passada), rode com ALPB_ANO_INI=2022.
+const ANO_INI = Number(process.env.ALPB_ANO_INI) || 2023
 const ANO_FIM = Number(process.env.ALPB_ANO_FIM) || new Date().getFullYear()
 const MESES = process.env.ALPB_MESES
   ? process.env.ALPB_MESES.split(',').map((m) => Number(m.trim()))
