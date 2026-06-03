@@ -83,7 +83,8 @@ Todas são públicas e oficiais. A coleta filtra pela UF do `config/state.json`.
 | Lista de deputados, partido, foto | `https://dadosabertos.camara.leg.br/api/v2/deputados?siglaUf={UF}&idLegislatura={leg}` | JSON | — |
 | **Despesas (cota / CEAP)** | `https://www.camara.leg.br/cotas/Ano-{ano}.csv.zip` | **CSV zipado, UTF-8, `;`, ponto decimal** | filtra `sgUF`; liga por `ideCadastro` (== id da API) |
 | Bio + proposições | `.../api/v2/deputados/{id}` e `.../proposicoes?idDeputadoAutor={id}` | JSON | id |
-| **Nº de assessores** (só contagem) | `https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json` | JSON (snapshot) | grupo 6 = "Secretário Parlamentar"; `uriLotacao` aponta `/deputados/{id}` |
+| **Gabinete — quem** | `https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json` | JSON (snapshot) | grupo 6 = "Secretário Parlamentar"; `uriLotacao` aponta `/deputados/{id}`; `cargo` = nível SP + GRG |
+| **Gabinete — remuneração real** | Portal da Transparência (RH): busca `…/recursos-humanos/funcionarios?search={nome}` → `hash` → ficha `…/recursos-humanos/remuneracao/{hash}?ano={a}&mes={m}` | HTML (server-rendered, sem captcha) | resolve `nome` → `hash` (ponto cifrado) → bruto do mês; fallback p/ tabela SP quando não resolve |
 | Nota fiscal | campo `urlDocumento` do arquivo anual; senão reconstruída via `ideDocumento` | — | `https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal={ideDocumento}` |
 
 ### Senado Federal
@@ -93,6 +94,18 @@ Todas são públicas e oficiais. A coleta filtra pela UF do `config/state.json`.
 | Lista de senadores | `https://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/{leg}` | XML | **UF vem de `Mandatos.Mandato.UfParlamentar`** (não de `IdentificacaoParlamentar`, que quase sempre vem vazio) |
 | **Despesas (CEAPS)** | `https://www.senado.leg.br/transparencia/LAI/verba/despesa_ceaps_{ano}.csv` | **CSV latin-1, `;`, vírgula decimal** | casamento por nome normalizado (sem acentos) |
 | Bio + autorias | `.../dadosabertos/senador/{cod}` e `/autorias` | JSON (via header `Accept`) | cod |
+| **Gabinete — quem** | `https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/servidores` | JSON | comissionado ativo com `lotacao.sigla` `GS…` (gabinete) ou `E\d…` (escritório); senador via `lotacao.nome` |
+| **Gabinete — remuneração** | `https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/{ano}/{mes}` | JSON | tem `nome` + valores; **join por nome** (os `sequencial` das duas bases não casam). Só `tipo_folha=Normal` |
+| Conferência (ficha por lotação) | `https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao={sigla}` | HTML | link p/ o leitor conferir na fonte |
+
+### Assembleia Legislativa da Paraíba (ALPB)
+
+| O quê | Endpoint / arquivo | Formato | Como ligamos ao deputado |
+|---|---|---|---|
+| Roster (todos), foto, partido | SAPL: `https://sapl3.al.pb.leg.br/api/parlamentares/parlamentar/?get_all=true` (+ `mandato`/`legislatura`/`filiacao`) | JSON (header `Accept`) | nome completo; `fotografia` pode vir absoluta ou relativa a `/media/` |
+| **Despesas (VIAP)** | planilha por deputado/mês em `http://www.al.pb.leg.br` | **`.ods` (≤2025) / `.xlsx` (2026+)**, sem dependência de unzip | casamento por nome de registro; eixo de tempo = competência (mês da consulta), não a data digitada na nota |
+
+> A ALPB não divulga quadro de gabinete por deputado em dado aberto — por isso ela só tem a VIAP, detalhada nota a nota.
 
 ---
 
@@ -116,10 +129,17 @@ Documentado para poupar tempo de quem for replicar:
 - **Senado: UF no mandato.** Na listagem por legislatura, `UfParlamentar` quase sempre falta em
   `IdentificacaoParlamentar`; a UF confiável está em `Mandatos.Mandato.UfParlamentar`. Ignorar isso
   derruba quase todos os senadores.
-- **Assessores: só dá para contar, não medir em R$.** O nº de secretários parlamentares por gabinete
-  é público (snapshot), mas o **valor gasto com a verba de gabinete não é divulgado por parlamentar**
-  nos dados abertos — tratamos isso como um **ponto de atenção de transparência** no site. No Senado
-  não há nem a contagem por parlamentar com a mesma granularidade.
+- **Gabinete: agora dá para medir em R$ por pessoa — mas a fonte varia por casa.**
+  - **Senado:** a API de dados abertos publica a folha mensal **com nome** (`/servidores/remuneracoes`),
+    então cruzamos com o roster (`/servidores`) **por nome** (os `sequencial` das duas bases são de
+    sistemas diferentes e **não casam**) e temos o **valor exato por pessoa**.
+  - **Câmara:** não há API de remuneração, mas a ficha por pessoa no Portal da Transparência abre
+    **sem captcha**; resolvemos `nome → hash → ficha do mês` e pegamos o **bruto real** (fallback para a
+    tabela SP quando a ficha não resolve, marcado com `≈`).
+  - **ALPB:** não divulga quadro de gabinete por deputado — fica só com a VIAP.
+  - Em nenhuma fonte há **CPF** nem **descrição da atividade** de cada pessoa; e comissionados costumam
+    ser **dispensados de registro de ponto** (regime especial de frequência), então **não existe dado de
+    presença** de servidor para publicar.
 - **Parlamentares com R$ 0** (ex.: suplentes que nunca assumiram) são mantidos, porém **marcados**
   ("sem gastos") e fora dos cards de contagem.
 
