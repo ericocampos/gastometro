@@ -96,11 +96,22 @@ export interface CustosMandato {
   casas: Record<'camara' | 'senado' | 'assembleia', CustoCasa>
 }
 
+export interface SecretarioGabinete {
+  nome: string; nivel: number; grg: boolean; remuneracao: number
+  ato?: string         // ato de nomeação (LEI / PORTARIA)
+  nomeadoEm?: string   // data da nomeação atual
+  desde?: string       // início do histórico na Câmara
+  ponto?: string       // matrícula interna de folha (não é CPF)
+}
+export interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[] }
+export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
+
 export interface Assessores {
   atualizadoEm: string
   fonte: string
   descricao: string
-  porPolitico: Record<string, number>
+  tabela?: TabelaGabinete
+  porPolitico: Record<string, GabineteParlamentar>
 }
 
 export interface ResumoTotais { totalGeral: number; numParlamentares: number }
