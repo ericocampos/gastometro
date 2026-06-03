@@ -42,13 +42,21 @@ interface DeputadoAlpb {
   partido?: string
   fotoUrl?: string
   saplId?: string
-  matchVia: 'sapl-completo' | 'sapl-parlamentar' | 'sapl-tokens' | 'home' | 'sem-match'
+  matchVia: 'depara' | 'sapl-completo' | 'sapl-parlamentar' | 'sapl-tokens' | 'home' | 'sem-match'
+}
+
+// De-para explícito (revisado) por id do SAPL, pros casos de título que o normalizador não
+// resolve: a VIAP usa um título diferente do SAPL e o nome de registro não tem o nome político.
+const DEPARA_SAPL: Record<string, string> = {
+  'doutora paula': '166', // SAPL "Drª Paula" (Paula Francinete Lacerda Cavalcanti de Almeida)
+  'dra jane panta': '170', // SAPL "Drª Jane Panta" (Edjane Silva Alvino Panta)
 }
 
 // Casa a VIAP (nome de REGISTRO) com o roster autoritativo do SAPL (nome_completo).
 // O SAPL tem todos (atuais + históricos); a home só serve de fallback de foto/partido.
 function casar(viap: DeputadoViap[], sapl: ParlamentarSapl[], cards: CardHome[]): DeputadoAlpb[] {
   const homeBySapl = new Map(cards.map((c) => [c.saplId, c]))
+  const saplById = new Map(sapl.map((s) => [s.saplId, s]))
   const porCompleto = new Map(sapl.filter((s) => s.nomeCompleto).map((s) => [norm(s.nomeCompleto), s]))
   const porParlamentar = new Map(sapl.filter((s) => s.nomeParlamentar).map((s) => [norm(s.nomeParlamentar), s]))
 
@@ -56,7 +64,9 @@ function casar(viap: DeputadoViap[], sapl: ParlamentarSapl[], cards: CardHome[])
     const d: DeputadoAlpb = { politicoId: `alpb-${v.viapId}`, viapId: v.viapId, nomeRegistro: v.nomeRegistro, matchVia: 'sem-match' }
     let s: ParlamentarSapl | undefined
     let via: DeputadoAlpb['matchVia'] = 'sem-match'
-    s = porCompleto.get(norm(v.nomeRegistro)); if (s) via = 'sapl-completo'
+    const forcado = DEPARA_SAPL[norm(v.nomeRegistro)]
+    if (forcado) { s = saplById.get(forcado); if (s) via = 'depara' }
+    if (!s) { s = porCompleto.get(norm(v.nomeRegistro)); if (s) via = 'sapl-completo' }
     if (!s) { s = porParlamentar.get(norm(v.nomeRegistro)); if (s) via = 'sapl-parlamentar' }
     if (!s) {
       // sobreposição de tokens vs nome_completo (2+, único) — pega variações de grafia
