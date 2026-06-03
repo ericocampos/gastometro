@@ -102,6 +102,7 @@ export interface SecretarioGabinete {
   // Câmara (secretário parlamentar):
   nivel?: number       // SP01..SP25
   grg?: boolean        // gratificação de representação de gabinete (dobra o vencimento)
+  oficial?: boolean    // remuneração veio da ficha oficial do mês (não da tabela SP)
   ato?: string         // ato de nomeação (LEI / PORTARIA)
   nomeadoEm?: string   // data da nomeação atual
   desde?: string       // início do histórico na Câmara

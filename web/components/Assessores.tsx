@@ -69,7 +69,9 @@ export function Assessores({
             <div className="mt-0.5 text-xs text-tinta-tenue">
               {temFolhaSenado
                 ? `folha bruta oficial · ${mesBR(mesReferencia)}`
-                : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
+                : mesReferencia
+                  ? `bruto real · ${mesBR(mesReferencia)}`
+                  : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
             </div>
           </div>
         ) : (
@@ -116,7 +118,9 @@ export function Assessores({
                         {s.grg && (
                           <span className="rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={{ backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' }} title="Gratificação de Representação de Gabinete (dobra o vencimento)">GRG</span>
                         )}
-                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave">{brl(s.remuneracao)}</span>
+                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave" title={mesReferencia && !s.oficial ? 'Sem ficha no mês — vencimento da tabela SP' : undefined}>
+                          {mesReferencia && !s.oficial ? '≈' : ''}{brl(s.remuneracao)}
+                        </span>
                       </>
                     )}
                   </span>
@@ -147,10 +151,20 @@ export function Assessores({
             (&ldquo;secretaria e assessoramento&rdquo;) e não há descrição de atividade por pessoa. É dinheiro público pago
             sem dizer em troca de quê.{' '}
             <span className="mt-1 block">
-              <strong className="text-tinta-suave">SP01–SP25</strong> é a faixa de vencimento (do menor ao maior) que o
-              deputado define; <strong className="text-tinta-suave">GRG</strong> dobra o vencimento. A folha aqui é o{' '}
-              <strong className="text-tinta-suave">bruto</strong> somado pela tabela oficial (sem auxílio-alimentação nem
-              encargos, pagos à parte). Valor exato pago, mês a mês:{' '}
+              {mesReferencia ? (
+                <>
+                  O valor de cada pessoa é o <strong className="text-tinta-suave">bruto real pago em {mesBR(mesReferencia)}</strong>{' '}
+                  (ficha oficial do Portal da Transparência: função, vantagens e eventuais; sem auxílios/encargos, pagos à
+                  parte). Quem aparece com <strong className="text-tinta-suave">≈</strong> não tinha ficha no mês e ficou com o
+                  vencimento da tabela. <strong className="text-tinta-suave">SP01–SP25</strong> é o nível; <strong className="text-tinta-suave">GRG</strong> dobra o vencimento da base.
+                </>
+              ) : (
+                <>
+                  <strong className="text-tinta-suave">SP01–SP25</strong> é a faixa de vencimento que o deputado define;{' '}
+                  <strong className="text-tinta-suave">GRG</strong> dobra o vencimento. A folha aqui é o bruto pela tabela oficial.
+                </>
+              )}{' '}
+              Conferir mês a mês:{' '}
               {consultaExataUrl ? (
                 <a href={consultaExataUrl} target="_blank" rel="noopener noreferrer" className="text-marca underline">
                   remuneração no portal da Câmara ↗

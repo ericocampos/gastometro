@@ -1,7 +1,7 @@
 {
   "atualizadoEm": "2026-06-03",
   "fonte": "https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json",
-  "descricao": "Câmara: secretários parlamentares lotados no gabinete de cada deputado e a folha mensal, somada pela tabela oficial (vencimento + GRG por nível SP) — folha bruta tabelada, sem auxílio/encargos nem o valor exato (consulta transpnet). Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês). O salário de cada pessoa é estimado pelo símbolo do cargo (a folha não traz nome) — o valor exato fica na consulta oficial individual, linkada. ALPB não divulga por gabinete com a mesma granularidade.",
+  "descricao": "Câmara: secretários parlamentares lotados no gabinete de cada deputado, com a remuneração bruta REAL do mês (ficha oficial do Portal da Transparência); quando a ficha não resolve, cai na tabela oficial (vencimento + GRG por nível SP). Não inclui auxílios/encargos (pagos à parte). Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ALPB não divulga por gabinete com a mesma granularidade.",
   "tabela": {
     "vigencia": "2025-05-01",
     "verbaGabinete": 133170.54,
@@ -21,8 +21,30 @@
     },
     "camara-74467": {
       "total": 21,
-      "folha": 92724.35,
+      "folha": 124957.96,
       "secretarios": [
+        {
+          "nome": "BRUNO MUNIZ DE ANDRADE MENEZES",
+          "nivel": 22,
+          "grg": true,
+          "remuneracao": 18655.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2014-05-27",
+          "ponto": "P_244591",
+          "oficial": true
+        },
+        {
+          "nome": "NATÁLYA LAYS DA SILVA FIGUEIREDO",
+          "nivel": 17,
+          "grg": true,
+          "remuneracao": 18194.7,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-04-15",
+          "desde": "2026-04-17",
+          "ponto": "P_279415",
+          "oficial": true
+        },
         {
           "nome": "BÁRBARA MARIA CIRILO DE MENDONÇA",
           "nivel": 24,
@@ -34,34 +56,37 @@
           "ponto": "P_259680"
         },
         {
-          "nome": "BRUNO MUNIZ DE ANDRADE MENEZES",
-          "nivel": 22,
+          "nome": "EUDES FÉLIX BARBOSA",
+          "nivel": 10,
           "grg": true,
-          "remuneracao": 14741.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2014-05-27",
-          "ponto": "P_244591"
-        },
-        {
-          "nome": "NATÁLYA LAYS DA SILVA FIGUEIREDO",
-          "nivel": 17,
-          "grg": true,
-          "remuneracao": 9678.22,
+          "remuneracao": 13277.68,
           "ato": "PORTARIA",
-          "nomeadoEm": "2026-04-15",
-          "desde": "2026-04-17",
-          "ponto": "P_279415"
+          "nomeadoEm": "2026-05-13",
+          "desde": "2021-08-26",
+          "ponto": "P_229296",
+          "oficial": true
         },
         {
           "nome": "LUIZ FERNANDO MELLO COIMBRA",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-04-10",
-          "ponto": "P_152072"
+          "ponto": "P_152072",
+          "oficial": true
+        },
+        {
+          "nome": "TIAGO TORQUATO LÊDO",
+          "nivel": 17,
+          "grg": false,
+          "remuneracao": 6202.74,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2022-05-26",
+          "ponto": "P_271775",
+          "oficial": true
         },
         {
           "nome": "DORIVAL JOSE FERNANDES E ARAUJO",
@@ -74,166 +99,161 @@
           "ponto": "P_285101"
         },
         {
-          "nome": "EUDES FÉLIX BARBOSA",
-          "nivel": 10,
-          "grg": true,
-          "remuneracao": 5699.9,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-05-13",
-          "desde": "2021-08-26",
-          "ponto": "P_229296"
-        },
-        {
-          "nome": "TIAGO TORQUATO LÊDO",
-          "nivel": 17,
-          "grg": false,
-          "remuneracao": 4839.11,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2022-05-26",
-          "ponto": "P_271775"
-        },
-        {
           "nome": "JOAMY LEITE DE ANDRADE",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2021-10-15",
-          "ponto": "P_270430"
+          "ponto": "P_270430",
+          "oficial": true
         },
         {
           "nome": "LETHÍCIA DA FRANCA MACIEL DE MENDONÇA",
           "nivel": 12,
           "grg": false,
-          "remuneracao": 3211.61,
+          "remuneracao": 4324.75,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-19",
           "desde": "2026-02-19",
-          "ponto": "P_284070"
+          "ponto": "P_284070",
+          "oficial": true
         },
         {
           "nome": "MARIA JÚLIA COSTA RIBEIRO",
           "nivel": 12,
           "grg": false,
-          "remuneracao": 3211.61,
+          "remuneracao": 4054.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-10-09",
-          "ponto": "P_283365"
+          "ponto": "P_283365",
+          "oficial": true
         },
         {
           "nome": "NELÍ CRISTINA TAVARES",
           "nivel": 6,
           "grg": false,
-          "remuneracao": 2126.59,
+          "remuneracao": 2687.34,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2018-01-23",
-          "ponto": "P_257479"
+          "ponto": "P_257479",
+          "oficial": true
         },
         {
           "nome": "LEONIDAS AFONSO BOTELHO COSTA DE OLIVEIRA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-05-08",
-          "ponto": "P_209534"
+          "ponto": "P_209534",
+          "oficial": true
         },
         {
           "nome": "CLAUDENICE BRAGA CORREIA",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-02-05",
-          "ponto": "P_234211"
+          "ponto": "P_234211",
+          "oficial": true
         },
         {
           "nome": "RENATA NOBREGA ASSIS MARTINS",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2026-03-05",
-          "ponto": "P_284179"
+          "ponto": "P_284179",
+          "oficial": true
         },
         {
           "nome": "ADRIEL OLIVEIRA DANTAS",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-04-29",
-          "ponto": "P_278988"
+          "ponto": "P_278988",
+          "oficial": true
         },
         {
           "nome": "JANDUY GOMES DE MORAIS FILHO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-10-24",
-          "ponto": "P_283460"
+          "ponto": "P_283460",
+          "oficial": true
         },
         {
           "nome": "JULIANA COURA LEMOS",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-04-27",
-          "ponto": "P_276450"
+          "ponto": "P_276450",
+          "oficial": true
         },
         {
           "nome": "LUCIO PASCOAL LIMA MATIAS PINTO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-01-22",
-          "ponto": "P_280799"
+          "ponto": "P_280799",
+          "oficial": true
         },
         {
           "nome": "MANOEL BARBOSA BARRETO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2020-06-12",
-          "ponto": "P_219190"
+          "ponto": "P_219190",
+          "oficial": true
         },
         {
           "nome": "MARILUCIA DOS SANTOS",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2018-11-05",
-          "ponto": "P_219574"
+          "ponto": "P_219574",
+          "oficial": true
         },
         {
           "nome": "VALDECLEIDE GOMES DE AQUINO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2018-11-05",
-          "ponto": "P_179174"
+          "ponto": "P_179174",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-141422": {
       "total": 0,
@@ -247,147 +267,194 @@
     },
     "camara-74041": {
       "total": 24,
-      "folha": 128804.28,
+      "folha": 172401.03,
       "secretarios": [
         {
           "nome": "LEONARDO DANIEL SANTOS FORMENTINI",
           "nivel": 24,
           "grg": true,
-          "remuneracao": 17273.26,
+          "remuneracao": 25781.82,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-02-03",
-          "ponto": "P_230464"
+          "ponto": "P_230464",
+          "oficial": true
         },
         {
           "nome": "PAULO LUIS MELO DOS SANTOS",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 21603.59,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-09",
           "desde": "2023-02-03",
-          "ponto": "P_205487"
+          "ponto": "P_205487",
+          "oficial": true
         },
         {
           "nome": "VICENTE CARLOS DE SOUZA MACEDO",
           "nivel": 25,
           "grg": false,
-          "remuneracao": 9359.94,
+          "remuneracao": 16007.99,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-01-19",
-          "ponto": "P_158638"
+          "ponto": "P_158638",
+          "oficial": true
         },
         {
           "nome": "ROSSANA CAMARA DE ARAUJO",
           "nivel": 12,
           "grg": true,
-          "remuneracao": 6423.22,
+          "remuneracao": 8108.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-02-03",
-          "ponto": "P_224157"
+          "ponto": "P_224157",
+          "oficial": true
         },
         {
           "nome": "EDNA MARIA TEODOSIO DA SILVA BALBINO",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_273168"
+          "ponto": "P_273168",
+          "oficial": true
         },
         {
           "nome": "LEÂNIA ALVES DE ALMEIDA",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-09",
           "desde": "2023-02-03",
-          "ponto": "P_204521"
+          "ponto": "P_204521",
+          "oficial": true
         },
         {
           "nome": "MARIA JOSÉ SOARES BÉCHADE",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_206789"
+          "ponto": "P_206789",
+          "oficial": true
         },
         {
           "nome": "VERALUCIA FERNANDES DA SILVA SOUSA",
           "nivel": 18,
           "grg": false,
-          "remuneracao": 5200.78,
+          "remuneracao": 6788.64,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-03-02",
-          "ponto": "P_275260"
+          "ponto": "P_275260",
+          "oficial": true
         },
         {
           "nome": "CARLOS LIMA DA SILVA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_249650"
+          "ponto": "P_249650",
+          "oficial": true
         },
         {
           "nome": "DJENIERE MACEDO DA SILVA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-06",
           "desde": "2026-03-09",
-          "ponto": "P_284215"
+          "ponto": "P_284215",
+          "oficial": true
         },
         {
           "nome": "MAYLLA CAVALCANTE DE LACERDA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-27",
           "desde": "2026-03-27",
-          "ponto": "P_284471"
+          "ponto": "P_284471",
+          "oficial": true
         },
         {
           "nome": "JOSÉ ANCELMO BARBOSA DANTAS",
           "nivel": 16,
           "grg": false,
-          "remuneracao": 4477.45,
+          "remuneracao": 5616.84,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-28",
-          "ponto": "P_275127"
+          "ponto": "P_275127",
+          "oficial": true
         },
         {
           "nome": "LUZIMAR TEREZA DA SILVA",
           "nivel": 6,
           "grg": true,
-          "remuneracao": 4253.18,
+          "remuneracao": 5374.68,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-23",
           "desde": "2023-02-03",
-          "ponto": "P_210037"
+          "ponto": "P_210037",
+          "oficial": true
         },
         {
           "nome": "ANTONIO JÁCOME FILHO",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-03-28",
-          "ponto": "P_217589"
+          "ponto": "P_217589",
+          "oficial": true
+        },
+        {
+          "nome": "ROBSON DO NASCIMENTO SILVA",
+          "nivel": 13,
+          "grg": false,
+          "remuneracao": 4445.03,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-13",
+          "desde": "2026-03-16",
+          "ponto": "P_284316",
+          "oficial": true
+        },
+        {
+          "nome": "EDINALDO HENRIQUE DA SILVA",
+          "nivel": 12,
+          "grg": false,
+          "remuneracao": 4054.45,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2023-02-03",
+          "ponto": "P_205683",
+          "oficial": true
+        },
+        {
+          "nome": "FRANCIVALDO DA SILVA COSTA",
+          "nivel": 12,
+          "grg": false,
+          "remuneracao": 4054.45,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2023-02-03",
+          "ponto": "P_273173",
+          "oficial": true
         },
         {
           "nome": "ADERILDO BARRETO DE MEDEIROS JÚNIOR",
@@ -400,96 +467,73 @@
           "ponto": "P_285086"
         },
         {
-          "nome": "ROBSON DO NASCIMENTO SILVA",
-          "nivel": 13,
-          "grg": false,
-          "remuneracao": 3392.45,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-13",
-          "desde": "2026-03-16",
-          "ponto": "P_284316"
-        },
-        {
-          "nome": "EDINALDO HENRIQUE DA SILVA",
-          "nivel": 12,
-          "grg": false,
-          "remuneracao": 3211.61,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-02-03",
-          "ponto": "P_205683"
-        },
-        {
-          "nome": "FRANCIVALDO DA SILVA COSTA",
-          "nivel": 12,
-          "grg": false,
-          "remuneracao": 3211.61,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-02-03",
-          "ponto": "P_273173"
-        },
-        {
           "nome": "CARLOS ROBERTO PINHEIRO DA SILVA",
           "nivel": 11,
           "grg": false,
-          "remuneracao": 3030.8,
+          "remuneracao": 3663.85,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-08",
-          "ponto": "P_273864"
-        },
-        {
-          "nome": "ISAIAS ALEXANDRE DA SILVA",
-          "nivel": 9,
-          "grg": false,
-          "remuneracao": 2669.12,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-02-03",
-          "ponto": "P_273160"
-        },
-        {
-          "nome": "JOSÉ ARIMATÉIA SOUTO DE OLIVEIRA",
-          "nivel": 8,
-          "grg": false,
-          "remuneracao": 2488.28,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-04-14",
-          "desde": "2026-04-14",
-          "ponto": "P_284664"
-        },
-        {
-          "nome": "MARIA JOSÉ CORDEIRO DE VASCONCELOS",
-          "nivel": 8,
-          "grg": false,
-          "remuneracao": 2488.28,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-02-03",
-          "ponto": "P_210038"
+          "ponto": "P_273864",
+          "oficial": true
         },
         {
           "nome": "JOÃO MANOEL DOS ANJOS",
           "nivel": 6,
           "grg": false,
-          "remuneracao": 2126.59,
+          "remuneracao": 3314.39,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-23",
           "desde": "2026-04-24",
-          "ponto": "P_284778"
+          "ponto": "P_284778",
+          "oficial": true
+        },
+        {
+          "nome": "ISAIAS ALEXANDRE DA SILVA",
+          "nivel": 9,
+          "grg": false,
+          "remuneracao": 3273.26,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2023-02-03",
+          "ponto": "P_273160",
+          "oficial": true
+        },
+        {
+          "nome": "JOSÉ ARIMATÉIA SOUTO DE OLIVEIRA",
+          "nivel": 8,
+          "grg": false,
+          "remuneracao": 3077.95,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-04-14",
+          "desde": "2026-04-14",
+          "ponto": "P_284664",
+          "oficial": true
+        },
+        {
+          "nome": "MARIA JOSÉ CORDEIRO DE VASCONCELOS",
+          "nivel": 8,
+          "grg": false,
+          "remuneracao": 3077.95,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2023-02-03",
+          "ponto": "P_210038",
+          "oficial": true
         },
         {
           "nome": "JOSÉ LOURENÇO DA SILVA",
           "nivel": 6,
           "grg": false,
-          "remuneracao": 2126.59,
+          "remuneracao": 2687.34,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-08",
-          "ponto": "P_273865"
+          "ponto": "P_273865",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-141490": {
       "total": 0,
@@ -528,207 +572,271 @@
     },
     "camara-74043": {
       "total": 25,
-      "folha": 110952.35,
+      "folha": 145706.16,
       "secretarios": [
         {
           "nome": "VERONILDA MARIA FIRMO",
           "nivel": 19,
           "grg": true,
-          "remuneracao": 11486.56,
+          "remuneracao": 14749.08,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2005-05-06",
-          "ponto": "P_212842"
+          "ponto": "P_212842",
+          "oficial": true
         },
         {
           "nome": "MARIA ELIÊNE DE SOUZA",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 13577.28,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-04-12",
-          "ponto": "P_228103"
+          "ponto": "P_228103",
+          "oficial": true
         },
         {
           "nome": "MARIA SOCORRO DE LIMA FILHA",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 13577.28,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2013-03-08",
-          "ponto": "P_175431"
+          "ponto": "P_175431",
+          "oficial": true
         },
         {
           "nome": "WALBER CARLOS GUEDES PINHEIRO",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 13577.28,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2003-02-11",
-          "ponto": "P_206276"
-        },
-        {
-          "nome": "JOSE ROBERIO VIEIRA",
-          "nivel": 17,
-          "grg": true,
-          "remuneracao": 9678.22,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2003-02-06",
-          "ponto": "P_204841"
+          "ponto": "P_206276",
+          "oficial": true
         },
         {
           "nome": "JOSE ROBERTO DA NOBREGA PEREIRA",
           "nivel": 23,
           "grg": false,
-          "remuneracao": 7913.28,
+          "remuneracao": 12467.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2003-03-05",
-          "ponto": "P_204112"
+          "ponto": "P_204112",
+          "oficial": true
+        },
+        {
+          "nome": "JOSE ROBERIO VIEIRA",
+          "nivel": 17,
+          "grg": true,
+          "remuneracao": 12405.48,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2003-02-06",
+          "ponto": "P_204841",
+          "oficial": true
         },
         {
           "nome": "NAIVA VITOR DIAS",
           "nivel": 23,
           "grg": false,
-          "remuneracao": 7913.28,
+          "remuneracao": 10108.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2021-10-13",
-          "ponto": "P_168163"
+          "ponto": "P_168163",
+          "oficial": true
         },
         {
           "nome": "WANDERSON LOPES FERREIRA",
           "nivel": 22,
           "grg": false,
-          "remuneracao": 7370.78,
+          "remuneracao": 9327.56,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-04-04",
-          "ponto": "P_263785"
+          "ponto": "P_263785",
+          "oficial": true
         },
         {
           "nome": "RAMAYANNA FERNANDES VIEIRA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2015-10-15",
-          "ponto": "P_251406"
+          "ponto": "P_251406",
+          "oficial": true
         },
         {
           "nome": "PAULO MARCOS FELICIO DOS SANTOS DE ALMEIDA",
           "nivel": 16,
           "grg": false,
-          "remuneracao": 4477.45,
+          "remuneracao": 5616.84,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2021-12-30",
-          "ponto": "P_179856"
+          "ponto": "P_179856",
+          "oficial": true
         },
         {
           "nome": "ISRAEL NUNES DE LIMA FILHO",
           "nivel": 12,
           "grg": false,
-          "remuneracao": 3211.61,
+          "remuneracao": 4054.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-12-10",
-          "ponto": "P_265944"
+          "ponto": "P_265944",
+          "oficial": true
         },
         {
           "nome": "AMANDA DE OLIVEIRA COSTA",
           "nivel": 2,
           "grg": true,
-          "remuneracao": 2806.54,
+          "remuneracao": 3812.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-02-15",
-          "ponto": "P_262461"
+          "ponto": "P_262461",
+          "oficial": true
         },
         {
           "nome": "RODRIGO BEZERRA VIEIRA",
           "nivel": 8,
           "grg": false,
-          "remuneracao": 2488.28,
+          "remuneracao": 3077.95,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-07-04",
-          "ponto": "P_238723"
+          "ponto": "P_238723",
+          "oficial": true
         },
         {
           "nome": "JANAÍNA DA CRUZ RODRIGUES",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2022-05-06",
-          "ponto": "P_271629"
+          "ponto": "P_271629",
+          "oficial": true
         },
         {
           "nome": "JOSIMARA PEREIRA DE SOUZA SANTOS",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-06-13",
-          "ponto": "P_282483"
+          "ponto": "P_282483",
+          "oficial": true
         },
         {
           "nome": "JEFFERSON CORREIA DA SILVA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2017-03-13",
-          "ponto": "P_255244"
+          "ponto": "P_255244",
+          "oficial": true
         },
         {
           "nome": "JOSÉ HUMBERTO RAMOS",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2020-02-07",
-          "ponto": "P_266191"
+          "ponto": "P_266191",
+          "oficial": true
         },
         {
           "nome": "LUCAS GABRIEL CAVALCANTE COSTA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-08-24",
-          "ponto": "P_277569"
+          "ponto": "P_277569",
+          "oficial": true
         },
         {
           "nome": "LUCAS MANTOVANI AYRES NAVARRO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2016-12-08",
-          "ponto": "P_254112"
+          "ponto": "P_254112",
+          "oficial": true
         },
         {
           "nome": "MARIA FRANCIVALDA LEITE DE LACERDA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2017-08-10",
-          "ponto": "P_256576"
+          "ponto": "P_256576",
+          "oficial": true
+        },
+        {
+          "nome": "MARIA VILANI FIGUEIRÊDO",
+          "nivel": 2,
+          "grg": false,
+          "remuneracao": 1906.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2021-04-14",
+          "ponto": "P_268998",
+          "oficial": true
+        },
+        {
+          "nome": "NAYARA NUNES DE MOURA",
+          "nivel": 2,
+          "grg": false,
+          "remuneracao": 1906.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2025-05-20",
+          "ponto": "P_282229",
+          "oficial": true
+        },
+        {
+          "nome": "OTTO DE SOUZA QUINHO TERCEIRO NETO",
+          "nivel": 2,
+          "grg": false,
+          "remuneracao": 1906.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2019-06-05",
+          "ponto": "P_264658",
+          "oficial": true
+        },
+        {
+          "nome": "VALERIA OLIVEIRA DA SILVA",
+          "nivel": 2,
+          "grg": false,
+          "remuneracao": 1906.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2026-01-21",
+          "ponto": "P_283878",
+          "oficial": true
         },
         {
           "nome": "MARIA SALOMÉ FARIAS VILAR",
@@ -739,48 +847,9 @@
           "nomeadoEm": "2026-05-14",
           "desde": "2026-05-26",
           "ponto": "P_285099"
-        },
-        {
-          "nome": "MARIA VILANI FIGUEIRÊDO",
-          "nivel": 2,
-          "grg": false,
-          "remuneracao": 1403.27,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2021-04-14",
-          "ponto": "P_268998"
-        },
-        {
-          "nome": "NAYARA NUNES DE MOURA",
-          "nivel": 2,
-          "grg": false,
-          "remuneracao": 1403.27,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2025-05-20",
-          "ponto": "P_282229"
-        },
-        {
-          "nome": "OTTO DE SOUZA QUINHO TERCEIRO NETO",
-          "nivel": 2,
-          "grg": false,
-          "remuneracao": 1403.27,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2019-06-05",
-          "ponto": "P_264658"
-        },
-        {
-          "nome": "VALERIA OLIVEIRA DA SILVA",
-          "nivel": 2,
-          "grg": false,
-          "remuneracao": 1403.27,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2026-01-21",
-          "ponto": "P_283878"
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-74414": {
       "total": 0,
@@ -789,214 +858,279 @@
     },
     "camara-74044": {
       "total": 20,
-      "folha": 128167.69,
+      "folha": 170472.89,
       "secretarios": [
         {
           "nome": "ROGÉRIO DOS SANTOS SILVA",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 28987.44,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2020-04-30",
-          "ponto": "P_178048"
+          "ponto": "P_178048",
+          "oficial": true
         },
         {
           "nome": "FELIPE CARVALHO VIEIRA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-03-09",
-          "ponto": "P_275523"
-        },
-        {
-          "nome": "JESSICA DE CARVALHO",
-          "nivel": 21,
-          "grg": true,
-          "remuneracao": 13656.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2022-12-19",
-          "ponto": "P_272856"
+          "ponto": "P_275523",
+          "oficial": true
         },
         {
           "nome": "ZOIR NEVES SOARES JUNIOR",
           "nivel": 21,
           "grg": true,
-          "remuneracao": 13656.56,
+          "remuneracao": 19086.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2017-04-04",
-          "ponto": "P_209249"
+          "ponto": "P_209249",
+          "oficial": true
+        },
+        {
+          "nome": "JESSICA DE CARVALHO",
+          "nivel": 21,
+          "grg": true,
+          "remuneracao": 17092.68,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2022-12-19",
+          "ponto": "P_272856",
+          "oficial": true
         },
         {
           "nome": "IVANILDO ALVES DO NASCIMENTO",
           "nivel": 20,
           "grg": true,
-          "remuneracao": 12571.56,
+          "remuneracao": 15920.88,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-03",
           "desde": "2024-11-05",
-          "ponto": "P_280314"
+          "ponto": "P_280314",
+          "oficial": true
         },
         {
           "nome": "EDIELSON FERNANDES DA SILVA",
           "nivel": 19,
           "grg": true,
-          "remuneracao": 11486.56,
+          "remuneracao": 14749.08,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-04",
           "desde": "2012-05-09",
-          "ponto": "P_238006"
+          "ponto": "P_238006",
+          "oficial": true
         },
         {
           "nome": "ALESSANDRA CAVALCANTI DONATO",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2011-04-27",
-          "ponto": "P_235679"
+          "ponto": "P_235679",
+          "oficial": true
         },
         {
           "nome": "ALEXANDRE TEIXEIRA DE CARVALHO JUNIOR",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-05-21",
-          "ponto": "P_279176"
+          "ponto": "P_279176",
+          "oficial": true
         },
         {
           "nome": "ITACYEDRA BRENNA CARDOSO LEITE",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-07-01",
-          "ponto": "P_264851"
+          "ponto": "P_264851",
+          "oficial": true
         },
         {
           "nome": "MARCIA SUZANNA DUTRA ABREU BORGES DA FONSECA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2026-02-04",
-          "ponto": "P_283957"
+          "ponto": "P_283957",
+          "oficial": true
         },
         {
           "nome": "MARIA OLIVIA MAIA",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2010-09-09",
-          "ponto": "P_183504"
+          "ponto": "P_183504",
+          "oficial": true
         },
         {
           "nome": "MARIA WANDERLUCIA MONTEIRO",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-06-02",
-          "ponto": "P_276885"
+          "ponto": "P_276885",
+          "oficial": true
         },
         {
           "nome": "LETÍCIA MARIA QUEIROZ LEITE BARBOSA",
           "nivel": 10,
           "grg": false,
-          "remuneracao": 2849.95,
+          "remuneracao": 3468.54,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-05-31",
-          "ponto": "P_276859"
+          "ponto": "P_276859",
+          "oficial": true
         },
         {
           "nome": "MARCOS JOSÉ DE AZEVEDO E BRITO",
           "nivel": 9,
           "grg": false,
-          "remuneracao": 2669.12,
+          "remuneracao": 3273.26,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-11-08",
-          "ponto": "P_278001"
+          "ponto": "P_278001",
+          "oficial": true
         },
         {
           "nome": "ANGÉLICA BARRÊTO FERNANDES DE QUEIROZ",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-05-06",
-          "ponto": "P_264255"
+          "ponto": "P_264255",
+          "oficial": true
         },
         {
           "nome": "LETICIA MEDEIROS MORAIS",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-12-13",
-          "ponto": "P_278196"
+          "ponto": "P_278196",
+          "oficial": true
         },
         {
           "nome": "DANIELE PEREIRA PORTO DE MORAIS",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2021-04-05",
-          "ponto": "P_268895"
+          "ponto": "P_268895",
+          "oficial": true
         },
         {
           "nome": "ESTELLA CAVALCANTI MEDEIROS",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2015-04-16",
-          "ponto": "P_249733"
+          "ponto": "P_249733",
+          "oficial": true
         },
         {
           "nome": "FRANCISCO ROMAO DANTAS FILHO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2024-07-26",
-          "ponto": "P_279832"
+          "ponto": "P_279832",
+          "oficial": true
         },
         {
           "nome": "MARIA GERLANDA DE OLIVEIRA MACIEL",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2003-02-03",
-          "ponto": "P_206254"
+          "ponto": "P_206254",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-160527": {
       "total": 20,
-      "folha": 127900.1,
+      "folha": 156761.13,
       "secretarios": [
+        {
+          "nome": "SALETE APARECIDA DE QUADROS SOARES",
+          "nivel": 22,
+          "grg": true,
+          "remuneracao": 18655.12,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2012-09-10",
+          "ponto": "P_163093",
+          "oficial": true
+        },
+        {
+          "nome": "ESMERALDA JÁCOME DE LUCENA",
+          "nivel": 21,
+          "grg": true,
+          "remuneracao": 17092.68,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2021-08-04",
+          "ponto": "P_269960",
+          "oficial": true
+        },
+        {
+          "nome": "LEÔNCIO COSTA DA CUNHA",
+          "nivel": 21,
+          "grg": true,
+          "remuneracao": 17092.68,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2020-02-05",
+          "ponto": "P_266152",
+          "oficial": true
+        },
+        {
+          "nome": "HUGO DE SOUZA TORRES",
+          "nivel": 20,
+          "grg": true,
+          "remuneracao": 15920.88,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2025-12-11",
+          "ponto": "P_217535",
+          "oficial": true
+        },
         {
           "nome": "JOIBERTH DOUGLAS NUNES DA SILVA",
           "nivel": 23,
@@ -1008,84 +1142,59 @@
           "ponto": "P_285020"
         },
         {
-          "nome": "SALETE APARECIDA DE QUADROS SOARES",
-          "nivel": 22,
-          "grg": true,
-          "remuneracao": 14741.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2012-09-10",
-          "ponto": "P_163093"
-        },
-        {
-          "nome": "ESMERALDA JÁCOME DE LUCENA",
-          "nivel": 21,
-          "grg": true,
-          "remuneracao": 13656.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2021-08-04",
-          "ponto": "P_269960"
-        },
-        {
-          "nome": "LEÔNCIO COSTA DA CUNHA",
-          "nivel": 21,
-          "grg": true,
-          "remuneracao": 13656.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2020-02-05",
-          "ponto": "P_266152"
-        },
-        {
-          "nome": "HUGO DE SOUZA TORRES",
-          "nivel": 20,
-          "grg": true,
-          "remuneracao": 12571.56,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2025-12-11",
-          "ponto": "P_217535"
-        },
-        {
           "nome": "YGOR VIEIRA CARNEIRO",
           "nivel": 22,
           "grg": false,
-          "remuneracao": 7370.78,
+          "remuneracao": 9327.56,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2021-08-10",
-          "ponto": "P_270003"
-        },
-        {
-          "nome": "ELLEN DE CASTRO CASTELANE GONCALVES",
-          "nivel": 21,
-          "grg": false,
-          "remuneracao": 6828.28,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2014-03-28",
-          "ponto": "P_221038"
+          "ponto": "P_270003",
+          "oficial": true
         },
         {
           "nome": "DANIELLA CRISTINE NUNES DE SOUZA",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-05-08",
-          "ponto": "P_276576"
+          "ponto": "P_276576",
+          "oficial": true
+        },
+        {
+          "nome": "ELLEN DE CASTRO CASTELANE GONCALVES",
+          "nivel": 21,
+          "grg": false,
+          "remuneracao": 8546.34,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2014-03-28",
+          "ponto": "P_221038",
+          "oficial": true
         },
         {
           "nome": "CYNARA ROLIM DE ALMEIDA",
           "nivel": 19,
           "grg": false,
-          "remuneracao": 5743.28,
+          "remuneracao": 7374.54,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2013-12-09",
-          "ponto": "P_233421"
+          "ponto": "P_233421",
+          "oficial": true
+        },
+        {
+          "nome": "JOBSON FERREIRA MONTEIRO DE FREITAS",
+          "nivel": 6,
+          "grg": true,
+          "remuneracao": 5374.68,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2020-10-01",
+          "ponto": "P_267517",
+          "oficial": true
         },
         {
           "nome": "ANTONIO MAROJA GUEDES NETO",
@@ -1098,106 +1207,106 @@
           "ponto": "P_261856"
         },
         {
-          "nome": "JOBSON FERREIRA MONTEIRO DE FREITAS",
-          "nivel": 6,
-          "grg": true,
-          "remuneracao": 4253.18,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2020-10-01",
-          "ponto": "P_267517"
-        },
-        {
           "nome": "ALIRIO CLAUDINO DE PONTES",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2020-10-08",
-          "ponto": "P_267557"
+          "ponto": "P_267557",
+          "oficial": true
         },
         {
           "nome": "ESPEDITO MARCUS RODRIGUES",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-03-06",
-          "ponto": "P_237782"
+          "ponto": "P_237782",
+          "oficial": true
         },
         {
           "nome": "RUBEM ALVES FERREIRA",
           "nivel": 12,
           "grg": false,
-          "remuneracao": 3211.61,
+          "remuneracao": 4054.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-03-06",
-          "ponto": "P_234281"
+          "ponto": "P_234281",
+          "oficial": true
         },
         {
           "nome": "JOSÉ RICARDINO DA SILVA FILHO",
           "nivel": 9,
           "grg": false,
-          "remuneracao": 2669.12,
+          "remuneracao": 3273.26,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2016-07-11",
-          "ponto": "P_253219"
+          "ponto": "P_253219",
+          "oficial": true
         },
         {
           "nome": "GERALDO NICOLAU BAPTISTA DE MELLO JUNIOR",
           "nivel": 7,
           "grg": false,
-          "remuneracao": 2307.46,
+          "remuneracao": 2882.65,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-03-07",
-          "ponto": "P_233946"
+          "ponto": "P_233946",
+          "oficial": true
         },
         {
           "nome": "THATIANE SONALLY DA SILVA LIMA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2016-12-07",
-          "ponto": "P_254092"
+          "ponto": "P_254092",
+          "oficial": true
         },
         {
           "nome": "AGNELO MUNIZ FERNANDES",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-03-06",
-          "ponto": "P_233186"
+          "ponto": "P_233186",
+          "oficial": true
         },
         {
           "nome": "JOSÉ CARLITO JUNIOR",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2012-03-07",
-          "ponto": "P_233183"
+          "ponto": "P_233183",
+          "oficial": true
         },
         {
           "nome": "PÂMELLA SUZETTY VIEIRA DE SOUSA ROCHA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2016-11-25",
-          "ponto": "P_254019"
+          "ponto": "P_254019",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-74040": {
       "total": 0,
@@ -1206,229 +1315,252 @@
     },
     "camara-160674": {
       "total": 22,
-      "folha": 129983.4,
+      "folha": 170565.7,
       "secretarios": [
+        {
+          "nome": "RODRIGO RODRIGUES TOMAZ",
+          "nivel": 19,
+          "grg": true,
+          "remuneracao": 21631.98,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-04-17",
+          "desde": "2026-04-17",
+          "ponto": "P_284698",
+          "oficial": true
+        },
         {
           "nome": "IVANADJA VELLOSO MEIRA LIMA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2009-07-02",
-          "ponto": "P_207013"
+          "ponto": "P_207013",
+          "oficial": true
         },
         {
           "nome": "GEORGE AUGUSTO GOMES DE OLIVEIRA",
           "nivel": 22,
           "grg": true,
-          "remuneracao": 14741.56,
+          "remuneracao": 20083.35,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-17",
           "desde": "2024-07-08",
-          "ponto": "P_279545"
+          "ponto": "P_279545",
+          "oficial": true
         },
         {
           "nome": "GILCLECIO LUCENA DOS SANTOS MARTINS",
           "nivel": 20,
           "grg": true,
-          "remuneracao": 12571.56,
+          "remuneracao": 15920.88,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2015-01-21",
-          "ponto": "P_245924"
-        },
-        {
-          "nome": "RODRIGO RODRIGUES TOMAZ",
-          "nivel": 19,
-          "grg": true,
-          "remuneracao": 11486.56,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-04-17",
-          "desde": "2026-04-17",
-          "ponto": "P_284698"
+          "ponto": "P_245924",
+          "oficial": true
         },
         {
           "nome": "CAIO AUGUSTO TAVARES DE SOUZA",
           "nivel": 16,
           "grg": true,
-          "remuneracao": 8954.9,
+          "remuneracao": 11468.04,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-11",
           "desde": "2023-11-29",
-          "ponto": "P_278115"
-        },
-        {
-          "nome": "RAMON MOTA SOARES",
-          "nivel": 21,
-          "grg": false,
-          "remuneracao": 6828.28,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2025-02-25",
-          "ponto": "P_281252"
+          "ponto": "P_278115",
+          "oficial": true
         },
         {
           "nome": "ISRAEL OLIVEIRA LIMA",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-18",
           "desde": "2026-03-18",
-          "ponto": "P_284346"
+          "ponto": "P_284346",
+          "oficial": true
+        },
+        {
+          "nome": "RAMON MOTA SOARES",
+          "nivel": 21,
+          "grg": false,
+          "remuneracao": 8546.34,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2025-02-25",
+          "ponto": "P_281252",
+          "oficial": true
         },
         {
           "nome": "MARCELO ALVES DA SILVA",
           "nivel": 11,
           "grg": true,
-          "remuneracao": 6061.6,
+          "remuneracao": 7327.7,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-10-15",
-          "ponto": "P_265646"
+          "ponto": "P_265646",
+          "oficial": true
         },
         {
           "nome": "GUSTAVO BARBOSA DE CARVALHO ALMEIDA",
           "nivel": 19,
           "grg": false,
-          "remuneracao": 5743.28,
+          "remuneracao": 7140.18,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-11",
           "desde": "2023-06-16",
-          "ponto": "P_277005"
-        },
-        {
-          "nome": "ARY GUSTAVO XAVIER GUEDES SOARES",
-          "nivel": 9,
-          "grg": true,
-          "remuneracao": 5338.24,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2011-02-02",
-          "ponto": "P_232458"
+          "ponto": "P_277005",
+          "oficial": true
         },
         {
           "nome": "ANTONIO GABRIEL CASTELO BRANCO RODRIGUES",
           "nivel": 18,
           "grg": false,
-          "remuneracao": 5200.78,
+          "remuneracao": 6788.64,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-02-03",
-          "ponto": "P_280940"
+          "ponto": "P_280940",
+          "oficial": true
         },
         {
-          "nome": "FRANCISCO CARVALHO VERAS FILHO",
-          "nivel": 17,
-          "grg": false,
-          "remuneracao": 4839.11,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-04-17",
-          "desde": "2026-03-16",
-          "ponto": "P_284294"
+          "nome": "ARY GUSTAVO XAVIER GUEDES SOARES",
+          "nivel": 9,
+          "grg": true,
+          "remuneracao": 6546.52,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2011-02-02",
+          "ponto": "P_232458",
+          "oficial": true
         },
         {
           "nome": "NORMANDO LEITE CAVALCANTE",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2008-12-23",
-          "ponto": "P_175331"
+          "ponto": "P_175331",
+          "oficial": true
         },
         {
           "nome": "ARETUZA DE SOUSA LACERDA",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-03",
           "desde": "2025-08-11",
-          "ponto": "P_282876"
+          "ponto": "P_282876",
+          "oficial": true
         },
         {
           "nome": "ERIK HENRIQUE CLEMENTINO",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-09-27",
-          "ponto": "P_277785"
+          "ponto": "P_277785",
+          "oficial": true
         },
         {
           "nome": "LEONARDO PACHECO CASTRO",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2022-05-09",
-          "ponto": "P_271646"
+          "ponto": "P_271646",
+          "oficial": true
         },
         {
           "nome": "MARIA DO CARMO ALVES DA SILVA BRITO",
           "nivel": 8,
           "grg": false,
-          "remuneracao": 2488.28,
+          "remuneracao": 3077.95,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2020-07-10",
-          "ponto": "P_266809"
+          "ponto": "P_266809",
+          "oficial": true
+        },
+        {
+          "nome": "FRANCISCO CARVALHO VERAS FILHO",
+          "nivel": 17,
+          "grg": false,
+          "remuneracao": 2894.61,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-04-17",
+          "desde": "2026-03-16",
+          "ponto": "P_284294",
+          "oficial": true
         },
         {
           "nome": "EDUARDO DE ANDRADE LIMA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-06-02",
-          "ponto": "P_282373"
+          "ponto": "P_282373",
+          "oficial": true
         },
         {
           "nome": "EMÍLIA ALVES MONTEIRO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-08-16",
-          "ponto": "P_265227"
+          "ponto": "P_265227",
+          "oficial": true
         },
         {
           "nome": "JACKLINO PORCINO ALVES",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-12-06",
-          "ponto": "P_265921"
+          "ponto": "P_265921",
+          "oficial": true
         },
         {
           "nome": "JANE COSTA GORGÔNIO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1606.68,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-17",
           "desde": "2013-03-05",
-          "ponto": "P_241333"
+          "ponto": "P_241333",
+          "oficial": true
         },
         {
           "nome": "LUCINEIDE MORAIS DA SILVA BRITO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1606.68,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-04-17",
           "desde": "2017-10-31",
-          "ponto": "P_257088"
+          "ponto": "P_257088",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-122195": {
       "total": 0,
@@ -1442,470 +1574,518 @@
     },
     "camara-160629": {
       "total": 21,
-      "folha": 128218.46,
+      "folha": 168263.17,
       "secretarios": [
         {
           "nome": "SANDRA SUELI ALMEIDA DE CARVALHO",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 25958.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-08",
-          "ponto": "P_232804"
+          "ponto": "P_232804",
+          "oficial": true
         },
         {
           "nome": "GEORGE FERNANDO PACIFICO DE BRITO",
           "nivel": 17,
           "grg": true,
-          "remuneracao": 9678.22,
+          "remuneracao": 12405.48,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-03-16",
-          "ponto": "P_275726"
-        },
-        {
-          "nome": "IGOR ALVES CORREIA LIMA DE AQUINO",
-          "nivel": 16,
-          "grg": true,
-          "remuneracao": 8954.9,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-02",
-          "desde": "2023-02-28",
-          "ponto": "P_275099"
-        },
-        {
-          "nome": "SILVIA BARROS XAVIER DA SILVA",
-          "nivel": 16,
-          "grg": true,
-          "remuneracao": 8954.9,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-02",
-          "desde": "2023-02-14",
-          "ponto": "P_274325"
-        },
-        {
-          "nome": "HERRISSON DIAS GUIMARÃES",
-          "nivel": 23,
-          "grg": false,
-          "remuneracao": 7913.28,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-02",
-          "desde": "2023-03-21",
-          "ponto": "P_275848"
+          "ponto": "P_275726",
+          "oficial": true
         },
         {
           "nome": "IZAR ALMEIDA BARRETO PAES",
           "nivel": 23,
           "grg": false,
-          "remuneracao": 7913.28,
+          "remuneracao": 12405.48,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-22",
           "desde": "2023-08-03",
-          "ponto": "P_277399"
+          "ponto": "P_277399",
+          "oficial": true
+        },
+        {
+          "nome": "IGOR ALVES CORREIA LIMA DE AQUINO",
+          "nivel": 16,
+          "grg": true,
+          "remuneracao": 11233.68,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-02",
+          "desde": "2023-02-28",
+          "ponto": "P_275099",
+          "oficial": true
+        },
+        {
+          "nome": "SILVIA BARROS XAVIER DA SILVA",
+          "nivel": 16,
+          "grg": true,
+          "remuneracao": 11233.68,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-02",
+          "desde": "2023-02-14",
+          "ponto": "P_274325",
+          "oficial": true
+        },
+        {
+          "nome": "HERRISSON DIAS GUIMARÃES",
+          "nivel": 23,
+          "grg": false,
+          "remuneracao": 10108.74,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-02",
+          "desde": "2023-03-21",
+          "ponto": "P_275848",
+          "oficial": true
         },
         {
           "nome": "MARCIO DE MELO FARIAS",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-02-13",
-          "ponto": "P_281100"
-        },
-        {
-          "nome": "JOSÉ FERNANDES MARIZ",
-          "nivel": 11,
-          "grg": true,
-          "remuneracao": 6061.6,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2024-11-05",
-          "ponto": "P_273674"
-        },
-        {
-          "nome": "IRAÊ HEUSI DE LUCENA NÓBREGA",
-          "nivel": 19,
-          "grg": false,
-          "remuneracao": 5743.28,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-05-22",
-          "desde": "2015-01-07",
-          "ponto": "P_181078"
-        },
-        {
-          "nome": "MARCELO JOSÉ GAMA DA SILVA",
-          "nivel": 19,
-          "grg": false,
-          "remuneracao": 5743.28,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-05-22",
-          "desde": "2026-01-06",
-          "ponto": "P_283803"
+          "ponto": "P_281100",
+          "oficial": true
         },
         {
           "nome": "ADRIANNE CARÓCA CAVALCANTE",
           "nivel": 18,
           "grg": false,
-          "remuneracao": 5200.78,
+          "remuneracao": 8146.37,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-27",
           "desde": "2022-04-08",
-          "ponto": "P_264167"
-        },
-        {
-          "nome": "CARLOS MARIANN COSTA CARDOSO",
-          "nivel": 8,
-          "grg": true,
-          "remuneracao": 4976.56,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-02",
-          "desde": "2024-09-04",
-          "ponto": "P_280105"
-        },
-        {
-          "nome": "CHRISTIANA PAIVA SERAFIM GADELHA CAMPOS",
-          "nivel": 17,
-          "grg": false,
-          "remuneracao": 4839.11,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-06-05",
-          "ponto": "P_276892"
-        },
-        {
-          "nome": "DANIELLE TORQUATO PONCIANO LUDGÉRIO",
-          "nivel": 17,
-          "grg": false,
-          "remuneracao": 4839.11,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-02",
-          "desde": "2024-01-15",
-          "ponto": "P_278318"
+          "ponto": "P_264167",
+          "oficial": true
         },
         {
           "nome": "GABRIEL MOREIRA DE CARVALHO CAROCA CAVALCANTE",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 7650.05,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-03",
-          "ponto": "P_273043"
+          "ponto": "P_273043",
+          "oficial": true
+        },
+        {
+          "nome": "JOSÉ FERNANDES MARIZ",
+          "nivel": 11,
+          "grg": true,
+          "remuneracao": 7327.7,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2024-11-05",
+          "ponto": "P_273674",
+          "oficial": true
+        },
+        {
+          "nome": "IRAÊ HEUSI DE LUCENA NÓBREGA",
+          "nivel": 19,
+          "grg": false,
+          "remuneracao": 6202.74,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-05-22",
+          "desde": "2015-01-07",
+          "ponto": "P_181078",
+          "oficial": true
+        },
+        {
+          "nome": "MARCELO JOSÉ GAMA DA SILVA",
+          "nivel": 19,
+          "grg": false,
+          "remuneracao": 6202.74,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-05-22",
+          "desde": "2026-01-06",
+          "ponto": "P_283803",
+          "oficial": true
+        },
+        {
+          "nome": "CHRISTIANA PAIVA SERAFIM GADELHA CAMPOS",
+          "nivel": 17,
+          "grg": false,
+          "remuneracao": 6202.74,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2023-06-05",
+          "ponto": "P_276892",
+          "oficial": true
+        },
+        {
+          "nome": "DANIELLE TORQUATO PONCIANO LUDGÉRIO",
+          "nivel": 17,
+          "grg": false,
+          "remuneracao": 6202.74,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-02",
+          "desde": "2024-01-15",
+          "ponto": "P_278318",
+          "oficial": true
+        },
+        {
+          "nome": "CARLOS MARIANN COSTA CARDOSO",
+          "nivel": 8,
+          "grg": true,
+          "remuneracao": 6155.9,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-02",
+          "desde": "2024-09-04",
+          "ponto": "P_280105",
+          "oficial": true
         },
         {
           "nome": "GISELA MARIA FIGUEIREDO NETTO",
           "nivel": 16,
           "grg": false,
-          "remuneracao": 4477.45,
+          "remuneracao": 5616.84,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-08",
-          "ponto": "P_273682"
+          "ponto": "P_273682",
+          "oficial": true
         },
         {
           "nome": "ÉRICK CASTRO NUNES",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-08",
-          "ponto": "P_273672"
+          "ponto": "P_273672",
+          "oficial": true
         },
         {
           "nome": "RENATA TEIXEIRA VILLARIM",
           "nivel": 3,
           "grg": true,
-          "remuneracao": 3168.2,
+          "remuneracao": 4202.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2024-05-08",
-          "ponto": "P_279052"
+          "ponto": "P_279052",
+          "oficial": true
         },
         {
           "nome": "RANIELY WIVIAN PESSOA",
           "nivel": 11,
           "grg": false,
-          "remuneracao": 3030.8,
+          "remuneracao": 3663.85,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-07-11",
-          "ponto": "P_277232"
+          "ponto": "P_277232",
+          "oficial": true
         },
         {
           "nome": "ANA CRISTINA ARAUJO BATISTA",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-10-30",
-          "ponto": "P_209465"
+          "ponto": "P_209465",
+          "oficial": true
         },
         {
           "nome": "VIRGILIA CAMPOS MARINHO NASCIMENTO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-08",
-          "ponto": "P_273676"
+          "ponto": "P_273676",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-160635": {
       "total": 25,
-      "folha": 126728.38,
+      "folha": 168597.75,
       "secretarios": [
         {
           "nome": "CONCEIÇÃO DE MARIA SILVA COSER",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 28987.44,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-25",
           "desde": "2019-02-12",
-          "ponto": "P_223617"
+          "ponto": "P_223617",
+          "oficial": true
         },
         {
           "nome": "ISABELLA CRISTINI SILVA COSER",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 23088.2,
           "ato": "PORTARIA",
           "desde": "2026-03-11",
-          "ponto": "P_284243"
+          "ponto": "P_284243",
+          "oficial": true
         },
         {
           "nome": "MÁRCIA MATIAS RODRIGUES SANTIAGO",
           "nivel": 22,
           "grg": true,
-          "remuneracao": 14741.56,
+          "remuneracao": 18655.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2019-02-06",
-          "ponto": "P_234920"
+          "ponto": "P_234920",
+          "oficial": true
         },
         {
           "nome": "HILDEVÂNIO DE SOUZA MACÊDO",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 13577.28,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2023-06-12",
-          "ponto": "P_268188"
+          "ponto": "P_268188",
+          "oficial": true
         },
         {
           "nome": "BÁRBARA RIBEIRO FALCÃO",
           "nivel": 24,
           "grg": false,
-          "remuneracao": 8636.63,
+          "remuneracao": 11544.1,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2024-01-15",
-          "ponto": "P_278322"
+          "ponto": "P_278322",
+          "oficial": true
         },
         {
           "nome": "KYVANIA MARIA DA SILVA",
           "nivel": 21,
           "grg": false,
-          "remuneracao": 6828.28,
+          "remuneracao": 8546.34,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2025-02-05",
-          "ponto": "P_262489"
+          "ponto": "P_262489",
+          "oficial": true
         },
         {
           "nome": "ROBERTA GOMES DA CUNHA LIMA",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-12-18",
-          "ponto": "P_262247"
+          "ponto": "P_262247",
+          "oficial": true
         },
         {
           "nome": "ANNA MIRIAM DAS NEVES SILVA MEIRELES",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 5765.3,
           "ato": "PORTARIA",
           "desde": "2023-02-15",
-          "ponto": "P_234486"
+          "ponto": "P_234486",
+          "oficial": true
         },
         {
           "nome": "AIMÊE ANTÔNIA SOUZA DE BRITO",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2025-10-02",
-          "ponto": "P_283306"
+          "ponto": "P_283306",
+          "oficial": true
         },
         {
           "nome": "LETÍCIA SILVA SANTOS",
           "nivel": 5,
           "grg": true,
-          "remuneracao": 3891.58,
+          "remuneracao": 4984.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-16",
           "desde": "2024-11-11",
-          "ponto": "P_261148"
+          "ponto": "P_261148",
+          "oficial": true
         },
         {
           "nome": "AMANDA DE SOUZA DANTAS",
           "nivel": 14,
           "grg": false,
-          "remuneracao": 3754.12,
+          "remuneracao": 4835.65,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2023-02-09",
-          "ponto": "P_274030"
+          "ponto": "P_274030",
+          "oficial": true
         },
         {
           "nome": "ELAYNE CRISTINE DE LIMA",
           "nivel": 14,
           "grg": false,
-          "remuneracao": 3754.12,
+          "remuneracao": 4835.65,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2019-04-02",
-          "ponto": "P_263721"
+          "ponto": "P_263721",
+          "oficial": true
         },
         {
           "nome": "HUGO JOSÉ SALES DE SOUZA",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 3812.24,
           "ato": "PORTARIA",
           "desde": "2022-05-04",
-          "ponto": "P_271616"
-        },
-        {
-          "nome": "ERIVELTON RODRIGUES DE LIMA",
-          "nivel": 12,
-          "grg": false,
-          "remuneracao": 3211.61,
-          "ato": "PORTARIA",
-          "desde": "2024-10-21",
-          "ponto": "P_276194"
+          "ponto": "P_271616",
+          "oficial": true
         },
         {
           "nome": "MARIA HELENA SOBRAL DA SILVA EVANGELISTA",
           "nivel": 11,
           "grg": false,
-          "remuneracao": 3030.8,
+          "remuneracao": 3663.85,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2025-05-07",
-          "ponto": "P_282087"
+          "ponto": "P_282087",
+          "oficial": true
+        },
+        {
+          "nome": "ERIVELTON RODRIGUES DE LIMA",
+          "nivel": 12,
+          "grg": false,
+          "remuneracao": 3273.26,
+          "ato": "PORTARIA",
+          "desde": "2024-10-21",
+          "ponto": "P_276194",
+          "oficial": true
         },
         {
           "nome": "RACHEL DE PAIVA RUIZ",
           "nivel": 8,
           "grg": false,
-          "remuneracao": 2488.28,
+          "remuneracao": 3077.95,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-16",
           "desde": "2024-11-04",
-          "ponto": "P_279372"
+          "ponto": "P_279372",
+          "oficial": true
         },
         {
           "nome": "RUBENITA DA SILVA LUCENA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2026-02-03",
-          "ponto": "P_283954"
-        },
-        {
-          "nome": "JEMIMA DE SOUZA MENDES CAVALCANTE FERRAZ",
-          "nivel": 4,
-          "grg": false,
-          "remuneracao": 1764.93,
-          "ato": "PORTARIA",
-          "desde": "2024-08-07",
-          "ponto": "P_279931"
+          "ponto": "P_283954",
+          "oficial": true
         },
         {
           "nome": "PATRÍCIA MACHADO TAVARES",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-01-25",
-          "ponto": "P_278358"
+          "ponto": "P_278358",
+          "oficial": true
         },
         {
           "nome": "RAISSA BEZERRA CAVALCANTI DE LUCENA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2021-03-11",
-          "ponto": "P_268663"
+          "ponto": "P_268663",
+          "oficial": true
         },
         {
           "nome": "RODRIGO MARINHO RODRIGUES",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-05",
           "desde": "2022-12-15",
-          "ponto": "P_272842"
+          "ponto": "P_272842",
+          "oficial": true
+        },
+        {
+          "nome": "JEMIMA DE SOUZA MENDES CAVALCANTE FERRAZ",
+          "nivel": 4,
+          "grg": false,
+          "remuneracao": 1710.83,
+          "ato": "PORTARIA",
+          "desde": "2024-08-07",
+          "ponto": "P_279931",
+          "oficial": true
         },
         {
           "nome": "EDGARD FERNANDO MOREIRA JUNIOR",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-16",
           "desde": "2019-02-12",
-          "ponto": "P_262160"
+          "ponto": "P_262160",
+          "oficial": true
         },
         {
           "nome": "ELTON JUNIOR CÂNDIDO RODRIGUES",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2024-03-05",
-          "ponto": "P_278593"
+          "ponto": "P_278593",
+          "oficial": true
         },
         {
           "nome": "SELMA MARIA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2019-02-13",
-          "ponto": "P_154994"
+          "ponto": "P_154994",
+          "oficial": true
         },
         {
           "nome": "VIVIANE DE ALENCAR MANGUEIRA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2021-02-04",
-          "ponto": "P_268223"
+          "ponto": "P_268223",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-160636": {
       "total": 0,
@@ -1944,57 +2124,73 @@
     },
     "camara-204394": {
       "total": 25,
-      "folha": 128544.05,
+      "folha": 164799.25,
       "secretarios": [
         {
           "nome": "CLÁUDIA HELENA BARBOSA DE QUEIROZ",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 22576.19,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-06-21",
-          "ponto": "P_261975"
+          "ponto": "P_261975",
+          "oficial": true
         },
         {
           "nome": "CRISTIANA SUASSUNA MAIA PANTA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-02-08",
-          "ponto": "P_261844"
+          "ponto": "P_261844",
+          "oficial": true
         },
         {
           "nome": "WERUSKA ROCHA FERNANDES",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-02-21",
-          "ponto": "P_262792"
+          "ponto": "P_262792",
+          "oficial": true
         },
         {
           "nome": "LUCIANO AMÉRICO SARAIVA MAIA",
           "nivel": 21,
           "grg": true,
-          "remuneracao": 13656.56,
+          "remuneracao": 16545.84,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-19",
           "desde": "2023-02-27",
-          "ponto": "P_275065"
+          "ponto": "P_275065",
+          "oficial": true
         },
         {
           "nome": "JOSÉ GILBERTO MACIEL DE CARVALHO",
           "nivel": 25,
           "grg": false,
-          "remuneracao": 9359.94,
+          "remuneracao": 12208.51,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-19",
           "desde": "2019-02-18",
-          "ponto": "P_262545"
+          "ponto": "P_262545",
+          "oficial": true
+        },
+        {
+          "nome": "FRANCISCO ANTONIO DA SILVA FILHO",
+          "nivel": 11,
+          "grg": true,
+          "remuneracao": 7327.7,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-17",
+          "desde": "2022-07-18",
+          "ponto": "P_272209",
+          "oficial": true
         },
         {
           "nome": "MAIRLA RAPOSO DE MENEZES GUEDES",
@@ -2007,196 +2203,205 @@
           "ponto": "P_285042"
         },
         {
-          "nome": "FRANCISCO ANTONIO DA SILVA FILHO",
-          "nivel": 11,
-          "grg": true,
-          "remuneracao": 6061.6,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-17",
-          "desde": "2022-07-18",
-          "ponto": "P_272209"
-        },
-        {
           "nome": "RENATTA LINS FALCÃO DE CARVALHO QUINTANS",
           "nivel": 19,
           "grg": false,
-          "remuneracao": 5743.28,
+          "remuneracao": 6827.7,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-05-19",
           "desde": "2023-05-22",
-          "ponto": "P_276738"
+          "ponto": "P_276738",
+          "oficial": true
         },
         {
           "nome": "JOÃO CARLOS DOS SANTOS SILVA",
           "nivel": 8,
           "grg": true,
-          "remuneracao": 4976.56,
+          "remuneracao": 6155.9,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2021-02-09",
-          "ponto": "P_268280"
+          "ponto": "P_268280",
+          "oficial": true
         },
         {
           "nome": "LETÂNIA ALVES DE ALMEIDA",
           "nivel": 7,
           "grg": true,
-          "remuneracao": 4614.92,
+          "remuneracao": 5765.3,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-23",
           "desde": "2026-03-23",
-          "ponto": "P_284419"
+          "ponto": "P_284419",
+          "oficial": true
         },
         {
           "nome": "JOSÉ VIEIRA DUARTE JÚNIOR",
           "nivel": 5,
           "grg": true,
-          "remuneracao": 3891.58,
+          "remuneracao": 5482.53,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-05-20",
-          "ponto": "P_273684"
+          "ponto": "P_273684",
+          "oficial": true
         },
         {
           "nome": "GUSTAVO SOARES DE BRITO",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-07-26",
-          "ponto": "P_277345"
+          "ponto": "P_277345",
+          "oficial": true
         },
         {
           "nome": "JOÃO VICTOR BENJAMIM BORGES",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-12-03",
-          "ponto": "P_265886"
+          "ponto": "P_265886",
+          "oficial": true
         },
         {
           "nome": "FRANCISCO RINALDO SOARES",
           "nivel": 1,
           "grg": true,
-          "remuneracao": 2444.88,
+          "remuneracao": 3421.66,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2024-05-10",
-          "ponto": "P_279094"
+          "ponto": "P_279094",
+          "oficial": true
         },
         {
           "nome": "EGBERTO COUTINHO MADRUGA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-11-07",
-          "ponto": "P_283538"
+          "ponto": "P_283538",
+          "oficial": true
         },
         {
           "nome": "EVERCTON HYAGO FERNANDES COSTA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-10-06",
-          "ponto": "P_283329"
+          "ponto": "P_283329",
+          "oficial": true
         },
         {
           "nome": "THAÍS DE MORAIS BELTRÃO FERNANDES",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2020-08-07",
-          "ponto": "P_267027"
+          "ponto": "P_267027",
+          "oficial": true
         },
         {
           "nome": "RICARDO DE LIMA ARAÚJO",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-07-10",
-          "ponto": "P_279620"
+          "ponto": "P_279620",
+          "oficial": true
         },
         {
           "nome": "GUILHERME FERNANDES DE ALENCAR",
           "nivel": 3,
           "grg": false,
-          "remuneracao": 1584.1,
+          "remuneracao": 2101.45,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2022-07-25",
-          "ponto": "P_272250"
+          "ponto": "P_272250",
+          "oficial": true
         },
         {
           "nome": "ANTONIO ALVES NETO",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2024-06-14",
-          "ponto": "P_269819"
+          "ponto": "P_269819",
+          "oficial": true
         },
         {
           "nome": "ALINE MEIRELES TENÓRIO ALMEIDA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-12-08",
-          "ponto": "P_283707"
+          "ponto": "P_283707",
+          "oficial": true
         },
         {
           "nome": "ANTONIO PEREIRA SOBRINHO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-08-22",
-          "ponto": "P_282991"
+          "ponto": "P_282991",
+          "oficial": true
         },
         {
           "nome": "JOSLEY HIGINO DE ALMEIDA LEITE",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2020-10-05",
-          "ponto": "P_267534"
+          "ponto": "P_267534",
+          "oficial": true
         },
         {
           "nome": "ROBERTO PAULINO DA SILVA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2024-11-14",
-          "ponto": "P_280355"
+          "ponto": "P_280355",
+          "oficial": true
         },
         {
           "nome": "ROCLEANE LEITE DE ARRUDA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2021-03-24",
-          "ponto": "P_268823"
+          "ponto": "P_268823",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-204420": {
       "total": 0,
@@ -2215,47 +2420,51 @@
     },
     "camara-220574": {
       "total": 25,
-      "folha": 122887.41,
+      "folha": 163325.79,
       "secretarios": [
-        {
-          "nome": "ALINE FABRICIA DE ARAÚJO RIBEIRO",
-          "nivel": 25,
-          "grg": true,
-          "remuneracao": 18719.88,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-02-27",
-          "desde": "2023-02-16",
-          "ponto": "P_274681"
-        },
         {
           "nome": "LUAN DE ALMEIDA MELO",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 27689.49,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-08",
-          "ponto": "P_273821"
+          "ponto": "P_273821",
+          "oficial": true
+        },
+        {
+          "nome": "ALINE FABRICIA DE ARAÚJO RIBEIRO",
+          "nivel": 25,
+          "grg": true,
+          "remuneracao": 25958.9,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-02-27",
+          "desde": "2023-02-16",
+          "ponto": "P_274681",
+          "oficial": true
         },
         {
           "nome": "MARCELO WAGNER BEZERRA DE CARVALHO",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 25958.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-14",
-          "ponto": "P_274431"
+          "ponto": "P_274431",
+          "oficial": true
         },
         {
           "nome": "JOSENILDA GUEDES DA SILVA",
           "nivel": 17,
           "grg": true,
-          "remuneracao": 9678.22,
+          "remuneracao": 12405.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-14",
-          "ponto": "P_274424"
+          "ponto": "P_274424",
+          "oficial": true
         },
         {
           "nome": "JESSICA PEREIRA DA SILVA",
@@ -2271,151 +2480,210 @@
           "nome": "JOÃO ADAILTON DE QUEIROZ VERAS",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-16",
-          "ponto": "P_271107"
+          "ponto": "P_271107",
+          "oficial": true
         },
         {
           "nome": "FRANCINETE DE LIMA ROCHA",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-10",
-          "ponto": "P_274148"
+          "ponto": "P_274148",
+          "oficial": true
         },
         {
           "nome": "JÉSSICA BARBOSA DE GUSMÃO",
           "nivel": 7,
           "grg": true,
-          "remuneracao": 4614.92,
+          "remuneracao": 5765.3,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-09-16",
-          "ponto": "P_283204"
+          "ponto": "P_283204",
+          "oficial": true
         },
         {
           "nome": "SAMARA CINTIA ALVES GAMA RODRIGUES",
           "nivel": 15,
           "grg": false,
-          "remuneracao": 4115.77,
+          "remuneracao": 5226.24,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-13",
-          "ponto": "P_274284"
+          "ponto": "P_274284",
+          "oficial": true
         },
         {
           "nome": "LILIANE EUSTAQUIO JÓ DA SILVA",
           "nivel": 13,
           "grg": false,
-          "remuneracao": 3392.45,
+          "remuneracao": 4445.03,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-14",
-          "ponto": "P_274427"
+          "ponto": "P_274427",
+          "oficial": true
         },
         {
           "nome": "FRANCINILDO HERCULANO LOPES",
           "nivel": 10,
           "grg": false,
-          "remuneracao": 2849.95,
+          "remuneracao": 3468.54,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-15",
-          "ponto": "P_274509"
+          "ponto": "P_274509",
+          "oficial": true
         },
         {
           "nome": "LEONARDO VINICIUS ALVES DA SILVA FIGUEIREDO",
           "nivel": 8,
           "grg": false,
-          "remuneracao": 2488.28,
+          "remuneracao": 3077.95,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-15",
-          "ponto": "P_274511"
+          "ponto": "P_274511",
+          "oficial": true
         },
         {
           "nome": "ÍTALO THÓMAS LOURENÇO DE FARIAS",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-14",
-          "ponto": "P_274429"
+          "ponto": "P_274429",
+          "oficial": true
         },
         {
           "nome": "GABRIEL DOS SANTOS TARGINO",
           "nivel": 4,
           "grg": false,
-          "remuneracao": 1764.93,
+          "remuneracao": 2296.72,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-14",
-          "ponto": "P_274425"
+          "ponto": "P_274425",
+          "oficial": true
         },
         {
           "nome": "ALEXSSANDRA PEREIRA NONATO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-05-23",
-          "ponto": "P_276766"
+          "ponto": "P_276766",
+          "oficial": true
         },
         {
           "nome": "ALISSON NOVAIS DE PAULA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-27",
           "desde": "2025-02-11",
-          "ponto": "P_262595"
+          "ponto": "P_262595",
+          "oficial": true
         },
         {
           "nome": "ANNA LUÍZA ARAÚJO EVARISTO DE SOUZA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2025-02-12",
-          "ponto": "P_281081"
+          "ponto": "P_281081",
+          "oficial": true
         },
         {
           "nome": "ÁTHYLLA TARLLYTOWN GOUVEIA FERREIRA",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-27",
           "desde": "2023-03-22",
-          "ponto": "P_275871"
+          "ponto": "P_275871",
+          "oficial": true
         },
         {
           "nome": "ESTEVAM BARBOZA DA SILVA BISNETO",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2023-02-14",
-          "ponto": "P_274432"
+          "ponto": "P_274432",
+          "oficial": true
         },
         {
           "nome": "JÉSSIKA HELEN DOS SANTOS",
           "nivel": 1,
           "grg": false,
-          "remuneracao": 1222.44,
+          "remuneracao": 1710.83,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-27",
           "desde": "2025-11-13",
-          "ponto": "P_283572"
+          "ponto": "P_283572",
+          "oficial": true
+        },
+        {
+          "nome": "MARCELLA BIANCA SOUZA DO NASCIMENTO",
+          "nivel": 1,
+          "grg": false,
+          "remuneracao": 1710.83,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-02-27",
+          "desde": "2023-03-17",
+          "ponto": "P_275787",
+          "oficial": true
+        },
+        {
+          "nome": "MARIA GOMES MOREIRA DO NASCIMENTO",
+          "nivel": 1,
+          "grg": false,
+          "remuneracao": 1710.83,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-02-27",
+          "desde": "2023-02-15",
+          "ponto": "P_274513",
+          "oficial": true
+        },
+        {
+          "nome": "MICHEL SILVA DA CRUZ",
+          "nivel": 1,
+          "grg": false,
+          "remuneracao": 1710.83,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-02-27",
+          "desde": "2024-07-11",
+          "ponto": "P_279641",
+          "oficial": true
+        },
+        {
+          "nome": "YURI MACHADO LIMA",
+          "nivel": 1,
+          "grg": false,
+          "remuneracao": 1710.83,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-02-27",
+          "desde": "2023-03-14",
+          "ponto": "P_275671",
+          "oficial": true
         },
         {
           "nome": "JOANA D'ARC SILVEIRA DA SILVA",
@@ -2426,440 +2694,441 @@
           "nomeadoEm": "2026-02-26",
           "desde": "2025-07-11",
           "ponto": "P_282717"
-        },
-        {
-          "nome": "MARCELLA BIANCA SOUZA DO NASCIMENTO",
-          "nivel": 1,
-          "grg": false,
-          "remuneracao": 1222.44,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-02-27",
-          "desde": "2023-03-17",
-          "ponto": "P_275787"
-        },
-        {
-          "nome": "MARIA GOMES MOREIRA DO NASCIMENTO",
-          "nivel": 1,
-          "grg": false,
-          "remuneracao": 1222.44,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-02-27",
-          "desde": "2023-02-15",
-          "ponto": "P_274513"
-        },
-        {
-          "nome": "MICHEL SILVA DA CRUZ",
-          "nivel": 1,
-          "grg": false,
-          "remuneracao": 1222.44,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-02-27",
-          "desde": "2024-07-11",
-          "ponto": "P_279641"
-        },
-        {
-          "nome": "YURI MACHADO LIMA",
-          "nivel": 1,
-          "grg": false,
-          "remuneracao": 1222.44,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-02-27",
-          "desde": "2023-03-14",
-          "ponto": "P_275671"
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-220585": {
       "total": 13,
-      "folha": 127306.92,
+      "folha": 169485.68,
       "secretarios": [
         {
           "nome": "RENAN SILVA DE OLIVEIRA",
           "nivel": 25,
           "grg": true,
-          "remuneracao": 18719.88,
+          "remuneracao": 25958.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-26",
           "desde": "2026-02-26",
-          "ponto": "P_274536"
+          "ponto": "P_274536",
+          "oficial": true
         },
         {
           "nome": "ALLISSON WANDER DE SOUSA SILVA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-08-09",
-          "ponto": "P_232331"
+          "ponto": "P_232331",
+          "oficial": true
         },
         {
           "nome": "MARIA TEREZA DE CARVALHO SILVA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 20217.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-09",
-          "ponto": "P_273944"
+          "ponto": "P_273944",
+          "oficial": true
         },
         {
           "nome": "FABRÍCIA DANTAS MEIRA",
           "nivel": 19,
           "grg": true,
-          "remuneracao": 11486.56,
+          "remuneracao": 14749.08,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-26",
           "desde": "2026-03-19",
-          "ponto": "P_284370"
+          "ponto": "P_284370",
+          "oficial": true
         },
         {
           "nome": "KARINA FUÃO LOBO",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 14708.72,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-23",
           "desde": "2023-02-03",
-          "ponto": "P_273153"
-        },
-        {
-          "nome": "JOÃO DA COSTA FRAZÃO JUNIOR",
-          "nivel": 15,
-          "grg": true,
-          "remuneracao": 8231.54,
-          "ato": "LEI",
-          "nomeadoEm": "2026-02-18",
-          "desde": "2023-02-03",
-          "ponto": "P_232720"
-        },
-        {
-          "nome": "ROGERIO PEREIRA FREIRE",
-          "nivel": 15,
-          "grg": true,
-          "remuneracao": 8231.54,
-          "ato": "PORTARIA",
-          "nomeadoEm": "2026-03-11",
-          "desde": "2023-02-13",
-          "ponto": "P_274221"
+          "ponto": "P_273153",
+          "oficial": true
         },
         {
           "nome": "GABRIEL EDES ALVES CENTICO MOREIRA",
           "nivel": 23,
           "grg": false,
-          "remuneracao": 7913.28,
+          "remuneracao": 12467.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_273163"
+          "ponto": "P_273163",
+          "oficial": true
         },
         {
-          "nome": "GABRIEL FERREIRA AGRA",
-          "nivel": 14,
+          "nome": "JOÃO DA COSTA FRAZÃO JUNIOR",
+          "nivel": 15,
           "grg": true,
-          "remuneracao": 7508.24,
+          "remuneracao": 10452.48,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
-          "desde": "2024-08-20",
-          "ponto": "P_280020"
+          "desde": "2023-02-03",
+          "ponto": "P_232720",
+          "oficial": true
+        },
+        {
+          "nome": "ROGERIO PEREIRA FREIRE",
+          "nivel": 15,
+          "grg": true,
+          "remuneracao": 10452.48,
+          "ato": "PORTARIA",
+          "nomeadoEm": "2026-03-11",
+          "desde": "2023-02-13",
+          "ponto": "P_274221",
+          "oficial": true
         },
         {
           "nome": "FABIANO BEZERRA DOS SANTOS",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 9779.07,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-11",
           "desde": "2023-02-03",
-          "ponto": "P_273449"
+          "ponto": "P_273449",
+          "oficial": true
+        },
+        {
+          "nome": "GABRIEL FERREIRA AGRA",
+          "nivel": 14,
+          "grg": true,
+          "remuneracao": 9671.3,
+          "ato": "LEI",
+          "nomeadoEm": "2026-02-18",
+          "desde": "2024-08-20",
+          "ponto": "P_280020",
+          "oficial": true
         },
         {
           "nome": "GUARINNI NESELLO",
           "nivel": 12,
           "grg": true,
-          "remuneracao": 6423.22,
+          "remuneracao": 8108.9,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_273453"
+          "ponto": "P_273453",
+          "oficial": true
         },
         {
           "nome": "TAMARA CAROLINE SOUSA PIGNATA",
           "nivel": 12,
           "grg": true,
-          "remuneracao": 6423.22,
+          "remuneracao": 8108.9,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-09-06",
-          "ponto": "P_277646"
+          "ponto": "P_277646",
+          "oficial": true
         },
         {
           "nome": "PATRICIA RAQUEL DO NASCIMENTO OLIVEIRA",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-03",
-          "ponto": "P_273455"
+          "ponto": "P_273455",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-220584": {
       "total": 25,
-      "folha": 128920.11,
+      "folha": 168659.7,
       "secretarios": [
         {
           "nome": "LUCINE BEZERRA DE SOUZA",
           "nivel": 23,
           "grg": true,
-          "remuneracao": 15826.56,
+          "remuneracao": 21902.27,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-02-27",
           "desde": "2008-06-27",
-          "ponto": "P_154014"
+          "ponto": "P_154014",
+          "oficial": true
         },
         {
           "nome": "ABRAAO ALVES DE SOUSA",
           "nivel": 19,
           "grg": true,
-          "remuneracao": 11486.56,
+          "remuneracao": 14749.08,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2022-03-25",
-          "ponto": "P_268931"
+          "ponto": "P_268931",
+          "oficial": true
         },
         {
           "nome": "BEATRIZ KLOSTERMANN CAVALCANTI CITTADINO",
           "nivel": 18,
           "grg": true,
-          "remuneracao": 10401.56,
+          "remuneracao": 14256.14,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2019-02-05",
-          "ponto": "P_260669"
+          "ponto": "P_260669",
+          "oficial": true
         },
         {
           "nome": "ROSIANE MIRANDA OLIVEIRA",
           "nivel": 15,
           "grg": true,
-          "remuneracao": 8231.54,
+          "remuneracao": 11149.31,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-09",
-          "ponto": "P_270510"
+          "ponto": "P_270510",
+          "oficial": true
         },
         {
           "nome": "DEMÉTRIO COSTA SOARES",
           "nivel": 14,
           "grg": true,
-          "remuneracao": 7508.24,
+          "remuneracao": 9671.3,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-07",
-          "ponto": "P_273599"
+          "ponto": "P_273599",
+          "oficial": true
         },
         {
           "nome": "LAÍS DOS SANTOS DOS PASSOS",
           "nivel": 13,
           "grg": true,
-          "remuneracao": 6784.9,
+          "remuneracao": 8890.06,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2024-09-03",
-          "ponto": "P_254734"
+          "ponto": "P_254734",
+          "oficial": true
         },
         {
           "nome": "REGIANE PEREIRA RODRIGUES SILVA",
           "nivel": 12,
           "grg": true,
-          "remuneracao": 6423.22,
+          "remuneracao": 8108.9,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-02-13",
-          "ponto": "P_274288"
+          "ponto": "P_274288",
+          "oficial": true
         },
         {
           "nome": "THAÍS CRISTIANE RIBEIRO",
           "nivel": 20,
           "grg": false,
-          "remuneracao": 6285.78,
+          "remuneracao": 7960.44,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-08-07",
-          "ponto": "P_267423"
+          "ponto": "P_267423",
+          "oficial": true
         },
         {
           "nome": "HELOÍSA FERNANDA SILVA ARAGÃO",
           "nivel": 10,
           "grg": true,
-          "remuneracao": 5699.9,
+          "remuneracao": 6937.08,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2023-03-02",
-          "ponto": "P_275278"
+          "ponto": "P_275278",
+          "oficial": true
         },
         {
           "nome": "ANDERSON RODRIGUES SAMPAIO",
           "nivel": 17,
           "grg": false,
-          "remuneracao": 4839.11,
+          "remuneracao": 6202.74,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-03",
           "desde": "2025-05-28",
-          "ponto": "P_274179"
+          "ponto": "P_274179",
+          "oficial": true
         },
         {
           "nome": "BRENDO WALKER REZENDE DE OLIVEIRA",
           "nivel": 5,
           "grg": true,
-          "remuneracao": 3891.58,
+          "remuneracao": 4984.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-27",
-          "ponto": "P_275035"
+          "ponto": "P_275035",
+          "oficial": true
         },
         {
           "nome": "LUZANNA FERREIRA MENDES PINHEIRO",
           "nivel": 5,
           "grg": true,
-          "remuneracao": 3891.58,
+          "remuneracao": 4984.12,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-03",
           "desde": "2023-02-23",
-          "ponto": "P_274987"
+          "ponto": "P_274987",
+          "oficial": true
         },
         {
           "nome": "MATHEUS MORENO DA SILVA",
           "nivel": 5,
           "grg": true,
-          "remuneracao": 3891.58,
+          "remuneracao": 4984.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-05-19",
-          "ponto": "P_282208"
+          "ponto": "P_282208",
+          "oficial": true
         },
         {
           "nome": "TAINARA OLIVEIRA RIBEIRO SILVA",
           "nivel": 14,
           "grg": false,
-          "remuneracao": 3754.12,
+          "remuneracao": 4835.65,
           "ato": "PORTARIA",
           "nomeadoEm": "2026-03-02",
           "desde": "2025-03-07",
-          "ponto": "P_277382"
+          "ponto": "P_277382",
+          "oficial": true
         },
         {
           "nome": "ALUIZIO CORREIA DA SILVA NÉTO",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-15",
-          "ponto": "P_274516"
+          "ponto": "P_274516",
+          "oficial": true
         },
         {
           "nome": "ELISANGELA MARTINS PEREIRA",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-03-29",
-          "ponto": "P_275987"
+          "ponto": "P_275987",
+          "oficial": true
         },
         {
           "nome": "GABRIELA NASCIMENTO",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-15",
-          "ponto": "P_274512"
+          "ponto": "P_274512",
+          "oficial": true
         },
         {
           "nome": "MARCOS FERNANDO BORGOGNONI",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-16",
-          "ponto": "P_274624"
+          "ponto": "P_274624",
+          "oficial": true
         },
         {
           "nome": "MIKAEL RUDNEY DOS SANTOS OLIVEIRA",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-02-07",
-          "ponto": "P_273598"
+          "ponto": "P_273598",
+          "oficial": true
         },
         {
           "nome": "WANDENBERG BISMARCK COLAÇO LIMA FILHO",
           "nivel": 4,
           "grg": true,
-          "remuneracao": 3529.86,
+          "remuneracao": 4593.44,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-04-24",
-          "ponto": "P_276377"
+          "ponto": "P_276377",
+          "oficial": true
         },
         {
           "nome": "CRISTIANO CÉSAR LOPES SITÔNIO",
           "nivel": 7,
           "grg": false,
-          "remuneracao": 2307.46,
+          "remuneracao": 2882.65,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2019-02-18",
-          "ponto": "P_262516"
+          "ponto": "P_262516",
+          "oficial": true
         },
         {
           "nome": "ANTÔNIO MARCELO DE LIMA",
           "nivel": 5,
           "grg": false,
-          "remuneracao": 1945.79,
+          "remuneracao": 2492.06,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2025-10-15",
-          "ponto": "P_283396"
+          "ponto": "P_283396",
+          "oficial": true
         },
         {
           "nome": "CAMILLE ASSIS GUEDES GALINDO",
           "nivel": 3,
           "grg": false,
-          "remuneracao": 1584.1,
+          "remuneracao": 2101.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2024-05-09",
-          "ponto": "P_279070"
+          "ponto": "P_279070",
+          "oficial": true
         },
         {
           "nome": "GIOVANNA LIMA DE OLIVEIRA",
           "nivel": 3,
           "grg": false,
-          "remuneracao": 1584.1,
+          "remuneracao": 2101.45,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2022-08-05",
-          "ponto": "P_272309"
+          "ponto": "P_272309",
+          "oficial": true
         },
         {
           "nome": "THAYNARA ROCHA GREGÓRIO DA SILVA",
           "nivel": 2,
           "grg": false,
-          "remuneracao": 1403.27,
+          "remuneracao": 1906.12,
           "ato": "LEI",
           "nomeadoEm": "2026-02-18",
           "desde": "2023-03-10",
-          "ponto": "P_275567"
+          "ponto": "P_275567",
+          "oficial": true
         }
-      ]
+      ],
+      "mesReferencia": "2026-05"
     },
     "camara-115200": {
       "total": 0,

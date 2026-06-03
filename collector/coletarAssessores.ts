@@ -12,11 +12,14 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { fetchJson } from './http.js'
+import { fetchJson, fetchText } from './http.js'
 import {
   parseRemuneracoes, construirGabinetesSenado,
   type ServidorApi, type RemuneracaoApi, type GabineteSenado, type TabelaSenado, type RemunSenado,
 } from './sources/senadoGabinete.js'
+import {
+  buscaFuncionarioUrl, remuneracaoUrl, extrairHashDaBusca, parseRemuneracaoCamara,
+} from './sources/camaraRemuneracao.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = resolve(here, '../data')
@@ -57,8 +60,9 @@ interface SecretarioGabinete {
   nomeadoEm?: string   // data da nomeação atual
   desde?: string       // início do histórico na Câmara (pode anteceder a nomeação atual)
   ponto?: string       // matrícula interna de folha (não é CPF)
+  oficial?: boolean    // true quando a remuneração veio da ficha oficial (não da tabela SP)
 }
-interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[] }
+interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; mesReferencia?: string }
 
 const cent = (n: number) => Math.round(n * 100) / 100
 
@@ -122,6 +126,77 @@ async function coletarSenado(
   )
 }
 
+// roda fn sobre os itens com no máximo `limite` em paralelo (o portal da Câmara não tem API; é
+// raspagem, então segura a concorrência p/ não tomar bloqueio).
+async function mapPool<T, R>(itens: T[], limite: number, fn: (item: T, i: number) => Promise<R>): Promise<R[]> {
+  const out: R[] = new Array(itens.length)
+  let prox = 0
+  async function worker() {
+    while (prox < itens.length) {
+      const i = prox++
+      out[i] = await fn(itens[i], i)
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limite, itens.length) }, worker))
+  return out
+}
+
+// Enriquece os secretários da Câmara com a remuneração REAL (ficha oficial do Portal da Transparência),
+// substituindo o valor tabelado. NOME → hash (busca) → bruto do mês (ficha). Quem não resolver mantém o
+// valor tabelado (fallback). Devolve o mês de referência usado.
+async function enriquecerCamaraComRemuneracaoReal(
+  porPolitico: Record<string, GabineteParlamentar>,
+  deputados: Politico[],
+): Promise<string | undefined> {
+  const secs = deputados.flatMap((d) => porPolitico[d.id]?.secretarios ?? [])
+  if (secs.length === 0) return undefined
+  console.log(`> Buscando remuneração real de ${secs.length} secretários da Câmara (Portal da Transparência)...`)
+
+  // 1. NOME → hash (uma busca por pessoa)
+  const hashes = await mapPool(secs, 5, async (s) => {
+    try { return extrairHashDaBusca(await fetchText(buscaFuncionarioUrl(s.nome), { tentativas: 2 }), s.nome) }
+    catch { return null }
+  })
+
+  // 2. descobre o mês de referência: testa do mês corrente p/ trás usando os primeiros hashes resolvidos
+  const comHash = secs.map((s, i) => ({ s, hash: hashes[i] })).filter((x) => x.hash) as { s: SecretarioGabinete; hash: string }[]
+  if (comHash.length === 0) { console.warn('! Nenhum secretário resolvido na Câmara — mantendo tabela.'); return undefined }
+  const hoje = new Date()
+  let mesRef: { ano: number; mes: number } | undefined
+  for (let i = 1; i <= JANELA_FOLHA && !mesRef; i++) {
+    const d = new Date(Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth() - i, 1))
+    const ano = d.getUTCFullYear(), mes = d.getUTCMonth() + 1
+    for (const { hash } of comHash.slice(0, 5)) {
+      try {
+        const r = parseRemuneracaoCamara(await fetchText(remuneracaoUrl(hash, ano, mes), { tentativas: 2 }))
+        if (r && r.bruto > 0) { mesRef = { ano, mes }; break }
+      } catch { /* tenta próximo */ }
+    }
+  }
+  if (!mesRef) { console.warn('! Não achei mês com remuneração na Câmara — mantendo tabela.'); return undefined }
+
+  // 3. bruto real de cada um no mês de referência
+  let resolvidos = 0
+  await mapPool(comHash, 5, async ({ s, hash }) => {
+    try {
+      const r = parseRemuneracaoCamara(await fetchText(remuneracaoUrl(hash, mesRef!.ano, mesRef!.mes), { tentativas: 2 }))
+      if (r && r.bruto > 0) { s.remuneracao = r.bruto; s.oficial = true; resolvidos++ }
+    } catch { /* mantém tabela */ }
+  })
+
+  const mesReferencia = `${mesRef.ano}-${String(mesRef.mes).padStart(2, '0')}`
+  // recalcula a folha de cada gabinete e marca o mês
+  for (const d of deputados) {
+    const g = porPolitico[d.id]
+    if (!g || g.total === 0) continue
+    g.secretarios.sort((a, b) => b.remuneracao - a.remuneracao)
+    g.folha = cent(g.secretarios.reduce((acc, x) => acc + x.remuneracao, 0))
+    g.mesReferencia = mesReferencia
+  }
+  console.log(`  ${resolvidos}/${secs.length} com valor oficial (mês ${mesReferencia}); o resto manteve a tabela.`)
+  return mesReferencia
+}
+
 async function main() {
   const politicos: Politico[] = JSON.parse(readFileSync(resolve(dataDir, 'politicos.json'), 'utf-8'))
   const deputados = politicos.filter((p) => p.casa === 'camara')
@@ -165,6 +240,14 @@ async function main() {
     }
   }
 
+  // Câmara: troca o valor tabelado pela remuneração REAL da ficha oficial (raspagem; com fallback).
+  let mesCamara: string | undefined
+  try {
+    mesCamara = await enriquecerCamaraComRemuneracaoReal(porPolitico, deputados)
+  } catch (e) {
+    console.warn('! Falha ao buscar remuneração real da Câmara:', e instanceof Error ? e.message : e)
+  }
+
   // Senado: comissionados de gabinete/escritório (roster nominal + custo real da folha).
   let tabelaSenado: TabelaSenado | undefined
   let senadoComGabinete = 0
@@ -186,8 +269,8 @@ async function main() {
     atualizadoEm: hojeISO(),
     fonte: URL_FUNCIONARIOS,
     descricao:
-      'Câmara: secretários parlamentares lotados no gabinete de cada deputado e a folha mensal, somada pela tabela oficial (vencimento + GRG por nível SP) — folha bruta tabelada, sem auxílio/encargos nem o valor exato (consulta transpnet). ' +
-      'Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês). O salário de cada pessoa é estimado pelo símbolo do cargo (a folha não traz nome) — o valor exato fica na consulta oficial individual, linkada. ALPB não divulga por gabinete com a mesma granularidade.',
+      'Câmara: secretários parlamentares lotados no gabinete de cada deputado, com a remuneração bruta REAL do mês (ficha oficial do Portal da Transparência); quando a ficha não resolve, cai na tabela oficial (vencimento + GRG por nível SP). Não inclui auxílios/encargos (pagos à parte). ' +
+      'Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ALPB não divulga por gabinete com a mesma granularidade.',
     tabela: TABELA,
     tabelaSenado,
     porPolitico,
@@ -198,7 +281,7 @@ async function main() {
   const folhaCamara = deputados.reduce((s, d) => s + (porPolitico[d.id]?.folha ?? 0), 0)
   const folhaSenado = senadores.reduce((s, sen) => s + (porPolitico[sen.id]?.folha ?? 0), 0)
   console.log(
-    `OK: Câmara ${deputados.length} deputados (${comGabinete.length - senadoComGabinete} com gabinete), folha R$ ${folhaCamara.toLocaleString('pt-BR')}; ` +
+    `OK: Câmara ${deputados.length} deputados (${comGabinete.length - senadoComGabinete} com gabinete${mesCamara ? `, folha real ${mesCamara}` : ''}), folha R$ ${folhaCamara.toLocaleString('pt-BR')}; ` +
     `Senado ${senadoComGabinete} gabinetes${tabelaSenado ? ` (folha ${tabelaSenado.mesReferencia})` : ''}, folha R$ ${folhaSenado.toLocaleString('pt-BR')} → data/assessores.json`,
   )
 }
