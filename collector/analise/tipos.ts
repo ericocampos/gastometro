@@ -12,7 +12,7 @@ export interface Alerta {
   politicoId: string
   parlamentarNome: string
   fotoUrl?: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   severidade: 'baixa' | 'media' | 'alta'
   tipo: string
   titulo: string

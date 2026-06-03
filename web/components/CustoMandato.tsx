@@ -4,7 +4,7 @@ import type { CustosMandato, CustoCasa, ItemCusto } from '@/lib/tipos'
 import { brlInteiro } from '@/lib/formato'
 import { custoTotal, corCasa } from '@/lib/custos'
 
-type Casa = 'camara' | 'senado'
+type Casa = 'camara' | 'senado' | 'assembleia'
 
 // ícones de traço (estilo do mockup)
 const Icones = {
@@ -82,7 +82,7 @@ export function CustoMandato({
     <div>
       {!casaFixa && (
         <div className="mb-4 inline-flex rounded-lg border border-borda bg-superficie p-0.5 text-sm">
-          {(['camara', 'senado'] as Casa[]).map((k) => (
+          {(['camara', 'senado', 'assembleia'] as Casa[]).map((k) => (
             <button
               key={k}
               onClick={() => setCasa(k)}
@@ -106,7 +106,7 @@ export function CustoMandato({
           icone={Icones.total}
           rotulo="Custo total estimado"
           valor={(total.aproximado ? '≈ ' : '') + brlInteiro(total.total)}
-          legenda={`Por mês, por ${casa === 'camara' ? 'deputado' : 'senador'}`}
+          legenda={`Por mês, por ${casa === 'camara' ? 'deputado' : casa === 'senado' ? 'senador' : 'deputado estadual'}`}
           cor={cor}
           destaque
         />
@@ -115,6 +115,7 @@ export function CustoMandato({
       <p className="mt-3 text-xs text-tinta-tenue">
         Valores de referência · atualizado em {custos.atualizadoEm}.{' '}
         {casa === 'senado' && 'No Senado a cota tem parcela fixa + transporte aéreo variável e não há verba de gabinete fixa (até 50 assessores), então o total exclui o pessoal. '}
+        {casa === 'assembleia' && 'Na Assembleia a cota (VIAP) é um crédito mensal que acumula saldo não usado, e a verba de gabinete (comissionados) não é divulgada por parlamentar — então o total exclui o pessoal. '}
         Fontes:{' '}
         {c.fontes.map((f, i) => (
           <span key={f.url}>

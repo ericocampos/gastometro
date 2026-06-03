@@ -10,7 +10,7 @@ export function Assessores({
   quantidade: number | null
   atualizadoEm?: string
   gabinete: ItemCusto
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
 }) {
   const cor = corCasa(casa)
   const teto = gabinete.valor != null ? brlInteiro(gabinete.valor) : null

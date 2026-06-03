@@ -14,12 +14,13 @@ const POR_PAGINA = 24
 const selectClasse =
   'rounded-md border border-borda bg-superficie px-2.5 py-1.5 text-tinta transition-colors hover:border-marca focus:border-marca'
 
-// cor por casa: Câmara azul, Senado âmbar (compartilhada em @/lib/custos)
-const casaCurta = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara' : 'Senado')
+// cor por casa: Câmara azul, Senado âmbar, Assembleia violeta (compartilhada em @/lib/custos)
+const casaCurta = (c: 'camara' | 'senado' | 'assembleia') =>
+  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : 'Assembleia'
 
 export function RankingView({ series }: { series: SerieParlamentar[] }) {
   const [periodoVal, setPeriodoVal] = useState(() => valorPeriodoPadrao(series))
-  const [casa, setCasa] = useState<'todas' | 'camara' | 'senado'>('todas')
+  const [casa, setCasa] = useState<'todas' | 'camara' | 'senado' | 'assembleia'>('todas')
   const [partido, setPartido] = useState('todos')
   const [busca, setBusca] = useState('')
   const [pagina, setPagina] = useState(0)
@@ -51,6 +52,7 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
       total: conjunto.length,
       camara: conjunto.filter((l) => l.casa === 'camara').length,
       senado: conjunto.filter((l) => l.casa === 'senado').length,
+      assembleia: conjunto.filter((l) => l.casa === 'assembleia').length,
     }),
     [conjunto],
   )
@@ -83,8 +85,9 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
           className={selectClasse}
         >
           <option value="todas">Todas as casas</option>
-          <option value="camara">Câmara</option>
+          <option value="camara">Câmara (federal)</option>
           <option value="senado">Senado</option>
+          <option value="assembleia">Assembleia (estadual)</option>
         </select>
         <label className="sr-only" htmlFor="filtro-partido">Partido</label>
         <select
@@ -108,10 +111,11 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
       </div>
 
       {/* contagem reativa — logo abaixo dos filtros, reforçando que reflete o filtro aplicado */}
-      <div className="mb-6 grid grid-cols-3 gap-3">
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <CardContagem rotulo="Parlamentares" valor={contagem.total} cor="var(--marca)" />
-        <CardContagem rotulo="Deputados · Câmara" valor={contagem.camara} cor="#2563eb" />
-        <CardContagem rotulo="Senadores" valor={contagem.senado} cor="#c87f1a" />
+        <CardContagem rotulo="Câmara · federal" valor={contagem.camara} cor="#2563eb" />
+        <CardContagem rotulo="Senado" valor={contagem.senado} cor="#c87f1a" />
+        <CardContagem rotulo="Assembleia · estadual" valor={contagem.assembleia} cor="#7c3aed" />
       </div>
 
       {filtrados.length === 0 ? (

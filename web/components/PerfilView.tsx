@@ -23,7 +23,8 @@ import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
 
-const casaLonga = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara dos Deputados' : 'Senado Federal')
+const casaLonga = (c: 'camara' | 'senado' | 'assembleia') =>
+  c === 'camara' ? 'Câmara dos Deputados' : c === 'senado' ? 'Senado Federal' : 'Assembleia Legislativa da Paraíba'
 
 export function PerfilView({
   politico, despesas, series, perfil, custos, assessores, alertas, alertasPorDespesa,
@@ -112,8 +113,12 @@ export function PerfilView({
           <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-tinta-suave">
             <span className="rounded-sm bg-superficie-2 px-1.5 py-0.5 font-medium text-tinta">{politico.partido}</span>
             <span>{casaLonga(politico.casa)}</span>
-            <span className="text-tinta-tenue">·</span>
-            <span className="text-tinta-tenue">legislaturas {politico.legislaturas.join(', ')}</span>
+            {politico.legislaturas.length > 0 && (
+              <>
+                <span className="text-tinta-tenue">·</span>
+                <span className="text-tinta-tenue">legislaturas {politico.legislaturas.join(', ')}</span>
+              </>
+            )}
           </p>
         </div>
       </header>

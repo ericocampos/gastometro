@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const PoliticoSchema = z.object({
   id: z.string(),
   nome: z.string(),
-  casa: z.enum(['camara', 'senado']),
+  casa: z.enum(['camara', 'senado', 'assembleia']),
   partido: z.string(),
   uf: z.string(),
   legislaturas: z.array(z.number()),

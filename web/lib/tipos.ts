@@ -1,7 +1,7 @@
 export interface Politico {
   id: string
   nome: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   partido: string
   uf: string
   legislaturas: number[]
@@ -12,7 +12,7 @@ export interface ItemRanking {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   total: number
 }
 
@@ -53,7 +53,7 @@ export interface Alerta {
   politicoId: string
   parlamentarNome?: string
   fotoUrl?: string
-  casa?: 'camara' | 'senado'
+  casa?: 'camara' | 'senado' | 'assembleia'
   severidade: 'baixa' | 'media' | 'alta'
   tipo: string
   titulo: string
@@ -83,7 +83,7 @@ export interface CustoCasa {
 export interface CustosMandato {
   atualizadoEm: string
   observacao: string
-  casas: Record<'camara' | 'senado', CustoCasa>
+  casas: Record<'camara' | 'senado' | 'assembleia', CustoCasa>
 }
 
 export interface Assessores {

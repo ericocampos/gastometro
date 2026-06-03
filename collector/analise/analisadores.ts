@@ -1,7 +1,7 @@
 import type { Despesa } from '../sources/types.js'
 import { type Alerta, type Evidencia, mesAno, brl, inteiro } from './tipos.js'
 
-export interface Politico { id: string; nome: string; casa: 'camara' | 'senado' }
+export interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' }
 
 export interface CfgAnalise {
   combustivel: { categoriaCamara: string; precoLitro: number; kmPorLitro: number; kmDiaAtencao: number; kmDiaAlta: number }

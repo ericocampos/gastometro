@@ -9,4 +9,6 @@ export function custoTotal(c: CustoCasa): { total: number; aproximado: boolean }
   return { total, aproximado }
 }
 
-export const corCasa = (casa: 'camara' | 'senado') => (casa === 'camara' ? '#2563eb' : '#c87f1a')
+// Câmara azul, Senado âmbar, Assembleia (estadual) violeta
+export const corCasa = (casa: 'camara' | 'senado' | 'assembleia') =>
+  casa === 'camara' ? '#2563eb' : casa === 'senado' ? '#c87f1a' : '#7c3aed'

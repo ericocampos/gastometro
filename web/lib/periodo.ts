@@ -9,7 +9,7 @@ export interface SerieParlamentar {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   legislaturas: number[]
   serieMensal: PontoMensal[]
   fotoUrl?: string
@@ -19,7 +19,7 @@ export interface LinhaRanking {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   total: number
   fotoUrl?: string
 }
