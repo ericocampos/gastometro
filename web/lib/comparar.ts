@@ -5,7 +5,7 @@ export interface ResumoComparado {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   total: number
   mediaMensal: number
 }

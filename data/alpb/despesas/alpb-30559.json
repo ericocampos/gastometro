@@ -1,0 +1,81 @@
+[
+  {
+    "id": "alpb-30559-2023-01-18-0",
+    "politicoId": "alpb-30559",
+    "data": "2023-01-18",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Locação ou Fretamento de Veículos Automotores",
+    "fornecedor": {
+      "nome": "AUTO CAR SEVIÇOS DE LOCAÇÃO E TURISMO LTDA",
+      "cpfCnpj": "****12.119/000****"
+    },
+    "documento": "REC",
+    "valor": 8500
+  },
+  {
+    "id": "alpb-30559-2023-01-18-1",
+    "politicoId": "alpb-30559",
+    "data": "2023-01-18",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Combustíveis e Lubrificantes",
+    "fornecedor": {
+      "nome": "GS Comercio de Combustiveis e Lubrificantes Ltda",
+      "cpfCnpj": "****89.353/000****"
+    },
+    "documento": "N F",
+    "numero": "2196",
+    "valor": 1267.53
+  },
+  {
+    "id": "alpb-30559-2023-01-11-2",
+    "politicoId": "alpb-30559",
+    "data": "2023-01-11",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Consultoria",
+    "fornecedor": {
+      "nome": "CHARLES MASSENA ALVES - ME",
+      "cpfCnpj": "****77.307/000****"
+    },
+    "documento": "N F",
+    "numero": "0001",
+    "valor": 12000
+  },
+  {
+    "id": "alpb-30559-2023-01-10-3",
+    "politicoId": "alpb-30559",
+    "data": "2023-01-10",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Contabilidade",
+    "fornecedor": {
+      "nome": "CONPLAN - CONTABILIDADE PLANEJAMENTO",
+      "cpfCnpj": "****62.153/000****"
+    },
+    "documento": "N F",
+    "numero": "0001",
+    "valor": 7000
+  },
+  {
+    "id": "alpb-30559-2023-01-11-4",
+    "politicoId": "alpb-30559",
+    "data": "2023-01-11",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Advogados",
+    "fornecedor": {
+      "nome": "MARIA DEBORA PALOMA LIMA SILVA",
+      "cpfCnpj": "***.721.89***"
+    },
+    "documento": "N F",
+    "numero": "0001",
+    "valor": 12000
+  }
+]

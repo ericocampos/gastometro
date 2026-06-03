@@ -10,7 +10,8 @@ import { SecaoTitulo } from './SecaoTitulo'
 import { GraficoComparado, CORES_COMPARACAO } from './GraficoComparado'
 
 const MAX = 4
-const casaLabel = (c: 'camara' | 'senado') => (c === 'camara' ? 'Câmara' : 'Senado')
+const casaLabel = (c: 'camara' | 'senado' | 'assembleia') =>
+  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : 'Assembleia'
 
 export function CompararView({ series }: { series: SerieParlamentar[] }) {
   const router = useRouter()

@@ -40,10 +40,25 @@ function MarcaAlertaIcone({ marca }: { marca: MarcaAlerta }) {
   )
 }
 
-// Link do documento: nota fiscal real (Câmara/Senado recente), senão portal do senador, senão —
-function LinkDoc({ d, portalSenado }: { d: Despesa; portalSenado?: string }) {
+type Casa = 'camara' | 'senado' | 'assembleia'
+
+// Página oficial da VIAP do deputado/mês na ALPB. A URL é determinística (id+ano+mês); é lá que
+// a planilha .ods da prestação de contas abre (o link direto do arquivo fica num caminho de
+// upload não-determinístico, por isso apontamos pra página, não pro arquivo).
+const VIAP_PAGINA = 'http://www.al.pb.leg.br/transparencia/deputados/viap-v2'
+function planilhaViap(politicoId: string, ano: number, mes: number): string {
+  const viapId = politicoId.replace(/^alpb-/, '')
+  return `${VIAP_PAGINA}?tipo_viap=deputados&ano_viap=${ano}&mes_viap=${mes}&deputado=${viapId}`
+}
+
+// Link do documento: nota fiscal real (Câmara/Senado recente); na Assembleia a planilha da VIAP
+// do mês (não há nota individual); no Senado o portal do senador; senão —.
+function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSenado?: string; casa?: Casa; politicoId?: string }) {
   if (d.urlDocumento) {
     return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">nota</a>
+  }
+  if (casa === 'assembleia' && politicoId && d.ano && d.mes) {
+    return <a href={planilhaViap(politicoId, d.ano, d.mes)} target="_blank" rel="noopener noreferrer" className="text-marca underline">planilha ↗</a>
   }
   if (portalSenado) {
     return <a href={portalSenado} target="_blank" rel="noopener noreferrer" className="text-marca underline">portal ↗</a>
@@ -52,11 +67,12 @@ function LinkDoc({ d, portalSenado }: { d: Despesa; portalSenado?: string }) {
 }
 
 export function DetalhamentoGastos({
-  despesas, portalSenado, alertasPorDespesa, politicoId,
+  despesas, portalSenado, casa, alertasPorDespesa, politicoId,
 }: {
   despesas: Despesa[]
   // URL da prestação de contas do senador no portal (Senado não expõe a nota individual na base aberta)
   portalSenado?: string
+  casa?: Casa
   // despesaId → marca, para destacar as linhas que geraram ponto de atenção
   alertasPorDespesa?: Record<string, MarcaAlerta>
   politicoId?: string
@@ -125,6 +141,15 @@ export function DetalhamentoGastos({
         </p>
       )}
 
+      {casa === 'assembleia' && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Notas da Assembleia:</strong> a ALPB não publica a nota
+          fiscal individual — a fonte é a planilha da VIAP do mês (e o CNPJ do fornecedor vem
+          parcialmente mascarado na origem). O link “planilha ↗” abre a prestação de contas daquele
+          mês na página oficial da Assembleia.
+        </p>
+      )}
+
       <p className="mb-2 text-xs text-tinta-suave">{filtradas.length} lançamentos</p>
 
       {temMarcadas && (
@@ -161,7 +186,7 @@ export function DetalhamentoGastos({
             {d.fornecedor.cnpjCpf && <p className="text-xs text-tinta-tenue">{d.fornecedor.cnpjCpf}</p>}
             <div className="mt-2 flex items-end justify-between gap-3">
               <span className="text-xs text-tinta-suave">{d.categoria}</span>
-              <span className="shrink-0 text-sm"><LinkDoc d={d} portalSenado={portalSenado} /></span>
+              <span className="shrink-0 text-sm"><LinkDoc d={d} portalSenado={portalSenado} casa={casa} politicoId={politicoId} /></span>
             </div>
           </li>
           )
@@ -199,7 +224,7 @@ export function DetalhamentoGastos({
                   )}
                 </td>
                 <td className="py-1.5 pr-2 text-right tabular-nums text-tinta">{brl(d.valor)}</td>
-                <td className="py-1.5 whitespace-nowrap"><LinkDoc d={d} portalSenado={portalSenado} /></td>
+                <td className="py-1.5 whitespace-nowrap"><LinkDoc d={d} portalSenado={portalSenado} casa={casa} politicoId={politicoId} /></td>
               </tr>
               )
             })}

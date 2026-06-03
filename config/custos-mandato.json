@@ -22,6 +22,16 @@
         { "nome": "Senado · CEAPS (cota)", "url": "https://www12.senado.leg.br/transparencia" },
         { "nome": "Senado · estrutura remuneratória", "url": "https://www12.senado.leg.br/transparencia/rh/segp/estrutura-remuneratoria" }
       ]
+    },
+    "assembleia": {
+      "rotulo": "Deputado Estadual",
+      "salario": 34774.64,
+      "cota": { "valor": 50000, "rotulo": "VIAP mensal · crédito (acumula saldo)", "aproximado": false },
+      "gabinete": { "valor": null, "rotulo": "Comissionados pagos pela ALPB · não divulgado por parlamentar", "aproximado": true },
+      "fontes": [
+        { "nome": "ALPB · VIAP (verba indenizatória)", "url": "http://www.al.pb.leg.br/transparencia/deputados/viap-v2" },
+        { "nome": "ALPB · remunerações", "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes" }
+      ]
     }
   }
 }

@@ -49,7 +49,7 @@ export function AlertasView({ alertas }: { alertas: Alerta[] }) {
   )
 
   const politicos = useMemo(() => {
-    const m = new Map<string, { nome: string; casa?: 'camara' | 'senado' }>()
+    const m = new Map<string, { nome: string; casa?: 'camara' | 'senado' | 'assembleia' }>()
     for (const a of alertas) {
       if (!passaTipoSev(a)) continue
       if (ano !== 'todos' && !(a.anos ?? []).includes(Number(ano))) continue
@@ -119,7 +119,7 @@ export function AlertasView({ alertas }: { alertas: Alerta[] }) {
           <option value="todos">Todos os parlamentares</option>
           {politicos.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.nome}{p.casa ? ` · ${p.casa === 'senado' ? 'Senado' : 'Câmara'}` : ''}
+              {p.nome}{p.casa ? ` · ${p.casa === 'senado' ? 'Senado' : p.casa === 'assembleia' ? 'Assembleia' : 'Câmara'}` : ''}
             </option>
           ))}
         </select>
@@ -143,7 +143,7 @@ export function AlertasView({ alertas }: { alertas: Alerta[] }) {
 
 function AlertaCard({ alerta: a, ano }: { alerta: Alerta; ano: string }) {
   const s = SEV[a.severidade]
-  const casa = a.casa === 'senado' ? 'Senado' : a.casa === 'camara' ? 'Câmara' : ''
+  const casa = a.casa === 'senado' ? 'Senado' : a.casa === 'assembleia' ? 'Assembleia' : a.casa === 'camara' ? 'Câmara' : ''
   // com um ano selecionado, mostra só as evidências daquele ano (mantém as sem data)
   const evidencias = ano === 'todos'
     ? a.evidencias

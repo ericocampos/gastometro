@@ -1,0 +1,81 @@
+[
+  {
+    "id": "alpb-30545-2023-01-16-0",
+    "politicoId": "alpb-30545",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Locação ou Fretamento de Veículos Automotores",
+    "fornecedor": {
+      "nome": "CATINGUEIRA MULTIMARCAS COM. DE VEICULOS E LOCADOR",
+      "cpfCnpj": "****93.325/000****"
+    },
+    "documento": "REC",
+    "valor": 7500
+  },
+  {
+    "id": "alpb-30545-2023-01-16-1",
+    "politicoId": "alpb-30545",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Combustíveis e Lubrificantes",
+    "fornecedor": {
+      "nome": "MEDEIROS COMERCIO DE COMBUSTIVEIS LTDA",
+      "cpfCnpj": "****44.552/000****"
+    },
+    "documento": "NF",
+    "numero": "2102",
+    "valor": 3998.57
+  },
+  {
+    "id": "alpb-30545-2023-01-16-2",
+    "politicoId": "alpb-30545",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "DIVULGAÇÃO MANDATO PARLAMENTAR",
+    "categoria": "Divulgação do Mandato Parlamentar",
+    "fornecedor": {
+      "nome": "YAMMARA DA SILVA FERNANDES MAGALHAES",
+      "cpfCnpj": "****91.357/000****"
+    },
+    "documento": "NF",
+    "numero": "0001",
+    "valor": 11500
+  },
+  {
+    "id": "alpb-30545-2023-01-16-3",
+    "politicoId": "alpb-30545",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Contabilidade",
+    "fornecedor": {
+      "nome": "VERTICE CONTABILIDADE PUBLICA E EMPRE. LTDA-ME",
+      "cpfCnpj": "****54.537/000****"
+    },
+    "documento": "NF",
+    "numero": "0001",
+    "valor": 5000
+  },
+  {
+    "id": "alpb-30545-2023-01-16-4",
+    "politicoId": "alpb-30545",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Advogados",
+    "fornecedor": {
+      "nome": "FRANCISCA FRANCINETE DE ALEXANDRIA",
+      "cpfCnpj": "***.462.62***"
+    },
+    "documento": "NF",
+    "numero": "708523",
+    "valor": 12000
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "geradoEm": "2026-06-03",
+  "periodos": {
+    "anoIni": 2023,
+    "anoFim": 2026,
+    "meses": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "deputados": 67,
+  "comFoto": 54,
+  "porMatch": {
+    "sapl-parlamentar": 32,
+    "depara": 2,
+    "sapl-completo": 27,
+    "sapl-tokens": 6
+  },
+  "totalDespesas": 15102,
+  "totalValor": 63589835.170000024,
+  "semMatch": []
+}

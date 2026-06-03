@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { carregarConfig } from './config.js'
@@ -53,22 +53,55 @@ async function main() {
     }
   }
 
-  // Perfis (bio + proposições)
+  // Deputados estaduais (ALPB): mescla o dataset gerado por `npm run coletar:alpb`.
+  // É bespoke da PB; outros estados/forks simplesmente não terão data/alpb e seguem só com o federal.
+  const alpbDir = resolve(dataDir, 'alpb')
+  const alpbDeputados = resolve(alpbDir, 'deputados.json')
+  if (existsSync(alpbDeputados)) {
+    interface DepAlpb { politicoId: string; nomeRegistro: string; nomeParlamentar?: string; partido?: string; fotoUrl?: string; mandato?: Politico['mandato'] }
+    interface DespAlpb { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cpfCnpj?: string }; valor: number }
+    const deps = JSON.parse(readFileSync(alpbDeputados, 'utf-8')) as DepAlpb[]
+    let n = 0
+    for (const d of deps) {
+      todosPoliticos.push({
+        id: d.politicoId, nome: d.nomeParlamentar || d.nomeRegistro, casa: 'assembleia',
+        partido: d.partido ?? '—', uf: cfg.uf, legislaturas: [], fotoUrl: d.fotoUrl, mandato: d.mandato,
+      })
+      const arq = resolve(alpbDir, 'despesas', `${d.politicoId}.json`)
+      const lote = existsSync(arq) ? (JSON.parse(readFileSync(arq, 'utf-8')) as DespAlpb[]) : []
+      for (const x of lote) {
+        todasDespesas.push({
+          id: x.id, politicoId: x.politicoId, data: x.data, ano: x.ano, mes: x.mes,
+          categoria: x.categoria, fornecedor: { nome: x.fornecedor.nome, cnpjCpf: x.fornecedor.cpfCnpj },
+          valor: x.valor,
+        })
+        n++
+      }
+    }
+    console.log(`> ALPB mesclado: ${deps.length} deputados estaduais, ${n} despesas`)
+  } else {
+    console.log('> ALPB ausente (rode `npm run coletar:alpb` para incluir os deputados estaduais)')
+  }
+
+  // Perfis (bio + proposições) — só Câmara/Senado têm enriquecimento; a ALPB entra sem perfil.
   const perfis: PerfilParlamentar[] = []
   for (const p of todosPoliticos) {
     const chave = `perfil/${p.id}`
     let perfil = cache.ler<PerfilParlamentar>(chave)
     if (!perfil) {
-      try {
-        perfil = await fontePerfilDaCasa(p.casa).buscarPerfil(p)
-        cache.gravar(chave, perfil)
-      } catch (e) {
-        console.error(`  ! falha no perfil de ${p.id}: ${(e as Error).message} — perfil parcial`)
+      if (p.casa === 'assembleia') {
         perfil = { id: p.id, redes: [], proposicoes: [] }
+      } else {
+        try {
+          perfil = await fontePerfilDaCasa(p.casa).buscarPerfil(p)
+          cache.gravar(chave, perfil)
+        } catch (e) {
+          console.error(`  ! falha no perfil de ${p.id}: ${(e as Error).message} — perfil parcial`)
+          perfil = { id: p.id, redes: [], proposicoes: [] }
+        }
       }
     }
     perfis.push(perfil)
-    console.log(`  perfil ${p.nome}: ${perfil.proposicoes.length} proposições`)
   }
 
   // Saídas normalizadas

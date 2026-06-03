@@ -1,4 +1,4 @@
-import type { PontoMensal } from './tipos'
+import type { PontoMensal, MandatoParlamentar } from './tipos'
 
 export type Periodo =
   | { tipo: 'tudo' }
@@ -9,19 +9,21 @@ export interface SerieParlamentar {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   legislaturas: number[]
   serieMensal: PontoMensal[]
   fotoUrl?: string
+  mandato?: MandatoParlamentar
 }
 
 export interface LinhaRanking {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   total: number
   fotoUrl?: string
+  mandato?: MandatoParlamentar
 }
 
 export interface ResumoPeriodo {
@@ -59,6 +61,7 @@ export function rankingNoPeriodo(series: SerieParlamentar[], periodo: Periodo): 
       casa: s.casa,
       total: totalNoPeriodo(s.serieMensal, periodo),
       fotoUrl: s.fotoUrl,
+      mandato: s.mandato,
     }))
     .sort((a, b) => b.total - a.total)
 }
@@ -86,6 +89,25 @@ export function totalGeralPorAno(series: SerieParlamentar[]): TotalAnual[] {
   return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, total }))
 }
 
+// Câmara/Senado = federal; Assembleia = estadual. Separar as esferas evita misturar duas
+// séries de cobertura diferente (a federal vem de 2008+; a estadual só de 2023+) num único
+// total que daria um salto enganoso a partir de 2023.
+export interface TotalAnualEsfera { ano: number; federal: number; estadual: number }
+
+export function totalPorAnoPorEsfera(series: SerieParlamentar[]): TotalAnualEsfera[] {
+  const porAno = new Map<number, { federal: number; estadual: number }>()
+  for (const s of series) {
+    const esfera = s.casa === 'assembleia' ? 'estadual' : 'federal'
+    for (const p of s.serieMensal) {
+      const ano = Number(p.anoMes.slice(0, 4))
+      const e = porAno.get(ano) ?? { federal: 0, estadual: 0 }
+      e[esfera] += p.total
+      porAno.set(ano, e)
+    }
+  }
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v }))
+}
+
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   const anos = new Set<number>()
   for (const s of series) for (const p of s.serieMensal) anos.add(Number(p.anoMes.slice(0, 4)))
@@ -105,9 +127,11 @@ export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {
   return [...legs].sort((a, b) => b - a)
 }
 
+// Rótulo de uma legislatura (janela fixa de 4 anos, igual p/ todo cargo e esfera). O cabeçalho
+// do seletor já diz "Por legislatura", então aqui basta o número + os anos.
 export function rotuloMandato(leg: number): string {
   const anos = anosDaLegislatura(leg)
-  return `${leg}ª legislatura (${anos[0]}–${anos[3]})`
+  return `${leg}ª · ${anos[0]}–${anos[3]}`
 }
 
 export function parsePeriodoValor(valor: string): Periodo {

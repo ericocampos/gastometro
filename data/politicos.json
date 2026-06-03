@@ -773,5 +773,935 @@
     "legislaturas": [
       57
     ]
+  },
+  {
+    "id": "alpb-12731",
+    "nome": "Adriano Galdino",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/89/89_foto_parlamentar_Jq2avFH.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30541",
+    "nome": "Anderson Monteiro",
+    "casa": "assembleia",
+    "partido": "PV",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/157/157_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-556",
+    "nome": "Anísio Maia",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-592",
+    "nome": "Branco Mendes",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/66/66_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16714",
+    "nome": "Buba Germano",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30551",
+    "nome": "Cabo Gilberto Silva",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-595",
+    "nome": "Caio Roberto",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/116/116_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20,
+      "afastado": true
+    }
+  },
+  {
+    "id": "alpb-16715",
+    "nome": "Camila Toscano",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/131/131_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30557",
+    "nome": "Chió",
+    "casa": "assembleia",
+    "partido": "PV",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/164/164_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30555",
+    "nome": "Cida Ramos",
+    "casa": "assembleia",
+    "partido": "PT",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/156/156_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-616",
+    "nome": "Doda de Tião",
+    "casa": "assembleia",
+    "partido": "PTB",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30561",
+    "nome": "Drª Paula",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/166/166_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30545",
+    "nome": "Dr. Erico",
+    "casa": "assembleia",
+    "partido": "CIDA",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-627",
+    "nome": "Edmilson Soares",
+    "casa": "assembleia",
+    "partido": "POD",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30543",
+    "nome": "Eduardo Carneiro",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/158/158_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16717",
+    "nome": "Estela Bezerra",
+    "casa": "assembleia",
+    "partido": "PT",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30547",
+    "nome": "Felipe Leitão",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/160/160_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16711",
+    "nome": "Galego Souza",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/134/134_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-658",
+    "nome": "Hervázio Bezerra",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/117/117_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16718",
+    "nome": "Inácio Falcão",
+    "casa": "assembleia",
+    "partido": "PCdoB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/141/141_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-34607",
+    "nome": "Drª Jane Panta",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/170/170_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16722",
+    "nome": "Jeová Campos",
+    "casa": "assembleia",
+    "partido": "PT",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-16723",
+    "nome": "Bosco Carneiro",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/52/52_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-02-01",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-665",
+    "nome": "João Gonçalves",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/59/59_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30549",
+    "nome": "Júnior Araújo",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/161/161_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-675",
+    "nome": "Jutay Meneses",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/122/122_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-12732",
+    "nome": "Manoel Ludgério",
+    "casa": "assembleia",
+    "partido": "PSDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/55/55_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-04-01",
+          "fim": "2026-12-20"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-30559",
+    "nome": "Moacir Rodrigues",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30566",
+    "nome": "Pollyanna Dutra",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-682",
+    "nome": "Raniery Paulino",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-16726",
+    "nome": "Ricardo Barbosa",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": []
+  },
+  {
+    "id": "alpb-30563",
+    "nome": "Dr. Taciano Diniz",
+    "casa": "assembleia",
+    "partido": "UNIAO",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/167/167_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-687",
+    "nome": "Tião Gomes",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/35/35_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-16727",
+    "nome": "Tovar",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/140/140_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30565",
+    "nome": "Del Wallber Virgolino",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/168/168_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-30553",
+    "nome": "Wilson Filho",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/163/163_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47918",
+    "nome": "Chico Mendes",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/175/175_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47919",
+    "nome": "Danielle do Vale",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/176/176_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47922",
+    "nome": "Eduardo Brito",
+    "casa": "assembleia",
+    "partido": "PSB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/178/178_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47923",
+    "nome": "Fabio Ramalho",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/179/179_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47925",
+    "nome": "Francisca Motta",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/14/14_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47926",
+    "nome": "George Morais",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/180/180_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47928",
+    "nome": "Gilbertinho",
+    "casa": "assembleia",
+    "partido": "UNIAO",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/181/181_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47933",
+    "nome": "Sargento Neto",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/184/184_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47929",
+    "nome": "João Paulo Segundo",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/182/182_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47931",
+    "nome": "Luciano Cartaxo",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/101/101_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47932",
+    "nome": "Michel Henrique",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/183/183_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47921",
+    "nome": "Dr. Romualdo",
+    "casa": "assembleia",
+    "partido": "PCdoB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/177/177_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-47934",
+    "nome": "Tanilson Soares",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/185/185_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "id": "alpb-49580",
+    "nome": "Silvia Benjamin",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/186/186_foto_parlamentar_DWibhHg.jpeg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-06-22",
+          "fim": "2024-12-16"
+        },
+        {
+          "inicio": "2025-07-18",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-50116",
+    "nome": "Nilson Lacerda",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/187/187_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-10-30",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-50818",
+    "nome": "André Gadelha",
+    "casa": "assembleia",
+    "partido": "MDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/91/91_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-03-16",
+          "fim": "2026-06-16"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-51753",
+    "nome": "Alexandre de Zezé",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/190/190_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-04",
+          "fim": "2024-04-17"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-53388",
+    "nome": "Professor Francisco",
+    "casa": "assembleia",
+    "partido": "REDE",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/195/195_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-01-01",
+          "fim": "2024-05-01"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-53289",
+    "nome": "Airton Pires",
+    "casa": "assembleia",
+    "partido": "UNIAO",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/192/192_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-12",
+          "fim": "2024-02-26"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-53284",
+    "nome": "Juscelino do Peixe",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/194/194_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-18",
+          "fim": "2024-04-01"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-53389",
+    "nome": "Leonice Lopes",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/193/193_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-18",
+          "fim": "2024-04-01"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-53473",
+    "nome": "Tarcisio Jardim",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/197/197_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-04-21",
+          "fim": "2026-08-20"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-55107",
+    "nome": "Lucinha Lima",
+    "casa": "assembleia",
+    "partido": "PSD",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/198/198_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-04-01",
+          "fim": "2024-08-01"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-55108",
+    "nome": "Sargento Rui",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/200/200_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-05-19",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-55991",
+    "nome": "Dinho Papaleguas",
+    "casa": "assembleia",
+    "partido": "PSDB",
+    "uf": "PB",
+    "legislaturas": [],
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-06-02",
+          "fim": "2024-10-31"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-56534",
+    "nome": "Aron Andrade",
+    "casa": "assembleia",
+    "partido": "PP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/202/202_foto_parlamentar.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-08-19",
+          "fim": "2024-11-24"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-6056",
+    "nome": "Márcio Roberto",
+    "casa": "assembleia",
+    "partido": "REP",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/76/foto_4.jpg",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20,
+      "afastado": true
+    }
+  },
+  {
+    "id": "alpb-59278",
+    "nome": "Cicinho Lima",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/203/foto.jpeg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-03-03",
+          "fim": "2025-06-30"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-60239",
+    "nome": "Félix Araújo",
+    "casa": "assembleia",
+    "partido": "REDE",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/204/foto_2.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-04-28",
+          "fim": "2025-10-30"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-63072",
+    "nome": "Dudu Soares",
+    "casa": "assembleia",
+    "partido": "SD",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/205/205_foto_parlamentar_0D2KoFS.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-10-30",
+          "fim": "2026-02-28"
+        }
+      ]
+    }
+  },
+  {
+    "id": "alpb-67944",
+    "nome": "Dr. Aledson Moura",
+    "casa": "assembleia",
+    "partido": "PL",
+    "uf": "PB",
+    "legislaturas": [],
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/206/dr_aledson_moura.jpg",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-04-06",
+          "fim": "2026-08-05"
+        }
+      ]
+    }
   }
 ]

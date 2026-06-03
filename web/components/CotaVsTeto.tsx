@@ -11,7 +11,7 @@ export function CotaVsTeto({
   cota: ItemCusto
   mediaMensal: number
   salario: number
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
 }) {
   const cor = corCasa(casa)
   const exato = !cota.aproximado && cota.valor != null

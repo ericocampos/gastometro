@@ -23,7 +23,7 @@ export function SeletorPeriodo({
         <optgroup label="Por ano">
           {anos.map((a) => <option key={a} value={`ano:${a}`}>{a}</option>)}
         </optgroup>
-        <optgroup label="Por mandato">
+        <optgroup label="Por legislatura">
           {mandatos.map((l) => <option key={l} value={`mandato:${l}`}>{rotuloMandato(l)}</option>)}
         </optgroup>
       </select>
