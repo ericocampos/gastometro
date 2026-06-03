@@ -25,10 +25,11 @@ export function GraficoGabinete({ secretarios, casa }: { secretarios: Secretario
     : 0
 
   if (casa === 'senado') {
-    // agrupa por cargo (texto), ordena pela remuneração média do cargo (asc); rótulo enxuto
+    // agrupa por símbolo do cargo quando houver (ALPB: AL-SE-xx), senão pelo texto do cargo (Senado);
+    // ordena pela remuneração média (asc); rótulo enxuto
     const porCargo = new Map<string, { qtd: number; soma: number }>()
     for (const s of secretarios) {
-      const k = cargoCurto(s.cargo)
+      const k = s.simbolo ?? cargoCurto(s.cargo)
       const e = porCargo.get(k) ?? { qtd: 0, soma: 0 }
       e.qtd++
       e.soma += s.remuneracao

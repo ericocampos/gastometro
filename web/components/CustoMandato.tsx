@@ -114,8 +114,12 @@ export function CustoMandato({
 
       <p className="mt-3 text-xs text-tinta-tenue">
         Valores de referência · atualizado em {custos.atualizadoEm}.{' '}
-        {casa === 'senado' && 'No Senado a cota tem parcela fixa + transporte aéreo variável e não há verba de gabinete fixa (até 50 assessores), então o total exclui o pessoal. '}
-        {casa === 'assembleia' && 'Na Assembleia a cota (VIAP) é um crédito mensal que acumula saldo não usado, e a verba de gabinete (comissionados) não é divulgada por parlamentar — então o total exclui o pessoal. '}
+        {casa === 'senado' && (c.gabinete.valor != null
+          ? 'No Senado a cota tem parcela fixa + transporte aéreo variável; não há verba de gabinete fixa, então a parcela de pessoal é a média da folha real dos gabinetes — uma estimativa, já incluída no total. '
+          : 'No Senado a cota tem parcela fixa + transporte aéreo variável e não há verba de gabinete fixa (até 50 assessores), então o total exclui o pessoal. ')}
+        {casa === 'assembleia' && (c.gabinete.valor != null
+          ? 'Na Assembleia a cota (VIAP) é um crédito mensal que acumula saldo; a verba de gabinete (comissionados) não é divulgada como teto, então a parcela de pessoal é a média da folha real dos gabinetes — uma estimativa, já incluída no total. '
+          : 'Na Assembleia a cota (VIAP) é um crédito mensal que acumula saldo não usado, e a verba de gabinete (comissionados) não é divulgada por parlamentar — então o total exclui o pessoal. ')}
         Fontes:{' '}
         {c.fontes.map((f, i) => (
           <span key={f.url}>

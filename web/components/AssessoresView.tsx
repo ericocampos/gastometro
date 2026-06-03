@@ -5,7 +5,7 @@ import { brl } from '@/lib/formato'
 
 export interface ItemAssessor {
   nome: string
-  casa: 'camara' | 'senado'
+  casa: 'camara' | 'senado' | 'assembleia'
   remuneracao: number
   deputyId: string
   deputyNome: string
@@ -13,11 +13,14 @@ export interface ItemAssessor {
   // Câmara:
   nivel?: number
   grg?: boolean
-  // Senado:
+  // Senado / Assembleia:
   cargo?: string
+  simbolo?: string
   escritorio?: boolean
   semFolha?: boolean
 }
+
+const CASA_ROTULO = { camara: 'Câmara', senado: 'Senado', assembleia: 'Assembleia' } as const
 
 const GRG_PILL = { backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' } as const
 const MIN = new Set(['de', 'da', 'do', 'dos', 'das', 'e'])
@@ -83,24 +86,24 @@ export function AssessoresView({ itens }: { itens: ItemAssessor[] }) {
                     {a.deputyNome}
                   </Link>
                   <span className="text-tinta-tenue">
-                    {' · '}{a.casa === 'senado' ? 'Senado' : 'Câmara'}{a.partido ? ` · ${a.partido}` : ''}
+                    {' · '}{CASA_ROTULO[a.casa]}{a.partido ? ` · ${a.partido}` : ''}
                   </span>
                 </td>
                 <td className="py-1.5 text-tinta-tenue">
-                  {a.casa === 'senado' ? (
-                    <>
-                      <span title={a.cargo}>{cargoCurto(a.cargo)}</span>
-                      {a.escritorio && (
-                        <span className="ml-1 rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
-                      )}
-                    </>
-                  ) : (
+                  {a.casa === 'camara' ? (
                     <span className="tabular-nums">
                       SP{String(a.nivel ?? 0).padStart(2, '0')}
                       {a.grg && (
                         <span className="ml-1 rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={GRG_PILL}>GRG</span>
                       )}
                     </span>
+                  ) : (
+                    <>
+                      <span className="tabular-nums" title={a.cargo}>{a.simbolo ?? cargoCurto(a.cargo)}</span>
+                      {a.escritorio && (
+                        <span className="ml-1 rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
+                      )}
+                    </>
                   )}
                 </td>
                 <td className="py-1.5 text-right tabular-nums text-tinta">

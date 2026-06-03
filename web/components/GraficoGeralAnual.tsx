@@ -1,11 +1,14 @@
 'use client'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import type { TotalAnualEsfera } from '@/lib/periodo'
+import type { TotalAnualCasa } from '@/lib/periodo'
 import { brl } from '@/lib/formato'
 import { tooltipContentStyle, tooltipLabelStyle, tooltipItemStyle } from './tooltipEstilo'
 
-const COR_FEDERAL = 'var(--marca)'
-const COR_ESTADUAL = '#7c3aed' // violeta — mesma cor da Assembleia no resto do site
+type Casa = 'camara' | 'senado' | 'assembleia'
+// mesmas cores das casas no resto do site (corCasa)
+const COR: Record<Casa, string> = { camara: '#2563eb', senado: '#c87f1a', assembleia: '#7c3aed' }
+const ROTULO: Record<Casa, string> = { camara: 'Câmara', senado: 'Senado', assembleia: 'Assembleia' }
+const ORDEM: Casa[] = ['camara', 'senado', 'assembleia']
 
 function compacto(v: number): string {
   if (v >= 1_000_000) return `R$ ${(v / 1_000_000).toFixed(1).replace('.', ',')} mi`
@@ -13,9 +16,11 @@ function compacto(v: number): string {
   return brl(v)
 }
 
-export function GraficoGeralAnual({ dados, semLegenda }: { dados: TotalAnualEsfera[]; semLegenda?: boolean }) {
-  const temEstadual = dados.some((d) => d.estadual > 0)
-  const mostraLegenda = temEstadual && !semLegenda
+export function GraficoGeralAnual({ dados, semLegenda }: { dados: TotalAnualCasa[]; semLegenda?: boolean }) {
+  const presentes = ORDEM.filter((k) => dados.some((d) => d[k] > 0))
+  const topo = presentes[presentes.length - 1] // arredonda só o topo da pilha
+  const mostraLegenda = presentes.length > 1 && !semLegenda
+
   return (
     <div style={{ width: '100%', height: 240 }}>
       <ResponsiveContainer>
@@ -23,7 +28,7 @@ export function GraficoGeralAnual({ dados, semLegenda }: { dados: TotalAnualEsfe
           <XAxis dataKey="ano" tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} />
           <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => compacto(Number(v))} />
           <Tooltip
-            formatter={(v, nome) => [brl(Number(v)), nome === 'federal' ? 'Federal' : 'Estadual']}
+            formatter={(v, nome) => [brl(Number(v)), ROTULO[nome as Casa] ?? String(nome)]}
             labelFormatter={(l) => `Ano ${l}`}
             contentStyle={tooltipContentStyle}
             labelStyle={tooltipLabelStyle}
@@ -34,15 +39,12 @@ export function GraficoGeralAnual({ dados, semLegenda }: { dados: TotalAnualEsfe
               verticalAlign="top"
               height={28}
               iconType="circle"
-              formatter={(v) => (
-                <span style={{ color: 'var(--tinta-suave)', fontSize: 12 }}>
-                  {v === 'federal' ? 'Câmara + Senado (federal)' : 'Assembleia (estadual)'}
-                </span>
-              )}
+              formatter={(v) => <span style={{ color: 'var(--tinta-suave)', fontSize: 12 }}>{ROTULO[v as Casa] ?? String(v)}</span>}
             />
           )}
-          <Bar dataKey="federal" stackId="esfera" fill={COR_FEDERAL} radius={temEstadual ? [0, 0, 0, 0] : [4, 4, 0, 0]} />
-          {temEstadual && <Bar dataKey="estadual" stackId="esfera" fill={COR_ESTADUAL} radius={[4, 4, 0, 0]} />}
+          {(presentes.length ? presentes : ORDEM).map((k) => (
+            <Bar key={k} dataKey={k} stackId="casa" fill={COR[k]} radius={k === topo ? [4, 4, 0, 0] : [0, 0, 0, 0]} />
+          ))}
         </BarChart>
       </ResponsiveContainer>
     </div>

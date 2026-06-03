@@ -16,9 +16,9 @@ const mesBR = (m?: string) => {
   return `${nomes[Number(mm)] ?? mm}/${a}`
 }
 
-// Gabinete: nº de assessores e a folha. Na Câmara a folha é somada pela tabela oficial (vencimento +
-// GRG por nível SP). No Senado a folha é o custo real oficial (soma exata dos comissionados pela API
-// de remunerações, juntando nome×valor). ALPB segue sem dado por gabinete.
+// Gabinete: nº de assessores e a folha. Câmara: bruto real da ficha oficial (fallback tabela SP).
+// Senado: bruto oficial da API de remunerações (gabinete + escritório). ALPB: bruto oficial do arquivo
+// de comissionados (COMISSIONADOS.ods). Senado e ALPB compartilham o layout de "valor oficial".
 export function Assessores({
   quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa,
 }: {
@@ -36,7 +36,9 @@ export function Assessores({
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null
   const temFolhaSenado = casa === 'senado' && folha != null
-  const temFolha = temFolhaCamara || temFolhaSenado
+  const temFolhaAlpb = casa === 'assembleia' && folha != null
+  const temFolhaReal = temFolhaSenado || temFolhaAlpb // valor oficial por pessoa (cargo/símbolo, sem GRG)
+  const temFolha = temFolhaCamara || temFolhaReal
   const pctTeto = temFolhaCamara && verbaGabinete ? Math.round((folha! / verbaGabinete) * 100) : null
   const tetoCamara = verbaGabinete != null ? brlInteiro(verbaGabinete) : null
 
@@ -45,7 +47,9 @@ export function Assessores({
       <div className="grid grid-cols-2 gap-3">
         <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
           <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
-          <div className="text-xs text-tinta-suave">{temFolhaSenado ? 'Comissionados (gabinete + escritório)' : 'Assessores no gabinete'}</div>
+          <div className="text-xs text-tinta-suave">
+            {temFolhaSenado ? 'Comissionados (gabinete + escritório)' : temFolhaAlpb ? 'Comissionados do gabinete' : 'Assessores no gabinete'}
+          </div>
           {quantidade == null ? (
             <>
               <div className="mt-0.5 font-display text-xl font-semibold text-tinta sm:text-2xl lg:text-3xl">—</div>
@@ -55,7 +59,11 @@ export function Assessores({
             <>
               <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{quantidade}</div>
               <div className="mt-0.5 text-xs text-tinta-tenue">
-                {temFolhaSenado ? 'pessoas hoje' : 'secretários hoje'}{atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}
+                {temFolhaAlpb
+                  ? `comissionados · ${mesBR(mesReferencia)}`
+                  : temFolhaSenado
+                    ? 'comissionados hoje'
+                    : `secretários hoje${atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}`}
               </div>
             </>
           )}
@@ -64,10 +72,10 @@ export function Assessores({
         {temFolha ? (
           <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
             <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
-            <div className="text-xs text-tinta-suave">{temFolhaSenado ? 'Folha do gabinete · custo real' : 'Folha mensal do gabinete'}</div>
+            <div className="text-xs text-tinta-suave">{temFolhaReal ? 'Folha do gabinete · custo real' : 'Folha mensal do gabinete'}</div>
             <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{brlInteiro(folha!)}</div>
             <div className="mt-0.5 text-xs text-tinta-tenue">
-              {temFolhaSenado
+              {temFolhaReal
                 ? `folha bruta oficial · ${mesBR(mesReferencia)}`
                 : mesReferencia
                   ? `bruto real · ${mesBR(mesReferencia)}`
@@ -86,7 +94,7 @@ export function Assessores({
       {/* Visual: composição do gabinete */}
       {temFolha && secretarios.length > 0 && (
         <div className="mt-3">
-          <GraficoGabinete secretarios={secretarios} casa={casa === 'senado' ? 'senado' : 'camara'} />
+          <GraficoGabinete secretarios={secretarios} casa={temFolhaCamara ? 'camara' : 'senado'} />
         </div>
       )}
 
@@ -94,7 +102,7 @@ export function Assessores({
       {temFolha && secretarios.length > 0 && (
         <details className="mt-3 rounded-lg border border-borda bg-superficie">
           <summary className="cursor-pointer list-none px-3 py-2 text-sm font-medium text-tinta transition-colors hover:text-marca">
-            Ver {secretarios.length} {temFolhaSenado ? 'comissionados e o cargo' : 'secretários do gabinete e a remuneração'}
+            Ver {secretarios.length} {temFolhaReal ? 'comissionados e o cargo' : 'secretários do gabinete e a remuneração'}
             <span className="ml-1 text-tinta-tenue">▾</span>
           </summary>
           <ul className="max-h-96 overflow-auto border-t border-borda px-3 py-2">
@@ -103,8 +111,9 @@ export function Assessores({
                 <div className="flex items-center justify-between gap-3">
                   <span className="min-w-0 truncate text-tinta" title={tituloNome(s.nome)}>{tituloNome(s.nome)}</span>
                   <span className="flex shrink-0 items-center gap-2">
-                    {temFolhaSenado ? (
+                    {temFolhaReal ? (
                       <>
+                        {s.simbolo && <span className="text-tinta-tenue tabular-nums">{s.simbolo}</span>}
                         {s.lotacaoTipo === 'escritorio' && (
                           <span className="rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
                         )}
@@ -125,10 +134,11 @@ export function Assessores({
                     )}
                   </span>
                 </div>
-                {temFolhaSenado ? (
+                {temFolhaReal ? (
                   <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-tinta-tenue">
                     {s.cargo && <span>{tituloNome(s.cargo)}</span>}
                     {s.admissaoAno && <span>· desde {s.admissaoAno}</span>}
+                    {s.liquido != null && !s.semFolha && <span>· líquido {brl(s.liquido)}</span>}
                     {s.semFolha && <span>· sem folha em {mesBR(mesReferencia)}</span>}
                   </div>
                 ) : s.nomeadoEm ? (
@@ -195,6 +205,23 @@ export function Assessores({
               </span>
             )}
           </>
+        ) : temFolhaAlpb ? (
+          <>
+            <strong className="text-tinta">Valor oficial, da folha do mês.</strong>{' '}
+            Nome, cargo, gabinete e remuneração (<strong className="text-tinta-suave">bruto e líquido</strong>) vêm do
+            arquivo oficial de comissionados da Assembleia (competência {mesBR(mesReferencia)}). A folha do gabinete é a{' '}
+            <strong className="text-tinta-suave">soma exata</strong> do bruto. <strong className="text-tinta-suave">AL-SE-xx</strong>{' '}
+            é o símbolo do cargo (faixa de vencimento). Não inclui auxílios/encargos. Não há descrição da atividade de
+            cada pessoa: é dinheiro público pago sem dizer em troca de quê.
+            {consultas.length > 0 && (
+              <span className="mt-1 block">
+                Conferir na fonte oficial:{' '}
+                <a href={consultas[0].url} target="_blank" rel="noopener noreferrer" className="text-marca underline">
+                  remunerações na Assembleia ↗
+                </a>
+              </span>
+            )}
+          </>
         ) : (
           <>
             <strong className="text-tinta">Transparência limitada.</strong>{' '}
@@ -203,7 +230,7 @@ export function Assessores({
             {casa === 'senado' &&
               'Não foi possível montar o quadro de gabinete deste senador (sem mandato ativo no período da folha).'}
             {casa === 'assembleia' &&
-              'Na Assembleia Legislativa da Paraíba não há a contagem de assessores por deputado nem o valor gasto com pessoal de gabinete em formato aberto — só a VIAP, que detalhamos nota a nota.'}{' '}
+              'Não foi possível montar o quadro de gabinete deste deputado a partir do arquivo de comissionados da Assembleia.'}{' '}
             É dinheiro público que deveria ter a mesma transparência do resto.
           </>
         )}

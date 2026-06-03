@@ -73,12 +73,13 @@ export function PerfilView({
 
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
   // total anual do parlamentar, na esfera dele (barra na cor da casa; perfil é de uma só esfera)
-  const anual = useMemo(() => {
-    const ehEstadual = politico.casa === 'assembleia'
-    return totalAnualParlamentar(despesas).map((a) =>
-      ehEstadual ? { ano: a.ano, federal: 0, estadual: a.total } : { ano: a.ano, federal: a.total, estadual: 0 },
-    )
-  }, [despesas, politico.casa])
+  const anual = useMemo(() =>
+    totalAnualParlamentar(despesas).map((a) => ({
+      ano: a.ano,
+      camara: politico.casa === 'camara' ? a.total : 0,
+      senado: politico.casa === 'senado' ? a.total : 0,
+      assembleia: politico.casa === 'assembleia' ? a.total : 0,
+    })), [despesas, politico.casa])
   const despesasPeriodo = useMemo(
     () => despesas.filter((d) => anoNoPeriodo(d.ano, periodo)),
     [despesas, periodo],
@@ -198,7 +199,7 @@ export function PerfilView({
           </section>
 
           <section className="mb-10">
-            <SecaoTitulo>{politico.casa === 'senado' ? 'Comissionados · folha do gabinete' : 'Assessores · verba de gabinete'}</SecaoTitulo>
+            <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
             <Assessores
               quantidade={assessores.quantidade}
               folha={assessores.folha}

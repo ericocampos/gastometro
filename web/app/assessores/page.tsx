@@ -8,7 +8,8 @@ export default function AssessoresPage() {
   const itens: ItemAssessor[] = []
   for (const [deputyId, gab] of Object.entries(ass?.porPolitico ?? {})) {
     const d = dep.get(deputyId)
-    const casa: 'camara' | 'senado' = deputyId.startsWith('senado-') ? 'senado' : 'camara'
+    const casa: 'camara' | 'senado' | 'assembleia' =
+      deputyId.startsWith('senado-') ? 'senado' : deputyId.startsWith('alpb-') ? 'assembleia' : 'camara'
     for (const s of gab.secretarios) {
       itens.push({
         nome: s.nome,
@@ -20,6 +21,7 @@ export default function AssessoresPage() {
         nivel: s.nivel,
         grg: s.grg,
         cargo: s.cargo,
+        simbolo: s.simbolo,
         escritorio: s.lotacaoTipo === 'escritorio',
         semFolha: s.semFolha,
       })
@@ -31,13 +33,14 @@ export default function AssessoresPage() {
     <div>
       <h1 className="mb-2 font-display text-3xl font-semibold tracking-tight text-tinta">Assessores de gabinete</h1>
       <p className="mb-2 max-w-2xl text-sm text-tinta-suave">
-        Quem trabalha nos gabinetes da Câmara e do Senado, e em qual parlamentar. Busque por nome para encontrar uma
-        pessoa específica ou cruzar nomes entre gabinetes. Os dados são públicos; as conclusões são de quem lê.
+        Quem trabalha nos gabinetes da Câmara, do Senado e da Assembleia da Paraíba, e em qual parlamentar. Busque por
+        nome para encontrar uma pessoa específica ou cruzar nomes entre gabinetes. Os dados são públicos; as conclusões
+        são de quem lê.
       </p>
       <p className="mb-6 max-w-2xl text-xs text-tinta-tenue">
-        Snapshot atual (Paraíba). Câmara: secretário parlamentar, nível salarial e nomeação (folha pela tabela oficial).
-        Senado: comissionado de gabinete e escritório, cargo e remuneração bruta oficial do mês (dados abertos do Senado).
-        Nenhuma fonte traz o CPF nem o que cada pessoa faz. A Assembleia não divulga o quadro por parlamentar.
+        Paraíba. Câmara: secretário parlamentar, nível e remuneração real do mês. Senado: comissionado de gabinete e
+        escritório, cargo e bruto oficial do mês. Assembleia: comissionado de gabinete, cargo/símbolo e bruto oficial do
+        mês. Nenhuma fonte traz o CPF nem o que cada pessoa faz.
       </p>
       <AssessoresView itens={itens} />
     </div>
