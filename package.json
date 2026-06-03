@@ -8,6 +8,7 @@
     "test:watch": "vitest",
     "collect": "tsx collector/collect.ts",
     "coletar:assessores": "tsx collector/coletarAssessores.ts",
+    "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
     "analisar": "tsx collector/analisar.ts"
   },
