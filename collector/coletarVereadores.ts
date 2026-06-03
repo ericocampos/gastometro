@@ -79,7 +79,9 @@ export function montarCidade(
     const id = idDe(cfg, v)
     const politico: Politico = {
       id, nome: v.nome, casa: 'camara_municipal', partido: v.partido ?? '', uf: cfg.uf,
-      legislaturas: [2025], fotoUrl: v.fotoUrl, municipio: cfg.slug,
+      // sem legislatura: a numeração de mandato do site é federal (leg 57 = 2023); o filtro
+      // municipal usa só ano/tudo. Evita rótulo de mandato quebrado em rotuloMandato().
+      legislaturas: [], fotoUrl: v.fotoUrl, municipio: cfg.slug,
     }
     politicos.push(politico)
 
