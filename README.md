@@ -104,8 +104,9 @@ Todas são públicas e oficiais. A coleta filtra pela UF do `config/state.json`.
 |---|---|---|---|
 | Roster (todos), foto, partido | SAPL: `https://sapl3.al.pb.leg.br/api/parlamentares/parlamentar/?get_all=true` (+ `mandato`/`legislatura`/`filiacao`) | JSON (header `Accept`) | nome completo; `fotografia` pode vir absoluta ou relativa a `/media/` |
 | **Despesas (VIAP)** | planilha por deputado/mês em `http://www.al.pb.leg.br` | **`.ods` (≤2025) / `.xlsx` (2026+)**, sem dependência de unzip | casamento por nome de registro; eixo de tempo = competência (mês da consulta), não a data digitada na nota |
+| **Gabinete — comissionados** | `al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes={m}&ano={a}` → link `{AAAAMM}-COMISSIONADOS.ods` | `.ods` | lotação `"GAB DEP <nome>"`; casa o nome parlamentar ao deputado. Traz nome, cargo/símbolo (AL-SE-xx), admissão, ato, **bruto e líquido** por pessoa |
 
-> A ALPB não divulga quadro de gabinete por deputado em dado aberto — por isso ela só tem a VIAP, detalhada nota a nota.
+> A remuneração estadual da CODATA (`api.dadosabertos.codata.pb.gov.br`) é só do **Executivo** (63 órgãos, sem Assembleia) — por isso o gabinete da ALPB vem do arquivo de comissionados da própria Assembleia.
 
 ---
 
@@ -136,7 +137,8 @@ Documentado para poupar tempo de quem for replicar:
   - **Câmara:** não há API de remuneração, mas a ficha por pessoa no Portal da Transparência abre
     **sem captcha**; resolvemos `nome → hash → ficha do mês` e pegamos o **bruto real** (fallback para a
     tabela SP quando a ficha não resolve, marcado com `≈`).
-  - **ALPB:** não divulga quadro de gabinete por deputado — fica só com a VIAP.
+  - **ALPB:** o arquivo oficial `{AAAAMM}-COMISSIONADOS.ods` traz a folha por gabinete (`GAB DEP <nome>`)
+    com **bruto e líquido** por pessoa. A remuneração estadual da CODATA é só do Executivo (sem Assembleia).
   - Em nenhuma fonte há **CPF** nem **descrição da atividade** de cada pessoa; e comissionados costumam
     ser **dispensados de registro de ponto** (regime especial de frequência), então **não existe dado de
     presença** de servidor para publicar.

@@ -125,7 +125,7 @@ function dataISO(s: string): string {
 
 // ---------- linhas (array de colunas por linha) a partir de cada formato ----------
 // ODS: content.xml, com <table:table-row>/<table:table-cell>
-function linhasDoOds(buf: Buffer): string[][] {
+export function linhasDoOds(buf: Buffer): string[][] {
   const xml = unzipEntry(buf, 'content.xml').toString('utf8')
   return [...xml.matchAll(/<table:table-row[^>]*>([\s\S]*?)<\/table:table-row>/g)]
     .map((m) => celulasDaLinha(m[1]))
@@ -269,6 +269,69 @@ export async function linkOds(ano: number, mes: number, viapId: string): Promise
 
 export async function baixarOds(url: string): Promise<Buffer> {
   return fetchBuffer(url.replace(/^https:/, 'http:'), { headers: H })
+}
+
+// ---------- Comissionados (folha de pessoal da ALPB, por gabinete) ----------
+// A página de remunerações da Assembleia publica .ods por categoria; o `{AAAAMM}-COMISSIONADOS.ods`
+// traz, por pessoa: Lotação ("GAB DEP <nome>"), Cargo (ex. "SECRETARIO PARLAMENTAR IV - AL-SE-004"),
+// admissão, ATO de nomeação, remuneração bruta e líquida. É o gabinete dos deputados estaduais.
+export interface ComissionadoAlpb {
+  nome: string
+  lotacao: string        // ex. "GAB DEP HERVAZIO BEZERRA"
+  cargo: string          // ex. "SECRETARIO PARLAMENTAR IV - AL-SE-004"
+  simbolo?: string       // AL-SE-004
+  admissao?: string      // ISO (data de admissão)
+  ato?: string           // número do ato de nomeação
+  remuneracao: number    // bruto (coluna "Remuneração")
+  liquido?: number
+}
+
+export const remuneracoesAlpbUrl = (ano: number, mes: number) =>
+  `https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=${mes}&ano=${ano}`
+
+// extrai o link do .ods de COMISSIONADOS puros (não o EFETIVOS_COMISSIONADOS) da página de remunerações
+export function linkComissionadosDoHtml(html: string): string | null {
+  return /https?:\/\/[^"'\s]*\/\d{6}-COMISSIONADOS\.ods/i.exec(html)?.[0] ?? null
+}
+
+// mapeia as linhas do .ods em comissionados. Detecta o cabeçalho (linha com Nome+Lotação+Remuneração)
+// e lê por posição de coluna. Pula linhas de total/saldo e sem nome/lotação.
+export function mapComissionados(linhas: string[][]): ComissionadoAlpb[] {
+  let hdr = -1
+  let cab: string[] = []
+  for (let i = 0; i < linhas.length; i++) {
+    const set = linhas[i].map(norm)
+    if (set.includes('nome') && set.includes('lotacao') && set.includes('remuneracao')) { hdr = i; cab = set; break }
+  }
+  if (hdr < 0) return []
+  const ix = (label: string) => cab.indexOf(norm(label))
+  const iNome = ix('nome'), iLot = ix('lotacao'), iCargo = ix('cargo')
+  const iAdm = ix('data de admissao'), iAto = ix('numero'), iRem = ix('remuneracao'), iLiq = ix('liquido')
+
+  const out: ComissionadoAlpb[] = []
+  for (let i = hdr + 1; i < linhas.length; i++) {
+    const f = linhas[i]
+    const cel = (j: number) => (j >= 0 ? (f[j] ?? '').trim() : '')
+    const nome = cel(iNome), lotacao = cel(iLot)
+    const nl = norm(nome)
+    if (!nome || !lotacao || nl.startsWith('total') || nl.startsWith('saldo')) continue
+    const cargo = cel(iCargo)
+    out.push({
+      nome,
+      lotacao,
+      cargo,
+      simbolo: /AL-[A-Z]{2}-\d+/i.exec(cargo)?.[0]?.toUpperCase(),
+      admissao: dataISO(cel(iAdm)) || undefined,
+      ato: cel(iAto) || undefined,
+      remuneracao: valorBR(cel(iRem)),
+      liquido: valorBR(cel(iLiq)) || undefined,
+    })
+  }
+  return out
+}
+
+export function parseComissionadosOds(buf: Buffer): ComissionadoAlpb[] {
+  return mapComissionados(linhasDoOds(buf))
 }
 
 // ---------- roster com foto (cards .deputado-card da home, apontando pro SAPL) ----------

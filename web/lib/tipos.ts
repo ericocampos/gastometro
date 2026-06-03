@@ -107,8 +107,9 @@ export interface SecretarioGabinete {
   nomeadoEm?: string   // data da nomeação atual
   desde?: string       // início do histórico na Câmara
   ponto?: string       // matrícula interna de folha (não é CPF)
-  // Senado (comissionado de gabinete/escritório):
-  cargo?: string                          // texto da função (ASSESSOR PARLAMENTAR, ...)
+  // Senado / Assembleia (comissionado de gabinete):
+  cargo?: string                          // texto da função (ASSESSOR PARLAMENTAR; SECRETARIO PARLAMENTAR IV…)
+  simbolo?: string                        // símbolo do cargo (ALPB: AL-SE-004)
   liquido?: number                        // líquido oficial do mês
   semFolha?: boolean                      // sem lançamento Normal no mês (ex.: recém-admitido)
   lotacaoTipo?: 'gabinete' | 'escritorio' // onde a pessoa está lotada

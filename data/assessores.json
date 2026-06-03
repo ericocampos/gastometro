@@ -1,7 +1,7 @@
 {
   "atualizadoEm": "2026-06-03",
   "fonte": "https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json",
-  "descricao": "Câmara: secretários parlamentares lotados no gabinete de cada deputado, com a remuneração bruta REAL do mês (ficha oficial do Portal da Transparência); quando a ficha não resolve, cai na tabela oficial (vencimento + GRG por nível SP). Não inclui auxílios/encargos (pagos à parte). Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ALPB não divulga por gabinete com a mesma granularidade.",
+  "descricao": "Câmara: secretários parlamentares lotados no gabinete de cada deputado, com a remuneração bruta REAL do mês (ficha oficial do Portal da Transparência); quando a ficha não resolve, cai na tabela oficial (vencimento + GRG por nível SP). Não inclui auxílios/encargos (pagos à parte). Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ALPB: comissionados de cada gabinete de deputado estadual, do arquivo oficial COMISSIONADOS.ods do mês (nome, cargo/símbolo, admissão, ato, bruto e líquido por pessoa); folha = soma do bruto por gabinete.",
   "tabela": {
     "vigencia": "2025-05-01",
     "verbaGabinete": 133170.54,
@@ -4382,6 +4382,5628 @@
         {
           "tipo": "escritorio",
           "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=E1EFILHO"
+        }
+      ]
+    },
+    "alpb-658": {
+      "total": 23,
+      "folha": 131115.69,
+      "secretarios": [
+        {
+          "nome": "NARA DIAS PEREIRA FAUSTINO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "OSVALDO GOMES DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10770,
+          "liquido": 8394.78,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOANA DARC CAVALCANTE DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10695,
+          "liquido": 8340.77,
+          "admissaoAno": 2017,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MONICA MARACAJA DE QUEIROZ",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10500,
+          "liquido": 8200.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RENAN COELHO SOUTO CASADO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10070,
+          "liquido": 7891.34,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GEORGE DIAS DE ARAUJO PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 9000,
+          "liquido": 7229.54,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RONALDO GONCALVES CAVALCANTI DE ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DAVIELLY OLIVEIRA LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7500,
+          "liquido": 6494.85,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IZIANNE ALCOFORADO DE FREITAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6900,
+          "liquido": 6221.16,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERTO DANTAS RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6900,
+          "liquido": 6221.16,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DEBORAH LARISSA DE SOUZA ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDRE MADRUGA BEZERRA CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3500,
+          "liquido": 2476.26,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO EMMANUEL TARGINO ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SONIA MARIA PAULINO DE FARIA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE CUPERTINO DE ASSIS BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIA RAQUEL DE GOIS MORORO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2699.9,
+          "liquido": 2541.02,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "AMARILES DIAS COELHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2600,
+          "liquido": 2447.89,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LOANA VIEIRA VITA DE LUCENA NEVES",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2499.99,
+          "liquido": 2354.67,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA CLARA RIBEIRO DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ABELARDO BEZERRA JUREMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CARILDO SILVA DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 1700,
+          "liquido": 1562.82,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EDUARDO DANTAS PEREIRA BEIROZ",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 1621,
+          "liquido": 1491.32,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NECI FLORENTINO DE LUCENA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 1621,
+          "liquido": 1491.32,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-16727": {
+      "total": 14,
+      "folha": 128664.18,
+      "secretarios": [
+        {
+          "nome": "MARCELO MARTINS DE OLIVEIRA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 7939.44,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDRE GOMES DO NASCIMENTO",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 11675,
+          "liquido": 9046.37,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EDER VIEIRA SOARES DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JEAN LUIS MANSO MORAES",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDREIA MOURA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERTO PONTES MEDEIROS GAUDENCIO",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIA MARIA DE SOUSA SANTOS ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROSITA BARROS DE FARIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KELLY CRISTINA MOURA DE MENEZES LIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 9000,
+          "liquido": 7229.54,
+          "admissaoAno": 2011,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WALLEMBERG OSORIO DE ARAUJO ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2017,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PAULO FRACINETTE DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 7307.18,
+          "liquido": 6285.9,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANOEL DE ASSIS MELO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO PAULO DA SILVA DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ARTHUR ANTUNES DE CARVALHO BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30549": {
+      "total": 23,
+      "folha": 137869.8,
+      "secretarios": [
+        {
+          "nome": "WANDERSON BANDEIRA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9289.18,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JUCARA FARIAS DE ARAUJO PASCOAL",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10440,
+          "liquido": 8157.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "OSWALDO CRISTOFOLETTI NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10440,
+          "liquido": 8157.18,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAYSSA LOPES BRAGA DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLAUDIO ANTONIO MARQUES DE SOUSA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SERGIO HENRIQUE DE MEDEIROS ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LAYANA CARTAXO OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE DIAS VITORIANO",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CIRLUCE SOARES CABRAL FERREIRA CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAFAEL FABIO PEREIRA NEVES",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HALLINE CONCEICAO DOS REIS ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA BEATRYZ DE ABREU LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALAN FRANCISCO GONCALVES DE SOUSA SEIXAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ESMERALDO ALVES LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 4740,
+          "liquido": 4251.2,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCIMAR DE MELO FRAGOSO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISMEIRE PEREIRA LACERDA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 3600,
+          "liquido": 3261.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCOS ALBERTO SATIRO DA NOBREGA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 3600,
+          "liquido": 3261.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DE FATIMA MORAIS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA CLARA BARROS DE FARIAS GARCIA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE ROBERTO DANTAS DE ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALDENEIDE DUARTE SOARES",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIMARIA XAVIER DE LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 1890,
+          "liquido": 1744.22,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PLAUTON ANTONIO LOPES SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 1621,
+          "liquido": 1491.32,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47918": {
+      "total": 21,
+      "folha": 130468,
+      "secretarios": [
+        {
+          "nome": "JOSE BENEDITO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2017,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HUGO MOREIRA FEITOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KEITYANE DINIZ BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADRIANO DARIO DE ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIANA FERREIRA MENDES",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6761.8,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WESLEY LIMA BRASIL",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANOEL DE SOUZA BANDEIRA SEGUNDO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO BRUNORO LINS",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALBERTO RONIERE ARRUDA DE ARRUDA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GIULLIANA DE LOURDES NAVARRO DE ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5381.02,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA FLAVIA PENAFORTE DE CARVALHO REGO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GIOVANA MIRANDA TEJO DI PACE CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HILCILENE PEREIRA BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KLEBER EUSTAYNE DE SOUSA BRAZIL",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MOABY ABREU DE MEDEIROS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE RENNAN DE SOUZA SATIRO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DE LOURDES MENDES LUIZ",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ISIS MARIELY OLIVEIRA ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JONATTAS CAVALCANTE ALVES VIANA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIEGO BRENO GONCALVES DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DAS GRACAS ALVES DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-49580": {
+      "total": 4,
+      "folha": 36190,
+      "secretarios": [
+        {
+          "nome": "ALESSANDRA ARAUJO FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IGOR MEDEIROS GAUDENCIO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSEMAR GONCALVES DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERICK JOHN GUIMARAES DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-687": {
+      "total": 11,
+      "folha": 108141.4,
+      "secretarios": [
+        {
+          "nome": "ANA PAULA SUASSUNA VERAS BARRETO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAYANNE MENDES DE MENESES",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14320,
+          "liquido": 10950.78,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CATIA REGINA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14320,
+          "liquido": 10950.78,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TARCISIO DE SOUSA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR VIII - AL-SE-008",
+          "simbolo": "AL-SE-008",
+          "remuneracao": 12610,
+          "liquido": 9719.58,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "INACIO DE LOYOLA DE OLIVEIRA DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9157.71,
+          "admissaoAno": 2016,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO MARCIO ARAUJO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WALFRIDO DE MELO SILVEIRA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROSINEIDE LOPES DE SANTANA SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VALERIA VIEIRA COUTINHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KARINA SILVA DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MAYCON ARAUJO DA SILVA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 1890,
+          "liquido": 1734.77,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-67944": {
+      "total": 2,
+      "folha": 33200,
+      "secretarios": [
+        {
+          "nome": "LOURDES MARIA DE OLIVEIRA COUTINHO",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDERSON SOUTO BARROS",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-50818": {
+      "total": 3,
+      "folha": 32330,
+      "secretarios": [
+        {
+          "nome": "FRANCISCA VILMA ERMELINDA PALMEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NOEMIA RACHEL DE ARAUJO GADELHA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBSON RIBEIRO LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30543": {
+      "total": 12,
+      "folha": 124210,
+      "secretarios": [
+        {
+          "nome": "VANESSA PAULA BEZERRA FILGUEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12517.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NABUCO DE ASSIS PEREIRA DE MELO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12572.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CRISTINA BRITO PEREIRA DE MELO CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO BANDEIRA CAMPOS BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10187.88,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TALES DE ARAUJO ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCICLEIDE VALERIA LIMA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ITALA ADALGISA ALVES AGRA VIEIRA DA ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IVANA MARIA DE ASSUNCAO SANTIAGO MOTA",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 5493.8,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO DURE ALMEIDA MOURA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIO ROBERTO MALHEIROS FELICIANO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RODRIGO LACERDA SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GABRIELLE HELENA DE PONTES SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-50116": {
+      "total": 19,
+      "folha": 129372,
+      "secretarios": [
+        {
+          "nome": "JOSE CARLOS MOREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO ADONIAS TAVARES",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE RONALDO MARTINS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO LUCAS ESTIMA RAMALHO DE FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE RYLSEMBERG SOARES DE AMORIM",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO ALEXSANDRO LAVOR FURTADO",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SHIRLAYNE CAVALCANTI BARROS",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA EDUARDA ALEXANDRE MARCOLINO",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GRACIANA SOARES BATISTA GUIMARAES",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RONDINEIA FLAVIANE VIEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DE FATIMA GALDINO DE BRITO",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO EDMAR BARBOZA LEITE",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HIDERVAL ARRUDA DE LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAMILA VICENTE DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HENRICK ALLAN SOARES DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERINEUDO RODRIGUES DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO LUCILIO ROSA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANNY RAYMARY NUNES BAZILIO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "APARECIDA RODRIGUES DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-16718": {
+      "total": 13,
+      "folha": 130239.99,
+      "secretarios": [
+        {
+          "nome": "MARCONDES FERNANDES COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUIZ MEDEIROS NETO",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13200,
+          "liquido": 10144.38,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SUENIA TAVARES DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR VIII - AL-SE-008",
+          "simbolo": "AL-SE-008",
+          "remuneracao": 13000,
+          "liquido": 10000.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JENIFFER DE SOUZA VALENTIM",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRENDA KELLY SARMENTO SILVA LEITE",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELAINE DE OLIVEIRA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ITHALO CAVALCANTE RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRUNNA ADRYAN SARMENTO SILVA LEITE",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MACIANA DE AZEVEDO MAIA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LEONIA NAIR ALVES DA SILVA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 6046.44,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA BETANIA DA CUNHA BEZERRA DE LUCENA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4000,
+          "liquido": 2247.46,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA JOSE GOMES DE ANDRADE",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3500,
+          "liquido": 3266.82,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO LUCAS DE SOUSA LIMA HENRIQUE",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2499.99,
+          "liquido": 2354.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47923": {
+      "total": 19,
+      "folha": 131990,
+      "secretarios": [
+        {
+          "nome": "MARIA ISABEL ARAUJO CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EMANUEL SOUSA E SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14320,
+          "liquido": 10950.78,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VERONICA BARROS XAVIER",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IRANILDA DE OLIVEIRA FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SUENIA ALMEIDA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAYANNE JAISSE SANTOS DE CARVALHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RANUNFO LEANDRO DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO PINTO DE LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "REJANE CAVALCANTE CORREIA MONTEIRO",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DANIELLE FERNANDES DANIEL",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VIVIANE MARY PATRICIO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRENA LEAL MATEUS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MELANIE FERNANDES DO CARMO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NATIENY FERREIRA VENTURA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3989.82,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EWERTON COSTA E SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADERALDO DO REGO GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DENIZE DE SOUZA LISBOA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA CLARA MESQUITA BEZERRA GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA LUIZA BRASILEIRO ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 1890,
+          "liquido": 1734.77,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-665": {
+      "total": 14,
+      "folha": 132238,
+      "secretarios": [
+        {
+          "nome": "ELENIR ALVES DA SILVA RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR III - AL-SE-003",
+          "simbolo": "AL-SE-003",
+          "remuneracao": 15460,
+          "liquido": 11771.58,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MICHEL DA SILVA VIDAL",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALINE DE MOURA RAMOS DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11311.18,
+          "admissaoAno": 2014,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRUNO JOSE GOMES DA FONSECA",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRUNO RANGEL DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ESILDA DE MORAIS CANDIDO FIRMINO",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LENILSON DE CARVALHO LUCENA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EVANINIA FLAMINIA VIEIRA NUNES",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FILEMON DE SOUZA SENA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO DANTAS DE FREITAS",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCA DE LOURDES LEITAO BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAQUIM OLIVEIRA DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4651.42,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSELITO CICERO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3204.62,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PAULO ZENAIDE BARROS DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30555": {
+      "total": 11,
+      "folha": 129886,
+      "secretarios": [
+        {
+          "nome": "ROMULO SERGIO DE OLIVEIRA FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCOS LEVI SILVA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAMILA LUCENA ALVES DE ABRANTES",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DAS DORES DE MORAIS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANNA PAULA DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TATIANE MATIAS CAMPOS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELISANGELA VIEIRA MACEDO",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "AMANDA FERREIRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DEBORA MICHAELLA OLIVEIRA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 2523,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIA DE FATIMA GOMES DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WYSLEY SILVA MELLO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-675": {
+      "total": 21,
+      "folha": 131514.38,
+      "secretarios": [
+        {
+          "nome": "CARLOS AUGUSTO XAVIER CLEROT",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SOLANGE LUIS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR VIII - AL-SE-008",
+          "simbolo": "AL-SE-008",
+          "remuneracao": 12870,
+          "liquido": 9906.78,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PATRICIA ARAUJO CLEROT",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12200,
+          "liquido": 9424.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GERSON COSTA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JANDERLEY BATISTA DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KARLA MEDEIROS VILLARIM",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 7000,
+          "liquido": 6115.85,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LEONARDO SANTANA DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5500.5,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA APARECIDA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADRIANO SILVA ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5600,
+          "liquido": 5211.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROSINEIDE FABRICIO DE PAULA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5600,
+          "liquido": 5211.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SILVIA PAIVA SERAFIM GADELHA CAMPOS",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4700,
+          "liquido": 4391.77,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO VICTOR MOREIRA RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4499.99,
+          "liquido": 4209.62,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA PAULA SILVA MAIA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4149.99,
+          "liquido": 3890.87,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SONEIDE SALUSTIANO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4000,
+          "liquido": 3752.89,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANOEL EMIDIO DE SOUSA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3500,
+          "liquido": 3286.82,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GILMAR LEITE MOURA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3500,
+          "liquido": 3286.82,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA EDINALVA MUNIZ DE FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3275.01,
+          "liquido": 3077.1,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DEBORA MARQUES BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDREYVISSON FERNANDES ALEXANDRE",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA FABIANA CABRAL DE ALMEIDA BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2849.99,
+          "liquido": 2691.1,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JAKELINE PEREIRA DE ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-34607": {
+      "total": 15,
+      "folha": 132899.99,
+      "secretarios": [
+        {
+          "nome": "EDNA SILVA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12500,
+          "liquido": 9640.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JHONATAS ROMERO ATAIDE DO NASCIMENTO",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KENNYR MACCDONALD DE LIMA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JEFFERSON CESAR TAVARES DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 11900,
+          "liquido": 9208.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CONCEICAO AMALIA DA SILVA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOYCE KAMILLY MONTEIRO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SILVIA LEANDRA DOS SANTOS OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KLEYDSON ALVES DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELIELSON PEREIRA DUARTE",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FERNANDA SILVA SOARES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7818.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELIAS FELICIANO DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELIANE LUCIA GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FELIPE WANDERLEY GUEDES DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4000,
+          "liquido": 3752.89,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARLUCE ALVINO DA COSTA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRENDA ELLEM DOS SANTOS SOARES",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2499.99,
+          "liquido": 2354.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-16715": {
+      "total": 14,
+      "folha": 129890,
+      "secretarios": [
+        {
+          "nome": "JOAQUIM EDUARDO TOSCANO MOUZINHO",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 8501.68,
+          "admissaoAno": 2017,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DOUGLAS CALIXTO DE FREITAS ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIOLEIDE NOBREGA GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NATHALI ROLIM NOGUEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 10641.21,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VALQUIRIA DE MELO ASFORA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIA DE FATIMA FERREIRA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TANIA MARIA PEREIRA DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LILIANM ALVES DE MACEDO",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6761.8,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE HUMBERTO ALVES DE SENA",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6761.8,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO BATISTA DO NASCIMENTO JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VIVIAN MARIA SANTOS FREITAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VEMILTON DUARTE DE LIMA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3989.82,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IVO ROSENO DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCIA DE ARAUJO CORCINO FERNANDES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47922": {
+      "total": 18,
+      "folha": 131520,
+      "secretarios": [
+        {
+          "nome": "RITA DE CASSIA SOARES DE PAULA CUNHA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA ALDENICE BARBOSA DE MELO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAHONNY THALLYS SANTOS SARAIVA",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6761.8,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "OTAVIO GALDINO DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6761.8,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSIMARA LORRANE MARTINS SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GABRIEL FELIX TARGINO DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCAS RIBEIRO MORAIS",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE SEVERINO DA SILVA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CRISPIM DA SILVA CRUZ",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6769.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSIVALDO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA ONEIDE COSTA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "REGINALDO ANTONIO DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIEGO DE SOUSA ALCOFORADO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HARYELY MARQUES DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIEGO BEZERRA VIEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BEATRIZ DE AZEVEDO MACHADO ABIMAEL MARTINS",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4000,
+          "liquido": 3752.89,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FABRICIO SANTOS DE SALES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VALTER RAFAEL DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30561": {
+      "total": 19,
+      "folha": 130909.19,
+      "secretarios": [
+        {
+          "nome": "JOSE JESUS MAURERA MARTINEZ",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RITA BERNADETH MOURA MEDEIROS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 14999.99,
+          "liquido": 12178.26,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ARTHUR HENRIQUE FREITAS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RYAN MAGNUM D EMERY OLIVEIRA GUEDES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERTO SERGIO BARROSO DE CARVALHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALISTON FELIPE DE MENESES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TARCILIO PEREIRA DE ALMEIDA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TATIANA NISHIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANUEL ARAUJO DO NASCIMENTO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GILCEMA TOMAZ DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAYLLENE MENDES DE HOLANDA CARTAXO DE FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA CLEA ROLIM DE ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HAMILTON LIMA NOLETO FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERTA JUSSARA BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE JEAN LACERDA CAVALCANTI NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2821,
+          "liquido": 2653.89,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SANDRO MONTEIRO ALVES FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2800,
+          "liquido": 2634.32,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DOMENICO NICOLA CAVALCANTI PORTO",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RENATA DE SOUSA PIRES",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALEXANDRA CORDEIRO E SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47919": {
+      "total": 18,
+      "folha": 131470,
+      "secretarios": [
+        {
+          "nome": "CLARISSA ROBERTA DIAS CARDOSO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE BENICIO DE ARAUJO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12080,
+          "liquido": 9337.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "UMBERLANIA MARIA RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CINDHY MIFIA DA SILVA MOREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JAISMAR DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA ERNESTINA ASSIS DE MOURA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "STERFESSON HIGO DE LIMA LUCENA FARIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 6737.53,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DANIEL JOVELINO ALVES PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO RIBEIRO SOBRINHO FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EDNALDO MATHEUS NUNES LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MILENA ROSY SANTOS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5500,
+          "liquido": 5120.35,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LIVIA MARIA PONTES DE MELO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PAULO VINICIUS LIMA DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DJAIR MAGNO DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCELA MARIA LINS DE MELO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALESSANDRO ALVES DA SILVA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CARMELO CEZARIO DA SILVA ANDRADE JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 5000,
+          "liquido": 4664.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SUENNYA DANTAS DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47928": {
+      "total": 20,
+      "folha": 133000,
+      "secretarios": [
+        {
+          "nome": "FRANCELUCIA LEITE GOMES SOARES",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCIO PEREIRA DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ARNOBIO SOARES DE SOUSA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 6002.45,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DINALDO DA SILVA MOURA SOBRINHO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JESUS LUAN OLIVEIRA CABRAL",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCAS RODRIGUES DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO ALVES DE SOUSA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCIA NOELIA PEREIRA ESTANISLAU",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KELVIN DE QUEIROZ COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KEDNA KELLY GALVAO GUEDES",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAIO CABRAL DANTAS DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIANA ALVES FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VALTER GUEDES MONTEIRO SEGUNDO",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO ADELINO DE OLIVEIRA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JUAN DOUGLAS NOBREGA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO LUCAS GOMES DE HOLANDA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "QUERZIA NAZARIO DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO NOBREGA ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "OHAYANNE NAYARE NUNES PEREIRA INACIO DE QUEIROZ",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO SUELISSANDRO SARMENTO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30547": {
+      "total": 15,
+      "folha": 132984,
+      "secretarios": [
+        {
+          "nome": "ICARO MENDES RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA CATARINA QUEIROGA FERNANDES",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WILANE DA SILVA VIANA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAMILA SANTOS BARROS REZENDE",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EDSON CARLOS ALMEIDA SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELIANE MARIA SANTOS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO ARAUJO FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 8620,
+          "liquido": 7038.45,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARKLANE GOMES ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KEYLLA MARIA GUEDES LOPES DE OLIVEIRA SIMOES",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE EDVALDO ROSAS FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DE FATIMA BATISTA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VITTOR DE LIMA SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PAULO CESAR BARBOZA ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JULIANE MARIA MENDONCA CAVALCANTI FALCAO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 3030,
+          "liquido": 2777.82,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LARA WEMILLY NOBREGA DE LUCENA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 3030,
+          "liquido": 2762.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47932": {
+      "total": 13,
+      "folha": 131850,
+      "secretarios": [
+        {
+          "nome": "JOSICLEIDE PEREIRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SILVANA CAVALCANTI CESAR CHAVES",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA JOSE MENDONCA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8121.63,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VIRGINIA MARIA MENDONCA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ABRAAO LINCON BEZERRA GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BELKISS ALVES GESTEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MATTHEUS BEZERRA JAPYASSU",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLENIO NOBREGA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7798.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLOTARIO DE PAIVA GADELHA TERCEIRO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA VERA LUCIA BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSILDA DE SOUZA ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDREZA TACYANA FERREIRA DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 8000,
+          "liquido": 5396.59,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIA DE FATIMA PACHECO BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 7000,
+          "liquido": 6265.85,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-595": {
+      "total": 13,
+      "folha": 127560,
+      "secretarios": [
+        {
+          "nome": "JOSE DIEGO COUTINHO PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 11748.83,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO VICTOR FERREIRA ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IAGO LEOCÁDIO SOUTO DO NASCIMENTO FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FERNANDA FERREIRA COSME",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSIDETE DE MENEZES POGGI",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO VIEIRA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7740.4,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GILSON ALVES DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE PEREIRA DE ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 6986.63,
+          "admissaoAno": 2016,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLEVANILDO BRITO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TEREZINHA MARTINS COUTINHO PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 6720.57,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LARYSSA LACET DIAS NOVO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WILSON DIAS NOVO JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RACHEL RIBEIRO DA SILVA GALDINO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 3030,
+          "liquido": 2762.67,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-12731": {
+      "total": 17,
+      "folha": 128252,
+      "secretarios": [
+        {
+          "nome": "JACKELINE CARTAXO GALINDO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PAULO ROBERTO BARREIRO FONSECA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DAVI AUGUSTO OLIVEIRA ROMAO",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HUGO LEONARDO SILVA ARAGAO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 4447.43,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA LIDIA DE ARAUJO RIBEIRO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EMANUELA FERREIRA SANTOS CAETANO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KIARA VIEGAS DA SILVA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARILENE ELIAS GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO PINHEIRO DE LIMA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAQUIM QUIRINO DA SILVA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GEILCE DE AZEVEDO BARBALHO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ELIZABETE VITORIA ARAUJO DE BRITO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "THEO ALBINO RIBEIRO BARROS",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDREY DOS SANTOS XAVIER",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4241.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "REGENILDO LOPES DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAIO EDUARDO DE MIRANDA CAVALCANTI",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JUNIOR LUIZ PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47926": {
+      "total": 19,
+      "folha": 131446,
+      "secretarios": [
+        {
+          "nome": "RAFAELLA MARIA LIMA DE FREITAS BARROS",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCIO DAVID BRAZ ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 11909.41,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CARLOS JOSE ROCHA TARGINO",
+          "cargo": "SECRETARIO PARLAMENTAR II - AL-SE-002",
+          "simbolo": "AL-SE-002",
+          "remuneracao": 16030,
+          "liquido": 12181.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANOEL DUARTE CARDOZO FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA VITORIA CAVALCANTI LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO BISMARCK NOBREGA GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JULIANA SANTOS NEPOMUCENO",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IZABELLA AGUIDA TRINDADE DA NOBREGA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERIKA DANIELA FARIAS SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDRE BENTO DE ARAUJO LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 3921.52,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VICTOR LIMA ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "IRANILDO ALEIXO DO NASCIMENTO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUIZ GONZAGA DA SILVA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ISABELY DE CARVALHO VERAS",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO TIAGO DE MENEZES TARGINO ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "REGINA CELY DE OLIVEIRA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALAN MACHADO DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE JAILSON HONORIO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDRESSA CRISTINA SOBREIRA LOPES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-16711": {
+      "total": 13,
+      "folha": 131769.4,
+      "secretarios": [
+        {
+          "nome": "SANDRA OLIVEIRA CUNHA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA MARLUCE DE ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GLAUCENEIDE DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 8788.79,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO PEREIRA SOBRINHO",
+          "cargo": "SECRETARIO PARLAMENTAR VIII - AL-SE-008",
+          "simbolo": "AL-SE-008",
+          "remuneracao": 12610,
+          "liquido": 9719.58,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO ARAUJO MONTEIRO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9361.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EDUARDO CLEODON PEREIRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIA MARTINS GONCALVES DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 11470,
+          "liquido": 8898.78,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JANAINA SALUSTIANO DE PONTES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7740.4,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RANNA PALOMA DINIZ CANDIDO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERILANDA KALLIANE RODRIGUES DUTRA ALMEIDA OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "AURINO SOARES DE QUEIROZ",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA MARIA DUTRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRUNA SOARES E QUEIROZ",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2269.4,
+          "liquido": 2139.72,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47934": {
+      "total": 10,
+      "folha": 131675,
+      "secretarios": [
+        {
+          "nome": "MARIA EDUARDA EVI VIEIRA DIAS",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LIVIA NASCIMENTO DA COSTA DINIZ",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERINALDO DIAS AVILA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO UBIRAJARA ACIOLY DE SOUZA NETO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA RAYSSA NUNES BANDEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUIS EDUARDO PINHO TROCOLI",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2012,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIO VINICIO PINHO BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2011,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MICHELLY FERNANDA DA SILVA MOREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DAS DORES DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CAROLINNE COSTA DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6675,
+          "liquido": 6110.76,
+          "admissaoAno": 2026,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47933": {
+      "total": 13,
+      "folha": 132716,
+      "secretarios": [
+        {
+          "nome": "JOSEDITE SARAIVA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALEXANDRO DA SILVA XAVIER",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VALESKA STHEFANNY ALEXANDRE DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VICTORIA EMANUELLY MACEDO RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCICLEIDE SILVA DE ANDRADE",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADRIANO DOS SANTOS MACEDO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EMIDIO BARBOSA LINS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DO CARMO SILVA ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADENAILDA FERNANDES TIBURCIO DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KAIO AUGUSTO LUNA RANGEL",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ADALBERTO GOMES BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "INAIARA FELIX DE MOURA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO CARLOS PATRIAN JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30565": {
+      "total": 16,
+      "folha": 125090,
+      "secretarios": [
+        {
+          "nome": "ALEXANDRE INOCENCIO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR III - AL-SE-003",
+          "simbolo": "AL-SE-003",
+          "remuneracao": 15460,
+          "liquido": 11771.58,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RODRIGO RODOLFO RODRIGUES E SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLAUDIO CEZAR SILVA DE MELO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANKLIN ROOSEVERLT RODRIGUES FERREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ISAC VIEIRA DO NASCIMENTO NETTO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCINEY JOSE LUCENA BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "REINALDO SANTOS DE ARRUDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JAQUELINE TEODOSIO DA CUNHA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FREDDIE NITAO DANTAS VIDAL",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALINE ELLEN RODRIGUES DE ALMEIDA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLEYTON ALVES DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6340,
+          "liquido": 5851.2,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA EDUARDA FARIAS ZIMMER",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KLAUS PEREIRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 3030,
+          "liquido": 2762.67,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GLEYCIANNE KELLY DA SILVA REIS",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 2460,
+          "liquido": 2250.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALINE COSTA DA NOBREGA BRITO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 2460,
+          "liquido": 2250.62,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAFAELLE MOREIRA DE LIMA PEREIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 1890,
+          "liquido": 1734.77,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30557": {
+      "total": 13,
+      "folha": 106700,
+      "secretarios": [
+        {
+          "nome": "RODRIGUES LIRA DE ASSIS",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RANYFABIO CAVALCANTE DE MACEDO SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA LUIZA MOTTA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RICARDO DOS SANTOS PESSOA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERTO BATISTA REIS",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HELENO ALVES DE FREITAS",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DO SOCORRO SANTOS BRILHANTE",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WALKENNED TARGINO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO HENRIQUE JOSE RAMOS NOBREGA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO PAULO ROLIM E SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NIZELIA KATIA AZEVEDO DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA FLAVIA NOBREGA ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LISANGELA DE AQUINO LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47925": {
+      "total": 16,
+      "folha": 131260,
+      "secretarios": [
+        {
+          "nome": "ANDRESSA DAYANNE COSTA ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR III - AL-SE-003",
+          "simbolo": "AL-SE-003",
+          "remuneracao": 15460,
+          "liquido": 11751.58,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LAERTY WILLMS GUEDES LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2002,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ISABELLA PERONICO DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14320,
+          "liquido": 10950.78,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MAGNADY LAVOR FURTADO DE LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDERSON BRUNO DE SENA PAULINO",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIOGO SILVA AZEVEDO AMARAL",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DIVALDO DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VINICIUS ARAUJO CHAVES VASCONCELOS",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CHIARA MARTA DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDRE WANDERLEY DA NOBREGA LIMA DE FARIAS",
+          "cargo": "SECRETARIO PARLAMENTAR XVIII - AL-SE-018",
+          "simbolo": "AL-SE-018",
+          "remuneracao": 6910,
+          "liquido": 6225.63,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NORMACI LEITE MONTEIRO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LIDIA DAMAYANTH ARRUDA ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSILDO DINIZ DE MELO",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 1946.58,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GERALDO GALVAO MORAIS NUNES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 3444,
+          "liquido": 3234.62,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDREA MARIA CALIXTO DA ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2317.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCY HARLEN COSTA LEAL",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 2646,
+          "liquido": 2490.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-6056": {
+      "total": 14,
+      "folha": 132170,
+      "secretarios": [
+        {
+          "nome": "SAULO SANTOS FALCONE",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCAS FERNANDES DIAS ARRUDA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LIDIANE REGINA DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR VIII - AL-SE-008",
+          "simbolo": "AL-SE-008",
+          "remuneracao": 12610,
+          "liquido": 9719.58,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBERLAN EMANUEL RESENDE GOMES",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA MARIA DA SILVA SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7740.4,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ENNIO LIVIO DA SILVA ALMEIDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CASSIO DOUGLAS SANTOS GADELHA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CELSO ALVES DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA THAIS PEREIRA TENORIO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LIVIA ELIANE BATISTA MEDEIROS DE BRITO",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ARTHUR PEIXOTO DE LUCENA",
+          "cargo": "SECRETARIO PARLAMENTAR XVII - AL-SE-017",
+          "simbolo": "AL-SE-017",
+          "remuneracao": 7480,
+          "liquido": 6485.15,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLAUDELUCIA GOMES PEREIRA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE RODRIGUES DUTRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOANA DARC ALMEIDA CARNEIRO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30541": {
+      "total": 13,
+      "folha": 132192,
+      "secretarios": [
+        {
+          "nome": "FELIPE MONTEIRO BELARMINO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EVA SABRINA DE BRITO ALVES",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13180,
+          "liquido": 10129.98,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FABIO RAMOS TRINDADE",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA JOSE MENDES CALDEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2003,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALECXANDRO DE OLIVEIRA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2020,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JESSICA MAYARA SOUZA DUTRA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CRISELIDE DE FATIMA CAVALCANTI MILANES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCELLA PESSOA CAMELO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "LUCIANO PIRES LISBOA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLAUDIO FERNANDO PEDROSA DA CUNHA FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANTONIO MONTEIRO DUTRA",
+          "cargo": "SECRETARIO PARLAMENTAR XIV - AL-SE-014",
+          "simbolo": "AL-SE-014",
+          "remuneracao": 9190,
+          "liquido": 7347.06,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JAILTON PORTO WANDERLEY",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8050,
+          "liquido": 6156.71,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "CLECIO ALEXANDRE DOS SANTOS",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-30553": {
+      "total": 11,
+      "folha": 131140,
+      "secretarios": [
+        {
+          "nome": "VILMAR NUNES DE FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCELO DIAS NOVO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE VELOSO NETO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIANA LOPES DE ASSIS GADELHA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11361.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WESLLEY DIAS DA ROCHA",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14320,
+          "liquido": 10950.78,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "YASMIN DE CARVALHO LAU",
+          "cargo": "SECRETARIO PARLAMENTAR VI - AL-SE-006",
+          "simbolo": "AL-SE-006",
+          "remuneracao": 13750,
+          "liquido": 10540.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "POLIANA AGUIAR TAURINO",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9361.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VANESSA KYANN ROCHA LIRA SANTIAGO",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MAYARA ALEXANDRA PEREIRA CELESTINO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JULIANA BARROS TEOTONIO",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 5770,
+          "liquido": 5360.17,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE HILTON SANTIAGO FILHO",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-592": {
+      "total": 12,
+      "folha": 133080,
+      "secretarios": [
+        {
+          "nome": "MARIA DA CONCEICAO RAMOS DA SILVA MENDES",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JANAYNA PAIVA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "THAIONE JOSEMERY PADILHA DE ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 11470,
+          "liquido": 8194.32,
+          "admissaoAno": 2018,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "KATIA MAGALY FREIRE BARROS",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GILLYANNE DE AZEVEDO RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROSANGELA BRITO DE ANDRADE DINIZ",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8488.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "EMANOELLE SOARES DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 10900,
+          "liquido": 8198.58,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MEIRIELLY MONIK BORGES DE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10330,
+          "liquido": 8077.98,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DENILMA FABIANA MAMEDE RODRIGUES",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7669.6,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WALTER LAZARO PEREIRA DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 7699.6,
+          "admissaoAno": 2022,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "HELBA SIMONE CABRAL DE LACERDA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 6852.14,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCOS ANTONIO GREGORIO DE SOUSA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 9760,
+          "liquido": 6664.72,
+          "admissaoAno": 2007,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47921": {
+      "total": 16,
+      "folha": 132310,
+      "secretarios": [
+        {
+          "nome": "RAFAEL MARACAJA ANTONINO",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAISSA QUIRINO DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR V- AL-SE-005",
+          "simbolo": "AL-SE-005",
+          "remuneracao": 14430,
+          "liquido": 11029.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE CLEMENTE DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR VII - AL-SE-007",
+          "simbolo": "AL-SE-007",
+          "remuneracao": 13730,
+          "liquido": 10525.98,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "BRUNO CEZAR CADE",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12150,
+          "liquido": 9388.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALDERI DE LIMA FEITOSA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11010,
+          "liquido": 8567.58,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "GEOVANI JOSE DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10490,
+          "liquido": 8193.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "PEDRO MAURILIO BARBOSA DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XII - AL-SE-012",
+          "simbolo": "AL-SE-012",
+          "remuneracao": 10440,
+          "liquido": 8157.18,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "WILLIAM AQUINO DO NASCIMENTO",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SPACHSON MELO DE SOUZA",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOSE INACIO DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR XIX - AL-SE-019",
+          "simbolo": "AL-SE-019",
+          "remuneracao": 6580,
+          "liquido": 6056.4,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARCELO ANTONIO MARIZ MAIA",
+          "cargo": "SECRETARIO PARLAMENTAR XXI - AL-SE-021",
+          "simbolo": "AL-SE-021",
+          "remuneracao": 5040,
+          "liquido": 4701.42,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOAO ADEMILTON DE OLIVEIRA NEVES",
+          "cargo": "SECRETARIO PARLAMENTAR XXIII - AL-SE-023",
+          "simbolo": "AL-SE-023",
+          "remuneracao": 4170,
+          "liquido": 3909.1,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NICOLE NEVES HONORATO LINS",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2460,
+          "liquido": 2317.39,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "DEBORAH SANTUZA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2460,
+          "liquido": 2317.39,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SANDRO ROBERTO GOMES REINALDO",
+          "cargo": "SECRETARIO PARLAMENTAR XXV - AL-SE-025",
+          "simbolo": "AL-SE-025",
+          "remuneracao": 2460,
+          "liquido": 2317.39,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "SARA PEREIRA DE ARAUJO SANTA CRUZ",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 1890,
+          "liquido": 1734.77,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47931": {
+      "total": 15,
+      "folha": 132714.99,
+      "secretarios": [
+        {
+          "nome": "ZENNEDY BEZERRA",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 15000,
+          "liquido": 11440.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA JOSE FERREIRA DA COSTA",
+          "cargo": "SECRETARIO PARLAMENTAR IX - AL-SE-009",
+          "simbolo": "AL-SE-009",
+          "remuneracao": 12040,
+          "liquido": 9309.18,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RAMON OLIVEIRA ABRANTES",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MONICA DE SOUZA ROCHA BARBOSA",
+          "cargo": "SECRETARIO PARLAMENTAR X - AL-SE-010",
+          "simbolo": "AL-SE-010",
+          "remuneracao": 12000,
+          "liquido": 9280.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOELMA GOMES DE OLIVEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FABIANO PENAFORTE PRIORI",
+          "cargo": "SECRETARIO PARLAMENTAR XI - AL-SE-011",
+          "simbolo": "AL-SE-011",
+          "remuneracao": 11000,
+          "liquido": 8560.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ALCEU FELIX SANTA ROSA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "VERONICA DE OLIVEIRA GADELHA DANTAS",
+          "cargo": "SECRETARIO PARLAMENTAR XIII - AL-SE-013",
+          "simbolo": "AL-SE-013",
+          "remuneracao": 10000,
+          "liquido": 7848.04,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANA RAQUEL AZEVEDO REGIS MARQUES",
+          "cargo": "SECRETARIO PARLAMENTAR XV- AL-SE-015",
+          "simbolo": "AL-SE-015",
+          "remuneracao": 9000,
+          "liquido": 7229.54,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "RONALDO CAMPOS LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XVI - AL-SE-016",
+          "simbolo": "AL-SE-016",
+          "remuneracao": 8175,
+          "liquido": 6822.46,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ANDERSON ANDRE DE ANDRADE",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ITALLO DE MORAIS ANDRADE",
+          "cargo": "SECRETARIO PARLAMENTAR XX - AL-SE-020",
+          "simbolo": "AL-SE-020",
+          "remuneracao": 6000,
+          "liquido": 5560.5,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MANUELA COSTA MEIRA DE ANDRADE LIMA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4499.99,
+          "liquido": 4209.62,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "NATHALIA PEREIRA VIEIRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JOEMAN CARLOS DA SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR XXIV - AL-SE-024",
+          "simbolo": "AL-SE-024",
+          "remuneracao": 3000,
+          "liquido": 2820.76,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
+        }
+      ]
+    },
+    "alpb-47929": {
+      "total": 11,
+      "folha": 131458,
+      "secretarios": [
+        {
+          "nome": "RONALDO DE PAULA FREIRE",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2025,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA DO CARMO PEREIRA DE ALBUQUERQUE",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FLAVIO CAVALCANTI DE LUNA JUNIOR",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MAURICIO MATEUS BARBOSA BORGES",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA LIDIANE DOS SANTOS SILVA",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2024,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ROBSON JOSE AZEVEDO DE ARAUJO",
+          "cargo": "SECRETARIO PARLAMENTAR I - AL-SE-001",
+          "simbolo": "AL-SE-001",
+          "remuneracao": 16600,
+          "liquido": 12592.38,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "ERBENNIA LAISE GUEDES MONTEIRO FELIPE",
+          "cargo": "SECRETARIO PARLAMENTAR IV - AL-SE-004",
+          "simbolo": "AL-SE-004",
+          "remuneracao": 14890,
+          "liquido": 11427.63,
+          "admissaoAno": 2023,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "MARIA JOSE BENTO DA SILVA FIGUEIREDO",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2019,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "FRANCISCO ANTONIO ALVES BESERRA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "TATYANE RIBEIRO JAPIASSU",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2021,
+          "lotacaoTipo": "gabinete"
+        },
+        {
+          "nome": "JANILSON VERAS DE PAULA",
+          "cargo": "SECRETARIO PARLAMENTAR XXII - AL-SE-022",
+          "simbolo": "AL-SE-022",
+          "remuneracao": 4242,
+          "liquido": 3974.67,
+          "admissaoAno": 2015,
+          "lotacaoTipo": "gabinete"
+        }
+      ],
+      "folhaOficial": true,
+      "mesReferencia": "2026-04",
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes?mes=4&ano=2026"
         }
       ]
     }

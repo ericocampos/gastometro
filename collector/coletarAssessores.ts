@@ -20,6 +20,10 @@ import {
 import {
   buscaFuncionarioUrl, remuneracaoUrl, extrairHashDaBusca, parseRemuneracaoCamara,
 } from './sources/camaraRemuneracao.js'
+import {
+  remuneracoesAlpbUrl, linkComissionadosDoHtml, parseComissionadosOds, baixarOds,
+  type ComissionadoAlpb,
+} from './sources/alpb.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = resolve(here, '../data')
@@ -62,7 +66,11 @@ interface SecretarioGabinete {
   ponto?: string       // matrícula interna de folha (não é CPF)
   oficial?: boolean    // true quando a remuneração veio da ficha oficial (não da tabela SP)
 }
-interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; mesReferencia?: string }
+interface GabineteParlamentar {
+  total: number; folha: number; secretarios: SecretarioGabinete[]; mesReferencia?: string
+  folhaOficial?: boolean
+  consultas?: { tipo: 'gabinete' | 'escritorio'; url: string }[]
+}
 
 const cent = (n: number) => Math.round(n * 100) / 100
 
@@ -197,10 +205,107 @@ async function enriquecerCamaraComRemuneracaoReal(
   return mesReferencia
 }
 
+const normNome = (s: string) =>
+  (s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z ]/g, ' ').replace(/\s+/g, ' ').trim()
+
+// honoríficos/títulos que aparecem no nome parlamentar mas atrapalham o match com o rótulo "GAB DEP"
+const HONOR = new Set(['DR', 'DRA', 'DEL', 'PROF', 'PROFA', 'PROFESSOR', 'PROFESSORA', 'SARGENTO', 'SGT', 'CABO', 'DEP'])
+// tokens significativos de um nome: sem honoríficos e sem iniciais soltas (ex.: "G", "A")
+const tokensNome = (s: string) => normNome(s).split(' ').filter((t) => t.length > 1 && !HONOR.has(t))
+
+function distancia1(a: string, b: string): boolean {
+  if (a === b) return true
+  if (Math.abs(a.length - b.length) > 1) return false
+  // Levenshtein com corte em 1
+  let i = 0, j = 0, dif = 0
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue }
+    if (++dif > 1) return false
+    if (a.length > b.length) i++
+    else if (a.length < b.length) j++
+    else { i++; j++ }
+  }
+  return dif + (a.length - i) + (b.length - j) <= 1
+}
+// tokens do menor conjunto todos PRESENTES (idênticos) no maior — ex.: "João Paulo" ⊆ "João Paulo Segundo"
+function subconjuntoExato(a: string[], b: string[]): boolean {
+  const [menor, maior] = a.length <= b.length ? [a, b] : [b, a]
+  return menor.length > 0 && menor.every((t) => maior.includes(t))
+}
+// mesmo nº de tokens, com ≥1 token idêntico de âncora e os demais a ≤1 caractere — ex.: "Francisca Mota"
+// vs "Francisca Motta", "Wallber Virgulino" vs "Wallber Virgolino" (evita colidir nomes curtos distintos)
+function fuzzyMesmoTamanho(a: string[], b: string[]): boolean {
+  if (a.length !== b.length || a.length === 0) return false
+  if (!a.some((t) => b.includes(t))) return false
+  return a.every((t) => b.some((u) => distancia1(t, u)))
+}
+function nomesCompativeis(a: string[], b: string[]): boolean {
+  return subconjuntoExato(a, b) || fuzzyMesmoTamanho(a, b)
+}
+
+// Gabinete dos deputados estaduais (ALPB): baixa o {AAAAMM}-COMISSIONADOS.ods do mês mais recente,
+// filtra lotação "GAB DEP <nome>" e casa com o deputado por nome. Folha = soma do bruto por gabinete.
+async function coletarAlpb(deputados: Politico[]): Promise<{ porPolitico: Record<string, GabineteParlamentar>; mesReferencia: string } | null> {
+  console.log('> Baixando comissionados da ALPB (Portal da Transparência, .ods)...')
+  // mês mais recente com o arquivo publicado
+  const hoje = new Date()
+  let achou: { comissionados: ComissionadoAlpb[]; ano: number; mes: number } | undefined
+  for (let i = 0; i < JANELA_FOLHA && !achou; i++) {
+    const d = new Date(Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth() - i, 1))
+    const ano = d.getUTCFullYear(), mes = d.getUTCMonth() + 1
+    try {
+      const link = linkComissionadosDoHtml(await fetchText(remuneracoesAlpbUrl(ano, mes), { tentativas: 2 }))
+      if (!link) continue
+      const comissionados = parseComissionadosOds(await baixarOds(link))
+      if (comissionados.some((c) => /^GAB\s+DEP\b/i.test(c.lotacao))) achou = { comissionados, ano, mes }
+    } catch { /* tenta o mês anterior */ }
+  }
+  if (!achou) { console.warn('! Comissionados da ALPB indisponíveis — pulando.'); return null }
+  const { comissionados, ano, mes } = achou
+  const mesReferencia = `${ano}-${String(mes).padStart(2, '0')}`
+
+  // casa o rótulo "GAB DEP <nome>" com o deputado: exato; senão por tokens significativos compatíveis
+  // (sem honoríficos/iniciais, tolerando 1 caractere de diferença por token), exigindo match único.
+  const porNome = new Map<string, Politico>()
+  for (const d of deputados) porNome.set(normNome(d.nome), d)
+  const acharDeputado = (label: string): Politico | undefined => {
+    const exato = porNome.get(normNome(label))
+    if (exato) return exato
+    const lt = tokensNome(label)
+    const cand = deputados.filter((d) => nomesCompativeis(lt, tokensNome(d.nome)))
+    return cand.length === 1 ? cand[0] : undefined
+  }
+
+  const porPolitico: Record<string, GabineteParlamentar> = {}
+  const semMatch = new Set<string>()
+  const consultaUrl = remuneracoesAlpbUrl(ano, mes)
+  for (const c of comissionados) {
+    const m = /^GAB\s+DEP\s+(.+)$/i.exec(c.lotacao)
+    if (!m) continue
+    const dep = acharDeputado(m[1].trim())
+    if (!dep) { semMatch.add(c.lotacao); continue }
+    const g = porPolitico[dep.id] ?? { total: 0, folha: 0, secretarios: [], folhaOficial: true, mesReferencia, consultas: [{ tipo: 'gabinete', url: consultaUrl }] }
+    g.secretarios.push({
+      nome: c.nome, cargo: c.cargo, simbolo: c.simbolo, remuneracao: c.remuneracao, liquido: c.liquido,
+      admissaoAno: c.admissao ? Number(c.admissao.slice(0, 4)) || undefined : undefined, lotacaoTipo: 'gabinete',
+    } as unknown as SecretarioGabinete)
+    porPolitico[dep.id] = g
+  }
+  for (const id of Object.keys(porPolitico)) {
+    const g = porPolitico[id]
+    g.secretarios.sort((a, b) => b.remuneracao - a.remuneracao)
+    g.total = g.secretarios.length
+    g.folha = cent(g.secretarios.reduce((s, x) => s + x.remuneracao, 0))
+  }
+  if (semMatch.size) console.warn(`  ALPB: ${semMatch.size} gabinetes sem match: ${[...semMatch].join(', ')}`)
+  return { porPolitico, mesReferencia }
+}
+
 async function main() {
   const politicos: Politico[] = JSON.parse(readFileSync(resolve(dataDir, 'politicos.json'), 'utf-8'))
   const deputados = politicos.filter((p) => p.casa === 'camara')
   const senadores = politicos.filter((p) => p.casa === 'senado')
+  const estaduais = politicos.filter((p) => p.casa === 'assembleia')
 
   console.log('> Baixando arquivo de funcionários da Câmara...')
   const bruto = await fetchJson<unknown>(URL_FUNCIONARIOS)
@@ -264,13 +369,27 @@ async function main() {
     console.warn('! Falha ao coletar comissionados do Senado:', e instanceof Error ? e.message : e)
   }
 
+  // ALPB: gabinete dos deputados estaduais (comissionados .ods, valor real por pessoa).
+  let mesAlpb: string | undefined
+  let alpbComGabinete = 0
+  try {
+    const alpb = await coletarAlpb(estaduais)
+    if (alpb) {
+      mesAlpb = alpb.mesReferencia
+      for (const [id, gab] of Object.entries(alpb.porPolitico)) { porPolitico[id] = gab; alpbComGabinete++ }
+    }
+  } catch (e) {
+    console.warn('! Falha ao coletar comissionados da ALPB:', e instanceof Error ? e.message : e)
+  }
+
   const comGabinete = Object.values(porPolitico).filter((g) => g.total > 0)
   const saida = {
     atualizadoEm: hojeISO(),
     fonte: URL_FUNCIONARIOS,
     descricao:
       'Câmara: secretários parlamentares lotados no gabinete de cada deputado, com a remuneração bruta REAL do mês (ficha oficial do Portal da Transparência); quando a ficha não resolve, cai na tabela oficial (vencimento + GRG por nível SP). Não inclui auxílios/encargos (pagos à parte). ' +
-      'Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ALPB não divulga por gabinete com a mesma granularidade.',
+      'Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês), juntando nome×valor pela API de remunerações. ' +
+      'ALPB: comissionados de cada gabinete de deputado estadual, do arquivo oficial COMISSIONADOS.ods do mês (nome, cargo/símbolo, admissão, ato, bruto e líquido por pessoa); folha = soma do bruto por gabinete.',
     tabela: TABELA,
     tabelaSenado,
     porPolitico,
@@ -280,9 +399,11 @@ async function main() {
   writeFileSync(resolve(dataDir, 'assessores.json'), JSON.stringify(saida, null, 2))
   const folhaCamara = deputados.reduce((s, d) => s + (porPolitico[d.id]?.folha ?? 0), 0)
   const folhaSenado = senadores.reduce((s, sen) => s + (porPolitico[sen.id]?.folha ?? 0), 0)
+  const folhaAlpb = estaduais.reduce((s, e) => s + (porPolitico[e.id]?.folha ?? 0), 0)
   console.log(
-    `OK: Câmara ${deputados.length} deputados (${comGabinete.length - senadoComGabinete} com gabinete${mesCamara ? `, folha real ${mesCamara}` : ''}), folha R$ ${folhaCamara.toLocaleString('pt-BR')}; ` +
-    `Senado ${senadoComGabinete} gabinetes${tabelaSenado ? ` (folha ${tabelaSenado.mesReferencia})` : ''}, folha R$ ${folhaSenado.toLocaleString('pt-BR')} → data/assessores.json`,
+    `OK: Câmara ${deputados.length} deputados (${comGabinete.length - senadoComGabinete - alpbComGabinete} com gabinete${mesCamara ? `, folha real ${mesCamara}` : ''}), folha R$ ${folhaCamara.toLocaleString('pt-BR')}; ` +
+    `Senado ${senadoComGabinete} gabinetes${tabelaSenado ? ` (folha ${tabelaSenado.mesReferencia})` : ''}, folha R$ ${folhaSenado.toLocaleString('pt-BR')}; ` +
+    `ALPB ${alpbComGabinete} gabinetes${mesAlpb ? ` (folha ${mesAlpb})` : ''}, folha R$ ${folhaAlpb.toLocaleString('pt-BR')} → data/assessores.json`,
   )
 }
 

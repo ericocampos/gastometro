@@ -198,7 +198,7 @@ export function PerfilView({
           </section>
 
           <section className="mb-10">
-            <SecaoTitulo>{politico.casa === 'senado' ? 'Comissionados · folha do gabinete' : 'Assessores · verba de gabinete'}</SecaoTitulo>
+            <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
             <Assessores
               quantidade={assessores.quantidade}
               folha={assessores.folha}
