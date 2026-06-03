@@ -14,6 +14,7 @@ export interface SerieParlamentar {
   serieMensal: PontoMensal[]
   fotoUrl?: string
   mandato?: MandatoParlamentar
+  municipio?: string
 }
 
 export interface LinhaRanking {
