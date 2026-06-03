@@ -1,14 +1,15 @@
-// Comissionados de gabinete do Senado. Combina duas fontes oficiais (sem nenhuma chave que ligue
-// pessoa a valor — esse vínculo só existe na consulta individual, atrás de reCAPTCHA):
+// Comissionados de gabinete do Senado, com VALOR EXATO por pessoa. Combina duas APIs oficiais de
+// dados abertos (adm-dadosabertos), juntando por NOME (os `sequencial` das duas bases são de sistemas
+// diferentes e não casam; o nome casa):
 //
-//  1. API de servidores (adm-dadosabertos): NOME + lotação (gabinete/escritório do senador) + função
-//     (texto, ex. "ASSESSOR PARLAMENTAR") + ano de admissão + `sequencial` (abre a consulta oficial).
-//  2. Folha mensal (LAI/secrh): VALOR por linha + símbolo (AP-xx) + lotação, mas SEM nome.
+//  1. Roster de servidores (`/servidores/servidores`): NOME + lotação (gabinete/escritório do senador)
+//     + função (cargo, ex. "ASSESSOR PARLAMENTAR") + ano de admissão.
+//  2. Remunerações do mês (`/servidores/remuneracoes/{ano}/{mes}`): NOME + todos os valores (básica,
+//     vantagens, líquido, ...) por lançamento.
 //
-// Daí: a lista NOMINAL por gabinete vem da API; o CUSTO REAL do gabinete é a soma da folha oficial
-// (bruta, só TIPO=Normal) por lotação; e o salário de CADA pessoa é ESTIMADO pelo símbolo do cargo
-// (mediana do vencimento por AP-xx, derivada da própria folha). O valor exato por pessoa fica na
-// consulta oficial linkada (remuneracao.asp?fcodigo=...), que o leitor abre resolvendo o captcha.
+// Daí: a lista nominal por gabinete vem do roster; a remuneração de cada pessoa é o BRUTO OFICIAL do
+// mês (só lançamentos "Normal", recorrentes), e a folha do gabinete é a soma exata dessas pessoas.
+// Sem reCAPTCHA, sem estimativa: é o dado oficial pela API pública.
 
 export interface ServidorApi {
   sequencial: number
@@ -20,37 +21,57 @@ export interface ServidorApi {
   ano_admissao?: number
 }
 
+// um lançamento da folha (API de remunerações). Valores vêm como string "1.234,56".
+export interface RemuneracaoApi {
+  nome: string
+  tipo_folha?: string
+  remuneracao_basica?: string
+  vantagens_pessoais?: string
+  funcao_comissionada?: string
+  gratificacao_natalina?: string
+  horas_extras?: string
+  outras_eventuais?: string
+  abono_permanencia?: string
+  reversao_teto_constitucional?: string
+  remuneracao_liquida?: string
+}
+
 export interface ComissionadoSenado {
   nome: string
   cargo?: string          // texto da função (ASSESSOR PARLAMENTAR, AUXILIAR PARLAMENTAR PLENO, ...)
-  simbolo?: string        // AP-xx (do cruzamento com a folha); pode faltar p/ cargos sem símbolo AP
-  remuneracao: number     // ESTIMATIVA pelo símbolo (0 quando o símbolo é desconhecido)
-  estimado: true
+  remuneracao: number     // BRUTO oficial do mês (Normal); 0 se a pessoa não tem folha no mês de ref.
+  liquido?: number        // líquido oficial do mês
+  semFolha?: boolean      // true quando não há lançamento Normal no mês (ex.: recém-admitido)
   lotacaoTipo: 'gabinete' | 'escritorio'
   admissaoAno?: number
-  sequencial: number
-  consultaUrl: string     // consulta oficial individual (valor exato, atrás de reCAPTCHA)
+}
+
+// link p/ a Consulta de Servidores oficial filtrada por uma lotação (gabinete ou escritório), p/ quem
+// quiser conferir na fonte / ver mês a mês.
+export interface ConsultaLotacao {
+  tipo: 'gabinete' | 'escritorio'
+  url: string
 }
 
 export interface GabineteSenado {
   total: number
-  folha: number                 // soma da folha oficial bruta (Normal) das lotações do senador
+  folha: number                 // soma do bruto oficial (Normal) dos comissionados do senador
   folhaOficial: true
-  mesReferencia: string         // mês da folha usada (ex. "2026-04")
+  mesReferencia: string         // mês da folha usada (ex. "2026-05")
   secretarios: ComissionadoSenado[]
+  consultas: ConsultaLotacao[]
 }
 
 export interface TabelaSenado {
   mesReferencia: string
   fonte: string
-  vencimentoPorSimbolo: Record<string, number>
   consultaBaseUrl: string
 }
 
-const CONSULTA_BASE = 'https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp'
+const CONSULTA_BASE = 'https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp'
 
-export function consultaUrl(sequencial: number): string {
-  return `${CONSULTA_BASE}?fcodigo=${sequencial}&fvinculo=2`
+export function buscaLotacaoUrl(sigla: string): string {
+  return `${CONSULTA_BASE}?flotacao=${encodeURIComponent(sigla.trim())}`
 }
 
 export function normalizarNome(nome: string): string {
@@ -66,8 +87,7 @@ export function tipoLotacao(sigla: string | undefined): 'gabinete' | 'escritorio
   return /^E\d/.test(sigla ?? '') ? 'escritorio' : 'gabinete'
 }
 
-// "Gabinete do Senador Efraim Filho" -> "Efraim Filho"; "Escritório de Apoio nº 1 do Senador X" -> "X";
-// "Gabinete da Senadora Daniella Ribeiro" -> "Daniella Ribeiro".
+// "Gabinete do Senador Efraim Filho" -> "Efraim Filho"; "Escritório de Apoio nº 1 do Senador X" -> "X".
 export function nomeSenadorDaLotacao(lotacaoNome: string | undefined): string | null {
   const m = /\b(?:Senador|Senadora)\s+(.+?)\s*$/i.exec(lotacaoNome ?? '')
   return m ? m[1].trim() : null
@@ -78,105 +98,71 @@ const num = (s: string | undefined): number => {
   return Number.isFinite(v) ? v : 0
 }
 const cent = (n: number) => Math.round(n * 100) / 100
-const mediana = (a: number[]): number => {
-  const s = [...a].sort((x, y) => x - y)
-  return s.length ? s[Math.floor(s.length / 2)] : 0
+
+export interface RemunSenado {
+  brutoPorNome: Map<string, number>     // nome normalizado -> bruto somado (Normal)
+  liquidoPorNome: Map<string, number>   // nome normalizado -> líquido somado (Normal)
+  registrosNormais: number              // qtde de lançamentos Normal (p/ validar o mês)
 }
 
-export interface FolhaSenado {
-  vencimentoPorSimbolo: Record<string, number>  // AP-01 -> vencimento mediano (bruto básico)
-  cargoParaSimbolo: Record<string, string>       // cargo (texto normalizado) -> AP-xx
-  brutoPorSenador: Map<string, number>           // nome do senador (normalizado) -> folha bruta (Normal)
-}
+const GANHOS = [
+  'remuneracao_basica', 'vantagens_pessoais', 'funcao_comissionada', 'gratificacao_natalina',
+  'horas_extras', 'outras_eventuais', 'abono_permanencia',
+] as const
 
-// Parse da folha mensal (CSV ISO-8859-1 já decodificado p/ string). 1ª linha é o carimbo de
-// atualização; o cabeçalho real é a 2ª linha.
-export function parseFolhaSenado(csvText: string): FolhaSenado {
-  const linhas = csvText.split(/\r?\n/).filter((l) => l.trim())
-  const header = (linhas[1] ?? '').split(';')
-  const ix = (re: RegExp) => header.findIndex((c) => re.test(normalizarNome(c)))
-  const iLot = ix(/LOTA/)
-  const iRef = ix(/REFERENCIA CARGO/)
-  const iCargo = ix(/^CARGO$/)
-  const iTipo = ix(/TIPO FOLHA/)
-  const iBasica = ix(/REMUN_BASICA/)
-  const iRev = ix(/REVERSAO/)
-  const ganhos = ['REMUN_BASICA', 'VANT_PESSOAIS', 'FUNC_COMISSIONADA', 'GRAT_NATALINA', 'HORAS_EXTRAS', 'OUTRAS_EVENTUAIS', 'ABONO_PERMANENCIA']
-    .map((n) => ix(new RegExp('^' + n + '$')))
-
-  const basicaPorSimbolo = new Map<string, number[]>()
-  const cargoParaSimbolo: Record<string, string> = {}
-  const brutoPorSenador = new Map<string, number>()
-
-  for (const l of linhas.slice(2)) {
-    const c = l.split(';')
-    const simbolo = (c[iRef] ?? '').trim()
-    if (simbolo) {
-      if (!basicaPorSimbolo.has(simbolo)) basicaPorSimbolo.set(simbolo, [])
-      basicaPorSimbolo.get(simbolo)!.push(num(c[iBasica]))
-      const cargo = normalizarNome(c[iCargo])
-      if (cargo && !cargoParaSimbolo[cargo]) cargoParaSimbolo[cargo] = simbolo
-    }
-    // folha do senador: só TIPO=Normal (recorrente), agregando gabinete + escritório
-    if ((c[iTipo] ?? '').trim().toLowerCase() === 'normal') {
-      const senador = nomeSenadorDaLotacao(c[iLot])
-      if (senador) {
-        const bruto = ganhos.reduce((s, i) => s + (i >= 0 ? num(c[i]) : 0), 0) - (iRev >= 0 ? num(c[iRev]) : 0)
-        const k = normalizarNome(senador)
-        brutoPorSenador.set(k, (brutoPorSenador.get(k) ?? 0) + bruto)
-      }
-    }
+// Indexa a folha por nome, somando só os lançamentos "Normal" (recorrentes do mês). O bruto é a soma
+// dos ganhos menos a reversão ao teto constitucional (igual ao recorte usado na Câmara).
+export function parseRemuneracoes(registros: RemuneracaoApi[]): RemunSenado {
+  const brutoPorNome = new Map<string, number>()
+  const liquidoPorNome = new Map<string, number>()
+  let registrosNormais = 0
+  for (const r of registros) {
+    if ((r.tipo_folha ?? '').trim().toLowerCase() !== 'normal') continue
+    registrosNormais++
+    const bruto = GANHOS.reduce((s, k) => s + num(r[k]), 0) - num(r.reversao_teto_constitucional)
+    const k = normalizarNome(r.nome)
+    brutoPorNome.set(k, (brutoPorNome.get(k) ?? 0) + bruto)
+    liquidoPorNome.set(k, (liquidoPorNome.get(k) ?? 0) + num(r.remuneracao_liquida))
   }
-
-  const vencimentoPorSimbolo: Record<string, number> = {}
-  for (const [sim, vals] of basicaPorSimbolo) vencimentoPorSimbolo[sim] = cent(mediana(vals))
-  for (const [k, v] of brutoPorSenador) brutoPorSenador.set(k, cent(v))
-  return { vencimentoPorSimbolo, cargoParaSimbolo, brutoPorSenador }
-}
-
-// símbolo (AP-xx) a partir do texto da função da API. Exato e, na falta, casa por prefixo
-// ("CHEFE DE GABINETE COMISSIONADO" ~ "CHEFE DE GABINETE").
-export function simboloDoCargo(cargoNome: string | undefined, cargoParaSimbolo: Record<string, string>): string | undefined {
-  const alvo = normalizarNome(cargoNome)
-  if (!alvo) return undefined
-  if (cargoParaSimbolo[alvo]) return cargoParaSimbolo[alvo]
-  for (const [cargo, sim] of Object.entries(cargoParaSimbolo)) {
-    if (alvo.startsWith(cargo) || cargo.startsWith(alvo)) return sim
-  }
-  return undefined
+  for (const [k, v] of brutoPorNome) brutoPorNome.set(k, cent(v))
+  for (const [k, v] of liquidoPorNome) liquidoPorNome.set(k, cent(v))
+  return { brutoPorNome, liquidoPorNome, registrosNormais }
 }
 
 // Monta os gabinetes do Senado para os senadores informados (id + nome), a partir do roster da API
-// e dos mapas da folha. `mesReferencia` é "AAAA-MM" do arquivo de folha usado.
+// e das remunerações do mês. `mesReferencia` é "AAAA-MM" do mês usado.
 export function construirGabinetesSenado(
   servidores: ServidorApi[],
-  folha: FolhaSenado,
+  remun: RemunSenado,
   mesReferencia: string,
   senadores: { id: string; nome: string }[],
 ): { porPolitico: Record<string, GabineteSenado>; tabela: TabelaSenado } {
-  // agrupa comissionados ativos de gabinete/escritório por nome de senador (da lotação)
   const porSenador = new Map<string, ComissionadoSenado[]>()
+  const lotacoes = new Map<string, Map<string, 'gabinete' | 'escritorio'>>()
   for (const s of servidores) {
     if (s.vinculo !== 'COMISSIONADO' || s.situacao !== 'ATIVO') continue
-    if (!ehLotacaoDeSenador(s.lotacao?.sigla)) continue
+    const sigla = s.lotacao?.sigla
+    if (!ehLotacaoDeSenador(sigla)) continue
     const senador = nomeSenadorDaLotacao(s.lotacao?.nome)
     if (!senador) continue
-    const simbolo = simboloDoCargo(s.funcao?.nome, folha.cargoParaSimbolo)
+    const nomeNorm = normalizarNome(s.nome)
+    const bruto = remun.brutoPorNome.get(nomeNorm)
     const com: ComissionadoSenado = {
       nome: (s.nome ?? '').trim(),
       cargo: s.funcao?.nome || undefined,
-      simbolo,
-      remuneracao: simbolo ? (folha.vencimentoPorSimbolo[simbolo] ?? 0) : 0,
-      estimado: true,
-      lotacaoTipo: tipoLotacao(s.lotacao?.sigla),
+      remuneracao: bruto ?? 0,
+      liquido: remun.liquidoPorNome.get(nomeNorm),
+      semFolha: bruto == null ? true : undefined,
+      lotacaoTipo: tipoLotacao(sigla),
       admissaoAno: s.ano_admissao,
-      sequencial: s.sequencial,
-      consultaUrl: consultaUrl(s.sequencial),
     }
     const k = normalizarNome(senador)
     const arr = porSenador.get(k) ?? []
     arr.push(com)
     porSenador.set(k, arr)
+    const ls = lotacoes.get(k) ?? new Map<string, 'gabinete' | 'escritorio'>()
+    ls.set(sigla!.trim(), tipoLotacao(sigla))
+    lotacoes.set(k, ls)
   }
 
   const porPolitico: Record<string, GabineteSenado> = {}
@@ -185,12 +171,16 @@ export function construirGabinetesSenado(
     const secs = porSenador.get(k)
     if (!secs || secs.length === 0) continue
     secs.sort((a, b) => b.remuneracao - a.remuneracao)
+    const consultas: ConsultaLotacao[] = [...(lotacoes.get(k) ?? new Map())]
+      .sort((a, b) => (a[1] === b[1] ? 0 : a[1] === 'gabinete' ? -1 : 1))
+      .map(([sigla, tipo]) => ({ tipo, url: buscaLotacaoUrl(sigla) }))
     porPolitico[sen.id] = {
       total: secs.length,
-      folha: folha.brutoPorSenador.get(k) ?? 0,
+      folha: cent(secs.reduce((sum, x) => sum + x.remuneracao, 0)),
       folhaOficial: true,
       mesReferencia,
       secretarios: secs,
+      consultas,
     }
   }
 
@@ -198,8 +188,7 @@ export function construirGabinetesSenado(
     porPolitico,
     tabela: {
       mesReferencia,
-      fonte: 'Senado/SECRH — roster: API de servidores (adm-dadosabertos); folha: Remuneração de Servidores (LAI/secrh, fonte Ergon). Vencimento por símbolo = mediana do REMUN_BASICA por AP-xx na folha do mês.',
-      vencimentoPorSimbolo: folha.vencimentoPorSimbolo,
+      fonte: 'Senado/SECRH — dados abertos (adm-dadosabertos): roster de servidores + remunerações do mês, juntados por nome. Bruto = soma dos ganhos (Normal) menos reversão ao teto.',
       consultaBaseUrl: CONSULTA_BASE,
     },
   }

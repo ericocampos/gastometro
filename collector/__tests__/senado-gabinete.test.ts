@@ -1,28 +1,19 @@
 import { describe, it, expect } from 'vitest'
 import {
-  nomeSenadorDaLotacao, ehLotacaoDeSenador, tipoLotacao, simboloDoCargo,
-  parseFolhaSenado, construirGabinetesSenado, consultaUrl,
-  type ServidorApi,
+  nomeSenadorDaLotacao, ehLotacaoDeSenador, tipoLotacao,
+  parseRemuneracoes, construirGabinetesSenado, buscaLotacaoUrl,
+  type ServidorApi, type RemuneracaoApi,
 } from '../sources/senadoGabinete.js'
 
-const HEADER =
-  'VÍNCULO;CATEGORIA;CARGO;REFERÊNCIA CARGO;SÍMBOLO FUNÇÃO;ANO EXERCÍCIO;LOTAÇÃO EXERCÍCIO;TIPO FOLHA;' +
-  'REMUN_BASICA;VANT_PESSOAIS;FUNC_COMISSIONADA;GRAT_NATALINA;HORAS_EXTRAS;OUTRAS_EVENTUAIS;ABONO_PERMANENCIA;' +
-  'REVERSAO_TETO_CONST;IMPOSTO_RENDA;PREVIDÊNCIA;FALTAS;REM_LIQUIDA;DIÁRIAS;AUXÍLIOS;VANT_INDENIZATORIAS'
+const r = (nome: string, tipo: string, basica: string, extra: Partial<RemuneracaoApi> = {}): RemuneracaoApi =>
+  ({ nome, tipo_folha: tipo, remuneracao_basica: basica, ...extra })
 
-// VÍNCULO;CATEGORIA;CARGO;REF;SÍMBOLO;ANO;LOTAÇÃO;TIPO;BASICA;(13 zeros de ganhos/descontos)...
-const linha = (cargo: string, ref: string, lot: string, tipo: string, basica: string) =>
-  `COMISSIONADO;CARGO EM COMISSÃO;${cargo};${ref};;2023;${lot};${tipo};${basica};0;0;0;0;0;0;0;0;0;0;0;0;0;0`
-
-const CSV = [
-  'ÚLTIMA ATUALIZAÇÃO;14/05/2026 05:01',
-  HEADER,
-  linha('AJUDANTE PARLAMENTAR JUNIOR', 'AP-01', 'Gabinete do Senador Fulano Teste', 'Normal', '3.000,00'),
-  linha('AJUDANTE PARLAMENTAR JUNIOR', 'AP-01', 'Gabinete do Senador Fulano Teste', 'Normal', '3.200,00'),
-  linha('AUXILIAR PARLAMENTAR PLENO', 'AP-07', 'Escritório de Apoio nº 1 do Senador Fulano Teste', 'Normal', '12.000,00'),
-  linha('AUXILIAR PARLAMENTAR PLENO', 'AP-07', 'Escritório de Apoio nº 1 do Senador Fulano Teste', 'Suplementar', '5.000,00'),
-  linha('AJUDANTE PARLAMENTAR JUNIOR', 'AP-01', 'Gabinete do Senador Outro', 'Normal', '3.000,00'),
-].join('\n')
+const REMUN: RemuneracaoApi[] = [
+  r('MARIA SILVA', 'Normal', '3.000,00', { remuneracao_liquida: '2.700,00' }),
+  r('JOAO SOUZA', 'Normal', '12.000,00', { vantagens_pessoais: '500,00', remuneracao_liquida: '10.000,00' }),
+  r('JOAO SOUZA', 'Suplementar', '1.000,00'), // ignorado (não é Normal)
+  r('OUTRO FULANO', 'Normal', '5.000,00'),     // só na folha, sem roster → não vira gabinete
+]
 
 describe('senadoGabinete / lotação', () => {
   it('extrai o nome do senador da lotação (gabinete, escritório, senadora)', () => {
@@ -32,7 +23,7 @@ describe('senadoGabinete / lotação', () => {
     expect(nomeSenadorDaLotacao('Liderança do Governo')).toBeNull()
   })
 
-  it('reconhece gabinete (GS) e escritório (E\\d) de senador, exclui o resto', () => {
+  it('reconhece gabinete (GS) e escritório (E\\d), exclui o resto', () => {
     expect(ehLotacaoDeSenador('GSEFILHO')).toBe(true)
     expect(ehLotacaoDeSenador('E1EFILHO')).toBe(true)
     expect(ehLotacaoDeSenador('GABLID1')).toBe(false)
@@ -42,73 +33,61 @@ describe('senadoGabinete / lotação', () => {
   })
 })
 
-describe('senadoGabinete / parseFolhaSenado', () => {
-  const folha = parseFolhaSenado(CSV)
+describe('senadoGabinete / parseRemuneracoes', () => {
+  const rem = parseRemuneracoes(REMUN)
 
-  it('deriva o vencimento mediano por símbolo (incluindo linhas Suplementar)', () => {
-    expect(folha.vencimentoPorSimbolo['AP-01']).toBe(3000) // mediana de [3000, 3200, 3000] (3 linhas AP-01)
-    expect(folha.vencimentoPorSimbolo['AP-07']).toBe(12000) // mediana de [12000, 5000]
+  it('soma o bruto só do TIPO=Normal, por nome (ganhos - reversão ao teto)', () => {
+    expect(rem.brutoPorNome.get('MARIA SILVA')).toBe(3000)
+    expect(rem.brutoPorNome.get('JOAO SOUZA')).toBe(12500) // 12000 + 500; ignora os 1000 Suplementar
+    expect(rem.registrosNormais).toBe(3)
   })
 
-  it('mapeia cargo (texto) para símbolo', () => {
-    expect(folha.cargoParaSimbolo['AJUDANTE PARLAMENTAR JUNIOR']).toBe('AP-01')
-    expect(folha.cargoParaSimbolo['AUXILIAR PARLAMENTAR PLENO']).toBe('AP-07')
+  it('indexa o líquido por nome', () => {
+    expect(rem.liquidoPorNome.get('JOAO SOUZA')).toBe(10000)
   })
-
-  it('soma a folha bruta só do TIPO=Normal, agregando gabinete + escritório por senador', () => {
-    // Fulano: 3000 + 3200 (gabinete) + 12000 (escritório Normal) = 18200; ignora os 5000 Suplementar
-    expect(folha.brutoPorSenador.get('FULANO TESTE')).toBe(18200)
-    expect(folha.brutoPorSenador.get('OUTRO')).toBe(3000)
-  })
-})
-
-describe('senadoGabinete / simboloDoCargo', () => {
-  const mapa = { 'AJUDANTE PARLAMENTAR JUNIOR': 'AP-01', 'AUXILIAR PARLAMENTAR PLENO': 'AP-07' }
-  it('casa exato', () => expect(simboloDoCargo('AJUDANTE PARLAMENTAR JUNIOR', mapa)).toBe('AP-01'))
-  it('casa por prefixo quando não há exato', () => expect(simboloDoCargo('Auxiliar Parlamentar', mapa)).toBe('AP-07'))
-  it('retorna undefined p/ cargo sem símbolo', () => expect(simboloDoCargo('CHEFE DE GABINETE COMISSIONADO', mapa)).toBeUndefined())
 })
 
 describe('senadoGabinete / construirGabinetesSenado', () => {
-  const folha = parseFolhaSenado(CSV)
+  const rem = parseRemuneracoes(REMUN)
   const servidores: ServidorApi[] = [
-    { sequencial: 111, nome: 'MARIA SILVA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 95, nome: 'AJUDANTE PARLAMENTAR JUNIOR' }, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' }, ano_admissao: 2023 },
+    { sequencial: 111, nome: 'MARIA SILVA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 80, nome: 'ASSESSOR PARLAMENTAR' }, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' }, ano_admissao: 2023 },
     { sequencial: 222, nome: 'JOAO SOUZA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 87, nome: 'AUXILIAR PARLAMENTAR PLENO' }, lotacao: { sigla: 'E1FTESTE', nome: 'Escritório de Apoio nº 1 do Senador Fulano Teste' }, ano_admissao: 2020 },
-    { sequencial: 333, nome: 'CHEFE PESSOA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 12, nome: 'CHEFE DE GABINETE COMISSIONADO' }, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' }, ano_admissao: 2025 },
-    { sequencial: 444, nome: 'DESLIGADO PESSOA', vinculo: 'COMISSIONADO', situacao: 'DESLIGADO', funcao: { codigo: 95, nome: 'AJUDANTE PARLAMENTAR JUNIOR' }, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' } },
-    { sequencial: 555, nome: 'LIDER PESSOA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 80, nome: 'ASSESSOR PARLAMENTAR' }, lotacao: { sigla: 'GABLID1', nome: 'Liderança do Governo' } },
+    { sequencial: 333, nome: 'CHEFE PESSOA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: { codigo: 12, nome: 'CHEFE DE GABINETE COMISSIONADO' }, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' }, ano_admissao: 2026 },
+    { sequencial: 444, nome: 'DESLIGADO PESSOA', vinculo: 'COMISSIONADO', situacao: 'DESLIGADO', funcao: null, lotacao: { sigla: 'GSFTESTE', nome: 'Gabinete do Senador Fulano Teste' } },
+    { sequencial: 555, nome: 'LIDER PESSOA', vinculo: 'COMISSIONADO', situacao: 'ATIVO', funcao: null, lotacao: { sigla: 'GABLID1', nome: 'Liderança do Governo' } },
   ]
-  const { porPolitico, tabela } = construirGabinetesSenado(servidores, folha, '2026-04', [
+  const { porPolitico, tabela } = construirGabinetesSenado(servidores, rem, '2026-05', [
     { id: 'senado-1', nome: 'Fulano Teste' },
-    { id: 'senado-2', nome: 'Outro' }, // tem folha, mas nenhum comissionado ativo no roster → fica de fora
+    { id: 'senado-2', nome: 'Outro' }, // sem comissionado no roster → fica de fora
   ])
 
-  it('monta o gabinete só p/ senador com roster ativo, com folha oficial e mês de referência', () => {
+  it('monta só p/ senador com roster ativo; folha = soma exata; mês de referência', () => {
     expect(Object.keys(porPolitico)).toEqual(['senado-1'])
     const g = porPolitico['senado-1']
     expect(g.total).toBe(3) // Maria, Joao, Chefe (exclui Desligado e Líder)
-    expect(g.folha).toBe(18200)
+    expect(g.folha).toBe(15500) // 12500 + 3000 + 0
     expect(g.folhaOficial).toBe(true)
-    expect(g.mesReferencia).toBe('2026-04')
+    expect(g.mesReferencia).toBe('2026-05')
   })
 
-  it('estima a remuneração por símbolo e ordena por valor desc; cargo sem símbolo fica 0', () => {
+  it('usa o valor exato por pessoa, ordena desc, e marca quem não tem folha no mês', () => {
     const secs = porPolitico['senado-1'].secretarios
     expect(secs.map((s) => s.nome)).toEqual(['JOAO SOUZA', 'MARIA SILVA', 'CHEFE PESSOA'])
-    expect(secs[0]).toMatchObject({ simbolo: 'AP-07', remuneracao: 12000, lotacaoTipo: 'escritorio', estimado: true })
-    expect(secs[1]).toMatchObject({ simbolo: 'AP-01', remuneracao: 3000, lotacaoTipo: 'gabinete' })
-    expect(secs[2]).toMatchObject({ simbolo: undefined, remuneracao: 0 })
+    expect(secs[0]).toMatchObject({ remuneracao: 12500, liquido: 10000, lotacaoTipo: 'escritorio', cargo: 'AUXILIAR PARLAMENTAR PLENO' })
+    expect(secs[1]).toMatchObject({ remuneracao: 3000, lotacaoTipo: 'gabinete' })
+    expect(secs[2]).toMatchObject({ remuneracao: 0, semFolha: true })
   })
 
-  it('inclui link p/ a consulta oficial individual de cada comissionado', () => {
-    const maria = porPolitico['senado-1'].secretarios.find((s) => s.nome === 'MARIA SILVA')!
-    expect(maria.consultaUrl).toBe(consultaUrl(111))
-    expect(maria.consultaUrl).toContain('fcodigo=111')
+  it('monta links de consulta oficial por lotação (gabinete antes do escritório)', () => {
+    const consultas = porPolitico['senado-1'].consultas
+    expect(consultas.map((c) => c.tipo)).toEqual(['gabinete', 'escritorio'])
+    expect(consultas[0].url).toBe(buscaLotacaoUrl('GSFTESTE'))
+    expect(consultas[1].url).toContain('flotacao=E1FTESTE')
   })
 
-  it('expõe a tabela de vencimento por símbolo e a fonte', () => {
-    expect(tabela.mesReferencia).toBe('2026-04')
-    expect(tabela.vencimentoPorSimbolo['AP-07']).toBe(12000)
-    expect(tabela.consultaBaseUrl).toContain('remuneracao.asp')
+  it('expõe a fonte e o mês na tabela', () => {
+    expect(tabela.mesReferencia).toBe('2026-05')
+    expect(tabela.consultaBaseUrl).toContain('nova_consulta.asp')
+    expect(tabela.fonte).toMatch(/dados abertos/i)
   })
 })

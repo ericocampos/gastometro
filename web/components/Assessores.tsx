@@ -1,4 +1,4 @@
-import type { ItemCusto, SecretarioGabinete } from '@/lib/tipos'
+import type { ItemCusto, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import { brl, brlInteiro, dataBR } from '@/lib/formato'
 import { corCasa } from '@/lib/custos'
 import { GraficoGabinete } from './GraficoGabinete'
@@ -17,10 +17,10 @@ const mesBR = (m?: string) => {
 }
 
 // Gabinete: nº de assessores e a folha. Na Câmara a folha é somada pela tabela oficial (vencimento +
-// GRG por nível SP). No Senado a folha é o custo real oficial (soma da folha bruta do mês) e o salário
-// de cada pessoa é estimado pelo símbolo do cargo. ALPB segue sem dado por gabinete.
+// GRG por nível SP). No Senado a folha é o custo real oficial (soma exata dos comissionados pela API
+// de remunerações, juntando nome×valor). ALPB segue sem dado por gabinete.
 export function Assessores({
-  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, gabinete, casa,
+  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa,
 }: {
   quantidade: number | null
   folha?: number | null
@@ -29,6 +29,7 @@ export function Assessores({
   consultaExataUrl?: string
   atualizadoEm?: string
   mesReferencia?: string
+  consultas?: ConsultaLotacao[]
   gabinete: ItemCusto
   casa: 'camara' | 'senado' | 'assembleia'
 }) {
@@ -102,12 +103,11 @@ export function Assessores({
                   <span className="flex shrink-0 items-center gap-2">
                     {temFolhaSenado ? (
                       <>
-                        {s.simbolo && <span className="text-tinta-tenue tabular-nums">{s.simbolo}</span>}
                         {s.lotacaoTipo === 'escritorio' && (
                           <span className="rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
                         )}
-                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave" title="Estimado pelo símbolo do cargo">
-                          {s.remuneracao > 0 ? `~${brl(s.remuneracao)}` : '—'}
+                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave" title={s.semFolha ? 'Sem folha no mês de referência (ex.: recém-admitido)' : 'Bruto oficial do mês'}>
+                          {s.semFolha ? '—' : brl(s.remuneracao)}
                         </span>
                       </>
                     ) : (
@@ -125,9 +125,7 @@ export function Assessores({
                   <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-tinta-tenue">
                     {s.cargo && <span>{tituloNome(s.cargo)}</span>}
                     {s.admissaoAno && <span>· desde {s.admissaoAno}</span>}
-                    {s.consultaUrl && (
-                      <a href={s.consultaUrl} target="_blank" rel="noopener noreferrer" className="text-marca hover:underline">· valor oficial ↗</a>
-                    )}
+                    {s.semFolha && <span>· sem folha em {mesBR(mesReferencia)}</span>}
                   </div>
                 ) : s.nomeadoEm ? (
                   <div className="mt-0.5 text-[11px] text-tinta-tenue">
@@ -162,18 +160,26 @@ export function Assessores({
           </>
         ) : temFolhaSenado ? (
           <>
-            <strong className="text-tinta">Folha oficial; salário por pessoa é estimado.</strong>{' '}
-            O Senado publica <strong className="text-tinta-suave">o nome de cada comissionado e o gabinete</strong>, e
-            também a <strong className="text-tinta-suave">folha do mês</strong> — mas em arquivos separados, sem nada que
-            ligue um nome ao seu salário. Por isso a folha acima é o <strong className="text-tinta-suave">custo real</strong>{' '}
-            (soma oficial), e o valor ao lado de cada pessoa é uma{' '}
-            <strong className="text-tinta-suave">estimativa pelo símbolo do cargo</strong> (AP-xx / SF0x), não o valor
-            individual oficial.
-            <span className="mt-1 block">
-              Os símbolos são faixas de vencimento (do menor ao maior). Inclui gabinete e escritório de apoio no estado.
-              O valor exato de cada pessoa fica na consulta oficial (link &ldquo;valor oficial&rdquo; em cada nome) —
-              o Senado a protege com um reCAPTCHA, então abre no navegador, não dá para somar automaticamente.
-            </span>
+            <strong className="text-tinta">Valor oficial, da folha do mês.</strong>{' '}
+            Nome, cargo e gabinete vêm do cadastro de servidores; a remuneração é o{' '}
+            <strong className="text-tinta-suave">bruto pago no mês ({mesBR(mesReferencia)})</strong>, da folha oficial —
+            ambos pela API de dados abertos do Senado, juntados por nome. A folha do gabinete é a{' '}
+            <strong className="text-tinta-suave">soma exata</strong> dessas pessoas. Inclui gabinete e escritório de
+            apoio no estado. Quem aparece com &ldquo;—&rdquo; não teve folha no mês (ex.: recém-admitido). Não há
+            descrição da atividade de cada pessoa: é dinheiro público pago sem dizer em troca de quê.
+            {consultas.length > 0 && (
+              <span className="mt-1 block">
+                Conferir na fonte oficial:{' '}
+                {consultas.map((c, i) => (
+                  <span key={c.url}>
+                    {i > 0 && ' · '}
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-marca underline">
+                      {c.tipo === 'escritorio' ? 'escritório' : 'gabinete'} ↗
+                    </a>
+                  </span>
+                ))}
+              </span>
+            )}
           </>
         ) : (
           <>

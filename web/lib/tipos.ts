@@ -108,12 +108,12 @@ export interface SecretarioGabinete {
   ponto?: string       // matrícula interna de folha (não é CPF)
   // Senado (comissionado de gabinete/escritório):
   cargo?: string                          // texto da função (ASSESSOR PARLAMENTAR, ...)
-  simbolo?: string                        // símbolo do cargo (AP-xx / SF0x)
-  estimado?: boolean                      // remuneração é estimativa pelo símbolo
+  liquido?: number                        // líquido oficial do mês
+  semFolha?: boolean                      // sem lançamento Normal no mês (ex.: recém-admitido)
   lotacaoTipo?: 'gabinete' | 'escritorio' // onde a pessoa está lotada
   admissaoAno?: number                    // ano de admissão
-  consultaUrl?: string                    // consulta oficial individual (valor exato, com reCAPTCHA)
 }
+export interface ConsultaLotacao { tipo: 'gabinete' | 'escritorio'; url: string }
 export interface GabineteParlamentar {
   total: number
   folha: number
@@ -121,12 +121,12 @@ export interface GabineteParlamentar {
   // Senado: a folha é o custo real oficial (bruto, mês de referência), não estimativa
   folhaOficial?: boolean
   mesReferencia?: string
+  consultas?: ConsultaLotacao[]           // busca oficial por lotação (gabinete/escritório)
 }
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
 export interface TabelaGabineteSenado {
   mesReferencia: string
   fonte: string
-  vencimentoPorSimbolo: Record<string, number>
   consultaBaseUrl: string
 }
 

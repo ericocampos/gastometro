@@ -19,9 +19,9 @@ export default function AssessoresPage() {
         partido: d?.partido,
         nivel: s.nivel,
         grg: s.grg,
-        simbolo: s.simbolo,
-        estimado: s.estimado,
+        cargo: s.cargo,
         escritorio: s.lotacaoTipo === 'escritorio',
+        semFolha: s.semFolha,
       })
     }
   }
@@ -35,8 +35,8 @@ export default function AssessoresPage() {
         pessoa específica ou cruzar nomes entre gabinetes. Os dados são públicos; as conclusões são de quem lê.
       </p>
       <p className="mb-6 max-w-2xl text-xs text-tinta-tenue">
-        Snapshot atual (Paraíba). Câmara: secretário parlamentar, nível salarial e nomeação. Senado: comissionado de
-        gabinete e escritório, símbolo do cargo e remuneração estimada pelo símbolo (o &ldquo;~&rdquo; marca a estimativa).
+        Snapshot atual (Paraíba). Câmara: secretário parlamentar, nível salarial e nomeação (folha pela tabela oficial).
+        Senado: comissionado de gabinete e escritório, cargo e remuneração bruta oficial do mês (dados abertos do Senado).
         Nenhuma fonte traz o CPF nem o que cada pessoa faz. A Assembleia não divulga o quadro por parlamentar.
       </p>
       <AssessoresView itens={itens} />

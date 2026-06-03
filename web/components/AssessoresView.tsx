@@ -14,12 +14,18 @@ export interface ItemAssessor {
   nivel?: number
   grg?: boolean
   // Senado:
-  simbolo?: string
-  estimado?: boolean
+  cargo?: string
   escritorio?: boolean
+  semFolha?: boolean
 }
 
 const GRG_PILL = { backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' } as const
+const MIN = new Set(['de', 'da', 'do', 'dos', 'das', 'e'])
+const cargoCurto = (c?: string) =>
+  !c ? '—' : c.replace(/\s*PARLAMENTAR\s*/i, ' ').trim().toLowerCase()
+    .split(/\s+/).filter(Boolean)
+    .map((w, i) => (i > 0 && MIN.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ')
 
 const POR_PAGINA = 60
 const MINUSC = new Set(['de', 'da', 'do', 'dos', 'das', 'e'])
@@ -80,25 +86,25 @@ export function AssessoresView({ itens }: { itens: ItemAssessor[] }) {
                     {' · '}{a.casa === 'senado' ? 'Senado' : 'Câmara'}{a.partido ? ` · ${a.partido}` : ''}
                   </span>
                 </td>
-                <td className="py-1.5 text-tinta-tenue tabular-nums">
+                <td className="py-1.5 text-tinta-tenue">
                   {a.casa === 'senado' ? (
                     <>
-                      {a.simbolo ?? '—'}
+                      <span title={a.cargo}>{cargoCurto(a.cargo)}</span>
                       {a.escritorio && (
                         <span className="ml-1 rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
                       )}
                     </>
                   ) : (
-                    <>
+                    <span className="tabular-nums">
                       SP{String(a.nivel ?? 0).padStart(2, '0')}
                       {a.grg && (
                         <span className="ml-1 rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={GRG_PILL}>GRG</span>
                       )}
-                    </>
+                    </span>
                   )}
                 </td>
-                <td className="py-1.5 text-right tabular-nums text-tinta" title={a.estimado ? 'Estimado pelo símbolo do cargo' : undefined}>
-                  {a.remuneracao > 0 ? `${a.estimado ? '~' : ''}${brl(a.remuneracao)}` : '—'}
+                <td className="py-1.5 text-right tabular-nums text-tinta">
+                  {a.semFolha ? '—' : brl(a.remuneracao)}
                 </td>
               </tr>
             ))}

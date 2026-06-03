@@ -12,10 +12,10 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { fetchJson, fetchBuffer } from './http.js'
+import { fetchJson } from './http.js'
 import {
-  parseFolhaSenado, construirGabinetesSenado,
-  type ServidorApi, type GabineteSenado, type TabelaSenado, type FolhaSenado,
+  parseRemuneracoes, construirGabinetesSenado,
+  type ServidorApi, type RemuneracaoApi, type GabineteSenado, type TabelaSenado, type RemunSenado,
 } from './sources/senadoGabinete.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -24,11 +24,11 @@ const dataDir = resolve(here, '../data')
 const URL_FUNCIONARIOS = 'https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json'
 const GRUPO_SECRETARIO_PARLAMENTAR = 6
 
-// Senado: roster nominal (API) + folha mensal (CSV ISO-8859-1) — ver sources/senadoGabinete.ts
+// Senado: roster nominal + remunerações do mês, ambos pela API de dados abertos — ver senadoGabinete.ts
 const URL_SERVIDORES_SENADO = 'https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/servidores'
-const folhaSenadoUrl = (aaaamm: string) =>
-  `https://www.senado.leg.br/transparencia/LAI/secrh/SF_ConsultaRemuneracaoServidoresParlamentares_${aaaamm}.csv`
-const JANELA_FOLHA = 6 // meses p/ trás a tentar até achar a folha mais recente publicada
+const remuneracoesSenadoUrl = (ano: number, mes: number) =>
+  `https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/${ano}/${mes}`
+const JANELA_FOLHA = 6 // meses p/ trás a tentar até achar a folha Normal mais recente publicada
 
 // vencimento mensal por nível SP (sem GRG). Com GRG (sufixo C) = x2.
 const VENCIMENTO: Record<number, number> = {
@@ -77,19 +77,25 @@ function hojeISO(): string {
   return new Date().toISOString().slice(0, 10)
 }
 
-// tenta a folha do mês corrente p/ trás até achar a folha NORMAL mais recente já fechada. O mês
-// corrente costuma sair só com lançamentos "Suplementar" (a folha normal ainda não rodou), o que
-// daria custo zerado — por isso só aceita o mês cuja folha normal já tem lotações de senador.
-async function baixarFolhaSenado(): Promise<{ folha: FolhaSenado; mesReferencia: string } | null> {
+const comoLista = <T,>(bruto: unknown): T[] =>
+  Array.isArray(bruto)
+    ? (bruto as T[])
+    : ((bruto as Record<string, unknown>).dados as T[]) ?? (Object.values(bruto as object)[0] as T[])
+
+// tenta a folha do mês corrente p/ trás até achar a folha NORMAL mais recente. O mês corrente costuma
+// sair só com lançamentos "Suplementar" (a folha normal ainda não rodou) — por isso só aceita o mês
+// que já tem um volume real de lançamentos Normal.
+async function baixarRemuneracoesSenado(): Promise<{ remun: RemunSenado; mesReferencia: string } | null> {
   const hoje = new Date()
   for (let i = 0; i < JANELA_FOLHA; i++) {
     const d = new Date(Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth() - i, 1))
-    const aaaamm = `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}`
+    const ano = d.getUTCFullYear()
+    const mes = d.getUTCMonth() + 1
     try {
-      const buf = await fetchBuffer(folhaSenadoUrl(aaaamm), { tentativas: 2 })
-      const folha = parseFolhaSenado(new TextDecoder('latin1').decode(buf))
-      if (folha.brutoPorSenador.size > 0) {
-        return { folha, mesReferencia: `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}` }
+      const registros = comoLista<RemuneracaoApi>(await fetchJson<unknown>(remuneracoesSenadoUrl(ano, mes), { tentativas: 2 }))
+      const remun = parseRemuneracoes(registros)
+      if (remun.registrosNormais > 100) {
+        return { remun, mesReferencia: `${ano}-${String(mes).padStart(2, '0')}` }
       }
     } catch {
       /* tenta o mês anterior */
@@ -98,23 +104,20 @@ async function baixarFolhaSenado(): Promise<{ folha: FolhaSenado; mesReferencia:
   return null
 }
 
-// Comissionados de gabinete/escritório dos senadores: roster nominal (API) + custo real (folha).
+// Comissionados de gabinete/escritório dos senadores: roster nominal + valor exato (remunerações), via API.
 async function coletarSenado(
   senadores: Politico[],
 ): Promise<{ porPolitico: Record<string, GabineteSenado>; tabela: TabelaSenado } | null> {
-  console.log('> Baixando servidores do Senado (API) e folha mensal...')
-  const bruto = await fetchJson<unknown>(URL_SERVIDORES_SENADO)
-  const servidores: ServidorApi[] = Array.isArray(bruto)
-    ? (bruto as ServidorApi[])
-    : ((bruto as Record<string, unknown>).dados as ServidorApi[]) ?? (Object.values(bruto as object)[0] as ServidorApi[])
+  console.log('> Baixando servidores e remunerações do Senado (API de dados abertos)...')
+  const servidores = comoLista<ServidorApi>(await fetchJson<unknown>(URL_SERVIDORES_SENADO))
 
-  const folhaRaw = await baixarFolhaSenado()
-  if (!folhaRaw) {
-    console.warn('! Folha do Senado indisponível — pulando comissionados do Senado.')
+  const folha = await baixarRemuneracoesSenado()
+  if (!folha) {
+    console.warn('! Remunerações do Senado indisponíveis — pulando comissionados do Senado.')
     return null
   }
   return construirGabinetesSenado(
-    servidores, folhaRaw.folha, folhaRaw.mesReferencia,
+    servidores, folha.remun, folha.mesReferencia,
     senadores.map((s) => ({ id: s.id, nome: s.nome })),
   )
 }

@@ -10,48 +10,8 @@
   },
   "tabelaSenado": {
     "mesReferencia": "2026-05",
-    "fonte": "Senado/SECRH — roster: API de servidores (adm-dadosabertos); folha: Remuneração de Servidores (LAI/secrh, fonte Ergon). Vencimento por símbolo = mediana do REMUN_BASICA por AP-xx na folha do mês.",
-    "vencimentoPorSimbolo": {
-      "AP-02": 4187.6,
-      "AP-01": 3246.39,
-      "AP-03": 5561.13,
-      "AP-04": 6492.78,
-      "SF02": 33500.84,
-      "AP-10": 19478.37,
-      "AP-09": 16750.42,
-      "AP-11": 20938.02,
-      "AP-12": 25125.63,
-      "AP-06": 9739.18,
-      "AP-05": 8375.21,
-      "AP-07": 12985.57,
-      "AP-08": 16231.97,
-      "SF03": 39470.45,
-      "SF01": 25971.16,
-      "S41": 46398.19,
-      "S42": 46925.41,
-      "S43": 47468.91,
-      "S45": 41441.26,
-      "S39": 38225.08,
-      "S36": 36824.47,
-      "S37": 37277.17,
-      "S38": 37743.92,
-      "S40": 38721.15,
-      "S44": 40863.61,
-      "B30": 28393.57,
-      "M36": 32679.52,
-      "M21": 27556.13,
-      "M22": 27850.4,
-      "M23": 28153.75,
-      "M31": 30611.62,
-      "M32": 31000.34,
-      "M33": 31401.19,
-      "M34": 31814.36,
-      "M35": 32240.34,
-      "M26": 29121.35,
-      "M27": 29464.04,
-      "M30": 30559.25
-    },
-    "consultaBaseUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp"
+    "fonte": "Senado/SECRH — dados abertos (adm-dadosabertos): roster de servidores + remunerações do mês, juntados por nome. Bruto = soma dos ganhos (Normal) menos reversão ao teto.",
+    "consultaBaseUrl": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp"
   },
   "porPolitico": {
     "camara-74405": {
@@ -2908,1672 +2868,1251 @@
     },
     "senado-5998": {
       "total": 38,
-      "folha": 576807.75,
+      "folha": 530441.56,
       "folhaOficial": true,
       "mesReferencia": "2026-05",
       "secretarios": [
         {
           "nome": "FRANCISCO FELIX PEREIRA JUNNIOR",
           "cargo": "ASSESSOR LEGISLATIVO",
-          "simbolo": "SF02",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24480.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3713849,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3713849&fvinculo=2"
-        },
-        {
-          "nome": "ROGERSON CAROCA CAVALCANTE",
-          "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
-          "remuneracao": 33500.84,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 3762300,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3762300&fvinculo=2"
-        },
-        {
-          "nome": "KARYNA ELLEN VICTOR DE SANTANA",
-          "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3769640,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3769640&fvinculo=2"
-        },
-        {
-          "nome": "PRISCILLA MENDONÇA BRITO",
-          "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4003802,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4003802&fvinculo=2"
-        },
-        {
-          "nome": "VALÉRIA SINÉSIO DA SILVA",
-          "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3623114,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3623114&fvinculo=2"
-        },
-        {
-          "nome": "ALINA RIBEIRO BARBOZA",
-          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-12",
-          "remuneracao": 25125.63,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3683699,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3683699&fvinculo=2"
-        },
-        {
-          "nome": "ALMIR DE LACERDA SILVA",
-          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-12",
-          "remuneracao": 25125.63,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 3992780,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3992780&fvinculo=2"
-        },
-        {
-          "nome": "FRANCISCO CÉSAR MARQUES GALVÃO",
-          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-12",
-          "remuneracao": 25125.63,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4007840,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4007840&fvinculo=2"
-        },
-        {
-          "nome": "ITALO BRUNO MENDONÇA MOREIRA",
-          "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-10",
-          "remuneracao": 19478.37,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3626555,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3626555&fvinculo=2"
-        },
-        {
-          "nome": "MARCIA OLIVEIRA GOMES",
-          "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-10",
-          "remuneracao": 19478.37,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3632261,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3632261&fvinculo=2"
-        },
-        {
-          "nome": "FLAVIA CORRÊA DE FREITAS SILVA",
-          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-09",
-          "remuneracao": 16750.42,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3350126,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3350126&fvinculo=2"
-        },
-        {
-          "nome": "OZIRES SOARES BANDEIRA FILHO",
-          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-09",
-          "remuneracao": 16750.42,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3721825,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3721825&fvinculo=2"
-        },
-        {
-          "nome": "STEFANIA LUCIA REIS DE ALMEIDA",
-          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-09",
-          "remuneracao": 16750.42,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3628035,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3628035&fvinculo=2"
-        },
-        {
-          "nome": "CLÁUDIO SUASSUNA DINIZ FILHO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2021,
-          "sequencial": 3794334,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3794334&fvinculo=2"
-        },
-        {
-          "nome": "DAVID ABÍLIO BARBOSA JÚNIOR",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3620875,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3620875&fvinculo=2"
-        },
-        {
-          "nome": "FRANCISCO BEZERRA DE CARVALHO JUNIOR",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3709671,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3709671&fvinculo=2"
-        },
-        {
-          "nome": "MIZAEL MARTINHO DO CARMO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 3820416,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3820416&fvinculo=2"
-        },
-        {
-          "nome": "RAQUEL BARROS LEAL",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3714209,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3714209&fvinculo=2"
-        },
-        {
-          "nome": "RAYNER HOLMES BORBA",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2022,
-          "sequencial": 3853934,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3853934&fvinculo=2"
-        },
-        {
-          "nome": "LUCIA VIEIRA SILVA",
-          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2021,
-          "sequencial": 3784444,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3784444&fvinculo=2"
-        },
-        {
-          "nome": "MANUELLA RIBEIRO XIMENES LEMOS",
-          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4068904,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4068904&fvinculo=2"
-        },
-        {
-          "nome": "MARIA APARECIDA DE ARAUJO",
-          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3708845,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3708845&fvinculo=2"
-        },
-        {
-          "nome": "REGINA CELIA COUTINHO DE ARAUJO",
-          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2020,
-          "sequencial": 3640388,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3640388&fvinculo=2"
-        },
-        {
-          "nome": "RODRIGO AUGUSTO DE CARVALHO NUNES",
-          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3659658,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3659658&fvinculo=2"
-        },
-        {
-          "nome": "LUCIANE CANDIDO DE LIMA",
-          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3978877,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3978877&fvinculo=2"
-        },
-        {
-          "nome": "MARIA ANGÉLICA DA SERRA RODRIGUES CORREIA",
-          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4097238,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4097238&fvinculo=2"
-        },
-        {
-          "nome": "FRANCICLAUDIO PAIVA GOMES",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2022,
-          "sequencial": 3812022,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3812022&fvinculo=2"
-        },
-        {
-          "nome": "JAKSON NONATO DE MELO",
-          "cargo": "MOTORISTA",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3705692,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3705692&fvinculo=2"
-        },
-        {
-          "nome": "JOSÉ ARLINDO GOMES DA SILVA",
-          "cargo": "MOTORISTA",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2022,
-          "sequencial": 3815676,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3815676&fvinculo=2"
-        },
-        {
-          "nome": "LAURA VIEIRA CARNEIRO",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3663302,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3663302&fvinculo=2"
-        },
-        {
-          "nome": "TARCISIO BENICIO DINIZ JUNIOR",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3647412,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3647412&fvinculo=2"
-        },
-        {
-          "nome": "RAYSSA LORENA ALVES PEREIRA",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3999408,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3999408&fvinculo=2"
-        },
-        {
-          "nome": "DENNISON LUCAS VASCONCELOS",
-          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
-          "remuneracao": 4187.6,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3987256,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3987256&fvinculo=2"
-        },
-        {
-          "nome": "CANDICE GEISA ARAÚJO DINIZ PINHEIRO",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2021,
-          "sequencial": 3797465,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3797465&fvinculo=2"
-        },
-        {
-          "nome": "DANIEL GUIMARAES GUEDES DE AQUINO",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2020,
-          "sequencial": 3723569,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3723569&fvinculo=2"
-        },
-        {
-          "nome": "ELTON WALLACE DE ARAÚJO GUIMARÃES",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2019,
-          "sequencial": 3663590,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3663590&fvinculo=2"
-        },
-        {
-          "nome": "WALTER LUIZ DE BARROS",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 3986934,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3986934&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "MARIA EDUARDA SOUTO DE AQUINO",
           "cargo": "CHEFE DE GABINETE COMISSIONADO",
-          "remuneracao": 0,
-          "estimado": true,
+          "remuneracao": 33500.84,
+          "liquido": 24480.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3579255,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3579255&fvinculo=2"
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "ROGERSON CAROCA CAVALCANTE",
+          "cargo": "ASSESSOR PARLAMENTAR",
+          "remuneracao": 33500.84,
+          "liquido": 24584.75,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2024
+        },
+        {
+          "nome": "KARYNA ELLEN VICTOR DE SANTANA",
+          "cargo": "SECRETÁRIO PARLAMENTAR",
+          "remuneracao": 25971.16,
+          "liquido": 19021.46,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "PRISCILLA MENDONÇA BRITO",
+          "cargo": "SECRETÁRIO PARLAMENTAR",
+          "remuneracao": 25971.16,
+          "liquido": 19021.46,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "VALÉRIA SINÉSIO DA SILVA",
+          "cargo": "SECRETÁRIO PARLAMENTAR",
+          "remuneracao": 25971.16,
+          "liquido": 19073.61,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "ALMIR DE LACERDA SILVA",
+          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 25125.63,
+          "liquido": 18408.45,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "FRANCISCO CÉSAR MARQUES GALVÃO",
+          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 25125.63,
+          "liquido": 18408.45,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "STEFANIA LUCIA REIS DE ALMEIDA",
+          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 22333.89,
+          "liquido": 16436.59,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "ITALO BRUNO MENDONÇA MOREIRA",
+          "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 19478.37,
+          "liquido": 14366.33,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "MARCIA OLIVEIRA GOMES",
+          "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 19478.37,
+          "liquido": 14314.19,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "ALINA RIBEIRO BARBOZA",
+          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 18535.53,
+          "liquido": 14513.97,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "FLAVIA CORRÊA DE FREITAS SILVA",
+          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 16750.42,
+          "liquido": 12336.42,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "OZIRES SOARES BANDEIRA FILHO",
+          "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 16750.42,
+          "liquido": 12336.42,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "CLÁUDIO SUASSUNA DINIZ FILHO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2021
+        },
+        {
+          "nome": "DAVID ABÍLIO BARBOSA JÚNIOR",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "FRANCISCO BEZERRA DE CARVALHO JUNIOR",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "RAQUEL BARROS LEAL",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9711.18,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "RAYNER HOLMES BORBA",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9659.06,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2022
+        },
+        {
+          "nome": "LUCIA VIEIRA SILVA",
+          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 9739.18,
+          "liquido": 7253.28,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2021
+        },
+        {
+          "nome": "MANUELLA RIBEIRO XIMENES LEMOS",
+          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 9739.18,
+          "liquido": 7305.42,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "MARIA APARECIDA DE ARAUJO",
+          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 9739.18,
+          "liquido": 7253.28,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "REGINA CELIA COUTINHO DE ARAUJO",
+          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 9739.18,
+          "liquido": 7253.28,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2020
+        },
+        {
+          "nome": "RODRIGO AUGUSTO DE CARVALHO NUNES",
+          "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 9739.18,
+          "liquido": 7253.28,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "LUCIANE CANDIDO DE LIMA",
+          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
+          "remuneracao": 8375.21,
+          "liquido": 6274.58,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2024
+        },
+        {
+          "nome": "MARIA ANGÉLICA DA SERRA RODRIGUES CORREIA",
+          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
+          "remuneracao": 8375.21,
+          "liquido": 6274.58,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "JAKSON NONATO DE MELO",
+          "cargo": "MOTORISTA",
+          "remuneracao": 8241.11,
+          "liquido": 6305.11,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "FRANCICLAUDIO PAIVA GOMES",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2022
+        },
+        {
+          "nome": "JOSÉ ARLINDO GOMES DA SILVA",
+          "cargo": "MOTORISTA",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2022
+        },
+        {
+          "nome": "LAURA VIEIRA CARNEIRO",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2024
+        },
+        {
+          "nome": "TARCISIO BENICIO DINIZ JUNIOR",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "RAYSSA LORENA ALVES PEREIRA",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5605.61,
+          "liquido": 4791.67,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "WALTER LUIZ DE BARROS",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 4328.52,
+          "liquido": 3920.49,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "DENNISON LUCAS VASCONCELOS",
+          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 4187.6,
+          "liquido": 3715.13,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "CANDICE GEISA ARAÚJO DINIZ PINHEIRO",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 3246.39,
+          "liquido": 2968.22,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2021
+        },
+        {
+          "nome": "DANIEL GUIMARAES GUEDES DE AQUINO",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 3246.39,
+          "liquido": 2968.22,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2020
+        },
+        {
+          "nome": "ELTON WALLACE DE ARAÚJO GUIMARÃES",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 3246.39,
+          "liquido": 2968.22,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "MIZAEL MARTINHO DO CARMO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 0,
+          "semFolha": true,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2026
+        }
+      ],
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=GSDRIBEI"
+        },
+        {
+          "tipo": "escritorio",
+          "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=E1DRIBEI"
         }
       ]
     },
     "senado-5748": {
       "total": 51,
-      "folha": 769286.56,
+      "folha": 569782.49,
       "folhaOficial": true,
       "mesReferencia": "2026-05",
       "secretarios": [
         {
-          "nome": "ABRAHAM LINCOLN FERREIRA CARDOSO",
-          "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
+          "nome": "DANIEL QUEIROZ DE MEDEIROS CHIANCA",
+          "cargo": "CHEFE DE GABINETE COMISSIONADO",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24532.62,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3625079,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3625079&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "JURACI FELIX CAVALCANTE JUNIOR",
           "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24532.62,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 2960834,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2960834&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "NÁDIA KARINA DE MOURA MACIEL",
           "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24480.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3128342,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3128342&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "STEPHANIE CHAVES DE SOUZA RIBEIRO COUTINHO",
           "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24532.62,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3609154,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3609154&fvinculo=2"
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "ABRAHAM LINCOLN FERREIRA CARDOSO",
+          "cargo": "ASSESSOR PARLAMENTAR",
+          "remuneracao": 33182.26,
+          "liquido": 13038.82,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
         },
         {
           "nome": "PEDRO PAULO NASCIMENTO OLIVEIRA",
           "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
+          "remuneracao": 32876.84,
+          "liquido": 24132.35,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2026,
-          "sequencial": 3650880,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3650880&fvinculo=2"
-        },
-        {
-          "nome": "FÁBIO NABUCO BARRETO DE MENEZES",
-          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
-          "simbolo": "AP-11",
-          "remuneracao": 20938.02,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3664635,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3664635&fvinculo=2"
+          "admissaoAno": 2026
         },
         {
           "nome": "WESLLEY BRUNO NASCIMENTO SILVA",
           "cargo": "ASSISTENTE PARLAMENTAR PLENO",
-          "simbolo": "AP-11",
           "remuneracao": 20938.02,
-          "estimado": true,
+          "liquido": 15372.43,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3614140,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3614140&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "VINÍCIUS DELGADO NASCIMENTO",
           "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-09",
           "remuneracao": 16750.42,
-          "estimado": true,
+          "liquido": 12440.71,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2021,
-          "sequencial": 3766934,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3766934&fvinculo=2"
-        },
-        {
-          "nome": "CARLOS MAGNO MACEDO",
-          "cargo": "AUXILIAR PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-08",
-          "remuneracao": 16231.97,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2015,
-          "sequencial": 2689987,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2689987&fvinculo=2"
-        },
-        {
-          "nome": "DAVID THOMAS SANTOS DA SILVA",
-          "cargo": "AUXILIAR PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-08",
-          "remuneracao": 16231.97,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 2992434,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2992434&fvinculo=2"
-        },
-        {
-          "nome": "AGOSTINHO LUCENA BENICIO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2020,
-          "sequencial": 3742822,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3742822&fvinculo=2"
-        },
-        {
-          "nome": "ANNE KARINA PEDROSA MOTTA",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3993280,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3993280&fvinculo=2"
-        },
-        {
-          "nome": "CLOVIS MORENO GONDIM NETO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2021,
-          "sequencial": 3773752,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3773752&fvinculo=2"
+          "admissaoAno": 2021
         },
         {
           "nome": "EDMAM NASCIMENTO DOS SANTOS",
           "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
+          "remuneracao": 16578.3,
+          "liquido": 12211.64,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3614387,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3614387&fvinculo=2"
-        },
-        {
-          "nome": "FRANCISCO EDILEUSON LOURENÇO DE SOUSA",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3621553,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3621553&fvinculo=2"
-        },
-        {
-          "nome": "JULIANA MEDEIROS BARRETO AZEVEDO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3614786,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3614786&fvinculo=2"
-        },
-        {
-          "nome": "MARCELO RENATO RIBEIRO NEVES FILHO",
-          "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3711080,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3711080&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "NATANNA SERPA SOARES BEZERRA",
           "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
-          "remuneracao": 12985.57,
-          "estimado": true,
+          "remuneracao": 16503.05,
+          "liquido": 12157.09,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2020,
-          "sequencial": 3738663,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3738663&fvinculo=2"
+          "admissaoAno": 2020
+        },
+        {
+          "nome": "CARLOS MAGNO MACEDO",
+          "cargo": "AUXILIAR PARLAMENTAR SÊNIOR",
+          "remuneracao": 16231.97,
+          "liquido": 12012.69,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2015
+        },
+        {
+          "nome": "DAVID THOMAS SANTOS DA SILVA",
+          "cargo": "AUXILIAR PARLAMENTAR SÊNIOR",
+          "remuneracao": 16231.97,
+          "liquido": 11960.55,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "FÁBIO NABUCO BARRETO DE MENEZES",
+          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
+          "remuneracao": 15446.28,
+          "liquido": 12274.27,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "AGOSTINHO LUCENA BENICIO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2020
+        },
+        {
+          "nome": "ANNE KARINA PEDROSA MOTTA",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "CLOVIS MORENO GONDIM NETO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9763.32,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2021
+        },
+        {
+          "nome": "FRANCISCO EDILEUSON LOURENÇO DE SOUSA",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "JULIANA MEDEIROS BARRETO AZEVEDO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9659.06,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
+        },
+        {
+          "nome": "MARCELO RENATO RIBEIRO NEVES FILHO",
+          "cargo": "AUXILIAR PARLAMENTAR PLENO",
+          "remuneracao": 12985.57,
+          "liquido": 9606.91,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
         },
         {
           "nome": "VILMAR NATALINO DE LIMA",
           "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
           "remuneracao": 12985.57,
-          "estimado": true,
+          "liquido": 9606.91,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2004,
-          "sequencial": 2614790,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2614790&fvinculo=2"
-        },
-        {
-          "nome": "ANA JÚLIA NUNES MENEZES SOUZA",
-          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2026,
-          "sequencial": 4047710,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4047710&fvinculo=2"
-        },
-        {
-          "nome": "ANA LUISA LADEIRA MOTA",
-          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3710955,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3710955&fvinculo=2"
+          "admissaoAno": 2004
         },
         {
           "nome": "JOSÉ ALEXANDRE SOUZA DE JESUS",
           "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
+          "remuneracao": 10847.98,
+          "liquido": 8049.64,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2011,
-          "sequencial": 3034330,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3034330&fvinculo=2"
+          "admissaoAno": 2011
         },
         {
           "nome": "JULIANA BARBOSA CORRÊA",
           "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
+          "remuneracao": 10461.23,
+          "liquido": 7873.53,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3684679,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3684679&fvinculo=2"
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "ANA JÚLIA NUNES MENEZES SOUZA",
+          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
+          "remuneracao": 8375.21,
+          "liquido": 6274.58,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2026
+        },
+        {
+          "nome": "ANA LUISA LADEIRA MOTA",
+          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
+          "remuneracao": 8375.21,
+          "liquido": 6274.58,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2019
         },
         {
           "nome": "LEYLIANE DA SILVA PESSÔA",
           "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
           "remuneracao": 8375.21,
-          "estimado": true,
+          "liquido": 6274.58,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2014,
-          "sequencial": 3021475,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3021475&fvinculo=2"
-        },
-        {
-          "nome": "BRUNA PRISCILLA VASCONCELOS DANTAS LEITE",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 4083946,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4083946&fvinculo=2"
+          "admissaoAno": 2014
         },
         {
           "nome": "LUCIA DE FÁTIMA XAVIER NUNES",
           "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
+          "remuneracao": 6527.52,
+          "liquido": 5236.69,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3948021,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3948021&fvinculo=2"
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "BRUNA PRISCILLA VASCONCELOS DANTAS LEITE",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2024
         },
         {
           "nome": "MARCELINO SANTOS DE ARAUJO",
           "cargo": "MOTORISTA",
-          "simbolo": "AP-04",
           "remuneracao": 6492.78,
-          "estimado": true,
+          "liquido": 5215.03,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3668053,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3668053&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "TEMISTOCLES BARBOSA CABRAL",
           "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
           "remuneracao": 6492.78,
-          "estimado": true,
+          "liquido": 5215.03,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2021,
-          "sequencial": 3754588,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3754588&fvinculo=2"
+          "admissaoAno": 2021
         },
         {
           "nome": "HYNGRYD HESTTEFANY SERAFIM ALCANTARA DE LIMA",
           "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
           "remuneracao": 5561.13,
-          "estimado": true,
+          "liquido": 4765.65,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3714764,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3714764&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "MARIA JOSE SOUSA DA SILVA",
           "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
           "remuneracao": 5561.13,
-          "estimado": true,
+          "liquido": 4765.65,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 4085191,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4085191&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "MATHEUS HENRIQUE FIGUEREDO RODRIGUES",
           "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
           "remuneracao": 5561.13,
-          "estimado": true,
+          "liquido": 4765.65,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 4012070,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4012070&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "VALDERIO QUIRINO DE MOURA",
           "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
           "remuneracao": 5561.13,
-          "estimado": true,
+          "liquido": 4765.65,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3318893,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3318893&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "VANUSA GIOMETTI BARBOSA DE LIMA",
           "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
           "remuneracao": 5561.13,
-          "estimado": true,
+          "liquido": 4765.65,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3613232,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3613232&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "BEILDO ELIAS DA SILVA",
           "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
           "remuneracao": 4187.6,
-          "estimado": true,
+          "liquido": 3796.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2026,
-          "sequencial": 4044371,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4044371&fvinculo=2"
+          "admissaoAno": 2026
         },
         {
           "nome": "EMIDIO BARBOSA DE LIMA BRITO",
           "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
           "remuneracao": 4187.6,
-          "estimado": true,
+          "liquido": 3796.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 2430843,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2430843&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "GABRIELA DE  ALBUQUERQUE PATRIOTA",
           "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
           "remuneracao": 4187.6,
-          "estimado": true,
+          "liquido": 3796.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 3980553,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3980553&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "ORIEL MARCOS DE SOUSA VANDERLEY JUNIOR",
           "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
           "remuneracao": 4187.6,
-          "estimado": true,
+          "liquido": 3796.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2020,
-          "sequencial": 3737527,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3737527&fvinculo=2"
+          "admissaoAno": 2020
         },
         {
           "nome": "PAUL BELMOND SOARES DA SILVA",
           "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
           "remuneracao": 4187.6,
-          "estimado": true,
+          "liquido": 3796.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3666360,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3666360&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "ALBANEIDE LIMA RODRIGUES",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2020,
-          "sequencial": 3121828,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3121828&fvinculo=2"
+          "admissaoAno": 2020
         },
         {
           "nome": "ALEXANDRE DE FARIAS ALVES",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3681289,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3681289&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "ANA FLAVIA TEIXEIRA DE ALBUQUERQUE",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2013,
-          "sequencial": 3121496,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3121496&fvinculo=2"
+          "admissaoAno": 2013
         },
         {
           "nome": "DENIZE BARBOSA VIEIRA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3951898,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3951898&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "EFRAIM MOSSADEG DA COSTA AGRA MELLO",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3706630,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3706630&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "ERICA DA SILVA DIAS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3955931,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3955931&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "GIOVANNA BRITO VILARIM",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2021,
-          "sequencial": 3780236,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3780236&fvinculo=2"
+          "admissaoAno": 2021
         },
         {
           "nome": "LINDEMBERG  PATRICIO LIMA SALES",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 3983811,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3983811&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "LUIZ FERNANDO LOPES DOS ANJOS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 4025628,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4025628&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "MARCELA MARÇAL DA SILVA CAROLINO",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2022,
-          "sequencial": 3833330,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3833330&fvinculo=2"
+          "admissaoAno": 2022
         },
         {
           "nome": "RAFAELLA MACÊDO AGRA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3692701,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3692701&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
           "nome": "YSMÊNIA MICKELLAINY MARANHÃO DA SILVA CABRAL",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 3608620,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3608620&fvinculo=2"
-        },
+          "admissaoAno": 2019
+        }
+      ],
+      "consultas": [
         {
-          "nome": "DANIEL QUEIROZ DE MEDEIROS CHIANCA",
-          "cargo": "CHEFE DE GABINETE COMISSIONADO",
-          "remuneracao": 0,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 2962667,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2962667&fvinculo=2"
+          "tipo": "gabinete",
+          "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=GSVENEZI"
         }
       ]
     },
     "senado-4642": {
       "total": 61,
-      "folha": 738160.87,
+      "folha": 624883.87,
       "folhaOficial": true,
       "mesReferencia": "2026-05",
       "secretarios": [
         {
+          "nome": "VALÉRIA CRYSTHINA ALVES BRITO LACERDA DE VASCONCELOS",
+          "cargo": "CHEFE DE GABINETE COMISSIONADO",
+          "remuneracao": 34803.15,
+          "liquido": 25424.65,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
           "nome": "EDMAR LIRA MEDEIROS FILHO",
           "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
           "remuneracao": 33500.84,
-          "estimado": true,
+          "liquido": 24480.48,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2026,
-          "sequencial": 3981622,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3981622&fvinculo=2"
-        },
-        {
-          "nome": "FLÁVIA CECÍLIA MACENO BLANCO",
-          "cargo": "ASSESSOR PARLAMENTAR",
-          "simbolo": "SF02",
-          "remuneracao": 33500.84,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3945740,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3945740&fvinculo=2"
-        },
-        {
-          "nome": "LINDERLANDIO BARBOSA",
-          "cargo": "SECRETÁRIO LEGISLATIVO",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3897966,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897966&fvinculo=2"
-        },
-        {
-          "nome": "MARCIA CRISTINA RODRIGUES TEIXEIRA",
-          "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 2560976,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2560976&fvinculo=2"
+          "admissaoAno": 2026
         },
         {
           "nome": "ROMINNA KELLY DE OLIVEIRA JÁCOME",
           "cargo": "SECRETÁRIO PARLAMENTAR",
-          "simbolo": "SF01",
-          "remuneracao": 25971.16,
-          "estimado": true,
+          "remuneracao": 32178.15,
+          "liquido": 23521.53,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2019,
-          "sequencial": 2773716,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2773716&fvinculo=2"
+          "admissaoAno": 2019
         },
         {
-          "nome": "IRLEN BRAGA DOS GUIMARAES",
-          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-12",
-          "remuneracao": 25125.63,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4025059,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4025059&fvinculo=2"
-        },
-        {
-          "nome": "ADAUTO TAVARES LEITE",
-          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
-          "simbolo": "AP-11",
-          "remuneracao": 20938.02,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3895440,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3895440&fvinculo=2"
-        },
-        {
-          "nome": "JOSÉ VITOR LIMA DANTAS",
-          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
-          "simbolo": "AP-11",
-          "remuneracao": 20938.02,
-          "estimado": true,
+          "nome": "LINDERLANDIO BARBOSA",
+          "cargo": "SECRETÁRIO LEGISLATIVO",
+          "remuneracao": 32162.55,
+          "liquido": 23562.36,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3897982,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897982&fvinculo=2"
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "MARCIA CRISTINA RODRIGUES TEIXEIRA",
+          "cargo": "SECRETÁRIO PARLAMENTAR",
+          "remuneracao": 30129.98,
+          "liquido": 22036.61,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "FLÁVIA CECÍLIA MACENO BLANCO",
+          "cargo": "ASSESSOR PARLAMENTAR",
+          "remuneracao": 26963.27,
+          "liquido": 17362.72,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
         },
         {
           "nome": "MARIA DAS GRAÇAS DE ARAUJO GOMES",
           "cargo": "ASSISTENTE PARLAMENTAR PLENO",
-          "simbolo": "AP-11",
-          "remuneracao": 20938.02,
-          "estimado": true,
+          "remuneracao": 25916.1,
+          "liquido": 18981.55,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3895661,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3895661&fvinculo=2"
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "IRLEN BRAGA DOS GUIMARAES",
+          "cargo": "ASSISTENTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 25125.63,
+          "liquido": 18408.45,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "ADAUTO TAVARES LEITE",
+          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
+          "remuneracao": 20938.02,
+          "liquido": 15424.57,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "JOSÉ VITOR LIMA DANTAS",
+          "cargo": "ASSISTENTE PARLAMENTAR PLENO",
+          "remuneracao": 20938.02,
+          "liquido": 15372.43,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
         },
         {
           "nome": "ANA CAROLINA BIGOIS CAPISTRANO DE SOUZA MEDEIROS",
           "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-10",
-          "remuneracao": 19478.37,
-          "estimado": true,
+          "remuneracao": 19569.29,
+          "liquido": 14484.38,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3950468,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3950468&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "JOSÉ EDUARDO ALVES DE OLIVEIRA PINTO",
           "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-10",
           "remuneracao": 19478.37,
-          "estimado": true,
+          "liquido": 14314.19,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3897630,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897630&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "POLIANNA MICHELLE EVANGELISTA DA SILVA",
           "cargo": "ASSISTENTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-10",
           "remuneracao": 19478.37,
-          "estimado": true,
+          "liquido": 14314.19,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3897885,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897885&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "VANIA MARIA SIGNOR",
           "cargo": "ASSISTENTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-09",
           "remuneracao": 16750.42,
-          "estimado": true,
+          "liquido": 12388.56,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2009,
-          "sequencial": 2909855,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2909855&fvinculo=2"
+          "admissaoAno": 2009
         },
         {
           "nome": "ARLINDO BENTO DE MORAIS NETO",
           "cargo": "AUXILIAR PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-08",
           "remuneracao": 16231.97,
-          "estimado": true,
+          "liquido": 11960.55,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2024,
-          "sequencial": 4039882,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4039882&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "GILBERTO GUERRERO JUNIOR",
           "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
           "remuneracao": 12985.57,
-          "estimado": true,
+          "liquido": 9606.91,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 2561670,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2561670&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "SEVERINO MAXIMO NETO",
           "cargo": "AUXILIAR PARLAMENTAR PLENO",
-          "simbolo": "AP-07",
           "remuneracao": 12985.57,
-          "estimado": true,
+          "liquido": 9606.91,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 2708922,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2708922&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "ANALANDIA DE FREITAS LIMA DANTAS",
           "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
-          "remuneracao": 9739.18,
-          "estimado": true,
+          "remuneracao": 11310.02,
+          "liquido": 8444.27,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3901530,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3901530&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "ANTÔNIO MEDEIROS DA SILVA",
           "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
           "remuneracao": 9739.18,
-          "estimado": true,
+          "liquido": 7305.42,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 3999378,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3999378&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "HIGOR DE SOUZA DOWSLEY",
           "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
           "remuneracao": 9739.18,
-          "estimado": true,
+          "liquido": 7827.76,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3903117,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3903117&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "NADIR TEIXEIRA RODRIGUES GUERRERO",
           "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
           "remuneracao": 9739.18,
-          "estimado": true,
+          "liquido": 7253.28,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3897273,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897273&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "PAULO ROLIM SOARES FILHO",
           "cargo": "AUXILIAR PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-06",
           "remuneracao": 9739.18,
-          "estimado": true,
+          "liquido": 7253.28,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4006747,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4006747&fvinculo=2"
-        },
-        {
-          "nome": "CLAUDIO JOSE SILVA DA COSTA",
-          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
-          "remuneracao": 8375.21,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 2877783,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2877783&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "RENAN BARACUHY CRUZ VIANA",
           "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-05",
           "remuneracao": 8375.21,
-          "estimado": true,
+          "liquido": 6274.58,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 4039700,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4039700&fvinculo=2"
-        },
-        {
-          "nome": "BERNARDO BARCELLOS LEITE",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 4045807,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4045807&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "JOAO BATISTA LINO DO NASCIMENTO",
           "cargo": "MOTORISTA",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
+          "remuneracao": 8241.11,
+          "liquido": 6305.11,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3897680,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897680&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
-          "nome": "JOAQUIM AYRES DE ALBUQUERQUE",
+          "nome": "BERNARDO BARCELLOS LEITE",
           "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
           "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 2559510,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2559510&fvinculo=2"
-        },
-        {
-          "nome": "LAZARO RAFAEL DE ALMEIDA",
-          "cargo": "MOTORISTA",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3898121,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3898121&fvinculo=2"
-        },
-        {
-          "nome": "MARISTELA ARAÚJO MEDEIROS PORTELA",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2026,
-          "sequencial": 3897567,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897567&fvinculo=2"
-        },
-        {
-          "nome": "PATRICIA SOARES FARIAS DE ARAÚJO",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
+          "liquido": 5215.03,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4003713,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4003713&fvinculo=2"
-        },
-        {
-          "nome": "ROGERIO DIAS DA SILVA",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3899039,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3899039&fvinculo=2"
-        },
-        {
-          "nome": "SOLANGE DE FATIMA DE OLIVEIRA SILVA",
-          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
-          "simbolo": "AP-04",
-          "remuneracao": 6492.78,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2016,
-          "sequencial": 3411290,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3411290&fvinculo=2"
-        },
-        {
-          "nome": "DAIANA RICELLY DE ALMEIDA MENDONÇA",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 4049853,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4049853&fvinculo=2"
-        },
-        {
-          "nome": "LUIZ FILIPE FERNANDES CARNEIRO DA CUNHA",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3544192,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3544192&fvinculo=2"
-        },
-        {
-          "nome": "MARIA BETANIA VASCONCELOS COSTA DE LIMA",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 3998991,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3998991&fvinculo=2"
-        },
-        {
-          "nome": "MARIA JOSE FERREIRA",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 2877872,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2877872&fvinculo=2"
-        },
-        {
-          "nome": "RENATO MENDES LEITE FILHO",
-          "cargo": "AJUDANTE PARLAMENTAR PLENO",
-          "simbolo": "AP-03",
-          "remuneracao": 5561.13,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3897869,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897869&fvinculo=2"
-        },
-        {
-          "nome": "ANNA BEATRIZ FERREIRA CAETANO",
-          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
-          "remuneracao": 4187.6,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3977307,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3977307&fvinculo=2"
-        },
-        {
-          "nome": "CAMILA RAFAELA VENANCIO DE SANTANA",
-          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
-          "remuneracao": 4187.6,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3974588,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3974588&fvinculo=2"
-        },
-        {
-          "nome": "KAITER OLIVEIRA DA CONCEIÇÃO",
-          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
-          "remuneracao": 4187.6,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 4102932,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4102932&fvinculo=2"
-        },
-        {
-          "nome": "NAUDSON RICARTE DOS SANTOS",
-          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
-          "simbolo": "AP-02",
-          "remuneracao": 4187.6,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3914607,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3914607&fvinculo=2"
-        },
-        {
-          "nome": "DOUGLAS SIMPLICIO DE SOUSA",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3905233,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3905233&fvinculo=2"
+          "admissaoAno": 2026
         },
         {
           "nome": "FABRICIO FARIAS SILVA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
+          "remuneracao": 6492.78,
+          "liquido": 5267.16,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3066878,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3066878&fvinculo=2"
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "JOAQUIM AYRES DE ALBUQUERQUE",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "LAZARO RAFAEL DE ALMEIDA",
+          "cargo": "MOTORISTA",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "MARISTELA ARAÚJO MEDEIROS PORTELA",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2026
+        },
+        {
+          "nome": "PATRICIA SOARES FARIAS DE ARAÚJO",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "ROGERIO DIAS DA SILVA",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5371.43,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "SOLANGE DE FATIMA DE OLIVEIRA SILVA",
+          "cargo": "AJUDANTE PARLAMENTAR SÊNIOR",
+          "remuneracao": 6492.78,
+          "liquido": 5215.03,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2016
+        },
+        {
+          "nome": "DAIANA RICELLY DE ALMEIDA MENDONÇA",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5561.13,
+          "liquido": 4765.65,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2026
+        },
+        {
+          "nome": "LUIZ FILIPE FERNANDES CARNEIRO DA CUNHA",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5561.13,
+          "liquido": 4765.65,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "MARIA BETANIA VASCONCELOS COSTA DE LIMA",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5561.13,
+          "liquido": 4765.65,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "MARIA JOSE FERREIRA",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5561.13,
+          "liquido": 4765.65,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "RENATO MENDES LEITE FILHO",
+          "cargo": "AJUDANTE PARLAMENTAR PLENO",
+          "remuneracao": 5561.13,
+          "liquido": 4765.65,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "ANNA BEATRIZ FERREIRA CAETANO",
+          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 4187.6,
+          "liquido": 3796.48,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2024
+        },
+        {
+          "nome": "CAMILA RAFAELA VENANCIO DE SANTANA",
+          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 4187.6,
+          "liquido": 3796.48,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2024
+        },
+        {
+          "nome": "KAITER OLIVEIRA DA CONCEIÇÃO",
+          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 4187.6,
+          "liquido": 3796.48,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2025
+        },
+        {
+          "nome": "NAUDSON RICARTE DOS SANTOS",
+          "cargo": "AJUDANTE PARLAMENTAR INTERMEDIÁRIO",
+          "remuneracao": 4187.6,
+          "liquido": 3796.48,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2023
+        },
+        {
+          "nome": "DOUGLAS SIMPLICIO DE SOUSA",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 3246.39,
+          "liquido": 2968.22,
+          "lotacaoTipo": "gabinete",
+          "admissaoAno": 2023
         },
         {
           "nome": "FRANCISCO CARLOS FERREIRA PINTO",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 4066723,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4066723&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "GERUZA GONÇALVES DE LIMA FREITAS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 4052838,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4052838&fvinculo=2"
+          "admissaoAno": 2026
         },
         {
           "nome": "GLAUCIO GUIMARÃES SILVA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3901742,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3901742&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "HYTTALO HALLEF SERAFIM ALCANTARA DE LIMA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3980782,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3980782&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "IZILVANIA MARIA BARBOSA SANTOS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 4040589,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4040589&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "JOSE EZELINO MAIA DA NOBREGA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3955656,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3955656&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "LUANA ISABEL VAZ PINHEIRO TEIXEIRA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3897192,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3897192&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "LUCIANA LICIA DA NOBREGA DANTAS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2023,
-          "sequencial": 3948323,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3948323&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "MARIAH LAVYNYA ANDRADE DE PONTES",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3909719,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3909719&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "PATRÍCIA DE MENEZES MARSICANO",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3900045,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3900045&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "PRISCILA LÍGIA DE CARVALHO PAZ SANTANA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2025,
-          "sequencial": 3992578,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3992578&fvinculo=2"
-        },
-        {
-          "nome": "RAIANY FIGUEIREDO DA SILVA",
-          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
-          "remuneracao": 3246.39,
-          "estimado": true,
-          "lotacaoTipo": "escritorio",
-          "admissaoAno": 2026,
-          "sequencial": 4056426,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4056426&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "RENAM FELIPE ANDRADE DOS SANTOS",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 4033469,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=4033469&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "SABRINA MARIA FERREIRA LIMA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "escritorio",
-          "admissaoAno": 2024,
-          "sequencial": 3974758,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3974758&fvinculo=2"
+          "admissaoAno": 2024
         },
         {
           "nome": "SHYSANARA EDILENE PEREIRA DE SOUZA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3900819,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3900819&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "TAUA DOMICIANO MOURA DANTAS GOMES",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2025,
-          "sequencial": 3988031,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3988031&fvinculo=2"
+          "admissaoAno": 2025
         },
         {
           "nome": "VIVIANNE DE ARAGÃO RAMALHO GADELHA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 3907007,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=3907007&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
           "nome": "WELLINGTON LOPES SILVA",
           "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
-          "simbolo": "AP-01",
           "remuneracao": 3246.39,
-          "estimado": true,
+          "liquido": 2968.22,
           "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 2708159,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2708159&fvinculo=2"
+          "admissaoAno": 2023
         },
         {
-          "nome": "VALÉRIA CRYSTHINA ALVES BRITO LACERDA DE VASCONCELOS",
-          "cargo": "CHEFE DE GABINETE COMISSIONADO",
+          "nome": "RAIANY FIGUEIREDO DA SILVA",
+          "cargo": "AJUDANTE PARLAMENTAR JÚNIOR",
+          "remuneracao": 2932.23,
+          "liquido": 2691.76,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2026
+        },
+        {
+          "nome": "CLAUDIO JOSE SILVA DA COSTA",
+          "cargo": "AUXILIAR PARLAMENTAR JÚNIOR",
           "remuneracao": 0,
-          "estimado": true,
-          "lotacaoTipo": "gabinete",
-          "admissaoAno": 2023,
-          "sequencial": 2780585,
-          "consultaUrl": "https://www.senado.leg.br/transparencia/rh/servidores/remuneracao.asp?fcodigo=2780585&fvinculo=2"
+          "semFolha": true,
+          "lotacaoTipo": "escritorio",
+          "admissaoAno": 2026
+        }
+      ],
+      "consultas": [
+        {
+          "tipo": "gabinete",
+          "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=GSEFILHO"
+        },
+        {
+          "tipo": "escritorio",
+          "url": "https://www.senado.leg.br/transparencia/rh/servidores/nova_consulta.asp?flotacao=E1EFILHO"
         }
       ]
     }
