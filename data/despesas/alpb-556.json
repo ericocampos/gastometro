@@ -1,0 +1,106 @@
+[
+  {
+    "id": "alpb-556-2023-01-18-0",
+    "politicoId": "alpb-556",
+    "data": "2023-01-18",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Combustíveis e Lubrificantes",
+    "fornecedor": {
+      "nome": "BEZERRA E LUCENA LTDA",
+      "cnpjCpf": "****63.475/000****"
+    },
+    "valor": 150
+  },
+  {
+    "id": "alpb-556-2023-01-25-1",
+    "politicoId": "alpb-556",
+    "data": "2023-01-25",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Combustíveis e Lubrificantes",
+    "fornecedor": {
+      "nome": "W A BARRETO & CIA LTDA FILIAL",
+      "cnpjCpf": "****98.470/000****"
+    },
+    "valor": 120
+  },
+  {
+    "id": "alpb-556-2023-01-02-2",
+    "politicoId": "alpb-556",
+    "data": "2023-01-02",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Plano de Saúde",
+    "fornecedor": {
+      "nome": "UNIMED",
+      "cnpjCpf": "****80.639/000****"
+    },
+    "valor": 2739.73
+  },
+  {
+    "id": "alpb-556-2023-01-24-3",
+    "politicoId": "alpb-556",
+    "data": "2023-01-24",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Consultoria",
+    "fornecedor": {
+      "nome": "RENATO NASCIMENTO DE OLIVEIRA BRITO",
+      "cnpjCpf": "***.882.25***"
+    },
+    "valor": 5000
+  },
+  {
+    "id": "alpb-556-2023-01-24-4",
+    "politicoId": "alpb-556",
+    "data": "2023-01-24",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Consultoria",
+    "fornecedor": {
+      "nome": "LUIZ GONZAGA FIRMINO JUNIOR",
+      "cnpjCpf": "***.881.69***"
+    },
+    "valor": 6000
+  },
+  {
+    "id": "alpb-556-2023-01-24-5",
+    "politicoId": "alpb-556",
+    "data": "2023-01-24",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Trabalhos Técnicos",
+    "fornecedor": {
+      "nome": "ADRIANO PEREIRA DA SILVA",
+      "cnpjCpf": "***.127.47***"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alpb-556-2023-01-24-6",
+    "politicoId": "alpb-556",
+    "data": "2023-01-24",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Serviços de Contabilidade",
+    "fornecedor": {
+      "nome": "IVONETE RODRIGUES DOS SANTOS",
+      "cnpjCpf": "***.421.82***"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alpb-556-2023-01-24-7",
+    "politicoId": "alpb-556",
+    "data": "2023-01-24",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Serviços de Advogados",
+    "fornecedor": {
+      "nome": "MARCUS TULIO MACEDO DE LIMA CAMPOS",
+      "cnpjCpf": "***.824.43***"
+    },
+    "valor": 10000
+  }
+]

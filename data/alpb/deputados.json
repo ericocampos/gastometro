@@ -1,0 +1,999 @@
+[
+  {
+    "politicoId": "alpb-12731",
+    "viapId": "12731",
+    "nomeRegistro": "Adriano Galdino",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "89",
+    "nomeParlamentar": "Adriano Galdino",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/89/89_foto_parlamentar_Jq2avFH.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30541",
+    "viapId": "30541",
+    "nomeRegistro": "Anderson Monteiro",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "157",
+    "nomeParlamentar": "Anderson Monteiro",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/157/157_foto_parlamentar.jpg",
+    "partido": "PV",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-556",
+    "viapId": "556",
+    "nomeRegistro": "Anísio Maia",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "90",
+    "nomeParlamentar": "Anísio Maia",
+    "partido": "PSB"
+  },
+  {
+    "politicoId": "alpb-592",
+    "viapId": "592",
+    "nomeRegistro": "Branco Mendes",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "66",
+    "nomeParlamentar": "Branco Mendes",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/66/66_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16714",
+    "viapId": "16714",
+    "nomeRegistro": "Buba Germano",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "139",
+    "nomeParlamentar": "Buba Germano",
+    "partido": "PSB"
+  },
+  {
+    "politicoId": "alpb-30551",
+    "viapId": "30551",
+    "nomeRegistro": "Cabo Gilberto Silva",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "162",
+    "nomeParlamentar": "Cabo Gilberto Silva",
+    "partido": "PL"
+  },
+  {
+    "politicoId": "alpb-595",
+    "viapId": "595",
+    "nomeRegistro": "Caio Roberto",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "116",
+    "nomeParlamentar": "Caio Roberto",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/116/116_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20,
+      "afastado": true
+    }
+  },
+  {
+    "politicoId": "alpb-16715",
+    "viapId": "16715",
+    "nomeRegistro": "Camila Toscano",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "131",
+    "nomeParlamentar": "Camila Toscano",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/131/131_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30557",
+    "viapId": "30557",
+    "nomeRegistro": "Chió",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "164",
+    "nomeParlamentar": "Chió",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/164/164_foto_parlamentar.jpg",
+    "partido": "PV",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30555",
+    "viapId": "30555",
+    "nomeRegistro": "Cida Ramos",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "156",
+    "nomeParlamentar": "Cida Ramos",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/156/156_foto_parlamentar.jpg",
+    "partido": "PT",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-616",
+    "viapId": "616",
+    "nomeRegistro": "Doda de Tião",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "112",
+    "nomeParlamentar": "Doda de Tião",
+    "partido": "PTB"
+  },
+  {
+    "politicoId": "alpb-30561",
+    "viapId": "30561",
+    "nomeRegistro": "Doutora Paula",
+    "matchVia": "depara",
+    "saplId": "166",
+    "nomeParlamentar": "Drª Paula",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/166/166_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30545",
+    "viapId": "30545",
+    "nomeRegistro": "Dr Érico",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "159",
+    "nomeParlamentar": "Dr. Erico",
+    "partido": "CIDA"
+  },
+  {
+    "politicoId": "alpb-627",
+    "viapId": "627",
+    "nomeRegistro": "Edmilson Soares",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "111",
+    "nomeParlamentar": "Edmilson Soares",
+    "partido": "POD"
+  },
+  {
+    "politicoId": "alpb-30543",
+    "viapId": "30543",
+    "nomeRegistro": "Eduardo Carneiro",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "158",
+    "nomeParlamentar": "Eduardo Carneiro",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/158/158_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16717",
+    "viapId": "16717",
+    "nomeRegistro": "Estela Bezerra",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "133",
+    "nomeParlamentar": "Estela Bezerra",
+    "partido": "PT"
+  },
+  {
+    "politicoId": "alpb-30547",
+    "viapId": "30547",
+    "nomeRegistro": "Felipe Leitão",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "160",
+    "nomeParlamentar": "Felipe Leitão",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/160/160_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16711",
+    "viapId": "16711",
+    "nomeRegistro": "Galego Souza",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "134",
+    "nomeParlamentar": "Galego Souza",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/134/134_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-658",
+    "viapId": "658",
+    "nomeRegistro": "Hervázio Bezerra",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "117",
+    "nomeParlamentar": "Hervázio Bezerra",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/117/117_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16718",
+    "viapId": "16718",
+    "nomeRegistro": "Inácio Falcão",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "141",
+    "nomeParlamentar": "Inácio Falcão",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/141/141_foto_parlamentar.jpg",
+    "partido": "PCdoB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-34607",
+    "viapId": "34607",
+    "nomeRegistro": "Dra. Jane Panta",
+    "matchVia": "depara",
+    "saplId": "170",
+    "nomeParlamentar": "Drª Jane Panta",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/170/170_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16722",
+    "viapId": "16722",
+    "nomeRegistro": "Jeová Campos",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "73",
+    "nomeParlamentar": "Jeová Campos",
+    "partido": "PT"
+  },
+  {
+    "politicoId": "alpb-16723",
+    "viapId": "16723",
+    "nomeRegistro": "Bosco Carneiro",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "52",
+    "nomeParlamentar": "Bosco Carneiro",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/52/52_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-02-01",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-665",
+    "viapId": "665",
+    "nomeRegistro": "João Gonçalves",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "59",
+    "nomeParlamentar": "João Gonçalves",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/59/59_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30549",
+    "viapId": "30549",
+    "nomeRegistro": "Júnior Araújo",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "161",
+    "nomeParlamentar": "Júnior Araújo",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/161/161_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-675",
+    "viapId": "675",
+    "nomeRegistro": "Jutay Meneses",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "122",
+    "nomeParlamentar": "Jutay Meneses",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/122/122_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-12732",
+    "viapId": "12732",
+    "nomeRegistro": "Manoel Ludgério",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "55",
+    "nomeParlamentar": "Manoel Ludgério",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/55/55_foto_parlamentar.jpg",
+    "partido": "PSDB",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-04-01",
+          "fim": "2026-12-20"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-30559",
+    "viapId": "30559",
+    "nomeRegistro": "Moacir Rodrigues",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "165",
+    "nomeParlamentar": "Moacir Rodrigues",
+    "partido": "PL"
+  },
+  {
+    "politicoId": "alpb-30566",
+    "viapId": "30566",
+    "nomeRegistro": "Pollyanna Dutra",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "169",
+    "nomeParlamentar": "Pollyanna Dutra",
+    "partido": "PSB"
+  },
+  {
+    "politicoId": "alpb-682",
+    "viapId": "682",
+    "nomeRegistro": "Raniery Paulino",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "77",
+    "nomeParlamentar": "Raniery Paulino",
+    "partido": "REP"
+  },
+  {
+    "politicoId": "alpb-16726",
+    "viapId": "16726",
+    "nomeRegistro": "Ricardo Barbosa",
+    "matchVia": "sapl-completo",
+    "saplId": "79",
+    "nomeParlamentar": "Ricardo Barbosa",
+    "partido": "PSB"
+  },
+  {
+    "politicoId": "alpb-30563",
+    "viapId": "30563",
+    "nomeRegistro": "Taciano Diniz",
+    "matchVia": "sapl-tokens",
+    "saplId": "167",
+    "nomeParlamentar": "Dr. Taciano Diniz",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/167/167_foto_parlamentar.jpg",
+    "partido": "UNIAO",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-687",
+    "viapId": "687",
+    "nomeRegistro": "Tião Gomes",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "35",
+    "nomeParlamentar": "Tião Gomes",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/35/35_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-16727",
+    "viapId": "16727",
+    "nomeRegistro": "Tovar Correia Lima",
+    "matchVia": "sapl-tokens",
+    "saplId": "140",
+    "nomeParlamentar": "Tovar",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/140/140_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30565",
+    "viapId": "30565",
+    "nomeRegistro": "Delegado Wallber Virgolino",
+    "matchVia": "sapl-tokens",
+    "saplId": "168",
+    "nomeParlamentar": "Del Wallber Virgolino",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/168/168_foto_parlamentar.jpg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-30553",
+    "viapId": "30553",
+    "nomeRegistro": "Wilson Filho",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "163",
+    "nomeParlamentar": "Wilson Filho",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/163/163_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47918",
+    "viapId": "47918",
+    "nomeRegistro": "Francisco Mendes Campos",
+    "matchVia": "sapl-completo",
+    "saplId": "175",
+    "nomeParlamentar": "Chico Mendes",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/175/175_foto_parlamentar.jpg",
+    "partido": "PSB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47919",
+    "viapId": "47919",
+    "nomeRegistro": "Danielle do Nascimento Rodrigues Pessoa",
+    "matchVia": "sapl-completo",
+    "saplId": "176",
+    "nomeParlamentar": "Danielle do Vale",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/176/176_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47922",
+    "viapId": "47922",
+    "nomeRegistro": "Eduardo Carneiro de Brito",
+    "matchVia": "sapl-completo",
+    "saplId": "178",
+    "nomeParlamentar": "Eduardo Brito",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/178/178_foto_parlamentar.jpg",
+    "partido": "PSB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47923",
+    "viapId": "47923",
+    "nomeRegistro": "Fabio Ramalho da Silva",
+    "matchVia": "sapl-completo",
+    "saplId": "179",
+    "nomeParlamentar": "Fabio Ramalho",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/179/179_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47925",
+    "viapId": "47925",
+    "nomeRegistro": "Francisca Gomes Araujo Motta",
+    "matchVia": "sapl-tokens",
+    "saplId": "14",
+    "nomeParlamentar": "Francisca Motta",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/14/14_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47926",
+    "viapId": "47926",
+    "nomeRegistro": "George Ventura Morais",
+    "matchVia": "sapl-completo",
+    "saplId": "180",
+    "nomeParlamentar": "George Morais",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/180/180_foto_parlamentar.jpg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47928",
+    "viapId": "47928",
+    "nomeRegistro": "Gilberto Tolentino Leite Junior",
+    "matchVia": "sapl-completo",
+    "saplId": "181",
+    "nomeParlamentar": "Gilbertinho",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/181/181_foto_parlamentar.jpg",
+    "partido": "UNIAO",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47933",
+    "viapId": "47933",
+    "nomeRegistro": "João Gomes de Souza Neto",
+    "matchVia": "sapl-completo",
+    "saplId": "184",
+    "nomeParlamentar": "Sargento Neto",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/184/184_foto_parlamentar.jpg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47929",
+    "viapId": "47929",
+    "nomeRegistro": "João Paulo Barbosa Leal Segundo",
+    "matchVia": "sapl-completo",
+    "saplId": "182",
+    "nomeParlamentar": "João Paulo Segundo",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/182/182_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47931",
+    "viapId": "47931",
+    "nomeRegistro": "Luciano Cartaxo Pires de Sá",
+    "matchVia": "sapl-completo",
+    "saplId": "101",
+    "nomeParlamentar": "Luciano Cartaxo",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/101/101_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47932",
+    "viapId": "47932",
+    "nomeRegistro": "Michel Silvestre Henrique",
+    "matchVia": "sapl-completo",
+    "saplId": "183",
+    "nomeParlamentar": "Michel Henrique",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/183/183_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47921",
+    "viapId": "47921",
+    "nomeRegistro": "Romualdo Antônio Quirino de Souza",
+    "matchVia": "sapl-tokens",
+    "saplId": "177",
+    "nomeParlamentar": "Dr. Romualdo",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/177/177_foto_parlamentar.jpg",
+    "partido": "PCdoB",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-47934",
+    "viapId": "47934",
+    "nomeRegistro": "Tanilson Tarso Nobrega Soares",
+    "matchVia": "sapl-completo",
+    "saplId": "185",
+    "nomeParlamentar": "Tanilson Soares",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/185/185_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20
+    }
+  },
+  {
+    "politicoId": "alpb-49580",
+    "viapId": "49580",
+    "nomeRegistro": "Silvia Benjamin",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "186",
+    "nomeParlamentar": "Silvia Benjamin",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/186/186_foto_parlamentar_DWibhHg.jpeg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-06-22",
+          "fim": "2024-12-16"
+        },
+        {
+          "inicio": "2025-07-18",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-50116",
+    "viapId": "50116",
+    "nomeRegistro": "Jose Ivanilson Soares de Lacerda",
+    "matchVia": "sapl-completo",
+    "saplId": "187",
+    "nomeParlamentar": "Nilson Lacerda",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/187/187_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-10-30",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-50818",
+    "viapId": "50818",
+    "nomeRegistro": "André Avelino de P Gadelha",
+    "matchVia": "sapl-tokens",
+    "saplId": "91",
+    "nomeParlamentar": "André Gadelha",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/91/91_foto_parlamentar.jpg",
+    "partido": "MDB",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-03-16",
+          "fim": "2026-06-16"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-51753",
+    "viapId": "51753",
+    "nomeRegistro": "José Alexandre de Araújo Segundo",
+    "matchVia": "sapl-completo",
+    "saplId": "190",
+    "nomeParlamentar": "Alexandre de Zezé",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/190/190_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-04",
+          "fim": "2024-04-17"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-53388",
+    "viapId": "53388",
+    "nomeRegistro": "Francisco José Garcia Figueiredo",
+    "matchVia": "sapl-completo",
+    "saplId": "195",
+    "nomeParlamentar": "Professor Francisco",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/195/195_foto_parlamentar.jpg",
+    "partido": "REDE",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-01-01",
+          "fim": "2024-05-01"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-53289",
+    "viapId": "53289",
+    "nomeRegistro": "José Airton Pires De Sousa",
+    "matchVia": "sapl-completo",
+    "saplId": "192",
+    "nomeParlamentar": "Airton Pires",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/192/192_foto_parlamentar.jpg",
+    "partido": "UNIAO",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-12",
+          "fim": "2024-02-26"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-53284",
+    "viapId": "53284",
+    "nomeRegistro": "Juscelino Miguel dos Anjos",
+    "matchVia": "sapl-completo",
+    "saplId": "194",
+    "nomeParlamentar": "Juscelino do Peixe",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/194/194_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-18",
+          "fim": "2024-04-01"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-53389",
+    "viapId": "53389",
+    "nomeRegistro": "Maria Leonice Lopes Vital",
+    "matchVia": "sapl-completo",
+    "saplId": "193",
+    "nomeParlamentar": "Leonice Lopes",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/193/193_foto_parlamentar.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2023-12-18",
+          "fim": "2024-04-01"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-53473",
+    "viapId": "53473",
+    "nomeRegistro": "Paulo Tarcisio Pessoa Jardim",
+    "matchVia": "sapl-completo",
+    "saplId": "197",
+    "nomeParlamentar": "Tarcisio Jardim",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/197/197_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-04-21",
+          "fim": "2026-08-20"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-55107",
+    "viapId": "55107",
+    "nomeRegistro": "Carmem Lúcia Pereira de Lima Filha",
+    "matchVia": "sapl-completo",
+    "saplId": "198",
+    "nomeParlamentar": "Lucinha Lima",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/198/198_foto_parlamentar.jpg",
+    "partido": "PSD",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-04-01",
+          "fim": "2024-08-01"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-55108",
+    "viapId": "55108",
+    "nomeRegistro": "Rui Da Silva Nobrega",
+    "matchVia": "sapl-completo",
+    "saplId": "200",
+    "nomeParlamentar": "Sargento Rui",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/200/200_foto_parlamentar.jpg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-05-19",
+          "fim": null
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-55991",
+    "viapId": "55991",
+    "nomeRegistro": "Cledson Rodrigues da Silva",
+    "matchVia": "sapl-completo",
+    "saplId": "201",
+    "nomeParlamentar": "Dinho Papaleguas",
+    "partido": "PSDB",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-06-02",
+          "fim": "2024-10-31"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-56534",
+    "viapId": "56534",
+    "nomeRegistro": "Aron Rene Martins de Andrade",
+    "matchVia": "sapl-completo",
+    "saplId": "202",
+    "nomeParlamentar": "Aron Andrade",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/202/202_foto_parlamentar.jpg",
+    "partido": "PP",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2024-08-19",
+          "fim": "2024-11-24"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-6056",
+    "viapId": "6056",
+    "nomeRegistro": "Márcio Roberto",
+    "matchVia": "sapl-parlamentar",
+    "saplId": "76",
+    "nomeParlamentar": "Márcio Roberto",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/76/foto_4.jpg",
+    "partido": "REP",
+    "mandato": {
+      "tipo": "titular",
+      "legislatura": 20,
+      "afastado": true
+    }
+  },
+  {
+    "politicoId": "alpb-59278",
+    "viapId": "59278",
+    "nomeRegistro": "Cicero Robson Figueiredo Ferreira Lima",
+    "matchVia": "sapl-completo",
+    "saplId": "203",
+    "nomeParlamentar": "Cicinho Lima",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/203/foto.jpeg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-03-03",
+          "fim": "2025-06-30"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-60239",
+    "viapId": "60239",
+    "nomeRegistro": "Félix Araújo Filho",
+    "matchVia": "sapl-completo",
+    "saplId": "204",
+    "nomeParlamentar": "Félix Araújo",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/204/foto_2.jpg",
+    "partido": "REDE",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-04-28",
+          "fim": "2025-10-30"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-63072",
+    "viapId": "63072",
+    "nomeRegistro": "Luiz Eduardo de Menezes Soares",
+    "matchVia": "sapl-completo",
+    "saplId": "205",
+    "nomeParlamentar": "Dudu Soares",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/205/205_foto_parlamentar_0D2KoFS.jpg",
+    "partido": "SD",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2025-10-30",
+          "fim": "2026-02-28"
+        }
+      ]
+    }
+  },
+  {
+    "politicoId": "alpb-67944",
+    "viapId": "67944",
+    "nomeRegistro": "José Aledson de Sousa Moura",
+    "matchVia": "sapl-completo",
+    "saplId": "206",
+    "nomeParlamentar": "Dr. Aledson Moura",
+    "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/206/dr_aledson_moura.jpg",
+    "partido": "PL",
+    "mandato": {
+      "tipo": "suplente",
+      "legislatura": 20,
+      "exercicios": [
+        {
+          "inicio": "2026-04-06",
+          "fim": "2026-08-05"
+        }
+      ]
+    }
+  }
+]

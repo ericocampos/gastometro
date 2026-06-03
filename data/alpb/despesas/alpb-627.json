@@ -1,0 +1,65 @@
+[
+  {
+    "id": "alpb-627-2023-01-16-0",
+    "politicoId": "alpb-627",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Locação ou Fretamento de Veículos Automotores",
+    "fornecedor": {
+      "nome": "OTAVIO AUGUSTO NOBREGA DE CARVALHO EPP",
+      "cpfCnpj": "****01.445/000****"
+    },
+    "documento": "REC",
+    "valor": 15000
+  },
+  {
+    "id": "alpb-627-2023-01-19-1",
+    "politicoId": "alpb-627",
+    "data": "2023-01-19",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO À ATIVIDADE PARLAMENTAR",
+    "categoria": "Combustíveis e Lubrificantes",
+    "fornecedor": {
+      "nome": "D P N DISTRIBUIDORA DE PRODUTOS NORDESTINOS LTDA",
+      "cpfCnpj": "****41.763/000****"
+    },
+    "documento": "NF",
+    "numero": "0400",
+    "valor": 5011.81
+  },
+  {
+    "id": "alpb-627-2023-01-17-2",
+    "politicoId": "alpb-627",
+    "data": "2023-01-17",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Contabilidade",
+    "fornecedor": {
+      "nome": "CARLOS BERG DE OLIVEIRA AMANCIO CONS E SERV CONTAB",
+      "cpfCnpj": "****80.345/000****"
+    },
+    "documento": "NF",
+    "numero": "0007",
+    "valor": 10000
+  },
+  {
+    "id": "alpb-627-2023-01-18-3",
+    "politicoId": "alpb-627",
+    "data": "2023-01-18",
+    "ano": 2023,
+    "mes": 1,
+    "item": "APOIO TÉCNICO:",
+    "categoria": "Serviços de Advogados",
+    "fornecedor": {
+      "nome": "JOSE DE MOURA JUNIOR SOCIEDADE INDIVIDUAL DE ADVOC",
+      "cpfCnpj": "****17.672/000****"
+    },
+    "documento": "NF",
+    "numero": "0020",
+    "valor": 10000
+  }
+]
