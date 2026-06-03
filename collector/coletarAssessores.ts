@@ -12,13 +12,23 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { fetchJson } from './http.js'
+import { fetchJson, fetchBuffer } from './http.js'
+import {
+  parseFolhaSenado, construirGabinetesSenado,
+  type ServidorApi, type GabineteSenado, type TabelaSenado, type FolhaSenado,
+} from './sources/senadoGabinete.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = resolve(here, '../data')
 
 const URL_FUNCIONARIOS = 'https://dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json'
 const GRUPO_SECRETARIO_PARLAMENTAR = 6
+
+// Senado: roster nominal (API) + folha mensal (CSV ISO-8859-1) — ver sources/senadoGabinete.ts
+const URL_SERVIDORES_SENADO = 'https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/servidores'
+const folhaSenadoUrl = (aaaamm: string) =>
+  `https://www.senado.leg.br/transparencia/LAI/secrh/SF_ConsultaRemuneracaoServidoresParlamentares_${aaaamm}.csv`
+const JANELA_FOLHA = 6 // meses p/ trás a tentar até achar a folha mais recente publicada
 
 // vencimento mensal por nível SP (sem GRG). Com GRG (sufixo C) = x2.
 const VENCIMENTO: Record<number, number> = {
@@ -39,7 +49,7 @@ interface Funcionario {
   codGrupo: number; nome?: string; cargo?: string; uriLotacao?: string
   atoNomeacao?: string; dataNomeacao?: string; dataInicioHistorico?: string; ponto?: string
 }
-interface Politico { id: string; casa: 'camara' | 'senado' }
+interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' }
 interface SecretarioGabinete {
   nome: string; nivel: number; grg: boolean; remuneracao: number
   // tudo que dá pra extrair do cadastro (a fonte não traz CPF; 'funcao' vem sempre vazia p/ SP):
@@ -67,9 +77,52 @@ function hojeISO(): string {
   return new Date().toISOString().slice(0, 10)
 }
 
+// tenta a folha do mês corrente p/ trás até achar a folha NORMAL mais recente já fechada. O mês
+// corrente costuma sair só com lançamentos "Suplementar" (a folha normal ainda não rodou), o que
+// daria custo zerado — por isso só aceita o mês cuja folha normal já tem lotações de senador.
+async function baixarFolhaSenado(): Promise<{ folha: FolhaSenado; mesReferencia: string } | null> {
+  const hoje = new Date()
+  for (let i = 0; i < JANELA_FOLHA; i++) {
+    const d = new Date(Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth() - i, 1))
+    const aaaamm = `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}`
+    try {
+      const buf = await fetchBuffer(folhaSenadoUrl(aaaamm), { tentativas: 2 })
+      const folha = parseFolhaSenado(new TextDecoder('latin1').decode(buf))
+      if (folha.brutoPorSenador.size > 0) {
+        return { folha, mesReferencia: `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}` }
+      }
+    } catch {
+      /* tenta o mês anterior */
+    }
+  }
+  return null
+}
+
+// Comissionados de gabinete/escritório dos senadores: roster nominal (API) + custo real (folha).
+async function coletarSenado(
+  senadores: Politico[],
+): Promise<{ porPolitico: Record<string, GabineteSenado>; tabela: TabelaSenado } | null> {
+  console.log('> Baixando servidores do Senado (API) e folha mensal...')
+  const bruto = await fetchJson<unknown>(URL_SERVIDORES_SENADO)
+  const servidores: ServidorApi[] = Array.isArray(bruto)
+    ? (bruto as ServidorApi[])
+    : ((bruto as Record<string, unknown>).dados as ServidorApi[]) ?? (Object.values(bruto as object)[0] as ServidorApi[])
+
+  const folhaRaw = await baixarFolhaSenado()
+  if (!folhaRaw) {
+    console.warn('! Folha do Senado indisponível — pulando comissionados do Senado.')
+    return null
+  }
+  return construirGabinetesSenado(
+    servidores, folhaRaw.folha, folhaRaw.mesReferencia,
+    senadores.map((s) => ({ id: s.id, nome: s.nome })),
+  )
+}
+
 async function main() {
   const politicos: Politico[] = JSON.parse(readFileSync(resolve(dataDir, 'politicos.json'), 'utf-8'))
   const deputados = politicos.filter((p) => p.casa === 'camara')
+  const senadores = politicos.filter((p) => p.casa === 'senado')
 
   console.log('> Baixando arquivo de funcionários da Câmara...')
   const bruto = await fetchJson<unknown>(URL_FUNCIONARIOS)
@@ -109,22 +162,41 @@ async function main() {
     }
   }
 
+  // Senado: comissionados de gabinete/escritório (roster nominal + custo real da folha).
+  let tabelaSenado: TabelaSenado | undefined
+  let senadoComGabinete = 0
+  try {
+    const senado = await coletarSenado(senadores)
+    if (senado) {
+      tabelaSenado = senado.tabela
+      for (const [id, gab] of Object.entries(senado.porPolitico)) {
+        porPolitico[id] = gab
+        senadoComGabinete++
+      }
+    }
+  } catch (e) {
+    console.warn('! Falha ao coletar comissionados do Senado:', e instanceof Error ? e.message : e)
+  }
+
   const comGabinete = Object.values(porPolitico).filter((g) => g.total > 0)
   const saida = {
     atualizadoEm: hojeISO(),
     fonte: URL_FUNCIONARIOS,
     descricao:
-      'Secretários parlamentares (assessores) lotados no gabinete de cada deputado e a folha mensal do gabinete, somada pela tabela oficial de remuneração (vencimento + GRG por nível SP). Snapshot atual da Câmara, sem histórico. É a folha bruta tabelada — não inclui auxílio-alimentação/encargos (pagos à parte pela Câmara) nem o valor exato pago (consulta transpnet). Senado e ALPB não divulgam por gabinete com a mesma granularidade.',
+      'Câmara: secretários parlamentares lotados no gabinete de cada deputado e a folha mensal, somada pela tabela oficial (vencimento + GRG por nível SP) — folha bruta tabelada, sem auxílio/encargos nem o valor exato (consulta transpnet). ' +
+      'Senado: comissionados de gabinete e escritório de apoio de cada senador (roster nominal da API de servidores) e o custo real do gabinete (soma da folha oficial bruta do mês). O salário de cada pessoa é estimado pelo símbolo do cargo (a folha não traz nome) — o valor exato fica na consulta oficial individual, linkada. ALPB não divulga por gabinete com a mesma granularidade.',
     tabela: TABELA,
+    tabelaSenado,
     porPolitico,
   }
 
   mkdirSync(dataDir, { recursive: true })
   writeFileSync(resolve(dataDir, 'assessores.json'), JSON.stringify(saida, null, 2))
-  const folhaTotal = comGabinete.reduce((s, g) => s + g.folha, 0)
+  const folhaCamara = deputados.reduce((s, d) => s + (porPolitico[d.id]?.folha ?? 0), 0)
+  const folhaSenado = senadores.reduce((s, sen) => s + (porPolitico[sen.id]?.folha ?? 0), 0)
   console.log(
-    `OK: ${deputados.length} deputados (${comGabinete.length} com gabinete no snapshot), ` +
-    `folha somada R$ ${folhaTotal.toLocaleString('pt-BR')} → data/assessores.json`,
+    `OK: Câmara ${deputados.length} deputados (${comGabinete.length - senadoComGabinete} com gabinete), folha R$ ${folhaCamara.toLocaleString('pt-BR')}; ` +
+    `Senado ${senadoComGabinete} gabinetes${tabelaSenado ? ` (folha ${tabelaSenado.mesReferencia})` : ''}, folha R$ ${folhaSenado.toLocaleString('pt-BR')} → data/assessores.json`,
   )
 }
 

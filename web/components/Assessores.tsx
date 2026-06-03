@@ -9,11 +9,18 @@ const tituloNome = (s: string) =>
     .map((w, i) => (i > 0 && MINUSC.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
     .join(' ')
 const sp = (n: number) => `SP${String(n).padStart(2, '0')}`
+const mesBR = (m?: string) => {
+  if (!m) return ''
+  const [a, mm] = m.split('-')
+  const nomes = ['', 'jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
+  return `${nomes[Number(mm)] ?? mm}/${a}`
+}
 
-// Gabinete: nº de assessores e — na Câmara — a folha mensal somada pela tabela oficial (vencimento
-// + GRG por nível), com o cadastro de quem ocupa cada cargo. Senado/ALPB seguem sem dado por gabinete.
+// Gabinete: nº de assessores e a folha. Na Câmara a folha é somada pela tabela oficial (vencimento +
+// GRG por nível SP). No Senado a folha é o custo real oficial (soma da folha bruta do mês) e o salário
+// de cada pessoa é estimado pelo símbolo do cargo. ALPB segue sem dado por gabinete.
 export function Assessores({
-  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, gabinete, casa,
+  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, gabinete, casa,
 }: {
   quantidade: number | null
   folha?: number | null
@@ -21,20 +28,23 @@ export function Assessores({
   verbaGabinete?: number | null
   consultaExataUrl?: string
   atualizadoEm?: string
+  mesReferencia?: string
   gabinete: ItemCusto
   casa: 'camara' | 'senado' | 'assembleia'
 }) {
   const cor = corCasa(casa)
-  const temFolha = casa === 'camara' && folha != null
-  const pctTeto = temFolha && verbaGabinete ? Math.round((folha! / verbaGabinete) * 100) : null
-  const teto = temFolha ? (verbaGabinete != null ? brlInteiro(verbaGabinete) : null) : (gabinete.valor != null ? brlInteiro(gabinete.valor) : null)
+  const temFolhaCamara = casa === 'camara' && folha != null
+  const temFolhaSenado = casa === 'senado' && folha != null
+  const temFolha = temFolhaCamara || temFolhaSenado
+  const pctTeto = temFolhaCamara && verbaGabinete ? Math.round((folha! / verbaGabinete) * 100) : null
+  const tetoCamara = verbaGabinete != null ? brlInteiro(verbaGabinete) : null
 
   return (
     <div>
       <div className="grid grid-cols-2 gap-3">
         <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
           <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
-          <div className="text-xs text-tinta-suave">Assessores no gabinete</div>
+          <div className="text-xs text-tinta-suave">{temFolhaSenado ? 'Comissionados (gabinete + escritório)' : 'Assessores no gabinete'}</div>
           {quantidade == null ? (
             <>
               <div className="mt-0.5 font-display text-xl font-semibold text-tinta sm:text-2xl lg:text-3xl">—</div>
@@ -44,7 +54,7 @@ export function Assessores({
             <>
               <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{quantidade}</div>
               <div className="mt-0.5 text-xs text-tinta-tenue">
-                secretários hoje{atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}
+                {temFolhaSenado ? 'pessoas hoje' : 'secretários hoje'}{atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}
               </div>
             </>
           )}
@@ -53,33 +63,35 @@ export function Assessores({
         {temFolha ? (
           <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
             <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
-            <div className="text-xs text-tinta-suave">Folha mensal do gabinete</div>
+            <div className="text-xs text-tinta-suave">{temFolhaSenado ? 'Folha do gabinete · custo real' : 'Folha mensal do gabinete'}</div>
             <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{brlInteiro(folha!)}</div>
             <div className="mt-0.5 text-xs text-tinta-tenue">
-              {pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}{teto ? ` · teto ${teto}` : ''}
+              {temFolhaSenado
+                ? `folha bruta oficial · ${mesBR(mesReferencia)}`
+                : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
             </div>
           </div>
         ) : (
           <div className="rounded-lg border border-borda bg-superficie p-3 sm:p-4">
             <div className="text-xs text-tinta-suave">Verba de gabinete (teto)</div>
-            <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{teto ?? '—'}</div>
+            <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{gabinete.valor != null ? brlInteiro(gabinete.valor) : '—'}</div>
             <div className="mt-0.5 text-xs text-tinta-tenue">{gabinete.rotulo}</div>
           </div>
         )}
       </div>
 
-      {/* Visual: composição do gabinete por nível e GRG */}
+      {/* Visual: composição do gabinete */}
       {temFolha && secretarios.length > 0 && (
         <div className="mt-3">
-          <GraficoGabinete secretarios={secretarios} />
+          <GraficoGabinete secretarios={secretarios} casa={casa === 'senado' ? 'senado' : 'camara'} />
         </div>
       )}
 
-      {/* Cadastro: quem ocupa o gabinete, o nível e a remuneração tabelada */}
+      {/* Cadastro: quem ocupa o gabinete */}
       {temFolha && secretarios.length > 0 && (
         <details className="mt-3 rounded-lg border border-borda bg-superficie">
           <summary className="cursor-pointer list-none px-3 py-2 text-sm font-medium text-tinta transition-colors hover:text-marca">
-            Ver os {secretarios.length} secretários do gabinete e a remuneração
+            Ver {secretarios.length} {temFolhaSenado ? 'comissionados e o cargo' : 'secretários do gabinete e a remuneração'}
             <span className="ml-1 text-tinta-tenue">▾</span>
           </summary>
           <ul className="max-h-96 overflow-auto border-t border-borda px-3 py-2">
@@ -88,18 +100,40 @@ export function Assessores({
                 <div className="flex items-center justify-between gap-3">
                   <span className="min-w-0 truncate text-tinta" title={tituloNome(s.nome)}>{tituloNome(s.nome)}</span>
                   <span className="flex shrink-0 items-center gap-2">
-                    <span className="text-tinta-tenue tabular-nums">{sp(s.nivel)}</span>
-                    {s.grg && (
-                      <span className="rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={{ backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' }} title="Gratificação de Representação de Gabinete (dobra o vencimento)">GRG</span>
+                    {temFolhaSenado ? (
+                      <>
+                        {s.simbolo && <span className="text-tinta-tenue tabular-nums">{s.simbolo}</span>}
+                        {s.lotacaoTipo === 'escritorio' && (
+                          <span className="rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
+                        )}
+                        <span className="w-20 text-right tabular-nums text-tinta-suave" title="Estimado pelo símbolo do cargo">
+                          {s.remuneracao > 0 ? `~${brl(s.remuneracao)}` : '—'}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-tinta-tenue tabular-nums">{sp(s.nivel ?? 0)}</span>
+                        {s.grg && (
+                          <span className="rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={{ backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' }} title="Gratificação de Representação de Gabinete (dobra o vencimento)">GRG</span>
+                        )}
+                        <span className="w-20 text-right tabular-nums text-tinta-suave">{brl(s.remuneracao)}</span>
+                      </>
                     )}
-                    <span className="w-20 text-right tabular-nums text-tinta-suave">{brl(s.remuneracao)}</span>
                   </span>
                 </div>
-                {s.nomeadoEm && (
+                {temFolhaSenado ? (
+                  <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[11px] text-tinta-tenue">
+                    {s.cargo && <span>{tituloNome(s.cargo)}</span>}
+                    {s.admissaoAno && <span>· desde {s.admissaoAno}</span>}
+                    {s.consultaUrl && (
+                      <a href={s.consultaUrl} target="_blank" rel="noopener noreferrer" className="text-marca hover:underline">· valor oficial ↗</a>
+                    )}
+                  </div>
+                ) : s.nomeadoEm ? (
                   <div className="mt-0.5 text-[11px] text-tinta-tenue">
                     nomeação {s.ato ? `${s.ato.toLowerCase()} ` : ''}{dataBR(s.nomeadoEm)}
                   </div>
-                )}
+                ) : null}
               </li>
             ))}
           </ul>
@@ -107,7 +141,7 @@ export function Assessores({
       )}
 
       <p className="mt-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
-        {temFolha ? (
+        {temFolhaCamara ? (
           <>
             <strong className="text-tinta">O dado diz quanto, não o quê.</strong>{' '}
             A Câmara divulga quem está no gabinete, o nível salarial e desde quando — mas{' '}
@@ -126,13 +160,28 @@ export function Assessores({
               ) : 'consulta de remuneração da Câmara'}.
             </span>
           </>
+        ) : temFolhaSenado ? (
+          <>
+            <strong className="text-tinta">Folha oficial; salário por pessoa é estimado.</strong>{' '}
+            O Senado publica <strong className="text-tinta-suave">o nome de cada comissionado e o gabinete</strong>, e
+            também a <strong className="text-tinta-suave">folha do mês</strong> — mas em arquivos separados, sem nada que
+            ligue um nome ao seu salário. Por isso a folha acima é o <strong className="text-tinta-suave">custo real</strong>{' '}
+            (soma oficial), e o valor ao lado de cada pessoa é uma{' '}
+            <strong className="text-tinta-suave">estimativa pelo símbolo do cargo</strong> (AP-xx / SF0x), não o valor
+            individual oficial.
+            <span className="mt-1 block">
+              Os símbolos são faixas de vencimento (do menor ao maior). Inclui gabinete e escritório de apoio no estado.
+              O valor exato de cada pessoa fica na consulta oficial (link &ldquo;valor oficial&rdquo; em cada nome) —
+              o Senado a protege com um reCAPTCHA, então abre no navegador, não dá para somar automaticamente.
+            </span>
+          </>
         ) : (
           <>
             <strong className="text-tinta">Transparência limitada.</strong>{' '}
             {casa === 'camara' &&
               'O número de assessores é público, mas o valor da verba de gabinete não pôde ser somado para este parlamentar.'}
             {casa === 'senado' &&
-              'No Senado não há sequer a contagem de assessores por parlamentar com a mesma granularidade, nem o valor gasto com pessoal de gabinete em formato aberto.'}
+              'Não foi possível montar o quadro de gabinete deste senador (sem mandato ativo no período da folha).'}
             {casa === 'assembleia' &&
               'Na Assembleia Legislativa da Paraíba não há a contagem de assessores por deputado nem o valor gasto com pessoal de gabinete em formato aberto — só a VIAP, que detalhamos nota a nota.'}{' '}
             É dinheiro público que deveria ter a mesma transparência do resto.

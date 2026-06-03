@@ -97,20 +97,45 @@ export interface CustosMandato {
 }
 
 export interface SecretarioGabinete {
-  nome: string; nivel: number; grg: boolean; remuneracao: number
+  nome: string
+  remuneracao: number  // Câmara: tabelado; Senado: ESTIMADO pelo símbolo (0 se desconhecido)
+  // Câmara (secretário parlamentar):
+  nivel?: number       // SP01..SP25
+  grg?: boolean        // gratificação de representação de gabinete (dobra o vencimento)
   ato?: string         // ato de nomeação (LEI / PORTARIA)
   nomeadoEm?: string   // data da nomeação atual
   desde?: string       // início do histórico na Câmara
   ponto?: string       // matrícula interna de folha (não é CPF)
+  // Senado (comissionado de gabinete/escritório):
+  cargo?: string                          // texto da função (ASSESSOR PARLAMENTAR, ...)
+  simbolo?: string                        // símbolo do cargo (AP-xx / SF0x)
+  estimado?: boolean                      // remuneração é estimativa pelo símbolo
+  lotacaoTipo?: 'gabinete' | 'escritorio' // onde a pessoa está lotada
+  admissaoAno?: number                    // ano de admissão
+  consultaUrl?: string                    // consulta oficial individual (valor exato, com reCAPTCHA)
 }
-export interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[] }
+export interface GabineteParlamentar {
+  total: number
+  folha: number
+  secretarios: SecretarioGabinete[]
+  // Senado: a folha é o custo real oficial (bruto, mês de referência), não estimativa
+  folhaOficial?: boolean
+  mesReferencia?: string
+}
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
+export interface TabelaGabineteSenado {
+  mesReferencia: string
+  fonte: string
+  vencimentoPorSimbolo: Record<string, number>
+  consultaBaseUrl: string
+}
 
 export interface Assessores {
   atualizadoEm: string
   fonte: string
   descricao: string
   tabela?: TabelaGabinete
+  tabelaSenado?: TabelaGabineteSenado
   porPolitico: Record<string, GabineteParlamentar>
 }
 

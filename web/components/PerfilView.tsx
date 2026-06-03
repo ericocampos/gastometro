@@ -45,6 +45,7 @@ export function PerfilView({
     verbaGabinete?: number | null
     consultaExataUrl?: string
     atualizadoEm?: string
+    mesReferencia?: string
   }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
@@ -196,7 +197,7 @@ export function PerfilView({
           </section>
 
           <section className="mb-10">
-            <SecaoTitulo>Assessores · verba de gabinete</SecaoTitulo>
+            <SecaoTitulo>{politico.casa === 'senado' ? 'Comissionados · folha do gabinete' : 'Assessores · verba de gabinete'}</SecaoTitulo>
             <Assessores
               quantidade={assessores.quantidade}
               folha={assessores.folha}
@@ -204,6 +205,7 @@ export function PerfilView({
               verbaGabinete={assessores.verbaGabinete}
               consultaExataUrl={assessores.consultaExataUrl}
               atualizadoEm={assessores.atualizadoEm}
+              mesReferencia={assessores.mesReferencia}
               gabinete={custoCasa.gabinete}
               casa={politico.casa}
             />
