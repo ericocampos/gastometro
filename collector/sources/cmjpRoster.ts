@@ -14,10 +14,34 @@
 const HOST = 'https://joaopessoa.pb.leg.br'
 
 export interface VereadorRoster {
-  nome: string
+  nome: string        // nome de urna (popular), como exibido no card
   partido?: string
   fotoUrl?: string
   slug?: string
+  nomeCivil?: string  // nome civil, extraído do início da bio (data-bs-bio) — ponte com VIAP/folha (nomes civis)
+}
+
+// conectores que fazem parte de um nome (mantêm a sequência), em minúsculas
+const CONECTORES = new Set(['de', 'da', 'do', 'das', 'dos', 'e'])
+
+// A bio começa com o nome civil completo seguido de um verbo/cláusula
+// ("Valdir José Dowsley iniciou...", "João Bosco dos Santos Filho é natural...").
+// Pegamos a sequência inicial de palavras Capitalizadas (mais conectores minúsculos),
+// parando no primeiro verbo minúsculo (é, nasceu, iniciou, mudou-se...).
+function extrairNomeCivil(bio: string): string | undefined {
+  const palavras = limparTexto(bio).split(' ')
+  const nome: string[] = []
+  for (const bruta of palavras) {
+    const p = bruta.replace(/[.,;:)(]+$/, '') // tira pontuação pendurada (ex.: "Oliveira,")
+    if (nome.length >= 6) break               // nome civil não passa de ~6 tokens
+    if (/^[A-ZÀ-Ú]/.test(p)) { nome.push(p); if (p !== bruta) break; continue } // vírgula encerra o nome
+    if (CONECTORES.has(p.toLowerCase()) && nome.length > 0) { nome.push(p); continue }
+    break // primeira palavra minúscula que não é conector encerra o nome
+  }
+  // remove conector pendurado no fim (ex.: "... e")
+  while (nome.length && CONECTORES.has(nome[nome.length - 1].toLowerCase())) nome.pop()
+  const civil = nome.join(' ').trim()
+  return civil.length > 2 && nome.length >= 2 ? civil : undefined
 }
 
 function decodeEntidades(s: string): string {
@@ -73,11 +97,15 @@ export function parseRosterHtml(html: string): VereadorRoster[] {
     const slugM = info.match(/\/tag\/([a-z0-9-]+)\//i)
     const slug = slugM ? slugM[1] : undefined
 
+    // Nome civil: início da bio em data-bs-bio (quando houver).
+    const bioM = card.match(/data-bs-bio="([^"]*)"/i)
+    const nomeCivil = bioM ? extrairNomeCivil(bioM[1]) : undefined
+
     const chave = slug ?? nome.toUpperCase()
     if (vistos.has(chave)) continue
     vistos.add(chave)
 
-    vereadores.push({ nome, partido, fotoUrl, slug })
+    vereadores.push({ nome, partido, fotoUrl, slug, nomeCivil })
   }
 
   return vereadores

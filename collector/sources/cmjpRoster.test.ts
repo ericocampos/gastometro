@@ -18,4 +18,13 @@ describe('cmjp roster', () => {
     const nomes = v.map(x => x.nome.toUpperCase().trim())
     expect(new Set(nomes).size).toBe(nomes.length)
   })
+
+  it('extrai nome civil da bio (ponte com VIAP/folha)', () => {
+    const v = parseRosterHtml(html)
+    const comCivil = v.filter(x => x.nomeCivil)
+    expect(comCivil.length).toBeGreaterThanOrEqual(20)
+    // o card de urna "Dinho" tem nome civil "Valdir José Dowsley"
+    const dinho = v.find(x => x.slug === 'dinho' || /dinho/i.test(x.nome))
+    expect(dinho?.nomeCivil).toMatch(/Dowsley/i)
+  })
 })

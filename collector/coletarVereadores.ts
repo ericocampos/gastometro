@@ -53,9 +53,14 @@ export function montarCidade(
   mesGabinete: string,
 ): SaidaCidade {
   const override = cfg.apelidoOverride ?? {}
-  // bate o nome do roster com um nome candidato (popular do gabinete ou civil da VIAP)
-  const casa = (rosterNome: string, candidatoNome: string): boolean =>
-    override[normNome(candidatoNome)] === rosterNome || mesmaPessoaTokens(rosterNome, candidatoNome)
+  // bate um vereador do roster com um nome candidato. Tenta, nesta ordem:
+  //  - override manual (apelido/nome civil normalizado -> nome do roster)
+  //  - nome de urna do roster x candidato (bom p/ folha de gabinete, que usa urna)
+  //  - nome CIVIL do roster (extraído da bio) x candidato (bom p/ VIAP, que usa nome civil)
+  const casa = (v: VereadorRoster, candidatoNome: string): boolean =>
+    override[normNome(candidatoNome)] === v.nome ||
+    mesmaPessoaTokens(v.nome, candidatoNome) ||
+    (v.nomeCivil != null && mesmaPessoaTokens(v.nomeCivil, candidatoNome))
 
   const gabUsado = new Set<number>()
   const viapUsado = new Set<number>()
@@ -89,7 +94,7 @@ export function montarCidade(
     let gabMatch: GabineteVereador | undefined
     for (let i = 0; i < gabs.length; i++) {
       if (gabUsado.has(i)) continue
-      if (casa(v.nome, gabs[i].nomeLotacao)) { gabMatch = gabs[i]; gabUsado.add(i); break }
+      if (casa(v, gabs[i].nomeLotacao)) { gabMatch = gabs[i]; gabUsado.add(i); break }
     }
     if (gabMatch) {
       comGabinete++
@@ -111,7 +116,7 @@ export function montarCidade(
     let viapMatch: ViapMensalPorVereador | undefined
     for (let i = 0; i < viap.length; i++) {
       if (viapUsado.has(i)) continue
-      if (casa(v.nome, viap[i].parlamentar)) { viapMatch = viap[i]; viapUsado.add(i); break }
+      if (casa(v, viap[i].parlamentar)) { viapMatch = viap[i]; viapUsado.add(i); break }
     }
 
     let total = 0
