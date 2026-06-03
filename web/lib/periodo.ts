@@ -108,6 +108,23 @@ export function totalPorAnoPorEsfera(series: SerieParlamentar[]): TotalAnualEsfe
   return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v }))
 }
 
+// Gasto anual separado pelas 3 casas — deixa claro quanto cada uma gasta (cobertura difere: Câmara e
+// Senado desde 2008/2009; Assembleia só desde 2023).
+export interface TotalAnualCasa { ano: number; camara: number; senado: number; assembleia: number }
+
+export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[] {
+  const porAno = new Map<number, { camara: number; senado: number; assembleia: number }>()
+  for (const s of series) {
+    for (const p of s.serieMensal) {
+      const ano = Number(p.anoMes.slice(0, 4))
+      const e = porAno.get(ano) ?? { camara: 0, senado: 0, assembleia: 0 }
+      e[s.casa] += p.total
+      porAno.set(ano, e)
+    }
+  }
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v }))
+}
+
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   const anos = new Set<number>()
   for (const s of series) for (const p of s.serieMensal) anos.add(Number(p.anoMes.slice(0, 4)))
