@@ -106,7 +106,7 @@ export function Assessores({
                         {s.lotacaoTipo === 'escritorio' && (
                           <span className="rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
                         )}
-                        <span className="w-20 text-right tabular-nums text-tinta-suave" title="Estimado pelo símbolo do cargo">
+                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave" title="Estimado pelo símbolo do cargo">
                           {s.remuneracao > 0 ? `~${brl(s.remuneracao)}` : '—'}
                         </span>
                       </>
@@ -116,7 +116,7 @@ export function Assessores({
                         {s.grg && (
                           <span className="rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={{ backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' }} title="Gratificação de Representação de Gabinete (dobra o vencimento)">GRG</span>
                         )}
-                        <span className="w-20 text-right tabular-nums text-tinta-suave">{brl(s.remuneracao)}</span>
+                        <span className="w-28 shrink-0 whitespace-nowrap text-right tabular-nums text-tinta-suave">{brl(s.remuneracao)}</span>
                       </>
                     )}
                   </span>
