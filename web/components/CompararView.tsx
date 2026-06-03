@@ -4,14 +4,15 @@ import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { type SerieParlamentar, parsePeriodoValor, anosDisponiveis, mandatosDisponiveis, valorPeriodoPadrao } from '@/lib/periodo'
 import { serieComparada, resumosComparados } from '@/lib/comparar'
+import type { Casa } from '@/lib/tipos'
 import { brl } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
 import { GraficoComparado, CORES_COMPARACAO } from './GraficoComparado'
 
 const MAX = 4
-const casaLabel = (c: 'camara' | 'senado' | 'assembleia') =>
-  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : 'Assembleia'
+const casaLabel = (c: Casa) =>
+  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : c === 'assembleia' ? 'Assembleia' : 'Câmara Municipal'
 
 export function CompararView({ series }: { series: SerieParlamentar[] }) {
   const router = useRouter()

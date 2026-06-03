@@ -1,11 +1,12 @@
 import { mesAno } from './formato'
 import { type Periodo, type SerieParlamentar, pontoNoPeriodo, totalNoPeriodo } from './periodo'
+import type { Casa } from './tipos'
 
 export interface ResumoComparado {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
   total: number
   mediaMensal: number
 }

@@ -1,4 +1,4 @@
-import type { ItemCusto, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, ItemCusto, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import { brl, brlInteiro, dataBR } from '@/lib/formato'
 import { corCasa } from '@/lib/custos'
 import { GraficoGabinete } from './GraficoGabinete'
@@ -31,7 +31,7 @@ export function Assessores({
   mesReferencia?: string
   consultas?: ConsultaLotacao[]
   gabinete: ItemCusto
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
 }) {
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null

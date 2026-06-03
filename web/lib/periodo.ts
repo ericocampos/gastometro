@@ -1,4 +1,4 @@
-import type { PontoMensal, MandatoParlamentar } from './tipos'
+import type { Casa, PontoMensal, MandatoParlamentar } from './tipos'
 
 export type Periodo =
   | { tipo: 'tudo' }
@@ -9,7 +9,7 @@ export interface SerieParlamentar {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
   legislaturas: number[]
   serieMensal: PontoMensal[]
   fotoUrl?: string
@@ -20,7 +20,7 @@ export interface LinhaRanking {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
   total: number
   fotoUrl?: string
   mandato?: MandatoParlamentar
@@ -115,10 +115,12 @@ export interface TotalAnualCasa { ano: number; camara: number; senado: number; a
 export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[] {
   const porAno = new Map<number, { camara: number; senado: number; assembleia: number }>()
   for (const s of series) {
+    if (s.casa === 'camara_municipal') continue
+    const casa = s.casa
     for (const p of s.serieMensal) {
       const ano = Number(p.anoMes.slice(0, 4))
       const e = porAno.get(ano) ?? { camara: 0, senado: 0, assembleia: 0 }
-      e[s.casa] += p.total
+      e[casa] += p.total
       porAno.set(ano, e)
     }
   }

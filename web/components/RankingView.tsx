@@ -7,6 +7,7 @@ import {
   rankingNoPeriodo, anosDisponiveis, mandatosDisponiveis, parsePeriodoValor, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { corCasa } from '@/lib/custos'
+import type { Casa } from '@/lib/tipos'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { Avatar } from './Avatar'
 
@@ -15,8 +16,8 @@ const selectClasse =
   'rounded-md border border-borda bg-superficie px-2.5 py-1.5 text-tinta transition-colors hover:border-marca focus:border-marca'
 
 // cor por casa: Câmara azul, Senado âmbar, Assembleia violeta (compartilhada em @/lib/custos)
-const casaCurta = (c: 'camara' | 'senado' | 'assembleia') =>
-  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : 'Assembleia'
+const casaCurta = (c: Casa) =>
+  c === 'camara' ? 'Câmara' : c === 'senado' ? 'Senado' : c === 'assembleia' ? 'Assembleia' : 'Câmara Municipal'
 
 export function RankingView({ series }: { series: SerieParlamentar[] }) {
   const [periodoVal, setPeriodoVal] = useState(() => valorPeriodoPadrao(series))

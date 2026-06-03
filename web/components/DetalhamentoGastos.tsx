@@ -1,7 +1,7 @@
 'use client'
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
-import type { Despesa, MarcaAlerta } from '@/lib/tipos'
+import type { Casa, Despesa, MarcaAlerta } from '@/lib/tipos'
 import { brl, dataBR } from '@/lib/formato'
 
 const POR_PAGINA = 25
@@ -40,7 +40,6 @@ function MarcaAlertaIcone({ marca }: { marca: MarcaAlerta }) {
   )
 }
 
-type Casa = 'camara' | 'senado' | 'assembleia'
 
 // Página oficial da VIAP do deputado/mês na ALPB. A URL é determinística (id+ano+mês); é lá que
 // a planilha .ods da prestação de contas abre (o link direto do arquivo fica num caminho de

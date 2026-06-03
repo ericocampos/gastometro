@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -23,8 +23,11 @@ import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
 
-const casaLonga = (c: 'camara' | 'senado' | 'assembleia') =>
-  c === 'camara' ? 'Câmara dos Deputados' : c === 'senado' ? 'Senado Federal' : 'Assembleia Legislativa da Paraíba'
+const casaLonga = (c: Casa) =>
+  c === 'camara' ? 'Câmara dos Deputados'
+  : c === 'senado' ? 'Senado Federal'
+  : c === 'assembleia' ? 'Assembleia Legislativa da Paraíba'
+  : 'Câmara Municipal'
 
 // "22/06/2023–16/12/2024 e desde 18/07/2025"
 const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
@@ -103,8 +106,10 @@ export function PerfilView({
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
 
-  // linha de teto no gráfico mensal — só quando o teto da cota é exato (Câmara/CEAP por UF)
-  const custoCasa = custos.casas[politico.casa]
+  // linha de teto no gráfico mensal — só quando o teto da cota é exato (Câmara/CEAP por UF).
+  // O Record de custos cobre as 3 casas federais/estadual; o custo municipal vive em outra estrutura.
+  const casaCusto = politico.casa === 'camara_municipal' ? 'camara' : politico.casa
+  const custoCasa = custos.casas[casaCusto]
   // o Senado não expõe a nota individual na base aberta → link p/ a prestação de contas do senador
   const portalSenado =
     politico.casa === 'senado'

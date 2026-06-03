@@ -2,7 +2,7 @@
 import { useMemo, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-import type { Alerta } from '@/lib/tipos'
+import type { Alerta, Casa } from '@/lib/tipos'
 import { Avatar } from './Avatar'
 
 const POR_PAGINA = 12
@@ -49,7 +49,7 @@ export function AlertasView({ alertas }: { alertas: Alerta[] }) {
   )
 
   const politicos = useMemo(() => {
-    const m = new Map<string, { nome: string; casa?: 'camara' | 'senado' | 'assembleia' }>()
+    const m = new Map<string, { nome: string; casa?: Casa }>()
     for (const a of alertas) {
       if (!passaTipoSev(a)) continue
       if (ano !== 'todos' && !(a.anos ?? []).includes(Number(ano))) continue

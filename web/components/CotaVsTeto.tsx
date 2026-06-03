@@ -1,4 +1,4 @@
-import type { ItemCusto } from '@/lib/tipos'
+import type { Casa, ItemCusto } from '@/lib/tipos'
 import { brl, brlInteiro } from '@/lib/formato'
 import { corCasa } from '@/lib/custos'
 
@@ -11,7 +11,7 @@ export function CotaVsTeto({
   cota: ItemCusto
   mediaMensal: number
   salario: number
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
 }) {
   const cor = corCasa(casa)
   const exato = !cota.aproximado && cota.valor != null
