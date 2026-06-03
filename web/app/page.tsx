@@ -24,8 +24,8 @@ export default function Home() {
           <br className="hidden sm:block" /> gastam com a cota
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-suave">
-          Dados públicos da Câmara dos Deputados e do Senado, reunidos para você acompanhar de
-          perto. Filtre por ano ou legislatura e veja quem mais gasta.
+          Dados públicos da Câmara, do Senado e da Assembleia da Paraíba, reunidos para você acompanhar
+          de perto. Filtre por ano ou legislatura e veja quem mais gasta.
         </p>
         <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <div>
@@ -45,13 +45,15 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <SecaoTitulo>Gasto total por ano · todos os parlamentares</SecaoTitulo>
+        <SecaoTitulo>Gasto com a cota por ano · todos os parlamentares</SecaoTitulo>
         <p className="mb-3 text-xs leading-relaxed text-tinta-tenue">
-          Empilhado por casa: <strong style={{ color: '#2563eb' }}>Câmara</strong> e{' '}
-          <strong style={{ color: '#c87f1a' }}>Senado</strong> com série desde 2009 (início da CEAP;{' '}
-          <strong className="text-tinta-suave">2008</strong> parcial), e{' '}
+          Só a <strong className="text-tinta-suave">cota</strong> (CEAP/CEAPS/VIAP), empilhada por casa:{' '}
+          <strong style={{ color: '#2563eb' }}>Câmara</strong> e <strong style={{ color: '#c87f1a' }}>Senado</strong>{' '}
+          com série desde 2009 (início da CEAP; <strong className="text-tinta-suave">2008</strong> parcial), e{' '}
           <strong style={{ color: '#7c3aed' }}>Assembleia</strong> (VIAP) só a partir de 2023.{' '}
-          <strong className="text-tinta-suave">{new Date().getFullYear()}</strong> ainda está em andamento.
+          <strong className="text-tinta-suave">{new Date().getFullYear()}</strong> ainda está em andamento.{' '}
+          Salário e folha de gabinete <strong className="text-tinta-suave">não entram aqui</strong> — o gabinete não tem
+          série mês a mês; a estimativa mensal está no card de custo do mandato acima.
         </p>
         <div className="rounded-xl border border-borda bg-superficie p-4">
           <GraficoGeralAnual dados={porAno} />
