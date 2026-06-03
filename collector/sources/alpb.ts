@@ -6,6 +6,7 @@
 //   - nome completo (pra casar com o nome de REGISTRO da VIAP): SAPL.
 import { inflateRawSync } from 'node:zlib'
 import { fetchText, fetchBuffer, fetchJson } from '../http.js'
+import type { MandatoParlamentar } from './types.js'
 
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
@@ -108,19 +109,70 @@ function valorBR(s: string): number {
   return Number.isFinite(v) ? v : 0
 }
 
+// Valor vindo do XLSX: a célula numérica é crua, com ponto decimal ("9453.22"). Só cai no parser
+// BR (vírgula decimal/ponto de milhar) quando o valor vier como texto com vírgula.
+function valorXlsx(s: string): number {
+  const t = s.trim()
+  if (t === '') return 0
+  if (!t.includes(',')) { const v = Number(t.replace(/[^0-9.\-]/g, '')); if (Number.isFinite(v)) return v }
+  return valorBR(t)
+}
+
 function dataISO(s: string): string {
   const m = /(\d{2})\/(\d{2})\/(\d{4})/.exec(s)
   return m ? `${m[3]}-${m[2]}-${m[1]}` : ''
 }
 
-// converte o content.xml da planilha de prestação de contas em despesas itemizadas
-export function parseOds(buf: Buffer, politicoId: string): DespesaAlpb[] {
+// ---------- linhas (array de colunas por linha) a partir de cada formato ----------
+// ODS: content.xml, com <table:table-row>/<table:table-cell>
+function linhasDoOds(buf: Buffer): string[][] {
   const xml = unzipEntry(buf, 'content.xml').toString('utf8')
-  const linhas = [...xml.matchAll(/<table:table-row[^>]*>([\s\S]*?)<\/table:table-row>/g)]
+  return [...xml.matchAll(/<table:table-row[^>]*>([\s\S]*?)<\/table:table-row>/g)]
     .map((m) => celulasDaLinha(m[1]))
+}
 
+// XLSX (a ALPB passou a publicar a VIAP em .xlsx a partir de 2026; antes era .ods): sharedStrings
+// guarda os textos e a planilha referencia por índice. Mesmas colunas do ODS.
+function indiceColuna(ref: string): number {
+  const letras = /^[A-Z]+/.exec(ref)?.[0] ?? 'A'
+  let n = 0
+  for (const c of letras) n = n * 26 + (c.charCodeAt(0) - 64)
+  return n - 1
+}
+function textoXml(inner: string): string {
+  const partes = [...inner.matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map((m) => m[1])
+  return desescapar(partes.join('')).replace(/\s+/g, ' ').trim()
+}
+function sharedStringsXlsx(buf: Buffer): string[] {
+  let xml = ''
+  try { xml = unzipEntry(buf, 'xl/sharedStrings.xml').toString('utf8') } catch { return [] }
+  return [...xml.matchAll(/<si>([\s\S]*?)<\/si>/g)].map((m) => textoXml(m[1]))
+}
+function linhasDoXlsx(buf: Buffer): string[][] {
+  const ss = sharedStringsXlsx(buf)
+  const xml = unzipEntry(buf, 'xl/worksheets/sheet1.xml').toString('utf8')
+  const linhas: string[][] = []
+  for (const rm of xml.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)) {
+    const cols: string[] = []
+    for (const cm of rm[1].matchAll(/<c\s+r="([A-Z]+\d+)"([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
+      const i = indiceColuna(cm[1])
+      const t = /t="([^"]+)"/.exec(cm[2])?.[1]
+      const inner = cm[3] ?? ''
+      if (t === 's') cols[i] = ss[Number(/<v>(\d+)<\/v>/.exec(inner)?.[1])] ?? ''
+      else if (t === 'inlineStr') cols[i] = textoXml(inner)
+      else cols[i] = desescapar(/<v>([\s\S]*?)<\/v>/.exec(inner)?.[1] ?? '').trim()
+    }
+    for (let i = 0; i < cols.length; i++) if (cols[i] === undefined) cols[i] = ''
+    linhas.push(cols)
+  }
+  return linhas
+}
+
+// ---------- extração comum: ODS e XLSX têm as mesmas colunas ----------
+const COLS = ['Competência', 'DEPUTADO', 'ITEM', 'SUB_ITEM', 'FORNECEDOR', 'CPF_CNPJ', 'DATA', 'DOCUMENTO', 'NUMERO', 'Valor'] as const
+
+function extrairDespesas(linhas: string[][], politicoId: string, valorDe: (s: string) => number): DespesaAlpb[] {
   // acha a linha de cabeçalho (tem FORNECEDOR e Valor) e mapeia as colunas
-  const COLS = ['Competência', 'DEPUTADO', 'ITEM', 'SUB_ITEM', 'FORNECEDOR', 'CPF_CNPJ', 'DATA', 'DOCUMENTO', 'NUMERO', 'Valor'] as const
   let hdr = -1
   const idx: Record<string, number> = {}
   for (let i = 0; i < linhas.length; i++) {
@@ -140,10 +192,10 @@ export function parseOds(buf: Buffer, politicoId: string): DespesaAlpb[] {
     const cel = (c: string) => (idx[c] >= 0 ? (f[idx[c]] ?? '') : '')
     const item = cel('ITEM')
     const ni = norm(item)
-    // pula linhas de saldo/crédito/total e linhas em branco
-    if (!item || ni.startsWith('saldo') || ni.startsWith('credito') || ni.startsWith('total')) continue
+    // pula linhas de saldo/crédito/total/reembolso e linhas em branco
+    if (!item || ni.startsWith('saldo') || ni.startsWith('credito') || ni.startsWith('total') || ni.startsWith('reembolso')) continue
     const fornecedor = cel('FORNECEDOR')
-    const valor = valorBR(cel('Valor'))
+    const valor = valorDe(cel('Valor'))
     if (!fornecedor && valor === 0) continue
     const data = dataISO(cel('DATA'))
     const ano = Number(data.slice(0, 4)) || 0
@@ -164,6 +216,18 @@ export function parseOds(buf: Buffer, politicoId: string): DespesaAlpb[] {
     })
   }
   return despesas
+}
+
+// converte a planilha de prestação de contas (.ods até 2025, .xlsx de 2026) em despesas itemizadas
+export function parseOds(buf: Buffer, politicoId: string): DespesaAlpb[] {
+  return extrairDespesas(linhasDoOds(buf), politicoId, valorBR)
+}
+export function parseXlsx(buf: Buffer, politicoId: string): DespesaAlpb[] {
+  return extrairDespesas(linhasDoXlsx(buf), politicoId, valorXlsx)
+}
+// dispatch por extensão da URL/nome do arquivo
+export function parsePlanilha(buf: Buffer, urlOuNome: string, politicoId: string): DespesaAlpb[] {
+  return /\.xlsx(\?|$)/i.test(urlOuNome) ? parseXlsx(buf, politicoId) : parseOds(buf, politicoId)
 }
 
 // ---------- VIAP: roster e link da planilha ----------
@@ -188,12 +252,13 @@ export async function deputadosViap(ano: number, mes: number): Promise<DeputadoV
   return deputadosDoSelect(await fetchText(url, { headers: H }))
 }
 
-// link da planilha .ods de um deputado/mês (ou null se não há prestação publicada)
+// link da planilha (.ods até 2025, .xlsx de 2026) de um deputado/mês, ou null se não publicado.
 export function linkOdsDoHtml(html: string): string | null {
-  // o link aparece como .../uploads/....ods (às vezes embrulhado no viewer da Microsoft)
-  const direto = /https?:\/\/[^"'\s]*\/wp-content\/uploads\/[^"'\s]+\.ods/i.exec(html)?.[0]
+  // o link aparece como .../uploads/....{ods,xlsx} (em geral embrulhado no viewer do Office,
+  // com a URL real codificada no parâmetro src=)
+  const direto = /https?:\/\/[^"'\s]*\/wp-content\/uploads\/[^"'\s]+\.(?:ods|xlsx)/i.exec(html)?.[0]
   if (direto) return direto
-  const viewer = /src=([^"'\s]*\.ods)/i.exec(html)?.[1]
+  const viewer = /src=([^"'\s]*\.(?:ods|xlsx))/i.exec(html)?.[1]
   return viewer ? decodeURIComponent(viewer) : null
 }
 
@@ -233,8 +298,78 @@ export async function rosterSapl(): Promise<ParlamentarSapl[]> {
     saplId: String(p.id),
     nomeCompleto: (p.nome_completo ?? '').trim(),
     nomeParlamentar: (p.nome_parlamentar ?? '').trim(),
-    // `fotografia` é o caminho sob /media/ (ou null); o site é http → Avatar reescreve p/ https
-    fotoUrl: p.fotografia ? `${SAPL}/media/${p.fotografia}` : undefined,
+    // `fotografia` pode vir como URL absoluta (http://sapl3.../media/...) ou caminho relativo; o
+    // site é http → o Avatar reescreve p/ https. Só prefixa /media/ quando NÃO for URL absoluta.
+    fotoUrl: p.fotografia
+      ? (/^https?:\/\//i.test(p.fotografia) ? p.fotografia : `${SAPL}/media/${p.fotografia}`)
+      : undefined,
     ativo: !!p.ativo,
   }))
+}
+
+// ---------- SAPL: mandatos (titular/suplente + períodos de exercício do suplente) ----------
+// O SAPL marca cada mandato como titular ou não e dá data_inicio/fim. Para o suplente, esses
+// períodos são exatamente quando ele esteve em exercício. NÃO há vínculo explícito suplente↔titular
+// (coligação/observação vêm vazias na ALPB), então só expomos status + períodos — não "no lugar de quem".
+interface LegislaturaSapl { id: number; numero: number; data_inicio: string; data_fim: string }
+interface MandatoRaw {
+  parlamentar: number; legislatura: number; titular: boolean
+  data_inicio_mandato: string; data_fim_mandato: string; tipo_afastamento: number | null
+}
+
+// legislatura vigente hoje (por data), com fallback pro maior número
+async function legislaturaAtual(): Promise<LegislaturaSapl> {
+  const legs = await fetchJson<LegislaturaSapl[]>(`${SAPL}/api/parlamentares/legislatura/?get_all=true`, { headers: H })
+  const hoje = new Date().toISOString().slice(0, 10)
+  return legs.find((l) => l.data_inicio <= hoje && hoje <= l.data_fim)
+    ?? [...legs].sort((a, b) => b.numero - a.numero)[0]
+}
+
+// partido atual (sigla) por saplId, da filiação vigente (sem data_desfiliacao). Cobre quem não
+// está nos cards da home (suplentes/ex-titulares), que senão ficariam sem partido.
+interface FiliacaoRaw { parlamentar: number; data: string | null; data_desfiliacao: string | null; __str__?: string }
+export async function filiacaoSapl(): Promise<Map<string, string>> {
+  const lista = await fetchJson<FiliacaoRaw[]>(`${SAPL}/api/parlamentares/filiacao/?get_all=true`, { headers: H })
+  // __str__ = "Nome Parlamentar - SIGLA - Nome do Partido"; pega a sigla (entre os " - ")
+  const atual = new Map<string, { sigla: string; data: string }>()
+  for (const f of lista) {
+    if (f.data_desfiliacao) continue
+    const sigla = (f.__str__ ?? '').split(' - ')[1]?.trim()
+    if (!sigla) continue
+    const k = String(f.parlamentar)
+    const prev = atual.get(k)
+    const data = f.data ?? ''
+    if (!prev || data > prev.data) atual.set(k, { sigla, data }) // a mais recente vence
+  }
+  return new Map([...atual].map(([k, v]) => [k, v.sigla]))
+}
+
+// mapa saplId -> status de mandato na legislatura vigente
+export async function mandatosSapl(): Promise<Map<string, MandatoParlamentar>> {
+  const leg = await legislaturaAtual()
+  const lista = await fetchJson<MandatoRaw[]>(`${SAPL}/api/parlamentares/mandato/?get_all=true`, { headers: H })
+  const porParlamentar = new Map<string, MandatoRaw[]>()
+  for (const m of lista) {
+    if (m.legislatura !== leg.id) continue
+    const k = String(m.parlamentar)
+    const arr = porParlamentar.get(k) ?? []
+    arr.push(m); porParlamentar.set(k, arr)
+  }
+  const out = new Map<string, MandatoParlamentar>()
+  for (const [saplId, ms] of porParlamentar) {
+    const titular = ms.some((m) => m.titular)
+    const afastado = ms.some((m) => m.titular && m.tipo_afastamento != null)
+    // períodos de exercício do suplente (fim = fim da legislatura => ainda em exercício => null)
+    const exercicios = ms
+      .filter((m) => !m.titular)
+      .map((m) => ({ inicio: m.data_inicio_mandato, fim: m.data_fim_mandato === leg.data_fim ? null : m.data_fim_mandato }))
+      .sort((a, b) => a.inicio.localeCompare(b.inicio))
+    out.set(saplId, {
+      tipo: titular ? 'titular' : 'suplente',
+      legislatura: leg.numero,
+      ...(afastado ? { afastado: true } : {}),
+      ...(titular ? {} : { exercicios }),
+    })
+  }
+  return out
 }

@@ -1,3 +1,12 @@
+// status de mandato (hoje só ALPB): titular/suplente + períodos de exercício do suplente
+// (fim=null => ainda em exercício, até o fim da legislatura)
+export interface MandatoParlamentar {
+  tipo: 'titular' | 'suplente'
+  legislatura: number
+  afastado?: boolean
+  exercicios?: { inicio: string; fim: string | null }[]
+}
+
 export interface Politico {
   id: string
   nome: string
@@ -6,6 +15,7 @@ export interface Politico {
   uf: string
   legislaturas: number[]
   fotoUrl?: string
+  mandato?: MandatoParlamentar
 }
 
 export interface ItemRanking {

@@ -1,5 +1,15 @@
 import { z } from 'zod'
 
+// Status de mandato (hoje só ALPB, via SAPL): titular ou suplente, com os períodos exatos em que
+// o suplente esteve em exercício. fim=null num exercício => ainda em exercício (até o fim da legislatura).
+export const MandatoSchema = z.object({
+  tipo: z.enum(['titular', 'suplente']),
+  legislatura: z.number(),
+  afastado: z.boolean().optional(),
+  exercicios: z.array(z.object({ inicio: z.string(), fim: z.string().nullable() })).optional(),
+})
+export type MandatoParlamentar = z.infer<typeof MandatoSchema>
+
 export const PoliticoSchema = z.object({
   id: z.string(),
   nome: z.string(),
@@ -8,6 +18,7 @@ export const PoliticoSchema = z.object({
   uf: z.string(),
   legislaturas: z.array(z.number()),
   fotoUrl: z.string().optional(),
+  mandato: MandatoSchema.optional(),
 })
 export type Politico = z.infer<typeof PoliticoSchema>
 

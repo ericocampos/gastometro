@@ -46,9 +46,12 @@ export function Assessores({
 
       <p className="mt-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
         <strong className="text-tinta">Transparência limitada.</strong>{' '}
-        {casa === 'camara'
-          ? 'O número de assessores é público, mas o valor efetivamente gasto com a verba de gabinete não é divulgado por parlamentar nos dados abertos — diferente da cota, que detalhamos nota a nota.'
-          : 'No Senado não há sequer a contagem de assessores por parlamentar com a mesma granularidade, nem o valor gasto com pessoal de gabinete em formato aberto.'}{' '}
+        {casa === 'camara' &&
+          'O número de assessores é público, mas o valor efetivamente gasto com a verba de gabinete não é divulgado por parlamentar nos dados abertos — diferente da cota, que detalhamos nota a nota.'}
+        {casa === 'senado' &&
+          'No Senado não há sequer a contagem de assessores por parlamentar com a mesma granularidade, nem o valor gasto com pessoal de gabinete em formato aberto.'}
+        {casa === 'assembleia' &&
+          'Na Assembleia Legislativa da Paraíba não há a contagem de assessores por deputado nem o valor gasto com pessoal de gabinete em formato aberto — só a VIAP, que detalhamos nota a nota.'}{' '}
         É dinheiro público que deveria ter a mesma transparência do resto.
       </p>
     </div>

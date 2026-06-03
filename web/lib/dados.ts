@@ -38,6 +38,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     legislaturas: r.politico.legislaturas,
     serieMensal: r.serieMensal,
     fotoUrl: r.politico.fotoUrl,
+    mandato: r.politico.mandato,
   }))
 }
 

@@ -58,14 +58,14 @@ async function main() {
   const alpbDir = resolve(dataDir, 'alpb')
   const alpbDeputados = resolve(alpbDir, 'deputados.json')
   if (existsSync(alpbDeputados)) {
-    interface DepAlpb { politicoId: string; nomeRegistro: string; nomeParlamentar?: string; partido?: string; fotoUrl?: string }
+    interface DepAlpb { politicoId: string; nomeRegistro: string; nomeParlamentar?: string; partido?: string; fotoUrl?: string; mandato?: Politico['mandato'] }
     interface DespAlpb { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cpfCnpj?: string }; valor: number }
     const deps = JSON.parse(readFileSync(alpbDeputados, 'utf-8')) as DepAlpb[]
     let n = 0
     for (const d of deps) {
       todosPoliticos.push({
         id: d.politicoId, nome: d.nomeParlamentar || d.nomeRegistro, casa: 'assembleia',
-        partido: d.partido ?? '—', uf: cfg.uf, legislaturas: [], fotoUrl: d.fotoUrl,
+        partido: d.partido ?? '—', uf: cfg.uf, legislaturas: [], fotoUrl: d.fotoUrl, mandato: d.mandato,
       })
       const arq = resolve(alpbDir, 'despesas', `${d.politicoId}.json`)
       const lote = existsSync(arq) ? (JSON.parse(readFileSync(arq, 'utf-8')) as DespAlpb[]) : []

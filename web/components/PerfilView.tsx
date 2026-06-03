@@ -9,7 +9,7 @@ import {
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
-import { brl } from '@/lib/formato'
+import { brl, dataBR } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
 import { CotaVsTeto } from './CotaVsTeto'
@@ -25,6 +25,10 @@ import { ProposicoesView } from './ProposicoesView'
 
 const casaLonga = (c: 'camara' | 'senado' | 'assembleia') =>
   c === 'camara' ? 'Câmara dos Deputados' : c === 'senado' ? 'Senado Federal' : 'Assembleia Legislativa da Paraíba'
+
+// "22/06/2023–16/12/2024 e desde 18/07/2025"
+const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
+  ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
 export function PerfilView({
   politico, despesas, series, perfil, custos, assessores, alertas, alertasPorDespesa,
@@ -59,7 +63,13 @@ export function PerfilView({
   const mandatos = useMemo(() => [...politico.legislaturas].sort((a, b) => b - a), [politico])
 
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
-  const anual = useMemo(() => totalAnualParlamentar(despesas), [despesas])
+  // total anual do parlamentar, na esfera dele (barra na cor da casa; perfil é de uma só esfera)
+  const anual = useMemo(() => {
+    const ehEstadual = politico.casa === 'assembleia'
+    return totalAnualParlamentar(despesas).map((a) =>
+      ehEstadual ? { ano: a.ano, federal: 0, estadual: a.total } : { ano: a.ano, federal: a.total, estadual: 0 },
+    )
+  }, [despesas, politico.casa])
   const despesasPeriodo = useMemo(
     () => despesas.filter((d) => anoNoPeriodo(d.ano, periodo)),
     [despesas, periodo],
@@ -113,6 +123,14 @@ export function PerfilView({
           <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-tinta-suave">
             <span className="rounded-sm bg-superficie-2 px-1.5 py-0.5 font-medium text-tinta">{politico.partido}</span>
             <span>{casaLonga(politico.casa)}</span>
+            {(politico.mandato?.tipo === 'suplente' || politico.mandato?.afastado) && (
+              <span
+                className="rounded-sm border px-1.5 py-0.5 text-xs font-medium"
+                style={{ borderColor: '#7c3aed', color: '#7c3aed' }}
+              >
+                {politico.mandato.tipo === 'suplente' ? 'Suplente' : 'Titular · afastado'}
+              </span>
+            )}
             {politico.legislaturas.length > 0 && (
               <>
                 <span className="text-tinta-tenue">·</span>
@@ -120,6 +138,12 @@ export function PerfilView({
               </>
             )}
           </p>
+          {politico.mandato?.tipo === 'suplente' && politico.mandato.exercicios?.length ? (
+            <p className="mt-1.5 text-xs leading-relaxed text-tinta-tenue">
+              Em exercício {rotuloExercicios(politico.mandato.exercicios)} · {politico.mandato.legislatura}ª legislatura.{' '}
+              <span className="text-tinta-tenue/80">A fonte (SAPL) não registra de qual titular é a vaga.</span>
+            </p>
+          ) : null}
         </div>
       </header>
 
@@ -191,7 +215,7 @@ export function PerfilView({
             <section>
               <SecaoTitulo>Comparação ano a ano · todo o histórico</SecaoTitulo>
               <div className="rounded-xl border border-borda bg-superficie p-4">
-                <GraficoGeralAnual dados={anual} />
+                <GraficoGeralAnual dados={anual} semLegenda />
               </div>
             </section>
           </div>
@@ -216,7 +240,7 @@ export function PerfilView({
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
                 <div className="rounded-xl border border-borda bg-superficie p-4">
-                  <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
+                  <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} casa={politico.casa} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
                 </div>
               </section>
             </>

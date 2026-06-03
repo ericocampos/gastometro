@@ -11,8 +11,9 @@ import { dirname, resolve } from 'node:path'
 import { CacheBruto } from './cache.js'
 import {
   type DeputadoViap, type DespesaAlpb, type CardHome, type ParlamentarSapl,
-  deputadosViap, linkOds, baixarOds, parseOds, rosterHome, rosterSapl,
+  deputadosViap, linkOds, baixarOds, parsePlanilha, rosterHome, rosterSapl, mandatosSapl, filiacaoSapl,
 } from './sources/alpb.js'
+import type { MandatoParlamentar } from './sources/types.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const saidaDir = resolve(here, '../data/alpb')
@@ -23,6 +24,10 @@ const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms))
 // legislatura passada), rode com ALPB_ANO_INI=2022.
 const ANO_INI = Number(process.env.ALPB_ANO_INI) || 2023
 const ANO_FIM = Number(process.env.ALPB_ANO_FIM) || new Date().getFullYear()
+// Meses recentes (a VIAP publica com atraso de alguns meses): re-tenta mesmo se o cache estiver
+// vazio, pra capturar prestações que saíram depois da última coleta — sem precisar limpar cache.
+const JANELA_RETRY = 4
+const MES_ATUAL_ABS = new Date().getFullYear() * 12 + (new Date().getMonth() + 1)
 const MESES = process.env.ALPB_MESES
   ? process.env.ALPB_MESES.split(',').map((m) => Number(m.trim()))
   : Array.from({ length: 12 }, (_, i) => i + 1)
@@ -34,6 +39,19 @@ const norm = (s: string) =>
     .replace(/\s+/g, ' ').trim()
 const toks = (s: string) => new Set(norm(s).split(' ').filter((t) => t.length > 2 && !STOP.has(t)))
 
+// A competência (ano/mês da VIAP que consultamos) é a referência de tempo confiável: cada .ods
+// é de um mês específico. A coluna "DATA" é a data da NOTA, digitada à mão pelo contador, e às
+// vezes vem errada (ano 2224, datas no futuro, em branco) — o que poluía o eixo do ano e fazia o
+// seletor de período cravar num ano fantasma. Atribuímos a competência ao ano/mês de cada
+// despesa e só mantemos a data da nota (pra exibição) quando ela é plausível.
+function normalizarCompetencia(lote: DespesaAlpb[], ano: number, mes: number): DespesaAlpb[] {
+  return lote.map((d) => {
+    const anoNota = Number(d.data.slice(0, 4))
+    const dataPlausivel = anoNota >= 2010 && anoNota <= ano
+    return { ...d, ano, mes, data: dataPlausivel ? d.data : '' }
+  })
+}
+
 interface DeputadoAlpb {
   politicoId: string
   viapId: string
@@ -43,6 +61,7 @@ interface DeputadoAlpb {
   fotoUrl?: string
   saplId?: string
   matchVia: 'depara' | 'sapl-completo' | 'sapl-parlamentar' | 'sapl-tokens' | 'home' | 'sem-match'
+  mandato?: MandatoParlamentar
 }
 
 // De-para explícito (revisado) por id do SAPL, pros casos de título que o normalizador não
@@ -115,6 +134,29 @@ async function main() {
   console.log(`  Home: ${cards.length} cards`)
   const deputados = casar(viap, sapl, cards)
 
+  // status de mandato (titular/suplente + períodos de exercício do suplente), por saplId
+  let mandatos = new Map<string, MandatoParlamentar>()
+  try { mandatos = await mandatosSapl(); console.log(`  SAPL mandatos: ${mandatos.size} parlamentares na legislatura vigente`) }
+  catch (e) { console.error(`  ! mandatos SAPL indisponíveis (${(e as Error).message}) — sem titular/suplente`) }
+  let nSup = 0
+  for (const d of deputados) {
+    if (d.saplId && mandatos.has(d.saplId)) {
+      d.mandato = mandatos.get(d.saplId)
+      if (d.mandato?.tipo === 'suplente') nSup++
+    }
+  }
+  console.log(`  mandatos casados: ${deputados.filter((d) => d.mandato).length} (${nSup} suplentes)`)
+
+  // partido: cards da home só cobrem quem está em exercício; completa o resto com a filiação do SAPL
+  let filiacao = new Map<string, string>()
+  try { filiacao = await filiacaoSapl(); console.log(`  SAPL filiações: ${filiacao.size}`) }
+  catch (e) { console.error(`  ! filiações SAPL indisponíveis (${(e as Error).message})`) }
+  let nPart = 0
+  for (const d of deputados) {
+    if (!d.partido && d.saplId && filiacao.has(d.saplId)) { d.partido = filiacao.get(d.saplId); nPart++ }
+  }
+  console.log(`  partidos preenchidos pela filiação: ${nPart}`)
+
   // 3) despesas por deputado/mês (.ods)
   const todas: DespesaAlpb[] = []
   for (const d of deputados) {
@@ -122,16 +164,19 @@ async function main() {
     for (let ano = ANO_INI; ano <= ANO_FIM; ano++) {
       for (const mes of MESES) {
         const chave = `despesas/${d.politicoId}-${ano}-${String(mes).padStart(2, '0')}`
+        const atrasoMeses = MES_ATUAL_ABS - (ano * 12 + mes)
+        const recente = atrasoMeses >= 0 && atrasoMeses <= JANELA_RETRY
         let lote = cache.ler<DespesaAlpb[]>(chave)
-        if (!lote) {
+        // re-busca se não há cache, ou se é mês recente cacheado vazio (pode ter sido publicado depois)
+        if (!lote || (recente && lote.length === 0)) {
           try {
             const url = await linkOds(ano, mes, d.viapId)
-            lote = url ? parseOds(await baixarOds(url), d.politicoId) : []
+            lote = url ? parsePlanilha(await baixarOds(url), url, d.politicoId) : []
             cache.gravar(chave, lote)
             await dormir(120)
-          } catch (e) { console.error(`  ! ${chave}: ${(e as Error).message}`); lote = [] }
+          } catch (e) { console.error(`  ! ${chave}: ${(e as Error).message}`); lote = lote ?? [] }
         }
-        ds.push(...lote)
+        ds.push(...normalizarCompetencia(lote, ano, mes))
       }
     }
     todas.push(...ds)
