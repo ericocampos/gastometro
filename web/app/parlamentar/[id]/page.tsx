@@ -24,6 +24,8 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
     verbaGabinete: assessoresData?.tabela?.verbaGabinete ?? null,
     consultaExataUrl: assessoresData?.tabela?.consultaExataUrl,
     atualizadoEm: assessoresData?.atualizadoEm,
+    mesReferencia: gab?.mesReferencia,
+    consultas: gab?.consultas,
   }
   const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
   const alertas = {

@@ -5,13 +5,27 @@ import { brl } from '@/lib/formato'
 
 export interface ItemAssessor {
   nome: string
-  nivel: number
-  grg: boolean
+  casa: 'camara' | 'senado'
   remuneracao: number
   deputyId: string
   deputyNome: string
   partido?: string
+  // Câmara:
+  nivel?: number
+  grg?: boolean
+  // Senado:
+  cargo?: string
+  escritorio?: boolean
+  semFolha?: boolean
 }
+
+const GRG_PILL = { backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' } as const
+const MIN = new Set(['de', 'da', 'do', 'dos', 'das', 'e'])
+const cargoCurto = (c?: string) =>
+  !c ? '—' : c.replace(/\s*PARLAMENTAR\s*/i, ' ').trim().toLowerCase()
+    .split(/\s+/).filter(Boolean)
+    .map((w, i) => (i > 0 && MIN.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ')
 
 const POR_PAGINA = 60
 const MINUSC = new Set(['de', 'da', 'do', 'dos', 'das', 'e'])
@@ -47,7 +61,7 @@ export function AssessoresView({ itens }: { itens: ItemAssessor[] }) {
       />
       <p className="mb-4 text-xs text-tinta-tenue">
         {filtrados.length} {filtrados.length === 1 ? 'resultado' : 'resultados'}
-        {busca.trim() ? ` para “${busca.trim()}”` : ` · ${itens.length} secretários no total`}
+        {busca.trim() ? ` para “${busca.trim()}”` : ` · ${itens.length} pessoas no total`}
       </p>
 
       <div className="overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
@@ -56,7 +70,7 @@ export function AssessoresView({ itens }: { itens: ItemAssessor[] }) {
             <tr className="text-left text-[11px] uppercase tracking-wide text-tinta-tenue">
               <th className="py-1.5 font-medium">Assessor</th>
               <th className="py-1.5 font-medium">Gabinete</th>
-              <th className="py-1.5 font-medium">Nível</th>
+              <th className="py-1.5 font-medium">Cargo</th>
               <th className="py-1.5 text-right font-medium">Remuneração/mês</th>
             </tr>
           </thead>
@@ -68,15 +82,30 @@ export function AssessoresView({ itens }: { itens: ItemAssessor[] }) {
                   <Link href={`/parlamentar/${a.deputyId}`} className="text-marca hover:underline">
                     {a.deputyNome}
                   </Link>
-                  {a.partido ? <span className="text-tinta-tenue"> · {a.partido}</span> : null}
+                  <span className="text-tinta-tenue">
+                    {' · '}{a.casa === 'senado' ? 'Senado' : 'Câmara'}{a.partido ? ` · ${a.partido}` : ''}
+                  </span>
                 </td>
-                <td className="py-1.5 text-tinta-tenue tabular-nums">
-                  SP{String(a.nivel).padStart(2, '0')}
-                  {a.grg && (
-                    <span className="ml-1 rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={{ backgroundColor: 'rgba(200,127,26,0.16)', color: '#c87f1a' }}>GRG</span>
+                <td className="py-1.5 text-tinta-tenue">
+                  {a.casa === 'senado' ? (
+                    <>
+                      <span title={a.cargo}>{cargoCurto(a.cargo)}</span>
+                      {a.escritorio && (
+                        <span className="ml-1 rounded-sm bg-superficie-2 px-1 text-[10px] uppercase tracking-wide text-tinta-tenue" title="Escritório de apoio no estado">escr.</span>
+                      )}
+                    </>
+                  ) : (
+                    <span className="tabular-nums">
+                      SP{String(a.nivel ?? 0).padStart(2, '0')}
+                      {a.grg && (
+                        <span className="ml-1 rounded-sm px-1 text-[10px] font-semibold uppercase tracking-wide" style={GRG_PILL}>GRG</span>
+                      )}
+                    </span>
                   )}
                 </td>
-                <td className="py-1.5 text-right tabular-nums text-tinta">{brl(a.remuneracao)}</td>
+                <td className="py-1.5 text-right tabular-nums text-tinta">
+                  {a.semFolha ? '—' : brl(a.remuneracao)}
+                </td>
               </tr>
             ))}
             {visiveis.length === 0 && (

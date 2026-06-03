@@ -97,20 +97,46 @@ export interface CustosMandato {
 }
 
 export interface SecretarioGabinete {
-  nome: string; nivel: number; grg: boolean; remuneracao: number
+  nome: string
+  remuneracao: number  // Câmara: tabelado; Senado: ESTIMADO pelo símbolo (0 se desconhecido)
+  // Câmara (secretário parlamentar):
+  nivel?: number       // SP01..SP25
+  grg?: boolean        // gratificação de representação de gabinete (dobra o vencimento)
+  oficial?: boolean    // remuneração veio da ficha oficial do mês (não da tabela SP)
   ato?: string         // ato de nomeação (LEI / PORTARIA)
   nomeadoEm?: string   // data da nomeação atual
   desde?: string       // início do histórico na Câmara
   ponto?: string       // matrícula interna de folha (não é CPF)
+  // Senado (comissionado de gabinete/escritório):
+  cargo?: string                          // texto da função (ASSESSOR PARLAMENTAR, ...)
+  liquido?: number                        // líquido oficial do mês
+  semFolha?: boolean                      // sem lançamento Normal no mês (ex.: recém-admitido)
+  lotacaoTipo?: 'gabinete' | 'escritorio' // onde a pessoa está lotada
+  admissaoAno?: number                    // ano de admissão
 }
-export interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[] }
+export interface ConsultaLotacao { tipo: 'gabinete' | 'escritorio'; url: string }
+export interface GabineteParlamentar {
+  total: number
+  folha: number
+  secretarios: SecretarioGabinete[]
+  // Senado: a folha é o custo real oficial (bruto, mês de referência), não estimativa
+  folhaOficial?: boolean
+  mesReferencia?: string
+  consultas?: ConsultaLotacao[]           // busca oficial por lotação (gabinete/escritório)
+}
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
+export interface TabelaGabineteSenado {
+  mesReferencia: string
+  fonte: string
+  consultaBaseUrl: string
+}
 
 export interface Assessores {
   atualizadoEm: string
   fonte: string
   descricao: string
   tabela?: TabelaGabinete
+  tabelaSenado?: TabelaGabineteSenado
   porPolitico: Record<string, GabineteParlamentar>
 }
 

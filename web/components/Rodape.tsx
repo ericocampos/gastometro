@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Disclaimer } from './Disclaimer'
 
 export function Rodape() {
@@ -6,7 +7,10 @@ export function Rodape() {
       <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 lg:px-8">
         <Disclaimer />
         <p className="mt-2 text-xs text-tinta-tenue">
-          Projeto aberto · dados de transparência pública · feito para fiscalização cidadã.
+          Projeto aberto · dados de transparência pública · feito para fiscalização cidadã ·{' '}
+          <Link href="/fontes" className="text-tinta-suave underline transition-colors hover:text-marca">
+            fontes dos dados
+          </Link>
         </p>
       </div>
     </footer>
