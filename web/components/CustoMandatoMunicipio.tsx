@@ -1,5 +1,5 @@
 import type { Municipio } from '@/lib/tipos'
-import { brlInteiro, mesAno } from '@/lib/formato'
+import { brlInteiro, mesAno, dataBR } from '@/lib/formato'
 
 const TEAL = '#0f766e'
 
@@ -59,7 +59,7 @@ function Card({
   )
 }
 
-export function CustoMandatoMunicipio({ municipio }: { municipio: Municipio }) {
+export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: Municipio; atualizadoEm?: string }) {
   const { salario, viapTeto, gabineteMedia } = municipio.custo
   const total = salario + viapTeto + (gabineteMedia ?? 0)
 
@@ -90,6 +90,15 @@ export function CustoMandatoMunicipio({ municipio }: { municipio: Municipio }) {
         por fornecedor). A folha de gabinete é a média real dos gabinetes no mês de referência. O total é uma
         estimativa.{municipio.periodoViap && ` VIAP coberta de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
       </p>
+
+      {municipio.periodoViap && (
+        <p className="mt-2 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          A Câmara publica a VIAP com defasagem (cada lançamento tem a nota fiscal anexada).
+          {atualizadoEm ? ` Na importação destes dados (${dataBR(atualizadoEm)})` : ' Na última importação'},
+          o mês mais recente disponível na fonte era <strong className="text-tinta">{mesAno(municipio.periodoViap.ate)}</strong>.
+          A folha de gabinete sai antes (sem anexo) e por isso vai a um mês mais novo. A próxima coleta incorpora o que a Câmara publicar.
+        </p>
+      )}
     </div>
   )
 }

@@ -94,6 +94,7 @@ function renderMunicipal() {
       perfil={null}
       custos={custos}
       municipioCusto={municipioCusto}
+      municipioAtualizadoEm="2026-06-03"
       assessores={assessores}
       alertas={{ quantidade: 0, temAlta: false, temMedia: false }}
       alertasPorDespesa={{}}
@@ -143,5 +144,14 @@ describe('PerfilView · vereador municipal', () => {
   it('compara com os pares (vereadores), não com todas as casas', () => {
     renderMunicipal()
     expect(screen.getByText(/vs\. média dos vereadores/i)).toBeInTheDocument()
+  })
+
+  it('avisa da defasagem da VIAP com data de importação e último mês', () => {
+    const { container } = renderMunicipal()
+    const txt = container.textContent ?? ''
+    expect(txt).toMatch(/VIAP é publicada pela Câmara com defasagem/i)
+    expect(txt).toMatch(/03\/06\/2026/)
+    // último mês das despesas do fixture é fev/2025
+    expect(txt).toMatch(/fev\/2025/)
   })
 })

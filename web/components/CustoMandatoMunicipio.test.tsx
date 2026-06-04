@@ -21,6 +21,14 @@ describe('CustoMandatoMunicipio', () => {
     expect(screen.getByText(/VIAP coberta de jan\/2025 a fev\/2026/)).toBeInTheDocument()
   })
 
+  it('avisa da defasagem com a data de importação e o último mês disponível', () => {
+    const { container } = render(<CustoMandatoMunicipio municipio={base} atualizadoEm="2026-06-03" />)
+    const txt = container.textContent ?? ''
+    expect(txt).toMatch(/publica a VIAP com defasagem/i)
+    expect(txt).toMatch(/03\/06\/2026/)
+    expect(txt).toMatch(/fev\/2026/)
+  })
+
   it('renderiza "—" no card de gabinete e total = 40000 quando gabineteMedia é null', () => {
     const semGabinete: Municipio = {
       ...base,

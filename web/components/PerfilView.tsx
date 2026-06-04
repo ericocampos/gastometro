@@ -9,7 +9,7 @@ import {
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
-import { brl, dataBR } from '@/lib/formato'
+import { brl, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
 import { CotaVsTeto } from './CotaVsTeto'
@@ -34,7 +34,7 @@ const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, assessores, alertas, alertasPorDespesa,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -42,6 +42,7 @@ export function PerfilView({
   perfil: PerfilParlamentar | null
   custos: CustosMandato
   municipioCusto?: CustoMunicipio | null
+  municipioAtualizadoEm?: string
   assessores: {
     quantidade: number | null
     folha?: number | null
@@ -81,6 +82,15 @@ export function PerfilView({
     [despesas],
   )
   const mandatos = useMemo(() => [...politico.legislaturas].sort((a, b) => b - a), [politico])
+
+  // VIAP (cota municipal) é publicada com defasagem; mostra qual era o último mês na importação
+  const ultimaViap = useMemo(() => {
+    if (politico.casa !== 'camara_municipal' || despesas.length === 0) return null
+    return despesas
+      .map((d) => `${d.ano}-${String(d.mes).padStart(2, '0')}`)
+      .sort()
+      .at(-1) ?? null
+  }, [despesas, politico.casa])
 
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
   // total anual do parlamentar, na esfera dele (barra na cor da casa; perfil é de uma só esfera)
@@ -212,6 +222,15 @@ export function PerfilView({
               hint={vsMedia ? (vsMedia >= 1 ? 'acima da média' : 'abaixo da média') : undefined}
             />
           </div>
+
+          {politico.casa === 'camara_municipal' && ultimaViap && (
+            <p className="mb-8 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+              A VIAP é publicada pela Câmara com defasagem (cada gasto vem com a nota fiscal anexada).
+              {municipioAtualizadoEm ? ` Na importação destes dados (${dataBR(municipioAtualizadoEm)})` : ' Na última importação'},
+              o mês mais recente disponível na fonte era <strong className="text-tinta">{mesAno(ultimaViap)}</strong>.
+              A folha de gabinete sai antes (sem anexo) e por isso aparece com um mês mais novo.
+            </p>
+          )}
 
           <section className="mb-10">
             <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>

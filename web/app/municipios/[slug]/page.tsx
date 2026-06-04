@@ -8,7 +8,8 @@ export function generateStaticParams() {
 }
 
 export default function MunicipioPage({ params }: { params: { slug: string } }) {
-  const municipio = getMunicipios().cidades.find((c) => c.slug === params.slug)
+  const indice = getMunicipios()
+  const municipio = indice.cidades.find((c) => c.slug === params.slug)
   if (!municipio) {
     return (
       <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
@@ -34,7 +35,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
 
       <section className="mb-12">
         <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
-        <CustoMandatoMunicipio municipio={municipio} />
+        <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
       </section>
 
       <section>

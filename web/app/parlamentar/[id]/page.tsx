@@ -15,9 +15,11 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
   const series = getSeriesParlamentares()
   const perfil = getPerfil(params.id)
   const custos = getCustos()
+  const municipios = getMunicipios()
   const municipioCusto = resumo.politico.municipio
-    ? (getMunicipios().cidades.find((c) => c.slug === resumo.politico.municipio)?.custo ?? null)
+    ? (municipios.cidades.find((c) => c.slug === resumo.politico.municipio)?.custo ?? null)
     : null
+  const municipioAtualizadoEm = resumo.politico.municipio ? municipios.atualizadoEm : undefined
   const assessoresData = getAssessores()
   const gab = assessoresData?.porPolitico[params.id]
   const assessores = {
@@ -54,7 +56,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} />
     </Suspense>
   )
 }
