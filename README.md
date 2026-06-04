@@ -127,9 +127,12 @@ Fora de João Pessoa, as câmaras em geral só publicam **subsídio fixo** (igua
 | Cidade | Plataforma | Endpoint | Como lemos |
 |---|---|---|---|
 | **Campina Grande** | PublicSoft (Portal do Servidor) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador (subsídio = bruto); comissionados `1-Comissionado` com cargo "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação é genérica ("GABINETE"), não nomeia o vereador |
+| **Bayeux** | PublicSoft | mesmo endpoint, `db` = base64 do CNPJ da câmara (08606972000136) | igual a CG; o cargo dos comissionados de gabinete é "... PARLAMENTAR" (filtro por `gabineteCargoRegex` no config) |
+| **Sousa** | Elmar (API aberta) | `https://transparencia-api.elmartecnologia.com.br/api/101211/pessoal/folha_pagamento?competencia=MM/YYYY` | JSON; cargo "VEREADOR"/"VEREADOR - PRESIDENTE" = subsídio; comissionados de cargo "... DE VEREADOR" somados = folha de gabinete. Lotação não nomeia o vereador |
+| **Cabedelo** | Elmar (API aberta) | `https://transparencia-api.elmartecnologia.com.br/api/101040/pessoal/folha_pagamento?competencia=MM/YYYY` (ctx 201040 = prefeitura, não usar) | igual a Sousa; comissionados de gabinete têm cargo "... PARLAMENTAR" |
 | **Patos** | Roster HTML (câmara) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | HTML (CMS easyweb): nome em `<h6>`, partido pelo nome do arquivo do logo (`partidos/SIGLA.png`), foto em `images/arquivos/documentos/`. Subsídio fixado por lei (R$ 17.000; presidência R$ 22.000). O portal de transparência da câmara (intgest) **não divulga a folha** por HTTP, então a folha de gabinete fica como "não publicado" |
 
-> PublicSoft atende várias câmaras/prefeituras da PB, então o mesmo endpoint escala para outras cidades trocando o `db`. Quando a câmara não publica folha alguma (caso de Patos), entramos só com roster + subsídio (`plataforma: 'roster-html'`).
+> O modelo leve tem três adaptadores de fonte, escolhidos por `plataforma` em `collector/cidades.ts`: `publicsoft` e `elmar` (folha por API: subsídio + folha de gabinete agregada) e `roster-html` (câmara sem folha pública: só roster + subsídio fixo). O cargo que identifica os comissionados de gabinete muda por câmara, então vem de `gabineteCargoRegex` (default "GABINETE DE VEREADOR"). O presidente é detectado pelo subsídio acima da mediana.
 
 ---
 

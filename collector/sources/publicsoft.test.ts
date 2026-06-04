@@ -26,4 +26,14 @@ describe('publicsoft (Campina Grande)', () => {
     const total = somarFolhaGabinete(parsePublicsoft(fix))
     expect(total).toBeGreaterThan(1_000_000)
   })
+
+  it('aceita regex de cargo custom (taxonomia por câmara); default = GABINETE DE VEREADOR', () => {
+    const regs = parsePublicsoft(fix)
+    // o regex default (GABINETE DE VEREADOR) é só um subconjunto de todos os comissionados
+    const padrao = somarFolhaGabinete(regs)
+    const todosComissionados = somarFolhaGabinete(regs, /.*/)
+    expect(todosComissionados).toBeGreaterThan(padrao)
+    // um regex que não casa nada zera
+    expect(somarFolhaGabinete(regs, /CARGO_INEXISTENTE_XYZ/)).toBe(0)
+  })
 })

@@ -290,6 +290,298 @@
         "viapMedia": null,
         "gabineteMedia": null
       }
+    },
+    {
+      "slug": "sousa",
+      "nome": "Sousa",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 15,
+      "mesReferencia": "2026-03",
+      "folhaGabineteTotal": 132688.30000000002,
+      "vereadores": [
+        {
+          "nome": "ABEL SALES DE SOUSA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "ALYSON ALVES ARAUJO",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "AMANDA OLIVEIRA DA SILVEIRA MARQUES DANTAS",
+          "subsidio": 20864.77,
+          "presidente": true
+        },
+        {
+          "nome": "ANANIAS VIEIRA DE ALMEIDA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "CARLOS HENRIQUE ABRANTES MARQUES",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "DELANI GLEDSON ALVES",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "DENIS FORMIGA SARMENTO",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "DIOGENES FERREIRA DA SILVA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO GEORGE SUCUPIRA BARBOSA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "JEFFERSON LINHARES  DE ARAUJO",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "JOHANNA DINAH ABRANTES DE CARVALHO MARQUES ESTRELA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIANO FERREIRA JUNIOR",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "MARCIO GOMES DE MORAIS",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "ODAIR JOSE DA SILVA",
+          "subsidio": 13909.85,
+          "presidente": false
+        },
+        {
+          "nome": "RADAMES GENESIS MARQUES ESTRELA",
+          "subsidio": 13909.85,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "sousa",
+        "nome": "Sousa",
+        "salario": 13909.85,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 8845.886666666667
+      }
+    },
+    {
+      "slug": "cabedelo",
+      "nome": "Cabedelo",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 15,
+      "mesReferencia": "2026-03",
+      "folhaGabineteTotal": 358590.43,
+      "vereadores": [
+        {
+          "nome": "ALEX ALEXANDRE DE LUCENA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "EDSON DA SILVA DIAS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ENRIQUE DOUGLAS CASADO DA SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "EVILASIO CAVALCANTI NETO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "FABRICIO MAGNO MARQUES DE MELO SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "FERNANDO ANTONIO MONTEIRO DE OLIVEIRA SOBRINHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "GEILSON DE ALMEIDA NASCIMENTO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "HERLON CABRAL DE MEDEIROS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE EDGLEI RAMALHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE FRANCISCO PEREIRA",
+          "subsidio": 19500,
+          "presidente": true
+        },
+        {
+          "nome": "LEONARDO PAULO DA SILVA JUNIOR",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "REINALDO BARBOSA DE LIMA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ROSILDO PEREIRA DE ARAUJO JUNIOR",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "UBIRACI SANTOS DE CARVALHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "WAGNER ROGERIO FERNANDES SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "cabedelo",
+        "nome": "Cabedelo",
+        "salario": 13000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 23906.028666666665
+      }
+    },
+    {
+      "slug": "bayeux",
+      "nome": "Bayeux",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 17,
+      "mesReferencia": "2026-04",
+      "folhaGabineteTotal": 114699.99,
+      "vereadores": [
+        {
+          "nome": "ADRIANO DA SILVA NASCIMENTO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ELOAH FELINTO DOS SANTOS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCINEIDE BARBOSA DE SOUZA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "IARA CAETANO DE LIMA RAMALHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "IRANILDO DE OLIVEIRA ARAUJO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "IVANILDO DE BRITO COUTINHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JAYSLANE DE MOURA NOBREGA",
+          "subsidio": 18467.88,
+          "presidente": true
+        },
+        {
+          "nome": "JEFFERSON DE OLIVEIRA FREITAS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSAURO PEREIRA DA COSTA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE MARCELO DE OLIVEIRA SOUZA JUNIOR",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "LUCEMBERG DE SOUZA CABRAL",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA ANUNCIADA VICENTE BARBOSA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "MAURI BATISTA DA SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ROSIENE SARINHO SOARES RIBEIRO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "RUBEM SEVERINO JOSE FILHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "WAGNER DE SANTANA SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "WILLAMS VARELA DE LIMA FILHO",
+          "subsidio": 13000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "bayeux",
+        "nome": "Bayeux",
+        "salario": 13000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 6747.058235294118
+      }
     }
   ]
 }

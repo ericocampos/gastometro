@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
-import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
+import { baixarFolha, extrairGabinetes, extrairVereadoresElmar, somarFolhaGabineteElmar, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
 import { baixarFolhaPublicsoft, extrairVereadores, somarFolhaGabinete, type VereadorLeve } from './sources/publicsoft.js'
 import { baixarRosterPatos, type VereadorRosterLeve } from './sources/patosRoster.js'
@@ -256,20 +256,43 @@ async function main() {
         resumos.push(montarCidadeLeveRoster(cfg, roster))
         continue
       }
-      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
-        console.log('  sem plataforma leve configurada, pulando'); continue
-      }
+      const gabRegex = new RegExp(cfg.gabineteCargoRegex ?? 'GABINETE DE VEREADOR', 'i')
       let vereadores: VereadorLeve[] = []
       let folhaGab = 0
       let mesRef = ''
       const hoje = new Date()
-      for (let i = 0; i < 6; i++) {
+
+      // elmar: folha pela API aberta (usa ctxElmar); competência MM/YYYY, tenta meses recentes
+      if (cfg.plataforma === 'elmar') {
+        if (!cfg.ctxElmar) { console.log('  sem ctxElmar, pulando'); continue }
+        for (let i = 0; i < 8; i++) {
+          const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
+          const comp = competenciaDe(d)
+          const regs = await baixarFolha(cfg.ctxElmar, comp)
+          const v = extrairVereadoresElmar(regs)
+          if (v.length > 0) {
+            vereadores = v
+            folhaGab = somarFolhaGabineteElmar(regs, gabRegex)
+            mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+            break
+          }
+        }
+        console.log(`  vereadores: ${vereadores.length} | folha gabinete: R$ ${folhaGab.toFixed(2)} | ref ${mesRef}`)
+        resumos.push(montarCidadeLeve(cfg, vereadores, folhaGab, mesRef))
+        continue
+      }
+
+      // publicsoft: folha pela API do Portal do Servidor (usa publicsoftDb)
+      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
+        console.log('  sem plataforma leve configurada, pulando'); continue
+      }
+      for (let i = 0; i < 8; i++) {
         const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
         const regs = await baixarFolhaPublicsoft(cfg.publicsoftDb, d.getMonth() + 1, d.getFullYear())
         const v = extrairVereadores(regs)
         if (v.length > 0) {
           vereadores = v
-          folhaGab = somarFolhaGabinete(regs)
+          folhaGab = somarFolhaGabinete(regs, gabRegex)
           mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
           break
         }

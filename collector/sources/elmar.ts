@@ -4,6 +4,8 @@
 //       ?competencia=MM/YYYY&api-version=1.0
 // ctx de João Pessoa = 101095. Retorna { data: [ { ...campos com espacos/acentos... } ], ... }.
 
+import { montarVereadoresLeve, type VereadorLeve } from './publicsoft.js'
+
 const API_HOST = 'https://transparencia-api.elmartecnologia.com.br'
 const folhaUrl = (ctx: string, competencia: string) =>
   `${API_HOST}/api/${ctx}/pessoal/folha_pagamento?competencia=${encodeURIComponent(competencia)}&api-version=1.0`
@@ -94,6 +96,23 @@ export function extrairGabinetes(registros: FolhaRegistro[]): GabineteVereador[]
     g.folhaBruta += r.vantagens
   }
   return [...grupos.values()]
+}
+
+// ── Modelo leve via Elmar (Sousa, Cabedelo): a câmara publica a folha, mas a lotação não nomeia
+// o gabinete de cada vereador, então só dá o agregado. Vereadores = cargo "VEREADOR" (e
+// "VEREADOR - PRESIDENTE"); a folha de gabinete soma os comissionados cujo cargo casa o regex
+// da cidade (ex.: "DE VEREADOR" em Sousa, "PARLAMENTAR" em Cabedelo).
+const RE_VEREADOR = /^VEREADOR\b/i
+
+export function extrairVereadoresElmar(registros: FolhaRegistro[]): VereadorLeve[] {
+  const vers = registros.filter((r) => RE_VEREADOR.test(r.cargo.trim()))
+  return montarVereadoresLeve(vers.map((r) => ({ nome: r.nome, bruto: r.vantagens })))
+}
+
+export function somarFolhaGabineteElmar(registros: FolhaRegistro[], cargoRegex: RegExp): number {
+  return registros
+    .filter((r) => !RE_VEREADOR.test(r.cargo.trim()) && cargoRegex.test(r.cargo))
+    .reduce((s, r) => s + r.vantagens, 0)
 }
 
 export async function baixarFolha(ctx: string, competencia: string): Promise<FolhaRegistro[]> {
