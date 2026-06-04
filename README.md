@@ -120,21 +120,19 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 > Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
 
-### Câmaras municipais — modelo leve (demais cidades)
+### Câmaras municipais — modelo leve (demais cidades) · fonte única TCE-PB
 
-Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador. A folha vem por API de três plataformas, escolhidas por `plataforma` em `collector/cidades.ts`:
+Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador.
 
-| Plataforma | Endpoint | Como lemos |
+A folha de **todas** essas câmaras vem de uma **única fonte oficial**: o **TCE-PB** (Tribunal de Contas do Estado), via Dados Abertos. Substituiu os adaptadores antes usados por plataforma (Elmar/PublicSoft/raspagem), que ficavam câmara a câmara.
+
+| O quê | Endpoint | Como lemos |
 |---|---|---|
-| **Elmar** (maioria) | `https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento?competencia=MM/YYYY` | JSON. O campo **`regime`** separa de forma uniforme: `ELETIVO` = vereador (subsídio = `vantagens`); `CARGO COMISSIONADO` somados = folha de comissionados da câmara. Cada câmara tem um `{ctx}` (lista em `cidades.ts`, bloco `ELMAR_PB`). O ctx `2xxxxx` é a prefeitura — não usar |
-| **PublicSoft** (Campina Grande, Bayeux e mais ~16 câmaras) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador; `1-Comissionado` somados = folha de comissionados. `{db}` = base64 do CNPJ da câmara (lista em `cidades.ts`, bloco `PUBLICSOFT_PB`) |
-| **roster-html** (Patos) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | quando a câmara não publica folha por HTTP: só roster (HTML) + subsídio fixo de lei. A folha de comissionados fica como "não publicado" |
+| **Folha de pessoal (223 câmaras)** | `https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/{cod}/servidores/servidores-{ano}.zip` | CSV (em ZIP), por pessoa e por mês, 2013→atual. A câmara é a unidade gestora `descricao_unidade_gestora` "Câmara Municipal de X". `tipo_cargo` **Eletivos** = vereador (subsídio = `valor_vantagem`); **Cargo Comissionado + Função de confiança** somados = folha de comissionados. `{cod}` = código TCE de 3 dígitos (mapa em `collector/sources/tce.ts`, `MUNICIPIOS_TCE`) |
 
-**Como a lista de câmaras Elmar foi montada:** o bloco de `ctx` `101xxx` da Elmar é a Paraíba. Varremos o range, confirmamos o nome de cada entidade pelo frontend (`transparencia.elmartecnologia.com.br/?e={ctx}`) e casamos com os nomes oficiais do IBGE (UF 25). São ~54 câmaras PB nessa plataforma.
+O coletor baixa o ano corrente (com fallback para o anterior), isola a câmara e usa o **mês mais recente com vereadores**, restrito à **legislatura atual** (`ano_mes ≥ 202501`; dado de 2024 seria de vereadores da legislatura passada). Câmaras que não publicam vereadores ao TCE são puladas (sem inventar).
 
-**Como a lista de câmaras PublicSoft foi montada:** a "Central de Clientes" do Portal da Transparência da PublicSoft (`portaldatransparencia.publicsoft.com.br`) tem um diretório em cascata UF → cidade → instituição (endpoints `views_c/*JSON.php`). Listamos as ~168 cidades PB e, para cada "Câmara Municipal" com folha integrada, o `db` (base64 do CNPJ) sai do link `folha.php?db=` da página de folha. Cada `db` foi confirmado no webservice acima; só entram câmaras que retornam vereadores na legislatura atual (a partir de jan/2025). Câmaras com folha só "importada" (não integrada) ou sem `2-Eletivo` ficam de fora.
-
-> A lotação dos comissionados é genérica (não nomeia o vereador), por isso a folha entra **agregada por câmara**, não por pessoa. O **presidente** é identificado pelo cargo ("... PRESIDENTE"), com fallback para o maior subsídio. O **subsídio exibido** é a mediana (valor legal uniforme), não a `vantagens` de um mês isolado (que tem proração/retroativo/13º).
+> O TCE Dados Abertos é **municipal-only** — não tem a Assembleia Legislativa nem órgãos estaduais; por isso os deputados estaduais seguem vindo de `al.pb.leg.br` e os federais dos portais da Câmara/Senado. O **presidente** é identificado pelo cargo ("VEREADOR PRESIDENTE"), com fallback para o maior subsídio. O **subsídio exibido** é a mediana (valor legal uniforme), não o `valor_vantagem` de um mês isolado (que tem proração/retroativo/13º). João Pessoa segue no modelo **completo** (Elmar + site), porque o TCE não traz a VIAP por vereador.
 
 ---
 

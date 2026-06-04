@@ -3,7 +3,7 @@ import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 
 export default function MunicipiosPage() {
-  const { cidades, totalMunicipiosPB } = getMunicipios()
+  const { cidades, totalMunicipiosPB, naoCobertas } = getMunicipios()
   const temLeve = cidades.some((c) => c.modelo === 'leve')
 
   return (
@@ -11,9 +11,10 @@ export default function MunicipiosPage() {
       <section className="mb-6 surgir">
         <SecaoTitulo>Vereadores por cidade</SecaoTitulo>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tinta-suave">
-          <strong className="text-tinta">{cidades.length} de {totalMunicipiosPB}</strong> cidades cobertas.
-          Cobertura parcial e em expansão: cada câmara publica os dados de um jeito, então estou
-          coletando cidade por cidade para detalhar o gasto por vereador onde a fonte permite.
+          <strong className="text-tinta">{cidades.length} de {totalMunicipiosPB}</strong> cidades cobertas,
+          a partir de uma fonte única e oficial: a folha de pessoal das câmaras no Portal de Dados
+          Abertos do <strong className="text-tinta">TCE-PB</strong>. João Pessoa tem o gasto detalhado
+          por vereador; as demais entram no modelo simples (abaixo).
         </p>
       </section>
 
@@ -30,6 +31,14 @@ export default function MunicipiosPage() {
       )}
 
       <MunicipiosGrid cidades={cidades} />
+
+      {naoCobertas && naoCobertas.length > 0 && (
+        <section className="mt-6 border-t border-borda pt-4 text-xs leading-relaxed text-tinta-tenue">
+          <strong className="text-tinta-suave">Ainda fora:</strong>{' '}
+          {naoCobertas.map((n) => `${n.nome} (${n.motivo})`).join('; ')}. A cidade entra automaticamente
+          assim que a fonte oficial publicar o dado.
+        </section>
+      )}
     </div>
   )
 }
