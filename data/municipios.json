@@ -1,0 +1,26 @@
+{
+  "atualizadoEm": "2026-06-04",
+  "totalMunicipiosPB": 223,
+  "cidades": [
+    {
+      "slug": "joao-pessoa",
+      "nome": "João Pessoa",
+      "uf": "PB",
+      "numVereadores": 28,
+      "totalViapPeriodo": 7047126.77,
+      "totalGabineteMes": 1135658.0099999998,
+      "periodoViap": {
+        "de": "2020-09",
+        "ate": "2026-02"
+      },
+      "custo": {
+        "slug": "joao-pessoa",
+        "nome": "João Pessoa",
+        "salario": 26000,
+        "viapTeto": 14000,
+        "viapMedia": 10447.523723810375,
+        "gabineteMedia": 51620.81863636363
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+export type Casa = 'camara' | 'senado' | 'assembleia' | 'camara_municipal'
+
 // status de mandato (hoje só ALPB): titular/suplente + períodos de exercício do suplente
 // (fim=null => ainda em exercício, até o fim da legislatura)
 export interface MandatoParlamentar {
@@ -10,9 +12,10 @@ export interface MandatoParlamentar {
 export interface Politico {
   id: string
   nome: string
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
   partido: string
   uf: string
+  municipio?: string
   legislaturas: number[]
   fotoUrl?: string
   mandato?: MandatoParlamentar
@@ -22,7 +25,7 @@ export interface ItemRanking {
   politicoId: string
   nome: string
   partido: string
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
   total: number
 }
 
@@ -63,7 +66,7 @@ export interface Alerta {
   politicoId: string
   parlamentarNome?: string
   fotoUrl?: string
-  casa?: 'camara' | 'senado' | 'assembleia'
+  casa?: Casa
   severidade: 'baixa' | 'media' | 'alta'
   tipo: string
   titulo: string
@@ -163,3 +166,20 @@ export interface PerfilParlamentar {
   redes: string[]
   proposicoes: ProposicaoResumo[]
 }
+
+export interface CustoMunicipio {
+  slug: string; nome: string
+  salario: number
+  viapTeto: number
+  viapMedia: number | null
+  gabineteMedia: number | null
+}
+export interface Municipio {
+  slug: string; nome: string; uf: string
+  numVereadores: number
+  totalViapPeriodo: number
+  totalGabineteMes: number
+  periodoViap: { de: string; ate: string } | null
+  custo: CustoMunicipio
+}
+export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }

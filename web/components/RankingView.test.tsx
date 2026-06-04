@@ -59,4 +59,26 @@ describe('RankingView', () => {
     expect(screen.getByText('Beltrano Deputado')).toBeInTheDocument()
     expect(screen.queryByText('Fulano Senador')).not.toBeInTheDocument()
   })
+
+  it('mostra o filtro de casa quando há mais de uma casa nas séries', () => {
+    render(<RankingView series={series} />)
+    expect(screen.queryByLabelText('Casa')).toBeInTheDocument()
+  })
+
+  it('esconde o filtro de casa quando todas as séries são da mesma casa', () => {
+    const umaCasa: SerieParlamentar[] = [
+      {
+        politicoId: 'mun-1', nome: 'Vereador Um', partido: 'PT', casa: 'camara_municipal',
+        municipio: 'joao-pessoa', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 100 }],
+      },
+      {
+        politicoId: 'mun-2', nome: 'Vereador Dois', partido: 'PL', casa: 'camara_municipal',
+        municipio: 'joao-pessoa', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 50 }],
+      },
+    ]
+    render(<RankingView series={umaCasa} />)
+    expect(screen.queryByLabelText('Casa')).not.toBeInTheDocument()
+    // não deve quebrar com legislaturas vazias (sem opção de mandato)
+    expect(screen.getByText('Vereador Um')).toBeInTheDocument()
+  })
 })

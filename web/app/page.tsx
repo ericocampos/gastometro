@@ -1,13 +1,16 @@
-import { getSeriesParlamentares, getCustos, getAssessores } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
 import { RankingView } from '@/components/RankingView'
 import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { CustoMandato } from '@/components/CustoMandato'
+import { CoberturaMunicipal } from '@/components/CoberturaMunicipal'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
 export default function Home() {
-  const series = getSeriesParlamentares()
+  // a home é federal+estadual; o municipal entra só pelo bloco de cobertura (e na seção /municipios)
+  const series = getSeriesParlamentares().filter((s) => s.casa !== 'camara_municipal')
+  const municipios = getMunicipios()
   const custos = custosComGabineteEstimado(getCustos(), getAssessores())
   const porAno = totalPorAnoPorCasa(series)
   const anos = anosDisponiveis(series)
@@ -59,6 +62,13 @@ export default function Home() {
           <GraficoGeralAnual dados={porAno} />
         </div>
       </section>
+
+      {municipios.cidades.length > 0 && (
+        <section className="mb-12">
+          <SecaoTitulo>Vereadores · nível municipal</SecaoTitulo>
+          <CoberturaMunicipal indice={municipios} />
+        </section>
+      )}
 
       <section>
         <SecaoTitulo>Ranking de gastos</SecaoTitulo>

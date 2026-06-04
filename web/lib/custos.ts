@@ -1,4 +1,4 @@
-import type { CustoCasa, CustosMandato, Assessores } from './tipos'
+import type { Casa, CustoCasa, CustosMandato, Assessores } from './tipos'
 
 // Custo total mensal estimado: salário + cota + pessoal de gabinete.
 // Marca como aproximado se qualquer parcela for aproximada ou ausente (caso do Senado).
@@ -40,6 +40,9 @@ export function custosComGabineteEstimado(custos: CustosMandato, assessores: Ass
   return { ...custos, casas }
 }
 
-// Câmara azul, Senado âmbar, Assembleia (estadual) violeta
-export const corCasa = (casa: 'camara' | 'senado' | 'assembleia') =>
-  casa === 'camara' ? '#2563eb' : casa === 'senado' ? '#c87f1a' : '#7c3aed'
+// Câmara azul, Senado âmbar, Assembleia (estadual) violeta, Câmara municipal teal
+export const corCasa = (casa: Casa): string =>
+  casa === 'camara' ? '#2563eb'
+  : casa === 'senado' ? '#c87f1a'
+  : casa === 'assembleia' ? '#7c3aed'
+  : '#0f766e' // camara_municipal (teal)

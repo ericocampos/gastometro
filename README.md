@@ -108,6 +108,18 @@ Todas são públicas e oficiais. A coleta filtra pela UF do `config/state.json`.
 
 > A remuneração estadual da CODATA (`api.dadosabertos.codata.pb.gov.br`) é só do **Executivo** (63 órgãos, sem Assembleia) — por isso o gabinete da ALPB vem do arquivo de comissionados da própria Assembleia.
 
+### Câmara Municipal de João Pessoa (vereadores)
+
+Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por município em `collector/cidades.ts`); a fonte da folha (Elmar) é multi-tenant, então outras cidades da PB entram trocando o `ctx`.
+
+| O quê | Endpoint / arquivo | Formato | Como ligamos ao vereador |
+|---|---|---|---|
+| Roster (em exercício), foto, partido | `https://joaopessoa.pb.leg.br/vereadores/` | HTML oficial | nome de urna no card; o **nome civil** sai do início da bio (`data-bs-bio`), o que liga o vereador aos nomes civis da VIAP e da folha |
+| **Despesas (VIAP)** | `https://joaopessoa.pb.leg.br/transparencia/verbas-indenizatorias/` | HTML oficial (tabela) | reembolso **mensal por vereador** (teto), com link da nota; casamento por **nome civil**; a fonte **não traz detalhamento por fornecedor** |
+| **Gabinete — comissionados** | `https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento?competencia=MM/YYYY` (ctx de JP = `101095`) | JSON (API) | lotação `"GAB. VER. <nome de urna>"` aponta o vereador; **bruto e líquido** por pessoa, do mês |
+
+> Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
+
 ---
 
 ## Decisões e armadilhas que descobrimos

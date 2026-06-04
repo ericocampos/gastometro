@@ -1,5 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { resolve } from 'node:path'
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 
 beforeAll(() => {
   process.env.GASTOMETRO_DATA_DIR = resolve(__dirname, '../__tests__/fixtures')
@@ -55,5 +57,43 @@ describe('dados', () => {
     expect(getPerfil('camara-1')?.nomeCivil).toBe('Fulano de Tal')
     expect(getPerfil('camara-1')?.proposicoes).toHaveLength(1)
     expect(getPerfil('nao-existe')).toBeNull()
+  })
+})
+
+describe('getMunicipios', () => {
+  const restaurar = () => {
+    process.env.GASTOMETRO_DATA_DIR = resolve(__dirname, '../__tests__/fixtures')
+  }
+
+  it('lê municipios.json do diretório de dados', async () => {
+    const dir = mkdtempSync(resolve(tmpdir(), 'gastometro-'))
+    writeFileSync(resolve(dir, 'municipios.json'), JSON.stringify({
+      atualizadoEm: '2026-06-03', totalMunicipiosPB: 223,
+      cidades: [{
+        slug: 'joao-pessoa', nome: 'João Pessoa', uf: 'PB',
+        numVereadores: 28, totalViapPeriodo: 1000, totalGabineteMes: 2000,
+        periodoViap: { de: '2025-01', ate: '2026-02' },
+        custo: { slug: 'joao-pessoa', nome: 'João Pessoa', salario: 26000, viapTeto: 14000, viapMedia: 13000, gabineteMedia: 50000 },
+      }],
+    }))
+    process.env.GASTOMETRO_DATA_DIR = dir
+    const { getMunicipios } = await import('./dados')
+    const lido = getMunicipios()
+    expect(lido.cidades).toHaveLength(1)
+    expect(lido.cidades[0].slug).toBe('joao-pessoa')
+    expect(lido.cidades[0].custo.salario).toBe(26000)
+    rmSync(dir, { recursive: true, force: true })
+    restaurar()
+  })
+
+  it('retorna fallback vazio quando o arquivo não existe', async () => {
+    const dir = mkdtempSync(resolve(tmpdir(), 'gastometro-vazio-'))
+    process.env.GASTOMETRO_DATA_DIR = dir
+    const { getMunicipios } = await import('./dados')
+    const lido = getMunicipios()
+    expect(lido.cidades).toEqual([])
+    expect(lido.totalMunicipiosPB).toBe(223)
+    rmSync(dir, { recursive: true, force: true })
+    restaurar()
   })
 })

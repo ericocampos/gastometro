@@ -1,4 +1,4 @@
-import type { ItemCusto } from '@/lib/tipos'
+import type { Casa, ItemCusto } from '@/lib/tipos'
 import { brl, brlInteiro } from '@/lib/formato'
 import { corCasa } from '@/lib/custos'
 
@@ -11,7 +11,7 @@ export function CotaVsTeto({
   cota: ItemCusto
   mediaMensal: number
   salario: number
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
 }) {
   const cor = corCasa(casa)
   const exato = !cota.aproximado && cota.valor != null
@@ -31,8 +31,11 @@ export function CotaVsTeto({
         />
       </div>
       <p className="mt-3 text-xs text-tinta-tenue">
-        Salário fixo de {brlInteiro(salario)}/mês, igual a todos os parlamentares. A verba de gabinete
-        (assessores) não é divulgada por parlamentar nos dados abertos — o custo rastreável aqui é a cota.
+        Salário fixo de {brlInteiro(salario)}/mês, igual a todos os{' '}
+        {casa === 'camara_municipal' ? 'vereadores' : 'parlamentares'}.{' '}
+        {casa === 'camara_municipal'
+          ? 'A folha do gabinete (acima) é a real do mês; a VIAP é o reembolso mensal rastreado aqui.'
+          : 'A verba de gabinete (assessores) não é divulgada por parlamentar nos dados abertos — o custo rastreável aqui é a cota.'}
       </p>
     </div>
   )

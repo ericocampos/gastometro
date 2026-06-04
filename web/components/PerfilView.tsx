@@ -2,14 +2,14 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
-import { brl, dataBR } from '@/lib/formato'
+import { brl, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
 import { CotaVsTeto } from './CotaVsTeto'
@@ -23,21 +23,26 @@ import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
 
-const casaLonga = (c: 'camara' | 'senado' | 'assembleia') =>
-  c === 'camara' ? 'Câmara dos Deputados' : c === 'senado' ? 'Senado Federal' : 'Assembleia Legislativa da Paraíba'
+const casaLonga = (c: Casa) =>
+  c === 'camara' ? 'Câmara dos Deputados'
+  : c === 'senado' ? 'Senado Federal'
+  : c === 'assembleia' ? 'Assembleia Legislativa da Paraíba'
+  : 'Câmara Municipal'
 
 // "22/06/2023–16/12/2024 e desde 18/07/2025"
 const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, assessores, alertas, alertasPorDespesa,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa,
 }: {
   politico: Politico
   despesas: Despesa[]
   series: SerieParlamentar[]
   perfil: PerfilParlamentar | null
   custos: CustosMandato
+  municipioCusto?: CustoMunicipio | null
+  municipioAtualizadoEm?: string
   assessores: {
     quantidade: number | null
     folha?: number | null
@@ -54,7 +59,14 @@ export function PerfilView({
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(series)
+  // comparar entre PARES (mesma casa; no municipal, mesma cidade), não contra todas as casas juntas
+  const pares = useMemo(
+    () => series.filter((s) =>
+      s.casa === politico.casa &&
+      (politico.casa !== 'camara_municipal' || s.municipio === politico.municipio)),
+    [series, politico.casa, politico.municipio],
+  )
+  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(pares)
   const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
 
   function setPeriodo(v: string) {
@@ -71,6 +83,15 @@ export function PerfilView({
   )
   const mandatos = useMemo(() => [...politico.legislaturas].sort((a, b) => b - a), [politico])
 
+  // VIAP (cota municipal) é publicada com defasagem; mostra qual era o último mês na importação
+  const ultimaViap = useMemo(() => {
+    if (politico.casa !== 'camara_municipal' || despesas.length === 0) return null
+    return despesas
+      .map((d) => `${d.ano}-${String(d.mes).padStart(2, '0')}`)
+      .sort()
+      .at(-1) ?? null
+  }, [despesas, politico.casa])
+
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
   // total anual do parlamentar, na esfera dele (barra na cor da casa; perfil é de uma só esfera)
   const anual = useMemo(() =>
@@ -86,7 +107,7 @@ export function PerfilView({
   )
 
   const { posicao, totalRanqueados, mediaGeral } = useMemo(() => {
-    const r = rankingNoPeriodo(series, periodo)
+    const r = rankingNoPeriodo(pares, periodo)
     const comGasto = r.filter((l) => l.total > 0)
     const idx = comGasto.findIndex((l) => l.politicoId === politico.id)
     return {
@@ -94,7 +115,7 @@ export function PerfilView({
       totalRanqueados: comGasto.length,
       mediaGeral: resumoNoPeriodo(r).media,
     }
-  }, [series, periodo, politico.id])
+  }, [pares, periodo, politico.id])
 
   const mesesComGasto = ag.serieMensal.length
   const mediaMensal = mesesComGasto ? ag.total / mesesComGasto : 0
@@ -103,8 +124,17 @@ export function PerfilView({
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
 
-  // linha de teto no gráfico mensal — só quando o teto da cota é exato (Câmara/CEAP por UF)
-  const custoCasa = custos.casas[politico.casa]
+  // Custo de referência da casa. O Record de custos cobre as 3 casas federais/estadual; o custo
+  // municipal vive em municipios.json (subsídio + teto VIAP + média real de gabinete) e é montado aqui.
+  const custoCasa: CustoCasa = politico.casa === 'camara_municipal' && municipioCusto
+    ? {
+        rotulo: 'Câmara Municipal',
+        salario: municipioCusto.salario,
+        cota: { valor: municipioCusto.viapTeto, rotulo: 'Teto da VIAP/mês', aproximado: false },
+        gabinete: { valor: municipioCusto.gabineteMedia, rotulo: 'Média real do gabinete · mês', aproximado: true },
+        fontes: [],
+      }
+    : custos.casas[politico.casa === 'camara_municipal' ? 'camara' : politico.casa]
   // o Senado não expõe a nota individual na base aberta → link p/ a prestação de contas do senador
   const portalSenado =
     politico.casa === 'senado'
@@ -118,10 +148,10 @@ export function PerfilView({
   return (
     <article>
       <Link
-        href="/"
+        href={politico.casa === 'camara_municipal' && politico.municipio ? `/municipios/${politico.municipio}/` : '/'}
         className="mb-6 inline-flex items-center gap-1 text-sm text-tinta-suave transition-colors hover:text-marca"
       >
-        ← Ranking
+        ← {politico.casa === 'camara_municipal' ? 'Vereadores' : 'Ranking'}
       </Link>
 
       <header className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center">
@@ -187,11 +217,20 @@ export function PerfilView({
             <Estatistica rotulo="Total no período" valor={brl(ag.total)} destaque />
             <Estatistica rotulo="Posição no ranking" valor={posicao ? `${posicao}º de ${totalRanqueados}` : '—'} />
             <Estatistica
-              rotulo="vs. média geral"
+              rotulo={politico.casa === 'camara_municipal' ? 'vs. média dos vereadores' : 'vs. média da casa'}
               valor={vsMedia ? `${vsMedia.toFixed(1).replace('.', ',')}×` : '—'}
               hint={vsMedia ? (vsMedia >= 1 ? 'acima da média' : 'abaixo da média') : undefined}
             />
           </div>
+
+          {politico.casa === 'camara_municipal' && ultimaViap && (
+            <p className="mb-8 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+              A VIAP é publicada pela Câmara com defasagem (cada gasto vem com a nota fiscal anexada).
+              {municipioAtualizadoEm ? ` Na importação destes dados (${dataBR(municipioAtualizadoEm)})` : ' Na última importação'},
+              o mês mais recente disponível na fonte era <strong className="text-tinta">{mesAno(ultimaViap)}</strong>.
+              A folha de gabinete sai antes (sem anexo) e por isso aparece com um mês mais novo.
+            </p>
+          )}
 
           <section className="mb-10">
             <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
@@ -249,7 +288,16 @@ export function PerfilView({
                 <section>
                   <SecaoTitulo>Principais fornecedores</SecaoTitulo>
                   <div className="overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
-                    <PerfilFornecedores itens={ag.porFornecedor} />
+                    {politico.casa === 'camara_municipal' ? (
+                      <p className="text-sm leading-relaxed text-tinta-suave">
+                        <strong className="text-tinta">Detalhamento por fornecedor não disponível na fonte.</strong>{' '}
+                        A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o
+                        detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link
+                        da nota.
+                      </p>
+                    ) : (
+                      <PerfilFornecedores itens={ag.porFornecedor} />
+                    )}
                   </div>
                 </section>
               </div>

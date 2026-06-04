@@ -1,4 +1,4 @@
-import type { ItemCusto, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, ItemCusto, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import { brl, brlInteiro, dataBR } from '@/lib/formato'
 import { corCasa } from '@/lib/custos'
 import { GraficoGabinete } from './GraficoGabinete'
@@ -31,13 +31,14 @@ export function Assessores({
   mesReferencia?: string
   consultas?: ConsultaLotacao[]
   gabinete: ItemCusto
-  casa: 'camara' | 'senado' | 'assembleia'
+  casa: Casa
 }) {
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null
   const temFolhaSenado = casa === 'senado' && folha != null
   const temFolhaAlpb = casa === 'assembleia' && folha != null
-  const temFolhaReal = temFolhaSenado || temFolhaAlpb // valor oficial por pessoa (cargo/símbolo, sem GRG)
+  const temFolhaMunicipal = casa === 'camara_municipal' && folha != null
+  const temFolhaReal = temFolhaSenado || temFolhaAlpb || temFolhaMunicipal // valor oficial por pessoa (cargo/símbolo, sem GRG)
   const temFolha = temFolhaCamara || temFolhaReal
   const pctTeto = temFolhaCamara && verbaGabinete ? Math.round((folha! / verbaGabinete) * 100) : null
   const tetoCamara = verbaGabinete != null ? brlInteiro(verbaGabinete) : null
@@ -48,7 +49,7 @@ export function Assessores({
         <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
           <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
           <div className="text-xs text-tinta-suave">
-            {temFolhaSenado ? 'Comissionados (gabinete + escritório)' : temFolhaAlpb ? 'Comissionados do gabinete' : 'Assessores no gabinete'}
+            {temFolhaSenado ? 'Comissionados (gabinete + escritório)' : (temFolhaAlpb || temFolhaMunicipal) ? 'Comissionados do gabinete' : 'Assessores no gabinete'}
           </div>
           {quantidade == null ? (
             <>
@@ -59,7 +60,7 @@ export function Assessores({
             <>
               <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{quantidade}</div>
               <div className="mt-0.5 text-xs text-tinta-tenue">
-                {temFolhaAlpb
+                {(temFolhaAlpb || temFolhaMunicipal)
                   ? `comissionados · ${mesBR(mesReferencia)}`
                   : temFolhaSenado
                     ? 'comissionados hoje'
@@ -222,6 +223,23 @@ export function Assessores({
               </span>
             )}
           </>
+        ) : temFolhaMunicipal ? (
+          <>
+            <strong className="text-tinta">Folha real do gabinete.</strong>{' '}
+            Folha real dos comissionados lotados no gabinete do vereador (bruto do mês de referência
+            {mesReferencia ? `, ${mesBR(mesReferencia)}` : ''}). A folha do gabinete é a{' '}
+            <strong className="text-tinta-suave">soma exata</strong> do bruto dessas pessoas. Não inclui
+            auxílios/encargos. Não há descrição da atividade de cada pessoa: é dinheiro público pago sem
+            dizer em troca de quê. Fonte: portal da transparência da Câmara Municipal.
+            {consultas.length > 0 && (
+              <span className="mt-1 block">
+                Conferir na fonte oficial:{' '}
+                <a href={consultas[0].url} target="_blank" rel="noopener noreferrer" className="text-marca underline">
+                  remunerações na Câmara Municipal ↗
+                </a>
+              </span>
+            )}
+          </>
         ) : (
           <>
             <strong className="text-tinta">Transparência limitada.</strong>{' '}
@@ -230,7 +248,9 @@ export function Assessores({
             {casa === 'senado' &&
               'Não foi possível montar o quadro de gabinete deste senador (sem mandato ativo no período da folha).'}
             {casa === 'assembleia' &&
-              'Não foi possível montar o quadro de gabinete deste deputado a partir do arquivo de comissionados da Assembleia.'}{' '}
+              'Não foi possível montar o quadro de gabinete deste deputado a partir do arquivo de comissionados da Assembleia.'}
+            {casa === 'camara_municipal' &&
+              'Não foi possível montar o quadro de gabinete deste vereador a partir da folha publicada pela Câmara Municipal.'}{' '}
             É dinheiro público que deveria ter a mesma transparência do resto.
           </>
         )}

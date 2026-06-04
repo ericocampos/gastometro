@@ -24,6 +24,9 @@ import {
   remuneracoesAlpbUrl, linkComissionadosDoHtml, parseComissionadosOds, baixarOds,
   type ComissionadoAlpb,
 } from './sources/alpb.js'
+import {
+  normNome, tokensNome, distancia1, subconjuntoExato, fuzzyMesmoTamanho, nomesCompativeis,
+} from './sources/nomes.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = resolve(here, '../data')
@@ -203,44 +206,6 @@ async function enriquecerCamaraComRemuneracaoReal(
   }
   console.log(`  ${resolvidos}/${secs.length} com valor oficial (mês ${mesReferencia}); o resto manteve a tabela.`)
   return mesReferencia
-}
-
-const normNome = (s: string) =>
-  (s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z ]/g, ' ').replace(/\s+/g, ' ').trim()
-
-// honoríficos/títulos que aparecem no nome parlamentar mas atrapalham o match com o rótulo "GAB DEP"
-const HONOR = new Set(['DR', 'DRA', 'DEL', 'PROF', 'PROFA', 'PROFESSOR', 'PROFESSORA', 'SARGENTO', 'SGT', 'CABO', 'DEP'])
-// tokens significativos de um nome: sem honoríficos e sem iniciais soltas (ex.: "G", "A")
-const tokensNome = (s: string) => normNome(s).split(' ').filter((t) => t.length > 1 && !HONOR.has(t))
-
-function distancia1(a: string, b: string): boolean {
-  if (a === b) return true
-  if (Math.abs(a.length - b.length) > 1) return false
-  // Levenshtein com corte em 1
-  let i = 0, j = 0, dif = 0
-  while (i < a.length && j < b.length) {
-    if (a[i] === b[j]) { i++; j++; continue }
-    if (++dif > 1) return false
-    if (a.length > b.length) i++
-    else if (a.length < b.length) j++
-    else { i++; j++ }
-  }
-  return dif + (a.length - i) + (b.length - j) <= 1
-}
-// tokens do menor conjunto todos PRESENTES (idênticos) no maior — ex.: "João Paulo" ⊆ "João Paulo Segundo"
-function subconjuntoExato(a: string[], b: string[]): boolean {
-  const [menor, maior] = a.length <= b.length ? [a, b] : [b, a]
-  return menor.length > 0 && menor.every((t) => maior.includes(t))
-}
-// mesmo nº de tokens, com ≥1 token idêntico de âncora e os demais a ≤1 caractere — ex.: "Francisca Mota"
-// vs "Francisca Motta", "Wallber Virgulino" vs "Wallber Virgolino" (evita colidir nomes curtos distintos)
-function fuzzyMesmoTamanho(a: string[], b: string[]): boolean {
-  if (a.length !== b.length || a.length === 0) return false
-  if (!a.some((t) => b.includes(t))) return false
-  return a.every((t) => b.some((u) => distancia1(t, u)))
-}
-function nomesCompativeis(a: string[], b: string[]): boolean {
-  return subconjuntoExato(a, b) || fuzzyMesmoTamanho(a, b)
 }
 
 // Gabinete dos deputados estaduais (ALPB): baixa o {AAAAMM}-COMISSIONADOS.ods do mês mais recente,

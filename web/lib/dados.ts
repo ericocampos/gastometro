@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -39,6 +39,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     serieMensal: r.serieMensal,
     fotoUrl: r.politico.fotoUrl,
     mandato: r.politico.mandato,
+    municipio: r.politico.municipio,
   }))
 }
 
@@ -90,6 +91,12 @@ export function getAssessores(): Assessores | null {
   const caminho = resolve(dataDir(), 'assessores.json')
   if (!existsSync(caminho)) return null
   return lerJson<Assessores>(caminho)
+}
+
+export function getMunicipios(): MunicipiosIndice {
+  const caminho = resolve(dataDir(), 'municipios.json')
+  if (!existsSync(caminho)) return { atualizadoEm: '', totalMunicipiosPB: 223, cidades: [] }
+  return lerJson<MunicipiosIndice>(caminho)
 }
 
 export function getPerfil(id: string): PerfilParlamentar | null {
