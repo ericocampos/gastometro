@@ -1,10 +1,12 @@
-// Fonte Elmar: folha de pagamento da Câmara Municipal de João Pessoa (CMJP).
+// Fonte Elmar: folha de pagamento de câmaras/prefeituras (multi-tenant pelo {ctx}).
 // API de dados abertos:
-//   GET https://transparencia-api.elmartecnologia.com.br/api/101095/pessoal/folha_pagamento
+//   GET https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento
 //       ?competencia=MM/YYYY&api-version=1.0
-// Retorna { data: [ { ...campos com espacos/acentos... } ], dtUltimaAtualizacao, infoUltimaAtualizacao }.
+// ctx de João Pessoa = 101095. Retorna { data: [ { ...campos com espacos/acentos... } ], ... }.
 
-const API_BASE = 'https://transparencia-api.elmartecnologia.com.br/api/101095/pessoal/folha_pagamento'
+const API_HOST = 'https://transparencia-api.elmartecnologia.com.br'
+const folhaUrl = (ctx: string, competencia: string) =>
+  `${API_HOST}/api/${ctx}/pessoal/folha_pagamento?competencia=${encodeURIComponent(competencia)}&api-version=1.0`
 
 export interface FolhaRegistro {
   nome: string
@@ -95,7 +97,7 @@ export function extrairGabinetes(registros: FolhaRegistro[]): GabineteVereador[]
 }
 
 export async function baixarFolha(ctx: string, competencia: string): Promise<FolhaRegistro[]> {
-  const url = `${API_BASE}?competencia=${encodeURIComponent(competencia)}&api-version=1.0`
+  const url = folhaUrl(ctx, competencia)
   const resp = await fetch(url)
   if (!resp.ok) {
     throw new Error(`[${ctx}] Elmar folha_pagamento ${resp.status} ${resp.statusText}`)
