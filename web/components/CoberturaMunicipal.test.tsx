@@ -7,7 +7,7 @@ const umaCidade: MunicipiosIndice = {
   atualizadoEm: '2026-06-03',
   totalMunicipiosPB: 223,
   cidades: [{
-    slug: 'joao-pessoa', nome: 'João Pessoa', uf: 'PB',
+    slug: 'joao-pessoa', nome: 'João Pessoa', uf: 'PB', modelo: 'completo',
     numVereadores: 28, totalViapPeriodo: 5_000_000, totalGabineteMes: 1_400_000,
     periodoViap: { de: '2025-01', ate: '2026-02' },
     custo: { slug: 'joao-pessoa', nome: 'João Pessoa', salario: 26000, viapTeto: 14000, viapMedia: 13000, gabineteMedia: 50000 },

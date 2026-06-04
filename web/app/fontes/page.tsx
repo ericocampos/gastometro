@@ -40,12 +40,19 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
-    casa: 'Câmara Municipal de João Pessoa (vereadores)',
-    intro: 'Portal da Câmara (roster + VIAP) + API de dados abertos da folha (Elmar).',
+    casa: 'Câmara Municipal de João Pessoa (vereadores · modelo completo)',
+    intro: 'Portal da Câmara (roster + VIAP) + API de dados abertos da folha (Elmar). Gasto por vereador.',
     fontes: [
       { oque: 'Roster, foto, partido', onde: 'joaopessoa.pb.leg.br/vereadores', formato: 'HTML oficial', obs: 'nome de urna; o nome civil sai do início da bio de cada card, ligando ao nome civil da VIAP e da folha' },
       { oque: 'Despesas (VIAP)', onde: 'joaopessoa.pb.leg.br/transparencia/verbas-indenizatorias', formato: 'HTML oficial', obs: 'reembolso mensal por vereador (teto), com link da nota; a fonte não traz detalhamento por fornecedor' },
       { oque: 'Gabinete — comissionados', onde: 'transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento', formato: 'JSON (API)', obs: 'folha real por pessoa; lotação "GAB. VER." aponta o vereador; bruto e líquido do mês' },
+    ],
+  },
+  {
+    casa: 'Câmaras municipais — outras cidades (modelo leve)',
+    intro: 'Onde a fonte só publica subsídio fixo + folha de gabinete agregada (sem VIAP nem gabinete por vereador), mostramos só esses agregados. Campina Grande é a primeira.',
+    fontes: [
+      { oque: 'Campina Grande — vereadores + folha', onde: 'portaldoservidor-api.publicsoft.com.br/api/.../webservice/api?db={db}&params={tipo,mês,ano}', formato: 'JSON (API)', obs: 'PublicSoft; eletivos = subsídio do vereador; comissionados de "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação não nomeia o vereador, então não dá pra atribuir por pessoa' },
     ],
   },
 ]

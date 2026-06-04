@@ -6,6 +6,7 @@
       "slug": "joao-pessoa",
       "nome": "João Pessoa",
       "uf": "PB",
+      "modelo": "completo",
       "numVereadores": 28,
       "totalViapPeriodo": 7047126.77,
       "totalGabineteMes": 1135658.0099999998,
@@ -20,6 +21,140 @@
         "viapTeto": 14000,
         "viapMedia": 10447.523723810375,
         "gabineteMedia": 51620.81863636363
+      }
+    },
+    {
+      "slug": "campina-grande",
+      "nome": "Campina Grande",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 23,
+      "mesReferencia": "2026-05",
+      "folhaGabineteTotal": 1836845.1,
+      "vereadores": [
+        {
+          "nome": "ALEXANDRE PEREIRA DA SILVA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "ANA MARIA COSTA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "ANTONIO ALVES PIMENTEL FILHO",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "CAROLINA FARIAS ALMEIDA GOMES",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "CLEDSON RODRIGUES DA SILVA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "FRANKARISTON ALVES DE BRITO",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "IVONETE ALMEIDA DE ANDRADE LUDGERIO",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ PLINIO GOMES DE SOUZA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "JOSILENE MARIA DE OLIVEIRA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "KALLYNA DIAS GOMES",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIANO BRENO CHAVES PEREIRA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "MARCIO ALESSANDRO GUEDES MENDES",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "OLIMPIO OLIVEIRA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "PAMELA VITAL DO REGO FREIRE PAZ",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "RAFAEL PEREIRA SOUSA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "ROSTAND MIRANDA CAVALCANTE",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "SAULO MESSIAS GARCIA RIBEIRO",
+          "subsidio": 31297.17,
+          "presidente": true
+        },
+        {
+          "nome": "SAULO NORONHA CARACAS",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "SEVERINO DO RAMO DOS SANTOS SILVA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "TERTULIANO RAMOS MARACAJÁ",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "VALERIA SILVA ARAGÃO",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "WALERIA ASSUNÇÃO TAVARES DE OLIVEIRA",
+          "subsidio": 20864.78,
+          "presidente": false
+        },
+        {
+          "nome": "WELLINGTON SILVA BARBOSA",
+          "subsidio": 20864.78,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "campina-grande",
+        "nome": "Campina Grande",
+        "salario": 20864.78,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 79862.83043478262
       }
     }
   ]

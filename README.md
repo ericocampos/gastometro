@@ -120,6 +120,16 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 > Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
 
+### Câmaras municipais — modelo leve (outras cidades)
+
+Fora de João Pessoa, as câmaras em geral só publicam **subsídio fixo** (igual a todos) e a **folha de gabinete agregada** da câmara, sem VIAP por vereador nem lotação que aponte o gabinete de cada vereador. Para essas cidades usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de gabinete total), sem ranking nem perfil por vereador (não existiria diferença a mostrar). O modelo é escolhido em `collector/cidades.ts` (`modelo: 'completo' | 'leve'`).
+
+| Cidade | Plataforma | Endpoint | Como lemos |
+|---|---|---|---|
+| **Campina Grande** | PublicSoft (Portal do Servidor) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador (subsídio = bruto); comissionados `1-Comissionado` com cargo "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação é genérica ("GABINETE"), não nomeia o vereador |
+
+> PublicSoft atende várias câmaras/prefeituras da PB, então o mesmo endpoint escala para outras cidades trocando o `db`.
+
 ---
 
 ## Decisões e armadilhas que descobrimos

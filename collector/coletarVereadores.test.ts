@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import { montarCidade } from './coletarVereadores'
+import { montarCidade, montarCidadeLeve } from './coletarVereadores'
 import type { CidadeConfig } from './cidades'
 import { normNome } from './sources/nomes'
 
-const cfg: CidadeConfig = { slug:'joao-pessoa', nome:'João Pessoa', uf:'PB', ctxElmar:'101095', subsidio:26000, rosterUrl:'', viapUrl:'', apelidoOverride: { [normNome('GUGA PET')]: 'Guga Pereira' } }
+const cfg: CidadeConfig = { slug:'joao-pessoa', nome:'João Pessoa', uf:'PB', modelo:'completo', ctxElmar:'101095', subsidio:26000, rosterUrl:'', viapUrl:'', apelidoOverride: { [normNome('GUGA PET')]: 'Guga Pereira' } }
 const roster = [
   { nome:'Valdir José Dowsley', partido:'PT', fotoUrl:'f1', slug:'dinho' },
   { nome:'Guga Pereira', partido:'PL', fotoUrl:'f2', slug:'guga' },
@@ -43,5 +43,28 @@ describe('montarCidade', () => {
     expect(s.ranking.find(r => /Dowsley/.test(r.nome))!.total).toBe(28000)
     expect(s.resumoMunicipio.custo.salario).toBe(26000)
     expect(s.resumoMunicipio.numVereadores).toBe(2)
+  })
+})
+
+describe('montarCidadeLeve', () => {
+  const cfgLeve: CidadeConfig = { slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB', modelo: 'leve', plataforma: 'publicsoft', publicsoftDb: 'x' }
+  const vereadores = [
+    { nome: 'Carlos', subsidio: 20000, presidente: false },
+    { nome: 'Ana', subsidio: 20000, presidente: false },
+    { nome: 'Bruno', subsidio: 30000, presidente: true },
+  ]
+  const m = montarCidadeLeve(cfgLeve, vereadores, 90000, '2026-05')
+
+  it('produz um Municipio leve com agregados (sem por-vereador)', () => {
+    expect(m.modelo).toBe('leve')
+    expect(m.numVereadores).toBe(3)
+    expect(m.folhaGabineteTotal).toBe(90000)
+    expect(m.mesReferencia).toBe('2026-05')
+    expect(m.vereadores).toHaveLength(3)
+  })
+  it('subsídio base = mediana e média de gabinete = total / nº', () => {
+    expect(m.custo.salario).toBe(20000)
+    expect(m.custo.gabineteMedia).toBe(30000)
+    expect(m.custo.viapTeto).toBe(0)
   })
 })
