@@ -39,12 +39,16 @@ export function nomesCompativeis(a: string[], b: string[]): boolean {
   return subconjuntoExato(a, b) || fuzzyMesmoTamanho(a, b)
 }
 
-// match popular(urna) x civil: batem se compartilham >=2 tokens significativos (sobrenomes),
-// OU se nomesCompativeis (subconjunto/fuzzy) já existente retorna true.
+// conectores e partículas de nome que NÃO servem de âncora de identidade
+// (todo mundo tem "DOS SANTOS DA SILVA"); contá-los gera falsos positivos.
+const PARTICULAS = new Set(['DE', 'DA', 'DO', 'DAS', 'DOS', 'E'])
+
+// match popular(urna) x civil: batem se compartilham >=2 tokens ANCORÁVEIS (sobrenomes
+// distintos, não partículas), OU se nomesCompativeis (subconjunto/fuzzy) retorna true.
 export function mesmaPessoaTokens(a: string, b: string): boolean {
   const ta = tokensNome(a), tb = tokensNome(b)
   if (nomesCompativeis(ta, tb)) return true
   const setB = new Set(tb)
-  const comuns = ta.filter(t => t.length >= 3 && setB.has(t))
+  const comuns = ta.filter(t => t.length >= 3 && !PARTICULAS.has(t) && setB.has(t))
   return comuns.length >= 2
 }

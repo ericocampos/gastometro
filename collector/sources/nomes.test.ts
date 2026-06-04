@@ -13,4 +13,10 @@ describe('nomes', () => {
     expect(mesmaPessoaTokens('GUGA PET', 'JOSE FREIRE DA COSTA')).toBe(false)
     expect(mesmaPessoaTokens('MARMUTHE', 'MARCOS ANTONIO SILVA')).toBe(false)
   })
+  it('NAO casa pessoas distintas que só compartilham partículas comuns (dos/Santos)', () => {
+    // bug real: "João Bosco dos Santos Filho" vs "Valdir Trindade dos Santos"
+    // compartilham só DOS + SANTOS (partícula + sobrenome comum) — não são a mesma pessoa
+    expect(mesmaPessoaTokens('João Bosco dos Santos Filho', 'Valdir Trindade dos Santos')).toBe(false)
+    expect(mesmaPessoaTokens('Maria da Silva Souza', 'Ana da Silva Pereira')).toBe(false)
+  })
 })
