@@ -195,7 +195,7 @@ export interface Municipio {
   periodoViap?: { de: string; ate: string } | null
   // leve:
   mesReferencia?: string          // mês de referência da folha (AAAA-MM)
-  folhaGabineteTotal?: number     // folha bruta agregada da câmara (gabinetes de vereador)
+  folhaComissionados?: number     // folha bruta agregada dos cargos comissionados da câmara
   vereadores?: MunicipioVereador[]
 }
 export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }

@@ -27,8 +27,8 @@ function Card({ rotulo, valor, legenda, tenue }: { rotulo: string; valor: string
 export function CamaraLeve({ municipio, atualizadoEm }: { municipio: Municipio; atualizadoEm?: string }) {
   const vereadores = municipio.vereadores ?? []
   const refTxt = municipio.mesReferencia ? mesAno(municipio.mesReferencia) : ''
-  // folha de gabinete só existe quando a câmara publica a folha; ausente => não publicado
-  const temFolha = municipio.folhaGabineteTotal != null
+  // folha de comissionados só existe quando a câmara publica a folha; ausente => não publicado
+  const temFolha = municipio.folhaComissionados != null
 
   return (
     <div>
@@ -39,12 +39,12 @@ export function CamaraLeve({ municipio, atualizadoEm }: { municipio: Municipio; 
           <Card rotulo="Subsídio" valor={brlInteiro(municipio.custo.salario)} legenda="Subsídio do vereador (fixo)" />
           {temFolha ? (
             <Card
-              rotulo="Folha de gabinete"
-              valor={brlInteiro(municipio.folhaGabineteTotal ?? 0)}
-              legenda={`Total da câmara${refTxt ? ` · ${refTxt}` : ''}`}
+              rotulo="Folha de comissionados"
+              valor={brlInteiro(municipio.folhaComissionados ?? 0)}
+              legenda={`Cargos de confiança · total da câmara${refTxt ? ` · ${refTxt}` : ''}`}
             />
           ) : (
-            <Card rotulo="Folha de gabinete" valor="Não publicado" legenda="A câmara não divulga a folha" tenue />
+            <Card rotulo="Folha de comissionados" valor="Não publicado" legenda="A câmara não divulga a folha" tenue />
           )}
         </div>
 
@@ -52,10 +52,10 @@ export function CamaraLeve({ municipio, atualizadoEm }: { municipio: Municipio; 
           <p className="mt-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
             <strong className="text-tinta">Cobertura desta cidade.</strong>{' '}
             A fonte pública da câmara traz o <strong className="text-tinta-suave">subsídio</strong> (fixo, igual a todos)
-            e a <strong className="text-tinta-suave">folha de gabinete agregada</strong> da câmara, mas não a verba
+            e a <strong className="text-tinta-suave">folha de comissionados agregada</strong> da câmara, mas não a verba
             indenizatória por vereador nem a lotação de cada comissionado em um gabinete específico. Por isso, aqui não
-            há ranking nem perfil de gasto por vereador (não existiria diferença a mostrar). A folha de gabinete é o
-            bruto somado dos comissionados de gabinete{refTxt ? `, na competência ${refTxt}` : ''}.
+            há ranking nem perfil de gasto por vereador (não existiria diferença a mostrar). A folha de comissionados é o
+            bruto somado dos cargos de confiança{refTxt ? `, na competência ${refTxt}` : ''}.
             {atualizadoEm ? ` Importado em ${dataBR(atualizadoEm)}.` : ''}
           </p>
         ) : (
@@ -64,7 +64,7 @@ export function CamaraLeve({ municipio, atualizadoEm }: { municipio: Municipio; 
             A câmara publica a lista de vereadores, e o <strong className="text-tinta-suave">subsídio</strong> é fixo
             por lei (igual a todos, com valor maior só para a presidência). O portal de transparência da câmara{' '}
             <strong className="text-tinta-suave">não divulga a folha de pagamento</strong> por HTTP, então ainda não
-            há folha de gabinete nem ranking ou perfil de gasto por vereador. Estou buscando mais dados para
+            há folha de comissionados nem ranking ou perfil de gasto por vereador. Estou buscando mais dados para
             detalhar esta cidade.
             {atualizadoEm ? ` Importado em ${dataBR(atualizadoEm)}.` : ''}
           </p>

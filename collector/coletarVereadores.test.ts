@@ -58,7 +58,7 @@ describe('montarCidadeLeve', () => {
   it('produz um Municipio leve com agregados (sem por-vereador)', () => {
     expect(m.modelo).toBe('leve')
     expect(m.numVereadores).toBe(3)
-    expect(m.folhaGabineteTotal).toBe(90000)
+    expect(m.folhaComissionados).toBe(90000)
     expect(m.mesReferencia).toBe('2026-05')
     expect(m.vereadores).toHaveLength(3)
   })
@@ -85,7 +85,7 @@ describe('montarCidadeLeveRoster (câmara não publica folha)', () => {
     expect(m.modelo).toBe('leve')
     expect(m.numVereadores).toBe(3)
     expect(m.custo.salario).toBe(17000)
-    expect(m.folhaGabineteTotal).toBeUndefined()   // câmara não publica
+    expect(m.folhaComissionados).toBeUndefined()   // câmara não publica
     expect(m.mesReferencia).toBeUndefined()
     expect(m.custo.gabineteMedia).toBeNull()
   })

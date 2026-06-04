@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { parseFolhaJson, extrairGabinetes, extrairVereadoresElmar, somarFolhaGabineteElmar } from './elmar'
+import { parseFolhaJson, extrairGabinetes, extrairVereadoresElmar, somarComissionadosElmar } from './elmar'
 const fix = JSON.parse(readFileSync(resolve(__dirname, '__fixtures__/elmar-folha-jp.json'), 'utf8'))
 const fixLeve = JSON.parse(readFileSync(resolve(__dirname, '__fixtures__/elmar-leve.json'), 'utf8'))
 describe('elmar', () => {
@@ -26,7 +26,7 @@ describe('elmar', () => {
 describe('elmar — modelo leve (Sousa/Cabedelo)', () => {
   const regs = parseFolhaJson(fixLeve)
 
-  it('extrai vereadores pelo cargo VEREADOR e marca o presidente (subsídio maior)', () => {
+  it('extrai vereadores pelo regime ELETIVO e marca o presidente (subsídio maior)', () => {
     const v = extrairVereadoresElmar(regs)
     expect(v).toHaveLength(3)
     expect(v.every((x) => x.subsidio > 0)).toBe(true)
@@ -35,10 +35,8 @@ describe('elmar — modelo leve (Sousa/Cabedelo)', () => {
     expect(pres[0].subsidio).toBe(20864.77)
   })
 
-  it('soma a folha de gabinete pelo regex do cargo, excluindo vereadores e administrativos', () => {
-    // "DE VEREADOR" pega os 2 comissionados de gabinete (5000+4000); exclui CHEFE DE GABINETE e admin
-    expect(somarFolhaGabineteElmar(regs, /DE VEREADOR/i)).toBe(9000)
-    // regex que não casa nenhum cargo de gabinete => 0
-    expect(somarFolhaGabineteElmar(regs, /PARLAMENTAR/i)).toBe(0)
+  it('soma a folha de comissionados pelo regime, excluindo eletivos e estatutários', () => {
+    // 3 com regime CARGO COMISSIONADO (5000+4000+6000); exclui os 3 eletivos e o estatutário (2000)
+    expect(somarComissionadosElmar(regs)).toBe(15000)
   })
 })

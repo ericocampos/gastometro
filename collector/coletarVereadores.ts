@@ -9,9 +9,9 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
-import { baixarFolha, extrairGabinetes, extrairVereadoresElmar, somarFolhaGabineteElmar, type GabineteVereador } from './sources/elmar.js'
+import { baixarFolha, extrairGabinetes, extrairVereadoresElmar, somarComissionadosElmar, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
-import { baixarFolhaPublicsoft, extrairVereadores, somarFolhaGabinete, type VereadorLeve } from './sources/publicsoft.js'
+import { baixarFolhaPublicsoft, extrairVereadores, somarComissionados, type VereadorLeve } from './sources/publicsoft.js'
 import { baixarRosterPatos, type VereadorRosterLeve } from './sources/patosRoster.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
@@ -37,7 +37,7 @@ interface Municipio {
   totalGabineteMes?: number
   periodoViap?: { de: string; ate: string } | null
   mesReferencia?: string
-  folhaGabineteTotal?: number
+  folhaComissionados?: number
   vereadores?: MunicipioVereador[]
 }
 interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }
@@ -188,33 +188,33 @@ export function montarCidade(
   }
 }
 
-// Modelo leve: a cidade só publica subsídio fixo + folha de gabinete agregada (sem VIAP nem
-// gabinete por vereador). Vira um Municipio 'leve' no municipios.json, sem entrar no modelo plano.
+// Modelo leve: a cidade publica subsídio + folha de comissionados agregada da câmara (sem VIAP nem
+// gasto por vereador). Vira um Municipio 'leve' no municipios.json, sem entrar no modelo plano.
 export function montarCidadeLeve(
   cfg: CidadeConfig,
   vereadores: VereadorLeve[],
-  folhaGabineteTotal: number,
+  folhaComissionados: number,
   mesReferencia: string,
 ): Municipio {
   const subsidios = vereadores.map((v) => v.subsidio).sort((a, b) => a - b)
   const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0 // mediana
-  const gabineteMedia = vereadores.length ? folhaGabineteTotal / vereadores.length : null
+  const comissionadosMedia = vereadores.length ? folhaComissionados / vereadores.length : null
   return {
     slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'leve',
     numVereadores: vereadores.length,
     mesReferencia,
-    folhaGabineteTotal,
+    folhaComissionados,
     vereadores: vereadores.map((v) => ({ nome: v.nome, subsidio: v.subsidio, presidente: v.presidente })),
     custo: {
       slug: cfg.slug, nome: cfg.nome, salario: subsidioBase,
-      viapTeto: 0, viapMedia: null, gabineteMedia,
+      viapTeto: 0, viapMedia: null, gabineteMedia: comissionadosMedia,
     },
   }
 }
 
 // Modelo leve sem folha publicada: a câmara não publica folha de pagamento por HTTP (ex.: Patos,
 // no portal intgest). Só temos o roster (HTML) e o subsídio fixo de lei. O Municipio fica SEM
-// folhaGabineteTotal/mesReferencia, e o web mostra a folha de gabinete como "não publicado".
+// folhaComissionados/mesReferencia, e o web mostra a folha de comissionados como "não publicado".
 export function montarCidadeLeveRoster(cfg: CidadeConfig, roster: VereadorRosterLeve[]): Municipio {
   const subsidio = cfg.subsidio ?? 0
   const subsidioPres = cfg.subsidioPresidente ?? subsidio
@@ -252,13 +252,12 @@ async function main() {
       if (cfg.plataforma === 'roster-html') {
         if (!cfg.rosterUrl) { console.log('  sem rosterUrl, pulando'); continue }
         const roster = await baixarRosterPatos(cfg.rosterUrl)
-        console.log(`  roster: ${roster.length} vereadores | folha de gabinete: não publicada pela câmara`)
+        console.log(`  roster: ${roster.length} vereadores | folha: não publicada pela câmara`)
         resumos.push(montarCidadeLeveRoster(cfg, roster))
         continue
       }
-      const gabRegex = new RegExp(cfg.gabineteCargoRegex ?? 'GABINETE DE VEREADOR', 'i')
       let vereadores: VereadorLeve[] = []
-      let folhaGab = 0
+      let folhaCom = 0
       let mesRef = ''
       const hoje = new Date()
 
@@ -267,18 +266,17 @@ async function main() {
         if (!cfg.ctxElmar) { console.log('  sem ctxElmar, pulando'); continue }
         for (let i = 0; i < 8; i++) {
           const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
-          const comp = competenciaDe(d)
-          const regs = await baixarFolha(cfg.ctxElmar, comp)
+          const regs = await baixarFolha(cfg.ctxElmar, competenciaDe(d))
           const v = extrairVereadoresElmar(regs)
           if (v.length > 0) {
             vereadores = v
-            folhaGab = somarFolhaGabineteElmar(regs, gabRegex)
+            folhaCom = somarComissionadosElmar(regs)
             mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
             break
           }
         }
-        console.log(`  vereadores: ${vereadores.length} | folha gabinete: R$ ${folhaGab.toFixed(2)} | ref ${mesRef}`)
-        resumos.push(montarCidadeLeve(cfg, vereadores, folhaGab, mesRef))
+        console.log(`  vereadores: ${vereadores.length} | folha comissionados: R$ ${folhaCom.toFixed(2)} | ref ${mesRef}`)
+        resumos.push(montarCidadeLeve(cfg, vereadores, folhaCom, mesRef))
         continue
       }
 
@@ -292,13 +290,13 @@ async function main() {
         const v = extrairVereadores(regs)
         if (v.length > 0) {
           vereadores = v
-          folhaGab = somarFolhaGabinete(regs, gabRegex)
+          folhaCom = somarComissionados(regs)
           mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
           break
         }
       }
-      console.log(`  vereadores: ${vereadores.length} | folha gabinete: R$ ${folhaGab.toFixed(2)} | ref ${mesRef}`)
-      resumos.push(montarCidadeLeve(cfg, vereadores, folhaGab, mesRef))
+      console.log(`  vereadores: ${vereadores.length} | folha comissionados: R$ ${folhaCom.toFixed(2)} | ref ${mesRef}`)
+      resumos.push(montarCidadeLeve(cfg, vereadores, folhaCom, mesRef))
       continue
     }
 

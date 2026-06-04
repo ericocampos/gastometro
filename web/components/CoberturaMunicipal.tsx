@@ -11,9 +11,9 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
   if (cidades.length === 0) return null
 
   const numVereadores = cidades.reduce((s, c) => s + c.numVereadores, 0)
-  // folha de gabinete mensal: completo usa totalGabineteMes, leve usa folhaGabineteTotal
+  // folha mensal coberta: completo usa totalGabineteMes; leve usa folhaComissionados
   const folhaGabinete = cidades.reduce(
-    (s, c) => s + (c.modelo === 'completo' ? (c.totalGabineteMes ?? 0) : (c.folhaGabineteTotal ?? 0)),
+    (s, c) => s + (c.modelo === 'completo' ? (c.totalGabineteMes ?? 0) : (c.folhaComissionados ?? 0)),
     0,
   )
 
@@ -47,7 +47,7 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
       <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-sm">
         <Item rotulo="Cidades" valor={String(cidades.length)} />
         <Item rotulo="Vereadores" valor={String(numVereadores)} />
-        <Item rotulo="Folha de gabinete · mês" valor={brlInteiro(folhaGabinete)} />
+        <Item rotulo="Folha de gabinete/comissionados · mês" valor={brlInteiro(folhaGabinete)} />
       </dl>
     </div>
   )

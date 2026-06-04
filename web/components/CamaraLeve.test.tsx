@@ -7,7 +7,7 @@ const cg: Municipio = {
   slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB', modelo: 'leve',
   numVereadores: 23,
   mesReferencia: '2026-05',
-  folhaGabineteTotal: 1_836_845,
+  folhaComissionados: 1_836_845,
   vereadores: [
     { nome: 'Ana Maria Costa', subsidio: 20864, presidente: false },
     { nome: 'Saulo Ribeiro', subsidio: 31297, presidente: true },
@@ -34,7 +34,7 @@ describe('CamaraLeve', () => {
 const patos: Municipio = {
   slug: 'patos', nome: 'Patos', uf: 'PB', modelo: 'leve',
   numVereadores: 17,
-  // sem folhaGabineteTotal nem mesReferencia: a câmara não publica a folha
+  // sem folhaComissionados nem mesReferencia: a câmara não publica a folha
   vereadores: [
     { nome: 'WILLAMI ALVES DE LUCENA', subsidio: 17000, presidente: false, partido: 'PSB' },
     { nome: 'VALTIDE PAULINO SANTOS', subsidio: 22000, presidente: true, partido: 'REPUBLICANOS' },
