@@ -95,6 +95,34 @@ const elmarLeve: CidadeConfig[] = ELMAR_PB.map((c) => ({
   slug: c.slug, nome: c.nome, uf: 'PB', modelo: 'leve', plataforma: 'elmar', ctxElmar: c.ctx,
 }))
 
+// Câmaras da PB no PublicSoft (Portal do Servidor), modelo leve. Achadas pela "Central de Clientes"
+// do Portal da Transparência da PublicSoft (lista UF→cidade→instituição); para cada câmara com folha
+// integrada, o db (base64 do CNPJ) sai do link `folha.php?db=` e foi confirmado no webservice. Só
+// entram as que retornam vereadores (tipoCargo Eletivo) na legislatura atual (2025+). Campina Grande
+// e Bayeux ficam inline acima (entradas originais). Subsídio e folha de comissionados saem da folha.
+const PUBLICSOFT_PB: { slug: string; nome: string; db: string }[] = [
+  { slug: 'areia', nome: 'Areia', db: 'MTI5MjAxODcwMDAxMjA=' },
+  { slug: 'belem-do-brejo-do-cruz', nome: 'Belém do Brejo do Cruz', db: 'MjQ1MTA2MjAwMDAxMzk=' },
+  { slug: 'borborema', nome: 'Borborema', db: 'MDg1ODQxNDYwMDAxMzM=' },
+  { slug: 'cacimba-de-areia', nome: 'Cacimba de Areia', db: 'MTEzNjQ3MjUwMDAxODU=' },
+  { slug: 'cacimba-de-dentro', nome: 'Cacimba de Dentro', db: 'MDg1ODI1NDYwMDAxMDA=' },
+  { slug: 'cruz-do-espirito-santo', nome: 'Cruz do Espírito Santo', db: 'MDkzMDg4NDIwMDAxODA=' },
+  { slug: 'diamante', nome: 'Diamante', db: 'MDA5MDkzNDkwMDAxNDA=' },
+  { slug: 'itaporanga', nome: 'Itaporanga', db: 'MDkxNDI5ODUwMDAxNjQ=' },
+  { slug: 'itapororoca', nome: 'Itapororoca', db: 'MjQwOTc5OTAwMDAxOTY=' },
+  { slug: 'juru', nome: 'Juru', db: 'MTE5ODYwNTYwMDAxODM=' },
+  { slug: 'mae-d-agua', nome: "Mãe d'Água", db: 'MDc3NjQ3NjIwMDAxMDM=' },
+  { slug: 'manaira', nome: 'Manaíra', db: 'MDkxNDMwNzQwMDAxNTE=' },
+  { slug: 'pianco', nome: 'Piancó', db: 'MDg1NjA3ODEwMDAxODA=' },
+  { slug: 'riachao-do-poco', nome: 'Riachão do Poço', db: 'MDE2Mzg0NTcwMDAxOTk=' },
+  { slug: 'santana-dos-garrotes', nome: 'Santana dos Garrotes', db: 'MjQyMjYyODQwMDAxMDU=' },
+  { slug: 'sao-miguel-de-taipu', nome: 'São Miguel de Taipu', db: 'MDcxNTY3MTMwMDAxOTg=' },
+]
+
+const publicsoftLeve: CidadeConfig[] = PUBLICSOFT_PB.map((c) => ({
+  slug: c.slug, nome: c.nome, uf: 'PB', modelo: 'leve', plataforma: 'publicsoft', publicsoftDb: c.db,
+}))
+
 export const CIDADES: CidadeConfig[] = [
   {
     slug: 'joao-pessoa', nome: 'João Pessoa', uf: 'PB', modelo: 'completo',
@@ -124,4 +152,5 @@ export const CIDADES: CidadeConfig[] = [
     presidenteNome: 'Valtide Paulino Santos',
   },
   ...elmarLeve,
+  ...publicsoftLeve,
 ]

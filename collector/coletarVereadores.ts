@@ -284,8 +284,13 @@ async function main() {
       if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
         console.log('  sem plataforma leve configurada, pulando'); continue
       }
-      for (let i = 0; i < 8; i++) {
+      // Varre do mês corrente até o início da legislatura atual (jan/2025) e pega o mês mais recente
+      // com vereadores. Algumas câmaras publicam com atraso ou pararam em 2025; não exibimos dados
+      // anteriores a 2025 (seriam de vereadores da legislatura passada).
+      const inicioLegislatura = new Date(2025, 0, 1)
+      for (let i = 0; ; i++) {
         const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
+        if (d < inicioLegislatura) break
         const regs = await baixarFolhaPublicsoft(cfg.publicsoftDb, d.getMonth() + 1, d.getFullYear())
         const v = extrairVereadores(regs)
         if (v.length > 0) {

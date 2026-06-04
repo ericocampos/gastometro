@@ -4100,6 +4100,1080 @@
         "viapMedia": null,
         "gabineteMedia": 3609.726666666667
       }
+    },
+    {
+      "slug": "areia",
+      "nome": "Areia",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 11,
+      "mesReferencia": "2026-05",
+      "folhaComissionados": 31800,
+      "vereadores": [
+        {
+          "nome": "CLAUDIO GOMES DE LIMA",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "EDGLEY DE BRITO SANTOS",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO PAULO DE SOUZA MACEDO",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "JOSIVALDO GONCALVES DA SILVA",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "LUANA RAYCE DE LIMA MOREIRA",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "MARCELO DOS SANTOS MELO",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA DA PENHA LUCIANO SOARES",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "NELMA CARNEIRO CAVALCANTE",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "OZIEL EVARISTO DA SILVA",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "SEVERINO PEREIRA FRANQLIM DA SILVA",
+          "subsidio": 9300,
+          "presidente": false
+        },
+        {
+          "nome": "VANILDA HONORIO DA SILVA",
+          "subsidio": 13950,
+          "presidente": true
+        }
+      ],
+      "custo": {
+        "slug": "areia",
+        "nome": "Areia",
+        "salario": 9300,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 2890.909090909091
+      }
+    },
+    {
+      "slug": "belem-do-brejo-do-cruz",
+      "nome": "Belém do Brejo do Cruz",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 5000,
+      "vereadores": [
+        {
+          "nome": "EDSONIA DE ANDRADE FERNANDES",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "ELIDIO VALDIVINO DA SILVA NETO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCILEIDES LINO DA SILVA",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO EDIMILCIO MAIA NETO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "HILARIO DE OLIVEIRA FILHO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE RAFAEL SOARES ALVES",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE WELLINGTON LOCIO DOS SANTOS",
+          "subsidio": 9170,
+          "presidente": true
+        },
+        {
+          "nome": "LINDOMAR MEDEIROS DE AZEVEDO FILHO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "SHYLTON QUEIROZ DE LIMA",
+          "subsidio": 6954,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "belem-do-brejo-do-cruz",
+        "nome": "Belém do Brejo do Cruz",
+        "salario": 6954,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 555.5555555555555
+      }
+    },
+    {
+      "slug": "borborema",
+      "nome": "Borborema",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2026-02",
+      "folhaComissionados": 29370.32,
+      "vereadores": [
+        {
+          "nome": "CÉLIA REJANE CASSIANO DE SOUSA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "GLAUBER LAURENTINO DA SILVA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE DA COSTA MARANHAO FILHO",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "LAECIO MAIA DE FARIAS",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "ROMERO RODRIGUES",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "SEVERINO FELISMINO DE OLIVEIRA BISNETO",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "SEVERINO GALDINO FERREIRA NETO",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "SILVÂNIA PEREIRA DO NASCIMENTO LIRA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "WALLEF SOARES DE FARIAS",
+          "subsidio": 9000,
+          "presidente": true
+        }
+      ],
+      "custo": {
+        "slug": "borborema",
+        "nome": "Borborema",
+        "salario": 6000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 3263.3688888888887
+      }
+    },
+    {
+      "slug": "cacimba-de-areia",
+      "nome": "Cacimba de Areia",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 1518,
+      "vereadores": [
+        {
+          "nome": "ANTONIO PAULINO DOS SANTOS",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "DAMIÃO PEREIRA DE FARIAS",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "FERNANDO JUNIOR ALVES FERREIRA",
+          "subsidio": 7350,
+          "presidente": true
+        },
+        {
+          "nome": "GEOMAR XAVIER SOARES",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA IMACULADA AMARO DE OLIVEIRA VIANA",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "RAFAEL XAVIER CEZAR DA NOBREGA",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "TEOMAR GONÇALVES DA SILVA",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "VALERIA NOBREGA DE FRANÇA",
+          "subsidio": 4900,
+          "presidente": false
+        },
+        {
+          "nome": "VANDENILTON DA SILVA RODRIGUES",
+          "subsidio": 4900,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "cacimba-de-areia",
+        "nome": "Cacimba de Areia",
+        "salario": 4900,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 168.66666666666666
+      }
+    },
+    {
+      "slug": "cacimba-de-dentro",
+      "nome": "Cacimba de Dentro",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 10,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 57650,
+      "vereadores": [
+        {
+          "nome": "ALEXANDRE MARCIO RAMOS ROCHA FILHO",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "ANTONIO FRANCISCO DA SILVA NETO",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "CRISTIANO BARBOSA GOMES",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "EDMILSON NUNES DE OLIVEIRA",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCINETE SOARES DA SILVA NASCIMENTO",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO ILMAR BEZERRA DA COSTA",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "JANAINA CARDOSO SILVA",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO PEDRO PEREIRA JUNIOR",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE FELIX DE OLIVEIRA",
+          "subsidio": 9180,
+          "presidente": false
+        },
+        {
+          "nome": "RONALDO FERREIRA GOMES",
+          "subsidio": 9180,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "cacimba-de-dentro",
+        "nome": "Cacimba de Dentro",
+        "salario": 9180,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 5765
+      }
+    },
+    {
+      "slug": "cruz-do-espirito-santo",
+      "nome": "Cruz do Espírito Santo",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 11,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 96318,
+      "vereadores": [
+        {
+          "nome": "AELTON VICTOR DE LIMA",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "BARTOLOMEU CRUZ DE MEIRELES FILHO",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "EDILSON CEZAR DE OLIVEIRA",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "EDVALDO DANTAS",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE HONORATO DE MELO NETO",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE MILSON ROZENO",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "LENILSON NASCIMENTO DA SILVA",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "LEONARDO BATISTA DO NASCIMENTO",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "LEONARDO DO NASCIMENTO",
+          "subsidio": 7500,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA DO SOCORRO GOUVEIA",
+          "subsidio": 9000,
+          "presidente": true
+        },
+        {
+          "nome": "NOBERTO DE PAIVA",
+          "subsidio": 7500,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "cruz-do-espirito-santo",
+        "nome": "Cruz do Espírito Santo",
+        "salario": 7500,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 8756.181818181818
+      }
+    },
+    {
+      "slug": "diamante",
+      "nome": "Diamante",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2026-05",
+      "folhaComissionados": 10063.7,
+      "vereadores": [
+        {
+          "nome": "CICERO VENANCIO DE MOURA",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "DAMIÃO FELISMINO JUCAS",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "DANIEL MANGUEIRA ABRANTES",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "DOUGLAS FRANCO DINIZ",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ ALISON FERREIRA DELFINO",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ BRITO DA SILVA FILHO",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ LOURENÇO DE SOUSA FILHO",
+          "subsidio": 6600,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIVANIO SOMARIO ARAUJO VIEIRA",
+          "subsidio": 9900,
+          "presidente": true
+        },
+        {
+          "nome": "MARIA DE LOURDES ANGELO PEREIRA",
+          "subsidio": 6600,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "diamante",
+        "nome": "Diamante",
+        "salario": 6600,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 1118.1888888888889
+      }
+    },
+    {
+      "slug": "itaporanga",
+      "nome": "Itaporanga",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 12,
+      "mesReferencia": "2026-04",
+      "folhaComissionados": 38200,
+      "vereadores": [
+        {
+          "nome": "ARLINGTON ARARUNA DE QUEIROZ",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "CLEBSON FIGUEIREDO NEVES",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "HELIO RODRIGUES",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "ILDEAN RODRIGUES DA SILVA",
+          "subsidio": 15600,
+          "presidente": true
+        },
+        {
+          "nome": "IRENILDA VICENTE SOARES",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "IZABELLE B. MENDES DE SOUSA MANGUEIRA CABRAL",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO DE SOUSA GUIMARAES",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO PEREIRA DE SOUZA",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "JOSEANE GONCALVES DE BRITO",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "LUCAS BASILIO PINTO",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "MACLAILDO ANDRELINO DA SILVA",
+          "subsidio": 10400,
+          "presidente": false
+        },
+        {
+          "nome": "MANOEL LUIZ FEITOZA",
+          "subsidio": 10400,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "itaporanga",
+        "nome": "Itaporanga",
+        "salario": 10400,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 3183.3333333333335
+      }
+    },
+    {
+      "slug": "itapororoca",
+      "nome": "Itapororoca",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 11,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 34125,
+      "vereadores": [
+        {
+          "nome": "ANTONIO JAILSON SILVA DE OLIVEIRA",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "BRUNO LOPES SOUZA DE BRITO",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "ERINALDO SILVA DO NASCIMENTO",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "HUGO GOMES DE OLIVEIRA",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "LUIZ GONCALVES DA COSTA",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA DO SOCORRO SILVA DO NASCIMENTO",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "NEUZA FERNANDES MADRUGA DE FRANCA",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "RISEUDA VIEIRA NUNES",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "RODRIGO SANTOS DE CARVALHO",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "SKALLYTEOHARA KADYDJA SOUZA RODRIGUES",
+          "subsidio": 9500,
+          "presidente": false
+        },
+        {
+          "nome": "WALISON DIONISIO DA SILVA",
+          "subsidio": 14250,
+          "presidente": true
+        }
+      ],
+      "custo": {
+        "slug": "itapororoca",
+        "nome": "Itapororoca",
+        "salario": 9500,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 3102.2727272727275
+      }
+    },
+    {
+      "slug": "juru",
+      "nome": "Juru",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 8,
+      "mesReferencia": "2025-12",
+      "folhaComissionados": 9986.59,
+      "vereadores": [
+        {
+          "nome": "ALVARO ANCELMO TEIXEIRA",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "CINALVA LEITE DE SOUSA LIMA",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "EVANGELISTA JOSE DE MEDEIROS",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "ISABELLA SILVERIO TEIXEIRA DA ROCHA",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "MANOEL DE ARAUJO",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "NAPOLEAO MARQUES DE CARVALHO NETO",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "PAULO DOMINGOS DE SOUZA ARAUJO",
+          "subsidio": 6950,
+          "presidente": false
+        },
+        {
+          "nome": "SILVINO ALVES DE LIMA",
+          "subsidio": 6950,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "juru",
+        "nome": "Juru",
+        "salario": 6950,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 1248.32375
+      }
+    },
+    {
+      "slug": "mae-d-agua",
+      "nome": "Mãe d'Água",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2026-05",
+      "folhaComissionados": 10230.54,
+      "vereadores": [
+        {
+          "nome": "ANATIANE FERREIRA CABRAL",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "ANDREW WILKER LUCENA OLIVEIRA",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "EVANDRO LUCENA SOARES",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIANO RODRIGUES SOARES",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "RIVALDO CAMPOS DE MEDEIROS",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "SABRINA ALVES DA SILVA",
+          "subsidio": 8250,
+          "presidente": true
+        },
+        {
+          "nome": "SOLANGE ALVES DE SOUZA",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "VILMAR FERREIRA CAMPOS",
+          "subsidio": 5500,
+          "presidente": false
+        },
+        {
+          "nome": "YBERICA NUNES LUCENA FREIRE",
+          "subsidio": 5500,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "mae-d-agua",
+        "nome": "Mãe d'Água",
+        "salario": 5500,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 1136.7266666666667
+      }
+    },
+    {
+      "slug": "manaira",
+      "nome": "Manaíra",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2026-05",
+      "folhaComissionados": 15951.31,
+      "vereadores": [
+        {
+          "nome": "ANA CLEIA FERREIRA PEREIRA",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "DAMIAO FURTADO DA SILVA",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "EDNA CARNEIRO ALVES FIRMINO",
+          "subsidio": 10000,
+          "presidente": true
+        },
+        {
+          "nome": "HAILTO DINIZ SIMAO",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "JONATHAN WALTER DINIZ TAVARES",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ RUTIELI MOREIRA CORDEIRO",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "PAULO ANTAS FLORENTINO CABRAL FILHO",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "SILAS PEREIRA VIRGULINO",
+          "subsidio": 8000,
+          "presidente": false
+        },
+        {
+          "nome": "THALLES MATHEUS SIMÃO RABÊLO",
+          "subsidio": 8000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "manaira",
+        "nome": "Manaíra",
+        "salario": 8000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 1772.3677777777777
+      }
+    },
+    {
+      "slug": "pianco",
+      "nome": "Piancó",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 10,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 27576.089999999997,
+      "vereadores": [
+        {
+          "nome": "ANTONIO WALLACE PEREIRA MILITÃO",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "CHRISTTIANE VIRGINIA PALITOT REMIGIO CARVALHO ALMEIDA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "EDGAR VALDEVINO LIMA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "GERALDO FERREIRA DE SOUZA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "HELLIANY KENYA LOURENCO DE ARAUJO COSTA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "IVANILDO ALVELINO",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "JOISLENE LOPES DE SOUZA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE SOARES DE SOUZA",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "MARINES DE PAULA DA SILVA NICOLAU",
+          "subsidio": 8500,
+          "presidente": false
+        },
+        {
+          "nome": "ROSIMARY XAVIER VIEIRA AMANCIO",
+          "subsidio": 8500,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "pianco",
+        "nome": "Piancó",
+        "salario": 8500,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 2757.6089999999995
+      }
+    },
+    {
+      "slug": "riachao-do-poco",
+      "nome": "Riachão do Poço",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2025-11",
+      "folhaComissionados": 25806,
+      "vereadores": [
+        {
+          "nome": "CAMILA CAVALCANTE DE SOUZA GALDINO",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "ELAINE ARAUJO DA SILVA",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "JABSON CORREIA DOS SANTOS",
+          "subsidio": 10000,
+          "presidente": true
+        },
+        {
+          "nome": "JOAO CAMILO FERREIRA FILHO",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO LUIS DE FRANCA JUNIOR",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO PEREIRA DE LIMA",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSÉ FERREIRA DE SOUSA",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "LUZINETE MARIA DOS SANTOS",
+          "subsidio": 5000,
+          "presidente": false
+        },
+        {
+          "nome": "RONALDO DA SILVA FERREIRA",
+          "subsidio": 5000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "riachao-do-poco",
+        "nome": "Riachão do Poço",
+        "salario": 5000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 2867.3333333333335
+      }
+    },
+    {
+      "slug": "santana-dos-garrotes",
+      "nome": "Santana dos Garrotes",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 12903,
+      "vereadores": [
+        {
+          "nome": "ANTONIO CARLOS CHAVES BEZERRA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCIMARIO ARAUJO DINIZ",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO PINTO NETO",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE LINDOMAR FERREIRA DE ARAUJO",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE PASSOS JUNIOR",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE WIDMARK BATISTA COSTA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "MARCELINO INACIO NETO",
+          "subsidio": 9000,
+          "presidente": true
+        },
+        {
+          "nome": "MARCIEL VIRGULINO DA SILVA",
+          "subsidio": 6000,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA DO SOCORRO ALVES FEITOZA ALMEIDA",
+          "subsidio": 6000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "santana-dos-garrotes",
+        "nome": "Santana dos Garrotes",
+        "salario": 6000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 1433.6666666666667
+      }
+    },
+    {
+      "slug": "sao-miguel-de-taipu",
+      "nome": "São Miguel de Taipu",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 9,
+      "mesReferencia": "2025-10",
+      "folhaComissionados": 19600,
+      "vereadores": [
+        {
+          "nome": "FLAVIO COSTA DE LIMA",
+          "subsidio": 8693,
+          "presidente": true
+        },
+        {
+          "nome": "GILVAN BENTO DA ROCHA",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JANAINA MENDES DE ALMEIDA",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO ANTERO DE SOUZA NETO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE AUGUSTO SOARES NERI",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE AURELIO DE MELO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA ELIZA CARVALHO CAMPELO",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "NADJANIA PEREIRA DA SILVA",
+          "subsidio": 6954,
+          "presidente": false
+        },
+        {
+          "nome": "PAULO SERGIO CORREIA DA SILVA",
+          "subsidio": 6954,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "sao-miguel-de-taipu",
+        "nome": "São Miguel de Taipu",
+        "salario": 6954,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 2177.777777777778
+      }
     }
   ]
 }
