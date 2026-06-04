@@ -30,3 +30,30 @@ describe('CamaraLeve', () => {
     expect(container.textContent ?? '').toMatch(/não há ranking nem perfil de gasto por vereador/i)
   })
 })
+
+const patos: Municipio = {
+  slug: 'patos', nome: 'Patos', uf: 'PB', modelo: 'leve',
+  numVereadores: 17,
+  // sem folhaGabineteTotal nem mesReferencia: a câmara não publica a folha
+  vereadores: [
+    { nome: 'WILLAMI ALVES DE LUCENA', subsidio: 17000, presidente: false, partido: 'PSB' },
+    { nome: 'VALTIDE PAULINO SANTOS', subsidio: 22000, presidente: true, partido: 'REPUBLICANOS' },
+  ],
+  custo: { slug: 'patos', nome: 'Patos', salario: 17000, viapTeto: 0, viapMedia: null, gabineteMedia: null },
+}
+
+describe('CamaraLeve · câmara não publica folha (Patos)', () => {
+  it('mostra a folha de gabinete como não publicada, sem valor em reais', () => {
+    const { container } = render(<CamaraLeve municipio={patos} atualizadoEm="2026-06-04" />)
+    const txt = container.textContent ?? ''
+    expect(txt).toMatch(/Não publicado/)
+    expect(txt).toMatch(/não divulga a folha/i)
+  })
+
+  it('mantém subsídio, presidente e a nota de cobertura própria', () => {
+    const { container, getByText } = render(<CamaraLeve municipio={patos} />)
+    expect(getByText('VALTIDE PAULINO SANTOS')).toBeTruthy()
+    expect(container.textContent ?? '').toMatch(/Presidente/)
+    expect(container.textContent ?? '').toMatch(/não divulga a folha de pagamento/i)
+  })
+})

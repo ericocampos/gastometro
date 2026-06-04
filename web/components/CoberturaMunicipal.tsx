@@ -33,7 +33,7 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
           </p>
           <p className="mt-1 text-sm leading-relaxed text-tinta-suave">
             <strong className="text-tinta">{cidades.length} de {indice.totalMunicipiosPB}</strong> cidades cobertas.
-            Cobertura parcial, começando pela capital.
+            Cobertura parcial e em expansão, cidade por cidade.
           </p>
         </div>
         <Link

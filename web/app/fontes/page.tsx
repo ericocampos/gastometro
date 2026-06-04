@@ -50,9 +50,10 @@ const BLOCOS: Bloco[] = [
   },
   {
     casa: 'Câmaras municipais — outras cidades (modelo leve)',
-    intro: 'Onde a fonte só publica subsídio fixo + folha de gabinete agregada (sem VIAP nem gabinete por vereador), mostramos só esses agregados. Campina Grande é a primeira.',
+    intro: 'Onde a fonte não detalha gasto por vereador, mostramos só os agregados que ela publica (subsídio fixo e, quando houver, a folha de gabinete da câmara). Sem ranking nem perfil por vereador.',
     fontes: [
       { oque: 'Campina Grande — vereadores + folha', onde: 'portaldoservidor-api.publicsoft.com.br/api/.../webservice/api?db={db}&params={tipo,mês,ano}', formato: 'JSON (API)', obs: 'PublicSoft; eletivos = subsídio do vereador; comissionados de "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação não nomeia o vereador, então não dá pra atribuir por pessoa' },
+      { oque: 'Patos — vereadores + subsídio', onde: 'camarapatos.pb.gov.br/a-camara/vereadores', formato: 'HTML oficial', obs: 'roster (nome, partido, foto) da câmara; subsídio fixado por lei (R$ 17.000; presidência R$ 22.000). O portal de transparência da câmara (intgest) não divulga a folha de pagamento por HTTP, então a folha de gabinete fica como "não publicado"' },
     ],
   },
 ]

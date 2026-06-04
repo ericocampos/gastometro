@@ -122,13 +122,14 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 ### Câmaras municipais — modelo leve (outras cidades)
 
-Fora de João Pessoa, as câmaras em geral só publicam **subsídio fixo** (igual a todos) e a **folha de gabinete agregada** da câmara, sem VIAP por vereador nem lotação que aponte o gabinete de cada vereador. Para essas cidades usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de gabinete total), sem ranking nem perfil por vereador (não existiria diferença a mostrar). O modelo é escolhido em `collector/cidades.ts` (`modelo: 'completo' | 'leve'`).
+Fora de João Pessoa, as câmaras em geral só publicam **subsídio fixo** (igual a todos) e, quando muito, a **folha de gabinete agregada** da câmara, sem VIAP por vereador nem lotação que aponte o gabinete de cada vereador. Para essas cidades usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de gabinete total quando houver), sem ranking nem perfil por vereador (não existiria diferença a mostrar). O modelo e a plataforma são escolhidos em `collector/cidades.ts` (`modelo: 'completo' | 'leve'`, `plataforma: 'publicsoft' | 'roster-html'`).
 
 | Cidade | Plataforma | Endpoint | Como lemos |
 |---|---|---|---|
 | **Campina Grande** | PublicSoft (Portal do Servidor) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador (subsídio = bruto); comissionados `1-Comissionado` com cargo "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação é genérica ("GABINETE"), não nomeia o vereador |
+| **Patos** | Roster HTML (câmara) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | HTML (CMS easyweb): nome em `<h6>`, partido pelo nome do arquivo do logo (`partidos/SIGLA.png`), foto em `images/arquivos/documentos/`. Subsídio fixado por lei (R$ 17.000; presidência R$ 22.000). O portal de transparência da câmara (intgest) **não divulga a folha** por HTTP, então a folha de gabinete fica como "não publicado" |
 
-> PublicSoft atende várias câmaras/prefeituras da PB, então o mesmo endpoint escala para outras cidades trocando o `db`.
+> PublicSoft atende várias câmaras/prefeituras da PB, então o mesmo endpoint escala para outras cidades trocando o `db`. Quando a câmara não publica folha alguma (caso de Patos), entramos só com roster + subsídio (`plataforma: 'roster-html'`).
 
 ---
 

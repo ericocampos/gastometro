@@ -12,6 +12,7 @@ import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
 import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
 import { baixarFolhaPublicsoft, extrairVereadores, somarFolhaGabinete, type VereadorLeve } from './sources/publicsoft.js'
+import { baixarRosterPatos, type VereadorRosterLeve } from './sources/patosRoster.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
@@ -211,6 +212,23 @@ export function montarCidadeLeve(
   }
 }
 
+// Modelo leve sem folha publicada: a câmara não publica folha de pagamento por HTTP (ex.: Patos,
+// no portal intgest). Só temos o roster (HTML) e o subsídio fixo de lei. O Municipio fica SEM
+// folhaGabineteTotal/mesReferencia, e o web mostra a folha de gabinete como "não publicado".
+export function montarCidadeLeveRoster(cfg: CidadeConfig, roster: VereadorRosterLeve[]): Municipio {
+  const subsidio = cfg.subsidio ?? 0
+  const subsidioPres = cfg.subsidioPresidente ?? subsidio
+  return {
+    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'leve',
+    numVereadores: roster.length,
+    vereadores: roster.map((v) => {
+      const presidente = cfg.presidenteNome != null && mesmaPessoaTokens(v.nome, cfg.presidenteNome)
+      return { nome: v.nome, subsidio: presidente ? subsidioPres : subsidio, presidente, partido: v.partido, fotoUrl: v.fotoUrl }
+    }),
+    custo: { slug: cfg.slug, nome: cfg.nome, salario: subsidio, viapTeto: 0, viapMedia: null, gabineteMedia: null },
+  }
+}
+
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = process.env.GASTOMETRO_DATA_DIR ?? resolve(here, '../data')
@@ -228,8 +246,16 @@ async function main() {
   for (const cfg of CIDADES) {
     console.log(`\n> ${cfg.nome} (${cfg.slug}) [${cfg.modelo}]`)
 
-    // modelo leve: só subsídio + folha de gabinete agregada (vive só no municipios.json)
+    // modelo leve: vive só no municipios.json (sem entrar no modelo plano)
     if (cfg.modelo === 'leve') {
+      // roster-html: câmara não publica folha; só roster + subsídio fixo
+      if (cfg.plataforma === 'roster-html') {
+        if (!cfg.rosterUrl) { console.log('  sem rosterUrl, pulando'); continue }
+        const roster = await baixarRosterPatos(cfg.rosterUrl)
+        console.log(`  roster: ${roster.length} vereadores | folha de gabinete: não publicada pela câmara`)
+        resumos.push(montarCidadeLeveRoster(cfg, roster))
+        continue
+      }
       if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
         console.log('  sem plataforma leve configurada, pulando'); continue
       }

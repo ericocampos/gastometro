@@ -18,8 +18,11 @@ export interface CidadeConfig {
   apelidoOverride?: Record<string, string> // chave = nome popular/civil normalizado; valor = nome do roster
 
   // --- modelo 'leve' ---
-  plataforma?: 'publicsoft'
-  publicsoftDb?: string // parâmetro db= da API do Portal do Servidor (PublicSoft)
+  // 'publicsoft'  = folha pela API do Portal do Servidor (subsídio + folha de gabinete agregada).
+  // 'roster-html' = câmara não publica folha; só roster (HTML) + subsídio fixo de lei.
+  plataforma?: 'publicsoft' | 'roster-html'
+  publicsoftDb?: string  // parâmetro db= da API do Portal do Servidor (PublicSoft)
+  presidenteNome?: string // roster-html: nome do presidente (recebe o subsídio maior)
 }
 
 export const TOTAL_MUNICIPIOS_PB = 223
@@ -35,5 +38,15 @@ export const CIDADES: CidadeConfig[] = [
   {
     slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB', modelo: 'leve',
     plataforma: 'publicsoft', publicsoftDb: 'MTA3NjIwMTEwMDAxNjI,',
+  },
+  {
+    // Patos: câmara no portal intgest, que NÃO publica folha de pagamento por HTTP.
+    // Entra no modelo leve só com roster + subsídio fixo (Lei/PL 040/2024, legislatura 2025-2028);
+    // o card de folha de gabinete fica como "não publicado pela câmara".
+    slug: 'patos', nome: 'Patos', uf: 'PB', modelo: 'leve',
+    plataforma: 'roster-html',
+    rosterUrl: 'https://camarapatos.pb.gov.br/a-camara/vereadores',
+    subsidio: 17000, subsidioPresidente: 22000,
+    presidenteNome: 'Valtide Paulino Santos',
   },
 ]

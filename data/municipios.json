@@ -156,6 +156,140 @@
         "viapMedia": null,
         "gabineteMedia": 79862.83043478262
       }
+    },
+    {
+      "slug": "patos",
+      "nome": "Patos",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 17,
+      "vereadores": [
+        {
+          "nome": "WILLAMI ALVES DE LUCENA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "PSB",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820425.jpg"
+        },
+        {
+          "nome": "DECILÂNIO CÂNDIDO DA SILVA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819102.jpg"
+        },
+        {
+          "nome": "VALTIDE PAULINO SANTOS",
+          "subsidio": 22000,
+          "presidente": true,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820348.jpeg"
+        },
+        {
+          "nome": "RAFAEL GOMES DANTAS",
+          "subsidio": 17000,
+          "presidente": false,
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820216.jpeg"
+        },
+        {
+          "nome": "NADIGERLANE RODRIGUES DE CARVALHO ALMEIDA GUEDES",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820145.jpg"
+        },
+        {
+          "nome": "MARCO CESAR SOUSA SIQUEIRA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "PSB",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820084.jpg"
+        },
+        {
+          "nome": "MARILUCIA DE LIRA SOUZA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819944.jpg"
+        },
+        {
+          "nome": "FRANCISCO DE SALES MENDES JUNIOR",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735820289.jpg"
+        },
+        {
+          "nome": "JOAO BATISTA DE SOUZA JUNIOR",
+          "subsidio": 17000,
+          "presidente": false,
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819858.jpg"
+        },
+        {
+          "nome": "JOSMA OLIVEIRA DA NOBREGA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "MDB",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819706.jpg"
+        },
+        {
+          "nome": "JOSE ITALO GOMES CANDIDO",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819556.jpg"
+        },
+        {
+          "nome": "JONATAS KAIKY DE OLIVEIRA SANTANA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819620.jpg"
+        },
+        {
+          "nome": "MARIA DE FATIMA MEDEIROS DE MARIA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819453.jpg"
+        },
+        {
+          "nome": "EMANUEL RODRIGUES DE ARAUJO",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REDE",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819350.jpg"
+        },
+        {
+          "nome": "MAIKON ROBERTO MINERVINO",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "PP",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735819241.jpg"
+        },
+        {
+          "nome": "DAVID CARNEIRO MAIA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "REDE",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735818971.jpg"
+        },
+        {
+          "nome": "BRENNA VICTÓRIA LEONARDO FERREIRA NÓBREGA",
+          "subsidio": 17000,
+          "presidente": false,
+          "partido": "PSB",
+          "fotoUrl": "https://camarapatos.pb.gov.br//images/arquivos/documentos/1735818786.jpeg"
+        }
+      ],
+      "custo": {
+        "slug": "patos",
+        "nome": "Patos",
+        "salario": 17000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": null
+      }
     }
   ]
 }
