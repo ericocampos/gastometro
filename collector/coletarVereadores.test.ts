@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import { montarCidade, montarCidadeLeve, montarCidadeLeveRoster } from './coletarVereadores'
+import { montarCidade, montarCidadeLeve } from './coletarVereadores'
 import type { CidadeConfig } from './cidades'
 import { normNome } from './sources/nomes'
 
-const cfg: CidadeConfig = { slug:'joao-pessoa', nome:'João Pessoa', uf:'PB', modelo:'completo', ctxElmar:'101095', subsidio:26000, rosterUrl:'', viapUrl:'', apelidoOverride: { [normNome('GUGA PET')]: 'Guga Pereira' } }
+const cfg: CidadeConfig = { slug:'joao-pessoa', nome:'João Pessoa', uf:'PB', modelo:'completo', ctxElmar:'101095', subsidio:26000, subsidioPresidente:32000, rosterUrl:'', viapUrl:'', apelidoOverride: { [normNome('GUGA PET')]: 'Guga Pereira' } }
 const roster = [
   { nome:'Valdir José Dowsley', partido:'PT', fotoUrl:'f1', slug:'dinho' },
   { nome:'Guga Pereira', partido:'PL', fotoUrl:'f2', slug:'guga' },
@@ -47,7 +47,7 @@ describe('montarCidade', () => {
 })
 
 describe('montarCidadeLeve', () => {
-  const cfgLeve: CidadeConfig = { slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB', modelo: 'leve', plataforma: 'publicsoft', publicsoftDb: 'x' }
+  const cfgLeve = { slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB' }
   const vereadores = [
     { nome: 'Carlos', subsidio: 20000, presidente: false },
     { nome: 'Ana', subsidio: 20000, presidente: false },
@@ -66,39 +66,5 @@ describe('montarCidadeLeve', () => {
     expect(m.custo.salario).toBe(20000)
     expect(m.custo.gabineteMedia).toBe(30000)
     expect(m.custo.viapTeto).toBe(0)
-  })
-})
-
-describe('montarCidadeLeveRoster (câmara não publica folha)', () => {
-  const cfgRoster: CidadeConfig = {
-    slug: 'patos', nome: 'Patos', uf: 'PB', modelo: 'leve', plataforma: 'roster-html',
-    rosterUrl: 'x', subsidio: 17000, subsidioPresidente: 22000, presidenteNome: 'Valtide Paulino Santos',
-  }
-  const roster = [
-    { nome: 'WILLAMI ALVES DE LUCENA', partido: 'PSB', fotoUrl: 'f1' },
-    { nome: 'VALTIDE PAULINO SANTOS', partido: 'REPUBLICANOS', fotoUrl: 'f2' },
-    { nome: 'RAFAEL GOMES DANTAS', fotoUrl: 'f3' },
-  ]
-  const m = montarCidadeLeveRoster(cfgRoster, roster)
-
-  it('produz Municipio leve com subsídio fixo e SEM folha de gabinete', () => {
-    expect(m.modelo).toBe('leve')
-    expect(m.numVereadores).toBe(3)
-    expect(m.custo.salario).toBe(17000)
-    expect(m.folhaComissionados).toBeUndefined()   // câmara não publica
-    expect(m.mesReferencia).toBeUndefined()
-    expect(m.custo.gabineteMedia).toBeNull()
-  })
-  it('marca o presidente (subsídio maior) e mantém os demais no subsídio base', () => {
-    const pres = m.vereadores!.find((v) => v.presidente)!
-    expect(pres.nome).toBe('VALTIDE PAULINO SANTOS')
-    expect(pres.subsidio).toBe(22000)
-    expect(m.vereadores!.filter((v) => v.presidente)).toHaveLength(1)
-    expect(m.vereadores!.find((v) => v.nome === 'WILLAMI ALVES DE LUCENA')!.subsidio).toBe(17000)
-  })
-  it('preserva partido e foto do roster (partido vazio quando a fonte não traz)', () => {
-    expect(m.vereadores!.find((v) => v.nome === 'WILLAMI ALVES DE LUCENA')!.partido).toBe('PSB')
-    expect(m.vereadores!.find((v) => v.nome === 'RAFAEL GOMES DANTAS')!.partido).toBeUndefined()
-    expect(m.vereadores!.every((v) => typeof v.fotoUrl === 'string')).toBe(true)
   })
 })

@@ -32,8 +32,8 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
             Vereadores · municipal
           </p>
           <p className="mt-1 text-sm leading-relaxed text-tinta-suave">
-            <strong className="text-tinta">{cidades.length} de {indice.totalMunicipiosPB}</strong> cidades cobertas.
-            Cobertura parcial e em expansão, cidade por cidade.
+            <strong className="text-tinta">{cidades.length} de {indice.totalMunicipiosPB}</strong> cidades cobertas,
+            via folha do TCE-PB (fonte oficial).
           </p>
         </div>
         <Link

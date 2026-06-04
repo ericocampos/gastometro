@@ -9,10 +9,10 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
-import { baixarFolha, extrairGabinetes, extrairVereadoresElmar, somarComissionadosElmar, type GabineteVereador } from './sources/elmar.js'
+import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
-import { baixarFolhaPublicsoft, extrairVereadores, somarComissionados, type VereadorLeve } from './sources/publicsoft.js'
-import { baixarRosterPatos, type VereadorRosterLeve } from './sources/patosRoster.js'
+import { type VereadorLeve } from './sources/publicsoft.js'
+import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
@@ -191,7 +191,7 @@ export function montarCidade(
 // Modelo leve: a cidade publica subsídio + folha de comissionados agregada da câmara (sem VIAP nem
 // gasto por vereador). Vira um Municipio 'leve' no municipios.json, sem entrar no modelo plano.
 export function montarCidadeLeve(
-  cfg: CidadeConfig,
+  cfg: { slug: string; nome: string; uf: string },
   vereadores: VereadorLeve[],
   folhaComissionados: number,
   mesReferencia: string,
@@ -212,21 +212,34 @@ export function montarCidadeLeve(
   }
 }
 
-// Modelo leve sem folha publicada: a câmara não publica folha de pagamento por HTTP (ex.: Patos,
-// no portal intgest). Só temos o roster (HTML) e o subsídio fixo de lei. O Municipio fica SEM
-// folhaComissionados/mesReferencia, e o web mostra a folha de comissionados como "não publicado".
-export function montarCidadeLeveRoster(cfg: CidadeConfig, roster: VereadorRosterLeve[]): Municipio {
-  const subsidio = cfg.subsidio ?? 0
-  const subsidioPres = cfg.subsidioPresidente ?? subsidio
-  return {
-    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'leve',
-    numVereadores: roster.length,
-    vereadores: roster.map((v) => {
-      const presidente = cfg.presidenteNome != null && mesmaPessoaTokens(v.nome, cfg.presidenteNome)
-      return { nome: v.nome, subsidio: presidente ? subsidioPres : subsidio, presidente, partido: v.partido, fotoUrl: v.fotoUrl }
-    }),
-    custo: { slug: cfg.slug, nome: cfg.nome, salario: subsidio, viapTeto: 0, viapMedia: null, gabineteMedia: null },
+// Coleta as câmaras 'leve' (todas menos JP) da fonte única do TCE-PB: para cada município, baixa o
+// zip anual da folha (ano corrente, com fallback p/ o anterior), isola a Câmara Municipal e monta o
+// resumo com o mês mais recente que tenha vereadores, restrito à legislatura atual (ano_mes ≥ 202501;
+// dado de 2024 seria de vereadores da legislatura passada). Cidades sem vereador no TCE são puladas.
+async function coletarLeveTce(anoAtual: number, pularSlugs: Set<string>): Promise<Municipio[]> {
+  const MIN_ANO_MES = '202501'
+  const out: Municipio[] = []
+  for (const m of MUNICIPIOS_TCE) {
+    if (pularSlugs.has(m.slug)) continue
+    let linhas: LinhaTce[] = []
+    for (const ano of [anoAtual, anoAtual - 1]) {
+      try {
+        const l = await baixarCamaraTce(m.cod, ano)
+        linhas = linhas.concat(l)
+      } catch { /* ano sem arquivo p/ esse município */ }
+      // já achou vereador na legislatura atual? não precisa do ano anterior
+      if (mesesComVereador(linhas, MIN_ANO_MES).length > 0) break
+    }
+    const meses = mesesComVereador(linhas, MIN_ANO_MES)
+    if (meses.length === 0) { console.log(`  - ${m.nome}: sem vereadores no TCE (pulado)`); continue }
+    const mesRef = meses[0]
+    const vereadores = extrairVereadoresTce(linhas, mesRef)
+    const folhaCom = somarComissionadosTce(linhas, mesRef)
+    const refIso = `${mesRef.slice(0, 4)}-${mesRef.slice(4, 6)}`
+    console.log(`  + ${m.nome}: ${vereadores.length} vereadores | folha comissionados R$ ${folhaCom.toFixed(2)} | ref ${refIso}`)
+    out.push(montarCidadeLeve({ slug: m.slug, nome: m.nome, uf: 'PB' }, vereadores, folhaCom, refIso))
   }
+  return out
 }
 
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
@@ -245,65 +258,6 @@ async function main() {
 
   for (const cfg of CIDADES) {
     console.log(`\n> ${cfg.nome} (${cfg.slug}) [${cfg.modelo}]`)
-
-    // modelo leve: vive só no municipios.json (sem entrar no modelo plano)
-    if (cfg.modelo === 'leve') {
-      // roster-html: câmara não publica folha; só roster + subsídio fixo
-      if (cfg.plataforma === 'roster-html') {
-        if (!cfg.rosterUrl) { console.log('  sem rosterUrl, pulando'); continue }
-        const roster = await baixarRosterPatos(cfg.rosterUrl)
-        console.log(`  roster: ${roster.length} vereadores | folha: não publicada pela câmara`)
-        resumos.push(montarCidadeLeveRoster(cfg, roster))
-        continue
-      }
-      let vereadores: VereadorLeve[] = []
-      let folhaCom = 0
-      let mesRef = ''
-      const hoje = new Date()
-
-      // elmar: folha pela API aberta (usa ctxElmar); competência MM/YYYY, tenta meses recentes
-      if (cfg.plataforma === 'elmar') {
-        if (!cfg.ctxElmar) { console.log('  sem ctxElmar, pulando'); continue }
-        for (let i = 0; i < 8; i++) {
-          const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
-          const regs = await baixarFolha(cfg.ctxElmar, competenciaDe(d))
-          const v = extrairVereadoresElmar(regs)
-          if (v.length > 0) {
-            vereadores = v
-            folhaCom = somarComissionadosElmar(regs)
-            mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-            break
-          }
-        }
-        console.log(`  vereadores: ${vereadores.length} | folha comissionados: R$ ${folhaCom.toFixed(2)} | ref ${mesRef}`)
-        resumos.push(montarCidadeLeve(cfg, vereadores, folhaCom, mesRef))
-        continue
-      }
-
-      // publicsoft: folha pela API do Portal do Servidor (usa publicsoftDb)
-      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
-        console.log('  sem plataforma leve configurada, pulando'); continue
-      }
-      // Varre do mês corrente até o início da legislatura atual (jan/2025) e pega o mês mais recente
-      // com vereadores. Algumas câmaras publicam com atraso ou pararam em 2025; não exibimos dados
-      // anteriores a 2025 (seriam de vereadores da legislatura passada).
-      const inicioLegislatura = new Date(2025, 0, 1)
-      for (let i = 0; ; i++) {
-        const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
-        if (d < inicioLegislatura) break
-        const regs = await baixarFolhaPublicsoft(cfg.publicsoftDb, d.getMonth() + 1, d.getFullYear())
-        const v = extrairVereadores(regs)
-        if (v.length > 0) {
-          vereadores = v
-          folhaCom = somarComissionados(regs)
-          mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
-          break
-        }
-      }
-      console.log(`  vereadores: ${vereadores.length} | folha comissionados: R$ ${folhaCom.toFixed(2)} | ref ${mesRef}`)
-      resumos.push(montarCidadeLeve(cfg, vereadores, folhaCom, mesRef))
-      continue
-    }
 
     // modelo completo (João Pessoa)
     const roster = await baixarRoster(cfg.rosterUrl!)
@@ -376,6 +330,12 @@ async function main() {
       for (const n of c.naoCasados) console.log(`    [${n.fonte}] ${n.nome}`)
     }
   }
+
+  // câmaras 'leve' (todas menos JP) pela fonte única do TCE-PB
+  console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
+  const pularSlugs = new Set(CIDADES.map((c) => c.slug)) // JP é completo
+  const leve = await coletarLeveTce(new Date().getFullYear(), pularSlugs)
+  resumos.push(...leve)
 
   const municipios: MunicipiosIndice = {
     atualizadoEm: new Date().toISOString().slice(0, 10),
