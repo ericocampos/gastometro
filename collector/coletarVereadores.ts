@@ -40,7 +40,8 @@ interface Municipio {
   folhaComissionados?: number
   vereadores?: MunicipioVereador[]
 }
-interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }
+interface NaoCoberta { slug: string; nome: string; motivo: string }
+interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[]; naoCobertas?: NaoCoberta[] }
 
 const VIAP_TETO = 14000
 const CATEGORIA_VIAP = 'Verba indenizatória (VIAP)'
@@ -216,9 +217,13 @@ export function montarCidadeLeve(
 // zip anual da folha (ano corrente, com fallback p/ o anterior), isola a Câmara Municipal e monta o
 // resumo com o mês mais recente que tenha vereadores, restrito à legislatura atual (ano_mes ≥ 202501;
 // dado de 2024 seria de vereadores da legislatura passada). Cidades sem vereador no TCE são puladas.
-async function coletarLeveTce(anoAtual: number, pularSlugs: Set<string>): Promise<Municipio[]> {
+async function coletarLeveTce(
+  anoAtual: number,
+  pularSlugs: Set<string>,
+): Promise<{ cidades: Municipio[]; naoCobertas: NaoCoberta[] }> {
   const MIN_ANO_MES = '202501'
   const out: Municipio[] = []
+  const naoCobertas: NaoCoberta[] = []
   for (const m of MUNICIPIOS_TCE) {
     if (pularSlugs.has(m.slug)) continue
     let linhas: LinhaTce[] = []
@@ -231,7 +236,12 @@ async function coletarLeveTce(anoAtual: number, pularSlugs: Set<string>): Promis
       if (mesesComVereador(linhas, MIN_ANO_MES).length > 0) break
     }
     const meses = mesesComVereador(linhas, MIN_ANO_MES)
-    if (meses.length === 0) { console.log(`  - ${m.nome}: sem vereadores no TCE (pulado)`); continue }
+    if (meses.length === 0) {
+      // a câmara existe no TCE, mas não publica a folha dos vereadores (eletivos) — não inventamos
+      console.log(`  - ${m.nome}: sem vereadores no TCE (não coberta)`)
+      naoCobertas.push({ slug: m.slug, nome: m.nome, motivo: 'a câmara não publica a folha dos vereadores ao TCE' })
+      continue
+    }
     const mesRef = meses[0]
     const vereadores = extrairVereadoresTce(linhas, mesRef)
     const folhaCom = somarComissionadosTce(linhas, mesRef)
@@ -239,7 +249,7 @@ async function coletarLeveTce(anoAtual: number, pularSlugs: Set<string>): Promis
     console.log(`  + ${m.nome}: ${vereadores.length} vereadores | folha comissionados R$ ${folhaCom.toFixed(2)} | ref ${refIso}`)
     out.push(montarCidadeLeve({ slug: m.slug, nome: m.nome, uf: 'PB' }, vereadores, folhaCom, refIso))
   }
-  return out
+  return { cidades: out, naoCobertas }
 }
 
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
@@ -334,13 +344,15 @@ async function main() {
   // câmaras 'leve' (todas menos JP) pela fonte única do TCE-PB
   console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
   const pularSlugs = new Set(CIDADES.map((c) => c.slug)) // JP é completo
-  const leve = await coletarLeveTce(new Date().getFullYear(), pularSlugs)
+  const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs)
   resumos.push(...leve)
+  if (naoCobertas.length > 0) console.log(`  não cobertas: ${naoCobertas.map((n) => n.nome).join(', ')}`)
 
   const municipios: MunicipiosIndice = {
     atualizadoEm: new Date().toISOString().slice(0, 10),
     totalMunicipiosPB: TOTAL_MUNICIPIOS_PB,
     cidades: resumos,
+    naoCobertas,
   }
   writeFileSync(resolve(dataDir, 'municipios.json'), JSON.stringify(municipios, null, 2))
   console.log(`\nOK: ${resumos.length} município(s) → data/municipios.json`)

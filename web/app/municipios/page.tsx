@@ -3,7 +3,7 @@ import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 
 export default function MunicipiosPage() {
-  const { cidades, totalMunicipiosPB } = getMunicipios()
+  const { cidades, totalMunicipiosPB, naoCobertas } = getMunicipios()
   const temLeve = cidades.some((c) => c.modelo === 'leve')
 
   return (
@@ -31,6 +31,14 @@ export default function MunicipiosPage() {
       )}
 
       <MunicipiosGrid cidades={cidades} />
+
+      {naoCobertas && naoCobertas.length > 0 && (
+        <section className="mt-6 border-t border-borda pt-4 text-xs leading-relaxed text-tinta-tenue">
+          <strong className="text-tinta-suave">Ainda fora:</strong>{' '}
+          {naoCobertas.map((n) => `${n.nome} (${n.motivo})`).join('; ')}. A cidade entra automaticamente
+          assim que a fonte oficial publicar o dado.
+        </section>
+      )}
     </div>
   )
 }

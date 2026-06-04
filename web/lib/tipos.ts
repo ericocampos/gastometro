@@ -198,4 +198,5 @@ export interface Municipio {
   folhaComissionados?: number     // folha bruta agregada dos cargos comissionados da câmara
   vereadores?: MunicipioVereador[]
 }
-export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }
+export interface NaoCoberta { slug: string; nome: string; motivo: string }
+export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[]; naoCobertas?: NaoCoberta[] }
