@@ -3,8 +3,8 @@
 //   GET https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento
 //       ?competencia=MM/YYYY&api-version=1.0
 // ctx de João Pessoa = 101095. Retorna { data: [ { ...campos com espacos/acentos... } ], ... }.
-
-import { montarVereadoresLeve, type VereadorLeve } from './publicsoft.js'
+// Usado só pelo modelo COMPLETO (João Pessoa): roster + VIAP + gabinete por vereador. As demais
+// câmaras (modelo leve) vêm da fonte única do TCE-PB (ver sources/tce.ts).
 
 const API_HOST = 'https://transparencia-api.elmartecnologia.com.br'
 const folhaUrl = (ctx: string, competencia: string) =>
@@ -14,7 +14,6 @@ export interface FolhaRegistro {
   nome: string
   cargo: string
   unidadeTrabalho: string
-  regime: string // ELETIVO | CARGO COMISSIONADO | ESTATUTÁRIO | EFETIVO... (separa eleitos/comissionados)
   vantagens: number
   descontos: number
   liquido: number
@@ -67,7 +66,6 @@ export function parseFolhaJson(json: unknown): FolhaRegistro[] {
       nome: String(r['nome'] ?? ''),
       cargo: String(r['cargo'] ?? ''),
       unidadeTrabalho: String(r['unidade Trabalho'] ?? ''),
-      regime: String(r['regime'] ?? ''),
       vantagens: num(r['vantagens']),
       descontos: num(r['descontos']),
       liquido: num(r['líquido']),
@@ -98,27 +96,6 @@ export function extrairGabinetes(registros: FolhaRegistro[]): GabineteVereador[]
     g.folhaBruta += r.vantagens
   }
   return [...grupos.values()]
-}
-
-// ── Modelo leve via Elmar: a câmara publica a folha, mas a lotação raramente nomeia o gabinete de
-// cada vereador, então mostramos o agregado. A separação é pelo campo `regime` (uniforme entre as
-// câmaras): ELETIVO = vereadores; CARGO COMISSIONADO = folha de comissionados da câmara.
-const RE_VEREADOR = /^VEREADOR\b/i
-const RE_ELETIVO = /ELETIVO/i
-const RE_COMISSIONADO = /COMISSIONAD/i
-
-export function extrairVereadoresElmar(registros: FolhaRegistro[]): VereadorLeve[] {
-  // vereadores pelo regime ELETIVO (robusto); fallback para o cargo quando o regime vier vazio
-  let vers = registros.filter((r) => RE_ELETIVO.test(r.regime))
-  if (!vers.length) vers = registros.filter((r) => RE_VEREADOR.test(r.cargo.trim()))
-  return montarVereadoresLeve(
-    vers.map((r) => ({ nome: r.nome, bruto: r.vantagens, presidenteCargo: /PRESIDENT/i.test(r.cargo) })),
-  )
-}
-
-// Folha de comissionados da câmara: soma do bruto de quem tem regime de cargo comissionado.
-export function somarComissionadosElmar(registros: FolhaRegistro[]): number {
-  return registros.filter((r) => RE_COMISSIONADO.test(r.regime)).reduce((s, r) => s + r.vantagens, 0)
 }
 
 export async function baixarFolha(ctx: string, competencia: string): Promise<FolhaRegistro[]> {

@@ -11,7 +11,7 @@ import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
 import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
-import { type VereadorLeve } from './sources/publicsoft.js'
+import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 

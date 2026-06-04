@@ -13,7 +13,7 @@
 // folha de comissionados da câmara. valor_vantagem no formato brasileiro ("20.864,78").
 import { fetchBuffer } from '../http.js'
 import { inflarCsvZip } from './cota-csv.js'
-import { montarVereadoresLeve, type VereadorLeve } from './publicsoft.js'
+import { montarVereadoresLeve, type VereadorLeve } from './vereadorLeve.js'
 
 const BASE = 'https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio'
 
