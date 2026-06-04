@@ -1,6 +1,7 @@
 import type { Municipio } from '@/lib/tipos'
 import { brlInteiro, mesAno, dataBR } from '@/lib/formato'
 import { SecaoTitulo } from './SecaoTitulo'
+import { Avatar } from './Avatar'
 
 const TEAL = '#0f766e'
 
@@ -81,6 +82,7 @@ export function CamaraLeve({ municipio, atualizadoEm }: { municipio: Municipio; 
                 className="flex items-center justify-between gap-3 rounded-lg border border-borda bg-superficie px-3 py-2 text-sm"
               >
                 <span className="flex min-w-0 items-center gap-2">
+                  <Avatar nome={v.nome} fotoUrl={v.fotoUrl} tamanho="xs" />
                   <span className="truncate text-tinta" title={v.nome}>{v.nome}</span>
                   {v.partido && <span className="shrink-0 rounded-sm bg-superficie-2 px-1.5 py-0.5 text-[11px] text-tinta-suave">{v.partido}</span>}
                   {v.presidente && (

@@ -57,3 +57,20 @@ describe('CamaraLeve · câmara não publica folha (Patos)', () => {
     expect(container.textContent ?? '').toMatch(/não divulga a folha de pagamento/i)
   })
 })
+
+const comFoto: Municipio = {
+  slug: 'sape', nome: 'Sapé', uf: 'PB', modelo: 'leve',
+  numVereadores: 1, mesReferencia: '2026-04', folhaComissionados: 100000,
+  vereadores: [{ nome: 'JOÃO DA SILVA', subsidio: 12000, presidente: false, partido: 'PT', fotoUrl: '/fotos/vereadores/150009.webp' }],
+  custo: { slug: 'sape', nome: 'Sapé', salario: 12000, viapTeto: 0, viapMedia: null, gabineteMedia: 100000 },
+}
+
+describe('CamaraLeve · foto do vereador (TSE)', () => {
+  it('renderiza a foto local quando há fotoUrl', () => {
+    const { container } = render(<CamaraLeve municipio={comFoto} />)
+    const img = container.querySelector('img')
+    expect(img).toBeTruthy()
+    // sem basePath nos testes, a URL local fica como está
+    expect(img!.getAttribute('src')).toBe('/fotos/vereadores/150009.webp')
+  })
+})

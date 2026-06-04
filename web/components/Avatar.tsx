@@ -8,7 +8,11 @@ function iniciais(nome: string): string {
   return (partes[0][0] + partes[partes.length - 1][0]).toUpperCase()
 }
 
-const TAMANHOS = { sm: 'h-11 w-11 text-sm', md: 'h-14 w-14 text-base', lg: 'h-24 w-24 text-2xl' }
+const TAMANHOS = { xs: 'h-8 w-8 text-[10px]', sm: 'h-11 w-11 text-sm', md: 'h-14 w-14 text-base', lg: 'h-24 w-24 text-2xl' }
+
+// fotos locais (vereadores, em /public) começam com '/': precisam do basePath em produção;
+// as fotos federais/estaduais são URLs absolutas (http(s)://) e não levam prefixo.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 export function Avatar({
   nome, fotoUrl, tamanho = 'md',
@@ -19,7 +23,8 @@ export function Avatar({
 }) {
   const [falhou, setFalhou] = useState(false)
   // força https p/ evitar bloqueio de conteúdo misto em produção (fotos do Senado vêm em http)
-  const src = fotoUrl?.replace(/^http:\/\//, 'https://')
+  const normalizada = fotoUrl?.replace(/^http:\/\//, 'https://')
+  const src = normalizada?.startsWith('/') ? `${BASE_PATH}${normalizada}` : normalizada
   const base = `${TAMANHOS[tamanho]} shrink-0 overflow-hidden rounded-full border border-borda bg-superficie-2 object-cover`
 
   if (!src || falhou) {

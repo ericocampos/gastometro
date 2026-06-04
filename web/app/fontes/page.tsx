@@ -50,9 +50,10 @@ const BLOCOS: Bloco[] = [
   },
   {
     casa: 'Câmaras municipais — demais cidades (modelo leve)',
-    intro: 'Onde a fonte não detalha gasto por vereador, mostramos só os agregados que ela publica: o subsídio (fixo) e a folha de comissionados da câmara. Sem ranking nem perfil por vereador. A folha de todas essas câmaras vem de uma única fonte oficial: o TCE-PB (Tribunal de Contas do Estado), via Dados Abertos.',
+    intro: 'Onde a fonte não detalha gasto por vereador, mostramos só os agregados que ela publica: o subsídio (fixo) e a folha de comissionados da câmara. Sem ranking nem perfil por vereador. A folha de todas essas câmaras vem de uma única fonte oficial: o TCE-PB (Tribunal de Contas do Estado), via Dados Abertos. O partido e a foto de cada vereador vêm do TSE (eleição municipal de 2024, que elegeu o mandato atual).',
     fontes: [
       { oque: 'Folha de pessoal (todas as câmaras) — TCE-PB', onde: 'download.tce.pb.gov.br/dados-abertos/dados-por-municipio/{cod}/servidores/servidores-{ano}.zip', formato: 'CSV (dados abertos)', obs: 'folha por pessoa e por mês (2013→atual), de todas as câmaras da PB. A câmara é a unidade gestora "Câmara Municipal de X"; tipo_cargo "Eletivos" = subsídio do vereador; "Cargo Comissionado" + "Função de confiança" somados = folha de comissionados. Usamos o mês mais recente com vereadores, na legislatura atual (a partir de jan/2025)' },
+      { oque: 'Partido e foto do vereador — TSE', onde: 'cdn.tse.jus.br/.../consulta_cand_2024.zip · .../fotos/foto_cand2024_PB_div.zip', formato: 'CSV + JPG (dados abertos)', obs: 'candidaturas da eleição municipal de 2024. Casamos cada vereador da folha do TCE com o candidato por município + nome (conservador: nome civil, nome de urna ou prefixo único), trazendo o partido e a foto oficial de candidatura. A foto é re-hospedada como thumbnail. Quem não casa com segurança fica com as iniciais (foto errada seria pior que ausente)' },
       { oque: 'Observação comum', onde: '—', formato: '—', obs: 'o subsídio exibido é a mediana (valor legal uniforme), não o valor de um mês isolado (com proração/retroativo/13º). O presidente é identificado pelo cargo ("VEREADOR PRESIDENTE"), com fallback para o maior subsídio. O TCE Dados Abertos é municipal: deputados estaduais seguem vindo da Assembleia (al.pb.leg.br) e os federais dos portais da Câmara/Senado.' },
     ],
   },

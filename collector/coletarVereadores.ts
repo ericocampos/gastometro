@@ -4,7 +4,7 @@
 //   - VIAP (cmjpViap): verba indenizatória mensal por parlamentar (nomes CIVIS, inclui ex-vereadores).
 // O match é popular×civil por tokens (sobrenomes), com override manual por cidade quando necessário.
 // O resultado é mesclado no modelo flat de /data que o app web lê (sem tocar federal/estadual).
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
@@ -13,7 +13,11 @@ import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
 import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
+import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal } from './sources/tseEleicoes.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
+
+// Eleição que elegeu o mandato municipal atual (2025-2028). Fonte do partido e da foto no leve.
+const ANO_ELEICAO_MUNICIPAL = 2024
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
 interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' | 'camara_municipal'; partido: string; uf: string; legislaturas: number[]; fotoUrl?: string; municipio?: string }
@@ -196,6 +200,9 @@ export function montarCidadeLeve(
   vereadores: VereadorLeve[],
   folhaComissionados: number,
   mesReferencia: string,
+  // enriquecimento opcional pelo TSE: dado o nome do vereador, devolve partido e a SQ da
+  // candidatura (vira a foto local /fotos/vereadores/{sq}.webp). null = sem match seguro.
+  lookup?: (nome: string) => { partido?: string; sq?: string } | null,
 ): Municipio {
   const subsidios = vereadores.map((v) => v.subsidio).sort((a, b) => a - b)
   const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0 // mediana
@@ -205,7 +212,14 @@ export function montarCidadeLeve(
     numVereadores: vereadores.length,
     mesReferencia,
     folhaComissionados,
-    vereadores: vereadores.map((v) => ({ nome: v.nome, subsidio: v.subsidio, presidente: v.presidente })),
+    vereadores: vereadores.map((v) => {
+      const ex = lookup?.(v.nome) ?? null
+      return {
+        nome: v.nome, subsidio: v.subsidio, presidente: v.presidente,
+        partido: ex?.partido || undefined,
+        fotoUrl: ex?.sq ? fotoUrlLocal(ex.sq) : undefined,
+      }
+    }),
     custo: {
       slug: cfg.slug, nome: cfg.nome, salario: subsidioBase,
       viapTeto: 0, viapMedia: null, gabineteMedia: comissionadosMedia,
@@ -224,6 +238,11 @@ async function coletarLeveTce(
   const MIN_ANO_MES = '202501'
   const out: Municipio[] = []
   const naoCobertas: NaoCoberta[] = []
+
+  // candidatos da eleição municipal de 2024 (partido + SQ da foto), casados por município+nome
+  console.log(`  carregando candidatos TSE ${ANO_ELEICAO_MUNICIPAL} (partido + fotos)...`)
+  const idxTse = await baixarCandidatosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
+
   for (const m of MUNICIPIOS_TCE) {
     if (pularSlugs.has(m.slug)) continue
     let linhas: LinhaTce[] = []
@@ -246,10 +265,49 @@ async function coletarLeveTce(
     const vereadores = extrairVereadoresTce(linhas, mesRef)
     const folhaCom = somarComissionadosTce(linhas, mesRef)
     const refIso = `${mesRef.slice(0, 4)}-${mesRef.slice(4, 6)}`
-    console.log(`  + ${m.nome}: ${vereadores.length} vereadores | folha comissionados R$ ${folhaCom.toFixed(2)} | ref ${refIso}`)
-    out.push(montarCidadeLeve({ slug: m.slug, nome: m.nome, uf: 'PB' }, vereadores, folhaCom, refIso))
+    const lookup = (nome: string) => {
+      const c = matchCandidato(idxTse, m.nome, nome)
+      return c ? { partido: c.partido, sq: c.sq } : null
+    }
+    const cidade = montarCidadeLeve({ slug: m.slug, nome: m.nome, uf: 'PB' }, vereadores, folhaCom, refIso, lookup)
+    const comPartido = (cidade.vereadores ?? []).filter((v) => v.partido).length
+    console.log(`  + ${m.nome}: ${vereadores.length} vereadores | folha comissionados R$ ${folhaCom.toFixed(2)} | ref ${refIso} | TSE ${comPartido}/${vereadores.length}`)
+    out.push(cidade)
   }
+
+  await gerarFotosTse(out)
   return { cidades: out, naoCobertas }
+}
+
+// Baixa o zip de fotos do TSE (PB) uma vez, gera as thumbnails webp das SQs casadas e poda o
+// fotoUrl dos vereadores cuja foto não veio no zip (raro) — para não deixar imagem quebrada.
+// Idempotente: se todas as webp já existem, nem baixa o zip.
+async function gerarFotosTse(cidades: Municipio[]): Promise<void> {
+  const destDir = resolve(here, '../web/public/fotos/vereadores')
+  const sqDe = (url?: string) => url?.match(/\/(\d+)\.webp$/)?.[1]
+  const sqs = new Set<string>()
+  for (const c of cidades) for (const v of c.vereadores ?? []) { const sq = sqDe(v.fotoUrl); if (sq) sqs.add(sq) }
+  if (sqs.size === 0) return
+
+  const lista = [...sqs]
+  const novas = lista.filter((sq) => !existsSync(resolve(destDir, `${sq}.webp`)))
+  let feitas: Set<string>
+  if (novas.length > 0) {
+    console.log(`  fotos TSE: ${novas.length} novas a gerar (de ${lista.length}) — baixando zip da PB...`)
+    const { zip, dir } = await baixarZipFotosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
+    try { feitas = await gerarThumbsWebp(zip, lista, 'PB', destDir) }
+    finally { rmSync(dir, { recursive: true, force: true }) }
+  } else {
+    feitas = new Set(lista)
+    console.log(`  fotos TSE: todas as ${lista.length} thumbnails já existem`)
+  }
+
+  let podadas = 0
+  for (const c of cidades) for (const v of c.vereadores ?? []) {
+    const sq = sqDe(v.fotoUrl)
+    if (sq && !feitas.has(sq)) { v.fotoUrl = undefined; podadas++ }
+  }
+  console.log(`  fotos TSE: ${feitas.size} com foto${podadas ? `, ${podadas} sem foto no zip (iniciais)` : ''}`)
 }
 
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
