@@ -62,6 +62,13 @@ export function montarCidade(
     mesmaPessoaTokens(v.nome, candidatoNome) ||
     (v.nomeCivil != null && mesmaPessoaTokens(v.nomeCivil, candidatoNome))
 
+  // mês de referência da folha em AAAA-MM (o web formata esse padrão); a folha vem como MM/YYYY
+  const mesIso = (c: string) => {
+    const m = c.match(/^(\d{2})\/(\d{4})$/)
+    return m ? `${m[2]}-${m[1]}` : c
+  }
+  const mesGabineteIso = mesIso(mesGabinete)
+
   const gabUsado = new Set<number>()
   const viapUsado = new Set<number>()
 
@@ -101,10 +108,10 @@ export function montarCidade(
       totalGabineteMes += gabMatch.folhaBruta
       folhasMatched.push(gabMatch.folhaBruta)
       gabinetePorId[id] = {
-        total: gabMatch.folhaBruta,
+        total: gabMatch.servidores.length, // quantidade de comissionados (o card mostra isso)
         folha: gabMatch.folhaBruta,
         folhaOficial: true,
-        mesReferencia: mesGabinete,
+        mesReferencia: mesGabineteIso,
         secretarios: gabMatch.servidores.map((s) => ({
           nome: s.nome, cargo: s.cargo, remuneracao: s.bruto, liquido: s.liquido,
           lotacaoTipo: 'gabinete' as const, admissaoAno: s.admissaoAno,

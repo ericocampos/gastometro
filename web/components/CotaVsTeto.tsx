@@ -31,8 +31,11 @@ export function CotaVsTeto({
         />
       </div>
       <p className="mt-3 text-xs text-tinta-tenue">
-        Salário fixo de {brlInteiro(salario)}/mês, igual a todos os parlamentares. A verba de gabinete
-        (assessores) não é divulgada por parlamentar nos dados abertos — o custo rastreável aqui é a cota.
+        Salário fixo de {brlInteiro(salario)}/mês, igual a todos os{' '}
+        {casa === 'camara_municipal' ? 'vereadores' : 'parlamentares'}.{' '}
+        {casa === 'camara_municipal'
+          ? 'A folha do gabinete (acima) é a real do mês; a VIAP é o reembolso mensal rastreado aqui.'
+          : 'A verba de gabinete (assessores) não é divulgada por parlamentar nos dados abertos — o custo rastreável aqui é a cota.'}
       </p>
     </div>
   )

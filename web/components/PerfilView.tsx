@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -34,13 +34,14 @@ const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, assessores, alertas, alertasPorDespesa,
+  politico, despesas, series, perfil, custos, municipioCusto = null, assessores, alertas, alertasPorDespesa,
 }: {
   politico: Politico
   despesas: Despesa[]
   series: SerieParlamentar[]
   perfil: PerfilParlamentar | null
   custos: CustosMandato
+  municipioCusto?: CustoMunicipio | null
   assessores: {
     quantidade: number | null
     folha?: number | null
@@ -57,7 +58,14 @@ export function PerfilView({
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(series)
+  // comparar entre PARES (mesma casa; no municipal, mesma cidade), não contra todas as casas juntas
+  const pares = useMemo(
+    () => series.filter((s) =>
+      s.casa === politico.casa &&
+      (politico.casa !== 'camara_municipal' || s.municipio === politico.municipio)),
+    [series, politico.casa, politico.municipio],
+  )
+  const periodoVal = searchParams.get('periodo') ?? valorPeriodoPadrao(pares)
   const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
 
   function setPeriodo(v: string) {
@@ -89,7 +97,7 @@ export function PerfilView({
   )
 
   const { posicao, totalRanqueados, mediaGeral } = useMemo(() => {
-    const r = rankingNoPeriodo(series, periodo)
+    const r = rankingNoPeriodo(pares, periodo)
     const comGasto = r.filter((l) => l.total > 0)
     const idx = comGasto.findIndex((l) => l.politicoId === politico.id)
     return {
@@ -97,7 +105,7 @@ export function PerfilView({
       totalRanqueados: comGasto.length,
       mediaGeral: resumoNoPeriodo(r).media,
     }
-  }, [series, periodo, politico.id])
+  }, [pares, periodo, politico.id])
 
   const mesesComGasto = ag.serieMensal.length
   const mediaMensal = mesesComGasto ? ag.total / mesesComGasto : 0
@@ -106,10 +114,17 @@ export function PerfilView({
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
 
-  // linha de teto no gráfico mensal — só quando o teto da cota é exato (Câmara/CEAP por UF).
-  // O Record de custos cobre as 3 casas federais/estadual; o custo municipal vive em outra estrutura.
-  const casaCusto = politico.casa === 'camara_municipal' ? 'camara' : politico.casa
-  const custoCasa = custos.casas[casaCusto]
+  // Custo de referência da casa. O Record de custos cobre as 3 casas federais/estadual; o custo
+  // municipal vive em municipios.json (subsídio + teto VIAP + média real de gabinete) e é montado aqui.
+  const custoCasa: CustoCasa = politico.casa === 'camara_municipal' && municipioCusto
+    ? {
+        rotulo: 'Câmara Municipal',
+        salario: municipioCusto.salario,
+        cota: { valor: municipioCusto.viapTeto, rotulo: 'Teto da VIAP/mês', aproximado: false },
+        gabinete: { valor: municipioCusto.gabineteMedia, rotulo: 'Média real do gabinete · mês', aproximado: true },
+        fontes: [],
+      }
+    : custos.casas[politico.casa === 'camara_municipal' ? 'camara' : politico.casa]
   // o Senado não expõe a nota individual na base aberta → link p/ a prestação de contas do senador
   const portalSenado =
     politico.casa === 'senado'
@@ -123,10 +138,10 @@ export function PerfilView({
   return (
     <article>
       <Link
-        href="/"
+        href={politico.casa === 'camara_municipal' && politico.municipio ? `/municipios/${politico.municipio}/` : '/'}
         className="mb-6 inline-flex items-center gap-1 text-sm text-tinta-suave transition-colors hover:text-marca"
       >
-        ← Ranking
+        ← {politico.casa === 'camara_municipal' ? 'Vereadores' : 'Ranking'}
       </Link>
 
       <header className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center">
@@ -192,7 +207,7 @@ export function PerfilView({
             <Estatistica rotulo="Total no período" valor={brl(ag.total)} destaque />
             <Estatistica rotulo="Posição no ranking" valor={posicao ? `${posicao}º de ${totalRanqueados}` : '—'} />
             <Estatistica
-              rotulo="vs. média geral"
+              rotulo={politico.casa === 'camara_municipal' ? 'vs. média dos vereadores' : 'vs. média da casa'}
               valor={vsMedia ? `${vsMedia.toFixed(1).replace('.', ',')}×` : '—'}
               hint={vsMedia ? (vsMedia >= 1 ? 'acima da média' : 'abaixo da média') : undefined}
             />

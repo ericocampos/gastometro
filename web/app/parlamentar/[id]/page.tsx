@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas } from '@/lib/dados'
+import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios } from '@/lib/dados'
 import type { MarcaAlerta } from '@/lib/tipos'
 import { PerfilView } from '@/components/PerfilView'
 
@@ -15,6 +15,9 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
   const series = getSeriesParlamentares()
   const perfil = getPerfil(params.id)
   const custos = getCustos()
+  const municipioCusto = resumo.politico.municipio
+    ? (getMunicipios().cidades.find((c) => c.slug === resumo.politico.municipio)?.custo ?? null)
+    : null
   const assessoresData = getAssessores()
   const gab = assessoresData?.porPolitico[params.id]
   const assessores = {
@@ -51,7 +54,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} />
     </Suspense>
   )
 }

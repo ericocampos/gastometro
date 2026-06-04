@@ -80,6 +80,11 @@ const assessores = {
   mesReferencia: '2025-02',
 }
 
+const municipioCusto = {
+  slug: 'joao-pessoa', nome: 'João Pessoa',
+  salario: 26000, viapTeto: 14000, viapMedia: 13000, gabineteMedia: 50000,
+}
+
 function renderMunicipal() {
   return render(
     <PerfilView
@@ -88,6 +93,7 @@ function renderMunicipal() {
       series={series}
       perfil={null}
       custos={custos}
+      municipioCusto={municipioCusto}
       assessores={assessores}
       alertas={{ quantidade: 0, temAlta: false, temMedia: false }}
       alertasPorDespesa={{}}
@@ -120,5 +126,22 @@ describe('PerfilView · vereador municipal', () => {
   it('mostra o rótulo da Câmara Municipal no cabeçalho', () => {
     renderMunicipal()
     expect(screen.getByText('Câmara Municipal')).toBeInTheDocument()
+  })
+
+  it('usa o subsídio do vereador (26 mil), não o do deputado (46 mil)', () => {
+    renderMunicipal()
+    expect(screen.getByText(/26\.000/)).toBeInTheDocument()
+    expect(screen.queryByText(/46\.366/)).not.toBeInTheDocument()
+  })
+
+  it('o link de voltar aponta para o ranking de vereadores da cidade', () => {
+    renderMunicipal()
+    const link = screen.getByRole('link', { name: /vereadores/i })
+    expect(link.getAttribute('href')).toMatch(/^\/municipios\/joao-pessoa\/?$/)
+  })
+
+  it('compara com os pares (vereadores), não com todas as casas', () => {
+    renderMunicipal()
+    expect(screen.getByText(/vs\. média dos vereadores/i)).toBeInTheDocument()
   })
 })
