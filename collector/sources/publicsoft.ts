@@ -39,21 +39,32 @@ export function parsePublicsoft(json: unknown): RegistroPublicsoft[] {
   }))
 }
 
-// Vereadores = registros eletivos (cargo VEREADOR / VEREADOR SUPLENTE). O subsídio é o bruto;
-// o presidente costuma ter bruto maior — marcamos quem está acima da mediana.
-export function extrairVereadores(registros: RegistroPublicsoft[]): VereadorLeve[] {
-  const eletivos = registros.filter((r) => r.tipoCargo.includes('Eletivo') && /VEREADOR/i.test(r.cargo))
-  const brutos = eletivos.map((e) => e.bruto).sort((a, b) => a - b)
+// Monta a lista de vereadores a partir de pares {nome, bruto}: o subsídio é o bruto e o presidente
+// costuma ter bruto maior, então marcamos quem está ACIMA da mediana (a base, igual para todos).
+// Compartilhado com a fonte Elmar (mesma regra de subsídio/presidente no modelo leve).
+export function montarVereadoresLeve(itens: { nome: string; bruto: number }[]): VereadorLeve[] {
+  const brutos = itens.map((e) => e.bruto).sort((a, b) => a - b)
   const base = brutos.length ? brutos[Math.floor(brutos.length / 2)] : 0 // subsídio base (mediana)
-  return eletivos
+  return itens
     .map((e) => ({ nome: e.nome, subsidio: e.bruto, presidente: e.bruto > base }))
     .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
 }
 
-// Folha de gabinete da câmara: soma do bruto dos comissionados lotados em gabinete de vereador.
-export function somarFolhaGabinete(registros: RegistroPublicsoft[]): number {
+// Vereadores = registros eletivos (cargo VEREADOR / VEREADOR SUPLENTE).
+export function extrairVereadores(registros: RegistroPublicsoft[]): VereadorLeve[] {
+  const eletivos = registros.filter((r) => r.tipoCargo.includes('Eletivo') && /VEREADOR/i.test(r.cargo))
+  return montarVereadoresLeve(eletivos.map((e) => ({ nome: e.nome, bruto: e.bruto })))
+}
+
+// Folha de gabinete da câmara: soma do bruto dos comissionados de gabinete de vereador.
+// O cargo que identifica esses comissionados varia por câmara (taxonomia própria de cada cidade),
+// então o filtro vem por regex de cargo (default = "GABINETE DE VEREADOR", caso de Campina Grande).
+export function somarFolhaGabinete(
+  registros: RegistroPublicsoft[],
+  cargoRegex: RegExp = /GABINETE DE VEREADOR/i,
+): number {
   return registros
-    .filter((r) => r.tipoCargo.includes('Comissionado') && /GABINETE DE VEREADOR/i.test(r.cargo))
+    .filter((r) => r.tipoCargo.includes('Comissionado') && cargoRegex.test(r.cargo))
     .reduce((s, r) => s + r.bruto, 0)
 }
 

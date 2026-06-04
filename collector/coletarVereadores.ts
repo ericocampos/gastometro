@@ -9,9 +9,10 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
-import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
+import { baixarFolha, extrairGabinetes, extrairVereadoresElmar, somarFolhaGabineteElmar, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
 import { baixarFolhaPublicsoft, extrairVereadores, somarFolhaGabinete, type VereadorLeve } from './sources/publicsoft.js'
+import { baixarRosterPatos, type VereadorRosterLeve } from './sources/patosRoster.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
@@ -211,6 +212,23 @@ export function montarCidadeLeve(
   }
 }
 
+// Modelo leve sem folha publicada: a câmara não publica folha de pagamento por HTTP (ex.: Patos,
+// no portal intgest). Só temos o roster (HTML) e o subsídio fixo de lei. O Municipio fica SEM
+// folhaGabineteTotal/mesReferencia, e o web mostra a folha de gabinete como "não publicado".
+export function montarCidadeLeveRoster(cfg: CidadeConfig, roster: VereadorRosterLeve[]): Municipio {
+  const subsidio = cfg.subsidio ?? 0
+  const subsidioPres = cfg.subsidioPresidente ?? subsidio
+  return {
+    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'leve',
+    numVereadores: roster.length,
+    vereadores: roster.map((v) => {
+      const presidente = cfg.presidenteNome != null && mesmaPessoaTokens(v.nome, cfg.presidenteNome)
+      return { nome: v.nome, subsidio: presidente ? subsidioPres : subsidio, presidente, partido: v.partido, fotoUrl: v.fotoUrl }
+    }),
+    custo: { slug: cfg.slug, nome: cfg.nome, salario: subsidio, viapTeto: 0, viapMedia: null, gabineteMedia: null },
+  }
+}
+
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
 const here = dirname(fileURLToPath(import.meta.url))
 const dataDir = process.env.GASTOMETRO_DATA_DIR ?? resolve(here, '../data')
@@ -228,22 +246,53 @@ async function main() {
   for (const cfg of CIDADES) {
     console.log(`\n> ${cfg.nome} (${cfg.slug}) [${cfg.modelo}]`)
 
-    // modelo leve: só subsídio + folha de gabinete agregada (vive só no municipios.json)
+    // modelo leve: vive só no municipios.json (sem entrar no modelo plano)
     if (cfg.modelo === 'leve') {
-      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
-        console.log('  sem plataforma leve configurada, pulando'); continue
+      // roster-html: câmara não publica folha; só roster + subsídio fixo
+      if (cfg.plataforma === 'roster-html') {
+        if (!cfg.rosterUrl) { console.log('  sem rosterUrl, pulando'); continue }
+        const roster = await baixarRosterPatos(cfg.rosterUrl)
+        console.log(`  roster: ${roster.length} vereadores | folha de gabinete: não publicada pela câmara`)
+        resumos.push(montarCidadeLeveRoster(cfg, roster))
+        continue
       }
+      const gabRegex = new RegExp(cfg.gabineteCargoRegex ?? 'GABINETE DE VEREADOR', 'i')
       let vereadores: VereadorLeve[] = []
       let folhaGab = 0
       let mesRef = ''
       const hoje = new Date()
-      for (let i = 0; i < 6; i++) {
+
+      // elmar: folha pela API aberta (usa ctxElmar); competência MM/YYYY, tenta meses recentes
+      if (cfg.plataforma === 'elmar') {
+        if (!cfg.ctxElmar) { console.log('  sem ctxElmar, pulando'); continue }
+        for (let i = 0; i < 8; i++) {
+          const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
+          const comp = competenciaDe(d)
+          const regs = await baixarFolha(cfg.ctxElmar, comp)
+          const v = extrairVereadoresElmar(regs)
+          if (v.length > 0) {
+            vereadores = v
+            folhaGab = somarFolhaGabineteElmar(regs, gabRegex)
+            mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+            break
+          }
+        }
+        console.log(`  vereadores: ${vereadores.length} | folha gabinete: R$ ${folhaGab.toFixed(2)} | ref ${mesRef}`)
+        resumos.push(montarCidadeLeve(cfg, vereadores, folhaGab, mesRef))
+        continue
+      }
+
+      // publicsoft: folha pela API do Portal do Servidor (usa publicsoftDb)
+      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
+        console.log('  sem plataforma leve configurada, pulando'); continue
+      }
+      for (let i = 0; i < 8; i++) {
         const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
         const regs = await baixarFolhaPublicsoft(cfg.publicsoftDb, d.getMonth() + 1, d.getFullYear())
         const v = extrairVereadores(regs)
         if (v.length > 0) {
           vereadores = v
-          folhaGab = somarFolhaGabinete(regs)
+          folhaGab = somarFolhaGabinete(regs, gabRegex)
           mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
           break
         }

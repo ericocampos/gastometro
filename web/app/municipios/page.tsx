@@ -72,7 +72,11 @@ export default function MunicipiosPage() {
                       </div>
                       <div className="flex items-baseline justify-between gap-2">
                         <dt>Folha de gabinete · mês</dt>
-                        <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.folhaGabineteTotal ?? 0)}</dd>
+                        {c.folhaGabineteTotal != null ? (
+                          <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.folhaGabineteTotal)}</dd>
+                        ) : (
+                          <dd className="text-tinta-tenue">não publicado</dd>
+                        )}
                       </div>
                     </>
                   )}
