@@ -1,5 +1,6 @@
 import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
+import { CamaraLeve } from '@/components/CamaraLeve'
 import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
@@ -33,15 +34,21 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
         </h1>
       </section>
 
-      <section className="mb-12">
-        <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
-        <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
-      </section>
+      {municipio.modelo === 'completo' ? (
+        <>
+          <section className="mb-12">
+            <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
+            <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
+          </section>
 
-      <section>
-        <SecaoTitulo>Ranking de gastos (VIAP)</SecaoTitulo>
-        <RankingView series={series} />
-      </section>
+          <section>
+            <SecaoTitulo>Ranking de gastos (VIAP)</SecaoTitulo>
+            <RankingView series={series} />
+          </section>
+        </>
+      ) : (
+        <CamaraLeve municipio={municipio} atualizadoEm={indice.atualizadoEm} />
+      )}
     </div>
   )
 }

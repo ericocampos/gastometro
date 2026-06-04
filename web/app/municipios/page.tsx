@@ -34,14 +34,29 @@ export default function MunicipiosPage() {
                 <p className="font-display text-lg font-semibold leading-tight text-tinta">{c.nome}</p>
                 <p className="mt-0.5 text-sm text-tinta-suave">{c.numVereadores} vereadores</p>
                 <dl className="mt-3 space-y-1 text-xs text-tinta-tenue">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <dt>VIAP no período</dt>
-                    <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.totalViapPeriodo)}</dd>
-                  </div>
-                  <div className="flex items-baseline justify-between gap-2">
-                    <dt>Gabinete · mês</dt>
-                    <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.totalGabineteMes)}/mês</dd>
-                  </div>
+                  {c.modelo === 'completo' ? (
+                    <>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <dt>VIAP no período</dt>
+                        <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.totalViapPeriodo ?? 0)}</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <dt>Gabinete · mês</dt>
+                        <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.totalGabineteMes ?? 0)}/mês</dd>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <dt>Subsídio</dt>
+                        <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.custo.salario)}/mês</dd>
+                      </div>
+                      <div className="flex items-baseline justify-between gap-2">
+                        <dt>Folha de gabinete · mês</dt>
+                        <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.folhaGabineteTotal ?? 0)}</dd>
+                      </div>
+                    </>
+                  )}
                 </dl>
               </Link>
             </li>

@@ -11,6 +11,7 @@ import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
 import { baixarRoster, type VereadorRoster } from './sources/cmjpRoster.js'
 import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/elmar.js'
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
+import { baixarFolhaPublicsoft, extrairVereadores, somarFolhaGabinete, type VereadorLeve } from './sources/publicsoft.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
@@ -25,7 +26,19 @@ interface PerfilParlamentar { id: string; nomeCivil?: string; nascimento?: strin
 interface SecretarioGabinete { nome: string; remuneracao: number; cargo?: string; liquido?: number; lotacaoTipo?: 'gabinete' | 'escritorio'; admissaoAno?: number }
 interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; folhaOficial?: boolean; mesReferencia?: string }
 interface CustoMunicipio { slug: string; nome: string; salario: number; viapTeto: number; viapMedia: number | null; gabineteMedia: number | null }
-interface Municipio { slug: string; nome: string; uf: string; numVereadores: number; totalViapPeriodo: number; totalGabineteMes: number; periodoViap: { de: string; ate: string } | null; custo: CustoMunicipio }
+interface MunicipioVereador { nome: string; subsidio: number; presidente?: boolean; partido?: string; fotoUrl?: string }
+interface Municipio {
+  slug: string; nome: string; uf: string
+  modelo: 'completo' | 'leve'
+  numVereadores: number
+  custo: CustoMunicipio
+  totalViapPeriodo?: number
+  totalGabineteMes?: number
+  periodoViap?: { de: string; ate: string } | null
+  mesReferencia?: string
+  folhaGabineteTotal?: number
+  vereadores?: MunicipioVereador[]
+}
 interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }
 
 const VIAP_TETO = 14000
@@ -163,14 +176,38 @@ export function montarCidade(
   const gabineteMedia = folhasMatched.length > 0 ? folhasMatched.reduce((s, x) => s + x, 0) / folhasMatched.length : null
 
   const resumoMunicipio: Municipio = {
-    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, numVereadores: roster.length,
+    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'completo', numVereadores: roster.length,
     totalViapPeriodo, totalGabineteMes, periodoViap,
-    custo: { slug: cfg.slug, nome: cfg.nome, salario: cfg.subsidio, viapTeto: VIAP_TETO, viapMedia, gabineteMedia },
+    custo: { slug: cfg.slug, nome: cfg.nome, salario: cfg.subsidio ?? 0, viapTeto: VIAP_TETO, viapMedia, gabineteMedia },
   }
 
   return {
     politicos, ranking, porPolitico, despesasPorId, perfis, gabinetePorId, resumoMunicipio,
     cobertura: { total: roster.length, comGabinete, comViap, naoCasados },
+  }
+}
+
+// Modelo leve: a cidade só publica subsídio fixo + folha de gabinete agregada (sem VIAP nem
+// gabinete por vereador). Vira um Municipio 'leve' no municipios.json, sem entrar no modelo plano.
+export function montarCidadeLeve(
+  cfg: CidadeConfig,
+  vereadores: VereadorLeve[],
+  folhaGabineteTotal: number,
+  mesReferencia: string,
+): Municipio {
+  const subsidios = vereadores.map((v) => v.subsidio).sort((a, b) => a - b)
+  const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0 // mediana
+  const gabineteMedia = vereadores.length ? folhaGabineteTotal / vereadores.length : null
+  return {
+    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'leve',
+    numVereadores: vereadores.length,
+    mesReferencia,
+    folhaGabineteTotal,
+    vereadores: vereadores.map((v) => ({ nome: v.nome, subsidio: v.subsidio, presidente: v.presidente })),
+    custo: {
+      slug: cfg.slug, nome: cfg.nome, salario: subsidioBase,
+      viapTeto: 0, viapMedia: null, gabineteMedia,
+    },
   }
 }
 
@@ -189,8 +226,35 @@ async function main() {
   const resumos: Municipio[] = []
 
   for (const cfg of CIDADES) {
-    console.log(`\n> ${cfg.nome} (${cfg.slug})`)
-    const roster = await baixarRoster(cfg.rosterUrl)
+    console.log(`\n> ${cfg.nome} (${cfg.slug}) [${cfg.modelo}]`)
+
+    // modelo leve: só subsídio + folha de gabinete agregada (vive só no municipios.json)
+    if (cfg.modelo === 'leve') {
+      if (cfg.plataforma !== 'publicsoft' || !cfg.publicsoftDb) {
+        console.log('  sem plataforma leve configurada, pulando'); continue
+      }
+      let vereadores: VereadorLeve[] = []
+      let folhaGab = 0
+      let mesRef = ''
+      const hoje = new Date()
+      for (let i = 0; i < 6; i++) {
+        const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
+        const regs = await baixarFolhaPublicsoft(cfg.publicsoftDb, d.getMonth() + 1, d.getFullYear())
+        const v = extrairVereadores(regs)
+        if (v.length > 0) {
+          vereadores = v
+          folhaGab = somarFolhaGabinete(regs)
+          mesRef = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
+          break
+        }
+      }
+      console.log(`  vereadores: ${vereadores.length} | folha gabinete: R$ ${folhaGab.toFixed(2)} | ref ${mesRef}`)
+      resumos.push(montarCidadeLeve(cfg, vereadores, folhaGab, mesRef))
+      continue
+    }
+
+    // modelo completo (João Pessoa)
+    const roster = await baixarRoster(cfg.rosterUrl!)
     console.log(`  roster: ${roster.length} vereadores`)
 
     // gabinete: tenta o mês corrente p/ trás até a folha sair não vazia
@@ -200,7 +264,7 @@ async function main() {
     for (let i = 0; i < 6; i++) {
       const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1)
       const comp = competenciaDe(d)
-      const folha = await baixarFolha(cfg.ctxElmar, comp)
+      const folha = await baixarFolha(cfg.ctxElmar!, comp)
       const g = extrairGabinetes(folha)
       if (g.length > 0) { gabs = g; mesGabinete = comp; break }
     }

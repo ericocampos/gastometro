@@ -174,12 +174,28 @@ export interface CustoMunicipio {
   viapMedia: number | null
   gabineteMedia: number | null
 }
+// vereador na listagem do modelo leve (cidades sem gasto variável por vereador)
+export interface MunicipioVereador {
+  nome: string
+  subsidio: number
+  presidente?: boolean
+  partido?: string
+  fotoUrl?: string
+}
 export interface Municipio {
   slug: string; nome: string; uf: string
+  // 'completo' = gasto por vereador (VIAP + gabinete, ex.: João Pessoa);
+  // 'leve' = a fonte só tem subsídio fixo + folha de gabinete agregada da câmara
+  modelo: 'completo' | 'leve'
   numVereadores: number
-  totalViapPeriodo: number
-  totalGabineteMes: number
-  periodoViap: { de: string; ate: string } | null
   custo: CustoMunicipio
+  // completo:
+  totalViapPeriodo?: number
+  totalGabineteMes?: number
+  periodoViap?: { de: string; ate: string } | null
+  // leve:
+  mesReferencia?: string          // mês de referência da folha (AAAA-MM)
+  folhaGabineteTotal?: number     // folha bruta agregada da câmara (gabinetes de vereador)
+  vereadores?: MunicipioVereador[]
 }
 export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[] }

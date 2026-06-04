@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { MunicipiosIndice } from '@/lib/tipos'
-import { brlInteiro, mesAno } from '@/lib/formato'
+import { brlInteiro } from '@/lib/formato'
 
 const TEAL = '#0f766e'
 
@@ -11,14 +11,11 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
   if (cidades.length === 0) return null
 
   const numVereadores = cidades.reduce((s, c) => s + c.numVereadores, 0)
-  const totalViap = cidades.reduce((s, c) => s + c.totalViapPeriodo, 0)
-  const folhaGabinete = cidades.reduce((s, c) => s + c.totalGabineteMes, 0)
-
-  const des = cidades.map((c) => c.periodoViap?.de).filter(Boolean) as string[]
-  const ates = cidades.map((c) => c.periodoViap?.ate).filter(Boolean) as string[]
-  const de = des.length ? des.reduce((a, b) => (a < b ? a : b)) : null
-  const ate = ates.length ? ates.reduce((a, b) => (a > b ? a : b)) : null
-  const periodo = de && ate ? `${mesAno(de)} a ${mesAno(ate)}` : null
+  // folha de gabinete mensal: completo usa totalGabineteMes, leve usa folhaGabineteTotal
+  const folhaGabinete = cidades.reduce(
+    (s, c) => s + (c.modelo === 'completo' ? (c.totalGabineteMes ?? 0) : (c.folhaGabineteTotal ?? 0)),
+    0,
+  )
 
   const Item = ({ rotulo, valor }: { rotulo: string; valor: string }) => (
     <div>
@@ -48,8 +45,8 @@ export function CoberturaMunicipal({ indice }: { indice: MunicipiosIndice }) {
         </Link>
       </div>
       <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+        <Item rotulo="Cidades" valor={String(cidades.length)} />
         <Item rotulo="Vereadores" valor={String(numVereadores)} />
-        <Item rotulo={`VIAP no período${periodo ? ` (${periodo})` : ''}`} valor={brlInteiro(totalViap)} />
         <Item rotulo="Folha de gabinete · mês" valor={brlInteiro(folhaGabinete)} />
       </dl>
     </div>
