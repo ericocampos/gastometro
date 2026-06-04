@@ -122,15 +122,17 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 ### Câmaras municipais — modelo leve (demais cidades)
 
-Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador. A folha vem por API de duas plataformas, escolhidas por `plataforma` em `collector/cidades.ts`:
+Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador. A folha vem por API de três plataformas, escolhidas por `plataforma` em `collector/cidades.ts`:
 
 | Plataforma | Endpoint | Como lemos |
 |---|---|---|
 | **Elmar** (maioria) | `https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento?competencia=MM/YYYY` | JSON. O campo **`regime`** separa de forma uniforme: `ELETIVO` = vereador (subsídio = `vantagens`); `CARGO COMISSIONADO` somados = folha de comissionados da câmara. Cada câmara tem um `{ctx}` (lista em `cidades.ts`, bloco `ELMAR_PB`). O ctx `2xxxxx` é a prefeitura — não usar |
-| **PublicSoft** (Campina Grande, Bayeux) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador; `1-Comissionado` somados = folha de comissionados. `{db}` = base64 do CNPJ da câmara |
+| **PublicSoft** (Campina Grande, Bayeux e mais ~16 câmaras) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador; `1-Comissionado` somados = folha de comissionados. `{db}` = base64 do CNPJ da câmara (lista em `cidades.ts`, bloco `PUBLICSOFT_PB`) |
 | **roster-html** (Patos) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | quando a câmara não publica folha por HTTP: só roster (HTML) + subsídio fixo de lei. A folha de comissionados fica como "não publicado" |
 
 **Como a lista de câmaras Elmar foi montada:** o bloco de `ctx` `101xxx` da Elmar é a Paraíba. Varremos o range, confirmamos o nome de cada entidade pelo frontend (`transparencia.elmartecnologia.com.br/?e={ctx}`) e casamos com os nomes oficiais do IBGE (UF 25). São ~54 câmaras PB nessa plataforma.
+
+**Como a lista de câmaras PublicSoft foi montada:** a "Central de Clientes" do Portal da Transparência da PublicSoft (`portaldatransparencia.publicsoft.com.br`) tem um diretório em cascata UF → cidade → instituição (endpoints `views_c/*JSON.php`). Listamos as ~168 cidades PB e, para cada "Câmara Municipal" com folha integrada, o `db` (base64 do CNPJ) sai do link `folha.php?db=` da página de folha. Cada `db` foi confirmado no webservice acima; só entram câmaras que retornam vereadores na legislatura atual (a partir de jan/2025). Câmaras com folha só "importada" (não integrada) ou sem `2-Eletivo` ficam de fora.
 
 > A lotação dos comissionados é genérica (não nomeia o vereador), por isso a folha entra **agregada por câmara**, não por pessoa. O **presidente** é identificado pelo cargo ("... PRESIDENTE"), com fallback para o maior subsídio. O **subsídio exibido** é a mediana (valor legal uniforme), não a `vantagens` de um mês isolado (que tem proração/retroativo/13º).
 
