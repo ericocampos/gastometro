@@ -39,21 +39,36 @@ export function parsePublicsoft(json: unknown): RegistroPublicsoft[] {
   }))
 }
 
-// Monta a lista de vereadores a partir de pares {nome, bruto}: o subsídio é o bruto e o presidente
-// costuma ter bruto maior, então marcamos quem está ACIMA da mediana (a base, igual para todos).
-// Compartilhado com a fonte Elmar (mesma regra de subsídio/presidente no modelo leve).
-export function montarVereadoresLeve(itens: { nome: string; bruto: number }[]): VereadorLeve[] {
+// Monta a lista de vereadores no modelo leve a partir de {nome, bruto, presidenteCargo?}.
+// Compartilhado entre PublicSoft e Elmar. Regras:
+//  - subsídio base = mediana dos brutos (valor legal, igual para todos).
+//  - subsídio exibido = a base; o bruto de UM mês traz ruído (proração, retroativo, 13º), então
+//    não o usamos como subsídio individual, exceto para o presidente quando seu bruto é maior.
+//  - presidente: pelo CARGO (campo presidenteCargo, ex.: "VEREADOR - PRESIDENTE"); se nenhum cargo
+//    marcar, cai para o de maior bruto acima da base (caso de câmaras que não marcam no cargo).
+export function montarVereadoresLeve(
+  itens: { nome: string; bruto: number; presidenteCargo?: boolean }[],
+): VereadorLeve[] {
   const brutos = itens.map((e) => e.bruto).sort((a, b) => a - b)
-  const base = brutos.length ? brutos[Math.floor(brutos.length / 2)] : 0 // subsídio base (mediana)
+  const base = brutos.length ? brutos[Math.floor(brutos.length / 2)] : 0 // mediana
+  const maxBruto = brutos.length ? brutos[brutos.length - 1] : 0
+  const algumCargoPres = itens.some((e) => e.presidenteCargo)
   return itens
-    .map((e) => ({ nome: e.nome, subsidio: e.bruto, presidente: e.bruto > base }))
+    .map((e) => {
+      const presidente = e.presidenteCargo === true
+        || (!algumCargoPres && e.bruto === maxBruto && e.bruto > base)
+      const subsidio = presidente ? Math.max(e.bruto, base) : base
+      return { nome: e.nome, subsidio, presidente }
+    })
     .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
 }
 
-// Vereadores = registros eletivos (cargo VEREADOR / VEREADOR SUPLENTE).
+// Vereadores = registros eletivos (cargo VEREADOR / VEREADOR SUPLENTE / VEREADOR - PRESIDENTE).
 export function extrairVereadores(registros: RegistroPublicsoft[]): VereadorLeve[] {
   const eletivos = registros.filter((r) => r.tipoCargo.includes('Eletivo') && /VEREADOR/i.test(r.cargo))
-  return montarVereadoresLeve(eletivos.map((e) => ({ nome: e.nome, bruto: e.bruto })))
+  return montarVereadoresLeve(
+    eletivos.map((e) => ({ nome: e.nome, bruto: e.bruto, presidenteCargo: /PRESIDENT/i.test(e.cargo) })),
+  )
 }
 
 // Folha de gabinete da câmara: soma do bruto dos comissionados de gabinete de vereador.

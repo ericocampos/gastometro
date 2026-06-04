@@ -106,7 +106,9 @@ const RE_VEREADOR = /^VEREADOR\b/i
 
 export function extrairVereadoresElmar(registros: FolhaRegistro[]): VereadorLeve[] {
   const vers = registros.filter((r) => RE_VEREADOR.test(r.cargo.trim()))
-  return montarVereadoresLeve(vers.map((r) => ({ nome: r.nome, bruto: r.vantagens })))
+  return montarVereadoresLeve(
+    vers.map((r) => ({ nome: r.nome, bruto: r.vantagens, presidenteCargo: /PRESIDENT/i.test(r.cargo) })),
+  )
 }
 
 export function somarFolhaGabineteElmar(registros: FolhaRegistro[], cargoRegex: RegExp): number {

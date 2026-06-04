@@ -582,6 +582,362 @@
         "viapMedia": null,
         "gabineteMedia": 6747.058235294118
       }
+    },
+    {
+      "slug": "cajazeiras",
+      "nome": "Cajazeiras",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 15,
+      "mesReferencia": "2026-03",
+      "folhaGabineteTotal": 113738.70999999999,
+      "vereadores": [
+        {
+          "nome": "ALYSSON AMERICO DE OLIVEIRA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "ANTONIO HELANO VIEIRA DA SILVA SEGUNDO",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "FABIO BORGES LEITE",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO NETO DAMACENA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "JOAO LINS DE SOUZA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "LAMARQUE BARROS CAMPOS DE SOUZA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "LINDBERG LIRA DE SOUZA",
+          "subsidio": 15700,
+          "presidente": true
+        },
+        {
+          "nome": "LUALAS JOAN PEREIRA PONTES RIBEIRO",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "LUZIA TRAJANO DE SOUZA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "MARCOS ANTONIO GOMES DA SILVA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "RAELSA BORGES DE ALMEIDA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "ROBERTO SANTANA DE FIGUEREDO",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "RODRIGO LIRA DAMASCENA",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "SARA SHEYLA SANTANA ALVES",
+          "subsidio": 13200,
+          "presidente": false
+        },
+        {
+          "nome": "VICTOR BRUNO GONCALVES DIAS",
+          "subsidio": 13200,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "cajazeiras",
+        "nome": "Cajazeiras",
+        "salario": 13200,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 7582.580666666666
+      }
+    },
+    {
+      "slug": "guarabira",
+      "nome": "Guarabira",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 15,
+      "mesReferencia": "2026-05",
+      "folhaGabineteTotal": 191472,
+      "vereadores": [
+        {
+          "nome": "ALCIDES CAMILO DE MOURA SOBRINHO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ARMANDO SANTOS DE MELO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "GERSON CANDIDO DE FARIAS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "GILVANDO MARINHO DA SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "ISAURA GOMES BARBOSA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "IVONALDO FERNANDES DA SILVA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JAILSON PEREIRA DOS SANTOS",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JOSE FERREIRA DOS SANTOS JUNIOR",
+          "subsidio": 18500,
+          "presidente": true
+        },
+        {
+          "nome": "JOSINEIDE NICOLAU DE FARIAS TEOTONIO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "JUSSARA MARIA CUNHA DOS SANTOS MACENA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIELIO ALVES DE ARAUJO",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "LUIZE LAMARTE FERREIRA DE LIMA",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "RAMON SILVA MENEZES",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "RENATO DIAS MEIRELES",
+          "subsidio": 13000,
+          "presidente": false
+        },
+        {
+          "nome": "SAULO FERNANDES DOS SANTOS",
+          "subsidio": 13000,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "guarabira",
+        "nome": "Guarabira",
+        "salario": 13000,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 12764.8
+      }
+    },
+    {
+      "slug": "queimadas",
+      "nome": "Queimadas",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 13,
+      "mesReferencia": "2026-05",
+      "folhaGabineteTotal": 119156.97000000006,
+      "vereadores": [
+        {
+          "nome": "BELMIRO JUVENAL DE MELO JUNIOR",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "CLAUDIO ALBUQUERQUE LEMOS",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "EVERALDO SEVERINO BESERRA",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "FABIANO DA SILVA PEREIRA",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "FABLICIA MACIEL BEZERRA MEDEIROS",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "FRANCISCO PERES DA SILVA",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "LUCIANO DO REGO LEAL",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "LUIS JULIMAR BEZERRA",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "MARIA MADALENA PEREIRA DA SILVA ARAUJO",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "MATHEUS MAIA PAZ",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "RICARDO LUCENA DE ARAUJO",
+          "subsidio": 13896.11,
+          "presidente": true
+        },
+        {
+          "nome": "SANDRA MARIA PEREIRA DA COSTA",
+          "subsidio": 10432.39,
+          "presidente": false
+        },
+        {
+          "nome": "SERGIO DA SILVA SOUZA",
+          "subsidio": 10432.39,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "queimadas",
+        "nome": "Queimadas",
+        "salario": 10432.39,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 9165.920769230774
+      }
+    },
+    {
+      "slug": "pombal",
+      "nome": "Pombal",
+      "uf": "PB",
+      "modelo": "leve",
+      "numVereadores": 13,
+      "mesReferencia": "2026-05",
+      "folhaGabineteTotal": 27285,
+      "vereadores": [
+        {
+          "nome": "AILTON DE MELO SILVA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "ANA ISABELLE SANTANA DE ARAÚJO",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "EDNO DANTAS PEREIRA",
+          "subsidio": 13900,
+          "presidente": true
+        },
+        {
+          "nome": "EMANOEL TELMO DE SOUSA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "FÁBIO QUEIROGA DA SILVA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "GILBERTO ISMAEL LACERDA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "JANDILSON VIEIRA FEITOSA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "JOÃO DE SOUSA LEITE FILHO",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "JOCELIO FERREIRA DOS SANTOS",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "JORISMAR DA SILVA CARDOSO",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "MARCOS ANDRADE DA SILVA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "PAULO GOMES VIEIRA",
+          "subsidio": 9900,
+          "presidente": false
+        },
+        {
+          "nome": "PAULO ROMERO OLIVEIRA FREITAS",
+          "subsidio": 9900,
+          "presidente": false
+        }
+      ],
+      "custo": {
+        "slug": "pombal",
+        "nome": "Pombal",
+        "salario": 9900,
+        "viapTeto": 0,
+        "viapMedia": null,
+        "gabineteMedia": 2098.846153846154
+      }
     }
   ]
 }

@@ -63,6 +63,27 @@ export const CIDADES: CidadeConfig[] = [
     plataforma: 'publicsoft', publicsoftDb: 'MDg2MDY5NzIwMDAxMzY', gabineteCargoRegex: 'PARLAMENTAR',
   },
   {
+    // Cajazeiras: Elmar ctx=101046 (prefeitura é 201046). Comissionados de gabinete = "SECRETARIO PARLAMENTAR".
+    slug: 'cajazeiras', nome: 'Cajazeiras', uf: 'PB', modelo: 'leve',
+    plataforma: 'elmar', ctxElmar: '101046', gabineteCargoRegex: 'SECRETARIO PARLAMENTAR',
+  },
+  {
+    // Guarabira: Elmar ctx=101082. Comissionados de gabinete = "... PARLAMENTAR" ou "CHEFE DE GABINETE".
+    slug: 'guarabira', nome: 'Guarabira', uf: 'PB', modelo: 'leve',
+    plataforma: 'elmar', ctxElmar: '101082', gabineteCargoRegex: 'PARLAMENTAR|GABINETE',
+  },
+  {
+    // Queimadas: Elmar ctx=101155. Comissionados de gabinete = "... PARLAMENTAR".
+    slug: 'queimadas', nome: 'Queimadas', uf: 'PB', modelo: 'leve',
+    plataforma: 'elmar', ctxElmar: '101155', gabineteCargoRegex: 'PARLAMENTAR',
+  },
+  {
+    // Pombal: Elmar ctx=101151 (prefeitura 201151; aqui "unidade Trabalho" vem null, confirmação
+    // pela secretaria "CÂMARA MUNICIPAL DE POMBAL"). Gabinete = cargo "ASSESSOR PARLAMENTAR".
+    slug: 'pombal', nome: 'Pombal', uf: 'PB', modelo: 'leve',
+    plataforma: 'elmar', ctxElmar: '101151', gabineteCargoRegex: 'ASSESSOR PARLAMENTAR',
+  },
+  {
     // Patos: câmara no portal intgest, que NÃO publica folha de pagamento por HTTP.
     // Entra no modelo leve só com roster + subsídio fixo (Lei/PL 040/2024, legislatura 2025-2028);
     // o card de folha de gabinete fica como "não publicado pela câmara".
