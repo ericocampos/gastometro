@@ -1,8 +1,9 @@
 // Configuração das cidades cobertas pelo coletor municipal.
 // Dois modelos, conforme o que a fonte da cidade publica:
 //   'completo' = gasto por vereador (VIAP + gabinete por pessoa), ex.: João Pessoa (Elmar + site).
-//   'leve'     = a fonte só tem subsídio fixo + folha de gabinete agregada da câmara
-//                (sem VIAP nem gabinete por vereador), ex.: Campina Grande (PublicSoft).
+//   'leve'     = subsídio + folha de comissionados agregada da câmara (sem gasto por vereador).
+//                A folha agregada vem por API (Elmar/PublicSoft) ou, quando a câmara não publica
+//                folha, só o roster + subsídio fixo de lei ('roster-html', ex.: Patos).
 export interface CidadeConfig {
   slug: string
   nome: string
@@ -18,18 +19,81 @@ export interface CidadeConfig {
   apelidoOverride?: Record<string, string> // chave = nome popular/civil normalizado; valor = nome do roster
 
   // --- modelo 'leve' ---
-  // 'publicsoft'  = folha pela API do Portal do Servidor (subsídio + folha de gabinete agregada).
-  // 'elmar'       = folha pela API aberta da Elmar (usa ctxElmar); subsídio + gabinete agregado.
+  // 'elmar'       = folha pela API aberta da Elmar (usa ctxElmar). Vereadores e comissionados
+  //                 são separados pelo campo `regime` (ELETIVO / CARGO COMISSIONADO) — uniforme.
+  // 'publicsoft'  = folha pela API do Portal do Servidor (usa publicsoftDb). Vereadores = tipoCargo
+  //                 Eletivo; folha de comissionados = tipoCargo Comissionado.
   // 'roster-html' = câmara não publica folha; só roster (HTML) + subsídio fixo de lei.
   plataforma?: 'publicsoft' | 'elmar' | 'roster-html'
-  publicsoftDb?: string  // parâmetro db= da API do Portal do Servidor (PublicSoft)
+  publicsoftDb?: string   // parâmetro db= da API do Portal do Servidor (PublicSoft)
   presidenteNome?: string // roster-html: nome do presidente (recebe o subsídio maior)
-  // leve com folha: regex do CARGO que identifica os comissionados de gabinete de vereador
-  // (a taxonomia muda por câmara). Default = "GABINETE DE VEREADOR" (Campina Grande).
-  gabineteCargoRegex?: string
 }
 
 export const TOTAL_MUNICIPIOS_PB = 223
+
+// Câmaras da PB na Elmar (API de dados abertos), modelo leve. O bloco de ctx 101xxx da Elmar é
+// Paraíba; a lista foi obtida por varredura do range + confirmação do nome pelo frontend e
+// casamento com os nomes oficiais do IBGE. Subsídio e folha de comissionados saem da própria folha.
+const ELMAR_PB: { ctx: string; slug: string; nome: string }[] = [
+  { ctx: '101211', slug: 'sousa', nome: 'Sousa' },
+  { ctx: '101046', slug: 'cajazeiras', nome: 'Cajazeiras' },
+  { ctx: '101040', slug: 'cabedelo', nome: 'Cabedelo' },
+  { ctx: '101082', slug: 'guarabira', nome: 'Guarabira' },
+  { ctx: '101153', slug: 'princesa-isabel', nome: 'Princesa Isabel' },
+  { ctx: '101155', slug: 'queimadas', nome: 'Queimadas' },
+  { ctx: '101178', slug: 'sao-bento', nome: 'São Bento' },
+  { ctx: '101214', slug: 'tavares', nome: 'Tavares' },
+  { ctx: '101151', slug: 'pombal', nome: 'Pombal' },
+  { ctx: '101075', slug: 'dona-ines', nome: 'Dona Inês' },
+  { ctx: '101022', slug: 'barra-de-santa-rosa', nome: 'Barra de Santa Rosa' },
+  { ctx: '101142', slug: 'picui', nome: 'Picuí' },
+  { ctx: '101201', slug: 'serra-branca', nome: 'Serra Branca' },
+  { ctx: '101212', slug: 'sume', nome: 'Sumé' },
+  { ctx: '101026', slug: 'belem', nome: 'Belém' },
+  { ctx: '101036', slug: 'brejo-do-cruz', nome: 'Brejo do Cruz' },
+  { ctx: '101092', slug: 'itatuba', nome: 'Itatuba' },
+  { ctx: '101208', slug: 'solanea', nome: 'Solânea' },
+  { ctx: '101020', slug: 'bananeiras', nome: 'Bananeiras' },
+  { ctx: '101136', slug: 'paulista', nome: 'Paulista' },
+  { ctx: '101146', slug: 'pirpirituba', nome: 'Pirpirituba' },
+  { ctx: '101054', slug: 'carrapateira', nome: 'Carrapateira' },
+  { ctx: '101060', slug: 'condado', nome: 'Condado' },
+  { ctx: '101205', slug: 'serraria', nome: 'Serraria' },
+  { ctx: '101024', slug: 'barra-de-sao-miguel', nome: 'Barra de São Miguel' },
+  { ctx: '101114', slug: 'marizopolis', nome: 'Marizópolis' },
+  { ctx: '101122', slug: 'monte-horebe', nome: 'Monte Horebe' },
+  { ctx: '101181', slug: 'sao-francisco', nome: 'São Francisco' },
+  { ctx: '101019', slug: 'baia-da-traicao', nome: 'Baía da Traição' },
+  { ctx: '101158', slug: 'riachao', nome: 'Riachão' },
+  { ctx: '101018', slug: 'assuncao', nome: 'Assunção' },
+  { ctx: '101031', slug: 'bom-jesus', nome: 'Bom Jesus' },
+  { ctx: '101058', slug: 'caturite', nome: 'Caturité' },
+  { ctx: '101062', slug: 'congo', nome: 'Congo' },
+  { ctx: '101080', slug: 'frei-martinho', nome: 'Frei Martinho' },
+  { ctx: '101084', slug: 'gurjao', nome: 'Gurjão' },
+  { ctx: '101112', slug: 'marcacao', nome: 'Marcação' },
+  { ctx: '101182', slug: 'sao-joao-do-cariri', nome: 'São João do Cariri' },
+  { ctx: '101222', slug: 'vista-serrana', nome: 'Vista Serrana' },
+  { ctx: '101179', slug: 'sao-domingos', nome: 'São Domingos' },
+  { ctx: '101180', slug: 'sao-domingos-do-cariri', nome: 'São Domingos do Cariri' },
+  { ctx: '101094', slug: 'jerico', nome: 'Jericó' },
+  { ctx: '101021', slug: 'barauna', nome: 'Baraúna' },
+  { ctx: '101101', slug: 'lagoa', nome: 'Lagoa' },
+  { ctx: '101126', slug: 'nazarezinho', nome: 'Nazarezinho' },
+  { ctx: '101176', slug: 'santo-andre', nome: 'Santo André' },
+  { ctx: '101221', slug: 'vieiropolis', nome: 'Vieirópolis' },
+  { ctx: '101185', slug: 'sao-jose-da-lagoa-tapada', nome: 'São José da Lagoa Tapada' },
+  { ctx: '101055', slug: 'casserengue', nome: 'Casserengue' },
+  { ctx: '101106', slug: 'logradouro', nome: 'Logradouro' },
+  { ctx: '101145', slug: 'piloezinhos', nome: 'Pilõezinhos' },
+  { ctx: '101206', slug: 'sertaozinho', nome: 'Sertãozinho' },
+  { ctx: '101079', slug: 'fagundes', nome: 'Fagundes' },
+  { ctx: '101159', slug: 'riachao-do-bacamarte', nome: 'Riachão do Bacamarte' },
+]
+
+const elmarLeve: CidadeConfig[] = ELMAR_PB.map((c) => ({
+  slug: c.slug, nome: c.nome, uf: 'PB', modelo: 'leve', plataforma: 'elmar', ctxElmar: c.ctx,
+}))
 
 export const CIDADES: CidadeConfig[] = [
   {
@@ -40,57 +104,24 @@ export const CIDADES: CidadeConfig[] = [
     apelidoOverride: {},
   },
   {
+    // Campina Grande: PublicSoft (Portal do Servidor). Vereadores = tipoCargo Eletivo;
+    // folha de comissionados = tipoCargo Comissionado.
     slug: 'campina-grande', nome: 'Campina Grande', uf: 'PB', modelo: 'leve',
     plataforma: 'publicsoft', publicsoftDb: 'MTA3NjIwMTEwMDAxNjI,',
-    gabineteCargoRegex: 'GABINETE DE VEREADOR',
   },
   {
-    // Sousa: câmara na Elmar (API aberta ctx=101211 responde com dados). Vereadores pelo cargo
-    // "VEREADOR"; folha de gabinete = comissionados com cargo "... DE VEREADOR".
-    slug: 'sousa', nome: 'Sousa', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101211', gabineteCargoRegex: 'DE VEREADOR',
-  },
-  {
-    // Cabedelo: câmara na Elmar (ctx=101040; cuidado: 201040 é a prefeitura). Comissionados de
-    // gabinete têm cargo "... PARLAMENTAR".
-    slug: 'cabedelo', nome: 'Cabedelo', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101040', gabineteCargoRegex: 'PARLAMENTAR',
-  },
-  {
-    // Bayeux: câmara no PublicSoft (db = base64 do CNPJ 08606972000136). Comissionados de
-    // gabinete têm cargo "... PARLAMENTAR".
+    // Bayeux: PublicSoft (db = base64 do CNPJ da câmara 08606972000136).
     slug: 'bayeux', nome: 'Bayeux', uf: 'PB', modelo: 'leve',
-    plataforma: 'publicsoft', publicsoftDb: 'MDg2MDY5NzIwMDAxMzY', gabineteCargoRegex: 'PARLAMENTAR',
+    plataforma: 'publicsoft', publicsoftDb: 'MDg2MDY5NzIwMDAxMzY',
   },
   {
-    // Cajazeiras: Elmar ctx=101046 (prefeitura é 201046). Comissionados de gabinete = "SECRETARIO PARLAMENTAR".
-    slug: 'cajazeiras', nome: 'Cajazeiras', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101046', gabineteCargoRegex: 'SECRETARIO PARLAMENTAR',
-  },
-  {
-    // Guarabira: Elmar ctx=101082. Comissionados de gabinete = "... PARLAMENTAR" ou "CHEFE DE GABINETE".
-    slug: 'guarabira', nome: 'Guarabira', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101082', gabineteCargoRegex: 'PARLAMENTAR|GABINETE',
-  },
-  {
-    // Queimadas: Elmar ctx=101155. Comissionados de gabinete = "... PARLAMENTAR".
-    slug: 'queimadas', nome: 'Queimadas', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101155', gabineteCargoRegex: 'PARLAMENTAR',
-  },
-  {
-    // Pombal: Elmar ctx=101151 (prefeitura 201151; aqui "unidade Trabalho" vem null, confirmação
-    // pela secretaria "CÂMARA MUNICIPAL DE POMBAL"). Gabinete = cargo "ASSESSOR PARLAMENTAR".
-    slug: 'pombal', nome: 'Pombal', uf: 'PB', modelo: 'leve',
-    plataforma: 'elmar', ctxElmar: '101151', gabineteCargoRegex: 'ASSESSOR PARLAMENTAR',
-  },
-  {
-    // Patos: câmara no portal intgest, que NÃO publica folha de pagamento por HTTP.
-    // Entra no modelo leve só com roster + subsídio fixo (Lei/PL 040/2024, legislatura 2025-2028);
-    // o card de folha de gabinete fica como "não publicado pela câmara".
+    // Patos: câmara no portal intgest, que NÃO publica folha por HTTP. Só roster + subsídio fixo
+    // (Lei/PL 040/2024, legislatura 2025-2028); a folha de comissionados fica como "não publicado".
     slug: 'patos', nome: 'Patos', uf: 'PB', modelo: 'leve',
     plataforma: 'roster-html',
     rosterUrl: 'https://camarapatos.pb.gov.br/a-camara/vereadores',
     subsidio: 17000, subsidioPresidente: 22000,
     presidenteNome: 'Valtide Paulino Santos',
   },
+  ...elmarLeve,
 ]

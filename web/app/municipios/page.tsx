@@ -26,9 +26,9 @@ export default function MunicipiosPage() {
             Modelo simples
           </span>{' '}
           marca as cidades onde a fonte pública só traz o <strong className="text-tinta">subsídio</strong> (igual
-          para todos) e a <strong className="text-tinta">folha de gabinete agregada</strong> da câmara, sem detalhar
-          a verba indenizatória nem o gabinete por vereador. Por isso essas cidades não têm ranking nem perfil
-          individual. Estou buscando mais dados para enriquecer o detalhamento de todas elas.
+          para todos) e a <strong className="text-tinta">folha de comissionados agregada</strong> da câmara, sem
+          detalhar a verba indenizatória nem o gabinete por vereador. Por isso essas cidades não têm ranking nem
+          perfil individual. Estou buscando mais dados para enriquecer o detalhamento de todas elas.
         </section>
       )}
 
@@ -71,9 +71,9 @@ export default function MunicipiosPage() {
                         <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.custo.salario)}/mês</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-2">
-                        <dt>Folha de gabinete · mês</dt>
-                        {c.folhaGabineteTotal != null ? (
-                          <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.folhaGabineteTotal)}</dd>
+                        <dt>Folha de comissionados · mês</dt>
+                        {c.folhaComissionados != null ? (
+                          <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.folhaComissionados)}</dd>
                         ) : (
                           <dd className="text-tinta-tenue">não publicado</dd>
                         )}

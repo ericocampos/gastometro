@@ -120,23 +120,19 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 > Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
 
-### Câmaras municipais — modelo leve (outras cidades)
+### Câmaras municipais — modelo leve (demais cidades)
 
-Fora de João Pessoa, as câmaras em geral só publicam **subsídio fixo** (igual a todos) e, quando muito, a **folha de gabinete agregada** da câmara, sem VIAP por vereador nem lotação que aponte o gabinete de cada vereador. Para essas cidades usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de gabinete total quando houver), sem ranking nem perfil por vereador (não existiria diferença a mostrar). O modelo e a plataforma são escolhidos em `collector/cidades.ts` (`modelo: 'completo' | 'leve'`, `plataforma: 'publicsoft' | 'roster-html'`).
+Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador. A folha vem por API de duas plataformas, escolhidas por `plataforma` em `collector/cidades.ts`:
 
-| Cidade | Plataforma | Endpoint | Como lemos |
-|---|---|---|---|
-| **Campina Grande** | PublicSoft (Portal do Servidor) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador (subsídio = bruto); comissionados `1-Comissionado` com cargo "GABINETE DE VEREADOR" somados = folha de gabinete da câmara. A lotação é genérica ("GABINETE"), não nomeia o vereador |
-| **Bayeux** | PublicSoft | mesmo endpoint, `db` = base64 do CNPJ da câmara (08606972000136) | igual a CG; o cargo dos comissionados de gabinete é "... PARLAMENTAR" (filtro por `gabineteCargoRegex` no config) |
-| **Sousa** | Elmar (API aberta) | `https://transparencia-api.elmartecnologia.com.br/api/101211/pessoal/folha_pagamento?competencia=MM/YYYY` | JSON; cargo "VEREADOR"/"VEREADOR - PRESIDENTE" = subsídio; comissionados de cargo "... DE VEREADOR" somados = folha de gabinete. Lotação não nomeia o vereador |
-| **Cabedelo** | Elmar (API aberta) | `https://transparencia-api.elmartecnologia.com.br/api/101040/pessoal/folha_pagamento?competencia=MM/YYYY` (ctx 201040 = prefeitura, não usar) | igual a Sousa; comissionados de gabinete têm cargo "... PARLAMENTAR" |
-| **Cajazeiras** | Elmar (API aberta) | `.../api/101046/...` (201046 = prefeitura) | comissionados de gabinete têm cargo "SECRETARIO PARLAMENTAR" |
-| **Guarabira** | Elmar (API aberta) | `.../api/101082/...` | comissionados de gabinete: cargo "PARLAMENTAR" ou "GABINETE" |
-| **Queimadas** | Elmar (API aberta) | `.../api/101155/...` | cargo dos eleitos vem como "VEREADOR (A)"; gabinete = cargo "... PARLAMENTAR" |
-| **Pombal** | Elmar (API aberta) | `.../api/101151/...` (201151 = prefeitura; aqui "unidade Trabalho" vem null, confirmação por `secretaria`) | gabinete = cargo "ASSESSOR PARLAMENTAR" |
-| **Patos** | Roster HTML (câmara) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | HTML (CMS easyweb): nome em `<h6>`, partido pelo nome do arquivo do logo (`partidos/SIGLA.png`), foto em `images/arquivos/documentos/`. Subsídio fixado por lei (R$ 17.000; presidência R$ 22.000). O portal de transparência da câmara (intgest) **não divulga a folha** por HTTP, então a folha de gabinete fica como "não publicado" |
+| Plataforma | Endpoint | Como lemos |
+|---|---|---|
+| **Elmar** (maioria) | `https://transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento?competencia=MM/YYYY` | JSON. O campo **`regime`** separa de forma uniforme: `ELETIVO` = vereador (subsídio = `vantagens`); `CARGO COMISSIONADO` somados = folha de comissionados da câmara. Cada câmara tem um `{ctx}` (lista em `cidades.ts`, bloco `ELMAR_PB`). O ctx `2xxxxx` é a prefeitura — não usar |
+| **PublicSoft** (Campina Grande, Bayeux) | `https://portaldoservidor-api.publicsoft.com.br/api/sistemas/PortalDoServidor/views/webservice/api?db={db}&params={tipo,mês,ano}` | JSON; `tipoCargo` `2-Eletivo` = vereador; `1-Comissionado` somados = folha de comissionados. `{db}` = base64 do CNPJ da câmara |
+| **roster-html** (Patos) | `https://camarapatos.pb.gov.br/a-camara/vereadores` | quando a câmara não publica folha por HTTP: só roster (HTML) + subsídio fixo de lei. A folha de comissionados fica como "não publicado" |
 
-> O modelo leve tem três adaptadores de fonte, escolhidos por `plataforma` em `collector/cidades.ts`: `publicsoft` e `elmar` (folha por API: subsídio + folha de gabinete agregada) e `roster-html` (câmara sem folha pública: só roster + subsídio fixo). O cargo que identifica os comissionados de gabinete muda por câmara, então vem de `gabineteCargoRegex` (default "GABINETE DE VEREADOR"). O presidente é detectado pelo subsídio acima da mediana.
+**Como a lista de câmaras Elmar foi montada:** o bloco de `ctx` `101xxx` da Elmar é a Paraíba. Varremos o range, confirmamos o nome de cada entidade pelo frontend (`transparencia.elmartecnologia.com.br/?e={ctx}`) e casamos com os nomes oficiais do IBGE (UF 25). São ~54 câmaras PB nessa plataforma.
+
+> A lotação dos comissionados é genérica (não nomeia o vereador), por isso a folha entra **agregada por câmara**, não por pessoa. O **presidente** é identificado pelo cargo ("... PRESIDENTE"), com fallback para o maior subsídio. O **subsídio exibido** é a mediana (valor legal uniforme), não a `vantagens` de um mês isolado (que tem proração/retroativo/13º).
 
 ---
 

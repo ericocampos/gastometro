@@ -71,15 +71,11 @@ export function extrairVereadores(registros: RegistroPublicsoft[]): VereadorLeve
   )
 }
 
-// Folha de gabinete da câmara: soma do bruto dos comissionados de gabinete de vereador.
-// O cargo que identifica esses comissionados varia por câmara (taxonomia própria de cada cidade),
-// então o filtro vem por regex de cargo (default = "GABINETE DE VEREADOR", caso de Campina Grande).
-export function somarFolhaGabinete(
-  registros: RegistroPublicsoft[],
-  cargoRegex: RegExp = /GABINETE DE VEREADOR/i,
-): number {
+// Folha de comissionados da câmara: soma do bruto de todos os cargos comissionados (de confiança).
+// Métrica uniforme do modelo leve (a lotação é genérica e não nomeia o vereador).
+export function somarComissionados(registros: RegistroPublicsoft[]): number {
   return registros
-    .filter((r) => r.tipoCargo.includes('Comissionado') && cargoRegex.test(r.cargo))
+    .filter((r) => r.tipoCargo.includes('Comissionado'))
     .reduce((s, r) => s + r.bruto, 0)
 }
 
