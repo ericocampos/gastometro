@@ -247,7 +247,7 @@ export const MUNICIPIOS_TCE: MunicipioTce[] = [
   { cod: '223', slug: 'zabele', nome: 'Zabelê' },
 ]
 
-export interface LinhaTce { nome: string; tipoCargo: string; cargo: string; valor: number; anoMes: string }
+export interface LinhaTce { nome: string; cpf: string; tipoCargo: string; cargo: string; valor: number; anoMes: string }
 
 const COMISSIONADOS = new Set(['Cargo Comissionado', 'Função de confiança'])
 const ehEletivoVereador = (r: LinhaTce) => /eletivo/i.test(r.tipoCargo) && /VEREADOR/i.test(r.cargo)
@@ -269,7 +269,7 @@ export function parseCamaraTce(textoCsv: string): LinhaTce[] {
     const f = l.split(';')
     if (f.length < 11) continue
     if (!/c[âa]mara\s+municipal/i.test(f[2])) continue
-    out.push({ nome: f[4].trim(), tipoCargo: f[5].trim(), cargo: f[6].trim(), valor: valorBr(f[7]), anoMes: f[10].trim() })
+    out.push({ nome: f[4].trim(), cpf: f[3].trim(), tipoCargo: f[5].trim(), cargo: f[6].trim(), valor: valorBr(f[7]), anoMes: f[10].trim() })
   }
   return out
 }
@@ -292,7 +292,7 @@ export function mesesComVereador(linhas: LinhaTce[], minAnoMes: string): string[
 export function extrairVereadoresTce(linhas: LinhaTce[], anoMes: string): VereadorLeve[] {
   const eletivos = linhas.filter((r) => r.anoMes === anoMes && ehEletivoVereador(r))
   return montarVereadoresLeve(
-    eletivos.map((e) => ({ nome: e.nome, bruto: e.valor, presidenteCargo: /PRESID/i.test(e.cargo) })),
+    eletivos.map((e) => ({ nome: e.nome, bruto: e.valor, presidenteCargo: /PRESID/i.test(e.cargo), cpf: e.cpf })),
   )
 }
 

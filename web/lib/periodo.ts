@@ -111,9 +111,11 @@ export function totalPorAnoPorEsfera(series: SerieParlamentar[]): TotalAnualEsfe
 
 // Gasto anual separado pelas 3 casas — deixa claro quanto cada uma gasta (cobertura difere: Câmara e
 // Senado desde 2008/2009; Assembleia só desde 2023).
-export interface TotalAnualCasa { ano: number; camara: number; senado: number; assembleia: number }
+export interface TotalAnualCasa { ano: number; camara: number; senado: number; assembleia: number; municipal: number }
 
 export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[] {
+  // o gráfico geral (home) compara só as casas federais/estadual; o municipal entra zerado aqui e só
+  // é usado no perfil do vereador (PerfilView monta o `anual` com a chave 'municipal' preenchida).
   const porAno = new Map<number, { camara: number; senado: number; assembleia: number }>()
   for (const s of series) {
     if (s.casa === 'camara_municipal') continue
@@ -125,7 +127,54 @@ export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[]
       porAno.set(ano, e)
     }
   }
-  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v }))
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v, municipal: 0 }))
+}
+
+// Total anual da câmara INTEIRA (soma de todos os vereadores) — para o gráfico ano a ano na página do
+// município. Vai na chave 'municipal' (barra teal "Câmara Municipal" no GraficoGeralAnual). As séries
+// municipais trazem só a VIAP por vereador, então o eixo é o gasto com VIAP da câmara por ano.
+export function totalAnualMunicipio(series: SerieParlamentar[]): TotalAnualCasa[] {
+  const porAno = new Map<number, number>()
+  for (const s of series) for (const p of s.serieMensal) {
+    const ano = Number(p.anoMes.slice(0, 4))
+    porAno.set(ano, (porAno.get(ano) ?? 0) + p.total)
+  }
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, camara: 0, senado: 0, assembleia: 0, municipal: total }))
+}
+
+// Comparativo entre cidades (gráfico ano a ano na listagem de municípios). Por cidade e por ano:
+// o total de VIAP da câmara e quantos vereadores tiveram VIAP naquele ano (denominador da média por
+// vereador, que normaliza cidades de tamanhos diferentes). Só as cidades passadas (as completas).
+export interface CidadeAnoComparativo { ano: number; total: number; nVereadores: number }
+export interface SerieCidadeComparativo { slug: string; nome: string; anos: CidadeAnoComparativo[] }
+
+export function comparativoAnualCidades(
+  series: SerieParlamentar[],
+  cidades: { slug: string; nome: string }[],
+): SerieCidadeComparativo[] {
+  const porCidade = new Map<string, Map<number, { total: number; vers: Set<string> }>>()
+  for (const s of series) {
+    if (s.casa !== 'camara_municipal' || !s.municipio) continue
+    let anos = porCidade.get(s.municipio)
+    if (!anos) { anos = new Map(); porCidade.set(s.municipio, anos) }
+    for (const p of s.serieMensal) {
+      const ano = Number(p.anoMes.slice(0, 4))
+      const e = anos.get(ano) ?? { total: 0, vers: new Set<string>() }
+      e.total += p.total
+      e.vers.add(s.politicoId) // vereador com dado publicado naquele ano
+      anos.set(ano, e)
+    }
+  }
+  return cidades
+    .map((c) => {
+      const anos = porCidade.get(c.slug)
+      if (!anos) return null
+      const lista = [...anos.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([ano, v]) => ({ ano, total: v.total, nVereadores: v.vers.size }))
+      return lista.length ? { slug: c.slug, nome: c.nome, anos: lista } : null
+    })
+    .filter((x): x is SerieCidadeComparativo => x !== null)
 }
 
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {

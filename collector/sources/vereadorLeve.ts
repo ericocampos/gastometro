@@ -4,6 +4,7 @@ export interface VereadorLeve {
   nome: string
   subsidio: number
   presidente: boolean
+  cpf?: string // CPF (mascarado) do TCE; usado p/ casar o vereador com seus empenhos no modelo completo
 }
 
 // Regras:
@@ -13,7 +14,7 @@ export interface VereadorLeve {
 //  - presidente: pelo CARGO (campo presidenteCargo, ex.: "VEREADOR - PRESIDENTE"); se nenhum cargo
 //    marcar, cai para o de maior bruto acima da base (caso de câmaras que não marcam no cargo).
 export function montarVereadoresLeve(
-  itens: { nome: string; bruto: number; presidenteCargo?: boolean }[],
+  itens: { nome: string; bruto: number; presidenteCargo?: boolean; cpf?: string }[],
 ): VereadorLeve[] {
   const brutos = itens.map((e) => e.bruto).sort((a, b) => a - b)
   const base = brutos.length ? brutos[Math.floor(brutos.length / 2)] : 0 // mediana
@@ -24,7 +25,7 @@ export function montarVereadoresLeve(
       const presidente = e.presidenteCargo === true
         || (!algumCargoPres && e.bruto === maxBruto && e.bruto > base)
       const subsidio = presidente ? Math.max(e.bruto, base) : base
-      return { nome: e.nome, subsidio, presidente }
+      return { nome: e.nome, subsidio, presidente, cpf: e.cpf }
     })
     .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
 }

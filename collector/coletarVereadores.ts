@@ -15,7 +15,7 @@ import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
 import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal, type IndiceMunicipio } from './sources/tseEleicoes.js'
 import { coletarViapCg, type VereadorViapCg } from './sources/cmcgViap.js'
-import { baixarIndenizacoesCamara, conferirMeses, fonteUrlDespesas, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
+import { baixarIndenizacoesCamara, conferirMeses, fonteUrlDespesas, chaveCpf, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // Eleição que elegeu o mandato municipal atual (2025-2028). Fonte do partido e da foto no leve.
@@ -32,7 +32,14 @@ interface ResumoPolitico { politico: Politico; total: number; serieMensal: Ponto
 interface PerfilParlamentar { id: string; nomeCivil?: string; nascimento?: string; naturalidade?: string; escolaridade?: string; situacao?: string; site?: string; redes: string[]; proposicoes: any[] }
 interface SecretarioGabinete { nome: string; remuneracao: number; cargo?: string; liquido?: number; lotacaoTipo?: 'gabinete' | 'escritorio'; admissaoAno?: number }
 interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; folhaOficial?: boolean; mesReferencia?: string }
-interface CustoMunicipio { slug: string; nome: string; salario: number; viapTeto: number; viapMedia: number | null; gabineteMedia: number | null }
+interface CustoMunicipio {
+  slug: string; nome: string; salario: number; viapTeto: number; viapMedia: number | null; gabineteMedia: number | null
+  // quando a VIAP vem do TCE (não da câmara): a UI mostra a fonte e a nota neutra do valor fixo
+  viapFonteTce?: boolean
+  viapNota?: string
+  viapFonteCamaraUrl?: string
+  viapFonteTceUrl?: string
+}
 interface MunicipioVereador { nome: string; subsidio: number; presidente?: boolean; partido?: string; fotoUrl?: string }
 interface Municipio {
   slug: string; nome: string; uf: string
@@ -409,6 +416,156 @@ export function montarCampinaGrande(
   }
 }
 
+// R$ 11.333,33 — formata um número no padrão brasileiro de moeda (sem depender de Intl/locale).
+function brlNum(n: number): string {
+  const [inteiro, dec] = n.toFixed(2).split('.')
+  return `R$ ${inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.')},${dec}`
+}
+
+// valor mais frequente de uma lista (mode), arredondado a centavos; 0 se vazia.
+function maisFrequente(valores: number[]): number {
+  const cont = new Map<number, number>()
+  for (const v of valores) { const k = Math.round(v * 100) / 100; cont.set(k, (cont.get(k) ?? 0) + 1) }
+  let best = 0, bestC = -1
+  for (const [v, c] of cont) if (c > bestC) { best = v; bestC = c }
+  return best
+}
+
+// Modelo COMPLETO via TCE (Santa Rita é a 1ª). A câmara NÃO publica a VIAP de forma legível por
+// máquina (só PDFs digitalizados, com grande defasagem), mas o TCE-PB traz, no dataset `despesas`,
+// os empenhos de "Indenizações e Restituições" pagos a cada vereador — a VIAP, por vereador e por
+// mês. Aqui o TCE é a FONTE PRIMÁRIA da VIAP (não um cruzamento): por isso NÃO há selo de conferência
+// (seria circular). O roster e o subsídio também vêm do TCE (Eletivos); o gabinete fica AGREGADO
+// (folha de comissionados da câmara); foto e partido vêm do TSE. O casamento vereador×empenho é por
+// CPF (chaveCpf — 6 dígitos do meio), robusto às diferenças de grafia entre os datasets do TCE.
+export function montarCidadeViapTce(
+  cfg: { slug: string; nome: string; uf: string },
+  vereadoresTce: VereadorLeve[],
+  indenizacoes: IndenizacaoTce[],
+  tseLookup: (nome: string) => { partido?: string; sq?: string } | null,
+  folhaComissionados: number,
+  mesFolha: string,
+  fontes: { tce: string; camara: string },
+  minAnoMes = '2025-01',
+): SaidaCidade {
+  // agrupa as indenizações por CPF (chave) e por mês (AAAA-MM), somando os empenhos pagos no mês
+  const porCpf = new Map<string, { credor: string; meses: Map<string, number> }>()
+  for (const ind of indenizacoes) {
+    const k = chaveCpf(ind.credorCpf)
+    if (!k) continue
+    const anoMes = `${ind.ano}-${String(ind.mes).padStart(2, '0')}`
+    if (anoMes < minAnoMes) continue
+    const e = porCpf.get(k) ?? { credor: ind.credor, meses: new Map<string, number>() }
+    e.meses.set(anoMes, (e.meses.get(anoMes) ?? 0) + ind.valorPago)
+    porCpf.set(k, e)
+  }
+
+  const usados = new Set<string>()
+  const politicos: Politico[] = []
+  const ranking: ItemRanking[] = []
+  const porPolitico: Record<string, ResumoPolitico> = {}
+  const despesasPorId: Record<string, Despesa[]> = {}
+  const perfis: PerfilParlamentar[] = []
+  const gabinetePorId: Record<string, GabineteParlamentar> = {} // vazio: gabinete é agregado
+
+  const mesesAll: string[] = []
+  const mediasViap: number[] = []
+  let totalViapPeriodo = 0
+  let comViap = 0
+  const valoresVereador: number[] = [] // valores mensais p/ derivar o valor fixo (vereador × presidente)
+  const valoresPresidente: number[] = []
+
+  for (const ver of vereadoresTce) {
+    const id = `cm-${cfg.slug}-${slugify(ver.nome)}`
+    const ex = tseLookup(ver.nome)
+    const politico: Politico = {
+      id, nome: ver.nome, casa: 'camara_municipal', partido: ex?.partido ?? '', uf: cfg.uf,
+      legislaturas: [], fotoUrl: ex?.sq ? fotoUrlLocal(ex.sq) : undefined, municipio: cfg.slug,
+    }
+    politicos.push(politico)
+
+    const k = chaveCpf(ver.cpf ?? '')
+    const entry = k ? porCpf.get(k) : undefined
+    if (entry) usados.add(k)
+    const meses = entry
+      ? [...entry.meses.entries()].map(([anoMes, valor]) => ({ anoMes, valor })).sort((a, b) => a.anoMes.localeCompare(b.anoMes))
+      : []
+
+    const despesas: Despesa[] = meses.map((m) => ({
+      id: `${id}-viap-${m.anoMes}`, politicoId: id, data: `${m.anoMes}-01`,
+      ano: Number(m.anoMes.slice(0, 4)), mes: Number(m.anoMes.slice(5, 7)),
+      categoria: CATEGORIA_VIAP, fornecedor: { nome: '' }, valor: m.valor,
+    }))
+    if (despesas.length) despesasPorId[id] = despesas
+
+    const total = meses.reduce((s, m) => s + m.valor, 0)
+    const serieMensal: PontoMensal[] = meses.map((m) => ({ anoMes: m.anoMes, total: m.valor }))
+    if (meses.length) {
+      comViap++
+      for (const m of meses) {
+        mesesAll.push(m.anoMes)
+        ;(ver.presidente ? valoresPresidente : valoresVereador).push(m.valor)
+      }
+      mediasViap.push(total / meses.length)
+    }
+    totalViapPeriodo += total
+
+    porPolitico[id] = {
+      politico, total, serieMensal,
+      porCategoria: total > 0 ? [{ categoria: CATEGORIA_VIAP, total }] : [],
+      porFornecedor: [],
+    }
+    ranking.push({ politicoId: id, nome: ver.nome, partido: politico.partido, casa: 'camara_municipal', total })
+    perfis.push({ id, nomeCivil: ver.nome, redes: [], proposicoes: [] })
+  }
+
+  // empenhos de "Indenizações" que NÃO casaram com vereador em exercício (ex-vereadores que saíram,
+  // restituições a fornecedores/pessoas) — ficam de fora, reportados no log
+  const naoCasados = [...porCpf.entries()]
+    .filter(([k]) => !usados.has(k))
+    .map(([, e]) => ({ fonte: 'viap' as const, nome: e.credor }))
+
+  const periodoViap = mesesAll.length > 0
+    ? { de: mesesAll.reduce((a, b) => (a < b ? a : b)), ate: mesesAll.reduce((a, b) => (a > b ? a : b)) }
+    : null
+  const viapMedia = mediasViap.length ? mediasViap.reduce((s, x) => s + x, 0) / mediasViap.length : null
+  const gabineteMedia = vereadoresTce.length ? folhaComissionados / vereadoresTce.length : null
+  const subsidios = vereadoresTce.map((v) => v.subsidio).sort((a, b) => a - b)
+  const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0
+
+  // valor fixo mensal (mode), p/ vereador e p/ presidente; teto = o maior dos dois (não o pico de um
+  // mês de acerto/recuperação). A VIAP aqui não é reembolso por nota: é um valor fixo pago todo mês.
+  const valorVereador = maisFrequente(valoresVereador)
+  const valorPresidente = maisFrequente(valoresPresidente)
+  const viapTeto = Math.max(valorVereador, valorPresidente)
+  const fracao = subsidioBase > 0 ? valorVereador / subsidioBase : 0
+  const fracaoTxt = Math.abs(fracao - 2 / 3) < 0.02 ? 'cerca de dois terços (2/3)' : `cerca de ${(fracao * 100).toFixed(0)}%`
+  const viapNota = valorVereador > 0
+    ? `Em ${cfg.nome}, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de`
+      + ` despesas com nota fiscal itemizada). O valor mais frequente no período é ${brlNum(valorVereador)} por vereador`
+      + `${valorPresidente > 0 && valorPresidente !== valorVereador ? ` (${brlNum(valorPresidente)} para o presidente)` : ''}`
+      + `${fracao > 0 ? `, ${fracaoTxt} do subsídio` : ''}. Esses valores são os empenhos de`
+      + ` “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB; a câmara publica`
+      + ` apenas comprovantes digitalizados, com defasagem.`
+    : undefined
+
+  const resumoMunicipio: Municipio = {
+    slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'completo', numVereadores: vereadoresTce.length,
+    totalViapPeriodo, totalGabineteMes: folhaComissionados, periodoViap,
+    viapDetalhada: false, gabinetePorVereador: false,
+    mesReferencia: mesFolha, folhaComissionados,
+    custo: {
+      slug: cfg.slug, nome: cfg.nome, salario: subsidioBase, viapTeto, viapMedia, gabineteMedia,
+      viapFonteTce: true, viapNota, viapFonteCamaraUrl: fontes.camara, viapFonteTceUrl: fontes.tce,
+    },
+  }
+
+  return {
+    politicos, ranking, porPolitico, despesasPorId, perfis, gabinetePorId, resumoMunicipio,
+    cobertura: { total: vereadoresTce.length, comGabinete: 0, comViap, naoCasados },
+  }
+}
+
 // Coleta as câmaras 'leve' (todas menos JP) da fonte única do TCE-PB: para cada município, baixa o
 // zip anual da folha (ano corrente, com fallback p/ o anterior), isola a Câmara Municipal e monta o
 // resumo com o mês mais recente que tenha vereadores, restrito à legislatura atual (ano_mes ≥ 202501;
@@ -491,7 +648,7 @@ async function gerarFotosTse(cidades: Municipio[]): Promise<void> {
 }
 
 // Modelo completo (CG): SQs estão nos politicos[].fotoUrl; poda quem não tiver foto no zip.
-async function gerarFotosPoliticos(politicos: Politico[]): Promise<void> {
+export async function gerarFotosPoliticos(politicos: Politico[]): Promise<void> {
   const sqs = new Set<string>()
   for (const p of politicos) { const sq = sqDeFoto(p.fotoUrl); if (sq) sqs.add(sq) }
   const feitas = await gerarThumbsDeSqs(sqs)
@@ -516,7 +673,7 @@ const lerJson = <T,>(arq: string, fallback: T): T =>
 
 // Mescla uma cidade do modelo COMPLETO no /data plano (politicos/agregados/assessores/despesas/
 // perfis), trocando só os registros dessa cidade (prefixo cm-{slug}-) e preservando o resto.
-function gravarCidade(saida: SaidaCidade, slug: string): void {
+export function gravarCidade(saida: SaidaCidade, slug: string): void {
   const prefixo = `cm-${slug}-`
 
   const politicosArq = resolve(dataDir, 'politicos.json')
@@ -631,9 +788,38 @@ async function main() {
   const cc = saidaCg.cobertura
   console.log(`  cobertura CG: viap ${cc.comViap}/${cc.total}${cc.naoCasados.length ? ` | VIAP sem roster: ${cc.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
 
-  // câmaras 'leve' (todas menos JP e CG) pela fonte única do TCE-PB
+  // Santa Rita — modelo COMPLETO via TCE (VIAP por vereador vinda das "Indenizações" do TCE, casada
+  // por CPF; gabinete agregado). A câmara só publica comprovantes digitalizados (PDF), então o TCE é
+  // a fonte primária da VIAP aqui — sem selo de conferência (seria circular).
+  console.log(`\n> Santa Rita (santa-rita) [completo · VIAP via TCE]`)
+  let linhasSr: LinhaTce[] = []
+  for (const ano of [new Date().getFullYear(), new Date().getFullYear() - 1]) {
+    try { linhasSr = linhasSr.concat(await baixarCamaraTce('171', ano)) } catch { /* ano sem arquivo */ }
+    if (mesesComVereador(linhasSr, '202501').length > 0) break
+  }
+  const mesRefSr = mesesComVereador(linhasSr, '202501')[0]
+  const vereadoresSr = extrairVereadoresTce(linhasSr, mesRefSr)
+  const folhaSr = somarComissionadosTce(linhasSr, mesRefSr)
+  const indenizSr = await baixarIndenizacoesCamara('171', [2025, 2026]) // VIAP = empenhos pagos ao vereador
+  console.log(`  roster TCE: ${vereadoresSr.length} vereadores | folha comissionados R$ ${folhaSr.toFixed(2)} | TCE indenizações: ${indenizSr.length}`)
+  const lookupSr = (nome: string) => {
+    const c = matchCandidato(idxTse, 'Santa Rita', nome)
+    return c ? { partido: c.partido, sq: c.sq } : null
+  }
+  const saidaSr = montarCidadeViapTce(
+    { slug: 'santa-rita', nome: 'Santa Rita', uf: 'PB' },
+    vereadoresSr, indenizSr, lookupSr, folhaSr, `${mesRefSr.slice(0, 4)}-${mesRefSr.slice(4, 6)}`,
+    { tce: fonteUrlDespesas('171', 2025), camara: 'https://www.santarita.pb.leg.br/site/viap' },
+  )
+  await gerarFotosPoliticos(saidaSr.politicos)
+  gravarCidade(saidaSr, 'santa-rita')
+  resumos.push(saidaSr.resumoMunicipio)
+  const cs = saidaSr.cobertura
+  console.log(`  cobertura SR: viap ${cs.comViap}/${cs.total}${cs.naoCasados.length ? ` | Indenizações sem roster: ${cs.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
+
+  // câmaras 'leve' (todas menos JP, CG e Santa Rita) pela fonte única do TCE-PB
   console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
-  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande']) // JP e CG são completos
+  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande', 'santa-rita']) // completos
   const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs, idxTse)
   resumos.push(...leve)
   if (naoCobertas.length > 0) console.log(`  não cobertas: ${naoCobertas.map((n) => n.nome).join(', ')}`)

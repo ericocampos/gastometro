@@ -193,6 +193,25 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByText(/não publica o documento|número da nota fiscal/i)).toBeInTheDocument()
   })
 
+  it('VIAP via TCE: mostra a nota neutra do valor fixo + links das fontes, sem o aviso de nota anexada', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
+        custos={custos} municipioAtualizadoEm="2026-06-03"
+        municipioCusto={{
+          slug: 'santa-rita', nome: 'Santa Rita', salario: 17000, viapTeto: 15333.33, viapMedia: 13000, gabineteMedia: 43000,
+          viapFonteTce: true,
+          viapNota: 'Em Santa Rita, a VIAP é um valor fixo pago todo mês a cada vereador — não um reembolso de despesas com nota fiscal itemizada.',
+          viapFonteCamaraUrl: 'https://camara/viap', viapFonteTceUrl: 'https://tce/171',
+        }}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText(/valor fixo pago todo mês/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /verba indenizatória da Câmara/i }).getAttribute('href')).toBe('https://camara/viap')
+    expect(screen.getByRole('link', { name: /dados abertos do TCE-PB/i }).getAttribute('href')).toBe('https://tce/171')
+    // o aviso âmbar (que pressupõe nota anexada por gasto) NÃO deve aparecer aqui
+    expect(screen.queryByText(/publicada pela Câmara com defasagem/i)).not.toBeInTheDocument()
+  })
+
   it('avisa da defasagem da VIAP com data de importação e último mês', () => {
     const { container } = renderMunicipal()
     const txt = container.textContent ?? ''

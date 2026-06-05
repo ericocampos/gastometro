@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { agregarPerfil, totalAnualParlamentar } from './perfil'
+import { agregarPerfil, totalAnualParlamentar, totalAnualPorCasaParlamentar } from './perfil'
 import type { Despesa } from './tipos'
 
 const d = (ano: number, mes: number, categoria: string, forn: string, valor: number): Despesa => ({
@@ -43,5 +43,19 @@ describe('totalAnualParlamentar', () => {
       { ano: 2022, total: 100 },
       { ano: 2024, total: 700 },
     ])
+  })
+})
+
+describe('totalAnualPorCasaParlamentar', () => {
+  it('vereador municipal: o total vai na chave "municipal" (não zera o gráfico)', () => {
+    const r = totalAnualPorCasaParlamentar(despesas, 'camara_municipal')
+    expect(r).toEqual([
+      { ano: 2022, camara: 0, senado: 0, assembleia: 0, municipal: 100 },
+      { ano: 2024, camara: 0, senado: 0, assembleia: 0, municipal: 700 },
+    ])
+  })
+  it('deputado federal: o total vai na chave "camara"', () => {
+    const r = totalAnualPorCasaParlamentar(despesas, 'camara')
+    expect(r[0]).toEqual({ ano: 2022, camara: 100, senado: 0, assembleia: 0, municipal: 0 })
   })
 })

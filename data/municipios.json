@@ -14419,171 +14419,29 @@
       "slug": "santa-rita",
       "nome": "Santa Rita",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 22,
+      "totalViapPeriodo": 3715079.83,
+      "totalGabineteMes": 951488.4500000001,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
-      "folhaComissionados": 951488.45,
-      "vereadores": [
-        {
-          "nome": "ALYSSON DOS SANTOS GOMES",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002044311.webp"
-        },
-        {
-          "nome": "ANDERSON DE LIMA LIBERATO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "MOBILIZA",
-          "fotoUrl": "/fotos/vereadores/150002044704.webp"
-        },
-        {
-          "nome": "ANESIO ALVES DE MIRANDA FILHO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189577.webp"
-        },
-        {
-          "nome": "BRUNNO INOCENCIO DA NOBREGA SILVA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189562.webp"
-        },
-        {
-          "nome": "CLAUDIO LUIZ DA SILVA CARNEIRO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002248122.webp"
-        },
-        {
-          "nome": "CLOVIS ALVES DE OLIVEIRA FILHO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002044470.webp"
-        },
-        {
-          "nome": "CRISTIANE PINTO DE AQUINO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189572.webp"
-        },
-        {
-          "nome": "DAVID SANTANA DOS SANTOS",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PT",
-          "fotoUrl": "/fotos/vereadores/150002123866.webp"
-        },
-        {
-          "nome": "EPITACIO VITURINO DOS SANTOS SOBRINHO",
-          "subsidio": 23000,
-          "presidente": true,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189567.webp"
-        },
-        {
-          "nome": "FAGNER FRANCELINO DOS SANTOS",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002189581.webp"
-        },
-        {
-          "nome": "FRANCISCO DE MEDEIROS SILVA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189568.webp"
-        },
-        {
-          "nome": "FRANCISCO IRANILDO MARANHAO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002248118.webp"
-        },
-        {
-          "nome": "FRANCISCO MORAIS DE QUEIROGA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189573.webp"
-        },
-        {
-          "nome": "JAQUELINE DA SILVA SOUZA JUSTINO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002248120.webp"
-        },
-        {
-          "nome": "JOAO ALVES DO NASCIMENTO JUNIOR",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002247537.webp"
-        },
-        {
-          "nome": "JOSICLEIDE DA SILVA VICENTE",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002189595.webp"
-        },
-        {
-          "nome": "JOSIVALDO DE SANTANA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002044317.webp"
-        },
-        {
-          "nome": "LEMOELL LUDOVICO SANTANA DE ANDRADE",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "DC",
-          "fotoUrl": "/fotos/vereadores/150002318365.webp"
-        },
-        {
-          "nome": "MARINALDO DA SILVA SANTOS DORE",
-          "subsidio": 17000,
-          "presidente": false
-        },
-        {
-          "nome": "OTAVIO CASSIANO DE SOUZA SILVA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002189596.webp"
-        },
-        {
-          "nome": "SEVERINO FARIAS DE FRANCA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002189576.webp"
-        },
-        {
-          "nome": "WAGNER LUCINDO DE SOUZA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002248107.webp"
-        }
-      ],
+      "folhaComissionados": 951488.4500000001,
       "custo": {
         "slug": "santa-rita",
         "nome": "Santa Rita",
         "salario": 17000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 43249.475
+        "viapTeto": 15333.33,
+        "viapMedia": 13396.6881915515,
+        "gabineteMedia": 43249.475000000006,
+        "viapFonteTce": true,
+        "viapNota": "Em Santa Rita, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 11.333,33 por vereador (R$ 15.333,33 para o presidente), cerca de dois terços (2/3) do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB; a câmara publica apenas comprovantes digitalizados, com defasagem.",
+        "viapFonteCamaraUrl": "https://www.santarita.pb.leg.br/site/viap",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/171/despesas/despesas-2025.zip"
       }
     },
     {

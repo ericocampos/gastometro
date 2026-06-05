@@ -1,7 +1,10 @@
 import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
+import { totalAnualMunicipio } from '@/lib/periodo'
+import { mesAno } from '@/lib/formato'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
 import { CamaraLeve } from '@/components/CamaraLeve'
 import { RankingView } from '@/components/RankingView'
+import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
 export function generateStaticParams() {
@@ -22,6 +25,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
   const series = getSeriesParlamentares().filter(
     (s) => s.casa === 'camara_municipal' && s.municipio === params.slug,
   )
+  const anualCidade = totalAnualMunicipio(series)
 
   return (
     <div>
@@ -40,6 +44,22 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
             <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
             <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
           </section>
+
+          {anualCidade.length > 0 && (
+            <section className="mb-12">
+              <SecaoTitulo>VIAP da câmara · por ano (todos os vereadores)</SecaoTitulo>
+              <div className="rounded-xl border border-borda bg-superficie p-4">
+                <GraficoGeralAnual dados={anualCidade} semLegenda />
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
+                O gráfico mostra a VIAP que a fonte oficial publica em cada ano
+                {municipio.periodoViap ? ` (dados disponíveis de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)})` : ''}.
+                A cobertura varia: anos mais antigos costumam ter menos lançamentos publicados, então uma
+                diferença entre anos (um salto em determinado ano, por exemplo) pode refletir o que a fonte
+                disponibiliza, não só o gasto. Trabalhamos com os dados que conseguimos encontrar nas fontes oficiais.
+              </p>
+            </section>
+          )}
 
           <section>
             <SecaoTitulo>Ranking de gastos (VIAP)</SecaoTitulo>

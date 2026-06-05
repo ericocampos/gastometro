@@ -12,10 +12,16 @@ const norm = (s: string) =>
 export function MunicipiosGrid({ cidades }: { cidades: Municipio[] }) {
   const [busca, setBusca] = useState('')
 
+  // completas (mais detalhe) primeiro; ordem original preservada dentro de cada grupo (sort estável)
+  const ordenadas = useMemo(
+    () => [...cidades].sort((a, b) => (a.modelo === 'completo' ? 0 : 1) - (b.modelo === 'completo' ? 0 : 1)),
+    [cidades],
+  )
+
   const filtradas = useMemo(() => {
     const q = norm(busca)
-    return q === '' ? cidades : cidades.filter((c) => norm(c.nome).includes(q))
-  }, [cidades, busca])
+    return q === '' ? ordenadas : ordenadas.filter((c) => norm(c.nome).includes(q))
+  }, [ordenadas, busca])
 
   if (cidades.length === 0) {
     return (
