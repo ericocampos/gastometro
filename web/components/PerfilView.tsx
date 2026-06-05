@@ -57,6 +57,7 @@ function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean
       {estado === 'conferido' ? (
         <>
           <strong style={{ color: cor }}>✓ Reembolso conferido com o TCE.</strong>{' '}
+          <span className="text-tinta-tenue">(no mandato atual, 2025→, independente do filtro de ano acima)</span>{' '}
           O valor reembolsado a este vereador bate com os empenhos pagos (“Indenizações e Restituições”)
           registrados no Tribunal de Contas do Estado{gap === 1 ? ' (o mês mais recente pode ainda não constar lá)' : ''}.
           Fonte cruzada: {fonte}.
@@ -64,6 +65,7 @@ function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean
       ) : estado === 'conferir' ? (
         <>
           <strong style={{ color: cor }}>Reembolso × TCE: conferir.</strong>{' '}
+          <span className="text-tinta-tenue">(no mandato atual, 2025→, não do ano filtrado)</span>{' '}
           {c.conferidos} de {c.meses} meses batem com os empenhos do TCE.{' '}
           <strong className="text-tinta">reembolsado: {brl(c.totalNosso)}</strong> ·{' '}
           <strong className="text-tinta">pago no TCE: {brl(c.totalTce)}</strong>. Pode ser defasagem entre
@@ -72,6 +74,7 @@ function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean
       ) : (
         <>
           <strong style={{ color: cor }}>Cruzamento com o TCE.</strong>{' '}
+          <span className="text-tinta-tenue">(no mandato atual, 2025→)</span>{' '}
           Não foi possível casar automaticamente a maioria dos meses com os empenhos do TCE
           ({c.conferidos} de {c.meses}) — pode ser diferença de competência, homônimo ou registro à parte.
           Veja os empenhos na fonte: {fonte}.
@@ -79,8 +82,8 @@ function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean
       )}
       {temGlosa && (
         <>
-          {' '}<span className="text-tinta-tenue">Das notas apresentadas ({brl(c.apresentado)}), a câmara
-          reembolsou {brl(c.totalNosso)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
+          {' '}<span className="text-tinta-tenue">No mandato, das notas apresentadas ({brl(c.apresentado)}),
+          a câmara reembolsou {brl(c.totalNosso)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
           foram reembolsados (glosa ou teto).</span>
         </>
       )}
