@@ -139,9 +139,9 @@ CG tem gasto **por vereador** porque a câmara publica a **VIAP itemizada**. É 
 
 ### Câmaras no modelo completo via TCE (TCE-primário)
 
-Para cidades onde a câmara **não publica a VIAP de forma legível por máquina**, a **fonte primária da VIAP é o próprio TCE-PB** (`montarCidadeViapTce`/`coletarCidadeViapTce` em `coletarVereadores.ts`). É um modelo **TCE-primário** reutilizável: cada nova cidade entra com **uma linha** em `cidadesViapTce` (código TCE + slug + nome + link opcional da câmara). Hoje **8 câmaras**: Santa Rita, Patos, Cabedelo, Sousa, Sapé, Guarabira, São Bento e Pombal.
+Para cidades onde a câmara **não publica a VIAP de forma legível por máquina**, a **fonte primária da VIAP é o próprio TCE-PB** (`montarCidadeViapTce`/`coletarCidadeViapTce` em `coletarVereadores.ts`). É um modelo **TCE-primário** reutilizável: cada nova cidade entra com **uma linha** em `cidadesViapTce` (código TCE + slug + nome + link opcional da câmara). Hoje **20 câmaras** por essa via (a lista atual está em `cidadesViapTce`), de Santa Rita e Patos às menores como Caturité e Jacaraú.
 
-> **Promover só quando há VIAP de fato.** Antes de incluir uma cidade, sondamos o TCE: a maioria dos vereadores precisa receber a VIAP (empenho de "Indenizações" casável por CPF). Onde a cobertura é ~0 (a câmara não paga VIAP por essa via), a cidade **fica leve** — não inventamos um "completo" cheio de zeros. Na primeira leva, ficaram de fora por isso: Bayeux, Cajazeiras, Esperança, Catolé do Rocha, Monteiro, Itaporanga, Mamanguape, Queimadas, Lagoa Seca, Uiraúna.
+> **Promover só quando há VIAP de fato.** Antes de incluir uma cidade, sondamos o TCE (script de sondagem em lote): a maioria dos vereadores precisa receber a VIAP (empenho de "Indenizações" casável por CPF). Onde a cobertura é ~0, a câmara **não paga VIAP por essa via** e a cidade **fica leve** — não inventamos um "completo" cheio de zeros. Na sondagem das 212 câmaras leve, a grande maioria das pequenas não tem VIAP; entram só as ~20 que têm. A VIAP, quando existe, é um **valor fixo mensal** que varia muito (de ~R$ 1.000 a ~R$ 11.000 por vereador, de ~10% a ~100% do subsídio, conforme a cidade).
 
 | O quê | Endpoint / arquivo | Formato | Como ligamos ao vereador |
 | --- | --- | --- | --- |
@@ -150,7 +150,7 @@ Para cidades onde a câmara **não publica a VIAP de forma legível por máquina
 | **Gabinete — comissionados** | TCE-PB (mesma fonte das câmaras leve) | CSV (dados abertos) | **agregado** (a fonte não atribui o comissionado a um vereador), como em CG |
 | **Partido e foto** | TSE (eleição municipal 2024) | CSV + JPG | mesma fonte das câmaras leve |
 
-> **A VIAP nessas cidades é um valor fixo mensal** (não reembolso de despesa itemizada), e varia bastante de cidade para cidade: de **R$ 1.500** em Guarabira (~12% do subsídio) a **R$ 7.600** em Cabedelo (~58%), passando por Patos R$ 5.000 (~29%) e Santa Rita R$ 11.333 (~2/3, com R$ 15.333 para o presidente). A nota no perfil/cidade traz o valor mais frequente no período. Mostramos isso de forma neutra, com link para os dados abertos do TCE (e para a página da VIAP da câmara quando existe, como Santa Rita e Patos). Como o TCE **é** a fonte (não um cruzamento), **não há selo de conferência** (seria circular). A nota fiscal (documento) não é publicada de forma legível: dá para conferir o fluxo do dinheiro, não o conteúdo de cada nota (ver a discussão de comprovação do reembolso).
+> A nota no perfil/cidade traz o **valor fixo mais frequente no período** e a fração do subsídio, de forma neutra, com link para os dados abertos do TCE (e para a página da VIAP da câmara quando existe, como Santa Rita e Patos). Como o TCE **é** a fonte (não um cruzamento), **não há selo de conferência** (seria circular). A nota fiscal (documento) não é publicada de forma legível: dá para conferir o fluxo do dinheiro, não o conteúdo de cada nota (ver a discussão de comprovação do reembolso).
 
 ### Câmaras municipais — modelo leve (demais cidades) · fonte única TCE-PB
 

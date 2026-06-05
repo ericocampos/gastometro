@@ -652,96 +652,29 @@
       "slug": "alhandra",
       "nome": "Alhandra",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 1509979.52,
+      "totalGabineteMes": 486000,
+      "periodoViap": {
+        "de": "2025-05",
+        "ate": "2026-06"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 486000,
-      "vereadores": [
-        {
-          "nome": "DANIEL MIGUEL DA SILVA",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002181898.webp"
-        },
-        {
-          "nome": "EDILEUDO DA SILVA SALVINO",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002181900.webp"
-        },
-        {
-          "nome": "EDILSON PEREIRA DA SILVA",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002110872.webp"
-        },
-        {
-          "nome": "FRANCIS ALEX RODRIGUES DE PONTES",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002110873.webp"
-        },
-        {
-          "nome": "JOAO FERREIRA DA SILVA FILHO",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002010904.webp"
-        },
-        {
-          "nome": "JOAO NASCIMENTO DE PAULA",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002117763.webp"
-        },
-        {
-          "nome": "JOSE ROBERTO LOURENCO DOS SANTOS",
-          "subsidio": 15300,
-          "presidente": true,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002178660.webp"
-        },
-        {
-          "nome": "JOSE SILVA DE SOUZA",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002181901.webp"
-        },
-        {
-          "nome": "JULIANA GOMES DE ALMEIDA VIDAL",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002178668.webp"
-        },
-        {
-          "nome": "MANOEL FERREIRA BRAGA",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002178664.webp"
-        },
-        {
-          "nome": "SEVERINO BELMIRO ALVES",
-          "subsidio": 10200,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002110880.webp"
-        }
-      ],
       "custo": {
         "slug": "alhandra",
         "nome": "Alhandra",
         "salario": 10200,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 44181.818181818184
+        "viapTeto": 10000,
+        "viapMedia": 10710.812494172493,
+        "gabineteMedia": 44181.818181818184,
+        "viapFonteTce": true,
+        "viapNota": "Em Alhandra, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 10.000,00 por vereador, cerca de 98% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/008/despesas/despesas-2025.zip"
       }
     },
     {
@@ -2915,96 +2848,29 @@
       "slug": "boqueirao",
       "nome": "Boqueirão",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 82000,
+      "totalGabineteMes": 84740,
+      "periodoViap": {
+        "de": "2025-10",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 84740,
-      "vereadores": [
-        {
-          "nome": "DEYVISON MACEDO DE BRITO",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001960233.webp"
-        },
-        {
-          "nome": "FABIO RODRIGUES BARBOSA",
-          "subsidio": 14000,
-          "presidente": true,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002021310.webp"
-        },
-        {
-          "nome": "FRANCIMAR GONCALVES BARBOSA",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002208640.webp"
-        },
-        {
-          "nome": "JOSE RENATO DE ARAUJO",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002208642.webp"
-        },
-        {
-          "nome": "NALDETE RAMOS FARIAS",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002021291.webp"
-        },
-        {
-          "nome": "OSVALDO GOMES DE ANDRADE",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001960243.webp"
-        },
-        {
-          "nome": "RAFAEL FELIX DA SILVA",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002021303.webp"
-        },
-        {
-          "nome": "RAMIRO PEREIRA DE ANDRADE FILHO",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002208646.webp"
-        },
-        {
-          "nome": "SUEMARCO FLORINDO DE BRITO",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002021307.webp"
-        },
-        {
-          "nome": "TACIO DEMIAM DUARTE DE FARIAS",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001960239.webp"
-        },
-        {
-          "nome": "VICTOR RAMOS DE NEGREIROS",
-          "subsidio": 10000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002021306.webp"
-        }
-      ],
       "custo": {
         "slug": "boqueirao",
         "nome": "Boqueirão",
         "salario": 10000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 7703.636363636364
+        "viapTeto": 1000,
+        "viapMedia": 1124.2424242424242,
+        "gabineteMedia": 7703.636363636364,
+        "viapFonteTce": true,
+        "viapNota": "Em Boqueirão, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.000,00 por vereador, cerca de 10% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/034/despesas/despesas-2025.zip"
       }
     },
     {
@@ -4824,82 +4690,29 @@
       "slug": "caturite",
       "nome": "Caturité",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 9,
+      "totalViapPeriodo": 153260,
+      "totalGabineteMes": 20610,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 20610,
-      "vereadores": [
-        {
-          "nome": "AURELIANO ARTUR LIMEIRA FRANCA NETO",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002049345.webp"
-        },
-        {
-          "nome": "BRUNO VIDAL PEREIRA",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002049343.webp"
-        },
-        {
-          "nome": "HALLAN OLYMPIO FRANCISCO DA SILVA",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002060522.webp"
-        },
-        {
-          "nome": "MARCIO JUNIOR CORDEIRO DE MELO",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002178126.webp"
-        },
-        {
-          "nome": "RILDO DE SOUSA",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002060528.webp"
-        },
-        {
-          "nome": "ROMULO GUSTAVO AGUIAR DA SILVA",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002049350.webp"
-        },
-        {
-          "nome": "SEBASTIAO FAUSTINO DA SILVA",
-          "subsidio": 9273.24,
-          "presidente": true,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002060525.webp"
-        },
-        {
-          "nome": "SIDELVAN ARAUJO CABRAL",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002049347.webp"
-        },
-        {
-          "nome": "WANDILSON BARBOSA DE SOUSA",
-          "subsidio": 6000,
-          "presidente": false,
-          "partido": "PODE",
-          "fotoUrl": "/fotos/vereadores/150002143657.webp"
-        }
-      ],
       "custo": {
         "slug": "caturite",
         "nome": "Caturité",
         "salario": 6000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 2290
+        "viapTeto": 1000,
+        "viapMedia": 1001.6993464052289,
+        "gabineteMedia": 2290,
+        "viapFonteTce": true,
+        "viapNota": "Em Caturité, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.000,00 por vereador, cerca de 17% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/058/despesas/despesas-2025.zip"
       }
     },
     {
@@ -5084,96 +4897,29 @@
       "slug": "conde",
       "nome": "Conde",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 579148.0700000001,
+      "totalGabineteMes": 420900,
+      "periodoViap": {
+        "de": "2025-12",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 420900,
-      "vereadores": [
-        {
-          "nome": "ALEKSANDRO PESSOA",
-          "subsidio": 14850,
-          "presidente": true,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002107541.webp"
-        },
-        {
-          "nome": "DANIEL SEVERINO DA SILVA JUNIOR",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001986549.webp"
-        },
-        {
-          "nome": "FAGNER SANTOS DE SOUSA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001962636.webp"
-        },
-        {
-          "nome": "JEAN ALYSON LIMA BEZERRA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001962663.webp"
-        },
-        {
-          "nome": "JERBERSON RAMOS CARNEIRO DE LIMA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001962661.webp"
-        },
-        {
-          "nome": "JOAO BATISTA DO NASCIMENTO",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001962633.webp"
-        },
-        {
-          "nome": "JOSELIO DIONISIO DO NASCIMENTO",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001986545.webp"
-        },
-        {
-          "nome": "JOSEMAR ANTUNES FEITOSA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001986543.webp"
-        },
-        {
-          "nome": "MALBATAHAN PINTO FILGUEIRAS NETO",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001962634.webp"
-        },
-        {
-          "nome": "MUNIQUE MARINHO DE LIMA ROLIM",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001962756.webp"
-        },
-        {
-          "nome": "ROSELIA MARIA DA SILVA OLIVEIRA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002107551.webp"
-        }
-      ],
       "custo": {
         "slug": "conde",
         "nome": "Conde",
         "salario": 10432,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 38263.63636363636
+        "viapTeto": 10000,
+        "viapMedia": 9707.837848484849,
+        "gabineteMedia": 38263.63636363636,
+        "viapFonteTce": true,
+        "viapNota": "Em Conde, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 10.000,00 por vereador, cerca de 96% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/061/despesas/despesas-2025.zip"
       }
     },
     {
@@ -5426,96 +5172,29 @@
       "slug": "cruz-do-espirito-santo",
       "nome": "Cruz do Espírito Santo",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 247066.18,
+      "totalGabineteMes": 115303,
+      "periodoViap": {
+        "de": "2025-03",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-05",
       "folhaComissionados": 115303,
-      "vereadores": [
-        {
-          "nome": "AELTON VICTOR DE LIMA",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002107954.webp"
-        },
-        {
-          "nome": "BARTOLOMEU CRUZ DE MEIRELES FILHO",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002036100.webp"
-        },
-        {
-          "nome": "EDILSON CEZAR DE OLIVEIRA",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002004442.webp"
-        },
-        {
-          "nome": "EDVALDO DANTAS",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002036102.webp"
-        },
-        {
-          "nome": "JOSE HONORATO DE MELO NETO",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002107956.webp"
-        },
-        {
-          "nome": "JOSE MILSON ROZENO",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002036110.webp"
-        },
-        {
-          "nome": "LENILSON NASCIMENTO DA SILVA",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002004440.webp"
-        },
-        {
-          "nome": "LEONARDO BATISTA DO NASCIMENTO",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002004441.webp"
-        },
-        {
-          "nome": "LEONARDO DO NASCIMENTO",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002107959.webp"
-        },
-        {
-          "nome": "MARIA DO SOCORRO GOUVEIA",
-          "subsidio": 9000,
-          "presidente": true,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002107951.webp"
-        },
-        {
-          "nome": "NOBERTO DE PAIVA",
-          "subsidio": 7500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002036103.webp"
-        }
-      ],
       "custo": {
         "slug": "cruz-do-espirito-santo",
         "nome": "Cruz do Espírito Santo",
         "salario": 7500,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 10482.09090909091
+        "viapTeto": 1500,
+        "viapMedia": 1497.370787878788,
+        "gabineteMedia": 10482.09090909091,
+        "viapFonteTce": true,
+        "viapNota": "Em Cruz do Espírito Santo, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.500,00 por vereador, cerca de 20% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/065/despesas/despesas-2025.zip"
       }
     },
     {
@@ -6617,80 +6296,29 @@
       "slug": "fagundes",
       "nome": "Fagundes",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 9,
+      "totalViapPeriodo": 139928,
+      "totalGabineteMes": 21699.81,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-04"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 21699.81,
-      "vereadores": [
-        {
-          "nome": "ANA PAULA EMILIANO MARTINS",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001960140.webp"
-        },
-        {
-          "nome": "ARNALDO FRANCISCO DE MEDEIROS",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001961555.webp"
-        },
-        {
-          "nome": "EDUARDA DE FATIMA DANTAS VIDAL",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001961549.webp"
-        },
-        {
-          "nome": "JANDUI BARBOSA DE ANDRADE",
-          "subsidio": 10000,
-          "presidente": true,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960709.webp"
-        },
-        {
-          "nome": "JOAO BATISTA DE OLIVEIRA BARBOSA",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001960139.webp"
-        },
-        {
-          "nome": "JOSÉ FERREIRA DA SILVA",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001960136.webp"
-        },
-        {
-          "nome": "RODRIGO PEREIRA GOMES",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960714.webp"
-        },
-        {
-          "nome": "SEVERINO VEIGA DE FREITAS",
-          "subsidio": 5000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001960141.webp"
-        },
-        {
-          "nome": "TAMIRES BORGES MARINHO DE SOUZA",
-          "subsidio": 5000,
-          "presidente": false
-        }
-      ],
       "custo": {
         "slug": "fagundes",
         "nome": "Fagundes",
         "salario": 5000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 2411.09
+        "viapTeto": 1000,
+        "viapMedia": 1006.8171296296298,
+        "gabineteMedia": 2411.09,
+        "viapFonteTce": true,
+        "viapNota": "Em Fagundes, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.000,00 por vereador, cerca de 20% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/079/despesas/despesas-2025.zip"
       }
     },
     {
@@ -7752,75 +7380,29 @@
       "slug": "jacarau",
       "nome": "Jacaraú",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 8,
+      "totalViapPeriodo": 153084.11000000002,
+      "totalGabineteMes": 51465,
+      "periodoViap": {
+        "de": "2025-09",
+        "ate": "2025-12"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 51465,
-      "vereadores": [
-        {
-          "nome": "ADMILSON RIBEIRO DUARTE",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002003417.webp"
-        },
-        {
-          "nome": "ANA MARIA TRAJANO DE CARVALHO",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002149903.webp"
-        },
-        {
-          "nome": "BENICIO FERREIRA LUCAS",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002003422.webp"
-        },
-        {
-          "nome": "CARLOS ANTONIO JERONIMO",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "PT",
-          "fotoUrl": "/fotos/vereadores/150002003432.webp"
-        },
-        {
-          "nome": "CRISTIANE ANDREA FERNANDES DE OLIVEIRA",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002003389.webp"
-        },
-        {
-          "nome": "LUIZ VALERIO DOS SANTOS",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002149901.webp"
-        },
-        {
-          "nome": "MANOEL GOMES FERREIRA FILHO",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002003421.webp"
-        },
-        {
-          "nome": "MONIQUE CICCO REGIS",
-          "subsidio": 9500,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002003419.webp"
-        }
-      ],
       "custo": {
         "slug": "jacarau",
         "nome": "Jacaraú",
         "salario": 9500,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 6433.125
+        "viapTeto": 5000,
+        "viapMedia": 4937.35875,
+        "gabineteMedia": 6433.125,
+        "viapFonteTce": true,
+        "viapNota": "Em Jacaraú, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 5.000,00 por vereador, cerca de 53% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/093/despesas/despesas-2025.zip"
       }
     },
     {
@@ -7984,96 +7566,29 @@
       "slug": "juazeirinho",
       "nome": "Juazeirinho",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 289300,
+      "totalGabineteMes": 69691.78,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 69691.78,
-      "vereadores": [
-        {
-          "nome": "ADMILSON GONCALVES DA SILVA",
-          "subsidio": 17000,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001904952.webp"
-        },
-        {
-          "nome": "ANTONIO MARCOS TORQUATO DINIZ",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001904953.webp"
-        },
-        {
-          "nome": "ANTONIO MOTA DE FARIAS FILHO",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001905025.webp"
-        },
-        {
-          "nome": "EMANUELLY SILVA CORREA DOS SANTOS",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001904959.webp"
-        },
-        {
-          "nome": "FERNANDO DE MEDEIROS CADETE",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001904951.webp"
-        },
-        {
-          "nome": "JOSE DA GUIA LUCINDO",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001904972.webp"
-        },
-        {
-          "nome": "LEONARDO FREIRE DE MEDEIROS",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001904970.webp"
-        },
-        {
-          "nome": "MARIA JOSE ALVES MIGUEL",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001905029.webp"
-        },
-        {
-          "nome": "WAGNER CORDEIRO TRAJANO",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001905030.webp"
-        },
-        {
-          "nome": "WEDISGSON NORMELIO CORDEIRO TRAJANO",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001905032.webp"
-        },
-        {
-          "nome": "WELLINGTON DA COSTA ASSIS",
-          "subsidio": 8500,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001904965.webp"
-        }
-      ],
       "custo": {
         "slug": "juazeirinho",
         "nome": "Juazeirinho",
         "salario": 8500,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 6335.6163636363635
+        "viapTeto": 1700,
+        "viapMedia": 1576.3703208556146,
+        "gabineteMedia": 6335.6163636363635,
+        "viapFonteTce": true,
+        "viapNota": "Em Juazeirinho, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.200,00 por vereador (R$ 1.700,00 para o presidente), cerca de 14% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/097/despesas/despesas-2025.zip"
       }
     },
     {
@@ -10526,82 +10041,29 @@
       "slug": "nova-floresta",
       "nome": "Nova Floresta",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 9,
+      "totalViapPeriodo": 172790.06,
+      "totalGabineteMes": 26034.780000000002,
+      "periodoViap": {
+        "de": "2025-02",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 26034.780000000002,
-      "vereadores": [
-        {
-          "nome": "ABSALAO FERREIRA DA SILVA NETO",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "PT",
-          "fotoUrl": "/fotos/vereadores/150002104493.webp"
-        },
-        {
-          "nome": "CLEDINALDO PEREIRA LIMA",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002000990.webp"
-        },
-        {
-          "nome": "DIEGO ISAAC DE LIMA GOMES",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002011190.webp"
-        },
-        {
-          "nome": "FRANCISCO JACIO DA SILVA",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002000988.webp"
-        },
-        {
-          "nome": "GEAN CARLOS FERREIRA",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002000983.webp"
-        },
-        {
-          "nome": "JOAO MARQUES DO NASCIMENTO",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002000853.webp"
-        },
-        {
-          "nome": "JOSE FAUSTINO SANTOS NETO",
-          "subsidio": 9200,
-          "presidente": true,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002000847.webp"
-        },
-        {
-          "nome": "RELSON SOUZA DE MEDEIROS",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002011186.webp"
-        },
-        {
-          "nome": "VALTECIO DOS SANTOS LINS",
-          "subsidio": 6900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002000851.webp"
-        }
-      ],
       "custo": {
         "slug": "nova-floresta",
         "nome": "Nova Floresta",
         "salario": 6900,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 2892.7533333333336
+        "viapTeto": 1200,
+        "viapMedia": 1199.9309722222222,
+        "gabineteMedia": 2892.7533333333336,
+        "viapFonteTce": true,
+        "viapNota": "Em Nova Floresta, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.200,00 por vereador, cerca de 17% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/127/despesas/despesas-2025.zip"
       }
     },
     {
@@ -15080,82 +14542,29 @@
       "slug": "sao-jose-da-lagoa-tapada",
       "nome": "São José da Lagoa Tapada",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 9,
+      "totalViapPeriodo": 211010,
+      "totalGabineteMes": 28840.54,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-04"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 28840.54,
-      "vereadores": [
-        {
-          "nome": "ARIOSVALDO COSTA DIAS JUNIOR",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002017671.webp"
-        },
-        {
-          "nome": "FRANCISCO DAS CHAGAS ALVES",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002017672.webp"
-        },
-        {
-          "nome": "FRANCISCO JUCELIO DE SA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242773.webp"
-        },
-        {
-          "nome": "FRANCISCO JUNIOR MARTINS DE MOURA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242780.webp"
-        },
-        {
-          "nome": "ISABELA NOBREGA DE SA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002017673.webp"
-        },
-        {
-          "nome": "JOSE EDIJAIR DE SOUSA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242774.webp"
-        },
-        {
-          "nome": "MARIA APARECIDA DOS SANTOS SILVA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242775.webp"
-        },
-        {
-          "nome": "RAIMUNDO MENDES DE SOUSA FILHO",
-          "subsidio": 7300,
-          "presidente": true,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242776.webp"
-        },
-        {
-          "nome": "SAMUEL GUEDES LACERDA",
-          "subsidio": 5300,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002242777.webp"
-        }
-      ],
       "custo": {
         "slug": "sao-jose-da-lagoa-tapada",
         "nome": "São José da Lagoa Tapada",
         "salario": 5300,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 3204.5044444444447
+        "viapTeto": 1500,
+        "viapMedia": 1496.4953703703704,
+        "gabineteMedia": 3204.5044444444447,
+        "viapFonteTce": true,
+        "viapNota": "Em São José da Lagoa Tapada, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.500,00 por vereador, cerca de 28% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/185/despesas/despesas-2025.zip"
       }
     },
     {
@@ -15317,96 +14726,29 @@
       "slug": "sao-jose-de-piranhas",
       "nome": "São José de Piranhas",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 11,
+      "totalViapPeriodo": 312199.93,
+      "totalGabineteMes": 56366.08,
+      "periodoViap": {
+        "de": "2025-02",
+        "ate": "2026-04"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 56366.08,
-      "vereadores": [
-        {
-          "nome": "ANDRE LIMA LEITE",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001993373.webp"
-        },
-        {
-          "nome": "CLAILTON PEREIRA DIAS",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001993381.webp"
-        },
-        {
-          "nome": "CLOVIS BARBOSA GONÇALVES",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001993372.webp"
-        },
-        {
-          "nome": "DAMIAO BATISTA FERREIRA",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001993384.webp"
-        },
-        {
-          "nome": "FRANCISCO EUGENIO MARTINS CAVALCANTI",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001993383.webp"
-        },
-        {
-          "nome": "HELIO GOMES DE LACERDA",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001993386.webp"
-        },
-        {
-          "nome": "JOSE CLAUDIANO VIEIRA PEREIRA",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002312637.webp"
-        },
-        {
-          "nome": "PEDRO BANDEIRA DA SILVA",
-          "subsidio": 15648.59,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001993379.webp"
-        },
-        {
-          "nome": "RICARDO LUIZ CAVALCANTI DO NASCIMENTO",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002312636.webp"
-        },
-        {
-          "nome": "SILMARA TAVARES BANDEIRA",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001993368.webp"
-        },
-        {
-          "nome": "WASHINGTON VIEIRA DE OLIVEIRA",
-          "subsidio": 11000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001993364.webp"
-        }
-      ],
       "custo": {
         "slug": "sao-jose-de-piranhas",
         "nome": "São José de Piranhas",
         "salario": 11000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 5124.189090909091
+        "viapTeto": 2000,
+        "viapMedia": 2131.0337837616926,
+        "gabineteMedia": 5124.189090909091,
+        "viapFonteTce": true,
+        "viapNota": "Em São José de Piranhas, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 2.000,00 por vereador, cerca de 18% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/188/despesas/despesas-2025.zip"
       }
     },
     {
@@ -16991,82 +16333,29 @@
       "slug": "soledade",
       "nome": "Soledade",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 9,
+      "totalViapPeriodo": 308643.64,
+      "totalGabineteMes": 16661.08,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 16661.08,
-      "vereadores": [
-        {
-          "nome": "ADEILSON JOELBY MARTINS MARIANO",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960480.webp"
-        },
-        {
-          "nome": "ALEXANDRE EMANUEL NERY DANTAS",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960481.webp"
-        },
-        {
-          "nome": "CESAR GARIBALDE ALVES DE GOIS",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002128330.webp"
-        },
-        {
-          "nome": "JANIEIDE COSTA GUIMARAES",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150001960559.webp"
-        },
-        {
-          "nome": "JOSE CORREIA DE QUEIROZ NETO",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002128335.webp"
-        },
-        {
-          "nome": "JOSE RIBEIRO DE OLIVEIRA JUNIOR",
-          "subsidio": 12000,
-          "presidente": true,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001960513.webp"
-        },
-        {
-          "nome": "MARCIO DE SOUTO MARQUES",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960483.webp"
-        },
-        {
-          "nome": "UDENILSON CANDIDO DE SOUSA",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001960476.webp"
-        },
-        {
-          "nome": "VANIA MARIA OURIQUES LEAL",
-          "subsidio": 8000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002128334.webp"
-        }
-      ],
       "custo": {
         "slug": "soledade",
         "nome": "Soledade",
         "salario": 8000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 1851.2311111111112
+        "viapTeto": 3000,
+        "viapMedia": 2108.781960784314,
+        "gabineteMedia": 1851.2311111111112,
+        "viapFonteTce": true,
+        "viapNota": "Em Soledade, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 2.000,00 por vereador (R$ 3.000,00 para o presidente), cerca de 25% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/209/despesas/despesas-2025.zip"
       }
     },
     {
