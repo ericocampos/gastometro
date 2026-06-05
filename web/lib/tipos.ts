@@ -245,6 +245,7 @@ export interface OrcamentoMunicipio {
   atualizadoEm: string
 }
 
-// Forma achatada pra comparar cidades por orçamento ano a ano (total e por poder).
-export interface OrcamentoCidadeAno { ano: number; total: number; prefeitura: number; camara: number; previdencia: number }
+// Forma achatada pra comparar cidades por orçamento ano a ano: o total e o gasto por área (função),
+// somado entre os poderes (quanto a cidade inteira pagou naquela área).
+export interface OrcamentoCidadeAno { ano: number; total: number; funcoes: Record<string, number> }
 export interface ComparativoOrcamentoCidade { slug: string; nome: string; anos: OrcamentoCidadeAno[] }

@@ -26,7 +26,7 @@ export default function MunicipiosPage() {
 
       {comparativoOrc.length > 0 && (
         <section className="mb-8">
-          <SecaoTitulo>Comparar cidades · orçamento total ano a ano</SecaoTitulo>
+          <SecaoTitulo>Comparar cidades · gasto por área (Saúde, Educação...)</SecaoTitulo>
           <ComparadorOrcamento cidades={comparativoOrc} />
         </section>
       )}

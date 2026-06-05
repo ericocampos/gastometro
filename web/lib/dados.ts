@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PoderOrcamento, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -130,17 +130,14 @@ export function getComparativoOrcamento(): ComparativoOrcamentoCidade[] {
       const o = getOrcamento(slug)
       if (!o) return null
       const anoColeta = Number(o.atualizadoEm.slice(0, 4))
-      const totalPoder = (a: OrcamentoMunicipio['anos'][number], p: PoderOrcamento) =>
-        a.poderes.find((x) => x.poder === p)?.total ?? 0
       const anos = o.anos
         .filter((a) => a.ano < anoColeta)
-        .map((a) => ({
-          ano: a.ano,
-          total: a.totalPago,
-          prefeitura: totalPoder(a, 'prefeitura'),
-          camara: totalPoder(a, 'camara'),
-          previdencia: totalPoder(a, 'previdencia'),
-        }))
+        .map((a) => {
+          // gasto por área somando os poderes (quanto a cidade inteira pagou naquela função)
+          const funcoes: Record<string, number> = {}
+          for (const p of a.poderes) for (const f of p.funcoes) funcoes[f.funcao] = (funcoes[f.funcao] ?? 0) + f.pago
+          return { ano: a.ano, total: a.totalPago, funcoes }
+        })
         .sort((x, y) => x.ano - y.ano)
       if (anos.length === 0) return null
       return { slug: o.slug, nome: o.nome, anos }

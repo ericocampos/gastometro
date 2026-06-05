@@ -14,42 +14,55 @@ vi.mock('recharts', () => {
 
 const cidades: ComparativoOrcamentoCidade[] = [
   { slug: 'joao-pessoa', nome: 'João Pessoa', anos: [
-    { ano: 2024, total: 4000, prefeitura: 3400, camara: 130, previdencia: 470 },
-    { ano: 2025, total: 4500, prefeitura: 3900, camara: 139, previdencia: 491 },
+    { ano: 2024, total: 4000, funcoes: { 'Saúde': 1100, 'Educação': 800, 'Urbanismo': 300 } },
+    { ano: 2025, total: 4500, funcoes: { 'Saúde': 1250, 'Educação': 920, 'Urbanismo': 426 } },
   ] },
   { slug: 'campina-grande', nome: 'Campina Grande', anos: [
-    { ano: 2025, total: 1100, prefeitura: 950, camara: 90, previdencia: 60 },
+    { ano: 2025, total: 1100, funcoes: { 'Saúde': 300, 'Educação': 250 } },
+  ] },
+  { slug: 'santa-rita', nome: 'Santa Rita', anos: [
+    { ano: 2025, total: 180, funcoes: { 'Saúde': 60, 'Educação': 50 } },
   ] },
   { slug: 'agua-branca', nome: 'Água Branca', anos: [
-    { ano: 2025, total: 70, prefeitura: 62, camara: 2, previdencia: 7 },
-  ] },
-  { slug: 'patos', nome: 'Patos', anos: [
-    { ano: 2025, total: 220, prefeitura: 190, camara: 18, previdencia: 12 },
+    { ano: 2025, total: 70, funcoes: { 'Saúde': 17, 'Educação': 24 } },
   ] },
 ]
 
 describe('ComparadorOrcamento', () => {
-  it('mostra o dropdown, os chips das cidades escolhidas e os botões de métrica por poder', () => {
+  it('mostra o dropdown de cidades, os chips e o seletor de área (começa em Saúde)', () => {
     render(<ComparadorOrcamento cidades={cidades} />)
     expect(screen.getByRole('button', { name: /Escolher cidades/ })).toBeInTheDocument()
-    // default: as 3 selecionadas → chips removíveis
+    // default: as 3 maiores selecionadas → chips removíveis
     expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Remover Campina Grande' })).toBeInTheDocument()
-    // métricas por poder
-    expect(screen.getByRole('button', { name: /Total da cidade/ })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Prefeitura' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Câmara' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Previdência' })).toBeInTheDocument()
+    // seletor de área, começando em Saúde
+    const select = screen.getByLabelText(/Área/) as HTMLSelectElement
+    expect(select.value).toBe('Saúde')
+    // tem a opção Total e as áreas (Saúde, Educação...)
+    expect(screen.getByRole('option', { name: 'Total da cidade' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'Educação' })).toBeInTheDocument()
   })
 
-  it('o dropdown começa fechado e abre ao clicar, listando as cidades como checkboxes', () => {
+  it('ordena as áreas por gasto total (Saúde antes de Urbanismo)', () => {
     render(<ComparadorOrcamento cidades={cidades} />)
-    // fechado: nenhum checkbox no DOM
+    const opcoes = [...screen.getByLabelText(/Área/).querySelectorAll('option')].map((o) => o.textContent)
+    expect(opcoes[0]).toBe('Total da cidade')
+    expect(opcoes.indexOf('Saúde')).toBeLessThan(opcoes.indexOf('Urbanismo'))
+  })
+
+  it('troca a área pelo seletor', () => {
+    render(<ComparadorOrcamento cidades={cidades} />)
+    const select = screen.getByLabelText(/Área/) as HTMLSelectElement
+    fireEvent.change(select, { target: { value: 'Educação' } })
+    expect(select.value).toBe('Educação')
+  })
+
+  it('o dropdown de cidades começa fechado e abre, com as 3 maiores marcadas e a 4ª não', () => {
+    render(<ComparadorOrcamento cidades={cidades} />)
     expect(screen.queryByRole('checkbox', { name: 'João Pessoa' })).not.toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: /Escolher cidades/ }))
-    // 3 maiores vêm marcadas por padrão; a 4ª (Patos) não
     expect(screen.getByRole('checkbox', { name: 'João Pessoa' })).toBeChecked()
-    expect(screen.getByRole('checkbox', { name: 'Patos' })).not.toBeChecked()
+    expect(screen.getByRole('checkbox', { name: 'Água Branca' })).not.toBeChecked()
   })
 
   it('remove uma cidade pelo × do chip', () => {
@@ -57,12 +70,5 @@ describe('ComparadorOrcamento', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Remover Campina Grande' }))
     expect(screen.queryByRole('button', { name: 'Remover Campina Grande' })).not.toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
-  })
-
-  it('troca a métrica para um poder específico', () => {
-    render(<ComparadorOrcamento cidades={cidades} />)
-    const botaoCamara = screen.getByRole('button', { name: 'Câmara' })
-    fireEvent.click(botaoCamara)
-    expect(botaoCamara).toHaveAttribute('aria-pressed', 'true')
   })
 })

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import type { ComparativoOrcamentoCidade, OrcamentoCidadeAno } from '@/lib/tipos'
 import { brl } from '@/lib/formato'
@@ -7,11 +7,7 @@ import { tooltipContentStyle, tooltipLabelStyle, tooltipItemStyle } from './tool
 
 // uma cor por cidade (estável pela ordem recebida)
 const PALETA = ['#0f766e', '#2563eb', '#c87f1a', '#7c3aed', '#be185d', '#15803d', '#0891b2', '#b45309']
-
-type Metrica = 'total' | 'prefeitura' | 'camara' | 'previdencia'
-const ROTULO_METRICA: Record<Metrica, string> = {
-  total: 'Total da cidade', prefeitura: 'Prefeitura', camara: 'Câmara', previdencia: 'Previdência',
-}
+const TOTAL = '__total__' // valor especial da métrica = total da cidade
 
 function compacto(v: number): string {
   if (v >= 1_000_000_000) return `R$ ${(v / 1_000_000_000).toFixed(1).replace('.', ',')} bi`
@@ -23,9 +19,16 @@ function compacto(v: number): string {
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
 export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamentoCidade[] }) {
+  // áreas (funções) disponíveis, ordenadas pelo total gasto entre as cidades (Saúde, Educação... primeiro)
+  const areas = useMemo(() => {
+    const soma = new Map<string, number>()
+    for (const c of cidades) for (const a of c.anos) for (const [f, v] of Object.entries(a.funcoes)) soma.set(f, (soma.get(f) ?? 0) + v)
+    return [...soma.entries()].sort((a, b) => b[1] - a[1]).map(([f]) => f)
+  }, [cidades])
+
   // começa com as primeiras (maiores) selecionadas; com poucas, são todas
   const [selecionadas, setSelecionadas] = useState<string[]>(() => cidades.slice(0, 3).map((c) => c.slug))
-  const [metrica, setMetrica] = useState<Metrica>('total')
+  const [metrica, setMetrica] = useState<string>(() => (areas.includes('Saúde') ? 'Saúde' : areas[0] ?? TOTAL))
   const [aberto, setAberto] = useState(false)
   const [busca, setBusca] = useState('')
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -46,7 +49,8 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
   const toggle = (slug: string) =>
     setSelecionadas((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : [...s, slug]))
 
-  const valorAno = (a: OrcamentoCidadeAno) => a[metrica]
+  const valorAno = (a: OrcamentoCidadeAno) => (metrica === TOTAL ? a.total : a.funcoes[metrica] ?? 0)
+  const rotuloMetrica = metrica === TOTAL ? 'Total da cidade' : metrica
 
   // ativas na ordem da lista original (cor/legenda estáveis)
   const ativas = cidades.filter((c) => selecionadas.includes(c.slug))
@@ -61,19 +65,6 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
   })
 
   const filtradas = busca.trim() ? cidades.filter((c) => norm(c.nome).includes(norm(busca))) : cidades
-
-  const botaoMetrica = (m: Metrica) => (
-    <button
-      type="button"
-      onClick={() => setMetrica(m)}
-      aria-pressed={metrica === m}
-      className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
-        metrica === m ? 'bg-marca text-white' : 'border border-borda text-tinta-suave hover:border-marca'
-      }`}
-    >
-      {ROTULO_METRICA[m]}
-    </button>
-  )
 
   return (
     <div className="rounded-xl border border-borda bg-superficie p-4">
@@ -144,12 +135,19 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
           )}
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
-          {botaoMetrica('total')}
-          {botaoMetrica('prefeitura')}
-          {botaoMetrica('camara')}
-          {botaoMetrica('previdencia')}
-        </div>
+        {/* seletor de área (função) */}
+        <label className="flex items-center gap-2 text-sm text-tinta-suave">
+          Área
+          <select
+            aria-label="Área (função) a comparar"
+            value={metrica}
+            onChange={(e) => setMetrica(e.target.value)}
+            className="max-w-[220px] rounded-md border border-borda bg-superficie px-2 py-1 text-sm text-tinta transition-colors hover:border-marca focus:border-marca"
+          >
+            <option value={TOTAL}>Total da cidade</option>
+            {areas.map((f) => <option key={f} value={f}>{f}</option>)}
+          </select>
+        </label>
       </div>
 
       {/* chips só das cidades escolhidas, cada um removível */}
@@ -185,7 +183,7 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
               <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => compacto(Number(v))} />
               <Tooltip
                 formatter={(v, nome) => [brl(Number(v)), String(nome)]}
-                labelFormatter={(l) => `Ano ${l}`}
+                labelFormatter={(l) => `${rotuloMetrica} · ${l}`}
                 contentStyle={tooltipContentStyle}
                 labelStyle={tooltipLabelStyle}
                 itemStyle={tooltipItemStyle}
@@ -214,11 +212,11 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
       )}
 
       <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
-        {metrica === 'total'
-          ? 'Total da cidade = tudo que a cidade pagou no ano (Prefeitura, Câmara e Previdência somadas). Cidades maiores tendem a totais maiores.'
-          : `${ROTULO_METRICA[metrica]} = o que esse poder pagou no ano.`}{' '}
-        Valores pagos conforme os dados abertos do TCE-PB. O ano corrente (parcial) fica de fora pra
-        não desenhar uma queda falsa. A cobertura por ano varia entre as cidades.
+        {metrica === TOTAL
+          ? 'Total da cidade = tudo que a cidade pagou no ano (Prefeitura, Câmara e Previdência somadas).'
+          : `${rotuloMetrica} = quanto a cidade inteira pagou nessa área no ano (somando todos os órgãos).`}{' '}
+        Valores pagos conforme os dados abertos do TCE-PB. O ano corrente (parcial) fica de fora pra não
+        desenhar uma queda falsa. Cidades maiores tendem a valores maiores: compare quem tem porte parecido.
       </p>
     </div>
   )
