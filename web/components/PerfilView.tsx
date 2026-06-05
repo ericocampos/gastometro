@@ -7,7 +7,7 @@ import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
-import { agregarPerfil, totalAnualPorCasaParlamentar } from '@/lib/perfil'
+import { agregarPerfil, totalAnualPorCasaParlamentar, serieMensalPorCategoria } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
 import { brl, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
@@ -199,13 +199,28 @@ export function PerfilView({
     politico.casa === 'senado'
       ? `https://www6g.senado.leg.br/transparencia/sen/${politico.id.replace('senado-', '')}`
       : undefined
+  // no municipal o "teto" é o da VIAP (não uma cota genérica); rotulamos a linha do gráfico assim
+  // para deixar claro, sobretudo nas cidades que pagam VIAP + diárias (a linha é só da VIAP).
+  const rotuloTeto = politico.casa === 'camara_municipal' ? 'Teto da VIAP/mês' : 'Teto da cota/mês'
   const refCota =
     !custoCasa.cota.aproximado && custoCasa.cota.valor != null && custoCasa.cota.valor > 0
-      ? { valor: custoCasa.cota.valor, rotulo: 'Teto da cota/mês', cor: corCasa(politico.casa) }
+      ? { valor: custoCasa.cota.valor, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
       : undefined
   // câmara que paga só diárias (sem VIAP fixa): não há "teto", então o card de cota×teto não se aplica;
   // mostramos um resumo de diárias (média por mês) em vez do "uso do teto" (que quebraria sem teto).
   const municipalSoDiaria = politico.casa === 'camara_municipal' && (municipioCusto?.viapTeto ?? 0) <= 0 && (municipioCusto?.temDiaria ?? false)
+  // câmara que paga VIAP E diárias: a evolução mensal vira 2 linhas (VIAP fixa × diárias variáveis),
+  // e o teto tracejado vale só para a VIAP. Junta-las numa linha só (vs. um teto de VIAP) confundiria.
+  const municipalViapEDiaria = politico.casa === 'camara_municipal' && (municipioCusto?.temViap ?? false) && (municipioCusto?.temDiaria ?? false)
+  const linhasGrafico = useMemo(
+    () => municipalViapEDiaria
+      ? [
+          { chave: 'viap', rotulo: 'VIAP', cor: '#0f766e', serie: serieMensalPorCategoria(despesas, 'Verba indenizatória (VIAP)', periodo) },
+          { chave: 'diaria', rotulo: 'Diárias', cor: '#c87f1a', serie: serieMensalPorCategoria(despesas, 'Diárias', periodo) },
+        ]
+      : undefined,
+    [municipalViapEDiaria, despesas, periodo],
+  )
 
   return (
     <article>
@@ -356,7 +371,7 @@ export function PerfilView({
                     Sem gastos neste período. Troque o filtro ou veja a comparação anual ao lado.
                   </p>
                 ) : (
-                  <GraficoMensal serie={ag.serieMensal} referencia={refCota} />
+                  <GraficoMensal serie={ag.serieMensal} referencia={refCota} linhas={linhasGrafico} />
                 )}
               </div>
             </section>
