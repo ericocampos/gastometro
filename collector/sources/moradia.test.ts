@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { linksMoradia, parseListaMoradia, mapaMoradia, chaveMoradia, AUXILIO_MORADIA_VALOR } from './moradia'
+import { linksMoradia, parseListaMoradia, mapaMoradia, chaveMoradia, AUXILIO_MORADIA_VALOR, parseMoradiaSenadoCsv, AUXILIO_MORADIA_SENADO } from './moradia'
 
 describe('moradia (auxílio-moradia / imóvel funcional dos deputados federais)', () => {
   it('linksMoradia acha as 3 listas e resolve URL absoluta (1ª de cada tipo vence)', () => {
@@ -41,5 +41,22 @@ describe('moradia (auxílio-moradia / imóvel funcional dos deputados federais)'
 
   it('chaveMoradia normaliza acento/caixa para casar nomes', () => {
     expect(chaveMoradia('André Abdon')).toBe(chaveMoradia('ANDRE ABDON'))
+  })
+
+  it('parseMoradiaSenadoCsv: imóvel × auxílio R$ 5.500 × nenhum, filtrando pela UF', () => {
+    const csv = [
+      'ÚLTIMA ATUALIZAÇÃO;28/05/2026',
+      'NOME;ESTADO;PARTIDO;AUXÍLIO-MORADIA;IMÓVEL FUNCIONAL',
+      'Veneziano Vital do Rêgo;PB;MDB;NÃO;SIM',
+      'Efraim Filho;PB;UNIÃO;SIM;NÃO',
+      'Fulano Sem Nada;PB;X;NÃO;NÃO',
+      'Outro Estado;SP;Y;SIM;NÃO',
+    ].join('\r\n')
+    const m = parseMoradiaSenadoCsv(csv, 'PB')
+    expect(m.get(chaveMoradia('Veneziano Vital do Rêgo'))).toEqual({ tipo: 'imovel', valorMensal: null })
+    expect(m.get(chaveMoradia('Efraim Filho'))).toEqual({ tipo: 'especie', valorMensal: AUXILIO_MORADIA_SENADO })
+    expect(m.has(chaveMoradia('Fulano Sem Nada'))).toBe(false) // NÃO/NÃO não entra
+    expect(m.has(chaveMoradia('Outro Estado'))).toBe(false)    // outra UF filtrada
+    expect(AUXILIO_MORADIA_SENADO).toBe(5500)
   })
 })

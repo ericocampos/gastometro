@@ -202,6 +202,19 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByText(/até R\$ 4\.253/i)).toBeInTheDocument()
   })
 
+  it('senador com auxílio-moradia: mostra R$ 5.500/mês (em dinheiro, com comprovação)', () => {
+    const sen: Politico = { ...politico, id: 'senado-1', casa: 'senado', municipio: undefined, moradia: { tipo: 'especie', valorMensal: 5500 } }
+    const ds: Despesa[] = [{ id: 's1', politicoId: 'senado-1', data: '2026-01-15', ano: 2026, mes: 1, categoria: 'Passagens', fornecedor: { nome: 'CIA' }, valor: 3000 }]
+    const sr: SerieParlamentar[] = [{ ...series[0], politicoId: 'senado-1', casa: 'senado', municipio: undefined, serieMensal: [{ anoMes: '2026-01', total: 3000 }] }]
+    render(
+      <PerfilView politico={sen} despesas={ds} series={sr} perfil={null} custos={custos}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText(/Auxílio-moradia \(em dinheiro\)/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/R\$ 5\.500/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/mediante comprovação/i)).toBeInTheDocument()
+  })
+
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {
     renderMunicipal()
     // o cabeçalho da tabela de fornecedores não deve aparecer

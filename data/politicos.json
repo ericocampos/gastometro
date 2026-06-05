@@ -729,7 +729,11 @@
       56,
       57
     ],
-    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5998.jpg"
+    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5998.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "senado-5996",
@@ -788,7 +792,11 @@
       56,
       57
     ],
-    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5748.jpg"
+    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador5748.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "senado-6366",
@@ -810,7 +818,11 @@
     "legislaturas": [
       57
     ],
-    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador4642.jpg"
+    "fotoUrl": "http://www.senado.leg.br/senadores/img/fotos-oficiais/senador4642.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "senado-6367",

@@ -351,7 +351,7 @@ export function PerfilView({
                 <CotaVsTeto cota={custoCasa.cota} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
               </>
             )}
-            {politico.casa === 'camara' && politico.moradia && <Moradia moradia={politico.moradia} />}
+            {(politico.casa === 'camara' || politico.casa === 'senado') && politico.moradia && <Moradia moradia={politico.moradia} casa={politico.casa} />}
           </section>
 
           <section className="mb-10">
@@ -456,19 +456,29 @@ function Estatistica({ rotulo, valor, hint, destaque }: { rotulo: string; valor:
 
 // Moradia do deputado FEDERAL (fora da cota/CEAP): imóvel funcional, auxílio em espécie (R$ fixo) ou
 // reembolso (até o teto). Snapshot do mês publicado pela Câmara. Mostra o que ESTE deputado recebe.
-function Moradia({ moradia }: { moradia: NonNullable<Politico['moradia']> }) {
+function Moradia({ moradia, casa }: { moradia: NonNullable<Politico['moradia']>; casa: Casa }) {
+  const senado = casa === 'senado'
+  const fonteUrl = senado
+    ? 'https://www12.senado.leg.br/transparencia/sen/coapat/auxilio-moradia-e-imoveis-funcionais'
+    : 'https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia'
+  const casaNome = senado ? 'Senado' : 'Câmara'
   const titulo =
     moradia.tipo === 'imovel' ? 'Imóvel funcional'
-    : moradia.tipo === 'especie' ? 'Auxílio-moradia (em espécie)'
-    : 'Auxílio-moradia (por reembolso)'
+    : moradia.tipo === 'reembolso' ? 'Auxílio-moradia (por reembolso)'
+    : senado ? 'Auxílio-moradia (em dinheiro)' : 'Auxílio-moradia (em espécie)'
   const valorTexto =
     moradia.tipo === 'imovel' ? 'imóvel funcional'
     : moradia.tipo === 'reembolso' ? `até ${brl(moradia.valorMensal ?? 0)}/mês`
     : `${brl(moradia.valorMensal ?? 0)}/mês`
+  // texto por casa: a regra (valor, IR, comprovação) difere entre Câmara e Senado
   const detalhe =
-    moradia.tipo === 'imovel' ? 'Ocupa um dos imóveis funcionais da Câmara em Brasília (benefício em espécie, sem valor em dinheiro). Não está na cota (CEAP).'
-    : moradia.tipo === 'especie' ? 'Valor fixo mensal (bruto, com 27,5% de IR), sem apresentar recibo de aluguel. Fora da cota (CEAP).'
-    : 'Reembolso de aluguel mediante recibo, sem IR. O valor é o mesmo teto do auxílio (o valor exato abaixo do teto não é publicado por deputado). Fora da cota (CEAP).'
+    moradia.tipo === 'imovel'
+      ? `Ocupa um dos imóveis funcionais do ${casaNome} em Brasília (benefício em espécie, sem valor em dinheiro). Fora da cota.`
+      : senado
+        ? 'Auxílio-moradia em dinheiro, pago mediante comprovação (nota de hotel ou recibo de aluguel). O senador escolhe entre o auxílio e o imóvel funcional. Valor fixo de R$ 5.500/mês (Ato da Comissão Diretora). Fora da cota (CEAPS).'
+        : moradia.tipo === 'especie'
+          ? 'Valor fixo mensal (bruto, com 27,5% de IR), sem apresentar recibo de aluguel. Fora da cota (CEAP). O valor (R$ 4.253) é fixo pelo Ato da Mesa 3/2015; acima dele, a diferença pode sair da cota.'
+          : 'Reembolso de aluguel mediante recibo, sem IR. O valor é o mesmo teto do auxílio (o exato abaixo do teto não é publicado por deputado). Fora da cota (CEAP). Teto de R$ 4.253 (Ato da Mesa 3/2015); acima dele, a diferença pode sair da cota.'
   return (
     <div className="mt-4 rounded-lg border border-borda bg-superficie p-3">
       <div className="flex items-baseline justify-between gap-3">
@@ -477,8 +487,8 @@ function Moradia({ moradia }: { moradia: NonNullable<Politico['moradia']> }) {
       </div>
       <p className="mt-1 text-sm text-tinta">{titulo}</p>
       <p className="mt-1 text-xs text-tinta-tenue">
-        {detalhe} O valor (R$ 4.253) é fixo pelo Ato da Mesa 3/2015; acima dele, a diferença pode sair da cota.{' '}
-        <a href="https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia" target="_blank" rel="noopener noreferrer" className="text-marca underline">fonte ↗</a>
+        {detalhe}{' '}
+        <a href={fonteUrl} target="_blank" rel="noopener noreferrer" className="text-marca underline">fonte ↗</a>
       </p>
     </div>
   )
