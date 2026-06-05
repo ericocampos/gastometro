@@ -9,10 +9,10 @@ const ROTULO_PODER: Record<PoderOrcamento, string> = {
   prefeitura: 'Prefeitura', camara: 'Câmara', previdencia: 'Previdência', outros: 'Outros órgãos',
 }
 
-// Paleta suave/pastel pras fatias por função (tons dessaturados e harmônicos, fáceis de ver lado a
-// lado). A cauda longa vira "Outras áreas", em cinza, pra a pizza não virar uma dezena de fatias
-// finas e ilegíveis.
-const PALETA = ['#5b9279', '#6b8cae', '#c9a66b', '#c97f7f', '#9b8bbf', '#7fb0b0', '#c99bb3', '#a3b07f']
+// Paleta viva e limpa pras fatias por função (categórica, sem o verde escuro da marca na liderança).
+// A cauda longa vira "Outras áreas", em cinza, pra a pizza não virar uma dezena de fatias finas e
+// ilegíveis.
+const PALETA = ['#2563eb', '#16a34a', '#f59e0b', '#dc2626', '#7c3aed', '#0891b2', '#db2777', '#65a30d']
 const COR_OUTRAS = '#94a3b8'
 const MAX_FATIAS = 8
 
