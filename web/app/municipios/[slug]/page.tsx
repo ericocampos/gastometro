@@ -1,4 +1,4 @@
-import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
+import { getMunicipios, getSeriesParlamentares, getOrcamento } from '@/lib/dados'
 import { totalAnualMunicipio } from '@/lib/periodo'
 import { mesAno } from '@/lib/formato'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
@@ -6,6 +6,7 @@ import { CamaraLeve } from '@/components/CamaraLeve'
 import { RankingView } from '@/components/RankingView'
 import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
+import { OrcamentoCidade } from '@/components/OrcamentoCidade'
 
 export function generateStaticParams() {
   return getMunicipios().cidades.map((c) => ({ slug: c.slug }))
@@ -26,6 +27,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
     (s) => s.casa === 'camara_municipal' && s.municipio === params.slug,
   )
   const anualCidade = totalAnualMunicipio(series)
+  const orcamento = getOrcamento(params.slug)
 
   return (
     <div>
@@ -37,6 +39,17 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
           Vereadores de {municipio.nome}
         </h1>
       </section>
+
+      {orcamento && (
+        <section className="mb-12">
+          <SecaoTitulo>Pra onde vai o dinheiro · a cidade inteira</SecaoTitulo>
+          <p className="mb-3 text-sm leading-relaxed text-tinta-suave">
+            Além dos vereadores, o orçamento de {municipio.nome} inteiro: quanto a Prefeitura, a Câmara
+            e a Previdência pagaram por área, ano a ano.
+          </p>
+          <OrcamentoCidade orcamento={orcamento} />
+        </section>
+      )}
 
       {municipio.modelo === 'completo' ? (
         <>
