@@ -34,14 +34,15 @@ export interface ItemCategoria { categoria: string; total: number }
 export interface ItemFornecedor { nome: string; cnpjCpf?: string; total: number }
 
 // conferência cruzada da VIAP com o TCE (empenhos de "Indenizações e Restituições", credor=vereador)
+export interface MesConferido {
+  anoMes: string
+  apresentado: number  // notas apresentadas no mês
+  reembolsado: number  // o que a câmara reembolsou (= o que o TCE deve ter pago)
+  tce: number | null   // empenho pago casado no TCE (null = não encontrado)
+}
 export interface ConferenciaTce {
-  status: 'conferido' | 'divergente' | 'sem_dado'
-  meses: number       // lançamentos nossos
-  conferidos: number  // quantos casaram com um empenho do TCE
-  totalNosso: number  // soma do reembolsado (= o que o TCE registra como pago)
-  totalTce: number    // soma dos empenhos pagos no TCE
-  apresentado: number // soma das notas apresentadas (a diferença p/ o reembolsado é glosa/teto)
-  fonte: string       // URL da fonte oficial cruzada (dados abertos do TCE)
+  fonte: string          // URL da fonte oficial cruzada (dados abertos do TCE)
+  meses: MesConferido[]  // a UI filtra pelo período selecionado e soma os totais de lá
 }
 
 export interface ResumoPolitico {

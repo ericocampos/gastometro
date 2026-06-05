@@ -15,7 +15,7 @@ import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
 import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal, type IndiceMunicipio } from './sources/tseEleicoes.js'
 import { coletarViapCg, type VereadorViapCg } from './sources/cmcgViap.js'
-import { baixarIndenizacoesCamara, conferirValores, fonteUrlDespesas, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
+import { baixarIndenizacoesCamara, conferirMeses, fonteUrlDespesas, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // Eleição que elegeu o mandato municipal atual (2025-2028). Fonte do partido e da foto no leve.
@@ -153,7 +153,8 @@ export function montarCidade(
 
     let total = 0
     let serieMensal: PontoMensal[] = []
-    let valoresViap: number[] = []
+    // meses da legislatura atual (≥ 2025-01) p/ a conferência no TCE; em JP apresentado = reembolsado
+    let mesesConf: { anoMes: string; reembolsado: number; apresentado: number }[] = []
     if (viapMatch) {
       comViap++
       const meses = [...viapMatch.meses].sort((a, b) => a.anoMes.localeCompare(b.anoMes))
@@ -164,8 +165,7 @@ export function montarCidade(
       }))
       total = meses.reduce((s, m) => s + m.valor, 0)
       serieMensal = meses.map((m) => ({ anoMes: m.anoMes, total: m.valor }))
-      // conferência só da legislatura atual (≥ 2025-01), que é o período coberto pelo TCE baixado
-      valoresViap = meses.filter((m) => m.anoMes >= '2025-01').map((m) => m.valor)
+      mesesConf = meses.filter((m) => m.anoMes >= '2025-01').map((m) => ({ anoMes: m.anoMes, reembolsado: m.valor, apresentado: m.valor }))
       totalViapPeriodo += total
       for (const m of meses) mesesMatched.push(m.anoMes)
       if (meses.length > 0) mediasViap.push(total / meses.length)
@@ -173,8 +173,7 @@ export function montarCidade(
 
     // confere a VIAP no TCE pelo nome CIVIL (o credor das indenizações no TCE é o nome civil)
     const nomeCivilViap = viapMatch ? viapMatch.parlamentar : (v.nomeCivil ?? v.nome)
-    const apresentadoAtual = valoresViap.reduce((s, x) => s + x, 0) // só legislatura atual (≥2025-01)
-    const conferidoTce = conferirVereadorTce(nomeCivilViap, valoresViap, indenizacoesTce, fonteTce, apresentadoAtual)
+    const conferidoTce = conferirVereadorTce(nomeCivilViap, mesesConf, indenizacoesTce, fonteTce)
     porPolitico[id] = {
       politico, total, serieMensal,
       porCategoria: total > 0 ? [{ categoria: CATEGORIA_VIAP, total }] : [],
@@ -250,19 +249,18 @@ const VIAP_TETO_CG = 17000
 // senão por tokens de sobrenome) e compara por valor. Devolve undefined se não há base p/ conferir.
 function conferirVereadorTce(
   nome: string,
-  valoresNossos: number[],   // valores REEMBOLSADOS (= o que o TCE registra como pago)
+  meses: { anoMes: string; reembolsado: number; apresentado: number }[],
   indenizacoes: IndenizacaoTce[],
   fonte: string,
-  apresentado?: number,      // soma das notas apresentadas (p/ mostrar a glosa)
 ): ConferenciaTce | undefined {
-  if (indenizacoes.length === 0 || valoresNossos.length === 0) return undefined
+  if (indenizacoes.length === 0 || meses.length === 0) return undefined
   let tce = indenizacoes.filter((x) => normNome(x.credor) === normNome(nome))
   if (tce.length === 0) {
     // fallback por tokens, mas SÓ se casar com um único credor (não arriscar somar a pessoa errada)
     const tok = indenizacoes.filter((x) => mesmaPessoaTokens(x.credor, nome))
     if (new Set(tok.map((x) => normNome(x.credor))).size === 1) tce = tok
   }
-  return conferirValores(valoresNossos, tce.map((x) => x.valorPago), fonte, apresentado)
+  return conferirMeses(meses, tce.map((x) => x.valorPago), fonte)
 }
 
 // Campina Grande no modelo COMPLETO: o roster (e o subsídio) vem dos Eletivos do TCE; a VIAP, da
@@ -366,9 +364,12 @@ export function montarCampinaGrande(
     }
     totalViapPeriodo += total
 
-    // conferência com o TCE pelo valor REEMBOLSADO (= o que o TCE registra como pago ao vereador);
-    // `total` é o apresentado em notas → vai como apresentado para a UI mostrar a glosa
-    const conferidoTce = conferirVereadorTce(ver.nome, meses.map((m) => m.reembolsado), indenizacoesTce, fonteTce, total)
+    // conferência com o TCE, mês a mês: reembolsado × empenho pago; apresentado = notas (p/ glosa)
+    const conferidoTce = conferirVereadorTce(
+      ver.nome,
+      meses.map((m) => ({ anoMes: m.anoMes, reembolsado: m.reembolsado, apresentado: m.totalDespesas })),
+      indenizacoesTce, fonteTce,
+    )
     porPolitico[id] = { politico, total, serieMensal, porCategoria, porFornecedor, conferidoTce }
     ranking.push({ politicoId: id, nome: ver.nome, partido: politico.partido, casa: 'camara_municipal', total })
     perfis.push({ id, nomeCivil: ver.nome, redes: [], proposicoes: [] })

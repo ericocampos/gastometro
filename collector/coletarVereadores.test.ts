@@ -148,10 +148,11 @@ describe('montarCampinaGrande (completo via VIAP itemizada)', () => {
     const s2 = montarCampinaGrande(vereadoresTce, viap, lookup, 1_800_000, '2026-04', indeniz, 'https://tce/050')
     const idP = s2.politicos.find((p) => /PIMENTEL/.test(p.nome))!.id
     const idC = s2.politicos.find((p) => /CAROLINA/.test(p.nome))!.id
-    expect(s2.porPolitico[idP].conferidoTce!.status).toBe('conferido')
-    expect(s2.porPolitico[idP].conferidoTce!.fonte).toBe('https://tce/050')
-    expect(s2.porPolitico[idC].conferidoTce!.status).toBe('divergente')
-    expect(s2.porPolitico[idC].conferidoTce!.totalNosso).toBe(4000)
-    expect(s2.porPolitico[idC].conferidoTce!.totalTce).toBe(1000)
+    const cgP = s2.porPolitico[idP].conferidoTce!
+    expect(cgP.fonte).toBe('https://tce/050')
+    expect(cgP.meses.every((m) => m.tce !== null)).toBe(true) // jan 17000 + fev 3000 batem
+    const cgC = s2.porPolitico[idC].conferidoTce!
+    expect(cgC.meses[0].reembolsado).toBe(4000)
+    expect(cgC.meses[0].tce).toBeNull() // 4000 não casa com o único empenho (1000)
   })
 })

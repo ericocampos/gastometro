@@ -13,15 +13,17 @@ const ELEMENTO_VIAP = 'Indenizações e Restituições'
 
 export interface IndenizacaoTce { credor: string; mes: number; ano: number; valorPago: number }
 
-export type StatusConferencia = 'conferido' | 'divergente' | 'sem_dado'
+// Conferência POR MÊS, para a UI poder filtrar pelo período selecionado. Cada mês traz o que
+// mostramos (apresentado/reembolsado) e o empenho do TCE que casou (tce = valor pago, ou null).
+export interface MesConferido {
+  anoMes: string
+  apresentado: number  // notas apresentadas no mês
+  reembolsado: number  // o que a câmara reembolsou (= o que o TCE deve ter pago)
+  tce: number | null   // empenho pago casado no TCE (null = não encontrado)
+}
 export interface ConferenciaTce {
-  status: StatusConferencia
-  meses: number       // quantos lançamentos (meses) nossos
-  conferidos: number  // quantos casaram com um empenho do TCE
-  totalNosso: number  // soma do que mostramos como reembolsado
-  totalTce: number    // soma dos empenhos pagos ao vereador no TCE
-  apresentado: number // soma das notas apresentadas (>= reembolsado; a diferença é glosa/teto)
-  fonte: string       // URL da fonte oficial cruzada (dados abertos do TCE)
+  fonte: string                // URL da fonte oficial cruzada (dados abertos do TCE)
+  meses: MesConferido[]        // um por competência da legislatura atual
 }
 
 const valorBr = (s: string): number => {
@@ -73,16 +75,25 @@ export async function baixarIndenizacoesCamara(cod: string, anos: number[]): Pro
  * valor nosso achou um empenho correspondente; 'divergente' = algum não achou; 'sem_dado' = o TCE
  * não tem empenho de VIAP para esse vereador (ex.: nome não localizado).
  */
-export function conferirValores(nossos: number[], tce: number[], fonte: string, apresentado?: number): ConferenciaTce {
-  const pool = [...tce]
-  let conferidos = 0
-  for (const v of nossos) {
-    const i = pool.findIndex((t) => Math.abs(t - v) < 0.01)
-    if (i >= 0) { conferidos++; pool.splice(i, 1) }
-  }
-  const totalNosso = nossos.reduce((s, v) => s + v, 0)
-  const totalTce = tce.reduce((s, v) => s + v, 0)
-  const status: StatusConferencia =
-    tce.length === 0 ? 'sem_dado' : conferidos === nossos.length ? 'conferido' : 'divergente'
-  return { status, meses: nossos.length, conferidos, totalNosso, totalTce, apresentado: apresentado ?? totalNosso, fonte }
+/**
+ * Confere, mês a mês, o valor REEMBOLSADO contra os empenhos pagos ao vereador no TCE: casa por
+ * valor (1 centavo de tolerância), consumindo cada empenho uma vez. A UI filtra os meses pelo
+ * período selecionado e calcula os totais/estado de lá.
+ */
+export function conferirMeses(
+  meses: { anoMes: string; reembolsado: number; apresentado: number }[],
+  tceValores: number[],
+  fonte: string,
+): ConferenciaTce {
+  const pool = [...tceValores]
+  const out: MesConferido[] = meses
+    .slice()
+    .sort((a, b) => a.anoMes.localeCompare(b.anoMes))
+    .map((m) => {
+      const i = pool.findIndex((t) => Math.abs(t - m.reembolsado) < 0.01)
+      let tce: number | null = null
+      if (i >= 0) { tce = pool[i]; pool.splice(i, 1) }
+      return { anoMes: m.anoMes, apresentado: m.apresentado, reembolsado: m.reembolsado, tce }
+    })
+  return { fonte, meses: out }
 }

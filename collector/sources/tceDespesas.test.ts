@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseIndenizacoesCamara, conferirValores, fonteUrlDespesas } from './tceDespesas'
+import { parseIndenizacoesCamara, conferirMeses, fonteUrlDespesas } from './tceDespesas'
 
 // monta uma linha do CSV de despesas do TCE com as colunas nas posições certas (1-based):
 // 3 descricao_ug · 6 mes · 8 credor · 11 valor_pago · 29 elemento_despesa
@@ -30,28 +30,32 @@ describe('tceDespesas', () => {
     expect(r[1].valorPago).toBeCloseTo(16987.64, 2)
   })
 
-  it('conferido quando todo valor nosso casa com um empenho do TCE', () => {
-    const c = conferirValores([12000, 16987.64], [12000, 16987.64, 17000], 'url')
-    expect(c.status).toBe('conferido')
-    expect(c.conferidos).toBe(2)
-    expect(c.meses).toBe(2)
+  const mes = (anoMes: string, v: number, apr?: number) => ({ anoMes, reembolsado: v, apresentado: apr ?? v })
+
+  it('casa por mês: o tce de cada mês é o empenho pareado (ou null)', () => {
+    const c = conferirMeses([mes('2025-01', 12000), mes('2025-02', 16987.64)], [12000, 16987.64, 17000], 'url')
+    expect(c.meses).toHaveLength(2)
+    expect(c.meses.every((m) => m.tce !== null)).toBe(true)
+    expect(c.meses[1].tce).toBeCloseTo(16987.64, 2)
   })
 
-  it('divergente quando um valor nosso não tem empenho correspondente', () => {
-    const c = conferirValores([12000, 9999], [12000, 17000], 'url')
-    expect(c.status).toBe('divergente')
-    expect(c.conferidos).toBe(1)
-    expect(c.totalNosso).toBe(21999)
-    expect(c.totalTce).toBe(29000)
+  it('mês sem empenho correspondente fica com tce null', () => {
+    const c = conferirMeses([mes('2025-01', 12000), mes('2025-02', 9999)], [12000, 17000], 'url')
+    expect(c.meses.find((m) => m.anoMes === '2025-01')!.tce).toBe(12000)
+    expect(c.meses.find((m) => m.anoMes === '2025-02')!.tce).toBeNull()
   })
 
-  it('sem_dado quando o TCE não tem empenho para o vereador', () => {
-    expect(conferirValores([12000], [], 'url').status).toBe('sem_dado')
+  it('preserva apresentado por mês (p/ a UI calcular a glosa)', () => {
+    const c = conferirMeses([mes('2025-01', 16043.16, 17043.16)], [16043.16], 'url')
+    expect(c.meses[0].apresentado).toBeCloseTo(17043.16, 2)
+    expect(c.meses[0].reembolsado).toBeCloseTo(16043.16, 2)
   })
 
   it('cada empenho é consumido uma vez (dois meses iguais exigem dois empenhos)', () => {
-    expect(conferirValores([17000, 17000], [17000], 'url').status).toBe('divergente')
-    expect(conferirValores([17000, 17000], [17000, 17000], 'url').status).toBe('conferido')
+    const um = conferirMeses([mes('2025-01', 17000), mes('2025-02', 17000)], [17000], 'url')
+    expect(um.meses.filter((m) => m.tce !== null)).toHaveLength(1)
+    const dois = conferirMeses([mes('2025-01', 17000), mes('2025-02', 17000)], [17000, 17000], 'url')
+    expect(dois.meses.filter((m) => m.tce !== null)).toHaveLength(2)
   })
 
   it('monta a URL da fonte oficial', () => {

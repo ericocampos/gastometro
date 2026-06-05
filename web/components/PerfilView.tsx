@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce } from '@/lib/tipos'
 import {
-  type SerieParlamentar,
-  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
+  type SerieParlamentar, type Periodo,
+  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
@@ -36,14 +36,21 @@ const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
 // Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
 // que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
 // empenho pago no TCE; 'divergente' mostra os dois totais (câmara × TCE) e o link da fonte.
-function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean }) {
-  if (c.status === 'sem_dado' || c.meses === 0) return null
-  // estado calculado da cobertura: ≤1 mês de defasagem = conferido; maioria = conferir; pouco = neutro
-  const gap = c.meses - c.conferidos
-  const estado = gap <= 1 ? 'conferido' : c.conferidos >= c.meses / 2 ? 'conferir' : 'neutro'
-  const cor = estado === 'conferido' ? '#0f766e' : estado === 'conferir' ? '#c87f1a' : '#6b7280'
-  const glosa = c.apresentado - c.totalNosso // notas apresentadas além do reembolsado (teto/glosa)
+function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Periodo; docPublicada: boolean }) {
+  // filtra a conferência pelo período selecionado (a conferência cobre só a legislatura atual, 2025→;
+  // anos anteriores não têm cruzamento, então o selo some)
+  const ms = c.meses.filter((m) => pontoNoPeriodo(m.anoMes, periodo))
+  if (ms.length === 0) return null
+  const conferidos = ms.filter((m) => m.tce !== null).length
+  const reembolsado = ms.reduce((s, m) => s + m.reembolsado, 0)
+  const pagoTce = ms.reduce((s, m) => s + (m.tce ?? 0), 0)
+  const apresentado = ms.reduce((s, m) => s + m.apresentado, 0)
+  const glosa = apresentado - reembolsado
   const temGlosa = glosa > 0.5
+
+  const gap = ms.length - conferidos
+  const estado = gap <= 1 ? 'conferido' : conferidos >= ms.length / 2 ? 'conferir' : 'neutro'
+  const cor = estado === 'conferido' ? '#0f766e' : estado === 'conferir' ? '#c87f1a' : '#6b7280'
   const fonte = (
     <a href={c.fonte} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: cor }}>
       dados abertos do TCE-PB ↗
@@ -57,33 +64,29 @@ function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean
       {estado === 'conferido' ? (
         <>
           <strong style={{ color: cor }}>✓ Reembolso conferido com o TCE.</strong>{' '}
-          <span className="text-tinta-tenue">(no mandato atual, 2025→, independente do filtro de ano acima)</span>{' '}
-          O valor reembolsado a este vereador bate com os empenhos pagos (“Indenizações e Restituições”)
-          registrados no Tribunal de Contas do Estado{gap === 1 ? ' (o mês mais recente pode ainda não constar lá)' : ''}.
-          Fonte cruzada: {fonte}.
+          No período, o reembolso a este vereador (<strong className="text-tinta">{brl(reembolsado)}</strong>)
+          bate com os empenhos pagos (“Indenizações e Restituições”) no Tribunal de Contas do Estado
+          {gap === 1 ? ' (o mês mais recente pode ainda não constar lá)' : ''}. Fonte cruzada: {fonte}.
         </>
       ) : estado === 'conferir' ? (
         <>
           <strong style={{ color: cor }}>Reembolso × TCE: conferir.</strong>{' '}
-          <span className="text-tinta-tenue">(no mandato atual, 2025→, não do ano filtrado)</span>{' '}
-          {c.conferidos} de {c.meses} meses batem com os empenhos do TCE.{' '}
-          <strong className="text-tinta">reembolsado: {brl(c.totalNosso)}</strong> ·{' '}
-          <strong className="text-tinta">pago no TCE: {brl(c.totalTce)}</strong>. Pode ser defasagem entre
+          No período, {conferidos} de {ms.length} meses batem com os empenhos do TCE —{' '}
+          <strong className="text-tinta">reembolsado: {brl(reembolsado)}</strong> ·{' '}
+          <strong className="text-tinta">pago no TCE: {brl(pagoTce)}</strong>. Pode ser defasagem entre
           competência e pagamento; confira nos {fonte}.
         </>
       ) : (
         <>
           <strong style={{ color: cor }}>Cruzamento com o TCE.</strong>{' '}
-          <span className="text-tinta-tenue">(no mandato atual, 2025→)</span>{' '}
-          Não foi possível casar automaticamente a maioria dos meses com os empenhos do TCE
-          ({c.conferidos} de {c.meses}) — pode ser diferença de competência, homônimo ou registro à parte.
-          Veja os empenhos na fonte: {fonte}.
+          No período, não foi possível casar a maioria dos meses ({conferidos} de {ms.length}) com os
+          empenhos do TCE — pode ser diferença de competência, homônimo ou registro à parte. Veja a fonte: {fonte}.
         </>
       )}
       {temGlosa && (
         <>
-          {' '}<span className="text-tinta-tenue">No mandato, das notas apresentadas ({brl(c.apresentado)}),
-          a câmara reembolsou {brl(c.totalNosso)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
+          {' '}<span className="text-tinta-tenue">Das notas apresentadas ({brl(apresentado)}), a câmara
+          reembolsou {brl(reembolsado)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
           foram reembolsados (glosa ou teto).</span>
         </>
       )}
@@ -365,7 +368,7 @@ export function PerfilView({
               </div>
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
-                {conferidoTce && <SeloTce c={conferidoTce} docPublicada={despesas.some((d) => d.urlDocumento)} />}
+                {conferidoTce && <SeloTce c={conferidoTce} periodo={periodo} docPublicada={despesas.some((d) => d.urlDocumento)} />}
                 <div className="rounded-xl border border-borda bg-superficie p-4">
                   <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} casa={politico.casa} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
                 </div>

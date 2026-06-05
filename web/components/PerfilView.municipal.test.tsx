@@ -152,19 +152,25 @@ describe('PerfilView · vereador municipal', () => {
       <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
         custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
         assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
-        conferidoTce={{ status: 'conferido', meses: 2, conferidos: 2, totalNosso: 25000, totalTce: 25000, apresentado: 25000, fonte: 'https://tce/095' }} />,
+        conferidoTce={{ fonte: 'https://tce/095', meses: [
+          { anoMes: '2025-01', apresentado: 12000, reembolsado: 12000, tce: 12000 },
+          { anoMes: '2025-02', apresentado: 13000, reembolsado: 13000, tce: 13000 },
+        ] }} />,
     )
     expect(screen.getByText(/conferido com o TCE/i)).toBeInTheDocument()
     // os fixtures de JP têm urlDocumento → aponta o comprovante no link "nota"
     expect(screen.getByText(/comprovante de cada mês/i)).toBeInTheDocument()
   })
 
-  it('no estado de glosa, mostra apresentado × reembolsado', () => {
+  it('no estado de glosa, mostra apresentado × reembolsado (do período)', () => {
     render(
       <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
         custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
         assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
-        conferidoTce={{ status: 'conferido', meses: 2, conferidos: 2, totalNosso: 24000, totalTce: 24000, apresentado: 25000, fonte: 'https://tce/050' }} />,
+        conferidoTce={{ fonte: 'https://tce/050', meses: [
+          { anoMes: '2025-01', apresentado: 13000, reembolsado: 12000, tce: 12000 },
+          { anoMes: '2025-02', apresentado: 12000, reembolsado: 12000, tce: 12000 },
+        ] }} />,
     )
     expect(screen.getByText(/não foram reembolsados/i)).toBeInTheDocument()
   })
