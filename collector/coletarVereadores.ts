@@ -823,10 +823,18 @@ async function main() {
 
   // Cidades COMPLETAS via TCE (a câmara não publica a VIAP de forma legível por máquina): a VIAP vem
   // das "Indenizações" do TCE por vereador, casada por CPF; gabinete agregado; sem selo de conferência
-  // (o TCE é a fonte). `camara` é o link humano da VIAP na câmara.
+  // (o TCE é a fonte). `camara` é o link humano da VIAP na câmara (vazio = só mostra o link do TCE).
+  // Só entram aqui cidades em que a sondagem mostrou VIAP de fato (a maioria dos vereadores recebendo,
+  // casável por CPF). Onde a câmara não paga VIAP via "Indenizações" (cobertura ~0), a cidade fica leve.
   const cidadesViapTce: { cod: string; slug: string; nome: string; camara: string }[] = [
     { cod: '171', slug: 'santa-rita', nome: 'Santa Rita', camara: 'https://www.santarita.pb.leg.br/site/viap' },
     { cod: '135', slug: 'patos', nome: 'Patos', camara: 'https://camarapatos.pb.gov.br/consultas/viap/p16_sectionid/163' },
+    { cod: '040', slug: 'cabedelo', nome: 'Cabedelo', camara: '' },
+    { cod: '211', slug: 'sousa', nome: 'Sousa', camara: '' },
+    { cod: '200', slug: 'sape', nome: 'Sapé', camara: '' },
+    { cod: '082', slug: 'guarabira', nome: 'Guarabira', camara: '' },
+    { cod: '178', slug: 'sao-bento', nome: 'São Bento', camara: '' },
+    { cod: '151', slug: 'pombal', nome: 'Pombal', camara: '' },
   ]
   for (const cv of cidadesViapTce) {
     console.log(`\n> ${cv.nome} (${cv.slug}) [completo · VIAP via TCE]`)

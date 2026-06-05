@@ -3433,138 +3433,29 @@
       "slug": "cabedelo",
       "nome": "Cabedelo",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 17,
+      "totalViapPeriodo": 1619967.04,
+      "totalGabineteMes": 750137.11,
+      "periodoViap": {
+        "de": "2025-02",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
-      "folhaComissionados": 750137.1100000001,
-      "vereadores": [
-        {
-          "nome": "ALEX ALEXANDRE DE LUCENA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001925915.webp"
-        },
-        {
-          "nome": "EDSON DA SILVA DIAS",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001925461.webp"
-        },
-        {
-          "nome": "ENRIQUE DOUGLAS CASADO DA SILVA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925678.webp"
-        },
-        {
-          "nome": "EVILASIO CAVALCANTI NETO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925676.webp"
-        },
-        {
-          "nome": "FABRICIO MAGNO MARQUES DE MELO SILVA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001925902.webp"
-        },
-        {
-          "nome": "FERNANDO ANTONIO MONTEIRO DE OLIVEIRA SOBRINHO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001925911.webp"
-        },
-        {
-          "nome": "GEILSON DE ALMEIDA NASCIMENTO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925689.webp"
-        },
-        {
-          "nome": "HERLON CABRAL DE MEDEIROS",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150002054361.webp"
-        },
-        {
-          "nome": "JOSE EDGLEI RAMALHO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001925466.webp"
-        },
-        {
-          "nome": "JOSE FRANCISCO PEREIRA",
-          "subsidio": 13000,
-          "presidente": true,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925690.webp"
-        },
-        {
-          "nome": "LEONARDO PAULO DA SILVA JUNIOR",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150001925468.webp"
-        },
-        {
-          "nome": "LUCAS GURGEL LOPES",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925680.webp"
-        },
-        {
-          "nome": "REINALDO BARBOSA DE LIMA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PT",
-          "fotoUrl": "/fotos/vereadores/150001966048.webp"
-        },
-        {
-          "nome": "ROSILDO PEREIRA DE ARAUJO JUNIOR",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001925405.webp"
-        },
-        {
-          "nome": "UBIRACI SANTOS DE CARVALHO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150001925688.webp"
-        },
-        {
-          "nome": "WAGNER ROGERIO FERNANDES SILVA",
-          "subsidio": 13000,
-          "presidente": true,
-          "partido": "PV",
-          "fotoUrl": "/fotos/vereadores/150001966043.webp"
-        },
-        {
-          "nome": "WAGNER ROGERIO FERNANDES SILVA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PV",
-          "fotoUrl": "/fotos/vereadores/150001966043.webp"
-        }
-      ],
+      "folhaComissionados": 750137.11,
       "custo": {
         "slug": "cabedelo",
         "nome": "Cabedelo",
         "salario": 13000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 44125.712352941184
+        "viapTeto": 7600,
+        "viapMedia": 6939.584705882353,
+        "gabineteMedia": 44125.71235294118,
+        "viapFonteTce": true,
+        "viapNota": "Em Cabedelo, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 7.600,00 por vereador, cerca de 58% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/040/despesas/despesas-2025.zip"
       }
     },
     {
@@ -6968,122 +6859,29 @@
       "slug": "guarabira",
       "nome": "Guarabira",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 15,
+      "totalViapPeriodo": 342500,
+      "totalGabineteMes": 243880,
+      "periodoViap": {
+        "de": "2025-03",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 243880,
-      "vereadores": [
-        {
-          "nome": "ALCIDES CAMILO DE MOURA SOBRINHO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001925968.webp"
-        },
-        {
-          "nome": "ARMANDO SANTOS DE MELO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001926082.webp"
-        },
-        {
-          "nome": "GERSON CANDIDO DE FARIAS",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001925967.webp"
-        },
-        {
-          "nome": "GILVANDO MARINHO DA SILVA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001926081.webp"
-        },
-        {
-          "nome": "ISAURA GOMES BARBOSA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001926159.webp"
-        },
-        {
-          "nome": "IVONALDO FERNANDES DA SILVA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001961581.webp"
-        },
-        {
-          "nome": "JAILSON PEREIRA DOS SANTOS",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001926155.webp"
-        },
-        {
-          "nome": "JOSE FERREIRA DOS SANTOS JUNIOR",
-          "subsidio": 18500,
-          "presidente": true,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001926153.webp"
-        },
-        {
-          "nome": "JOSINEIDE NICOLAU DE FARIAS TEOTONIO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001961499.webp"
-        },
-        {
-          "nome": "JUSSARA MARIA CUNHA DOS SANTOS MACENA",
-          "subsidio": 13000,
-          "presidente": false
-        },
-        {
-          "nome": "LUCIELIO ALVES DE ARAUJO",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001961502.webp"
-        },
-        {
-          "nome": "LUIZE LAMARTE FERREIRA DE LIMA",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150001925974.webp"
-        },
-        {
-          "nome": "RAMON SILVA MENEZES",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001961498.webp"
-        },
-        {
-          "nome": "RENATO DIAS MEIRELES",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001961503.webp"
-        },
-        {
-          "nome": "SAULO FERNANDES DOS SANTOS",
-          "subsidio": 13000,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001926080.webp"
-        }
-      ],
       "custo": {
         "slug": "guarabira",
         "nome": "Guarabira",
         "salario": 13000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 16258.666666666666
+        "viapTeto": 1500,
+        "viapMedia": 2264.6103896103896,
+        "gabineteMedia": 16258.666666666666,
+        "viapFonteTce": true,
+        "viapNota": "Em Guarabira, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 1.500,00 por vereador, cerca de 12% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/082/despesas/despesas-2025.zip"
       }
     },
     {
@@ -12582,110 +12380,29 @@
       "slug": "pombal",
       "nome": "Pombal",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 13,
+      "totalViapPeriodo": 760555.85,
+      "totalGabineteMes": 66875,
+      "periodoViap": {
+        "de": "2025-03",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 66875,
-      "vereadores": [
-        {
-          "nome": "AILTON DE MELO SILVA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002105700.webp"
-        },
-        {
-          "nome": "ANA ISABELLE SANTANA DE ARAÚJO",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002105699.webp"
-        },
-        {
-          "nome": "EDNO DANTAS PEREIRA",
-          "subsidio": 13900,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002105694.webp"
-        },
-        {
-          "nome": "EMANOEL TELMO DE SOUSA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002106193.webp"
-        },
-        {
-          "nome": "FÁBIO QUEIROGA DA SILVA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002105695.webp"
-        },
-        {
-          "nome": "GILBERTO ISMAEL LACERDA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002105696.webp"
-        },
-        {
-          "nome": "JANDILSON VIEIRA FEITOSA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002050934.webp"
-        },
-        {
-          "nome": "JOÃO DE SOUSA LEITE FILHO",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002193150.webp"
-        },
-        {
-          "nome": "JOCELIO FERREIRA DOS SANTOS",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002050932.webp"
-        },
-        {
-          "nome": "JORISMAR DA SILVA CARDOSO",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002008555.webp"
-        },
-        {
-          "nome": "MARCOS ANDRADE DA SILVA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002008552.webp"
-        },
-        {
-          "nome": "PAULO GOMES VIEIRA",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002106192.webp"
-        },
-        {
-          "nome": "PAULO ROMERO OLIVEIRA FREITAS",
-          "subsidio": 9900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002008557.webp"
-        }
-      ],
       "custo": {
         "slug": "pombal",
         "nome": "Pombal",
         "salario": 9900,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 5144.2307692307695
+        "viapTeto": 3750,
+        "viapMedia": 4178.878296703296,
+        "gabineteMedia": 5144.2307692307695,
+        "viapFonteTce": true,
+        "viapNota": "Em Pombal, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 3.750,00 por vereador (R$ 3.250,00 para o presidente), cerca de 38% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/151/despesas/despesas-2025.zip"
       }
     },
     {
@@ -14828,108 +14545,29 @@
       "slug": "sao-bento",
       "nome": "São Bento",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 13,
+      "totalViapPeriodo": 257568.66,
+      "totalGabineteMes": 89388.54000000001,
+      "periodoViap": {
+        "de": "2025-06",
+        "ate": "2025-12"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 89388.54000000001,
-      "vereadores": [
-        {
-          "nome": "ALEXCIANDRO DANTAS",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041994.webp"
-        },
-        {
-          "nome": "DIEGO PEREIRA DE SOUZA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001908614.webp"
-        },
-        {
-          "nome": "ELIZEU MARQUES DOS SANTOS",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041988.webp"
-        },
-        {
-          "nome": "FABRICIO BESERRA LIMA",
-          "subsidio": 14466.25,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041996.webp"
-        },
-        {
-          "nome": "JOSE GARCIA DOS SANTOS",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001908615.webp"
-        },
-        {
-          "nome": "JOSUE DINIZ DE ARAUJO JUNIOR",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001908608.webp"
-        },
-        {
-          "nome": "JULIANO DANTAS VERAS LUCIO",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001908607.webp"
-        },
-        {
-          "nome": "JURANDI SALVIO DA SILVA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041993.webp"
-        },
-        {
-          "nome": "JUSCELINO CIDALINO DE ALMEIRA PIRES JUNIOR",
-          "subsidio": 10432,
-          "presidente": false
-        },
-        {
-          "nome": "LUCINETE CARNEIRO DOS SANTOS OLIVEIRA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041992.webp"
-        },
-        {
-          "nome": "MARCARONE SUASSUNA CARNEIRO",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150001908617.webp"
-        },
-        {
-          "nome": "MARCIA ROBERTA RESENDE RAMALHO DA SILVA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041989.webp"
-        },
-        {
-          "nome": "ROGACIANO ARAUJO DA COSTA",
-          "subsidio": 10432,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002041985.webp"
-        }
-      ],
       "custo": {
         "slug": "sao-bento",
         "nome": "São Bento",
         "salario": 10432,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 6876.041538461539
+        "viapTeto": 2750,
+        "viapMedia": 3142.6824603174596,
+        "gabineteMedia": 6876.041538461539,
+        "viapFonteTce": true,
+        "viapNota": "Em São Bento, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 2.750,00 por vereador, cerca de 26% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/178/despesas/despesas-2025.zip"
       }
     },
     {
@@ -16656,124 +16294,29 @@
       "slug": "sape",
       "nome": "Sapé",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 15,
+      "totalViapPeriodo": 1009936.4700000001,
+      "totalGabineteMes": 82488.68000000001,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-05",
-      "folhaComissionados": 82488.68,
-      "vereadores": [
-        {
-          "nome": "ADRIANO JOSE DOS SANTOS SILVA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002058092.webp"
-        },
-        {
-          "nome": "ARQUIMEDES NATERCIO SANTOS DE FREITAS",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002058096.webp"
-        },
-        {
-          "nome": "CASSIANO RIBEIRO COUTINHO",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002058100.webp"
-        },
-        {
-          "nome": "DAVYD MATIAS DE SOUZA",
-          "subsidio": 20850,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002188291.webp"
-        },
-        {
-          "nome": "JOAO FRANCISCO RODRIGUES NETO",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002058102.webp"
-        },
-        {
-          "nome": "JOSE EDUARDO BARBOSA SANTOS",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002188295.webp"
-        },
-        {
-          "nome": "JOSE FRANCELINO DOS SANTOS FILHO",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002178890.webp"
-        },
-        {
-          "nome": "JOSE ROBERTO DOS SANTOS SILVA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150002058606.webp"
-        },
-        {
-          "nome": "MARIA DAS GRACAS DA SILVA LOPES",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002188303.webp"
-        },
-        {
-          "nome": "MARIA JORDANA DE ARAUJO SILVA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002188301.webp"
-        },
-        {
-          "nome": "PEDRO RAMOS CABRAL",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150002058604.webp"
-        },
-        {
-          "nome": "RICARDO MIGUEL DE LIMA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150002188293.webp"
-        },
-        {
-          "nome": "RONIERY DA SILVA PEREIRA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150002058616.webp"
-        },
-        {
-          "nome": "RUBENS LUIS LUCENA DA SILVA",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150002058605.webp"
-        },
-        {
-          "nome": "TERESINHA DANIELLE VIRGINIO DOS ANJOS",
-          "subsidio": 13900,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002058871.webp"
-        }
-      ],
+      "folhaComissionados": 82488.68000000001,
       "custo": {
         "slug": "sape",
         "nome": "Sapé",
         "salario": 13900,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 5499.245333333333
+        "viapTeto": 4000,
+        "viapMedia": 3960.535176470588,
+        "gabineteMedia": 5499.245333333334,
+        "viapFonteTce": true,
+        "viapNota": "Em Sapé, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 4.000,00 por vereador, cerca de 29% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/200/despesas/despesas-2025.zip"
       }
     },
     {
@@ -17612,124 +17155,29 @@
       "slug": "sousa",
       "nome": "Sousa",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 15,
+      "totalViapPeriodo": 1337862.56,
+      "totalGabineteMes": 167483,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
       "folhaComissionados": 167483,
-      "vereadores": [
-        {
-          "nome": "ABEL SALES DE SOUSA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125435.webp"
-        },
-        {
-          "nome": "ALYSON ALVES ARAUJO",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PL",
-          "fotoUrl": "/fotos/vereadores/150002284690.webp"
-        },
-        {
-          "nome": "AMANDA OLIVEIRA DA SILVEIRA MARQUES DANTAS",
-          "subsidio": 20864.77,
-          "presidente": true,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125439.webp"
-        },
-        {
-          "nome": "ANANIAS VIEIRA DE ALMEIDA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002223700.webp"
-        },
-        {
-          "nome": "CARLOS HENRIQUE ABRANTES MARQUES",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002223046.webp"
-        },
-        {
-          "nome": "DELANI GLEDSON ALVES",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125447.webp"
-        },
-        {
-          "nome": "DENIS FORMIGA SARMENTO",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125440.webp"
-        },
-        {
-          "nome": "DIOGENES FERREIRA DA SILVA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002121584.webp"
-        },
-        {
-          "nome": "FRANCISCO GEORGE SUCUPIRA BARBOSA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSD",
-          "fotoUrl": "/fotos/vereadores/150002121585.webp"
-        },
-        {
-          "nome": "JEFFERSON LINHARES  DE ARAUJO",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150002072710.webp"
-        },
-        {
-          "nome": "JOHANNA DINAH ABRANTES DE CARVALHO MARQUES ESTRELA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PDT",
-          "fotoUrl": "/fotos/vereadores/150002223049.webp"
-        },
-        {
-          "nome": "LUCIANO FERREIRA JUNIOR",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125436.webp"
-        },
-        {
-          "nome": "MARCIO GOMES DE MORAIS",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/vereadores/150002072709.webp"
-        },
-        {
-          "nome": "ODAIR JOSE DA SILVA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PT",
-          "fotoUrl": "/fotos/vereadores/150002117688.webp"
-        },
-        {
-          "nome": "RADAMES GENESIS MARQUES ESTRELA",
-          "subsidio": 13909.85,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150002125437.webp"
-        }
-      ],
       "custo": {
         "slug": "sousa",
         "nome": "Sousa",
         "salario": 13909.85,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 11165.533333333333
+        "viapTeto": 6000,
+        "viapMedia": 5891.343605975722,
+        "gabineteMedia": 11165.533333333333,
+        "viapFonteTce": true,
+        "viapNota": "Em Sousa, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 6.000,00 por vereador, cerca de 43% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/211/despesas/despesas-2025.zip"
       }
     },
     {
