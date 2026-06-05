@@ -1,7 +1,23 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { render, fireEvent } from '@testing-library/react'
 import { OrcamentoCidade } from './OrcamentoCidade'
 import type { OrcamentoMunicipio } from '@/lib/tipos'
+
+// recharts não renderiza com largura 0 no jsdom; mockamos como passthrough. O BarChart expõe os
+// nomes das funções como texto pra os testes poderem afirmar sobre o que entrou no gráfico.
+vi.mock('recharts', () => {
+  const P = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>
+  const BarChart = ({ data, children }: { data: { funcao: string }[]; children?: React.ReactNode }) => (
+    <div>
+      {data.map((d) => <span key={d.funcao}>{d.funcao}</span>)}
+      {children}
+    </div>
+  )
+  return {
+    ResponsiveContainer: P, BarChart,
+    Bar: () => null, XAxis: () => null, YAxis: () => null, Tooltip: () => null,
+  }
+})
 
 const orc: OrcamentoMunicipio = {
   slug: 'agua-branca', cod: '001', nome: 'Água Branca', atualizadoEm: '2026-06-05',
