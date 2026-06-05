@@ -53,6 +53,17 @@ function planilhaViap(politicoId: string, ano: number, mes: number): string {
 // Link do documento: nota fiscal real (Câmara/Senado recente); na Assembleia a planilha da VIAP
 // do mês (não há nota individual); no Senado o portal do senador; senão —.
 function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSenado?: string; casa?: Casa; politicoId?: string }) {
+  // diária (ALPB/TCE): a fonte é a planilha mensal de diárias (ou os empenhos), NUNCA a planilha da
+  // VIAP. Tratamos primeiro para não cair no ramo da VIAP abaixo (que é só p/ os itens da VIAP).
+  if (d.categoria === 'Diárias') {
+    if (d.urlDocumento) {
+      return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">planilha ↗</a>
+    }
+    if (d.numeroEmpenho) {
+      return <span className="whitespace-nowrap text-tinta-tenue" title="Diária não tem nota fiscal: é autorizada por portaria. Este é o número do empenho no TCE-PB.">Emp. {d.numeroEmpenho}</span>
+    }
+    return <span className="text-tinta-tenue">—</span>
+  }
   if (d.urlDocumento) {
     return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">nota</a>
   }
@@ -186,10 +197,10 @@ export function DetalhamentoGastos({
 
       {temDiariasAlpb && (
         <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
-          <strong className="text-tinta">Diárias:</strong> diária não tem nota fiscal (é adiantamento
-          de viagem, com valores fixados por resolução da Assembleia). O texto traz a{' '}
-          <strong className="text-tinta-suave">justificativa, o destino e as datas</strong> declarados na
-          planilha oficial de diárias da ALPB. A relação mensal inclui deputados e servidores; aqui
+          <strong className="text-tinta">Diárias:</strong> valores pagos a título de diária para
+          deslocamentos do deputado. Os dados vêm da <strong className="text-tinta-suave">planilha
+          mensal oficial de diárias da ALPB</strong> (link na coluna “Doc.”), com a justificativa, o
+          destino e as datas declarados ali. A relação mensal inclui deputados e servidores; aqui
           mostramos só as diárias pagas a este deputado.
         </p>
       )}

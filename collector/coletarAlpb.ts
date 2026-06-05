@@ -235,6 +235,7 @@ async function main() {
           id: `${dep.politicoId}-diaria-${l.ano}${String(l.mes).padStart(2, '0')}-${seq++}`,
           politicoId: dep.politicoId, data, ano: l.ano, mes: l.mes,
           item: 'Diárias', categoria: 'Diárias', fornecedor: { nome: '' }, descricao, valor: r.valor,
+          documento: l.url, // planilha de diárias do mês (a fonte real deste lançamento)
         })
         nDiaria++
       }
