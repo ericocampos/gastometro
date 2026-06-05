@@ -22,7 +22,7 @@ const ANO_ELEICAO_MUNICIPAL = 2024
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
 interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' | 'camara_municipal'; partido: string; uf: string; legislaturas: number[]; fotoUrl?: string; municipio?: string }
-interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string }
+interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string; numeroNf?: string }
 interface ItemRanking { politicoId: string; nome: string; partido: string; casa: string; total: number }
 interface PontoMensal { anoMes: string; total: number }
 interface ItemCategoria { categoria: string; total: number }
@@ -287,14 +287,21 @@ export function montarCampinaGrande(
     const despesas: Despesa[] = []
     let seq = 0
     for (const m of meses) {
+      const refAno = Number(m.anoMes.slice(0, 4))
+      const refMes = Number(m.anoMes.slice(5, 7))
       for (const d of m.despesas) {
+        // A despesa pertence à COMPETÊNCIA da planilha (o mês de referência do reembolso). A data
+        // da NF é só metadado e às vezes vem com erro de digitação na fonte (ex.: ano no futuro,
+        // 26/11/2026 numa planilha de nov/2025). Usamos a data da NF apenas quando cai no mês de
+        // referência; caso contrário, ancoramos no 1º dia da competência (sem inventar um dia).
+        const dataNf = d.data && d.data.slice(0, 7) === m.anoMes ? d.data : `${m.anoMes}-01`
         despesas.push({
-          id: `${id}-${d.data || m.anoMes}-${seq++}`, politicoId: id,
-          data: d.data || `${m.anoMes}-01`,
-          ano: d.ano || Number(m.anoMes.slice(0, 4)), mes: d.mes || Number(m.anoMes.slice(5, 7)),
+          id: `${id}-${dataNf}-${seq++}`, politicoId: id,
+          data: dataNf, ano: refAno, mes: refMes,
           categoria: d.item || CATEGORIA_FALLBACK,
           fornecedor: { nome: d.fornecedor.nome, cnpjCpf: d.fornecedor.cpfCnpj },
           valor: d.valor,
+          numeroNf: d.numeroNf,
         })
       }
     }

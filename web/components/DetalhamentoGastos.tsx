@@ -62,6 +62,11 @@ function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSena
   if (portalSenado) {
     return <a href={portalSenado} target="_blank" rel="noopener noreferrer" className="text-marca underline">portal ↗</a>
   }
+  // CG publica o número da nota fiscal, mas não o documento — mostramos o número (sem link), que é
+  // a referência que a fonte oferece.
+  if (d.numeroNf) {
+    return <span className="whitespace-nowrap text-tinta-tenue" title="A Câmara publica o número da nota fiscal, não o documento">NF {d.numeroNf}</span>
+  }
   return <span className="text-tinta-tenue">—</span>
 }
 
@@ -97,6 +102,9 @@ export function DetalhamentoGastos({
   const inicio = pagina * POR_PAGINA
   const visiveis = filtradas.slice(inicio, inicio + POR_PAGINA)
   const totalPaginas = Math.ceil(filtradas.length / POR_PAGINA)
+
+  // câmara que publica o número da NF mas não o documento (ex.: Campina Grande)
+  const notaSoNumero = casa === 'camara_municipal' && despesas.some((d) => d.numeroNf) && !despesas.some((d) => d.urlDocumento)
 
   const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
   const temMarcadas = useMemo(
@@ -146,6 +154,15 @@ export function DetalhamentoGastos({
           fiscal individual — a fonte é a planilha da VIAP do mês (e o CNPJ do fornecedor vem
           parcialmente mascarado na origem). O link “planilha ↗” abre a prestação de contas daquele
           mês na página oficial da Assembleia.
+        </p>
+      )}
+
+      {notaSoNumero && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Notas desta câmara:</strong> a fonte oficial publica a
+          prestação de contas com fornecedor, CPF/CNPJ e o <strong className="text-tinta-suave">número
+          da nota fiscal</strong>, mas não o documento (imagem) da nota. A coluna “Doc.” traz o número
+          da NF; a data exibida é a competência do reembolso (o mês de referência da prestação de contas).
         </p>
       )}
 

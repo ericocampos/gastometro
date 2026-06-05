@@ -57,6 +57,7 @@ export interface Despesa {
   fornecedor: { nome: string; cnpjCpf?: string }
   valor: number
   urlDocumento?: string
+  numeroNf?: string   // número da nota fiscal (CG publica o número, não o documento)
 }
 
 export interface Evidencia { despesaId?: string; descricao: string; valor?: number; data?: string; url?: string }

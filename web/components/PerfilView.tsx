@@ -288,15 +288,15 @@ export function PerfilView({
                 <section>
                   <SecaoTitulo>Principais fornecedores</SecaoTitulo>
                   <div className="overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
-                    {politico.casa === 'camara_municipal' ? (
+                    {ag.porFornecedor.some((f) => f.nome.trim() !== '') ? (
+                      <PerfilFornecedores itens={ag.porFornecedor.filter((f) => f.nome.trim() !== '')} />
+                    ) : (
                       <p className="text-sm leading-relaxed text-tinta-suave">
                         <strong className="text-tinta">Detalhamento por fornecedor não disponível na fonte.</strong>{' '}
                         A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o
                         detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link
                         da nota.
                       </p>
-                    ) : (
-                      <PerfilFornecedores itens={ag.porFornecedor} />
                     )}
                   </div>
                 </section>

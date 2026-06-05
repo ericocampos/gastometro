@@ -10,7 +10,8 @@
       "nome": "JOÃO CLEYTON SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.442.849/0001-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "1"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-01-28-1",
@@ -23,7 +24,8 @@
       "nome": "53645881 AMAURI RODRIGUES DE OLIVEIRA",
       "cnpjCpf": "**.645.881/0001-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "24"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-01-28-2",
@@ -36,7 +38,8 @@
       "nome": "SUELEM SABRINA CUNHA E SILVA",
       "cnpjCpf": "**.923.695/0001-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "1"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-01-28-3",
@@ -49,7 +52,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.611.363/0001-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "32"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-02-26-4",
@@ -62,7 +66,8 @@
       "nome": "JOÃO CLEYTON SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*42.849/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "2"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-02-26-5",
@@ -75,7 +80,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "202500000000004"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-02-26-6",
@@ -88,7 +94,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "58"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-02-24-7",
@@ -101,7 +108,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "34"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-03-28-8",
@@ -114,7 +122,8 @@
       "nome": "JOÃO CLEYTON SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*42.849/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "3"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-03-28-9",
@@ -127,7 +136,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "6"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-03-27-10",
@@ -140,7 +150,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "91"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-03-26-11",
@@ -153,7 +164,8 @@
       "nome": "LENILDO DA SILVA FERREIRA LTDA",
       "cnpjCpf": "**.946.508/0001-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "34"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-04-29-12",
@@ -166,7 +178,8 @@
       "nome": "JOÃO CLEYTON SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*42.849/000*-**"
     },
-    "valor": 3500
+    "valor": 3500,
+    "numeroNf": "4"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-04-28-13",
@@ -179,7 +192,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "11"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-04-28-14",
@@ -192,20 +206,22 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "114"
   },
   {
-    "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-06-15",
+    "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-04-01-15",
     "politicoId": "cm-campina-grande-alexandre-pereira-da-silva",
-    "data": "2025-05-06",
+    "data": "2025-04-01",
     "ano": 2025,
-    "mes": 5,
+    "mes": 4,
     "categoria": "DIVULGAÇÃO",
     "fornecedor": {
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "40"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-04-25-16",
@@ -218,7 +234,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 980.25
+    "valor": 980.25,
+    "numeroNf": "183"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-27-17",
@@ -231,7 +248,8 @@
       "nome": "JOÃO CLEYTON SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*42.849/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "5"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-26-18",
@@ -244,7 +262,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "14"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-28-19",
@@ -257,7 +276,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "151"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-26-20",
@@ -270,7 +290,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "41"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-05-26-21",
@@ -283,7 +304,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 681.34
+    "valor": 681.34,
+    "numeroNf": "238"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-23-22",
@@ -296,7 +318,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "18"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-25-23",
@@ -309,7 +332,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "15"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-26-24",
@@ -322,7 +346,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "173"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-24-25",
@@ -335,7 +360,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "43"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-26-26",
@@ -348,7 +374,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 511.69
+    "valor": 511.69,
+    "numeroNf": "293"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-06-26-27",
@@ -361,7 +388,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 260.03
+    "valor": 260.03,
+    "numeroNf": "294"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-07-25-28",
@@ -374,7 +402,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "24"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-07-24-29",
@@ -387,7 +416,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "18"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-07-28-30",
@@ -400,7 +430,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "204"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-07-01-31",
@@ -413,7 +444,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "45"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-07-25-32",
@@ -426,7 +458,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 731.55
+    "valor": 731.55,
+    "numeroNf": "356"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-08-25-33",
@@ -439,7 +472,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "29"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-08-26-34",
@@ -452,7 +486,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "21"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-08-27-35",
@@ -465,7 +500,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "228"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-08-24-36",
@@ -478,7 +514,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "47"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-08-25-37",
@@ -491,7 +528,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 765.92
+    "valor": 765.92,
+    "numeroNf": "395"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-09-25-38",
@@ -504,7 +542,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "32"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-09-25-39",
@@ -517,7 +556,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "25"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-09-26-40",
@@ -530,7 +570,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "248"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-09-24-41",
@@ -543,7 +584,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "49"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-09-26-42",
@@ -556,7 +598,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 735.15
+    "valor": 735.15,
+    "numeroNf": "624"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-10-25-43",
@@ -569,7 +612,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "36"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-10-24-44",
@@ -582,7 +626,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "27"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-10-27-45",
@@ -595,7 +640,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "277"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-10-24-46",
@@ -608,7 +654,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA 01664303405",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "51"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-10-27-47",
@@ -621,7 +668,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 740
+    "valor": 740,
+    "numeroNf": "582"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-11-24-48",
@@ -634,7 +682,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "40"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-11-26-49",
@@ -647,7 +696,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "2"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-11-26-50",
@@ -660,7 +710,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "305"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-11-25-51",
@@ -673,7 +724,8 @@
       "nome": "LENILDO DA SILVA FERREIRA LTDA (VICCOM MIDIA)",
       "cnpjCpf": "**.*46.508/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "126"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-11-24-52",
@@ -686,7 +738,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 529.5
+    "valor": 529.5,
+    "numeroNf": "679"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-12-16-53",
@@ -699,7 +752,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 4000
+    "valor": 4000,
+    "numeroNf": "42"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-12-16-54",
@@ -712,7 +766,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 3000
+    "valor": 3000,
+    "numeroNf": "3"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-12-17-55",
@@ -725,7 +780,8 @@
       "nome": "MC ASSESSORIA CONTÁBIL LTDA",
       "cnpjCpf": "**.*23.283/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "333"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-12-17-56",
@@ -738,7 +794,8 @@
       "nome": "LENILDO DA SILVA FERREIRA LTDA (VICCOM MIDIA)",
       "cnpjCpf": "**.*46.508/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "141"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2025-12-17-57",
@@ -751,7 +808,8 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 489.26
+    "valor": 489.26,
+    "numeroNf": "684"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2026-01-27-58",
@@ -764,7 +822,8 @@
       "nome": "BERTRAND ASFORA FILHO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
       "cnpjCpf": "**.*82.839/000*-**"
     },
-    "valor": 2000
+    "valor": 2000,
+    "numeroNf": "3"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2026-01-27-59",
@@ -777,7 +836,8 @@
       "nome": "A&S BUSINESS E CONSULTORIA LTDA",
       "cnpjCpf": "**.*53.476/000*-**"
     },
-    "valor": 2400
+    "valor": 2400,
+    "numeroNf": "5"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2026-01-23-60",
@@ -790,7 +850,8 @@
       "nome": "LILIANE MARIA DA SILVA FERREIRA",
       "cnpjCpf": "**.*11.363/000*-**"
     },
-    "valor": 7000
+    "valor": 7000,
+    "numeroNf": "55"
   },
   {
     "id": "cm-campina-grande-alexandre-pereira-da-silva-2026-01-27-61",
@@ -803,6 +864,7 @@
       "nome": "RP COMERCIO DE COMBUSTIVEIS LTDA",
       "cnpjCpf": "**.*13.134/000*-**"
     },
-    "valor": 510.1
+    "valor": 510.1,
+    "numeroNf": "719"
   }
 ]
