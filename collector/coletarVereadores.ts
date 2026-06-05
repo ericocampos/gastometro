@@ -835,6 +835,19 @@ async function main() {
     { cod: '082', slug: 'guarabira', nome: 'Guarabira', camara: '' },
     { cod: '178', slug: 'sao-bento', nome: 'São Bento', camara: '' },
     { cod: '151', slug: 'pombal', nome: 'Pombal', camara: '' },
+    // 2º lote (sondagem em massa das leve restantes; só as com VIAP de fato, cobertura 100%)
+    { cod: '188', slug: 'sao-jose-de-piranhas', nome: 'São José de Piranhas', camara: '' },
+    { cod: '008', slug: 'alhandra', nome: 'Alhandra', camara: '' },
+    { cod: '034', slug: 'boqueirao', nome: 'Boqueirão', camara: '' },
+    { cod: '061', slug: 'conde', nome: 'Conde', camara: '' },
+    { cod: '065', slug: 'cruz-do-espirito-santo', nome: 'Cruz do Espírito Santo', camara: '' },
+    { cod: '097', slug: 'juazeirinho', nome: 'Juazeirinho', camara: '' },
+    { cod: '058', slug: 'caturite', nome: 'Caturité', camara: '' },
+    { cod: '079', slug: 'fagundes', nome: 'Fagundes', camara: '' },
+    { cod: '127', slug: 'nova-floresta', nome: 'Nova Floresta', camara: '' },
+    { cod: '185', slug: 'sao-jose-da-lagoa-tapada', nome: 'São José da Lagoa Tapada', camara: '' },
+    { cod: '209', slug: 'soledade', nome: 'Soledade', camara: '' },
+    { cod: '093', slug: 'jacarau', nome: 'Jacaraú', camara: '' },
   ]
   for (const cv of cidadesViapTce) {
     console.log(`\n> ${cv.nome} (${cv.slug}) [completo · VIAP via TCE]`)

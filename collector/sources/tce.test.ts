@@ -40,6 +40,21 @@ describe('tce', () => {
     expect(v.find((x) => x.nome === 'ANA')!.subsidio).toBe(6000) // mediana
   })
 
+  it('extrairVereadoresTce: dedup por CPF (vereador + presidente interino = 1 pessoa)', () => {
+    const c = [
+      HEADER,
+      'T;101999;Câmara Municipal de Teste;***.158.174-**;WAGNER ROGERIO;Eletivos;00000066 - VEREADOR;6.500,00;01/01/2025;1;202604',
+      'T;101999;Câmara Municipal de Teste;***.158.174-**;WAGNER ROGERIO;Eletivos;00000097 - VEREADOR -PRESIDENTE INTERINO;9.750,00;01/01/2025;1;202604',
+      'T;101999;Câmara Municipal de Teste;***.222.333-**;MARIA;Eletivos;00000066 - VEREADOR;13.000,00;01/01/2025;2;202604',
+      'T;101999;Câmara Municipal de Teste;***.444.555-**;JOSE;Eletivos;00000066 - VEREADOR;13.000,00;01/01/2025;3;202604',
+    ].join('\n')
+    const v = extrairVereadoresTce(parseCamaraTce(c), '202604')
+    expect(v).toHaveLength(3) // Wagner (1, não 2) + Maria + Jose
+    const w = v.find((x) => x.nome === 'WAGNER ROGERIO')!
+    expect(w.presidente).toBe(true)        // virou presidente porque uma das linhas é presidente
+    expect(w.subsidio).toBe(16250)         // 6.500 + 9.750 somados (valor do mês repartido)
+  })
+
   it('somarComissionadosTce = Cargo Comissionado + Função de confiança (exclui efetivo)', () => {
     expect(somarComissionadosTce(linhas, '202510')).toBe(5000)
   })

@@ -289,11 +289,23 @@ export function mesesComVereador(linhas: LinhaTce[], minAnoMes: string): string[
 
 // Vereadores (Eletivos com cargo VEREADOR) do mês; subsídio = valor_vantagem (mediana é a base).
 // Presidente pelo cargo ("VEREADOR PRESIDENTE"), com fallback para o maior subsídio.
+// Dedup por CPF: a MESMA pessoa pode ter 2 linhas no mês (ex.: "VEREADOR" + "VEREADOR-PRESIDENTE
+// INTERINO", com o valor do mês repartido). Sem dedup, viram dois vereadores com o mesmo id (um
+// sobrescreve o outro no agregado). Somamos o valor das linhas da pessoa e marcamos presidente se
+// qualquer cargo dela for de presidente. Linhas sem CPF não são deduplicadas (não dá pra casar).
 export function extrairVereadoresTce(linhas: LinhaTce[], anoMes: string): VereadorLeve[] {
   const eletivos = linhas.filter((r) => r.anoMes === anoMes && ehEletivoVereador(r))
-  return montarVereadoresLeve(
-    eletivos.map((e) => ({ nome: e.nome, bruto: e.valor, presidenteCargo: /PRESID/i.test(e.cargo), cpf: e.cpf })),
-  )
+  const porCpf = new Map<string, { nome: string; bruto: number; presidenteCargo: boolean; cpf: string }>()
+  const semCpf: { nome: string; bruto: number; presidenteCargo: boolean; cpf: string }[] = []
+  for (const e of eletivos) {
+    const item = { nome: e.nome, bruto: e.valor, presidenteCargo: /PRESID/i.test(e.cargo), cpf: e.cpf }
+    const key = (e.cpf ?? '').replace(/\D/g, '')
+    if (!key) { semCpf.push(item); continue }
+    const cur = porCpf.get(key)
+    if (cur) { cur.bruto += item.bruto; cur.presidenteCargo = cur.presidenteCargo || item.presidenteCargo }
+    else porCpf.set(key, item)
+  }
+  return montarVereadoresLeve([...porCpf.values(), ...semCpf])
 }
 
 // Folha de comissionados da câmara no mês = soma de Cargo Comissionado + Função de confiança.
