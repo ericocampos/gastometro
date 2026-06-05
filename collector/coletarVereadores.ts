@@ -4,7 +4,7 @@
 //   - VIAP (cmjpViap): verba indenizatória mensal por parlamentar (nomes CIVIS, inclui ex-vereadores).
 // O match é popular×civil por tokens (sobrenomes), com override manual por cidade quando necessário.
 // O resultado é mesclado no modelo flat de /data que o app web lê (sem tocar federal/estadual).
-import { mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readFileSync, existsSync, rmSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CIDADES, TOTAL_MUNICIPIOS_PB, type CidadeConfig } from './cidades.js'
@@ -13,7 +13,9 @@ import { baixarFolha, extrairGabinetes, type GabineteVereador } from './sources/
 import { baixarViap, agruparViap, type ViapMensalPorVereador } from './sources/cmjpViap.js'
 import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
-import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal } from './sources/tseEleicoes.js'
+import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal, type IndiceMunicipio } from './sources/tseEleicoes.js'
+import { coletarViapCg, type VereadorViapCg } from './sources/cmcgViap.js'
+import { baixarIndenizacoesCamara, conferirMeses, fonteUrlDespesas, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // Eleição que elegeu o mandato municipal atual (2025-2028). Fonte do partido e da foto no leve.
@@ -21,12 +23,12 @@ const ANO_ELEICAO_MUNICIPAL = 2024
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
 interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' | 'camara_municipal'; partido: string; uf: string; legislaturas: number[]; fotoUrl?: string; municipio?: string }
-interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string }
+interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string; numeroNf?: string }
 interface ItemRanking { politicoId: string; nome: string; partido: string; casa: string; total: number }
 interface PontoMensal { anoMes: string; total: number }
 interface ItemCategoria { categoria: string; total: number }
 interface ItemFornecedor { nome: string; cnpjCpf?: string; total: number }
-interface ResumoPolitico { politico: Politico; total: number; serieMensal: PontoMensal[]; porCategoria: ItemCategoria[]; porFornecedor: ItemFornecedor[] }
+interface ResumoPolitico { politico: Politico; total: number; serieMensal: PontoMensal[]; porCategoria: ItemCategoria[]; porFornecedor: ItemFornecedor[]; conferidoTce?: ConferenciaTce }
 interface PerfilParlamentar { id: string; nomeCivil?: string; nascimento?: string; naturalidade?: string; escolaridade?: string; situacao?: string; site?: string; redes: string[]; proposicoes: any[] }
 interface SecretarioGabinete { nome: string; remuneracao: number; cargo?: string; liquido?: number; lotacaoTipo?: 'gabinete' | 'escritorio'; admissaoAno?: number }
 interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; folhaOficial?: boolean; mesReferencia?: string }
@@ -40,6 +42,8 @@ interface Municipio {
   totalViapPeriodo?: number
   totalGabineteMes?: number
   periodoViap?: { de: string; ate: string } | null
+  viapDetalhada?: boolean
+  gabinetePorVereador?: boolean
   mesReferencia?: string
   folhaComissionados?: number
   vereadores?: MunicipioVereador[]
@@ -70,6 +74,8 @@ export function montarCidade(
   gabs: GabineteVereador[],
   viap: ViapMensalPorVereador[],
   mesGabinete: string,
+  indenizacoesTce: IndenizacaoTce[] = [],
+  fonteTce = '',
 ): SaidaCidade {
   const override = cfg.apelidoOverride ?? {}
   // bate um vereador do roster com um nome candidato. Tenta, nesta ordem:
@@ -147,6 +153,8 @@ export function montarCidade(
 
     let total = 0
     let serieMensal: PontoMensal[] = []
+    // meses da legislatura atual (≥ 2025-01) p/ a conferência no TCE; em JP apresentado = reembolsado
+    let mesesConf: { anoMes: string; reembolsado: number; apresentado: number }[] = []
     if (viapMatch) {
       comViap++
       const meses = [...viapMatch.meses].sort((a, b) => a.anoMes.localeCompare(b.anoMes))
@@ -157,15 +165,20 @@ export function montarCidade(
       }))
       total = meses.reduce((s, m) => s + m.valor, 0)
       serieMensal = meses.map((m) => ({ anoMes: m.anoMes, total: m.valor }))
+      mesesConf = meses.filter((m) => m.anoMes >= '2025-01').map((m) => ({ anoMes: m.anoMes, reembolsado: m.valor, apresentado: m.valor }))
       totalViapPeriodo += total
       for (const m of meses) mesesMatched.push(m.anoMes)
       if (meses.length > 0) mediasViap.push(total / meses.length)
     }
 
+    // confere a VIAP no TCE pelo nome CIVIL (o credor das indenizações no TCE é o nome civil)
+    const nomeCivilViap = viapMatch ? viapMatch.parlamentar : (v.nomeCivil ?? v.nome)
+    const conferidoTce = conferirVereadorTce(nomeCivilViap, mesesConf, indenizacoesTce, fonteTce)
     porPolitico[id] = {
       politico, total, serieMensal,
       porCategoria: total > 0 ? [{ categoria: CATEGORIA_VIAP, total }] : [],
       porFornecedor: [],
+      conferidoTce,
     }
     ranking.push({ politicoId: id, nome: v.nome, partido: v.partido ?? '', casa: 'camara_municipal', total })
     perfis.push({ id, nomeCivil: viapMatch ? viapMatch.parlamentar : v.nome, redes: [], proposicoes: [] })
@@ -184,6 +197,7 @@ export function montarCidade(
   const resumoMunicipio: Municipio = {
     slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'completo', numVereadores: roster.length,
     totalViapPeriodo, totalGabineteMes, periodoViap,
+    viapDetalhada: false, gabinetePorVereador: true,
     custo: { slug: cfg.slug, nome: cfg.nome, salario: cfg.subsidio ?? 0, viapTeto: VIAP_TETO, viapMedia, gabineteMedia },
   }
 
@@ -227,6 +241,174 @@ export function montarCidadeLeve(
   }
 }
 
+// Teto mensal da VIAP de Campina Grande (Resoluções 017/2024 e 110/2024).
+const VIAP_TETO_CG = 17000
+
+// Confere os valores mensais de VIAP de um vereador contra os empenhos de "Indenizações e
+// Restituições" do TCE (cujo credor é o próprio vereador). Casa o credor por nome civil (exato;
+// senão por tokens de sobrenome) e compara por valor. Devolve undefined se não há base p/ conferir.
+function conferirVereadorTce(
+  nome: string,
+  meses: { anoMes: string; reembolsado: number; apresentado: number }[],
+  indenizacoes: IndenizacaoTce[],
+  fonte: string,
+): ConferenciaTce | undefined {
+  if (indenizacoes.length === 0 || meses.length === 0) return undefined
+  let tce = indenizacoes.filter((x) => normNome(x.credor) === normNome(nome))
+  if (tce.length === 0) {
+    // fallback por tokens, mas SÓ se casar com um único credor (não arriscar somar a pessoa errada)
+    const tok = indenizacoes.filter((x) => mesmaPessoaTokens(x.credor, nome))
+    if (new Set(tok.map((x) => normNome(x.credor))).size === 1) tce = tok
+  }
+  return conferirMeses(meses, tce.map((x) => x.valorPago), fonte)
+}
+
+// Campina Grande no modelo COMPLETO: o roster (e o subsídio) vem dos Eletivos do TCE; a VIAP, da
+// planilha itemizada oficial da câmara (por vereador/mês, com fornecedor); o partido e a foto, do
+// TSE. O gabinete fica AGREGADO (folha de comissionados da câmara), porque nenhuma fonte oficial
+// atribui o comissionado a um vereador específico (TCE e a folha do PublicSoft usam lotação genérica).
+export function montarCampinaGrande(
+  vereadoresTce: VereadorLeve[],
+  viap: VereadorViapCg[],
+  tseLookup: (nome: string) => { partido?: string; sq?: string } | null,
+  folhaComissionados: number,
+  mesFolha: string,
+  indenizacoesTce: IndenizacaoTce[] = [],
+  fonteTce = '',
+): SaidaCidade {
+  const slug = 'campina-grande'
+  const nome = 'Campina Grande'
+  const CATEGORIA_FALLBACK = 'Verba indenizatória (VIAP)'
+  // casa o vereador (roster do TCE) com a VIAP por nome civil: exato e, como fallback, por tokens
+  // de sobrenome (mesmaPessoaTokens — conservador, ignora partículas), que cobre as diferenças de
+  // grafia/typos da planilha (ex.: "FARIAS DE ALMEIDA" vs "FARIAS ALMEIDA", "OLVIEIRA" vs "OLIVEIRA").
+  const usados = new Set<string>() // chaves (normNome) das entradas de VIAP já casadas
+  const acharViap = (nomeRoster: string): VereadorViapCg | undefined => {
+    const nk = normNome(nomeRoster)
+    const ex = viap.find((v) => !usados.has(normNome(v.nome)) && normNome(v.nome) === nk)
+    const m = ex ?? viap.find((v) => !usados.has(normNome(v.nome)) && mesmaPessoaTokens(nomeRoster, v.nome))
+    if (m) usados.add(normNome(m.nome))
+    return m
+  }
+
+  const politicos: Politico[] = []
+  const ranking: ItemRanking[] = []
+  const porPolitico: Record<string, ResumoPolitico> = {}
+  const despesasPorId: Record<string, Despesa[]> = {}
+  const perfis: PerfilParlamentar[] = []
+  const gabinetePorId: Record<string, GabineteParlamentar> = {} // vazio: gabinete é agregado
+
+  const mesesAll: string[] = []
+  const mediasViap: number[] = []
+  let totalViapPeriodo = 0
+  let comViap = 0
+
+  for (const ver of vereadoresTce) {
+    const id = `cm-${slug}-${slugify(ver.nome)}`
+    const ex = tseLookup(ver.nome)
+    const politico: Politico = {
+      id, nome: ver.nome, casa: 'camara_municipal', partido: ex?.partido ?? '', uf: 'PB',
+      legislaturas: [], fotoUrl: ex?.sq ? fotoUrlLocal(ex.sq) : undefined, municipio: slug,
+    }
+    politicos.push(politico)
+
+    const vv = acharViap(ver.nome)
+    const meses = vv?.meses ?? []
+
+    const despesas: Despesa[] = []
+    let seq = 0
+    for (const m of meses) {
+      const refAno = Number(m.anoMes.slice(0, 4))
+      const refMes = Number(m.anoMes.slice(5, 7))
+      for (const d of m.despesas) {
+        // A despesa pertence à COMPETÊNCIA da planilha (o mês de referência do reembolso). A data
+        // da NF é só metadado e às vezes vem com erro de digitação na fonte (ex.: ano no futuro,
+        // 26/11/2026 numa planilha de nov/2025). Usamos a data da NF apenas quando cai no mês de
+        // referência; caso contrário, ancoramos no 1º dia da competência (sem inventar um dia).
+        const dataNf = d.data && d.data.slice(0, 7) === m.anoMes ? d.data : `${m.anoMes}-01`
+        despesas.push({
+          id: `${id}-${dataNf}-${seq++}`, politicoId: id,
+          data: dataNf, ano: refAno, mes: refMes,
+          categoria: d.item || CATEGORIA_FALLBACK,
+          fornecedor: { nome: d.fornecedor.nome, cnpjCpf: d.fornecedor.cpfCnpj },
+          valor: d.valor,
+          numeroNf: d.numeroNf,
+        })
+      }
+    }
+    if (despesas.length) despesasPorId[id] = despesas
+
+    // Total/série = APRESENTADO em notas (soma do detalhamento abaixo, consistente). O valor de fato
+    // REEMBOLSADO (capado no teto, com glosas) entra na conferência com o TCE (conferidoTce.totalNosso),
+    // e a UI mostra apresentado × reembolsado quando diferem (a diferença é a glosa).
+    const total = meses.reduce((s, m) => s + m.totalDespesas, 0)
+    const serieMensal: PontoMensal[] = meses.map((m) => ({ anoMes: m.anoMes, total: m.totalDespesas }))
+
+    const catMap = new Map<string, number>()
+    for (const d of despesas) catMap.set(d.categoria, (catMap.get(d.categoria) ?? 0) + d.valor)
+    const porCategoria = [...catMap].map(([categoria, t]) => ({ categoria, total: t })).sort((a, b) => b.total - a.total)
+
+    const fMap = new Map<string, ItemFornecedor>()
+    for (const d of despesas) {
+      const key = d.fornecedor.nome || '—'
+      const cur = fMap.get(key) ?? { nome: key, cnpjCpf: d.fornecedor.cnpjCpf, total: 0 }
+      cur.total += d.valor
+      fMap.set(key, cur)
+    }
+    const porFornecedor = [...fMap.values()].sort((a, b) => b.total - a.total)
+
+    if (meses.length) {
+      comViap++
+      for (const m of meses) mesesAll.push(m.anoMes)
+      mediasViap.push(total / meses.length)
+    }
+    totalViapPeriodo += total
+
+    // conferência com o TCE, mês a mês: reembolsado × empenho pago; apresentado = notas (p/ glosa)
+    const conferidoTce = conferirVereadorTce(
+      ver.nome,
+      meses.map((m) => ({ anoMes: m.anoMes, reembolsado: m.reembolsado, apresentado: m.totalDespesas })),
+      indenizacoesTce, fonteTce,
+    )
+    porPolitico[id] = { politico, total, serieMensal, porCategoria, porFornecedor, conferidoTce }
+    ranking.push({ politicoId: id, nome: ver.nome, partido: politico.partido, casa: 'camara_municipal', total })
+    perfis.push({ id, nomeCivil: ver.nome, redes: [], proposicoes: [] })
+  }
+
+  const naoCasados = viap
+    .filter((v) => !usados.has(normNome(v.nome)))
+    .map((v) => ({ fonte: 'viap' as const, nome: v.nome }))
+
+  const periodoViap = mesesAll.length > 0
+    ? { de: mesesAll.reduce((a, b) => (a < b ? a : b)), ate: mesesAll.reduce((a, b) => (a > b ? a : b)) }
+    : null
+  const viapMedia = mediasViap.length ? mediasViap.reduce((s, x) => s + x, 0) / mediasViap.length : null
+  const gabineteMedia = vereadoresTce.length ? folhaComissionados / vereadoresTce.length : null
+  const subsidios = vereadoresTce.map((v) => v.subsidio).sort((a, b) => a - b)
+  const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0
+
+  // Teto derivado do dado: maior valor reembolsado no período (= R$17.000, conforme a Resolução
+  // 110/2024). NOTA: a partir de 2026 o reembolso aparece capado em R$12.000 (sem norma localizada),
+  // então o teto é, na prática, por período — o ajuste período-aware dos cards está pendente (ver
+  // memória). Por ora usamos o teto do período inteiro (o maior), p/ não quebrar o "uso do teto" de 2025.
+  const todosMeses = viap.flatMap((v) => v.meses)
+  const tetoEfetivo = Math.max(0, ...todosMeses.map((m) => m.reembolsado))
+  const viapTeto = Math.round(tetoEfetivo) || VIAP_TETO_CG
+
+  const resumoMunicipio: Municipio = {
+    slug, nome, uf: 'PB', modelo: 'completo', numVereadores: vereadoresTce.length,
+    totalViapPeriodo, totalGabineteMes: folhaComissionados, periodoViap,
+    viapDetalhada: true, gabinetePorVereador: false,
+    mesReferencia: mesFolha, folhaComissionados,
+    custo: { slug, nome, salario: subsidioBase, viapTeto, viapMedia, gabineteMedia },
+  }
+
+  return {
+    politicos, ranking, porPolitico, despesasPorId, perfis, gabinetePorId, resumoMunicipio,
+    cobertura: { total: vereadoresTce.length, comGabinete: 0, comViap, naoCasados },
+  }
+}
+
 // Coleta as câmaras 'leve' (todas menos JP) da fonte única do TCE-PB: para cada município, baixa o
 // zip anual da folha (ano corrente, com fallback p/ o anterior), isola a Câmara Municipal e monta o
 // resumo com o mês mais recente que tenha vereadores, restrito à legislatura atual (ano_mes ≥ 202501;
@@ -234,14 +416,11 @@ export function montarCidadeLeve(
 async function coletarLeveTce(
   anoAtual: number,
   pularSlugs: Set<string>,
+  idxTse: Map<string, IndiceMunicipio>,
 ): Promise<{ cidades: Municipio[]; naoCobertas: NaoCoberta[] }> {
   const MIN_ANO_MES = '202501'
   const out: Municipio[] = []
   const naoCobertas: NaoCoberta[] = []
-
-  // candidatos da eleição municipal de 2024 (partido + SQ da foto), casados por município+nome
-  console.log(`  carregando candidatos TSE ${ANO_ELEICAO_MUNICIPAL} (partido + fotos)...`)
-  const idxTse = await baixarCandidatosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
 
   for (const m of MUNICIPIOS_TCE) {
     if (pularSlugs.has(m.slug)) continue
@@ -279,35 +458,49 @@ async function coletarLeveTce(
   return { cidades: out, naoCobertas }
 }
 
-// Baixa o zip de fotos do TSE (PB) uma vez, gera as thumbnails webp das SQs casadas e poda o
-// fotoUrl dos vereadores cuja foto não veio no zip (raro) — para não deixar imagem quebrada.
-// Idempotente: se todas as webp já existem, nem baixa o zip.
-async function gerarFotosTse(cidades: Municipio[]): Promise<void> {
-  const destDir = resolve(here, '../web/public/fotos/vereadores')
-  const sqDe = (url?: string) => url?.match(/\/(\d+)\.webp$/)?.[1]
-  const sqs = new Set<string>()
-  for (const c of cidades) for (const v of c.vereadores ?? []) { const sq = sqDe(v.fotoUrl); if (sq) sqs.add(sq) }
-  if (sqs.size === 0) return
+const sqDeFoto = (url?: string) => url?.match(/\/(\d+)\.webp$/)?.[1]
 
+// Núcleo: dado o conjunto de SQs, baixa o zip de fotos do TSE (PB) uma vez e gera as thumbnails
+// webp que faltam. Idempotente: se todas já existem, nem baixa o zip. Devolve as SQs com foto.
+async function gerarThumbsDeSqs(sqs: Set<string>): Promise<Set<string>> {
+  if (sqs.size === 0) return new Set()
+  const destDir = resolve(here, '../web/public/fotos/vereadores')
   const lista = [...sqs]
   const novas = lista.filter((sq) => !existsSync(resolve(destDir, `${sq}.webp`)))
-  let feitas: Set<string>
-  if (novas.length > 0) {
-    console.log(`  fotos TSE: ${novas.length} novas a gerar (de ${lista.length}) — baixando zip da PB...`)
-    const { zip, dir } = await baixarZipFotosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
-    try { feitas = await gerarThumbsWebp(zip, lista, 'PB', destDir) }
-    finally { rmSync(dir, { recursive: true, force: true }) }
-  } else {
-    feitas = new Set(lista)
+  if (novas.length === 0) {
     console.log(`  fotos TSE: todas as ${lista.length} thumbnails já existem`)
+    return new Set(lista)
   }
+  console.log(`  fotos TSE: ${novas.length} novas a gerar (de ${lista.length}) — baixando zip da PB...`)
+  const { zip, dir } = await baixarZipFotosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
+  try { return await gerarThumbsWebp(zip, lista, 'PB', destDir) }
+  finally { rmSync(dir, { recursive: true, force: true }) }
+}
 
+// Modelo leve: SQs estão em municipio.vereadores[].fotoUrl; poda quem não tiver foto no zip.
+async function gerarFotosTse(cidades: Municipio[]): Promise<void> {
+  const sqs = new Set<string>()
+  for (const c of cidades) for (const v of c.vereadores ?? []) { const sq = sqDeFoto(v.fotoUrl); if (sq) sqs.add(sq) }
+  const feitas = await gerarThumbsDeSqs(sqs)
   let podadas = 0
   for (const c of cidades) for (const v of c.vereadores ?? []) {
-    const sq = sqDe(v.fotoUrl)
+    const sq = sqDeFoto(v.fotoUrl)
     if (sq && !feitas.has(sq)) { v.fotoUrl = undefined; podadas++ }
   }
-  console.log(`  fotos TSE: ${feitas.size} com foto${podadas ? `, ${podadas} sem foto no zip (iniciais)` : ''}`)
+  if (sqs.size) console.log(`  fotos TSE: ${feitas.size} com foto${podadas ? `, ${podadas} sem foto no zip (iniciais)` : ''}`)
+}
+
+// Modelo completo (CG): SQs estão nos politicos[].fotoUrl; poda quem não tiver foto no zip.
+async function gerarFotosPoliticos(politicos: Politico[]): Promise<void> {
+  const sqs = new Set<string>()
+  for (const p of politicos) { const sq = sqDeFoto(p.fotoUrl); if (sq) sqs.add(sq) }
+  const feitas = await gerarThumbsDeSqs(sqs)
+  let podadas = 0
+  for (const p of politicos) {
+    const sq = sqDeFoto(p.fotoUrl)
+    if (sq && !feitas.has(sq)) { p.fotoUrl = undefined; podadas++ }
+  }
+  if (sqs.size) console.log(`  fotos TSE: ${feitas.size} com foto${podadas ? `, ${podadas} sem foto no zip (iniciais)` : ''}`)
 }
 
 // ── runtime: coleta ao vivo + merge em /data (não executado nos testes) ──
@@ -320,6 +513,52 @@ function competenciaDe(d: Date): string {
 
 const lerJson = <T,>(arq: string, fallback: T): T =>
   existsSync(arq) ? (JSON.parse(readFileSync(arq, 'utf-8')) as T) : fallback
+
+// Mescla uma cidade do modelo COMPLETO no /data plano (politicos/agregados/assessores/despesas/
+// perfis), trocando só os registros dessa cidade (prefixo cm-{slug}-) e preservando o resto.
+function gravarCidade(saida: SaidaCidade, slug: string): void {
+  const prefixo = `cm-${slug}-`
+
+  const politicosArq = resolve(dataDir, 'politicos.json')
+  const politicos = lerJson<Politico[]>(politicosArq, [])
+    .filter((p) => !(p.casa === 'camara_municipal' && p.municipio === slug))
+  politicos.push(...saida.politicos)
+
+  const agregadosArq = resolve(dataDir, 'agregados.json')
+  const agregados = lerJson<{ ranking: ItemRanking[]; porPolitico: Record<string, ResumoPolitico>; fornecedores: ItemFornecedor[] }>(
+    agregadosArq, { ranking: [], porPolitico: {}, fornecedores: [] },
+  )
+  agregados.ranking = agregados.ranking.filter((r) => !r.politicoId.startsWith(prefixo)).concat(saida.ranking)
+  for (const k of Object.keys(agregados.porPolitico)) if (k.startsWith(prefixo)) delete agregados.porPolitico[k]
+  Object.assign(agregados.porPolitico, saida.porPolitico)
+
+  const assessoresArq = resolve(dataDir, 'assessores.json')
+  const assessores = lerJson<{ porPolitico: Record<string, GabineteParlamentar>; [k: string]: unknown }>(
+    assessoresArq, { porPolitico: {} },
+  )
+  if (!assessores.porPolitico) assessores.porPolitico = {}
+  for (const k of Object.keys(assessores.porPolitico)) if (k.startsWith(prefixo)) delete assessores.porPolitico[k]
+  Object.assign(assessores.porPolitico, saida.gabinetePorId)
+
+  // despesas: limpa os arquivos antigos desta cidade antes de regravar (vereador pode ter saído)
+  const despesasDir = resolve(dataDir, 'despesas')
+  mkdirSync(dataDir, { recursive: true })
+  mkdirSync(despesasDir, { recursive: true })
+  mkdirSync(resolve(dataDir, 'perfis'), { recursive: true })
+  for (const arq of existsSync(despesasDir) ? readdirSync(despesasDir) : []) {
+    if (arq.startsWith(prefixo)) rmSync(resolve(despesasDir, arq), { force: true })
+  }
+
+  writeFileSync(politicosArq, JSON.stringify(politicos, null, 2))
+  writeFileSync(agregadosArq, JSON.stringify(agregados, null, 2))
+  writeFileSync(assessoresArq, JSON.stringify(assessores, null, 2))
+  for (const [id, ds] of Object.entries(saida.despesasPorId)) {
+    writeFileSync(resolve(despesasDir, `${id}.json`), JSON.stringify(ds, null, 2))
+  }
+  for (const perfil of saida.perfis) {
+    writeFileSync(resolve(dataDir, 'perfis', `${perfil.id}.json`), JSON.stringify(perfil, null, 2))
+  }
+}
 
 async function main() {
   const resumos: Municipio[] = []
@@ -347,47 +586,12 @@ async function main() {
     const viap = cfg.viapUrl ? agruparViap(await baixarViap(cfg.viapUrl)) : []
     console.log(`  viap: ${viap.length} parlamentares`)
 
-    const saida = montarCidade(cfg, roster, gabs, viap, mesGabinete)
-    const prefixo = `cm-${cfg.slug}-`
-
-    // politicos.json: remove os municipais desta cidade, concatena os novos
-    const politicosArq = resolve(dataDir, 'politicos.json')
-    const politicos = lerJson<Politico[]>(politicosArq, [])
-      .filter((p) => !(p.casa === 'camara_municipal' && p.municipio === cfg.slug))
-    politicos.push(...saida.politicos)
-
-    // agregados.json: ranking + porPolitico desta cidade trocados; fornecedores intactos
-    const agregadosArq = resolve(dataDir, 'agregados.json')
-    const agregados = lerJson<{ ranking: ItemRanking[]; porPolitico: Record<string, ResumoPolitico>; fornecedores: ItemFornecedor[] }>(
-      agregadosArq, { ranking: [], porPolitico: {}, fornecedores: [] },
-    )
-    agregados.ranking = agregados.ranking.filter((r) => !r.politicoId.startsWith(prefixo)).concat(saida.ranking)
-    for (const k of Object.keys(agregados.porPolitico)) if (k.startsWith(prefixo)) delete agregados.porPolitico[k]
-    Object.assign(agregados.porPolitico, saida.porPolitico)
-
-    // assessores.json: porPolitico desta cidade trocado; demais campos intactos
-    const assessoresArq = resolve(dataDir, 'assessores.json')
-    const assessores = lerJson<{ porPolitico: Record<string, GabineteParlamentar>; [k: string]: unknown }>(
-      assessoresArq, { porPolitico: {} },
-    )
-    if (!assessores.porPolitico) assessores.porPolitico = {}
-    for (const k of Object.keys(assessores.porPolitico)) if (k.startsWith(prefixo)) delete assessores.porPolitico[k]
-    Object.assign(assessores.porPolitico, saida.gabinetePorId)
-
-    // grava
-    mkdirSync(dataDir, { recursive: true })
-    mkdirSync(resolve(dataDir, 'despesas'), { recursive: true })
-    mkdirSync(resolve(dataDir, 'perfis'), { recursive: true })
-    writeFileSync(politicosArq, JSON.stringify(politicos, null, 2))
-    writeFileSync(agregadosArq, JSON.stringify(agregados, null, 2))
-    writeFileSync(assessoresArq, JSON.stringify(assessores, null, 2))
-    for (const [id, ds] of Object.entries(saida.despesasPorId)) {
-      writeFileSync(resolve(dataDir, 'despesas', `${id}.json`), JSON.stringify(ds, null, 2))
-    }
-    for (const perfil of saida.perfis) {
-      writeFileSync(resolve(dataDir, 'perfis', `${perfil.id}.json`), JSON.stringify(perfil, null, 2))
-    }
-
+    // VIAP conferida no TCE (só JP no loop de CIDADES; cod TCE de JP = 095)
+    const codTce = cfg.slug === 'joao-pessoa' ? '095' : ''
+    const indenizTce = codTce ? await baixarIndenizacoesCamara(codTce, [2025, 2026]) : []
+    if (codTce) console.log(`  TCE indenizações (câmara): ${indenizTce.length} empenhos`)
+    const saida = montarCidade(cfg, roster, gabs, viap, mesGabinete, indenizTce, codTce ? fonteUrlDespesas(codTce, 2025) : '')
+    gravarCidade(saida, cfg.slug)
     resumos.push(saida.resumoMunicipio)
 
     // relatório de cobertura
@@ -399,10 +603,38 @@ async function main() {
     }
   }
 
-  // câmaras 'leve' (todas menos JP) pela fonte única do TCE-PB
+  // índice de candidatos do TSE 2024 (partido + SQ da foto), usado por CG e pelas leve
+  console.log(`\n> carregando candidatos TSE ${ANO_ELEICAO_MUNICIPAL} (partido + fotos)...`)
+  const idxTse = await baixarCandidatosUf(ANO_ELEICAO_MUNICIPAL, 'PB')
+
+  // Campina Grande — modelo COMPLETO (VIAP itemizada da câmara + gabinete agregado do TCE)
+  console.log(`\n> Campina Grande (campina-grande) [completo]`)
+  let linhasCg: LinhaTce[] = []
+  for (const ano of [new Date().getFullYear(), new Date().getFullYear() - 1]) {
+    try { linhasCg = linhasCg.concat(await baixarCamaraTce('050', ano)) } catch { /* ano sem arquivo */ }
+    if (mesesComVereador(linhasCg, '202501').length > 0) break
+  }
+  const mesRefCg = mesesComVereador(linhasCg, '202501')[0]
+  const vereadoresCg = extrairVereadoresTce(linhasCg, mesRefCg)
+  const folhaCg = somarComissionadosTce(linhasCg, mesRefCg)
+  const viapCg = await coletarViapCg([ANO_ELEICAO_MUNICIPAL + 1, ANO_ELEICAO_MUNICIPAL + 2]) // 2025, 2026
+  const indenizCg = await baixarIndenizacoesCamara('050', [2025, 2026]) // VIAP conferida no TCE
+  console.log(`  roster TCE: ${vereadoresCg.length} | VIAP: ${viapCg.length} vereadores | folha comissionados R$ ${folhaCg.toFixed(2)} | TCE indenizações: ${indenizCg.length}`)
+  const lookupCg = (nome: string) => {
+    const c = matchCandidato(idxTse, 'Campina Grande', nome)
+    return c ? { partido: c.partido, sq: c.sq } : null
+  }
+  const saidaCg = montarCampinaGrande(vereadoresCg, viapCg, lookupCg, folhaCg, `${mesRefCg.slice(0, 4)}-${mesRefCg.slice(4, 6)}`, indenizCg, fonteUrlDespesas('050', 2025))
+  await gerarFotosPoliticos(saidaCg.politicos) // fotos dos vereadores de CG (foto fica nos politicos)
+  gravarCidade(saidaCg, 'campina-grande')
+  resumos.push(saidaCg.resumoMunicipio)
+  const cc = saidaCg.cobertura
+  console.log(`  cobertura CG: viap ${cc.comViap}/${cc.total}${cc.naoCasados.length ? ` | VIAP sem roster: ${cc.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
+
+  // câmaras 'leve' (todas menos JP e CG) pela fonte única do TCE-PB
   console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
-  const pularSlugs = new Set(CIDADES.map((c) => c.slug)) // JP é completo
-  const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs)
+  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande']) // JP e CG são completos
+  const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs, idxTse)
   resumos.push(...leve)
   if (naoCobertas.length > 0) console.log(`  não cobertas: ${naoCobertas.map((n) => n.nome).join(', ')}`)
 

@@ -146,6 +146,53 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByText(/vs\. média dos vereadores/i)).toBeInTheDocument()
   })
 
+  // Campina Grande: municipal COM detalhamento por fornecedor + número da NF (sem documento)
+  it('mostra o selo de conferência com o TCE (conferido) e aponta o documento quando há link', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
+        custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
+        conferidoTce={{ fonte: 'https://tce/095', meses: [
+          { anoMes: '2025-01', apresentado: 12000, reembolsado: 12000, tce: 12000 },
+          { anoMes: '2025-02', apresentado: 13000, reembolsado: 13000, tce: 13000 },
+        ] }} />,
+    )
+    expect(screen.getByText(/conferido com o TCE/i)).toBeInTheDocument()
+    // os fixtures de JP têm urlDocumento → aponta o comprovante no link "nota"
+    expect(screen.getByText(/comprovante de cada mês/i)).toBeInTheDocument()
+  })
+
+  it('no estado de glosa, mostra apresentado × reembolsado (do período)', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
+        custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
+        conferidoTce={{ fonte: 'https://tce/050', meses: [
+          { anoMes: '2025-01', apresentado: 13000, reembolsado: 12000, tce: 12000 },
+          { anoMes: '2025-02', apresentado: 12000, reembolsado: 12000, tce: 12000 },
+        ] }} />,
+    )
+    expect(screen.getByText(/não foram reembolsados/i)).toBeInTheDocument()
+  })
+
+  it('mostra a tabela de fornecedores e o número da NF quando a fonte detalha (CG)', () => {
+    const despesasCg: Despesa[] = [
+      { id: 'c1', politicoId: 'cm-joao-pessoa-1', data: '2025-01-31', ano: 2025, mes: 1,
+        categoria: 'CONSULTORIA JURÍDICA', fornecedor: { nome: 'ADVOCACIA XPTO', cnpjCpf: '**.319/**' }, valor: 7000, numeroNf: '14' },
+      { id: 'c2', politicoId: 'cm-joao-pessoa-1', data: '2025-02-28', ano: 2025, mes: 2,
+        categoria: 'DIVULGAÇÃO', fornecedor: { nome: 'ROMULO LTDA', cnpjCpf: '**.925/**' }, valor: 5000, numeroNf: '9' },
+    ]
+    render(
+      <PerfilView politico={politico} despesas={despesasCg} series={series} perfil={null}
+        custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.queryByText(/não disponível na fonte/i)).not.toBeInTheDocument()
+    expect(screen.getAllByText(/ADVOCACIA XPTO/).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/NF 14/).length).toBeGreaterThan(0)
+    expect(screen.getByText(/não publica o documento|número da nota fiscal/i)).toBeInTheDocument()
+  })
+
   it('avisa da defasagem da VIAP com data de importação e último mês', () => {
     const { container } = renderMunicipal()
     const txt = container.textContent ?? ''

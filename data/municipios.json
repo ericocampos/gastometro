@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-06-04",
+  "atualizadoEm": "2026-06-05",
   "totalMunicipiosPB": 223,
   "cidades": [
     {
@@ -14,6 +14,8 @@
         "de": "2020-09",
         "ate": "2026-02"
       },
+      "viapDetalhada": false,
+      "gabinetePorVereador": true,
       "custo": {
         "slug": "joao-pessoa",
         "nome": "João Pessoa",
@@ -21,6 +23,31 @@
         "viapTeto": 14000,
         "viapMedia": 10447.523723810375,
         "gabineteMedia": 51620.81863636363
+      }
+    },
+    {
+      "slug": "campina-grande",
+      "nome": "Campina Grande",
+      "uf": "PB",
+      "modelo": "completo",
+      "numVereadores": 23,
+      "totalViapPeriodo": 4045076.4000000004,
+      "totalGabineteMes": 2099579.0700000003,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-01"
+      },
+      "viapDetalhada": true,
+      "gabinetePorVereador": false,
+      "mesReferencia": "2026-04",
+      "folhaComissionados": 2099579.0700000003,
+      "custo": {
+        "slug": "campina-grande",
+        "nome": "Campina Grande",
+        "salario": 20864.78,
+        "viapTeto": 17000,
+        "viapMedia": 16141.972391131596,
+        "gabineteMedia": 91286.04652173915
       }
     },
     {
@@ -4309,186 +4336,6 @@
         "viapTeto": 0,
         "viapMedia": null,
         "gabineteMedia": 2355.0133333333333
-      }
-    },
-    {
-      "slug": "campina-grande",
-      "nome": "Campina Grande",
-      "uf": "PB",
-      "modelo": "leve",
-      "numVereadores": 23,
-      "mesReferencia": "2026-04",
-      "folhaComissionados": 2099579.0700000003,
-      "vereadores": [
-        {
-          "nome": "ALEXANDRE PEREIRA DA SILVA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002220307.webp"
-        },
-        {
-          "nome": "ANA MARIA COSTA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001990567.webp"
-        },
-        {
-          "nome": "ANTONIO ALVES PIMENTEL FILHO",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001989731.webp"
-        },
-        {
-          "nome": "CAROLINA FARIAS ALMEIDA GOMES",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002220318.webp"
-        },
-        {
-          "nome": "CLEDSON RODRIGUES DA SILVA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/vereadores/150002145636.webp"
-        },
-        {
-          "nome": "FRANKARISTON ALVES DE BRITO",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PODE",
-          "fotoUrl": "/fotos/vereadores/150002042506.webp"
-        },
-        {
-          "nome": "IVONETE ALMEIDA DE ANDRADE LUDGERIO",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002220310.webp"
-        },
-        {
-          "nome": "JOSE PLINIO GOMES DE SOUZA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002220311.webp"
-        },
-        {
-          "nome": "JOSILENE MARIA DE OLIVEIRA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/vereadores/150001999179.webp"
-        },
-        {
-          "nome": "KALLYNA DIAS GOMES",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001989715.webp"
-        },
-        {
-          "nome": "LUCIANO BRENO CHAVES PEREIRA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/vereadores/150002021009.webp"
-        },
-        {
-          "nome": "MARCIO ALESSANDRO GUEDES MENDES",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001989729.webp"
-        },
-        {
-          "nome": "OLIMPIO OLIVEIRA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PODE",
-          "fotoUrl": "/fotos/vereadores/150002042505.webp"
-        },
-        {
-          "nome": "PAMELA VITAL DO REGO FREIRE PAZ",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002146813.webp"
-        },
-        {
-          "nome": "RAFAEL PEREIRA SOUSA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150002220315.webp"
-        },
-        {
-          "nome": "ROSTAND MIRANDA CAVALCANTE",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150002220494.webp"
-        },
-        {
-          "nome": "SAULO GONCALVES NORONHA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002146801.webp"
-        },
-        {
-          "nome": "SAULO MESSIAS GARCIA RIBEIRO",
-          "subsidio": 31297.17,
-          "presidente": true,
-          "partido": "PODE",
-          "fotoUrl": "/fotos/vereadores/150002042509.webp"
-        },
-        {
-          "nome": "SEVERINO DO RAMO DOS SANTOS SILVA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "MDB",
-          "fotoUrl": "/fotos/vereadores/150002146800.webp"
-        },
-        {
-          "nome": "TERTULIANO RAMOS MARACAJA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001990559.webp"
-        },
-        {
-          "nome": "VALERIA SILVA ARAGAO",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001990561.webp"
-        },
-        {
-          "nome": "WALERIA ASSUNCAO TAVARES DE OLIVEIRA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001989724.webp"
-        },
-        {
-          "nome": "WELLINGTON SILVA BARBOSA",
-          "subsidio": 20864.78,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001989719.webp"
-        }
-      ],
-      "custo": {
-        "slug": "campina-grande",
-        "nome": "Campina Grande",
-        "salario": 20864.78,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 91286.04652173915
       }
     },
     {

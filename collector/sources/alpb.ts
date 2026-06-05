@@ -111,7 +111,7 @@ function valorBR(s: string): number {
 
 // Valor vindo do XLSX: a célula numérica é crua, com ponto decimal ("9453.22"). Só cai no parser
 // BR (vírgula decimal/ponto de milhar) quando o valor vier como texto com vírgula.
-function valorXlsx(s: string): number {
+export function valorXlsx(s: string): number {
   const t = s.trim()
   if (t === '') return 0
   if (!t.includes(',')) { const v = Number(t.replace(/[^0-9.\-]/g, '')); if (Number.isFinite(v)) return v }
@@ -148,7 +148,7 @@ function sharedStringsXlsx(buf: Buffer): string[] {
   try { xml = unzipEntry(buf, 'xl/sharedStrings.xml').toString('utf8') } catch { return [] }
   return [...xml.matchAll(/<si>([\s\S]*?)<\/si>/g)].map((m) => textoXml(m[1]))
 }
-function linhasDoXlsx(buf: Buffer): string[][] {
+export function linhasDoXlsx(buf: Buffer): string[][] {
   const ss = sharedStringsXlsx(buf)
   const xml = unzipEntry(buf, 'xl/worksheets/sheet1.xml').toString('utf8')
   const linhas: string[][] = []

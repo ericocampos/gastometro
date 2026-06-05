@@ -33,12 +33,25 @@ export interface PontoMensal { anoMes: string; total: number }
 export interface ItemCategoria { categoria: string; total: number }
 export interface ItemFornecedor { nome: string; cnpjCpf?: string; total: number }
 
+// conferência cruzada da VIAP com o TCE (empenhos de "Indenizações e Restituições", credor=vereador)
+export interface MesConferido {
+  anoMes: string
+  apresentado: number  // notas apresentadas no mês
+  reembolsado: number  // o que a câmara reembolsou (= o que o TCE deve ter pago)
+  tce: number | null   // empenho pago casado no TCE (null = não encontrado)
+}
+export interface ConferenciaTce {
+  fonte: string          // URL da fonte oficial cruzada (dados abertos do TCE)
+  meses: MesConferido[]  // a UI filtra pelo período selecionado e soma os totais de lá
+}
+
 export interface ResumoPolitico {
   politico: Politico
   total: number
   serieMensal: PontoMensal[]
   porCategoria: ItemCategoria[]
   porFornecedor: ItemFornecedor[]
+  conferidoTce?: ConferenciaTce
 }
 
 export interface Agregados {
@@ -57,6 +70,7 @@ export interface Despesa {
   fornecedor: { nome: string; cnpjCpf?: string }
   valor: number
   urlDocumento?: string
+  numeroNf?: string   // número da nota fiscal (CG publica o número, não o documento)
 }
 
 export interface Evidencia { despesaId?: string; descricao: string; valor?: number; data?: string; url?: string }
@@ -193,6 +207,8 @@ export interface Municipio {
   totalViapPeriodo?: number
   totalGabineteMes?: number
   periodoViap?: { de: string; ate: string } | null
+  viapDetalhada?: boolean   // a VIAP traz detalhamento por fornecedor (CG sim; JP não)
+  gabinetePorVereador?: boolean  // o gabinete é atribuído por vereador (JP sim; CG não, fica agregado)
   // leve:
   mesReferencia?: string          // mês de referência da folha (AAAA-MM)
   folhaComissionados?: number     // folha bruta agregada dos cargos comissionados da câmara

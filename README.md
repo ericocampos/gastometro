@@ -120,6 +120,23 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 > Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
 
+### Câmara Municipal de Campina Grande (vereadores · modelo completo)
+
+CG tem gasto **por vereador** porque a câmara publica a **VIAP itemizada**. É o segundo município no modelo completo (depois de JP), com um detalhamento até **maior** que o de JP (tem fornecedor por lançamento).
+
+| O quê | Endpoint / arquivo | Formato | Como ligamos ao vereador |
+|---|---|---|---|
+| **Despesas (VIAP)** | `https://www.camaracg.pb.gov.br/transparencia/viap-{ano}/` → uma planilha `.xlsx` por vereador/mês (`VIAP-{NOME}-{MM}-{ano}.xlsx`) | `.xlsx` oficial | prestação de contas **itemizada**: categoria, **fornecedor**, CPF/CNPJ, nº da NF, data e valor. Traz o **total apresentado** em notas e o **valor reembolsado** (capado no teto, com glosas). Reaproveita o leitor de xlsx do `alpb.ts`. Datas em **serial do Excel**. Resoluções 017/2024 e 110/2024. Casamento por **nome civil** (linha `VEREADOR`) contra os Eletivos do TCE |
+| **Conferência do reembolso** | TCE-PB `dados-por-municipio/050/despesas/despesas-{ano}.zip` (`collector/sources/tceDespesas.ts`) | CSV (dados abertos) | **validação cruzada**: no TCE a VIAP é empenho de "Indenizações e Restituições" com **credor = o vereador**. Conferimos, mês a mês, o **reembolsado** da planilha com o **empenho pago** no TCE (casa por valor). O perfil mostra o selo "conferido" ou, quando difere, os dois valores + link |
+| **Gabinete — comissionados** | TCE-PB (mesma fonte das câmaras leve) | CSV (dados abertos) | **agregado**: nem o TCE nem a folha oficial da câmara (PublicSoft) atribuem o comissionado a um vereador específico (lotação genérica "GABINETE"), então **não há gabinete por vereador** como em JP |
+| **Partido e foto** | TSE (eleição municipal 2024) | CSV + JPG | mesma fonte das câmaras leve |
+
+> **Teto da VIAP:** a Resolução 110/2024 fixa o teto em **R$ 17.000/mês**, e os dados de 2025 confirmam. Mas **2026 aparece capado em R$ 12.000** (sem norma localizada). Por isso o coletor **deriva o teto do próprio dado** (maior reembolsado do ano mais recente), em vez de cravar um valor que envelhece.
+
+> **Apresentado × reembolsado:** o "TOTAL DE DESPESAS" da planilha (soma das notas) pode passar do teto ou ter glosa; o que vira **custo público** é o "VALOR REEMBOLSADO", que é o que o **TCE registra como pago**. O perfil deixa a glosa visível. O **documento da nota** (a imagem) não é publicado nem pela câmara nem pelo TCE — dá para conferir o **fluxo do dinheiro** (apresentado → reembolsado → pago, cruzado em duas fontes oficiais), não o conteúdo de cada nota. A mesma conferência roda para João Pessoa (cod TCE 095).
+
+> Por que completo sem gabinete por vereador? Porque a peça que define o modelo completo é o **gasto por vereador**, e a VIAP de CG é por vereador. O gabinete fica agregado porque **nenhuma fonte oficial** liga o comissionado ao vereador (sem inventar). O servidor da câmara rejeita requisições sem cara de browser (406) — o coletor manda `User-Agent`/`Accept` de navegador, com **cache em disco** (`data/raw/viap-cg/`) porque o host é lento.
+
 ### Câmaras municipais — modelo leve (demais cidades) · fonte única TCE-PB
 
 Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador.

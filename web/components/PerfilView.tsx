@@ -2,10 +2,10 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce } from '@/lib/tipos'
 import {
-  type SerieParlamentar,
-  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
+  type SerieParlamentar, type Periodo,
+  parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
@@ -33,8 +33,72 @@ const casaLonga = (c: Casa) =>
 const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
+// Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
+// que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
+// empenho pago no TCE; 'divergente' mostra os dois totais (câmara × TCE) e o link da fonte.
+function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Periodo; docPublicada: boolean }) {
+  // filtra a conferência pelo período selecionado (a conferência cobre só a legislatura atual, 2025→;
+  // anos anteriores não têm cruzamento, então o selo some)
+  const ms = c.meses.filter((m) => pontoNoPeriodo(m.anoMes, periodo))
+  if (ms.length === 0) return null
+  const conferidos = ms.filter((m) => m.tce !== null).length
+  const reembolsado = ms.reduce((s, m) => s + m.reembolsado, 0)
+  const pagoTce = ms.reduce((s, m) => s + (m.tce ?? 0), 0)
+  const apresentado = ms.reduce((s, m) => s + m.apresentado, 0)
+  const glosa = apresentado - reembolsado
+  const temGlosa = glosa > 0.5
+
+  const gap = ms.length - conferidos
+  const estado = gap <= 1 ? 'conferido' : conferidos >= ms.length / 2 ? 'conferir' : 'neutro'
+  const cor = estado === 'conferido' ? '#0f766e' : estado === 'conferir' ? '#c87f1a' : '#6b7280'
+  const fonte = (
+    <a href={c.fonte} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: cor }}>
+      dados abertos do TCE-PB ↗
+    </a>
+  )
+  return (
+    <div
+      className="mb-3 rounded-md border-l-2 px-3 py-2 text-xs leading-relaxed text-tinta-suave"
+      style={{ borderColor: cor, background: `color-mix(in srgb, ${cor} 8%, transparent)` }}
+    >
+      {estado === 'conferido' ? (
+        <>
+          <strong style={{ color: cor }}>✓ Reembolso conferido com o TCE.</strong>{' '}
+          No período, o reembolso a este vereador (<strong className="text-tinta">{brl(reembolsado)}</strong>)
+          bate com os empenhos pagos (“Indenizações e Restituições”) no Tribunal de Contas do Estado
+          {gap === 1 ? ' (o mês mais recente pode ainda não constar lá)' : ''}. Fonte cruzada: {fonte}.
+        </>
+      ) : estado === 'conferir' ? (
+        <>
+          <strong style={{ color: cor }}>Reembolso × TCE: conferir.</strong>{' '}
+          No período, {conferidos} de {ms.length} meses batem com os empenhos do TCE —{' '}
+          <strong className="text-tinta">reembolsado: {brl(reembolsado)}</strong> ·{' '}
+          <strong className="text-tinta">pago no TCE: {brl(pagoTce)}</strong>. Pode ser defasagem entre
+          competência e pagamento; confira nos {fonte}.
+        </>
+      ) : (
+        <>
+          <strong style={{ color: cor }}>Cruzamento com o TCE.</strong>{' '}
+          No período, não foi possível casar a maioria dos meses ({conferidos} de {ms.length}) com os
+          empenhos do TCE — pode ser diferença de competência, homônimo ou registro à parte. Veja a fonte: {fonte}.
+        </>
+      )}
+      {temGlosa && (
+        <>
+          {' '}<span className="text-tinta-tenue">Das notas apresentadas ({brl(apresentado)}), a câmara
+          reembolsou {brl(reembolsado)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
+          foram reembolsados (glosa ou teto).</span>
+        </>
+      )}
+      {' '}<span className="text-tinta-tenue">{docPublicada
+        ? 'O comprovante de cada mês (a discriminação da VIAP e as notas fiscais anexadas) está no link “nota” do detalhamento — dá para conferir o conteúdo de cada despesa.'
+        : 'A nota fiscal em si (o documento) não é publicada pela câmara nem pelo TCE — dá para conferir o fluxo do dinheiro, não o conteúdo de cada nota.'}</span>
+    </div>
+  )
+}
+
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -55,6 +119,7 @@ export function PerfilView({
   }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
+  conferidoTce?: ConferenciaTce
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -288,21 +353,22 @@ export function PerfilView({
                 <section>
                   <SecaoTitulo>Principais fornecedores</SecaoTitulo>
                   <div className="overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
-                    {politico.casa === 'camara_municipal' ? (
+                    {ag.porFornecedor.some((f) => f.nome.trim() !== '') ? (
+                      <PerfilFornecedores itens={ag.porFornecedor.filter((f) => f.nome.trim() !== '')} />
+                    ) : (
                       <p className="text-sm leading-relaxed text-tinta-suave">
                         <strong className="text-tinta">Detalhamento por fornecedor não disponível na fonte.</strong>{' '}
                         A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o
                         detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link
                         da nota.
                       </p>
-                    ) : (
-                      <PerfilFornecedores itens={ag.porFornecedor} />
                     )}
                   </div>
                 </section>
               </div>
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
+                {conferidoTce && <SeloTce c={conferidoTce} periodo={periodo} docPublicada={despesas.some((d) => d.urlDocumento)} />}
                 <div className="rounded-xl border border-borda bg-superficie p-4">
                   <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} casa={politico.casa} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
                 </div>
