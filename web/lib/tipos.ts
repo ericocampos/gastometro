@@ -231,3 +231,16 @@ export interface Municipio {
 }
 export interface NaoCoberta { slug: string; nome: string; motivo: string }
 export interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; cidades: Municipio[]; naoCobertas?: NaoCoberta[] }
+
+export type PoderOrcamento = 'prefeitura' | 'camara' | 'previdencia' | 'outros'
+export interface FuncaoValor { funcao: string; pago: number; empenhado: number; liquidado: number }
+export interface PoderAno { poder: PoderOrcamento; funcoes: FuncaoValor[]; total: number }
+export interface OrcamentoAno { ano: number; poderes: PoderAno[]; totalPago: number }
+export interface OrcamentoMunicipio {
+  slug: string
+  cod: string
+  nome: string
+  anos: OrcamentoAno[]
+  fontes: { ano: number; url: string }[]
+  atualizadoEm: string
+}

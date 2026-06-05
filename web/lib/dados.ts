@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -107,4 +107,16 @@ export function getPerfil(id: string): PerfilParlamentar | null {
   const caminho = resolve(dataDir(), 'perfis', `${id}.json`)
   if (!existsSync(caminho)) return null
   return lerJson<PerfilParlamentar>(caminho)
+}
+
+export function getOrcamento(slug: string): OrcamentoMunicipio | null {
+  const caminho = resolve(dataDir(), 'orcamento', `${slug}.json`)
+  if (!existsSync(caminho)) return null
+  return lerJson<OrcamentoMunicipio>(caminho)
+}
+
+export function getOrcamentoSlugs(): string[] {
+  const caminho = resolve(dataDir(), 'orcamento', '_index.json')
+  if (!existsSync(caminho)) return []
+  return lerJson<{ slugs: string[] }>(caminho).slugs
 }
