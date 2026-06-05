@@ -60,14 +60,22 @@ function Card({
 }
 
 export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: Municipio; atualizadoEm?: string }) {
-  const { salario, viapTeto, gabineteMedia } = municipio.custo
-  const total = salario + viapTeto + (gabineteMedia ?? 0)
+  const { salario, viapTeto, gabineteMedia, temViap, temDiaria, diariaMedia } = municipio.custo
+  const viapFonteTce = municipio.custo.viapFonteTce
+  // cidade só de diárias: o card do meio mostra diárias (média anual por vereador) em vez de VIAP
+  const soDiaria = viapFonteTce && !temViap && temDiaria
+  const gastoMensal = viapFonteTce ? (temViap ? viapTeto : 0) + (diariaMedia ?? 0) / 12 : viapTeto
+  const total = salario + gastoMensal + (gabineteMedia ?? 0)
 
   return (
     <div>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Card icone={Icones.salario} rotulo="Subsídio mensal" valor={brlInteiro(salario)} legenda="Subsídio do vereador" cor={TEAL} />
-        <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapTeto)} legenda={municipio.custo.viapFonteTce ? 'Valor fixo mensal por vereador' : 'Teto mensal de reembolso'} cor={TEAL} />
+        {soDiaria ? (
+          <Card icone={Icones.viap} rotulo="Diárias" valor={brlInteiro(diariaMedia ?? 0)} legenda="Média por vereador · ano" cor={TEAL} />
+        ) : (
+          <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapTeto)} legenda={viapFonteTce ? 'Valor fixo mensal por vereador' : 'Teto mensal de reembolso'} cor={TEAL} />
+        )}
         <Card
           icone={Icones.gabinete}
           rotulo="Verba de gabinete"
@@ -86,15 +94,15 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
       </div>
 
       <p className="mt-3 text-xs text-tinta-tenue">
-        Valores de referência. {municipio.custo.viapFonteTce
-          ? 'A VIAP aqui é um valor fixo mensal por vereador (não um reembolso por nota), apurado dos empenhos de “Indenizações e Restituições” pagos a cada vereador no TCE-PB.'
+        Valores de referência. {viapFonteTce
+          ? 'O gasto rastreável por vereador (VIAP e/ou diárias) vem dos empenhos pagos a cada vereador no TCE-PB; a procedência está na nota abaixo e o detalhe no perfil de cada vereador.'
           : 'A VIAP é o teto mensal de reembolso por nota' + (municipio.viapDetalhada
               ? ' (cada lançamento tem categoria, fornecedor e nota fiscal — veja no perfil de cada vereador).'
               : ' (a fonte não traz detalhamento por fornecedor).')}{' '}
         {municipio.gabinetePorVereador === false
           ? 'A folha de gabinete é a folha de comissionados da câmara (a fonte oficial não atribui cada comissionado a um vereador), em média por vereador.'
           : 'A folha de gabinete é a média real dos gabinetes no mês de referência.'}{' '}
-        O total é uma estimativa.{municipio.periodoViap && ` VIAP coberta de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
+        O total é uma estimativa.{municipio.periodoViap && ` Gasto por vereador coberto de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
       </p>
 
       {municipio.custo.viapFonteTce && municipio.custo.viapNota && (

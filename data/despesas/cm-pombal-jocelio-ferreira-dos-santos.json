@@ -24,6 +24,18 @@
     "valor": 3750
   },
   {
+    "id": "cm-pombal-jocelio-ferreira-dos-santos-diaria-2025-04",
+    "politicoId": "cm-pombal-jocelio-ferreira-dos-santos",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1518
+  },
+  {
     "id": "cm-pombal-jocelio-ferreira-dos-santos-viap-2025-05",
     "politicoId": "cm-pombal-jocelio-ferreira-dos-santos",
     "data": "2025-05-01",
@@ -144,6 +156,18 @@
     "valor": 4000
   },
   {
+    "id": "cm-pombal-jocelio-ferreira-dos-santos-diaria-2026-03",
+    "politicoId": "cm-pombal-jocelio-ferreira-dos-santos",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 810.5
+  },
+  {
     "id": "cm-pombal-jocelio-ferreira-dos-santos-viap-2026-04",
     "politicoId": "cm-pombal-jocelio-ferreira-dos-santos",
     "data": "2026-04-01",
@@ -166,5 +190,17 @@
       "nome": ""
     },
     "valor": 4000
+  },
+  {
+    "id": "cm-pombal-jocelio-ferreira-dos-santos-diaria-2026-05",
+    "politicoId": "cm-pombal-jocelio-ferreira-dos-santos",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2431.5
   }
 ]

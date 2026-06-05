@@ -1,5 +1,17 @@
 [
   {
+    "id": "cm-jacarau-ana-maria-trajano-de-carvalho-diaria-2025-05",
+    "politicoId": "cm-jacarau-ana-maria-trajano-de-carvalho",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2100
+  },
+  {
     "id": "cm-jacarau-ana-maria-trajano-de-carvalho-viap-2025-09",
     "politicoId": "cm-jacarau-ana-maria-trajano-de-carvalho",
     "data": "2025-09-01",
@@ -46,5 +58,17 @@
       "nome": ""
     },
     "valor": 4974.62
+  },
+  {
+    "id": "cm-jacarau-ana-maria-trajano-de-carvalho-diaria-2026-05",
+    "politicoId": "cm-jacarau-ana-maria-trajano-de-carvalho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800
   }
 ]

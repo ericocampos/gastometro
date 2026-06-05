@@ -24,7 +24,7 @@ export default function MunicipiosPage() {
 
       {comparativo.length > 0 && (
         <section className="mb-8">
-          <SecaoTitulo>Comparar cidades · VIAP ano a ano</SecaoTitulo>
+          <SecaoTitulo>Comparar cidades · gasto por vereador ano a ano</SecaoTitulo>
           <ComparadorCidades cidades={comparativo} />
         </section>
       )}

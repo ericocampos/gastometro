@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseIndenizacoesCamara, conferirMeses, fonteUrlDespesas, chaveCpf } from './tceDespesas'
+import { parseIndenizacoesCamara, parseDespesasVereador, conferirMeses, fonteUrlDespesas, chaveCpf } from './tceDespesas'
 
 // monta uma linha do CSV de despesas do TCE com as colunas nas posições certas (1-based):
 // 3 descricao_ug · 6 mes · 7 cpf_cnpj · 8 credor · 11 valor_pago · 29 elemento_despesa
@@ -28,6 +28,16 @@ describe('tceDespesas', () => {
     expect(r.every((x) => x.credor === 'ANA MARIA COSTA')).toBe(true)
     expect(r[0]).toMatchObject({ mes: 1, ano: 2025, valorPago: 12000 })
     expect(r[1].valorPago).toBeCloseTo(16987.64, 2)
+  })
+
+  it('parseDespesasVereador captura VIAP e diárias da câmara, com o tipo de cada', () => {
+    const r = parseDespesasVereador(CSV, 2025)
+    expect(r.filter((x) => x.tipo === 'viap')).toHaveLength(2) // as 2 indenizações
+    const diaria = r.filter((x) => x.tipo === 'diaria')
+    expect(diaria).toHaveLength(1)
+    expect(diaria[0]).toMatchObject({ credor: 'ANA MARIA COSTA', valorPago: 500, tipo: 'diaria' })
+    // prefeitura e valor zero ficam de fora
+    expect(r.every((x) => x.credor !== 'FULANO' && x.credor !== 'CLEDSON')).toBe(true)
   })
 
   const mes = (anoMes: string, v: number, apr?: number) => ({ anoMes, reembolsado: v, apresentado: apr ?? v })

@@ -375,7 +375,7 @@ export function PerfilView({
                       <p className="text-sm leading-relaxed text-tinta-suave">
                         <strong className="text-tinta">Detalhamento por fornecedor não disponível na fonte.</strong>{' '}
                         {municipioCusto?.viapFonteTce
-                          ? 'Aqui a VIAP é um valor fixo mensal por vereador (não um reembolso por nota), apurado dos empenhos pagos no TCE-PB. Cada mês aparece no detalhamento abaixo.'
+                          ? 'O gasto por vereador aqui (VIAP e/ou diárias) é apurado dos empenhos pagos a cada vereador no TCE-PB, sem detalhamento por fornecedor. Cada lançamento aparece no detalhamento abaixo, por categoria.'
                           : 'A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link da nota.'}
                       </p>
                     )}

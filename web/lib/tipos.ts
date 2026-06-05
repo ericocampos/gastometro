@@ -187,12 +187,16 @@ export interface CustoMunicipio {
   viapTeto: number
   viapMedia: number | null
   gabineteMedia: number | null
-  // quando a VIAP vem do TCE (a câmara não publica de forma legível por máquina, ex.: Santa Rita):
-  // a UI mostra uma nota neutra explicando a fonte e o valor fixo, com link p/ as duas fontes oficiais
+  // quando o gasto por vereador vem do TCE (a câmara não publica de forma legível por máquina):
+  // a UI mostra uma nota de procedência (VIAP e/ou diárias), com link p/ as fontes oficiais
   viapFonteTce?: boolean
   viapNota?: string
   viapFonteCamaraUrl?: string
   viapFonteTceUrl?: string
+  // gasto rastreável por vereador no TCE: VIAP (valor fixo, viapTeto) e/ou diárias (média anual/vereador)
+  temViap?: boolean
+  temDiaria?: boolean
+  diariaMedia?: number | null
 }
 // vereador na listagem do modelo leve (cidades sem gasto variável por vereador)
 export interface MunicipioVereador {

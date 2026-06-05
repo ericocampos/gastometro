@@ -24,6 +24,18 @@
     "valor": 6000
   },
   {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2025-02",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2025-02-01",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800
+  },
+  {
     "id": "cm-sousa-radames-genesis-marques-estrela-viap-2025-03",
     "politicoId": "cm-sousa-radames-genesis-marques-estrela",
     "data": "2025-03-01",
@@ -48,6 +60,18 @@
     "valor": 6000
   },
   {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2025-04",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800
+  },
+  {
     "id": "cm-sousa-radames-genesis-marques-estrela-viap-2025-05",
     "politicoId": "cm-sousa-radames-genesis-marques-estrela",
     "data": "2025-05-01",
@@ -58,6 +82,18 @@
       "nome": ""
     },
     "valor": 6000
+  },
+  {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2025-05",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
   },
   {
     "id": "cm-sousa-radames-genesis-marques-estrela-viap-2025-06",
@@ -120,6 +156,18 @@
     "valor": 6000
   },
   {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2025-10",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2025-10-01",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-sousa-radames-genesis-marques-estrela-viap-2025-11",
     "politicoId": "cm-sousa-radames-genesis-marques-estrela",
     "data": "2025-11-01",
@@ -156,6 +204,18 @@
     "valor": 6000
   },
   {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2026-02",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-sousa-radames-genesis-marques-estrela-viap-2026-03",
     "politicoId": "cm-sousa-radames-genesis-marques-estrela",
     "data": "2026-03-01",
@@ -190,5 +250,17 @@
       "nome": ""
     },
     "valor": 6000
+  },
+  {
+    "id": "cm-sousa-radames-genesis-marques-estrela-diaria-2026-05",
+    "politicoId": "cm-sousa-radames-genesis-marques-estrela",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800
   }
 ]

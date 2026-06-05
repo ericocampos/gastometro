@@ -60,6 +60,18 @@
     "valor": 4000
   },
   {
+    "id": "cm-sape-rubens-luis-lucena-da-silva-diaria-2025-05",
+    "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800
+  },
+  {
     "id": "cm-sape-rubens-luis-lucena-da-silva-viap-2025-06",
     "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
     "data": "2025-06-01",
@@ -202,5 +214,17 @@
       "nome": ""
     },
     "valor": 3600
+  },
+  {
+    "id": "cm-sape-rubens-luis-lucena-da-silva-diaria-2026-05",
+    "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2000
   }
 ]

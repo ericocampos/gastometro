@@ -1,5 +1,29 @@
 [
   {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-2025-04",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1600
+  },
+  {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-2025-05",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-sao-bento-juliano-dantas-veras-lucio-viap-2025-06",
     "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
     "data": "2025-06-01",
@@ -82,5 +106,17 @@
       "nome": ""
     },
     "valor": 5496.98
+  },
+  {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-2026-02",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400
   }
 ]

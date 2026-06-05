@@ -1,5 +1,29 @@
 [
   {
+    "id": "cm-conde-joselio-dionisio-do-nascimento-diaria-2025-03",
+    "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
+    "data": "2025-03-01",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3200
+  },
+  {
+    "id": "cm-conde-joselio-dionisio-do-nascimento-diaria-2025-07",
+    "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
+    "data": "2025-07-01",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
+  },
+  {
     "id": "cm-conde-joselio-dionisio-do-nascimento-viap-2025-12",
     "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
     "data": "2025-12-01",
@@ -12,6 +36,18 @@
     "valor": 6000
   },
   {
+    "id": "cm-conde-joselio-dionisio-do-nascimento-diaria-2025-12",
+    "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
+    "data": "2025-12-01",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
+  },
+  {
     "id": "cm-conde-joselio-dionisio-do-nascimento-viap-2026-01",
     "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
     "data": "2026-01-01",
@@ -22,6 +58,18 @@
       "nome": ""
     },
     "valor": 10000
+  },
+  {
+    "id": "cm-conde-joselio-dionisio-do-nascimento-diaria-2026-01",
+    "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4500
   },
   {
     "id": "cm-conde-joselio-dionisio-do-nascimento-viap-2026-02",
@@ -46,6 +94,18 @@
       "nome": ""
     },
     "valor": 10000
+  },
+  {
+    "id": "cm-conde-joselio-dionisio-do-nascimento-diaria-2026-03",
+    "politicoId": "cm-conde-joselio-dionisio-do-nascimento",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4500
   },
   {
     "id": "cm-conde-joselio-dionisio-do-nascimento-viap-2026-04",

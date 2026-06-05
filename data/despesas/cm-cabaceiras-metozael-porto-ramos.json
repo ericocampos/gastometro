@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cm-cabaceiras-metozael-porto-ramos-diaria-2026-01",
+    "politicoId": "cm-cabaceiras-metozael-porto-ramos",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 100
+  },
+  {
+    "id": "cm-cabaceiras-metozael-porto-ramos-diaria-2026-03",
+    "politicoId": "cm-cabaceiras-metozael-porto-ramos",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200
+  },
+  {
+    "id": "cm-cabaceiras-metozael-porto-ramos-diaria-2026-06",
+    "politicoId": "cm-cabaceiras-metozael-porto-ramos",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200
+  }
+]

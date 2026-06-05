@@ -1,5 +1,29 @@
 [
   {
+    "id": "cm-conde-daniel-severino-da-silva-junior-diaria-2025-03",
+    "politicoId": "cm-conde-daniel-severino-da-silva-junior",
+    "data": "2025-03-01",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3200
+  },
+  {
+    "id": "cm-conde-daniel-severino-da-silva-junior-diaria-2025-07",
+    "politicoId": "cm-conde-daniel-severino-da-silva-junior",
+    "data": "2025-07-01",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
+  },
+  {
     "id": "cm-conde-daniel-severino-da-silva-junior-viap-2025-12",
     "politicoId": "cm-conde-daniel-severino-da-silva-junior",
     "data": "2025-12-01",
@@ -10,6 +34,30 @@
       "nome": ""
     },
     "valor": 5846.14
+  },
+  {
+    "id": "cm-conde-daniel-severino-da-silva-junior-diaria-2025-12",
+    "politicoId": "cm-conde-daniel-severino-da-silva-junior",
+    "data": "2025-12-01",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
+  },
+  {
+    "id": "cm-conde-daniel-severino-da-silva-junior-diaria-2026-01",
+    "politicoId": "cm-conde-daniel-severino-da-silva-junior",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4500
   },
   {
     "id": "cm-conde-daniel-severino-da-silva-junior-viap-2026-02",

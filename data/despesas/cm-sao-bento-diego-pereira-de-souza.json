@@ -1,5 +1,17 @@
 [
   {
+    "id": "cm-sao-bento-diego-pereira-de-souza-diaria-2025-02",
+    "politicoId": "cm-sao-bento-diego-pereira-de-souza",
+    "data": "2025-02-01",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-sao-bento-diego-pereira-de-souza-viap-2025-06",
     "politicoId": "cm-sao-bento-diego-pereira-de-souza",
     "data": "2025-06-01",
@@ -82,5 +94,17 @@
       "nome": ""
     },
     "valor": 5500
+  },
+  {
+    "id": "cm-sao-bento-diego-pereira-de-souza-diaria-2026-02",
+    "politicoId": "cm-sao-bento-diego-pereira-de-souza",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400
   }
 ]

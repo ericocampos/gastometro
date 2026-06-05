@@ -1,5 +1,53 @@
 [
   {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-01",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2025-01-01",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
+  },
+  {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-02",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2025-02-01",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800
+  },
+  {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-03",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2025-03-01",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3200
+  },
+  {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-06",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2025-06-01",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3200
+  },
+  {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2025-12",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
     "data": "2025-12-01",
@@ -10,6 +58,18 @@
       "nome": ""
     },
     "valor": 6000
+  },
+  {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-12",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2025-12-01",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-01",
@@ -24,6 +84,18 @@
     "valor": 10000
   },
   {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2026-01",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4500
+  },
+  {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-03",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
     "data": "2026-03-01",
@@ -34,6 +106,18 @@
       "nome": ""
     },
     "valor": 20000
+  },
+  {
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2026-03",
+    "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4500
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-04",

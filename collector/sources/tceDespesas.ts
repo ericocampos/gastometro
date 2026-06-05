@@ -82,6 +82,47 @@ export async function baixarIndenizacoesCamara(cod: string, anos: number[]): Pro
   return out
 }
 
+// Gasto rastreável por vereador no TCE, por tipo: 'viap' (Indenizações e Restituições, valor fixo
+// mensal) e 'diaria' (Diárias - Civil etc., variável, quem viajou). Em ambos o credor é o vereador.
+export type TipoDespesaVereador = 'viap' | 'diaria'
+export interface DespesaVereadorTce { credor: string; credorCpf: string; mes: number; ano: number; valorPago: number; tipo: TipoDespesaVereador }
+
+const ehDiaria = (elemento: string): boolean => /di[áa]ria/i.test(elemento)
+
+/** Parseia os empenhos da Câmara pagos a vereadores (VIAP + diárias), com o tipo de cada um. */
+export function parseDespesasVereador(textoCsv: string, ano: number): DespesaVereadorTce[] {
+  const linhas = textoCsv.split('\n')
+  const out: DespesaVereadorTce[] = []
+  for (let i = 1; i < linhas.length; i++) {
+    const f = linhas[i].split(';')
+    if (f.length < 29) continue
+    if (!/c[âa]mara\s+municipal/i.test(f[2] ?? '')) continue
+    const elemento = (f[28] ?? '').trim()
+    const tipo: TipoDespesaVereador | null =
+      elemento === ELEMENTO_VIAP ? 'viap' : ehDiaria(elemento) ? 'diaria' : null
+    if (!tipo) continue
+    const valorPago = valorBr(f[10] ?? '')
+    if (valorPago <= 0) continue
+    out.push({
+      credor: (f[7] ?? '').trim(), credorCpf: (f[6] ?? '').trim(),
+      mes: Number((f[5] ?? '').slice(0, 2)) || 0, ano, valorPago, tipo,
+    })
+  }
+  return out
+}
+
+/** Baixa VIAP + diárias por vereador da câmara para os anos pedidos (ignora ano sem arquivo). */
+export async function baixarDespesasVereador(cod: string, anos: number[]): Promise<DespesaVereadorTce[]> {
+  const out: DespesaVereadorTce[] = []
+  for (const ano of anos) {
+    try {
+      const buf = await fetchBuffer(fonteUrlDespesas(cod, ano))
+      out.push(...parseDespesasVereador(inflarCsvZip(buf), ano))
+    } catch { /* ano sem arquivo */ }
+  }
+  return out
+}
+
 /**
  * Confere os valores que mostramos (um por mês) contra os empenhos pagos ao vereador no TCE, por
  * casamento de VALOR (tolerância de 1 centavo), consumindo cada empenho uma vez. 'conferido' = todo

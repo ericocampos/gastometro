@@ -24,6 +24,18 @@
     "valor": 2000
   },
   {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-2025-03",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2025-03-01",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 660
+  },
+  {
     "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-viap-2025-04",
     "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
     "data": "2025-04-01",
@@ -34,6 +46,18 @@
       "nome": ""
     },
     "valor": 2000
+  },
+  {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-2025-04",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 330
   },
   {
     "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-viap-2025-05",
@@ -166,5 +190,17 @@
       "nome": ""
     },
     "valor": 2000
+  },
+  {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-2026-04",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 660
   }
 ]

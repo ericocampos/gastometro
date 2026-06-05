@@ -36,6 +36,18 @@
     "valor": 3750
   },
   {
+    "id": "cm-pombal-ana-isabelle-santana-de-araujo-diaria-2025-05",
+    "politicoId": "cm-pombal-ana-isabelle-santana-de-araujo",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2277
+  },
+  {
     "id": "cm-pombal-ana-isabelle-santana-de-araujo-viap-2025-06",
     "politicoId": "cm-pombal-ana-isabelle-santana-de-araujo",
     "data": "2025-06-01",
@@ -166,5 +178,17 @@
       "nome": ""
     },
     "valor": 4000
+  },
+  {
+    "id": "cm-pombal-ana-isabelle-santana-de-araujo-diaria-2026-05",
+    "politicoId": "cm-pombal-ana-isabelle-santana-de-araujo",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2431.5
   }
 ]

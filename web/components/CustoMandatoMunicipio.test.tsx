@@ -18,7 +18,7 @@ describe('CustoMandatoMunicipio', () => {
     // total = 26000 + 14000 + 50000 = 90000
     expect(screen.getByText(/≈\s*R\$ 90\.000/)).toBeInTheDocument()
     // período coberto
-    expect(screen.getByText(/VIAP coberta de jan\/2025 a fev\/2026/)).toBeInTheDocument()
+    expect(screen.getByText(/Gasto por vereador coberto de jan\/2025 a fev\/2026/)).toBeInTheDocument()
   })
 
   it('avisa da defasagem com a data de importação e o último mês disponível', () => {
@@ -38,5 +38,23 @@ describe('CustoMandatoMunicipio', () => {
     expect(screen.getByText('—')).toBeInTheDocument()
     // total = 26000 + 14000 + 0 = 40000
     expect(screen.getByText(/≈\s*R\$ 40\.000/)).toBeInTheDocument()
+  })
+
+  it('cidade só de diárias: card mostra Diárias (média/ano) em vez de VIAP', () => {
+    const soDiaria: Municipio = {
+      ...base, nome: 'Areia', viapDetalhada: false, gabinetePorVereador: false,
+      custo: {
+        slug: 'areia', nome: 'Areia', salario: 7000, viapTeto: 0, viapMedia: null, gabineteMedia: 8000,
+        viapFonteTce: true, temViap: false, temDiaria: true, diariaMedia: 9600,
+        viapNota: 'Em Areia, a câmara não paga VIAP por vereador. Os vereadores recebem diárias.',
+        viapFonteTceUrl: 'https://tce/014',
+      },
+    }
+    render(<CustoMandatoMunicipio municipio={soDiaria} />)
+    expect(screen.getByText('Diárias')).toBeInTheDocument()
+    expect(screen.getByText('R$ 9.600')).toBeInTheDocument() // média anual de diárias por vereador
+    expect(screen.getByText(/não paga VIAP por vereador/)).toBeInTheDocument()
+    // total mensal = 7000 + 9600/12 (800) + 8000 = 15800
+    expect(screen.getByText(/≈\s*R\$ 15\.800/)).toBeInTheDocument()
   })
 })

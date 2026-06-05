@@ -108,6 +108,18 @@
     "valor": 4000
   },
   {
+    "id": "cm-sape-jose-eduardo-barbosa-santos-diaria-2025-09",
+    "politicoId": "cm-sape-jose-eduardo-barbosa-santos",
+    "data": "2025-09-01",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-sape-jose-eduardo-barbosa-santos-viap-2025-10",
     "politicoId": "cm-sape-jose-eduardo-barbosa-santos",
     "data": "2025-10-01",
@@ -202,5 +214,17 @@
       "nome": ""
     },
     "valor": 4000
+  },
+  {
+    "id": "cm-sape-jose-eduardo-barbosa-santos-diaria-2026-05",
+    "politicoId": "cm-sape-jose-eduardo-barbosa-santos",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
   }
 ]

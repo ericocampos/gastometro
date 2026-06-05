@@ -24,6 +24,18 @@
     "valor": 1200
   },
   {
+    "id": "cm-juazeirinho-wagner-cordeiro-trajano-diaria-2025-02",
+    "politicoId": "cm-juazeirinho-wagner-cordeiro-trajano",
+    "data": "2025-02-01",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400
+  },
+  {
     "id": "cm-juazeirinho-wagner-cordeiro-trajano-viap-2025-03",
     "politicoId": "cm-juazeirinho-wagner-cordeiro-trajano",
     "data": "2025-03-01",
@@ -54,6 +66,18 @@
     "ano": 2025,
     "mes": 5,
     "categoria": "Verba indenizatória (VIAP)",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200
+  },
+  {
+    "id": "cm-juazeirinho-wagner-cordeiro-trajano-diaria-2025-05",
+    "politicoId": "cm-juazeirinho-wagner-cordeiro-trajano",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },

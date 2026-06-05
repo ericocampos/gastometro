@@ -15,7 +15,7 @@ import { type VereadorLeve } from './sources/vereadorLeve.js'
 import { MUNICIPIOS_TCE, baixarCamaraTce, mesesComVereador, extrairVereadoresTce, somarComissionadosTce, type LinhaTce } from './sources/tce.js'
 import { baixarCandidatosUf, matchCandidato, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocal, type IndiceMunicipio } from './sources/tseEleicoes.js'
 import { coletarViapCg, type VereadorViapCg } from './sources/cmcgViap.js'
-import { baixarIndenizacoesCamara, conferirMeses, fonteUrlDespesas, chaveCpf, type IndenizacaoTce, type ConferenciaTce } from './sources/tceDespesas.js'
+import { baixarIndenizacoesCamara, baixarDespesasVereador, conferirMeses, fonteUrlDespesas, chaveCpf, type IndenizacaoTce, type DespesaVereadorTce, type ConferenciaTce } from './sources/tceDespesas.js'
 import { normNome, mesmaPessoaTokens } from './sources/nomes.js'
 
 // Eleição que elegeu o mandato municipal atual (2025-2028). Fonte do partido e da foto no leve.
@@ -34,11 +34,15 @@ interface SecretarioGabinete { nome: string; remuneracao: number; cargo?: string
 interface GabineteParlamentar { total: number; folha: number; secretarios: SecretarioGabinete[]; folhaOficial?: boolean; mesReferencia?: string }
 interface CustoMunicipio {
   slug: string; nome: string; salario: number; viapTeto: number; viapMedia: number | null; gabineteMedia: number | null
-  // quando a VIAP vem do TCE (não da câmara): a UI mostra a fonte e a nota neutra do valor fixo
+  // quando o gasto por vereador vem do TCE (não da câmara): a UI mostra a fonte e a nota de procedência
   viapFonteTce?: boolean
   viapNota?: string
   viapFonteCamaraUrl?: string
   viapFonteTceUrl?: string
+  // gasto rastreável por vereador no TCE: VIAP (valor fixo, viapTeto) e/ou diárias (média anual/vereador)
+  temViap?: boolean
+  temDiaria?: boolean
+  diariaMedia?: number | null
 }
 interface MunicipioVereador { nome: string; subsidio: number; presidente?: boolean; partido?: string; fotoUrl?: string }
 interface Municipio {
@@ -60,6 +64,7 @@ interface MunicipiosIndice { atualizadoEm: string; totalMunicipiosPB: number; ci
 
 const VIAP_TETO = 14000
 const CATEGORIA_VIAP = 'Verba indenizatória (VIAP)'
+const CATEGORIA_DIARIA = 'Diárias'
 
 export interface SaidaCidade {
   politicos: Politico[]
@@ -441,24 +446,32 @@ function maisFrequente(valores: number[]): number {
 export function montarCidadeViapTce(
   cfg: { slug: string; nome: string; uf: string },
   vereadoresTce: VereadorLeve[],
-  indenizacoes: IndenizacaoTce[],
+  despesasTce: DespesaVereadorTce[],
   tseLookup: (nome: string) => { partido?: string; sq?: string } | null,
   folhaComissionados: number,
   mesFolha: string,
   fontes: { tce: string; camara: string },
   minAnoMes = '2025-01',
 ): SaidaCidade {
-  // agrupa as indenizações por CPF (chave) e por mês (AAAA-MM), somando os empenhos pagos no mês
-  const porCpf = new Map<string, { credor: string; meses: Map<string, number> }>()
-  for (const ind of indenizacoes) {
-    const k = chaveCpf(ind.credorCpf)
+  // agrupa por CPF, por TIPO (viap/diaria) e por mês (AAAA-MM), somando os empenhos pagos no mês
+  type Acc = { credor: string; viap: Map<string, number>; diaria: Map<string, number> }
+  const porCpf = new Map<string, Acc>()
+  for (const d of despesasTce) {
+    const k = chaveCpf(d.credorCpf)
     if (!k) continue
-    const anoMes = `${ind.ano}-${String(ind.mes).padStart(2, '0')}`
+    const anoMes = `${d.ano}-${String(d.mes).padStart(2, '0')}`
     if (anoMes < minAnoMes) continue
-    const e = porCpf.get(k) ?? { credor: ind.credor, meses: new Map<string, number>() }
-    e.meses.set(anoMes, (e.meses.get(anoMes) ?? 0) + ind.valorPago)
+    const e = porCpf.get(k) ?? { credor: d.credor, viap: new Map(), diaria: new Map() }
+    const m = d.tipo === 'viap' ? e.viap : e.diaria
+    m.set(anoMes, (m.get(anoMes) ?? 0) + d.valorPago)
     porCpf.set(k, e)
   }
+
+  // VIAP só conta como "programa da câmara" se a MAIORIA dos vereadores recebe. Senão, são
+  // indenizações avulsas (restituição pontual a 1-2 vereadores) — não viram VIAP da cidade, e os
+  // empenhos viap são ignorados (a cidade pode ainda ter diárias). Evita rotular VIAP onde não há.
+  const rosterComViap = vereadoresTce.filter((ver) => (porCpf.get(chaveCpf(ver.cpf ?? ''))?.viap.size ?? 0) > 0).length
+  const cidadeTemViap = vereadoresTce.length > 0 && rosterComViap / vereadoresTce.length >= 0.5
 
   const usados = new Set<string>()
   const politicos: Politico[] = []
@@ -469,11 +482,11 @@ export function montarCidadeViapTce(
   const gabinetePorId: Record<string, GabineteParlamentar> = {} // vazio: gabinete é agregado
 
   const mesesAll: string[] = []
-  const mediasViap: number[] = []
-  let totalViapPeriodo = 0
-  let comViap = 0
-  const valoresVereador: number[] = [] // valores mensais p/ derivar o valor fixo (vereador × presidente)
+  let totalGeral = 0
+  let comGasto = 0
+  const valoresVereador: number[] = [] // valores mensais de VIAP p/ derivar o valor fixo (vereador × presidente)
   const valoresPresidente: number[] = []
+  const diariaPorVereador: number[] = [] // total de diárias no período, por vereador que recebeu
 
   for (const ver of vereadoresTce) {
     const id = `cm-${cfg.slug}-${slugify(ver.nome)}`
@@ -487,82 +500,99 @@ export function montarCidadeViapTce(
     const k = chaveCpf(ver.cpf ?? '')
     const entry = k ? porCpf.get(k) : undefined
     if (entry) usados.add(k)
-    const meses = entry
-      ? [...entry.meses.entries()].map(([anoMes, valor]) => ({ anoMes, valor })).sort((a, b) => a.anoMes.localeCompare(b.anoMes))
-      : []
+    const viapMeses = entry && cidadeTemViap ? [...entry.viap.entries()].sort((a, b) => a[0].localeCompare(b[0])) : []
+    const diariaMeses = entry ? [...entry.diaria.entries()].sort((a, b) => a[0].localeCompare(b[0])) : []
 
-    const despesas: Despesa[] = meses.map((m) => ({
-      id: `${id}-viap-${m.anoMes}`, politicoId: id, data: `${m.anoMes}-01`,
-      ano: Number(m.anoMes.slice(0, 4)), mes: Number(m.anoMes.slice(5, 7)),
-      categoria: CATEGORIA_VIAP, fornecedor: { nome: '' }, valor: m.valor,
-    }))
+    // uma despesa por (tipo, mês); categorias separadas, total combinado
+    const despesas: Despesa[] = []
+    for (const [anoMes, valor] of viapMeses) {
+      despesas.push({ id: `${id}-viap-${anoMes}`, politicoId: id, data: `${anoMes}-01`, ano: Number(anoMes.slice(0, 4)), mes: Number(anoMes.slice(5, 7)), categoria: CATEGORIA_VIAP, fornecedor: { nome: '' }, valor })
+    }
+    for (const [anoMes, valor] of diariaMeses) {
+      despesas.push({ id: `${id}-diaria-${anoMes}`, politicoId: id, data: `${anoMes}-01`, ano: Number(anoMes.slice(0, 4)), mes: Number(anoMes.slice(5, 7)), categoria: CATEGORIA_DIARIA, fornecedor: { nome: '' }, valor })
+    }
+    despesas.sort((a, b) => a.data.localeCompare(b.data))
     if (despesas.length) despesasPorId[id] = despesas
 
-    const total = meses.reduce((s, m) => s + m.valor, 0)
-    const serieMensal: PontoMensal[] = meses.map((m) => ({ anoMes: m.anoMes, total: m.valor }))
-    if (meses.length) {
-      comViap++
-      for (const m of meses) {
-        mesesAll.push(m.anoMes)
-        ;(ver.presidente ? valoresPresidente : valoresVereador).push(m.valor)
-      }
-      mediasViap.push(total / meses.length)
-    }
-    totalViapPeriodo += total
+    const totalViap = viapMeses.reduce((s, [, v]) => s + v, 0)
+    const totalDiaria = diariaMeses.reduce((s, [, v]) => s + v, 0)
+    const total = totalViap + totalDiaria
+    // série mensal = soma dos dois tipos por mês
+    const porMes = new Map<string, number>()
+    for (const d of despesas) porMes.set(d.data.slice(0, 7), (porMes.get(d.data.slice(0, 7)) ?? 0) + d.valor)
+    const serieMensal: PontoMensal[] = [...porMes.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([anoMes, t]) => ({ anoMes, total: t }))
 
-    porPolitico[id] = {
-      politico, total, serieMensal,
-      porCategoria: total > 0 ? [{ categoria: CATEGORIA_VIAP, total }] : [],
-      porFornecedor: [],
+    if (total > 0) {
+      comGasto++
+      for (const am of porMes.keys()) mesesAll.push(am)
     }
+    for (const [, v] of viapMeses) (ver.presidente ? valoresPresidente : valoresVereador).push(v)
+    if (totalDiaria > 0) diariaPorVereador.push(totalDiaria)
+    totalGeral += total
+
+    const porCategoria: ItemCategoria[] = []
+    if (totalViap > 0) porCategoria.push({ categoria: CATEGORIA_VIAP, total: totalViap })
+    if (totalDiaria > 0) porCategoria.push({ categoria: CATEGORIA_DIARIA, total: totalDiaria })
+
+    porPolitico[id] = { politico, total, serieMensal, porCategoria, porFornecedor: [] }
     ranking.push({ politicoId: id, nome: ver.nome, partido: politico.partido, casa: 'camara_municipal', total })
     perfis.push({ id, nomeCivil: ver.nome, redes: [], proposicoes: [] })
   }
 
-  // empenhos de "Indenizações" que NÃO casaram com vereador em exercício (ex-vereadores que saíram,
-  // restituições a fornecedores/pessoas) — ficam de fora, reportados no log
-  const naoCasados = [...porCpf.entries()]
-    .filter(([k]) => !usados.has(k))
-    .map(([, e]) => ({ fonte: 'viap' as const, nome: e.credor }))
+  // credores que NÃO casaram com vereador em exercício (ex-vereadores, fornecedores) — ficam de fora
+  const naoCasados = [...porCpf.entries()].filter(([k]) => !usados.has(k)).map(([, e]) => ({ fonte: 'viap' as const, nome: e.credor }))
 
   const periodoViap = mesesAll.length > 0
     ? { de: mesesAll.reduce((a, b) => (a < b ? a : b)), ate: mesesAll.reduce((a, b) => (a > b ? a : b)) }
     : null
-  const viapMedia = mediasViap.length ? mediasViap.reduce((s, x) => s + x, 0) / mediasViap.length : null
+  const anos = new Set(mesesAll.map((m) => m.slice(0, 4))).size || 1
   const gabineteMedia = vereadoresTce.length ? folhaComissionados / vereadoresTce.length : null
   const subsidios = vereadoresTce.map((v) => v.subsidio).sort((a, b) => a - b)
   const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0
 
-  // valor fixo mensal (mode), p/ vereador e p/ presidente; teto = o maior dos dois (não o pico de um
-  // mês de acerto/recuperação). A VIAP aqui não é reembolso por nota: é um valor fixo pago todo mês.
+  // VIAP: valor fixo mensal (mode) p/ vereador e presidente; teto = o maior. Diárias: média ANUAL por
+  // vereador (total no período / nº de vereadores / nº de anos) — variável, é o gasto de quem viajou.
   const valorVereador = maisFrequente(valoresVereador)
   const valorPresidente = maisFrequente(valoresPresidente)
+  const temViap = valorVereador > 0
   const viapTeto = Math.max(valorVereador, valorPresidente)
-  const fracao = subsidioBase > 0 ? valorVereador / subsidioBase : 0
+  const totalDiariaGeral = diariaPorVereador.reduce((s, x) => s + x, 0)
+  const temDiaria = totalDiariaGeral > 0
+  const diariaMedia = temDiaria && vereadoresTce.length ? totalDiariaGeral / vereadoresTce.length / anos : null
+  const viapMedia = temViap ? valorVereador : null
+
+  const fracao = temViap && subsidioBase > 0 ? valorVereador / subsidioBase : 0
   const fracaoTxt = Math.abs(fracao - 2 / 3) < 0.02 ? 'cerca de dois terços (2/3)' : `cerca de ${(fracao * 100).toFixed(0)}%`
-  const viapNota = valorVereador > 0
-    ? `Em ${cfg.nome}, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de`
-      + ` despesas com nota fiscal itemizada). O valor mais frequente no período é ${brlNum(valorVereador)} por vereador`
+  // nota de PROCEDÊNCIA: explica de onde vem o gasto por vereador desta cidade (VIAP, diárias, ou ambos)
+  const notaViap = temViap
+    ? `Em ${cfg.nome}, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas`
+      + ` com nota fiscal itemizada): o valor mais frequente é ${brlNum(valorVereador)} por vereador`
       + `${valorPresidente > 0 && valorPresidente !== valorVereador ? ` (${brlNum(valorPresidente)} para o presidente)` : ''}`
-      + `${fracao > 0 ? `, ${fracaoTxt} do subsídio` : ''}. Esses valores são os empenhos de`
-      + ` “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui`
-      + ` porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.`
+      + `${fracao > 0 ? `, ${fracaoTxt} do subsídio` : ''}.`
+    : `Em ${cfg.nome}, a câmara não paga VIAP por vereador (nem toda câmara da Paraíba paga).`
+  const notaDiaria = temDiaria
+    ? ` Os vereadores recebem diárias${temViap ? ' (somadas ao total)' : ' (o gasto por vereador rastreável aqui)'}: em média ${brlNum(diariaMedia ?? 0)} por vereador ao ano (variável, conforme quem viaja).`
+    : ''
+  const viapNota = (temViap || temDiaria)
+    ? `${notaViap}${notaDiaria} Tudo isto vem dos empenhos pagos a cada vereador no TCE-PB`
+      + ` (cada câmara publica de um jeito; usamos a fonte única do TCE para comparar).`
     : undefined
 
   const resumoMunicipio: Municipio = {
     slug: cfg.slug, nome: cfg.nome, uf: cfg.uf, modelo: 'completo', numVereadores: vereadoresTce.length,
-    totalViapPeriodo, totalGabineteMes: folhaComissionados, periodoViap,
+    totalViapPeriodo: totalGeral, totalGabineteMes: folhaComissionados, periodoViap,
     viapDetalhada: false, gabinetePorVereador: false,
     mesReferencia: mesFolha, folhaComissionados,
     custo: {
       slug: cfg.slug, nome: cfg.nome, salario: subsidioBase, viapTeto, viapMedia, gabineteMedia,
       viapFonteTce: true, viapNota, viapFonteCamaraUrl: fontes.camara, viapFonteTceUrl: fontes.tce,
+      temViap, temDiaria, diariaMedia,
     },
   }
 
   return {
     politicos, ranking, porPolitico, despesasPorId, perfis, gabinetePorId, resumoMunicipio,
-    cobertura: { total: vereadoresTce.length, comGabinete: 0, comViap, naoCasados },
+    cobertura: { total: vereadoresTce.length, comGabinete: 0, comViap: comGasto, naoCasados },
   }
 }
 
@@ -733,15 +763,15 @@ export async function coletarCidadeViapTce(
   const mesRef = mesesComVereador(linhas, '202501')[0]
   const vereadores = extrairVereadoresTce(linhas, mesRef)
   const folha = somarComissionadosTce(linhas, mesRef)
-  const indeniz = await baixarIndenizacoesCamara(cod, [2025, 2026]) // VIAP = empenhos pagos ao vereador
-  console.log(`  roster TCE: ${vereadores.length} vereadores | folha comissionados R$ ${folha.toFixed(2)} | TCE indenizações: ${indeniz.length}`)
+  const despVer = await baixarDespesasVereador(cod, [2025, 2026]) // VIAP + diárias pagas ao vereador
+  console.log(`  roster TCE: ${vereadores.length} vereadores | folha comissionados R$ ${folha.toFixed(2)} | TCE despesas/vereador: ${despVer.length}`)
   const lookup = (n: string) => {
     const c = matchCandidato(idxTse, nome, n)
     return c ? { partido: c.partido, sq: c.sq } : null
   }
   const saida = montarCidadeViapTce(
     { slug, nome, uf: 'PB' },
-    vereadores, indeniz, lookup, folha, `${mesRef.slice(0, 4)}-${mesRef.slice(4, 6)}`,
+    vereadores, despVer, lookup, folha, `${mesRef.slice(0, 4)}-${mesRef.slice(4, 6)}`,
     { tce: fonteUrlDespesas(cod, 2025), camara: camaraUrl },
   )
   await gerarFotosPoliticos(saida.politicos)
@@ -856,9 +886,87 @@ async function main() {
     resumos.push(saida.resumoMunicipio)
   }
 
+  // Cidades onde a câmara NÃO paga VIAP por vereador, mas paga DIÁRIAS (também credor = vereador). O
+  // mesmo coletor pega VIAP + diárias; aqui só há diárias. Sondadas: ≥50% dos vereadores com diária e
+  // total ≥ R$ 5k/ano. (Descobertas e os porquês em docs/descobertas-transparencia-vereadores.md.)
+  const cidadesDiariaTce: { cod: string; slug: string; nome: string }[] = [
+    { cod: '025', slug: 'bayeux', nome: 'Bayeux' },
+    { cod: '046', slug: 'cajazeiras', nome: 'Cajazeiras' },
+    { cod: '110', slug: 'mamanguape', nome: 'Mamanguape' },
+    { cod: '090', slug: 'itaporanga', nome: 'Itaporanga' },
+    { cod: '218', slug: 'uirauna', nome: 'Uiraúna' },
+    { cod: '004', slug: 'alagoa-nova', nome: 'Alagoa Nova' },
+    { cod: '011', slug: 'aracagi', nome: 'Araçagi' },
+    { cod: '013', slug: 'araruna', nome: 'Araruna' },
+    { cod: '014', slug: 'areia', nome: 'Areia' },
+    { cod: '017', slug: 'aroeiras', nome: 'Aroeiras' },
+    { cod: '020', slug: 'bananeiras', nome: 'Bananeiras' },
+    { cod: '038', slug: 'caapora', nome: 'Caaporã' },
+    { cod: '089', slug: 'itabaiana', nome: 'Itabaiana' },
+    { cod: '091', slug: 'itapororoca', nome: 'Itapororoca' },
+    { cod: '113', slug: 'mari', nome: 'Mari' },
+    { cod: '139', slug: 'pedras-de-fogo', nome: 'Pedras de Fogo' },
+    { cod: '142', slug: 'picui', nome: 'Picuí' },
+    { cod: '148', slug: 'pocinhos', nome: 'Pocinhos' },
+    { cod: '163', slug: 'rio-tinto', nome: 'Rio Tinto' },
+    { cod: '170', slug: 'santa-luzia', nome: 'Santa Luzia' },
+    { cod: '183', slug: 'sao-joao-do-rio-do-peixe', nome: 'São João do Rio do Peixe' },
+    { cod: '212', slug: 'sume', nome: 'Sumé' },
+    { cod: '043', slug: 'cacimba-de-dentro', nome: 'Cacimba de Dentro' },
+    { cod: '059', slug: 'conceicao', nome: 'Conceição' },
+    { cod: '147', slug: 'pitimbu', nome: 'Pitimbu' },
+    { cod: '153', slug: 'princesa-isabel', nome: 'Princesa Isabel' },
+    { cod: '002', slug: 'aguiar', nome: 'Aguiar' },
+    { cod: '006', slug: 'alcantil', nome: 'Alcantil' },
+    { cod: '010', slug: 'aparecida', nome: 'Aparecida' },
+    { cod: '012', slug: 'arara', nome: 'Arara' },
+    { cod: '016', slug: 'areial', nome: 'Areial' },
+    { cod: '021', slug: 'barauna', nome: 'Baraúna' },
+    { cod: '022', slug: 'barra-de-santa-rosa', nome: 'Barra de Santa Rosa' },
+    { cod: '024', slug: 'barra-de-sao-miguel', nome: 'Barra de São Miguel' },
+    { cod: '030', slug: 'boa-vista', nome: 'Boa Vista' },
+    { cod: '035', slug: 'borborema', nome: 'Borborema' },
+    { cod: '036', slug: 'brejo-do-cruz', nome: 'Brejo do Cruz' },
+    { cod: '039', slug: 'cabaceiras', nome: 'Cabaceiras' },
+    { cod: '053', slug: 'caraubas', nome: 'Caraúbas' },
+    { cod: '054', slug: 'carrapateira', nome: 'Carrapateira' },
+    { cod: '062', slug: 'congo', nome: 'Congo' },
+    { cod: '064', slug: 'coxixola', nome: 'Coxixola' },
+    { cod: '075', slug: 'dona-ines', nome: 'Dona Inês' },
+    { cod: '077', slug: 'emas', nome: 'Emas' },
+    { cod: '080', slug: 'frei-martinho', nome: 'Frei Martinho' },
+    { cod: '081', slug: 'gado-bravo', nome: 'Gado Bravo' },
+    { cod: '084', slug: 'gurjao', nome: 'Gurjão' },
+    { cod: '115', slug: 'massaranduba', nome: 'Massaranduba' },
+    { cod: '116', slug: 'mataraca', nome: 'Mataraca' },
+    { cod: '126', slug: 'nazarezinho', nome: 'Nazarezinho' },
+    { cod: '129', slug: 'nova-palmeira', nome: 'Nova Palmeira' },
+    { cod: '136', slug: 'paulista', nome: 'Paulista' },
+    { cod: '138', slug: 'pedra-lavrada', nome: 'Pedra Lavrada' },
+    { cod: '144', slug: 'piloes', nome: 'Pilões' },
+    { cod: '154', slug: 'puxinana', nome: 'Puxinanã' },
+    { cod: '177', slug: 'sao-bentinho', nome: 'São Bentinho' },
+    { cod: '179', slug: 'sao-domingos', nome: 'São Domingos' },
+    { cod: '181', slug: 'sao-francisco', nome: 'São Francisco' },
+    { cod: '182', slug: 'sao-joao-do-cariri', nome: 'São João do Cariri' },
+    { cod: '192', slug: 'sao-jose-do-sabugi', nome: 'São José do Sabugi' },
+    { cod: '195', slug: 'sao-mamede', nome: 'São Mamede' },
+    { cod: '196', slug: 'sao-miguel-de-taipu', nome: 'São Miguel de Taipu' },
+    { cod: '198', slug: 'sao-sebastiao-do-umbuzeiro', nome: 'São Sebastião do Umbuzeiro' },
+    { cod: '207', slug: 'sobrado', nome: 'Sobrado' },
+    { cod: '219', slug: 'umbuzeiro', nome: 'Umbuzeiro' },
+    { cod: '087', slug: 'imaculada', nome: 'Imaculada' },
+  ]
+  for (const cv of cidadesDiariaTce) {
+    console.log(`\n> ${cv.nome} (${cv.slug}) [completo · diárias via TCE]`)
+    const saida = await coletarCidadeViapTce(cv.cod, cv.slug, cv.nome, '', idxTse)
+    gravarCidade(saida, cv.slug)
+    resumos.push(saida.resumoMunicipio)
+  }
+
   // câmaras 'leve' (todas menos as completas) pela fonte única do TCE-PB
   console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
-  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande', ...cidadesViapTce.map((c) => c.slug)]) // completos
+  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande', ...cidadesViapTce.map((c) => c.slug), ...cidadesDiariaTce.map((c) => c.slug)]) // completos
   const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs, idxTse)
   resumos.push(...leve)
   if (naoCobertas.length > 0) console.log(`  não cobertas: ${naoCobertas.map((n) => n.nome).join(', ')}`)
