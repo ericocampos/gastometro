@@ -1,4 +1,4 @@
-import { getMunicipios, getSeriesParlamentares, getOrcamento } from '@/lib/dados'
+import { getMunicipios, getSeriesParlamentares, getOrcamento, getOrcamentoSlugs } from '@/lib/dados'
 import { totalAnualMunicipio } from '@/lib/periodo'
 import { mesAno } from '@/lib/formato'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
@@ -9,13 +9,18 @@ import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { OrcamentoCidade } from '@/components/OrcamentoCidade'
 
 export function generateStaticParams() {
-  return getMunicipios().cidades.map((c) => ({ slug: c.slug }))
+  // união: cidades com cobertura de vereador + cidades com orçamento (algumas só têm orçamento)
+  const slugs = new Set(getMunicipios().cidades.map((c) => c.slug))
+  for (const s of getOrcamentoSlugs()) slugs.add(s)
+  return [...slugs].map((slug) => ({ slug }))
 }
 
 export default function MunicipioPage({ params }: { params: { slug: string } }) {
   const indice = getMunicipios()
   const municipio = indice.cidades.find((c) => c.slug === params.slug)
-  if (!municipio) {
+  const orcamento = getOrcamento(params.slug)
+
+  if (!municipio && !orcamento) {
     return (
       <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
         Cidade não encontrada.
@@ -23,20 +28,21 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
     )
   }
 
-  const series = getSeriesParlamentares().filter(
-    (s) => s.casa === 'camara_municipal' && s.municipio === params.slug,
-  )
+  const nome = municipio?.nome ?? orcamento?.nome ?? ''
+  const uf = municipio?.uf ?? 'PB'
+  const series = municipio
+    ? getSeriesParlamentares().filter((s) => s.casa === 'camara_municipal' && s.municipio === params.slug)
+    : []
   const anualCidade = totalAnualMunicipio(series)
-  const orcamento = getOrcamento(params.slug)
 
   return (
     <div>
       <section className="mb-8 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: '#0f766e' }}>
-          {orcamento ? 'Município' : 'Vereadores'} · {municipio.uf}
+          {orcamento ? 'Município' : 'Vereadores'} · {uf}
         </p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl">
-          {orcamento ? municipio.nome : `Vereadores de ${municipio.nome}`}
+          {orcamento ? nome : `Vereadores de ${nome}`}
         </h1>
       </section>
 
@@ -44,25 +50,25 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
         <section className="mb-12">
           <SecaoTitulo>Pra onde vai o dinheiro · a cidade inteira</SecaoTitulo>
           <p className="mb-3 text-sm leading-relaxed text-tinta-suave">
-            O orçamento de {municipio.nome} inteiro: quanto a Prefeitura, a Câmara e a Previdência
+            O orçamento de {nome} inteiro: quanto a Prefeitura, a Câmara e a Previdência
             pagaram por área, ano a ano.
           </p>
           <OrcamentoCidade orcamento={orcamento} />
         </section>
       )}
 
-      {orcamento && (
+      {orcamento && municipio && (
         <section className="mb-8">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: '#0f766e' }}>
-            Vereadores · {municipio.uf}
+            Vereadores · {uf}
           </p>
           <h2 className="font-display text-2xl font-semibold leading-tight tracking-tight text-tinta sm:text-3xl">
-            Vereadores de {municipio.nome}
+            Vereadores de {nome}
           </h2>
         </section>
       )}
 
-      {municipio.modelo === 'completo' ? (
+      {municipio && (municipio.modelo === 'completo' ? (
         <>
           <section className="mb-12">
             <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
@@ -93,7 +99,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
         </>
       ) : (
         <CamaraLeve municipio={municipio} atualizadoEm={indice.atualizadoEm} />
-      )}
+      ))}
     </div>
   )
 }
