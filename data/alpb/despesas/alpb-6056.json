@@ -702,5 +702,125 @@
     "documento": "Nota Fiscal",
     "numero": "1000283",
     "valor": 8000
+  },
+  {
+    "id": "alpb-6056-diaria-202603-0",
+    "politicoId": "alpb-6056",
+    "data": "2026-03-19",
+    "ano": 2026,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 16 a 19/03/2026",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/04/Planilha-diarias-ALPB-03.26.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202602-2",
+    "politicoId": "alpb-6056",
+    "data": "2026-02-26",
+    "ano": 2026,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 23 a 26/02/2026",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/03/Planilha-diarias-ALPB-02.26.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202512-1",
+    "politicoId": "alpb-6056",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 02 a 05/12/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202511-15",
+    "politicoId": "alpb-6056",
+    "data": "2025-11-27",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA CÂMARA FEDERAL · Brasília-DF · 24 a 27/11/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202506-8",
+    "politicoId": "alpb-6056",
+    "data": "2025-06-11",
+    "ano": 2025,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 09 a 11/06/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/07/Planilha-diarias-ALPB-06.2025.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202505-3",
+    "politicoId": "alpb-6056",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 29 a 30/04/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/06/Planilha-diarias-ALPB-05.2025.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202504-7",
+    "politicoId": "alpb-6056",
+    "data": "2025-04-10",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 07 a 10/04/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-6056-diaria-202502-5",
+    "politicoId": "alpb-6056",
+    "data": "2025-02-14",
+    "ano": 2025,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIAO DE TRABALHO · Brasília-DF · 10 a 14/02/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/03/Planilha-diarias-ALPB-02.2025.ods"
   }
 ]

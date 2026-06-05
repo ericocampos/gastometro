@@ -58,6 +58,32 @@ describe('DetalhamentoGastos', () => {
     expect(screen.getAllByText(/AUDIENCIA NO TCE/).length).toBeGreaterThanOrEqual(1)
   })
 
+  it('diária da ALPB (assembleia): histórico + link para a planilha de diárias, NUNCA a da VIAP', () => {
+    const diaria: Despesa = {
+      id: 'al-1', politicoId: 'alpb-1', data: '2026-04-13', ano: 2026, mes: 4,
+      categoria: 'Diárias', fornecedor: { nome: '' }, valor: 9000,
+      descricao: 'EVENTO · São Paulo-SP · 08 a 13/04/2026',
+      urlDocumento: 'https://www.al.pb.leg.br/wp-content/uploads/2026/05/Planilha-diarias-ALPB-04.26.ods',
+    }
+    render(<DetalhamentoGastos despesas={[diaria]} casa="assembleia" politicoId="alpb-1" />)
+    expect(screen.getAllByText(/EVENTO · São Paulo-SP/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/planilha\s+mensal oficial de diárias da ALPB/i)).toBeInTheDocument()
+    // o link aponta para a planilha de DIÁRIAS, não para a planilha da VIAP (viap-v2)
+    const links = screen.getAllByRole('link', { name: /planilha/i })
+    expect(links[0]).toHaveAttribute('href', expect.stringContaining('Planilha-diarias-ALPB'))
+    expect(links.every((a) => !/viap-v2/.test(a.getAttribute('href') ?? ''))).toBe(true)
+  })
+
+  it('diária sem planilha-fonte mostra "—" (não cai no link da VIAP da assembleia)', () => {
+    const diaria: Despesa = {
+      id: 'al-2', politicoId: 'alpb-1', data: '2026-04-13', ano: 2026, mes: 4,
+      categoria: 'Diárias', fornecedor: { nome: '' }, valor: 2400, descricao: 'AUDIÊNCIA · Brasília-DF',
+    }
+    render(<DetalhamentoGastos despesas={[diaria]} casa="assembleia" politicoId="alpb-1" />)
+    // nenhum link de planilha (nem da VIAP) para a diária sem fonte
+    expect(screen.queryByRole('link', { name: /planilha/i })).toBeNull()
+  })
+
   it('marca as linhas que geraram ponto de atenção e mostra a legenda', () => {
     render(
       <DetalhamentoGastos

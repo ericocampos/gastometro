@@ -2590,5 +2590,65 @@
     "documento": "N F",
     "numero": "1000017",
     "valor": 12000
+  },
+  {
+    "id": "alpb-51753-diaria-202312-14",
+    "politicoId": "alpb-51753",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-51753-diaria-202312-92",
+    "politicoId": "alpb-51753",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-51753-diaria-202312-94",
+    "politicoId": "alpb-51753",
+    "data": "2023-10-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Sousa · 20 a 22/10/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-51753-diaria-202311-11",
+    "politicoId": "alpb-51753",
+    "data": "2023-11-11",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Deputado · 07 a 11/11/2023",
+    "valor": 2800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/12/Planilha-diarias-ALPB-11.2023.ods"
   }
 ]

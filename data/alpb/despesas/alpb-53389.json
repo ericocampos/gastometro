@@ -424,5 +424,20 @@
     "documento": "N F",
     "numero": "773051",
     "valor": 6000
+  },
+  {
+    "id": "alpb-53389-diaria-202312-34",
+    "politicoId": "alpb-53389",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
   }
 ]

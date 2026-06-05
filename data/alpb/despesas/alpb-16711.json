@@ -2507,5 +2507,320 @@
     },
     "documento": "Recibo",
     "valor": 20720
+  },
+  {
+    "id": "alpb-16711-diaria-202603-2",
+    "politicoId": "alpb-16711",
+    "data": "2026-03-19",
+    "ano": 2026,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 16 a 19/03/2026",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/04/Planilha-diarias-ALPB-03.26.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202512-7",
+    "politicoId": "alpb-16711",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 01 a 05/12/2025",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202511-7",
+    "politicoId": "alpb-16711",
+    "data": "2025-11-13",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA CÂMARA FEDERAL · Brasília-DF · 10 a 13/11/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202511-17",
+    "politicoId": "alpb-16711",
+    "data": "2025-11-27",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS DEPUTADOS · Brasília-DF · 24 a 27/11/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202509-3",
+    "politicoId": "alpb-16711",
+    "data": "2025-09-11",
+    "ano": 2025,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIAS · Brasília-DF · 08 a 11/09/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/10/Planilha-diarias-ALPB-09.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202505-12",
+    "politicoId": "alpb-16711",
+    "data": "2025-05-21",
+    "ano": 2025,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 18 a 21/05/2025",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/06/Planilha-diarias-ALPB-05.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202504-10",
+    "politicoId": "alpb-16711",
+    "data": "2025-04-25",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 22 a 25/04/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202503-4",
+    "politicoId": "alpb-16711",
+    "data": "2025-03-21",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 18 a 21/03/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/04/Planilha-diarias-ALPB-03.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202502-4",
+    "politicoId": "alpb-16711",
+    "data": "2025-02-05",
+    "ano": 2025,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "POSSE DO PRESIDENTE DA CAMARA FEDERAL · Brasília-DF · 01 a 05/02/2025",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/03/Planilha-diarias-ALPB-02.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202502-8",
+    "politicoId": "alpb-16711",
+    "data": "2025-02-13",
+    "ano": 2025,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO MARCHA DOS PREFEITOS · Brasília-DF · 11 a 13/02/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/03/Planilha-diarias-ALPB-02.2025.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202412-24",
+    "politicoId": "alpb-16711",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202411-6",
+    "politicoId": "alpb-16711",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202405-4",
+    "politicoId": "alpb-16711",
+    "data": "2024-05-23",
+    "ano": 2024,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS MUNICÍPIOS · Brasília-DF · 20 a 23/05/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/06/Planilha-diarias-ALPB-05.2024.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202404-5",
+    "politicoId": "alpb-16711",
+    "data": "2024-05-02",
+    "ano": 2024,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "Audiências · Brasília-DF · 26/04 a 02/05/2024",
+    "valor": 7200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/05/Planilha-diarias-ALPB-04.2024.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202312-21",
+    "politicoId": "alpb-16711",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202312-53",
+    "politicoId": "alpb-16711",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202311-7",
+    "politicoId": "alpb-16711",
+    "data": "2023-11-09",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 06 a 09/11/2023",
+    "valor": 2100,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/12/Planilha-diarias-ALPB-11.2023.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202308-5",
+    "politicoId": "alpb-16711",
+    "data": "2023-08-24",
+    "ano": 2023,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia · 21 a 24/08/2023",
+    "valor": 2100,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/09/Planilha-diarias-ALPB-08.2023.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202306-3",
+    "politicoId": "alpb-16711",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 19 a 23/06/2023",
+    "valor": 2100,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/07/Planilha-diarias-ALPB-06.2023-1.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202304-7",
+    "politicoId": "alpb-16711",
+    "data": "2023-04-27",
+    "ano": 2023,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 24 a 27/04/2023",
+    "valor": 2100,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/05/Planilha-diarias-ALPB-04.2023.ods"
+  },
+  {
+    "id": "alpb-16711-diaria-202303-12",
+    "politicoId": "alpb-16711",
+    "data": "2023-03-23",
+    "ano": 2023,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 21 a 23/03/2023",
+    "valor": 1400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/04/Planilha-diarias-ALPB-03.2023.ods"
   }
 ]

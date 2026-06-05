@@ -63,5 +63,19 @@
       "cnpjCpf": "****22.764/000****"
     },
     "valor": 12000
+  },
+  {
+    "id": "alpb-30551-diaria-202412-3",
+    "politicoId": "alpb-30551",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1170,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
   }
 ]

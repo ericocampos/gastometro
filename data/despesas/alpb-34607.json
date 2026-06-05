@@ -2949,5 +2949,33 @@
       "cnpjCpf": "****40.387/000****"
     },
     "valor": 5000
+  },
+  {
+    "id": "alpb-34607-diaria-202312-22",
+    "politicoId": "alpb-34607",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-34607-diaria-202312-42",
+    "politicoId": "alpb-34607",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
   }
 ]

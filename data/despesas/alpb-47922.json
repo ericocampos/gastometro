@@ -6030,5 +6030,75 @@
       "cnpjCpf": "****46.446/000****"
     },
     "valor": 89.9
+  },
+  {
+    "id": "alpb-47922-diaria-202506-0",
+    "politicoId": "alpb-47922",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "REUNIÃO DE TRABALHO · Curitiba-PR · 29 a 31/05/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/07/Planilha-diarias-ALPB-06.2025.ods"
+  },
+  {
+    "id": "alpb-47922-diaria-202504-1",
+    "politicoId": "alpb-47922",
+    "data": "2025-04-06",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4800,
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo-SP · 02 a 06/04/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-47922-diaria-202412-17",
+    "politicoId": "alpb-47922",
+    "data": "2024-12-18",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 16 a 18/12/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-47922-diaria-202312-37",
+    "politicoId": "alpb-47922",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-47922-diaria-202308-2",
+    "politicoId": "alpb-47922",
+    "data": "2023-08-10",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2100,
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia · 07 a 10/08/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2023/09/Planilha-diarias-ALPB-08.2023.ods"
   }
 ]

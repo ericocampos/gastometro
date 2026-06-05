@@ -53,6 +53,17 @@ function planilhaViap(politicoId: string, ano: number, mes: number): string {
 // Link do documento: nota fiscal real (Câmara/Senado recente); na Assembleia a planilha da VIAP
 // do mês (não há nota individual); no Senado o portal do senador; senão —.
 function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSenado?: string; casa?: Casa; politicoId?: string }) {
+  // diária (ALPB/TCE): a fonte é a planilha mensal de diárias (ou os empenhos), NUNCA a planilha da
+  // VIAP. Tratamos primeiro para não cair no ramo da VIAP abaixo (que é só p/ os itens da VIAP).
+  if (d.categoria === 'Diárias') {
+    if (d.urlDocumento) {
+      return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">planilha ↗</a>
+    }
+    if (d.numeroEmpenho) {
+      return <span className="whitespace-nowrap text-tinta-tenue" title="Diária não tem nota fiscal: é autorizada por portaria. Este é o número do empenho no TCE-PB.">Emp. {d.numeroEmpenho}</span>
+    }
+    return <span className="text-tinta-tenue">—</span>
+  }
   if (d.urlDocumento) {
     return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">nota</a>
   }
@@ -112,6 +123,8 @@ export function DetalhamentoGastos({
   const notaSoNumero = casa === 'camara_municipal' && despesas.some((d) => d.numeroNf) && !despesas.some((d) => d.urlDocumento)
   // câmara com diárias por vereador (TCE): cada lançamento traz histórico + nº de empenho
   const temDiarias = casa === 'camara_municipal' && despesas.some((d) => d.numeroEmpenho)
+  // ALPB: diárias por deputado (planilha .ods da Assembleia) — têm justificativa/destino, sem empenho
+  const temDiariasAlpb = casa === 'assembleia' && despesas.some((d) => d.descricao && !d.fornecedor.nome)
 
   const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
   const temMarcadas = useMemo(
@@ -179,6 +192,16 @@ export function DetalhamentoGastos({
           de viagem, autorizado por portaria). A coluna “Doc.” traz o <strong className="text-tinta-suave">número
           do empenho</strong> no TCE-PB, a data é a do empenho e o texto é o <strong className="text-tinta-suave">histórico
           declarado pela câmara</strong> (motivo e destino da viagem, como consta na fonte).
+        </p>
+      )}
+
+      {temDiariasAlpb && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Diárias:</strong> valores pagos a título de diária para
+          deslocamentos do deputado. Os dados vêm da <strong className="text-tinta-suave">planilha
+          mensal oficial de diárias da ALPB</strong> (link na coluna “Doc.”), com a justificativa, o
+          destino e as datas declarados ali. A relação mensal inclui deputados e servidores; aqui
+          mostramos só as diárias pagas a este deputado.
         </p>
       )}
 

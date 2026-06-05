@@ -3437,5 +3437,170 @@
     "documento": "Nota Fiscal",
     "numero": "8",
     "valor": 2248
+  },
+  {
+    "id": "alpb-47928-diaria-202512-8",
+    "politicoId": "alpb-47928",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 02 a 05/12/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202508-4",
+    "politicoId": "alpb-47928",
+    "data": "2025-08-13",
+    "ano": 2025,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 12 a 13/08/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/09/Planilha-diarias-ALPB-08.2025.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202506-2",
+    "politicoId": "alpb-47928",
+    "data": "2025-05-29",
+    "ano": 2025,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo-SP / Brasília-DF · 26 a 29/05/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/07/Planilha-diarias-ALPB-06.2025.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202504-15",
+    "politicoId": "alpb-47928",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 29 a 30/04/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202412-26",
+    "politicoId": "alpb-47928",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 28 a 30/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202412-39",
+    "politicoId": "alpb-47928",
+    "data": "2024-12-05",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 03 a 05/12/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202411-8",
+    "politicoId": "alpb-47928",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 28 a 30/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202411-21",
+    "politicoId": "alpb-47928",
+    "data": "2024-12-05",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 03 a 05/12/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202405-7",
+    "politicoId": "alpb-47928",
+    "data": "2024-05-24",
+    "ano": 2024,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS MUNICÍPIOS · Brasília-DF · 21 a 24/05/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/06/Planilha-diarias-ALPB-05.2024.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202312-60",
+    "politicoId": "alpb-47928",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-47928-diaria-202312-88",
+    "politicoId": "alpb-47928",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 19 a 21/11/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
   }
 ]

@@ -336,5 +336,103 @@
       "cnpjCpf": "****05.065/000****"
     },
     "valor": 12000
+  },
+  {
+    "id": "alpb-53473-diaria-202512-12",
+    "politicoId": "alpb-53473",
+    "data": "2025-12-17",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 65,
+    "descricao": "SESSÃO ITINERANTE · Pocinhos-PB · 17/12/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202511-0",
+    "politicoId": "alpb-53473",
+    "data": "2025-10-29",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 65,
+    "descricao": "SESSÃO ITINERANTE · Itabaiana-PB · 29/10/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202511-18",
+    "politicoId": "alpb-53473",
+    "data": "2025-11-23",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 260,
+    "descricao": "CERIMONIAL · Patos-PB · 21 a 23/11/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202510-8",
+    "politicoId": "alpb-53473",
+    "data": "2025-10-04",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 195,
+    "descricao": "AUDIÊNCIA PÚBLICA · Picuí-PB · 03 a 04/10/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/11/Planilhas-Diarias-ALPB-10.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202510-15",
+    "politicoId": "alpb-53473",
+    "data": "2025-10-17",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 260,
+    "descricao": "SESSÃO ITINERANTE · Cajazeiras/Sousa-PB · 15 a 17/10/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/11/Planilhas-Diarias-ALPB-10.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202510-17",
+    "politicoId": "alpb-53473",
+    "data": "2025-10-23",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 195,
+    "descricao": "CERIMONIAL · Patos-PB · 22 a 23/10/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/11/Planilhas-Diarias-ALPB-10.2025.ods"
+  },
+  {
+    "id": "alpb-53473-diaria-202509-12",
+    "politicoId": "alpb-53473",
+    "data": "2025-09-25",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 195,
+    "descricao": "CERIMONIAL · Juazeirinho-PB · 24 a 25/09/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/10/Planilha-diarias-ALPB-09.2025.ods"
   }
 ]

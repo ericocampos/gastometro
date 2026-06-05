@@ -1966,5 +1966,125 @@
     },
     "documento": "Recibo",
     "valor": 11700
+  },
+  {
+    "id": "alpb-30547-diaria-202505-9",
+    "politicoId": "alpb-30547",
+    "data": "2025-05-22",
+    "ano": 2025,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS PREFEITOS · Brasília-DF · 18 a 22/05/2025",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/06/Planilha-diarias-ALPB-05.2025.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202503-2",
+    "politicoId": "alpb-30547",
+    "data": "2025-03-13",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 12 a 13/03/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/04/Planilha-diarias-ALPB-03.2025.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202404-0",
+    "politicoId": "alpb-30547",
+    "data": "2024-03-11",
+    "ano": 2024,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 11/03/2024",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/05/Planilha-diarias-ALPB-04.2024.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202312-8",
+    "politicoId": "alpb-30547",
+    "data": "2023-12-08",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 06 a 08/12/2023",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202312-36",
+    "politicoId": "alpb-30547",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202311-14",
+    "politicoId": "alpb-30547",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERENTE · Patos · 21/11/2023",
+    "valor": 350,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/12/Planilha-diarias-ALPB-11.2023.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202310-5",
+    "politicoId": "alpb-30547",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERENTE · Cajazeiras · 17 a 18/10/2023",
+    "valor": 700,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/11/Planilha-diarias-ALPB-10.2023.ods"
+  },
+  {
+    "id": "alpb-30547-diaria-202303-10",
+    "politicoId": "alpb-30547",
+    "data": "2023-03-30",
+    "ano": 2023,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasília · 28 a 30/03/2023",
+    "valor": 1400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/04/Planilha-diarias-ALPB-03.2023.ods"
   }
 ]

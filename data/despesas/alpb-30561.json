@@ -4457,5 +4457,89 @@
       "cnpjCpf": "****89.680/000****"
     },
     "valor": 4000
+  },
+  {
+    "id": "alpb-30561-diaria-202412-18",
+    "politicoId": "alpb-30561",
+    "data": "2024-10-23",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 20 a 23/10/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-30561-diaria-202411-0",
+    "politicoId": "alpb-30561",
+    "data": "2024-10-23",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 20 a 23/10/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-30561-diaria-202312-9",
+    "politicoId": "alpb-30561",
+    "data": "2023-12-13",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 12 a 13/12/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30561-diaria-202310-1",
+    "politicoId": "alpb-30561",
+    "data": "2023-10-06",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2800,
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia · 02 a 06/10/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2023/11/Planilha-diarias-ALPB-10.2023.ods"
+  },
+  {
+    "id": "alpb-30561-diaria-202304-6",
+    "politicoId": "alpb-30561",
+    "data": "2023-04-20",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1400,
+    "descricao": "REUNIÃO DE TRABALHO · Rio de Janeiro · 18 a 20/04/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2023/05/Planilha-diarias-ALPB-04.2023.ods"
+  },
+  {
+    "id": "alpb-30561-diaria-202303-11",
+    "politicoId": "alpb-30561",
+    "data": "2023-03-30",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1400,
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasília · 28 a 30/03/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2023/04/Planilha-diarias-ALPB-03.2023.ods"
   }
 ]

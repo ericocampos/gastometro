@@ -45,29 +45,6 @@ export function agregarPerfil(despesas: Despesa[], periodo: Periodo): AgregadoPe
   return { total, serieMensal, porCategoria, porFornecedor }
 }
 
-// mês da despesa, com a mesma regra do agregarPerfil (data do documento; cai no mês de referência
-// quando a data falta ou é de outro ano). Exportado para a série por categoria reusar.
-function mesDaDespesa(d: Despesa): string {
-  return d.data && d.data.slice(0, 4) === String(d.ano)
-    ? d.data.slice(0, 7)
-    : `${d.ano}-${String(d.mes).padStart(2, '0')}`
-}
-
-// Série mensal de UMA categoria (ex.: VIAP × Diárias), no período. Usada para desenhar as duas
-// linhas separadas no gráfico das cidades que pagam VIAP e diárias ao mesmo tempo.
-export function serieMensalPorCategoria(despesas: Despesa[], categoria: string, periodo: Periodo): PontoMensal[] {
-  const mensal = new Map<string, number>()
-  for (const d of despesas) {
-    if (d.categoria !== categoria) continue
-    if (!anoNoPeriodo(d.ano, periodo)) continue
-    const k = mesDaDespesa(d)
-    mensal.set(k, (mensal.get(k) ?? 0) + d.valor)
-  }
-  return [...mensal.entries()]
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([anoMes, total]) => ({ anoMes, total }))
-}
-
 export function totalAnualParlamentar(despesas: Despesa[]): TotalAnual[] {
   const m = new Map<number, number>()
   for (const d of despesas) m.set(d.ano, (m.get(d.ano) ?? 0) + d.valor)

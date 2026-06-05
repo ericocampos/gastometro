@@ -180,5 +180,19 @@
       "cnpjCpf": "***.610.84***"
     },
     "valor": 7000
+  },
+  {
+    "id": "alpb-16722-diaria-202511-23",
+    "politicoId": "alpb-16722",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1350,
+    "descricao": "UNALE · Bento Gonçalves-RS · 03 a 05/12/2025",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
   }
 ]

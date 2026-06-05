@@ -2810,5 +2810,95 @@
     "documento": "Nota Fiscal",
     "numero": "1000240",
     "valor": 12000
+  },
+  {
+    "id": "alpb-47929-diaria-202412-28",
+    "politicoId": "alpb-47929",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-47929-diaria-202411-10",
+    "politicoId": "alpb-47929",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-26",
+    "politicoId": "alpb-47929",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-39",
+    "politicoId": "alpb-47929",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-79",
+    "politicoId": "alpb-47929",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-47929-diaria-202307-1",
+    "politicoId": "alpb-47929",
+    "data": "2023-06-22",
+    "ano": 2023,
+    "mes": 7,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília · 19 a 22/06/2023",
+    "valor": 2100,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/08/Planilha-diarias-ALPB-07.2023.ods"
   }
 ]

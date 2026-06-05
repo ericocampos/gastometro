@@ -14090,5 +14090,125 @@
     "documento": "Nota Fiscal",
     "numero": "92",
     "valor": 2000
+  },
+  {
+    "id": "alpb-30549-diaria-202507-1",
+    "politicoId": "alpb-30549",
+    "data": "2025-07-06",
+    "ano": 2025,
+    "mes": 7,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "São Paulo-SP · 03 a 06/07/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/08/Planilha-diarias-ALPB-07.2025.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202504-14",
+    "politicoId": "alpb-30549",
+    "data": "2025-05-01",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 28/04 a 01/05/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202503-3",
+    "politicoId": "alpb-30549",
+    "data": "2025-03-16",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo-SP · 13 a 16/03/2025",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/04/Planilha-diarias-ALPB-03.2025.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202312-28",
+    "politicoId": "alpb-30549",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202312-68",
+    "politicoId": "alpb-30549",
+    "data": "2023-11-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 18/11/2023",
+    "valor": 600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202312-91",
+    "politicoId": "alpb-30549",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202312-93",
+    "politicoId": "alpb-30549",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30549-diaria-202311-12",
+    "politicoId": "alpb-30549",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERENTE · Patos / Santa Luzia · 21 a 22/11/2023",
+    "valor": 260,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/12/Planilha-diarias-ALPB-11.2023.ods"
   }
 ]

@@ -1649,5 +1649,19 @@
       "cnpjCpf": "****23.282/000****"
     },
     "valor": 10000
+  },
+  {
+    "id": "alpb-595-diaria-202312-58",
+    "politicoId": "alpb-595",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
   }
 ]

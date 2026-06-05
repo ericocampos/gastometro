@@ -5211,5 +5211,20 @@
     "documento": "Nota Fiscal",
     "numero": "51",
     "valor": 8000
+  },
+  {
+    "id": "alpb-30565-diaria-202312-5",
+    "politicoId": "alpb-30565",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
   }
 ]

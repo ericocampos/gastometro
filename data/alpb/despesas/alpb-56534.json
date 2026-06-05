@@ -318,5 +318,35 @@
     "documento": "N F",
     "numero": "1001495",
     "valor": 10000
+  },
+  {
+    "id": "alpb-56534-diaria-202412-25",
+    "politicoId": "alpb-56534",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-56534-diaria-202411-7",
+    "politicoId": "alpb-56534",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
   }
 ]

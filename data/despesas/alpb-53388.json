@@ -1064,5 +1064,19 @@
       "cnpjCpf": "****25.033/000****"
     },
     "valor": 6500
+  },
+  {
+    "id": "alpb-53388-diaria-202403-4",
+    "politicoId": "alpb-53388",
+    "data": "2024-03-15",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "AUDIÊNCIAS · Brasília-DF · 13 a 15/03/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/04/Planilha-diarias-ALPB-03.2024.ods"
   }
 ]

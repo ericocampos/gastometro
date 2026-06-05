@@ -15286,5 +15286,560 @@
     "documento": "Nota Fiscal",
     "numero": "76",
     "valor": 3000
+  },
+  {
+    "id": "alpb-30555-diaria-202603-1",
+    "politicoId": "alpb-30555",
+    "data": "2026-03-07",
+    "ano": 2026,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 06 a 07/03/2026",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/04/Planilha-diarias-ALPB-03.26.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202602-1",
+    "politicoId": "alpb-30555",
+    "data": "2026-02-08",
+    "ano": 2026,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Recife-PE/ Salvador-BA · 04 a 08/02/2026",
+    "valor": 4800,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2026/03/Planilha-diarias-ALPB-02.26.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202511-12",
+    "politicoId": "alpb-30555",
+    "data": "2025-11-18",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 18/11/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/12/Planilha-diarias-ALPB-11.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202509-15",
+    "politicoId": "alpb-30555",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Brasília-DF · 30/09/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/10/Planilha-diarias-ALPB-09.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202508-8",
+    "politicoId": "alpb-30555",
+    "data": "2025-08-22",
+    "ano": 2025,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIAS EM MINISTERIOS · Brasília-DF · 22/08/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/09/Planilha-diarias-ALPB-08.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202507-3",
+    "politicoId": "alpb-30555",
+    "data": "2025-07-10",
+    "ano": 2025,
+    "mes": 7,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "EVENTO 10 ANOS DA LBI · Rio de Janeiro-RJ · 08 a 10/07/2025",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/08/Planilha-diarias-ALPB-07.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202504-2",
+    "politicoId": "alpb-30555",
+    "data": "2025-04-05",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SEMINARIO DE SERVIÇO SOCIAL · Recife-PE · 04 a 05/04/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202504-3",
+    "politicoId": "alpb-30555",
+    "data": "2025-03-28",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 27 a 28/03/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/05/Planilha-diarias-ALPB-04.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202503-8",
+    "politicoId": "alpb-30555",
+    "data": "2025-03-22",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DO MOV. DE MULHERES COM DEFICIÊNCIA · Recife-PE · 20 a 22/03/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/04/Planilha-diarias-ALPB-03.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202503-9",
+    "politicoId": "alpb-30555",
+    "data": "2025-03-26",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DO MOV. DE MULHERES COM DEFICIÊNCIA · Brasília-DF · 25 a 26/03/2025",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/04/Planilha-diarias-ALPB-03.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202502-10",
+    "politicoId": "alpb-30555",
+    "data": "2025-02-20",
+    "ano": 2025,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIAO DE TRABALHO · Natal-RN · 19 a 20/02/2025",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/03/Planilha-diarias-ALPB-02.2025.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202412-9",
+    "politicoId": "alpb-30555",
+    "data": "2024-12-11",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SEMINÁRIO · Natal-RN · 09 a 11/12/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202412-10",
+    "politicoId": "alpb-30555",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 05 a 06/12/2024",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202412-14",
+    "politicoId": "alpb-30555",
+    "data": "2024-12-21",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Natal-RN · 18 a 21/12/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202412-19",
+    "politicoId": "alpb-30555",
+    "data": "2024-11-08",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Recife-PE · 05 a 08/11/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2025/01/Planilha-diarias-ALPB-12.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202411-1",
+    "politicoId": "alpb-30555",
+    "data": "2024-11-08",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Recife-PE · 05 a 08/11/2024",
+    "valor": 3600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/12/Planilha-diarias-ALPB-11.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202406-10",
+    "politicoId": "alpb-30555",
+    "data": "2024-07-03",
+    "ano": 2024,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Belo Horizonte-MG · 27/06 a 03/07/2024",
+    "valor": 8400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/07/Planilhas-diarias-ALPB-06.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202403-6",
+    "politicoId": "alpb-30555",
+    "data": "2024-03-22",
+    "ano": 2024,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIAS · Brasília-DF · 21 a 22/03/2024",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/04/Planilha-diarias-ALPB-03.2024.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-6",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-10",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 08 a 10/12/2023",
+    "valor": 2400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-20",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-49",
+    "politicoId": "alpb-30555",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-95",
+    "politicoId": "alpb-30555",
+    "data": "2023-11-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Massaranduba · 18/11/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-96",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-05",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Alagoa Grande · 05/12/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-97",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-21",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Natal · 21/12/2023",
+    "valor": 600,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-98",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-13",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Aroeiras / Mari · 13/12/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-99",
+    "politicoId": "alpb-30555",
+    "data": "2023-12-28",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Sapé / Alhandra · 28/12/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-100",
+    "politicoId": "alpb-30555",
+    "data": "2023-10-19",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Campina Grande · 19/10/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-101",
+    "politicoId": "alpb-30555",
+    "data": "2023-10-27",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Boqueirão · 27/10/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-102",
+    "politicoId": "alpb-30555",
+    "data": "2023-11-13",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Patos · 13/11/2023",
+    "valor": 300,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-103",
+    "politicoId": "alpb-30555",
+    "data": "2023-11-04",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Natal · 03 a 04/11/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202312-104",
+    "politicoId": "alpb-30555",
+    "data": "2023-11-10",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "FRENTE PARLAMENTAR · Recife · 09 a 10/11/2023",
+    "valor": 1200,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202311-13",
+    "politicoId": "alpb-30555",
+    "data": "2023-11-23",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA MINISTERIAL · Brasilia · 22 a 23/11/2023",
+    "valor": 700,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/12/Planilha-diarias-ALPB-11.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202308-1",
+    "politicoId": "alpb-30555",
+    "data": "2023-08-04",
+    "ano": 2023,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Aracajú · 02 a 04/08/2023",
+    "valor": 1400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/09/Planilha-diarias-ALPB-08.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202307-0",
+    "politicoId": "alpb-30555",
+    "data": "2023-06-29",
+    "ano": 2023,
+    "mes": 7,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIA · Natal · 28 a 29/06/2023",
+    "valor": 700,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/08/Planilha-diarias-ALPB-07.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202304-2",
+    "politicoId": "alpb-30555",
+    "data": "2023-03-29",
+    "ano": 2023,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 28 a 29/03/2023",
+    "valor": 1400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/05/Planilha-diarias-ALPB-04.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202304-3",
+    "politicoId": "alpb-30555",
+    "data": "2023-04-05",
+    "ano": 2023,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 03 a 05/04/2023 03:00:00",
+    "valor": 1400,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/05/Planilha-diarias-ALPB-04.2023.ods"
+  },
+  {
+    "id": "alpb-30555-diaria-202304-5",
+    "politicoId": "alpb-30555",
+    "data": "2023-04-13",
+    "ano": 2023,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 12 a 13/04/2023 03:00:00",
+    "valor": 700,
+    "documento": "https://www.al.pb.leg.br/wp-content/uploads/2023/05/Planilha-diarias-ALPB-04.2023.ods"
   }
 ]

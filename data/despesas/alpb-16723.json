@@ -6420,5 +6420,47 @@
       "cnpjCpf": "****32.577/000****"
     },
     "valor": 500
+  },
+  {
+    "id": "alpb-16723-diaria-202406-5",
+    "politicoId": "alpb-16723",
+    "data": "2024-06-07",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4800,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 03 a 07/06/2024",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/07/Planilhas-diarias-ALPB-06.2024.ods"
+  },
+  {
+    "id": "alpb-16723-diaria-202312-51",
+    "politicoId": "alpb-16723",
+    "data": "2023-10-16",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 600,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16/10/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2024/01/Planilha-diarias-ALPB-12.2023.ods"
+  },
+  {
+    "id": "alpb-16723-diaria-202309-2",
+    "politicoId": "alpb-16723",
+    "data": "2023-09-11",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2100,
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo · 08 a 11/09/2023",
+    "urlDocumento": "https://www.al.pb.leg.br/wp-content/uploads/2023/10/Planilha-diarias-ALPB-09.2023.ods"
   }
 ]
