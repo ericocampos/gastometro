@@ -108,6 +108,20 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByText(/não disponível na fonte/i)).toBeInTheDocument()
   })
 
+  it('cidade só de diárias (sem teto): mostra resumo de diárias, sem "uso do teto"', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null} custos={custos}
+        municipioCusto={{ slug: 'areia', nome: 'Areia', salario: 7000, viapTeto: 0, viapMedia: null, gabineteMedia: 8000, viapFonteTce: true, temViap: false, temDiaria: true, diariaMedia: 6000 }}
+        municipioAtualizadoEm="2026-06-03" assessores={assessores}
+        alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText('Diárias · por mês')).toBeInTheDocument()
+    expect(screen.getByText(/não têm um teto fixo/i)).toBeInTheDocument()
+    // os cards do CotaVsTeto (cota × teto) não devem aparecer
+    expect(screen.queryByText('Cota · gasto real × teto')).not.toBeInTheDocument()
+    expect(screen.queryByText(/Teto da cota/i)).not.toBeInTheDocument()
+  })
+
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {
     renderMunicipal()
     // o cabeçalho da tabela de fornecedores não deve aparecer

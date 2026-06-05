@@ -200,9 +200,12 @@ export function PerfilView({
       ? `https://www6g.senado.leg.br/transparencia/sen/${politico.id.replace('senado-', '')}`
       : undefined
   const refCota =
-    !custoCasa.cota.aproximado && custoCasa.cota.valor != null
+    !custoCasa.cota.aproximado && custoCasa.cota.valor != null && custoCasa.cota.valor > 0
       ? { valor: custoCasa.cota.valor, rotulo: 'Teto da cota/mês', cor: corCasa(politico.casa) }
       : undefined
+  // câmara que paga só diárias (sem VIAP fixa): não há "teto", então o card de cota×teto não se aplica;
+  // mostramos um resumo de diárias (média por mês) em vez do "uso do teto" (que quebraria sem teto).
+  const municipalSoDiaria = politico.casa === 'camara_municipal' && (municipioCusto?.viapTeto ?? 0) <= 0 && (municipioCusto?.temDiaria ?? false)
 
   return (
     <article>
@@ -314,8 +317,17 @@ export function PerfilView({
           )}
 
           <section className="mb-10">
-            <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
-            <CotaVsTeto cota={custoCasa.cota} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
+            {municipalSoDiaria ? (
+              <>
+                <SecaoTitulo>Diárias · por mês</SecaoTitulo>
+                <DiariasResumo mediaMensal={mediaMensal} salario={custoCasa.salario} />
+              </>
+            ) : (
+              <>
+                <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
+                <CotaVsTeto cota={custoCasa.cota} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
+              </>
+            )}
           </section>
 
           <section className="mb-10">
@@ -414,6 +426,24 @@ function Estatistica({ rotulo, valor, hint, destaque }: { rotulo: string; valor:
         {valor}
       </div>
       {hint && <div className="text-xs text-tinta-tenue">{hint}</div>}
+    </div>
+  )
+}
+
+// Câmara que paga só diárias (sem VIAP fixa): não há "teto" de cota, então mostramos o subsídio e a
+// média mensal de diárias do vereador, sem o "uso do teto" (que não se aplica a um gasto variável).
+function DiariasResumo({ mediaMensal, salario }: { mediaMensal: number; salario: number }) {
+  return (
+    <div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Estatistica rotulo="Subsídio / mês" valor={brl(salario)} hint="fixo, igual a todos os vereadores" />
+        <Estatistica rotulo="Diárias · média / mês" valor={brl(mediaMensal)} hint="no período selecionado" destaque />
+      </div>
+      <p className="mt-3 text-xs text-tinta-tenue">
+        Esta câmara não paga VIAP por vereador; o gasto rastreável por vereador são as diárias, que são
+        variáveis (conforme as viagens) e <strong className="text-tinta-suave">não têm um teto fixo</strong>,
+        por isso aqui não há “uso do teto”. Os lançamentos estão no detalhamento abaixo.
+      </p>
     </div>
   )
 }
