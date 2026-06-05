@@ -33,10 +33,10 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
     <div>
       <section className="mb-8 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: '#0f766e' }}>
-          Vereadores · {municipio.uf}
+          {orcamento ? 'Município' : 'Vereadores'} · {municipio.uf}
         </p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl">
-          Vereadores de {municipio.nome}
+          {orcamento ? municipio.nome : `Vereadores de ${municipio.nome}`}
         </h1>
       </section>
 
@@ -44,10 +44,21 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
         <section className="mb-12">
           <SecaoTitulo>Pra onde vai o dinheiro · a cidade inteira</SecaoTitulo>
           <p className="mb-3 text-sm leading-relaxed text-tinta-suave">
-            Além dos vereadores, o orçamento de {municipio.nome} inteiro: quanto a Prefeitura, a Câmara
-            e a Previdência pagaram por área, ano a ano.
+            O orçamento de {municipio.nome} inteiro: quanto a Prefeitura, a Câmara e a Previdência
+            pagaram por área, ano a ano.
           </p>
           <OrcamentoCidade orcamento={orcamento} />
+        </section>
+      )}
+
+      {orcamento && (
+        <section className="mb-8">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: '#0f766e' }}>
+            Vereadores · {municipio.uf}
+          </p>
+          <h2 className="font-display text-2xl font-semibold leading-tight tracking-tight text-tinta sm:text-3xl">
+            Vereadores de {municipio.nome}
+          </h2>
         </section>
       )}
 
