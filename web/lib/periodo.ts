@@ -142,6 +142,41 @@ export function totalAnualMunicipio(series: SerieParlamentar[]): TotalAnualCasa[
   return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, camara: 0, senado: 0, assembleia: 0, municipal: total }))
 }
 
+// Comparativo entre cidades (gráfico ano a ano na listagem de municípios). Por cidade e por ano:
+// o total de VIAP da câmara e quantos vereadores tiveram VIAP naquele ano (denominador da média por
+// vereador, que normaliza cidades de tamanhos diferentes). Só as cidades passadas (as completas).
+export interface CidadeAnoComparativo { ano: number; total: number; nVereadores: number }
+export interface SerieCidadeComparativo { slug: string; nome: string; anos: CidadeAnoComparativo[] }
+
+export function comparativoAnualCidades(
+  series: SerieParlamentar[],
+  cidades: { slug: string; nome: string }[],
+): SerieCidadeComparativo[] {
+  const porCidade = new Map<string, Map<number, { total: number; vers: Set<string> }>>()
+  for (const s of series) {
+    if (s.casa !== 'camara_municipal' || !s.municipio) continue
+    let anos = porCidade.get(s.municipio)
+    if (!anos) { anos = new Map(); porCidade.set(s.municipio, anos) }
+    for (const p of s.serieMensal) {
+      const ano = Number(p.anoMes.slice(0, 4))
+      const e = anos.get(ano) ?? { total: 0, vers: new Set<string>() }
+      e.total += p.total
+      e.vers.add(s.politicoId) // vereador com dado publicado naquele ano
+      anos.set(ano, e)
+    }
+  }
+  return cidades
+    .map((c) => {
+      const anos = porCidade.get(c.slug)
+      if (!anos) return null
+      const lista = [...anos.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([ano, v]) => ({ ano, total: v.total, nVereadores: v.vers.size }))
+      return lista.length ? { slug: c.slug, nome: c.nome, anos: lista } : null
+    })
+    .filter((x): x is SerieCidadeComparativo => x !== null)
+}
+
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   const anos = new Set<number>()
   for (const s of series) for (const p of s.serieMensal) anos.add(Number(p.anoMes.slice(0, 4)))

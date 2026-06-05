@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import {
   anosDaLegislatura, pontoNoPeriodo, totalNoPeriodo, rankingNoPeriodo,
   resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, totalGeralPorAno,
-  totalAnualMunicipio,
+  totalAnualMunicipio, comparativoAnualCidades,
   type SerieParlamentar,
 } from './periodo'
 
@@ -86,5 +86,30 @@ describe('periodo', () => {
       { ano: 2025, camara: 0, senado: 0, assembleia: 0, municipal: 20000 }, // 11000 + 9000
       { ano: 2026, camara: 0, senado: 0, assembleia: 0, municipal: 12000 },
     ])
+  })
+
+  it('comparativoAnualCidades: total e nº de vereadores com dado por ano, por cidade', () => {
+    const series: SerieParlamentar[] = [
+      { politicoId: 'jp1', nome: 'JP1', partido: '', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
+        serieMensal: [{ anoMes: '2024-01', total: 5000 }, { anoMes: '2025-02', total: 6000 }] },
+      { politicoId: 'jp2', nome: 'JP2', partido: '', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
+        serieMensal: [{ anoMes: '2025-03', total: 4000 }] },
+      { politicoId: 'sr1', nome: 'SR1', partido: '', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+        serieMensal: [{ anoMes: '2025-01', total: 11000 }] },
+      // série federal não pode entrar
+      { politicoId: 'f1', nome: 'F1', partido: '', casa: 'camara', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 999 }] },
+    ]
+    const r = comparativoAnualCidades(series, [
+      { slug: 'joao-pessoa', nome: 'João Pessoa' },
+      { slug: 'santa-rita', nome: 'Santa Rita' },
+      { slug: 'patos', nome: 'Patos' }, // sem dados → omitida
+    ])
+    expect(r.map((c) => c.slug)).toEqual(['joao-pessoa', 'santa-rita'])
+    const jp = r.find((c) => c.slug === 'joao-pessoa')!
+    expect(jp.anos).toEqual([
+      { ano: 2024, total: 5000, nVereadores: 1 },        // só jp1
+      { ano: 2025, total: 10000, nVereadores: 2 },       // jp1 6000 + jp2 4000, 2 vereadores
+    ])
+    expect(r.find((c) => c.slug === 'santa-rita')!.anos).toEqual([{ ano: 2025, total: 11000, nVereadores: 1 }])
   })
 })

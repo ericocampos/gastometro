@@ -1,10 +1,14 @@
-import { getMunicipios } from '@/lib/dados'
+import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
+import { comparativoAnualCidades } from '@/lib/periodo'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
+import { ComparadorCidades } from '@/components/ComparadorCidades'
 
 export default function MunicipiosPage() {
   const { cidades, totalMunicipiosPB, naoCobertas } = getMunicipios()
   const temLeve = cidades.some((c) => c.modelo === 'leve')
+  const completas = cidades.filter((c) => c.modelo === 'completo').map((c) => ({ slug: c.slug, nome: c.nome }))
+  const comparativo = comparativoAnualCidades(getSeriesParlamentares(), completas)
 
   return (
     <div>
@@ -13,10 +17,17 @@ export default function MunicipiosPage() {
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tinta-suave">
           <strong className="text-tinta">{cidades.length} de {totalMunicipiosPB}</strong> cidades cobertas,
           a partir de uma fonte única e oficial: a folha de pessoal das câmaras no Portal de Dados
-          Abertos do <strong className="text-tinta">TCE-PB</strong>. João Pessoa tem o gasto detalhado
-          por vereador; as demais entram no modelo simples (abaixo).
+          Abertos do <strong className="text-tinta">TCE-PB</strong>. Algumas cidades têm o gasto detalhado
+          por vereador (ver o comparativo abaixo); as demais entram no modelo simples.
         </p>
       </section>
+
+      {comparativo.length > 0 && (
+        <section className="mb-8">
+          <SecaoTitulo>Comparar cidades · VIAP ano a ano</SecaoTitulo>
+          <ComparadorCidades cidades={comparativo} />
+        </section>
+      )}
 
       {temLeve && (
         <section className="mb-6 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
