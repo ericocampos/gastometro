@@ -18,17 +18,46 @@ const cidades: SerieCidadeComparativo[] = [
 ]
 
 describe('ComparadorCidades', () => {
-  it('mostra os chips das cidades e o toggle de métrica', () => {
+  it('mostra o dropdown, os chips das cidades escolhidas e o toggle de métrica', () => {
     render(<ComparadorCidades cidades={cidades} />)
-    expect(screen.getByRole('button', { name: 'João Pessoa' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Santa Rita' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Escolher cidades/ })).toBeInTheDocument()
+    // default: as duas selecionadas → dois chips removíveis
+    expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Remover Santa Rita' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /Total da câmara/ })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /Por vereador/ })).toBeInTheDocument()
   })
 
-  it('começa com todas as cidades selecionadas', () => {
+  it('o dropdown começa fechado e abre ao clicar, listando as cidades como checkboxes marcadas', () => {
     render(<ComparadorCidades cidades={cidades} />)
-    expect(screen.getByRole('button', { name: 'Santa Rita' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.queryByRole('checkbox', { name: 'Santa Rita' })).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /Escolher cidades/ }))
+    expect(screen.getByRole('checkbox', { name: 'João Pessoa' })).toBeChecked()
+    expect(screen.getByRole('checkbox', { name: 'Santa Rita' })).toBeChecked()
+  })
+
+  it('remove uma cidade pelo × do chip', () => {
+    render(<ComparadorCidades cidades={cidades} />)
+    fireEvent.click(screen.getByRole('button', { name: 'Remover Santa Rita' }))
+    expect(screen.queryByRole('button', { name: 'Remover Santa Rita' })).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
+  })
+
+  it('desmarca uma cidade pelo dropdown', () => {
+    render(<ComparadorCidades cidades={cidades} />)
+    fireEvent.click(screen.getByRole('button', { name: /Escolher cidades/ }))
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Santa Rita' }))
+    expect(screen.queryByRole('button', { name: 'Remover Santa Rita' })).not.toBeInTheDocument()
+  })
+
+  it('"Limpar" remove todos os filtros e mostra o estado vazio', () => {
+    render(<ComparadorCidades cidades={cidades} />)
+    fireEvent.click(screen.getByRole('button', { name: 'Limpar' }))
+    expect(screen.queryByRole('button', { name: 'Remover João Pessoa' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Remover Santa Rita' })).not.toBeInTheDocument()
+    expect(screen.getByText(/Escolha ao menos uma cidade/)).toBeInTheDocument()
+    // sem seleção, o próprio "Limpar" some
+    expect(screen.queryByRole('button', { name: 'Limpar' })).not.toBeInTheDocument()
   })
 
   it('alterna a métrica e troca a nota explicativa', () => {
@@ -36,13 +65,6 @@ describe('ComparadorCidades', () => {
     expect(screen.getByText(/Total da câmara = soma/)).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: /Por vereador/ }))
     expect(screen.getByText(/Média por vereador =/)).toBeInTheDocument()
-  })
-
-  it('desmarca uma cidade ao clicar no chip', () => {
-    render(<ComparadorCidades cidades={cidades} />)
-    const chip = screen.getByRole('button', { name: 'Santa Rita' })
-    fireEvent.click(chip)
-    expect(chip).toHaveAttribute('aria-pressed', 'false')
   })
 
   it('não renderiza nada sem cidades completas', () => {

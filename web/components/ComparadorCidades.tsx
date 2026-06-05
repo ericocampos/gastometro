@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import type { SerieCidadeComparativo } from '@/lib/periodo'
 import { brl } from '@/lib/formato'
@@ -16,9 +16,25 @@ function compacto(v: number): string {
   return brl(v)
 }
 
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+
 export function ComparadorCidades({ cidades }: { cidades: SerieCidadeComparativo[] }) {
-  const [selecionadas, setSelecionadas] = useState<string[]>(() => cidades.map((c) => c.slug))
+  // começa com as primeiras (maiores) selecionadas; com poucas, são todas
+  const [selecionadas, setSelecionadas] = useState<string[]>(() => cidades.slice(0, 3).map((c) => c.slug))
   const [metrica, setMetrica] = useState<Metrica>('total')
+  const [aberto, setAberto] = useState(false)
+  const [busca, setBusca] = useState('')
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // fecha o dropdown ao clicar fora
+  useEffect(() => {
+    if (!aberto) return
+    const onDoc = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) setAberto(false)
+    }
+    document.addEventListener('mousedown', onDoc)
+    return () => document.removeEventListener('mousedown', onDoc)
+  }, [aberto])
 
   if (cidades.length === 0) return null
 
@@ -29,6 +45,7 @@ export function ComparadorCidades({ cidades }: { cidades: SerieCidadeComparativo
   const valorAno = (a: { total: number; nVereadores: number }) =>
     metrica === 'porVereador' ? (a.nVereadores ? a.total / a.nVereadores : 0) : a.total
 
+  // ativas na ordem da lista original (cor/legenda estáveis)
   const ativas = cidades.filter((c) => selecionadas.includes(c.slug))
   const anos = [...new Set(ativas.flatMap((c) => c.anos.map((a) => a.ano)))].sort((a, b) => a - b)
   const dados = anos.map((ano) => {
@@ -39,6 +56,8 @@ export function ComparadorCidades({ cidades }: { cidades: SerieCidadeComparativo
     }
     return row
   })
+
+  const filtradas = busca.trim() ? cidades.filter((c) => norm(c.nome).includes(norm(busca))) : cidades
 
   const botaoMetrica = (m: Metrica, rotulo: string) => (
     <button
@@ -55,36 +74,104 @@ export function ComparadorCidades({ cidades }: { cidades: SerieCidadeComparativo
 
   return (
     <div className="rounded-xl border border-borda bg-superficie p-4">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap gap-1.5">
-          {cidades.map((c) => {
-            const ativa = selecionadas.includes(c.slug)
-            return (
-              <button
-                key={c.slug}
-                type="button"
-                onClick={() => toggle(c.slug)}
-                aria-pressed={ativa}
-                className="rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
-                style={
-                  ativa
-                    ? { background: `color-mix(in srgb, ${corDe(c.slug)} 14%, transparent)`, borderColor: corDe(c.slug), color: corDe(c.slug) }
-                    : { borderColor: 'var(--borda)', color: 'var(--tinta-tenue)' }
-                }
-              >
-                {c.nome}
-              </button>
-            )
-          })}
+      <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+        {/* dropdown multi-select de cidades */}
+        <div className="relative" ref={dropdownRef}>
+          <button
+            type="button"
+            onClick={() => setAberto((o) => !o)}
+            aria-expanded={aberto}
+            aria-haspopup="listbox"
+            className="inline-flex items-center gap-1.5 rounded-md border border-borda px-3 py-1.5 text-sm text-tinta transition-colors hover:border-marca"
+          >
+            Escolher cidades
+            <span className="text-xs text-tinta-tenue">({selecionadas.length})</span>
+            <span aria-hidden className="text-tinta-tenue">▾</span>
+          </button>
+          {aberto && (
+            <div
+              role="listbox"
+              aria-label="Cidades disponíveis"
+              className="absolute z-20 mt-1 w-64 rounded-lg border border-borda bg-superficie p-2 shadow-carta"
+            >
+              {cidades.length > 8 && (
+                <input
+                  type="text"
+                  value={busca}
+                  onChange={(e) => setBusca(e.target.value)}
+                  placeholder="Buscar cidade…"
+                  aria-label="Buscar cidade"
+                  className="mb-2 w-full rounded-md border border-borda bg-superficie px-2.5 py-1.5 text-sm text-tinta placeholder:text-tinta-tenue focus:border-marca"
+                />
+              )}
+              <div className="max-h-60 overflow-auto">
+                {filtradas.length === 0 ? (
+                  <p className="px-1 py-2 text-xs text-tinta-tenue">Nenhuma cidade encontrada.</p>
+                ) : (
+                  filtradas.map((c) => (
+                    <label
+                      key={c.slug}
+                      className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-tinta hover:bg-superficie-2"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selecionadas.includes(c.slug)}
+                        onChange={() => toggle(c.slug)}
+                        className="accent-marca"
+                      />
+                      <span className="inline-block h-2 w-2 shrink-0 rounded-full" style={{ background: corDe(c.slug) }} aria-hidden />
+                      {c.nome}
+                    </label>
+                  ))
+                )}
+              </div>
+            </div>
+          )}
         </div>
+
+          {selecionadas.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setSelecionadas([])}
+              className="text-xs text-tinta-tenue underline transition-colors hover:text-marca"
+            >
+              Limpar
+            </button>
+          )}
+        </div>
+
         <div className="flex gap-1.5">
           {botaoMetrica('total', 'Total da câmara')}
           {botaoMetrica('porVereador', 'Por vereador')}
         </div>
       </div>
 
+      {/* chips só das cidades escolhidas, cada um removível */}
+      {ativas.length > 0 && (
+        <div className="mb-3 flex flex-wrap gap-1.5">
+          {ativas.map((c) => (
+            <span
+              key={c.slug}
+              className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium"
+              style={{ background: `color-mix(in srgb, ${corDe(c.slug)} 14%, transparent)`, borderColor: corDe(c.slug), color: corDe(c.slug) }}
+            >
+              {c.nome}
+              <button
+                type="button"
+                aria-label={`Remover ${c.nome}`}
+                onClick={() => toggle(c.slug)}
+                className="leading-none opacity-70 transition-opacity hover:opacity-100"
+              >
+                ×
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+
       {ativas.length === 0 ? (
-        <p className="py-16 text-center text-sm text-tinta-suave">Selecione ao menos uma cidade para comparar.</p>
+        <p className="py-16 text-center text-sm text-tinta-suave">Escolha ao menos uma cidade para comparar.</p>
       ) : (
         <div style={{ width: '100%', height: 280 }}>
           <ResponsiveContainer>
