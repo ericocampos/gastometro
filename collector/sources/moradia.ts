@@ -5,7 +5,7 @@
 //           .../AMReembolso{MES}{ANO}.htm (auxílio por reembolso, até o teto) ·
 //           .../Ocupaes{MES}{ANO}.htm (ocupantes de imóvel funcional)
 // Cada lista é um snapshot do mês: só os beneficiários CORRENTES aparecem (como o gabinete).
-import { fetchText } from '../http.js'
+import { fetchText, fetchBuffer } from '../http.js'
 
 const INDICE = 'https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia'
 // Valor do auxílio-moradia (Ato da Mesa 3/2015): FIXO e igual para todos os que recebem. No "em
@@ -66,6 +66,51 @@ export function mapaMoradia(listas: { especie?: string; reembolso?: string; imov
 }
 
 export const chaveMoradia = norm
+
+// ---------- SENADO ----------
+// O Senado publica um CSV único (snapshot do mês), latin-1, separado por ';', com colunas
+// NOME;ESTADO;PARTIDO;AUXÍLIO-MORADIA;IMÓVEL FUNCIONAL (SIM/NÃO). O senador escolhe UMA opção:
+// imóvel funcional (em espécie) OU auxílio-moradia de R$ 5.500/mês (mediante comprovação de
+// aluguel/hotel). Quem não usa nenhuma fica NÃO/NÃO.
+const CSV_SENADO = 'https://www.senado.leg.br/transparencia/lai/secrh/senador_auxilio_imoveis.csv'
+export const AUXILIO_MORADIA_SENADO = 5500
+
+export function parseMoradiaSenadoCsv(txt: string, uf?: string): Map<string, MoradiaDeputado> {
+  const mapa = new Map<string, MoradiaDeputado>()
+  const linhas = txt.split(/\r?\n/)
+  let hdr = -1
+  const idx: Record<string, number> = {}
+  for (let i = 0; i < linhas.length; i++) {
+    const cols = linhas[i].split(';').map((c) => norm(c))
+    if (cols.includes('nome') && cols.some((c) => c.includes('imovel'))) {
+      hdr = i
+      idx.nome = cols.indexOf('nome')
+      idx.estado = cols.findIndex((c) => c === 'estado' || c === 'uf')
+      idx.auxilio = cols.findIndex((c) => c.includes('auxilio'))
+      idx.imovel = cols.findIndex((c) => c.includes('imovel'))
+      break
+    }
+  }
+  if (hdr < 0) return mapa
+  const sim = (s: string) => /^sim/i.test((s ?? '').trim())
+  for (let i = hdr + 1; i < linhas.length; i++) {
+    const f = linhas[i].split(';')
+    const nome = (f[idx.nome] ?? '').trim()
+    if (!nome) continue
+    if (uf && idx.estado >= 0 && (f[idx.estado] ?? '').trim().toUpperCase() !== uf.toUpperCase()) continue
+    const temImovel = idx.imovel >= 0 && sim(f[idx.imovel])
+    const temAuxilio = idx.auxilio >= 0 && sim(f[idx.auxilio])
+    if (temImovel) mapa.set(norm(nome), { tipo: 'imovel', valorMensal: null })
+    else if (temAuxilio) mapa.set(norm(nome), { tipo: 'especie', valorMensal: AUXILIO_MORADIA_SENADO })
+  }
+  return mapa
+}
+
+// baixa o CSV de moradia do Senado (latin-1) e monta o mapa nome→{tipo,valor} (filtrado pela UF)
+export async function baixarMoradiaSenado(uf?: string): Promise<Map<string, MoradiaDeputado>> {
+  const buf = await fetchBuffer(CSV_SENADO)
+  return parseMoradiaSenadoCsv(buf.toString('latin1'), uf)
+}
 
 // baixa e monta o mapa de moradia do mês corrente (resiliente: o que falhar fica de fora)
 export async function baixarMoradia(): Promise<Map<string, MoradiaDeputado>> {

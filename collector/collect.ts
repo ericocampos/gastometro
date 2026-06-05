@@ -7,7 +7,7 @@ import { FonteSenado } from './sources/senado.js'
 import { anosDoPolitico } from './legislaturas.js'
 import { agregar } from './normalize.js'
 import { CacheBruto } from './cache.js'
-import { baixarMoradia, chaveMoradia } from './sources/moradia.js'
+import { baixarMoradia, baixarMoradiaSenado, chaveMoradia } from './sources/moradia.js'
 import { fontePerfilDaCasa } from './enriquecimento/index.js'
 import type { PerfilParlamentar } from './enriquecimento/tipos.js'
 import type { Despesa, FonteDados, Politico } from './sources/types.js'
@@ -67,6 +67,21 @@ async function main() {
     console.log(`> Moradia (Câmara): ${moradia.size} beneficiários nacionais, ${n} casados na UF`)
   } catch (e) {
     console.error(`  ! moradia (Câmara) falhou: ${(e as Error).message} (deputados ficam sem moradia)`)
+  }
+
+  // Moradia dos SENADORES (auxílio-moradia R$ 5.500 ou imóvel funcional): CSV único do Senado,
+  // já filtrado pela UF. Snapshot do mês, como o da Câmara.
+  try {
+    const moradiaSen = await baixarMoradiaSenado(cfg.uf)
+    let n = 0
+    for (const p of todosPoliticos) {
+      if (p.casa !== 'senado') continue
+      const m = moradiaSen.get(chaveMoradia(p.nome))
+      if (m) { p.moradia = m; n++ }
+    }
+    console.log(`> Moradia (Senado): ${moradiaSen.size} senadores na UF, ${n} casados`)
+  } catch (e) {
+    console.error(`  ! moradia (Senado) falhou: ${(e as Error).message} (senadores ficam sem moradia)`)
   }
 
   // Deputados estaduais (ALPB): mescla o dataset gerado por `npm run coletar:alpb`.

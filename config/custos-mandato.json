@@ -20,9 +20,11 @@
       "salario": 46366.19,
       "cota": { "valor": 15000, "rotulo": "CEAPS · VI fixa + transporte aéreo (variável)", "aproximado": true },
       "gabinete": { "valor": null, "rotulo": "Até 50 assessores · estrutura variável", "aproximado": true },
+      "moradia": { "valor": 5500, "rotulo": "Auxílio-moradia ou imóvel funcional", "aproximado": true },
       "fontes": [
         { "nome": "Senado · CEAPS (cota)", "url": "https://www12.senado.leg.br/transparencia" },
-        { "nome": "Senado · estrutura remuneratória", "url": "https://www12.senado.leg.br/transparencia/rh/segp/estrutura-remuneratoria" }
+        { "nome": "Senado · estrutura remuneratória", "url": "https://www12.senado.leg.br/transparencia/rh/segp/estrutura-remuneratoria" },
+        { "nome": "Senado · auxílio-moradia e imóveis funcionais", "url": "https://www12.senado.leg.br/transparencia/sen/coapat/auxilio-moradia-e-imoveis-funcionais" }
       ]
     },
     "assembleia": {
