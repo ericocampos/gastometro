@@ -387,12 +387,20 @@ export function montarCampinaGrande(
   const subsidios = vereadoresTce.map((v) => v.subsidio).sort((a, b) => a - b)
   const subsidioBase = subsidios.length ? subsidios[Math.floor(subsidios.length / 2)] : 0
 
+  // Teto derivado do dado: maior valor reembolsado no período (= R$17.000, conforme a Resolução
+  // 110/2024). NOTA: a partir de 2026 o reembolso aparece capado em R$12.000 (sem norma localizada),
+  // então o teto é, na prática, por período — o ajuste período-aware dos cards está pendente (ver
+  // memória). Por ora usamos o teto do período inteiro (o maior), p/ não quebrar o "uso do teto" de 2025.
+  const todosMeses = viap.flatMap((v) => v.meses)
+  const tetoEfetivo = Math.max(0, ...todosMeses.map((m) => m.reembolsado))
+  const viapTeto = Math.round(tetoEfetivo) || VIAP_TETO_CG
+
   const resumoMunicipio: Municipio = {
     slug, nome, uf: 'PB', modelo: 'completo', numVereadores: vereadoresTce.length,
     totalViapPeriodo, totalGabineteMes: folhaComissionados, periodoViap,
     viapDetalhada: true, gabinetePorVereador: false,
     mesReferencia: mesFolha, folhaComissionados,
-    custo: { slug, nome, salario: subsidioBase, viapTeto: VIAP_TETO_CG, viapMedia, gabineteMedia },
+    custo: { slug, nome, salario: subsidioBase, viapTeto, viapMedia, gabineteMedia },
   }
 
   return {
