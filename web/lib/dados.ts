@@ -19,8 +19,12 @@ function lerJson<T>(caminho: string): T {
   return JSON.parse(readFileSync(caminho, 'utf-8')) as T
 }
 
+// Cache do agregados.json. Em produção (build estático) lê uma vez só, por performance. Em dev lê
+// fresco a cada chamada: o coletor reescreve esse arquivo enquanto o `next dev` está no ar, e um
+// snapshot em memória deixaria cidades recém-coletadas (ranking/gráficos) sumidas até reiniciar.
 let cacheAgregados: Agregados | null = null
 function agregados(): Agregados {
+  if (process.env.NODE_ENV !== 'production') return lerJson<Agregados>(resolve(dataDir(), 'agregados.json'))
   return (cacheAgregados ??= lerJson<Agregados>(resolve(dataDir(), 'agregados.json')))
 }
 
