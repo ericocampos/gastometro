@@ -8,8 +8,10 @@
 import { fetchText } from '../http.js'
 
 const INDICE = 'https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia'
-// valor fixo do auxílio-moradia em espécie (bruto). O reembolso é "até" esse teto (não publicado
-// por deputado nas listas); o imóvel funcional é benefício em espécie (sem valor em dinheiro).
+// Valor do auxílio-moradia (Ato da Mesa 3/2015): FIXO e igual para todos os que recebem. No "em
+// espécie" é o valor exato (bruto, com 27,5% de IR); no reembolso é o TETO (até esse valor, mediante
+// recibo, sem IR — o valor exato abaixo do teto não é publicado por deputado). O imóvel funcional é
+// benefício em espécie (sem valor em dinheiro). Acima do teto, a complementação sai da CEAP/cota.
 export const AUXILIO_MORADIA_VALOR = 4253
 
 export type TipoMoradia = 'imovel' | 'especie' | 'reembolso'
@@ -55,10 +57,11 @@ export function mapaMoradia(listas: { especie?: string; reembolso?: string; imov
     if (!html) return
     for (const nome of parseListaMoradia(html)) { const k = norm(nome); if (k && !mapa.has(k)) mapa.set(k, m) }
   }
-  // imóvel funcional primeiro (mais específico/estável); depois espécie; reembolso por último
+  // imóvel funcional primeiro (mais específico/estável); depois espécie; reembolso por último.
+  // espécie = valor exato; reembolso = teto (até esse valor); imóvel = sem valor em dinheiro.
   add(listas.imovel, { tipo: 'imovel', valorMensal: null })
   add(listas.especie, { tipo: 'especie', valorMensal: AUXILIO_MORADIA_VALOR })
-  add(listas.reembolso, { tipo: 'reembolso', valorMensal: null })
+  add(listas.reembolso, { tipo: 'reembolso', valorMensal: AUXILIO_MORADIA_VALOR })
   return mapa
 }
 

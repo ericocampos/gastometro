@@ -31,7 +31,8 @@ describe('moradia (auxílio-moradia / imóvel funcional dos deputados federais)'
     const reembolso = `<tr><td>1</td><td>Ruy Carneiro</td></tr>`
     const imovel = `<tr><td>1</td><td>Hugo Motta</td></tr><tr><td>2</td><td>Romero Rodrigues</td></tr>`
     const m = mapaMoradia({ especie, reembolso, imovel })
-    expect(m.get(chaveMoradia('Ruy Carneiro'))).toEqual({ tipo: 'reembolso', valorMensal: null })
+    // espécie e reembolso têm o mesmo valor (Ato da Mesa 3/2015); reembolso é "até" esse teto
+    expect(m.get(chaveMoradia('Ruy Carneiro'))).toEqual({ tipo: 'reembolso', valorMensal: 4253 })
     expect(m.get(chaveMoradia('Hugo Motta'))).toEqual({ tipo: 'imovel', valorMensal: null })
     // Romero está em espécie E imóvel → imóvel (adicionado 1º) tem prioridade
     expect(m.get(chaveMoradia('Romero Rodrigues'))).toEqual({ tipo: 'imovel', valorMensal: null })

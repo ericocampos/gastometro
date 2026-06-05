@@ -174,7 +174,7 @@ describe('PerfilView · vereador municipal', () => {
       <PerfilView politico={dep} despesas={ds} series={sr} perfil={null} custos={custos}
         assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
     )
-    expect(screen.getByText(/Imóvel funcional/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Imóvel funcional/i).length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText(/benefício em espécie/i)).toBeInTheDocument()
   })
 
@@ -188,6 +188,18 @@ describe('PerfilView · vereador municipal', () => {
     )
     expect(screen.getByText(/Auxílio-moradia \(em espécie\)/i)).toBeInTheDocument()
     expect(screen.getAllByText(/R\$ 4\.253/).length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('deputado federal por reembolso: mostra "até R$ 4.253" (teto), não "em espécie"', () => {
+    const dep: Politico = { ...politico, id: 'camara-3', casa: 'camara', municipio: undefined, moradia: { tipo: 'reembolso', valorMensal: 4253 } }
+    const ds: Despesa[] = [{ id: 'c3', politicoId: 'camara-3', data: '2026-01-15', ano: 2026, mes: 1, categoria: 'TELEFONIA', fornecedor: { nome: 'OI' }, valor: 100 }]
+    const sr: SerieParlamentar[] = [{ ...series[0], politicoId: 'camara-3', casa: 'camara', municipio: undefined, serieMensal: [{ anoMes: '2026-01', total: 100 }] }]
+    render(
+      <PerfilView politico={dep} despesas={ds} series={sr} perfil={null} custos={custos}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText(/Auxílio-moradia \(por reembolso\)/i)).toBeInTheDocument()
+    expect(screen.getByText(/até R\$ 4\.253/i)).toBeInTheDocument()
   })
 
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {
