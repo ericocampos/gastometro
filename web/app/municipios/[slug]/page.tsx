@@ -1,5 +1,6 @@
 import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
 import { totalAnualMunicipio } from '@/lib/periodo'
+import { mesAno } from '@/lib/formato'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
 import { CamaraLeve } from '@/components/CamaraLeve'
 import { RankingView } from '@/components/RankingView'
@@ -50,6 +51,13 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
               <div className="rounded-xl border border-borda bg-superficie p-4">
                 <GraficoGeralAnual dados={anualCidade} semLegenda />
               </div>
+              <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
+                O gráfico mostra a VIAP que a fonte oficial publica em cada ano
+                {municipio.periodoViap ? ` (dados disponíveis de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)})` : ''}.
+                A cobertura varia: anos mais antigos costumam ter menos lançamentos publicados, então uma
+                diferença entre anos (um salto em determinado ano, por exemplo) pode refletir o que a fonte
+                disponibiliza, não só o gasto. Trabalhamos com os dados que conseguimos encontrar nas fontes oficiais.
+              </p>
             </section>
           )}
 
