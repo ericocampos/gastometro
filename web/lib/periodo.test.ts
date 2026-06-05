@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import {
   anosDaLegislatura, pontoNoPeriodo, totalNoPeriodo, rankingNoPeriodo,
   resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, totalGeralPorAno,
+  totalAnualMunicipio,
   type SerieParlamentar,
 } from './periodo'
 
@@ -71,6 +72,19 @@ describe('periodo', () => {
     expect(totalGeralPorAno(series)).toEqual([
       { ano: 2022, total: 100 },        // A
       { ano: 2024, total: 350 },        // A 300 + B 50
+    ])
+  })
+
+  it('totalAnualMunicipio soma todos os vereadores por ano na chave municipal', () => {
+    const cidade: SerieParlamentar[] = [
+      { politicoId: 'v1', nome: 'V1', partido: 'PP', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+        serieMensal: [{ anoMes: '2025-01', total: 11000 }, { anoMes: '2026-02', total: 12000 }] },
+      { politicoId: 'v2', nome: 'V2', partido: 'PT', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+        serieMensal: [{ anoMes: '2025-03', total: 9000 }] },
+    ]
+    expect(totalAnualMunicipio(cidade)).toEqual([
+      { ano: 2025, camara: 0, senado: 0, assembleia: 0, municipal: 20000 }, // 11000 + 9000
+      { ano: 2026, camara: 0, senado: 0, assembleia: 0, municipal: 12000 },
     ])
   })
 })

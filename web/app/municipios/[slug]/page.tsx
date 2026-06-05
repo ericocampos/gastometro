@@ -1,7 +1,9 @@
 import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
+import { totalAnualMunicipio } from '@/lib/periodo'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
 import { CamaraLeve } from '@/components/CamaraLeve'
 import { RankingView } from '@/components/RankingView'
+import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
 export function generateStaticParams() {
@@ -22,6 +24,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
   const series = getSeriesParlamentares().filter(
     (s) => s.casa === 'camara_municipal' && s.municipio === params.slug,
   )
+  const anualCidade = totalAnualMunicipio(series)
 
   return (
     <div>
@@ -40,6 +43,15 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
             <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
             <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
           </section>
+
+          {anualCidade.length > 0 && (
+            <section className="mb-12">
+              <SecaoTitulo>VIAP da câmara · por ano (todos os vereadores)</SecaoTitulo>
+              <div className="rounded-xl border border-borda bg-superficie p-4">
+                <GraficoGeralAnual dados={anualCidade} semLegenda />
+              </div>
+            </section>
+          )}
 
           <section>
             <SecaoTitulo>Ranking de gastos (VIAP)</SecaoTitulo>

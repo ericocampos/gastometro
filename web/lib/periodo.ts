@@ -130,6 +130,18 @@ export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[]
   return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v, municipal: 0 }))
 }
 
+// Total anual da câmara INTEIRA (soma de todos os vereadores) — para o gráfico ano a ano na página do
+// município. Vai na chave 'municipal' (barra teal "Câmara Municipal" no GraficoGeralAnual). As séries
+// municipais trazem só a VIAP por vereador, então o eixo é o gasto com VIAP da câmara por ano.
+export function totalAnualMunicipio(series: SerieParlamentar[]): TotalAnualCasa[] {
+  const porAno = new Map<number, number>()
+  for (const s of series) for (const p of s.serieMensal) {
+    const ano = Number(p.anoMes.slice(0, 4))
+    porAno.set(ano, (porAno.get(ano) ?? 0) + p.total)
+  }
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, camara: 0, senado: 0, assembleia: 0, municipal: total }))
+}
+
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   const anos = new Set<number>()
   for (const s of series) for (const p of s.serieMensal) anos.add(Number(p.anoMes.slice(0, 4)))
