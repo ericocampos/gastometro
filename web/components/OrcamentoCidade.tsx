@@ -34,24 +34,24 @@ function PizzaPoder({ poder }: { poder: PoderAno }) {
   const fatias = montarFatias(poder.funcoes)
   const total = poder.total || 1
   return (
-    <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-      <div className="shrink-0" style={{ width: 200, height: 200 }}>
+    <div>
+      <div className="mx-auto" style={{ width: '100%', height: 180 }}>
         <ResponsiveContainer>
           <PieChart>
-            <Pie data={fatias} dataKey="pago" nameKey="funcao" cx="50%" cy="50%" innerRadius={52} outerRadius={88} paddingAngle={1} stroke="var(--superficie)">
+            <Pie data={fatias} dataKey="pago" nameKey="funcao" cx="50%" cy="50%" innerRadius={46} outerRadius={80} paddingAngle={1} stroke="var(--superficie)">
               {fatias.map((f) => <Cell key={f.funcao} fill={f.cor} />)}
             </Pie>
             <Tooltip formatter={(v) => brl(Number(v))} contentStyle={tooltipContentStyle} labelStyle={tooltipLabelStyle} itemStyle={tooltipItemStyle} />
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <ul className="w-full flex-1 space-y-1">
+      <ul className="mt-3 space-y-1">
         {fatias.map((f) => (
           <li key={f.funcao} className="flex items-center gap-2 text-xs">
             <span className="inline-block h-3 w-3 shrink-0 rounded-sm" style={{ backgroundColor: f.cor }} aria-hidden />
             <span className="flex-1 truncate text-tinta-suave">{f.funcao}</span>
             <span className="shrink-0 tabular-nums text-tinta">{brl(f.pago)}</span>
-            <span className="w-10 shrink-0 text-right tabular-nums text-tinta-tenue">{((f.pago / total) * 100).toFixed(0)}%</span>
+            <span className="w-9 shrink-0 text-right tabular-nums text-tinta-tenue">{((f.pago / total) * 100).toFixed(0)}%</span>
           </li>
         ))}
       </ul>
@@ -85,12 +85,12 @@ export function OrcamentoCidade({ orcamento }: { orcamento: OrcamentoMunicipio }
         </label>
       </div>
 
-      <div className="space-y-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {dadosAno.poderes.map((p) => (
           <div key={p.poder}>
-            <div className="mb-2 flex items-baseline justify-between">
+            <div className="mb-2 flex items-baseline justify-between gap-2">
               <h3 className="text-sm font-semibold text-tinta">{ROTULO_PODER[p.poder]}</h3>
-              <span className="text-xs text-tinta-tenue">{brl(p.total)}</span>
+              <span className="shrink-0 text-xs text-tinta-tenue">{brl(p.total)}</span>
             </div>
             <PizzaPoder poder={p} />
           </div>
