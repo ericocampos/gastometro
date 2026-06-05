@@ -126,5 +126,19 @@
     "documento": "Nota Fiscal",
     "numero": "929",
     "valor": 3672.84
+  },
+  {
+    "id": "alpb-63072-diaria-202511-21",
+    "politicoId": "alpb-63072",
+    "data": "2025-11-26",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS DEPUTADOS · Brasília-DF · 23 a 26/11/2025",
+    "valor": 3600
   }
 ]

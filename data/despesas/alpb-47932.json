@@ -3105,5 +3105,44 @@
       "cnpjCpf": "****86.181/000****"
     },
     "valor": 5469.59
+  },
+  {
+    "id": "alpb-47932-diaria-202412-6",
+    "politicoId": "alpb-47932",
+    "data": "2024-12-05",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 05/12/2024"
+  },
+  {
+    "id": "alpb-47932-diaria-202312-48",
+    "politicoId": "alpb-47932",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023"
+  },
+  {
+    "id": "alpb-47932-diaria-202312-63",
+    "politicoId": "alpb-47932",
+    "data": "2023-11-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 18 a 20/11/2023"
   }
 ]

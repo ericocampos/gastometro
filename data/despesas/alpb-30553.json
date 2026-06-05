@@ -3118,5 +3118,44 @@
       "cnpjCpf": "****32.577/000****"
     },
     "valor": 500
+  },
+  {
+    "id": "alpb-30553-diaria-202312-27",
+    "politicoId": "alpb-30553",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023"
+  },
+  {
+    "id": "alpb-30553-diaria-202312-62",
+    "politicoId": "alpb-30553",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023"
+  },
+  {
+    "id": "alpb-30553-diaria-202312-66",
+    "politicoId": "alpb-30553",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023"
   }
 ]

@@ -112,6 +112,8 @@ export function DetalhamentoGastos({
   const notaSoNumero = casa === 'camara_municipal' && despesas.some((d) => d.numeroNf) && !despesas.some((d) => d.urlDocumento)
   // câmara com diárias por vereador (TCE): cada lançamento traz histórico + nº de empenho
   const temDiarias = casa === 'camara_municipal' && despesas.some((d) => d.numeroEmpenho)
+  // ALPB: diárias por deputado (planilha .ods da Assembleia) — têm justificativa/destino, sem empenho
+  const temDiariasAlpb = casa === 'assembleia' && despesas.some((d) => d.descricao && !d.fornecedor.nome)
 
   const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
   const temMarcadas = useMemo(
@@ -179,6 +181,16 @@ export function DetalhamentoGastos({
           de viagem, autorizado por portaria). A coluna “Doc.” traz o <strong className="text-tinta-suave">número
           do empenho</strong> no TCE-PB, a data é a do empenho e o texto é o <strong className="text-tinta-suave">histórico
           declarado pela câmara</strong> (motivo e destino da viagem, como consta na fonte).
+        </p>
+      )}
+
+      {temDiariasAlpb && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Diárias:</strong> diária não tem nota fiscal (é adiantamento
+          de viagem, com valores fixados por resolução da Assembleia). O texto traz a{' '}
+          <strong className="text-tinta-suave">justificativa, o destino e as datas</strong> declarados na
+          planilha oficial de diárias da ALPB. A relação mensal inclui deputados e servidores; aqui
+          mostramos só as diárias pagas a este deputado.
         </p>
       )}
 

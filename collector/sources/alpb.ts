@@ -29,6 +29,7 @@ export interface DespesaAlpb {
   documento?: string
   numero?: string
   valor: number
+  descricao?: string // diárias: justificativa + localidade + datas (motivo da viagem); VIAP não usa
 }
 export interface CardHome { saplId: string; nomeParlamentar: string; partido: string; fotoUrl: string }
 
@@ -228,6 +229,82 @@ export function parseXlsx(buf: Buffer, politicoId: string): DespesaAlpb[] {
 // dispatch por extensão da URL/nome do arquivo
 export function parsePlanilha(buf: Buffer, urlOuNome: string, politicoId: string): DespesaAlpb[] {
   return /\.xlsx(\?|$)/i.test(urlOuNome) ? parseXlsx(buf, politicoId) : parseOds(buf, politicoId)
+}
+
+// ---------- DIÁRIAS (planilha mensal única, com deputados + servidores) ----------
+// A ALPB publica um .ods por mês com TODAS as diárias pagas (deputados e servidores). Colunas:
+// MATRICULA · NOME · CARGO · LOCALIDADE · DATAS · JUSTIFICATIVA · VALOR PAGO (R$). O credor é a
+// pessoa; o casamento com o roster de deputados (por nome) fica no coletor.
+export interface DiariaRow { nome: string; cargo: string; localidade: string; datas: string; justificativa: string; valor: number }
+export interface LinkDiaria { ano: number; mes: number; url: string }
+
+// extrai os links das planilhas .ods de DIÁRIAS da página de despesas. O ano/mês vêm do NOME do
+// arquivo (formatos variados: "...-MM.YY.ods", "...-MM.YYYY.ods"), não do caminho de upload do
+// WordPress (que é não-determinístico). Mantém só a 1ª ocorrência de cada competência.
+export function linksDiariasDoHtml(html: string): LinkDiaria[] {
+  const out: LinkDiaria[] = []
+  const visto = new Set<string>()
+  for (const m of html.matchAll(/href=["']([^"']*\.ods)["']/gi)) {
+    const url = desescapar(m[1])
+    const fn = (url.split('/').pop() ?? '')
+    if (!/diaria/i.test(fn)) continue
+    const dm = /(\d{2})[._-](\d{2,4})(?!\d)/.exec(fn.replace(/-atual/i, ''))
+    if (!dm) continue
+    const mes = Number(dm[1])
+    let ano = Number(dm[2]); if (ano < 100) ano += 2000
+    if (mes < 1 || mes > 12) continue
+    const chave = `${ano}-${mes}`
+    if (visto.has(chave)) continue
+    visto.add(chave)
+    out.push({ ano, mes, url })
+  }
+  return out
+}
+
+// baixa o HTML da página de despesas (onde ficam os links das planilhas de diárias/passagens)
+export async function htmlDespesas(): Promise<string> {
+  return fetchText(`${BASE}/despesas`, { headers: H })
+}
+
+// parseia a planilha .ods de diárias do mês em linhas (uma por diária paga, deputado OU servidor)
+export function parseDiarias(buf: Buffer): DiariaRow[] {
+  const linhas = linhasDoOds(buf)
+  let hdr = -1
+  const idx: Record<string, number> = {}
+  for (let i = 0; i < linhas.length; i++) {
+    const set = linhas[i].map(norm)
+    if (set.includes('nome') && set.some((c) => c.startsWith('valor'))) {
+      hdr = i
+      idx.nome = set.indexOf('nome')
+      idx.cargo = set.indexOf('cargo')
+      idx.localidade = set.indexOf('localidade')
+      idx.datas = set.indexOf('datas')
+      idx.justificativa = set.indexOf('justificativa')
+      idx.valor = set.findIndex((c) => c.startsWith('valor'))
+      break
+    }
+  }
+  if (hdr < 0) return []
+  const out: DiariaRow[] = []
+  for (let i = hdr + 1; i < linhas.length; i++) {
+    const f = linhas[i]
+    const cel = (k: string) => (idx[k] >= 0 ? (f[idx[k]] ?? '').trim() : '')
+    const nome = cel('nome')
+    const valor = valorBR(cel('valor'))
+    if (!nome || valor <= 0) continue
+    if (norm(nome).startsWith('total')) continue
+    out.push({ nome, cargo: cel('cargo'), localidade: cel('localidade'), datas: cel('datas'), justificativa: cel('justificativa'), valor })
+  }
+  return out
+}
+
+// data ISO de uma diária a partir do campo DATAS ("25 a 27/03/2026" → 2026-03-27; "05/04/2026" →
+// 2026-04-05). Pega a ÚLTIMA data completa do texto (fim do deslocamento). '' quando não há.
+export function dataDiaria(datas: string): string {
+  const all = [...datas.matchAll(/(\d{2})\/(\d{2})\/(\d{4})/g)]
+  if (!all.length) return ''
+  const m = all[all.length - 1]
+  return `${m[3]}-${m[2]}-${m[1]}`
 }
 
 // ---------- VIAP: roster e link da planilha ----------

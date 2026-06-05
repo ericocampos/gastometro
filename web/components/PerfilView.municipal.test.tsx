@@ -147,6 +147,25 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByTestId('grafico-ref')).toHaveTextContent('Teto da VIAP/mês')
   })
 
+  it('deputado estadual (ALPB) com VIAP + diárias: 2 linhas (VIAP/Diárias) e teto só na VIAP', () => {
+    const dep: Politico = { ...politico, id: 'alpb-1', casa: 'assembleia', municipio: undefined }
+    const custosAlpb: CustosMandato = {
+      ...custos,
+      casas: { ...custos.casas, assembleia: { ...custoCasa, salario: 34774, cota: { valor: 50000, rotulo: 'VIAP mensal · crédito', aproximado: false } } },
+    }
+    const ds: Despesa[] = [
+      { id: 'v1', politicoId: 'alpb-1', data: '2026-01-31', ano: 2026, mes: 1, categoria: 'Locação ou Fretamento de Veículos Automotores', fornecedor: { nome: 'LOCADORA X' }, valor: 8000 },
+      { id: 'd1', politicoId: 'alpb-1', data: '2026-01-20', ano: 2026, mes: 1, categoria: 'Diárias', fornecedor: { nome: '' }, valor: 2400, descricao: 'AUDIÊNCIA · Brasília-DF · 12 a 13/01/2026' },
+    ]
+    const sr: SerieParlamentar[] = [{ ...series[0], politicoId: 'alpb-1', casa: 'assembleia', municipio: undefined, serieMensal: [{ anoMes: '2026-01', total: 10400 }] }]
+    render(
+      <PerfilView politico={dep} despesas={ds} series={sr} perfil={null} custos={custosAlpb}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getAllByTestId('grafico-linha').map((e) => e.textContent)).toEqual(['VIAP', 'Diárias'])
+    expect(screen.getByTestId('grafico-ref')).toHaveTextContent('Teto da cota/mês')
+  })
+
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {
     renderMunicipal()
     // o cabeçalho da tabela de fornecedores não deve aparecer

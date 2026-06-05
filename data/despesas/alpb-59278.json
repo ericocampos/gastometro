@@ -206,5 +206,31 @@
       "cnpjCpf": "****60.043/000****"
     },
     "valor": 10000
+  },
+  {
+    "id": "alpb-59278-diaria-202505-8",
+    "politicoId": "alpb-59278",
+    "data": "2025-05-22",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4800,
+    "descricao": "MARCHA DOS PREFEITOS · Brasília-DF · 18 a 22/05/2025"
+  },
+  {
+    "id": "alpb-59278-diaria-202504-8",
+    "politicoId": "alpb-59278",
+    "data": "2025-04-10",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 07 a 10/04/2025"
   }
 ]

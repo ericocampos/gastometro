@@ -2668,5 +2668,19 @@
     "documento": "Nota Fiscal",
     "numero": "1000274",
     "valor": 14000
+  },
+  {
+    "id": "alpb-47921-diaria-202303-6",
+    "politicoId": "alpb-47921",
+    "data": "2023-03-30",
+    "ano": 2023,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasilia · 26 a 30/03/2023",
+    "valor": 2800
   }
 ]

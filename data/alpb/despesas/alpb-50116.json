@@ -2378,5 +2378,47 @@
     "documento": "Nota Fiscal",
     "numero": "1001747",
     "valor": 4800
+  },
+  {
+    "id": "alpb-50116-diaria-202403-0",
+    "politicoId": "alpb-50116",
+    "data": "2024-03-08",
+    "ano": 2024,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "AUDIÊNCIAS · Brasília-DF · 04 a 08/03/2024",
+    "valor": 4800
+  },
+  {
+    "id": "alpb-50116-diaria-202312-23",
+    "politicoId": "alpb-50116",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-50116-diaria-202312-75",
+    "politicoId": "alpb-50116",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023",
+    "valor": 1200
   }
 ]

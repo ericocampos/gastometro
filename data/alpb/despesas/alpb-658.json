@@ -8384,5 +8384,397 @@
     "documento": "Nota Fiscal",
     "numero": "245",
     "valor": 1000
+  },
+  {
+    "id": "alpb-658-diaria-202512-2",
+    "politicoId": "alpb-658",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 02 a 05/12/2025",
+    "valor": 3600
+  },
+  {
+    "id": "alpb-658-diaria-202512-9",
+    "politicoId": "alpb-658",
+    "data": "2025-12-06",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 02 a 06/12/2025",
+    "valor": 2250
+  },
+  {
+    "id": "alpb-658-diaria-202510-2",
+    "politicoId": "alpb-658",
+    "data": "2025-10-08",
+    "ano": 2025,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · São Bento/Piancó-PB · 07 a 08/10/2025",
+    "valor": 900
+  },
+  {
+    "id": "alpb-658-diaria-202510-11",
+    "politicoId": "alpb-658",
+    "data": "2025-10-17",
+    "ano": 2025,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · Cajazeiras/Sousa-PB · 15 a 17/10/2025",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-658-diaria-202510-13",
+    "politicoId": "alpb-658",
+    "data": "2025-10-17",
+    "ano": 2025,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · Cajazeiras/Sousa-PB · 15 a 17/10/2025",
+    "valor": 500
+  },
+  {
+    "id": "alpb-658-diaria-202510-25",
+    "politicoId": "alpb-658",
+    "data": "2025-10-29",
+    "ano": 2025,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · Itabaiana-PB · 29/10/2025",
+    "valor": 125
+  },
+  {
+    "id": "alpb-658-diaria-202509-8",
+    "politicoId": "alpb-658",
+    "data": "2025-09-24",
+    "ano": 2025,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · Patos/ Itaporanga-PB · 23 a 24/09/2025",
+    "valor": 900
+  },
+  {
+    "id": "alpb-658-diaria-202509-9",
+    "politicoId": "alpb-658",
+    "data": "2025-09-24",
+    "ano": 2025,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · Patos/ Itaporanga-PB · 23 a 24/09/2025",
+    "valor": 375
+  },
+  {
+    "id": "alpb-658-diaria-202508-5",
+    "politicoId": "alpb-658",
+    "data": "2025-08-19",
+    "ano": 2025,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO ITINERANTE · C. Grande-PB · 19/08/2025",
+    "valor": 125
+  },
+  {
+    "id": "alpb-658-diaria-202506-4",
+    "politicoId": "alpb-658",
+    "data": "2025-05-29",
+    "ano": 2025,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 29/05/2025",
+    "valor": 1350
+  },
+  {
+    "id": "alpb-658-diaria-202505-7",
+    "politicoId": "alpb-658",
+    "data": "2025-05-21",
+    "ano": 2025,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS PREFEITOS · Brasília-DF · 19 a 21/05/2025",
+    "valor": 2400
+  },
+  {
+    "id": "alpb-658-diaria-202504-12",
+    "politicoId": "alpb-658",
+    "data": "2025-04-25",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "CONFERÊNCIA · Natal-RN · 24 a 25/04/2025",
+    "valor": 900
+  },
+  {
+    "id": "alpb-658-diaria-202502-1",
+    "politicoId": "alpb-658",
+    "data": "2025-02-02",
+    "ano": 2025,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "POSSE DO PRESIDENTE DA CAMARA FEDERAL · Brasília-DF · 31/01 a 02/02/2025",
+    "valor": 2400
+  },
+  {
+    "id": "alpb-658-diaria-202412-20",
+    "politicoId": "alpb-658",
+    "data": "2024-11-08",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "CONGRESSO DE DIREITO CONSTITUCIONAL · Florianópolis-SC · 05 a 08/11/2024",
+    "valor": 1125
+  },
+  {
+    "id": "alpb-658-diaria-202412-30",
+    "politicoId": "alpb-658",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 2025
+  },
+  {
+    "id": "alpb-658-diaria-202412-38",
+    "politicoId": "alpb-658",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 4800
+  },
+  {
+    "id": "alpb-658-diaria-202411-2",
+    "politicoId": "alpb-658",
+    "data": "2024-11-08",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "CONGRESSO DE DIREITO CONSTITUCIONAL · Florianópolis-SC · 05 a 08/11/2024",
+    "valor": 1125
+  },
+  {
+    "id": "alpb-658-diaria-202411-12",
+    "politicoId": "alpb-658",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 2025
+  },
+  {
+    "id": "alpb-658-diaria-202411-20",
+    "politicoId": "alpb-658",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 4800
+  },
+  {
+    "id": "alpb-658-diaria-202406-1",
+    "politicoId": "alpb-658",
+    "data": "2024-06-04",
+    "ano": 2024,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SEMINÁRIO · Brasília-DF · 03 a 04/06/2024",
+    "valor": 900
+  },
+  {
+    "id": "alpb-658-diaria-202402-4",
+    "politicoId": "alpb-658",
+    "data": "2024-02-22",
+    "ano": 2024,
+    "mes": 2,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "TREINAMENTO TRANSPARÊNCIA PÚBLICA · Pocinhos-PB · 22/02/2024",
+    "valor": 250
+  },
+  {
+    "id": "alpb-658-diaria-202401-1",
+    "politicoId": "alpb-658",
+    "data": "2024-01-19",
+    "ano": 2024,
+    "mes": 1,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SEMINÁRIO CULTURAL · Picuí-PB · 19/01/2024",
+    "valor": 250
+  },
+  {
+    "id": "alpb-658-diaria-202312-2",
+    "politicoId": "alpb-658",
+    "data": "2023-12-19",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "VISITA INSTITUCIONAL · Brasília · 14 a 19/12/2023",
+    "valor": 2250
+  },
+  {
+    "id": "alpb-658-diaria-202312-57",
+    "politicoId": "alpb-658",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-658-diaria-202312-86",
+    "politicoId": "alpb-658",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-658-diaria-202311-2",
+    "politicoId": "alpb-658",
+    "data": "2023-11-10",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Fortaleza · 07 a 10/11/2023",
+    "valor": 1800
+  },
+  {
+    "id": "alpb-658-diaria-202310-3",
+    "politicoId": "alpb-658",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERENTE · Cajazeiras · 17 a 18/10/2023",
+    "valor": 500
+  },
+  {
+    "id": "alpb-658-diaria-202303-4",
+    "politicoId": "alpb-658",
+    "data": "2023-03-30",
+    "ano": 2023,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasilia · 27 a 30/03/2023",
+    "valor": 2100
   }
 ]

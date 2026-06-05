@@ -2,11 +2,12 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { unzipEntry, parseOds, parseXlsx, parsePlanilha, linkOdsDoHtml } from '../sources/alpb.js'
+import { unzipEntry, parseOds, parseXlsx, parsePlanilha, linkOdsDoHtml, linksDiariasDoHtml, parseDiarias, dataDiaria } from '../sources/alpb.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const ods = readFileSync(resolve(here, 'fixtures/viap-adriano-2024-06.ods'))
 const xlsx = readFileSync(resolve(here, 'fixtures/viap-adriano-2026-04.xlsx'))
+const diariasOds = readFileSync(resolve(here, 'fixtures/diarias-alpb-2026-04.ods'))
 
 describe('alpb / ODS', () => {
   it('unzipEntry abre o content.xml do .ods (zip multi-arquivo, sem dependência)', () => {
@@ -71,5 +72,59 @@ describe('alpb / XLSX (formato novo a partir de 2026)', () => {
   it('linkOdsDoHtml acha o link .xlsx (viewer do Office, 2026)', () => {
     const html = `<iframe src='https://view.officeapps.live.com/op/view.aspx?src=http%3A%2F%2Fwww.al.pb.leg.br%2Fwp-content%2Fuploads%2F2026%2F05%2Fprestacao_contas_ADRIANO_GALDINO_2026_Abril.xlsx'></iframe>`
     expect(linkOdsDoHtml(html)).toBe('http://www.al.pb.leg.br/wp-content/uploads/2026/05/prestacao_contas_ADRIANO_GALDINO_2026_Abril.xlsx')
+  })
+})
+
+describe('alpb / DIÁRIAS', () => {
+  it('linksDiariasDoHtml extrai os .ods de diárias com ano/mês do nome do arquivo (formatos variados)', () => {
+    const html = `
+      <a href="https://www.al.pb.leg.br/wp-content/uploads/2026/05/Planilha-diarias-ALPB-04.26.ods">Abril 2026</a>
+      <a href="https://www.al.pb.leg.br/wp-content/uploads/2026/02/planilha-diarias-01.2026.ods">Jan 2026</a>
+      <a href="https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods">Dez 2025</a>
+      <a href="https://www.al.pb.leg.br/wp-content/uploads/2026/05/Planilhas-Passagens-ALPB-04.2026.ods">passagens (ignorar)</a>
+      <a href="https://www.al.pb.leg.br/wp-content/uploads/2023/07/Planilha-diarias-ALPB-06.2023-1.ods">Jun 2023</a>`
+    const links = linksDiariasDoHtml(html)
+    expect(links).toEqual([
+      { ano: 2026, mes: 4, url: 'https://www.al.pb.leg.br/wp-content/uploads/2026/05/Planilha-diarias-ALPB-04.26.ods' },
+      { ano: 2026, mes: 1, url: 'https://www.al.pb.leg.br/wp-content/uploads/2026/02/planilha-diarias-01.2026.ods' },
+      { ano: 2025, mes: 12, url: 'https://www.al.pb.leg.br/wp-content/uploads/2026/01/Planilha-diarias-ALPB-12.2025.ods' },
+      { ano: 2023, mes: 6, url: 'https://www.al.pb.leg.br/wp-content/uploads/2023/07/Planilha-diarias-ALPB-06.2023-1.ods' },
+    ])
+    // passagens não entram
+    expect(links.some((l) => /passage/i.test(l.url))).toBe(false)
+  })
+
+  it('linksDiariasDoHtml mantém só a 1ª ocorrência de cada competência', () => {
+    const html = `
+      <a href="/x/Planilha-diarias-ALPB-04.26.ods">a</a>
+      <a href="/y/Planilha-diarias-ALPB-04.2026.ods">duplicata</a>`
+    const links = linksDiariasDoHtml(html)
+    expect(links).toHaveLength(1)
+    expect(links[0].url).toBe('/x/Planilha-diarias-ALPB-04.26.ods')
+  })
+
+  it('parseDiarias lê NOME/CARGO/LOCALIDADE/DATAS/JUSTIFICATIVA/VALOR (deputados + servidores)', () => {
+    const rows = parseDiarias(diariasOds)
+    expect(rows.length).toBeGreaterThan(10)
+    // o presidente (deputado) com a diária de R$ 9.000 em SP
+    const pres = rows.find((r) => /Adriano Cezar Galdino/i.test(r.nome))
+    expect(pres).toBeTruthy()
+    expect(pres!.cargo).toMatch(/Presidente/i)
+    expect(pres!.valor).toBe(9000)
+    expect(pres!.localidade).toMatch(/São Paulo/i)
+    expect(pres!.justificativa).toMatch(/EVENTO/i)
+    // um deputado comum
+    expect(rows.some((r) => /Francisco Mendes Campos/i.test(r.nome) && /Deputado/i.test(r.cargo))).toBe(true)
+    // servidores também aparecem (filtragem por deputado é no coletor)
+    expect(rows.some((r) => /Motorista/i.test(r.cargo))).toBe(true)
+    // todos com valor > 0 e nome
+    expect(rows.every((r) => r.valor > 0 && r.nome)).toBe(true)
+  })
+
+  it('dataDiaria pega a última data completa do intervalo (fim do deslocamento)', () => {
+    expect(dataDiaria('08 a 13/04/2026')).toBe('2026-04-13')
+    expect(dataDiaria('05/04/2026')).toBe('2026-04-05')
+    expect(dataDiaria('31/03 a 01/04/2026')).toBe('2026-04-01')
+    expect(dataDiaria('sem data')).toBe('')
   })
 })

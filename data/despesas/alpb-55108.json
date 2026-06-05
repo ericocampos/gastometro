@@ -1259,5 +1259,96 @@
       "cnpjCpf": "***.813.95***"
     },
     "valor": 12000
+  },
+  {
+    "id": "alpb-55108-diaria-202511-8",
+    "politicoId": "alpb-55108",
+    "data": "2025-11-13",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 65,
+    "descricao": "SESSÃO ITINERANTE · Cabaceiras-PB · 13/11/2025"
+  },
+  {
+    "id": "alpb-55108-diaria-202510-20",
+    "politicoId": "alpb-55108",
+    "data": "2025-10-29",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 65,
+    "descricao": "SESSÃO ITINERANTE · Itabaiana-PB · 29/10/2025"
+  },
+  {
+    "id": "alpb-55108-diaria-202412-41",
+    "politicoId": "alpb-55108",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1170,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024"
+  },
+  {
+    "id": "alpb-55108-diaria-202411-23",
+    "politicoId": "alpb-55108",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1170,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024"
+  },
+  {
+    "id": "alpb-55108-diaria-202407-1",
+    "politicoId": "alpb-55108",
+    "data": "2024-07-17",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "OFICINA INTERLEGIS · Campina Grande-PB · 15 a 17/07/2024"
+  },
+  {
+    "id": "alpb-55108-diaria-202311-9",
+    "politicoId": "alpb-55108",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 160,
+    "descricao": "SESSÃO INTINERENTE · Patos / Santa Luzia · 20 a 22/11/2023"
+  },
+  {
+    "id": "alpb-55108-diaria-202310-4",
+    "politicoId": "alpb-55108",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 160,
+    "descricao": "APOIO TÉCNICO · Cajazeiras · 16 a 18/10/2023"
   }
 ]

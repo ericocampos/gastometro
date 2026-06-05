@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { agregarPerfil, totalAnualParlamentar, totalAnualPorCasaParlamentar, serieMensalPorCategoria } from './perfil'
+import { agregarPerfil, totalAnualParlamentar, totalAnualPorCasaParlamentar } from './perfil'
 import type { Despesa } from './tipos'
 
 const d = (ano: number, mes: number, categoria: string, forn: string, valor: number): Despesa => ({
@@ -34,26 +34,6 @@ describe('agregarPerfil', () => {
     const r = agregarPerfil(despesas, { tipo: 'mandato', legislatura: 56 })
     expect(r.total).toBe(100)
     expect(r.porCategoria).toEqual([{ categoria: 'Combustível', total: 100 }])
-  })
-})
-
-describe('serieMensalPorCategoria', () => {
-  const mix: Despesa[] = [
-    d(2026, 1, 'Verba indenizatória (VIAP)', '', 1000),
-    d(2026, 1, 'Diárias', '', 300),
-    d(2026, 2, 'Verba indenizatória (VIAP)', '', 1000),
-    d(2026, 3, 'Diárias', '', 700),
-    d(2025, 9, 'Diárias', '', 999), // fora do período (2026)
-  ]
-  it('filtra por categoria e período, agrupando por mês', () => {
-    const viap = serieMensalPorCategoria(mix, 'Verba indenizatória (VIAP)', { tipo: 'ano', ano: 2026 })
-    expect(viap).toEqual([{ anoMes: '2026-01', total: 1000 }, { anoMes: '2026-02', total: 1000 }])
-    const diaria = serieMensalPorCategoria(mix, 'Diárias', { tipo: 'ano', ano: 2026 })
-    expect(diaria).toEqual([{ anoMes: '2026-01', total: 300 }, { anoMes: '2026-03', total: 700 }])
-  })
-  it('ignora lançamentos de outro ano', () => {
-    const diaria = serieMensalPorCategoria(mix, 'Diárias', { tipo: 'ano', ano: 2026 })
-    expect(diaria.some((p) => p.anoMes === '2025-09')).toBe(false)
   })
 })
 

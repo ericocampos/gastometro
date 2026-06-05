@@ -2286,5 +2286,83 @@
       "cnpjCpf": "****80.593/000****"
     },
     "valor": 12000
+  },
+  {
+    "id": "alpb-47929-diaria-202412-28",
+    "politicoId": "alpb-47929",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024"
+  },
+  {
+    "id": "alpb-47929-diaria-202411-10",
+    "politicoId": "alpb-47929",
+    "data": "2024-11-28",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 26 a 28/11/2024"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-26",
+    "politicoId": "alpb-47929",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-39",
+    "politicoId": "alpb-47929",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023"
+  },
+  {
+    "id": "alpb-47929-diaria-202312-79",
+    "politicoId": "alpb-47929",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023"
+  },
+  {
+    "id": "alpb-47929-diaria-202307-1",
+    "politicoId": "alpb-47929",
+    "data": "2023-06-22",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2100,
+    "descricao": "AUDIÊNCIA · Brasília · 19 a 22/06/2023"
   }
 ]

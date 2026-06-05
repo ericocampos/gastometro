@@ -3313,5 +3313,89 @@
     "documento": "Nota Fiscal",
     "numero": "1000147",
     "valor": 5000
+  },
+  {
+    "id": "alpb-47934-diaria-202412-1",
+    "politicoId": "alpb-47934",
+    "data": "2024-11-22",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 21 a 22/11/2024",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-47934-diaria-202412-15",
+    "politicoId": "alpb-47934",
+    "data": "2024-12-11",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃODE TRABALHO · Brasília-DF · 11/12/2024",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-47934-diaria-202312-59",
+    "politicoId": "alpb-47934",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-47934-diaria-202312-89",
+    "politicoId": "alpb-47934",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Santa Luzia / Patos · 20 a 22/11/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-47934-diaria-202306-5",
+    "politicoId": "alpb-47934",
+    "data": "2023-06-15",
+    "ano": 2023,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 13 a 15/06/2023",
+    "valor": 1400
+  },
+  {
+    "id": "alpb-47934-diaria-202303-13",
+    "politicoId": "alpb-47934",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasília · 27 a 31/03/2023",
+    "valor": 2800
   }
 ]

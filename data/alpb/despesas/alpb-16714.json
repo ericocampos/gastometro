@@ -154,5 +154,215 @@
     "documento": "N F",
     "numero": "100007",
     "valor": 4500
+  },
+  {
+    "id": "alpb-16714-diaria-202512-0",
+    "politicoId": "alpb-16714",
+    "data": "2025-12-06",
+    "ano": 2025,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Bento Gonçalves-RS · 01 a 06/12/2025",
+    "valor": 2250
+  },
+  {
+    "id": "alpb-16714-diaria-202511-19",
+    "politicoId": "alpb-16714",
+    "data": "2025-11-17",
+    "ano": 2025,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "COP 30 · Belém-PA · 12 a 17/11/2025",
+    "valor": 2250
+  },
+  {
+    "id": "alpb-16714-diaria-202505-5",
+    "politicoId": "alpb-16714",
+    "data": "2025-05-22",
+    "ano": 2025,
+    "mes": 5,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "MARCHA DOS PREFEITOS · Brasília-DF · 19 a 22/05/2025",
+    "valor": 1800
+  },
+  {
+    "id": "alpb-16714-diaria-202503-7",
+    "politicoId": "alpb-16714",
+    "data": "2025-03-28",
+    "ano": 2025,
+    "mes": 3,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO ORDINÁRIA DO CNDOS · Brasília-DF · 25 a 28/03/2025",
+    "valor": 1350
+  },
+  {
+    "id": "alpb-16714-diaria-202412-22",
+    "politicoId": "alpb-16714",
+    "data": "2024-11-15",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Rio de Janeiro-RJ · 15/11/2024",
+    "valor": 450
+  },
+  {
+    "id": "alpb-16714-diaria-202412-31",
+    "politicoId": "alpb-16714",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 2025
+  },
+  {
+    "id": "alpb-16714-diaria-202411-4",
+    "politicoId": "alpb-16714",
+    "data": "2024-11-15",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Rio de Janeiro-RJ · 15/11/2024",
+    "valor": 450
+  },
+  {
+    "id": "alpb-16714-diaria-202411-13",
+    "politicoId": "alpb-16714",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024",
+    "valor": 2025
+  },
+  {
+    "id": "alpb-16714-diaria-202410-0",
+    "politicoId": "alpb-16714",
+    "data": "2024-10-23",
+    "ano": 2024,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 20 a 23/10/2024",
+    "valor": 1575
+  },
+  {
+    "id": "alpb-16714-diaria-202410-2",
+    "politicoId": "alpb-16714",
+    "data": "2024-10-30",
+    "ano": 2024,
+    "mes": 10,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 28 a 30/10/2024",
+    "valor": 900
+  },
+  {
+    "id": "alpb-16714-diaria-202409-0",
+    "politicoId": "alpb-16714",
+    "data": "2024-09-13",
+    "ano": 2024,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Teresina-PI · 12 a 13/09/2024",
+    "valor": 675
+  },
+  {
+    "id": "alpb-16714-diaria-202406-2",
+    "politicoId": "alpb-16714",
+    "data": "2024-06-04",
+    "ano": 2024,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SEMINÁRIO · Brasília-DF · 03 a 04/06/2024",
+    "valor": 900
+  },
+  {
+    "id": "alpb-16714-diaria-202312-10",
+    "politicoId": "alpb-16714",
+    "data": "2023-12-19",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 19/12/2023",
+    "valor": 900
+  },
+  {
+    "id": "alpb-16714-diaria-202311-8",
+    "politicoId": "alpb-16714",
+    "data": "2023-11-12",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia / Fortaleza · 05 a 12/11/2023",
+    "valor": 3150
+  },
+  {
+    "id": "alpb-16714-diaria-202311-10",
+    "politicoId": "alpb-16714",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 11,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERENTE · Patos / Santa Luzia · 21 a 22/11/2023",
+    "valor": 500
   }
 ]

@@ -414,5 +414,31 @@
       "cnpjCpf": "****19.664/000****"
     },
     "valor": 7000
+  },
+  {
+    "id": "alpb-53284-diaria-202402-5",
+    "politicoId": "alpb-53284",
+    "data": "2024-02-24",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 600,
+    "descricao": "Enc. Dos Trabalhadores de Pesca · Patos-PB · 24/02/2024"
+  },
+  {
+    "id": "alpb-53284-diaria-202312-32",
+    "politicoId": "alpb-53284",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 19 a 20/12/2023"
   }
 ]

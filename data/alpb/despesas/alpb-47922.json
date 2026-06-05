@@ -7267,5 +7267,75 @@
     },
     "documento": "Boleto",
     "valor": 89.9
+  },
+  {
+    "id": "alpb-47922-diaria-202506-0",
+    "politicoId": "alpb-47922",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Curitiba-PR · 29 a 31/05/2025",
+    "valor": 2400
+  },
+  {
+    "id": "alpb-47922-diaria-202504-1",
+    "politicoId": "alpb-47922",
+    "data": "2025-04-06",
+    "ano": 2025,
+    "mes": 4,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo-SP · 02 a 06/04/2025",
+    "valor": 4800
+  },
+  {
+    "id": "alpb-47922-diaria-202412-17",
+    "politicoId": "alpb-47922",
+    "data": "2024-12-18",
+    "ano": 2024,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 16 a 18/12/2024",
+    "valor": 2400
+  },
+  {
+    "id": "alpb-47922-diaria-202312-37",
+    "politicoId": "alpb-47922",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023",
+    "valor": 1200
+  },
+  {
+    "id": "alpb-47922-diaria-202308-2",
+    "politicoId": "alpb-47922",
+    "data": "2023-08-10",
+    "ano": 2023,
+    "mes": 8,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia · 07 a 10/08/2023",
+    "valor": 2100
   }
 ]

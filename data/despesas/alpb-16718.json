@@ -2325,5 +2325,57 @@
       "cnpjCpf": "****85.584/000****"
     },
     "valor": 8000
+  },
+  {
+    "id": "alpb-16718-diaria-202312-81",
+    "politicoId": "alpb-16718",
+    "data": "2023-11-22",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 20 a 22/11/2023"
+  },
+  {
+    "id": "alpb-16718-diaria-202312-82",
+    "politicoId": "alpb-16718",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 18 a 20/12/2023"
+  },
+  {
+    "id": "alpb-16718-diaria-202312-90",
+    "politicoId": "alpb-16718",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16 a 18/10/2023"
+  },
+  {
+    "id": "alpb-16718-diaria-202309-4",
+    "politicoId": "alpb-16718",
+    "data": "2023-09-21",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2100,
+    "descricao": "REUNIÃO DE TRABALHO · Brasilia · 18 a 21/09/2023"
   }
 ]

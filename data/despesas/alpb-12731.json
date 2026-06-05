@@ -3417,5 +3417,733 @@
       "cnpjCpf": "****64.479/000****"
     },
     "valor": 6000
+  },
+  {
+    "id": "alpb-12731-diaria-202604-0",
+    "politicoId": "alpb-12731",
+    "data": "2026-04-13",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9000,
+    "descricao": "EVENTO · São Paulo-SP · 08 a 13/04/2026"
+  },
+  {
+    "id": "alpb-12731-diaria-202603-3",
+    "politicoId": "alpb-12731",
+    "data": "2026-03-21",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "REUNIÃO DE TRABALHO · Recife-PE · 20 a 21/03/2026"
+  },
+  {
+    "id": "alpb-12731-diaria-202603-4",
+    "politicoId": "alpb-12731",
+    "data": "2026-03-24",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "PARTICIPAÇÃO EM EVENTO · Brasília-DF · 22 a 24/03/2026"
+  },
+  {
+    "id": "alpb-12731-diaria-202511-4",
+    "politicoId": "alpb-12731",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "SESSÃO ITINERANTE · Cuité-PB · 05/11/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202511-6",
+    "politicoId": "alpb-12731",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "SESSÃO ESPECIAL · Lagoa de Dentro-PB · 04 a 05/11/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202511-9",
+    "politicoId": "alpb-12731",
+    "data": "2025-11-14",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "SESSÃO ITINERANTE · Cabaceiras-PB · 13 a 14/11/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202511-13",
+    "politicoId": "alpb-12731",
+    "data": "2025-11-27",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 7200,
+    "descricao": "MARCHA DOS DEPUTADOS · Brasília-DF · 24 a 27/11/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202511-20",
+    "politicoId": "alpb-12731",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 14400,
+    "descricao": "UNALE · Porto Alegre - RS · 28/11 a 05/12/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202510-0",
+    "politicoId": "alpb-12731",
+    "data": "2025-10-08",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "SESSÃO ITINERANTE · São Bento/Piancó-PB · 06 a 08/10/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202510-14",
+    "politicoId": "alpb-12731",
+    "data": "2025-10-17",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2250,
+    "descricao": "SESSÃO ITINERANTE · Cajazeiras/Sousa-PB · 15 a 17/10/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202510-22",
+    "politicoId": "alpb-12731",
+    "data": "2025-10-23",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "EVENTO · Patos-PB · 22 a 23/10/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202510-23",
+    "politicoId": "alpb-12731",
+    "data": "2025-10-29",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 450,
+    "descricao": "SESSÃO ITINERANTE · Itabaiana-PB · 29/10/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202509-4",
+    "politicoId": "alpb-12731",
+    "data": "2025-09-17",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 7200,
+    "descricao": "EVENTO ALMG · Belo Horizonte-MG · 13 a 17/09/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202509-6",
+    "politicoId": "alpb-12731",
+    "data": "2025-09-24",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "SESSÃO ITINERANTE · Patos / Itaporanga/ Cajazeiras-PB · 22 a 24/09/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202508-1",
+    "politicoId": "alpb-12731",
+    "data": "2025-08-08",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1350,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO ESTADUAL · Santa Luzia / C. Grande-PB · 07 a 08/08/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202508-2",
+    "politicoId": "alpb-12731",
+    "data": "2025-08-16",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "VISITA TÉCNICA · Caetés / Garanhuns-PE · 15 a 16/08/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202508-3",
+    "politicoId": "alpb-12731",
+    "data": "2025-08-01",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1350,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO ESTADUAL · Bananeiras/ Barra de Santa Rosa/ Solânea-PB · 31/07 a 01/08/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202508-7",
+    "politicoId": "alpb-12731",
+    "data": "2025-08-22",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1350,
+    "descricao": "SESSÃO SOLENE · Itabaiana/Cajazeiras-PB · 21 a 22/08/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202508-11",
+    "politicoId": "alpb-12731",
+    "data": "2025-08-26",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "SESSÃO ITINERANTE · Guarabira-PB · 26/08/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202507-0",
+    "politicoId": "alpb-12731",
+    "data": "2025-07-05",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Sousa/ Cajazeiras/ Itaporanga-PB · 03 a 05/07/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202507-2",
+    "politicoId": "alpb-12731",
+    "data": "2025-07-13",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3150,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · São Bento/ Riacho dos Cavalos-PB · 10 a 13/07/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202506-6",
+    "politicoId": "alpb-12731",
+    "data": "2025-06-09",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "EVENTOS · Bananeiras/Cabaceiras-PB · 07 a 09/06/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202506-7",
+    "politicoId": "alpb-12731",
+    "data": "2025-06-06",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2250,
+    "descricao": "PLENÁRIAS DO ORÇAMENTO DEMOCRÁTICO · Boa Vista/Serra Branca-PB · 05 a 06/06/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202506-11",
+    "politicoId": "alpb-12731",
+    "data": "2025-06-22",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "EVENTOS · Juazeirinho/Patos/ Sta Luzia-PB · 10 a 22/06/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202506-12",
+    "politicoId": "alpb-12731",
+    "data": "2025-07-01",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "Audiência no Ministério de Rel. Institucionais · Brasília-DF · 29/06/2025 a 01/07/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202505-1",
+    "politicoId": "alpb-12731",
+    "data": "2025-05-09",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Princesa Isabel-PB · 07 a 09/05/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202505-4",
+    "politicoId": "alpb-12731",
+    "data": "2025-05-23",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9900,
+    "descricao": "MARCHA DOS PREFEITOS · Brasília-DF · 18 a 23/05/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202504-5",
+    "politicoId": "alpb-12731",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "POSSE DIRETORIA TRFS · Recife-PE · 31/03/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202504-6",
+    "politicoId": "alpb-12731",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "POSSE DIRETORIA TRFS · Recife-PE · 01/04/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202504-13",
+    "politicoId": "alpb-12731",
+    "data": "2025-04-28",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 5400,
+    "descricao": "SOLENIDADE · São Paulo-SP · 23 a 28/04/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202503-0",
+    "politicoId": "alpb-12731",
+    "data": "2025-03-13",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 12 a 13/03/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202503-6",
+    "politicoId": "alpb-12731",
+    "data": "2025-03-30",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 7200,
+    "descricao": "SOLENIDADE · Conceição de Jacuípe-BA · 27 a 30/03/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202502-0",
+    "politicoId": "alpb-12731",
+    "data": "2025-02-14",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 7200,
+    "descricao": "ENCONTRO MARCHA DOS PREFEITOS · Brasília-DF · 10 a 14/02/2025"
+  },
+  {
+    "id": "alpb-12731-diaria-202412-11",
+    "politicoId": "alpb-12731",
+    "data": "2024-12-12",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "POSSE DE MINISTRO · Brasília-DF · 11 a 12/12/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202412-29",
+    "politicoId": "alpb-12731",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8100,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202411-11",
+    "politicoId": "alpb-12731",
+    "data": "2024-12-06",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8100,
+    "descricao": "UNALE · Rio de Janeiro-RJ · 02 a 06/12/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202407-0",
+    "politicoId": "alpb-12731",
+    "data": "2024-07-06",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Gurjão/Caldas Brandão-PB · 04 a 06/07/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202407-2",
+    "politicoId": "alpb-12731",
+    "data": "2024-07-13",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Itabaiana/Ingá-PB · 09,12 e 13/07/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202406-0",
+    "politicoId": "alpb-12731",
+    "data": "2024-06-01",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · S. Bento/Catolé/Pombal-PB · 30/05 a 01/06/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202406-4",
+    "politicoId": "alpb-12731",
+    "data": "2024-06-09",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Patos/Monteiro-PB · 08 a 09/06/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202406-8",
+    "politicoId": "alpb-12731",
+    "data": "2024-06-16",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2700,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Princesa Isabel-PB · 13 a 16/06/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202405-1",
+    "politicoId": "alpb-12731",
+    "data": "2024-05-11",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Cajazeiras-PB · 10 a 11/05/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202405-3",
+    "politicoId": "alpb-12731",
+    "data": "2024-05-17",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "ORÇAMENTO DEMOCRÁTICO · Guarabira-PB · 16 a 17/05/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202405-6",
+    "politicoId": "alpb-12731",
+    "data": "2024-05-23",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3600,
+    "descricao": "MARCHA DOS MUNICÍPIOS · Brasília-DF · 21 a 23/05/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202404-1",
+    "politicoId": "alpb-12731",
+    "data": "2024-04-08",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9000,
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo-SP · 04 a 08/04/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202403-3",
+    "politicoId": "alpb-12731",
+    "data": "2024-03-14",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 900,
+    "descricao": "ENCONTRO DE LIDERANÇAS · Cuité-PB · 14/03/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202401-0",
+    "politicoId": "alpb-12731",
+    "data": "2024-01-21",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 14400,
+    "descricao": "VISITA TÉCNICA · Valente/Manoel Vitório-BA · 14 a 21/01/2024"
+  },
+  {
+    "id": "alpb-12731-diaria-202312-3",
+    "politicoId": "alpb-12731",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 18 a 20/12/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202312-4",
+    "politicoId": "alpb-12731",
+    "data": "2023-12-20",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "SESSÃO INTINERANTE · Patos / Santa Luzia · 18 a 20/12/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202312-83",
+    "politicoId": "alpb-12731",
+    "data": "2023-10-18",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "SESSÃO INTINERANTE · Conceição / Itaporanga · 16 a 18/10/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202312-105",
+    "politicoId": "alpb-12731",
+    "data": "2023-10-19",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 600,
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 19/10/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202311-0",
+    "politicoId": "alpb-12731",
+    "data": "2023-11-11",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4200,
+    "descricao": "UNALE · Fortaleza · 07 a 11/11/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202311-16",
+    "politicoId": "alpb-12731",
+    "data": "2023-11-29",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1050,
+    "descricao": "REUNIÃO DE TRABALHO · Brasília · 29/11/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202304-0",
+    "politicoId": "alpb-12731",
+    "data": "2023-04-01",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1050,
+    "descricao": "POSSE DO PRESIDENTE DO TRF · Recife · 3/4/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202303-1",
+    "politicoId": "alpb-12731",
+    "data": "2023-03-01",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 6300,
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo e Brasília · 10/3/2023"
+  },
+  {
+    "id": "alpb-12731-diaria-202303-8",
+    "politicoId": "alpb-12731",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4200,
+    "descricao": "ENCONTRO DOS MUNICIPIOS · Brasilia · 27 a 31/03/2023"
   }
 ]

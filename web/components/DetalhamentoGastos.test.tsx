@@ -58,6 +58,19 @@ describe('DetalhamentoGastos', () => {
     expect(screen.getAllByText(/AUDIENCIA NO TCE/).length).toBeGreaterThanOrEqual(1)
   })
 
+  it('diária da ALPB (assembleia): mostra justificativa/destino e nota de diária sem empenho', () => {
+    const diaria: Despesa = {
+      id: 'al-1', politicoId: 'alpb-1', data: '2026-04-13', ano: 2026, mes: 4,
+      categoria: 'Diárias', fornecedor: { nome: '' }, valor: 9000,
+      descricao: 'EVENTO · São Paulo-SP · 08 a 13/04/2026',
+    }
+    render(<DetalhamentoGastos despesas={[diaria]} casa="assembleia" />)
+    expect(screen.getAllByText(/EVENTO · São Paulo-SP/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/valores fixados por resolução da Assembleia/i)).toBeInTheDocument()
+    // não há "número do empenho" aqui (isso é só do TCE municipal)
+    expect(screen.queryByText(/número.*empenho/i)).not.toBeInTheDocument()
+  })
+
   it('marca as linhas que geraram ponto de atenção e mostra a legenda', () => {
     render(
       <DetalhamentoGastos

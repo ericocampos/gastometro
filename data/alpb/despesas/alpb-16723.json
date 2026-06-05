@@ -7902,5 +7902,47 @@
     "documento": "Nota Fiscal",
     "numero": "219",
     "valor": 500
+  },
+  {
+    "id": "alpb-16723-diaria-202406-5",
+    "politicoId": "alpb-16723",
+    "data": "2024-06-07",
+    "ano": 2024,
+    "mes": 6,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · Brasília-DF · 03 a 07/06/2024",
+    "valor": 4800
+  },
+  {
+    "id": "alpb-16723-diaria-202312-51",
+    "politicoId": "alpb-16723",
+    "data": "2023-10-16",
+    "ano": 2023,
+    "mes": 12,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "SESSÃO INTINERANTE · Cajazeiras / Sousa · 16/10/2023",
+    "valor": 600
+  },
+  {
+    "id": "alpb-16723-diaria-202309-2",
+    "politicoId": "alpb-16723",
+    "data": "2023-09-11",
+    "ano": 2023,
+    "mes": 9,
+    "item": "Diárias",
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "descricao": "REUNIÃO DE TRABALHO · São Paulo · 08 a 11/09/2023",
+    "valor": 2100
   }
 ]

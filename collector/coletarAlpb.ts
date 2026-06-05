@@ -10,8 +10,9 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { CacheBruto } from './cache.js'
 import {
-  type DeputadoViap, type DespesaAlpb, type CardHome, type ParlamentarSapl,
+  type DeputadoViap, type DespesaAlpb, type CardHome, type ParlamentarSapl, type DiariaRow,
   deputadosViap, linkOds, baixarOds, parsePlanilha, rosterHome, rosterSapl, mandatosSapl, filiacaoSapl,
+  htmlDespesas, linksDiariasDoHtml, parseDiarias, dataDiaria,
 } from './sources/alpb.js'
 import type { MandatoParlamentar } from './sources/types.js'
 
@@ -57,6 +58,7 @@ interface DeputadoAlpb {
   viapId: string
   nomeRegistro: string
   nomeParlamentar?: string
+  nomeCompleto?: string
   partido?: string
   fotoUrl?: string
   saplId?: string
@@ -98,6 +100,7 @@ function casar(viap: DeputadoViap[], sapl: ParlamentarSapl[], cards: CardHome[])
     if (s) {
       const home = homeBySapl.get(s.saplId)
       d.matchVia = via; d.saplId = s.saplId
+      d.nomeCompleto = s.nomeCompleto || undefined
       d.nomeParlamentar = s.nomeParlamentar || home?.nomeParlamentar
       d.fotoUrl = s.fotoUrl ?? home?.fotoUrl
       d.partido = home?.partido // partido só vem fácil da home (atuais); histórico fica sem
@@ -108,6 +111,25 @@ function casar(viap: DeputadoViap[], sapl: ParlamentarSapl[], cards: CardHome[])
     }
     return d
   })
+}
+
+// cargo na planilha de diárias que indica um parlamentar (só p/ diagnóstico de não-casados)
+const CARGOS_DEPUTADO = /\bdeputad|\bpresidente\b|vice-?presidente|mesa diretora|l[íi]der/i
+const ehCargoDeputado = (cargo: string) => CARGOS_DEPUTADO.test(cargo)
+
+// casa o NOME de uma diária ao roster: exato (nome completo/parlamentar/registro) e, se falhar,
+// por sobreposição de tokens vs o nome completo (vencedor único com 2+ tokens), como no casar().
+function casarDiaria(nome: string, deputados: DeputadoAlpb[], exato: Map<string, DeputadoAlpb>): DeputadoAlpb | null {
+  const e = exato.get(norm(nome))
+  if (e) return e
+  const nt = toks(nome)
+  if (nt.size < 2) return null
+  const rank = deputados
+    .map((d) => [[...toks(d.nomeCompleto || d.nomeRegistro)].filter((t) => nt.has(t)).length, d] as const)
+    .filter(([n]) => n >= 2)
+    .sort((a, b) => b[0] - a[0])
+  if (rank.length && (rank.length === 1 || rank[0][0] > rank[1][0])) return rank[0][1]
+  return null
 }
 
 async function main() {
@@ -184,7 +206,44 @@ async function main() {
     console.log(`  ${d.nomeRegistro.slice(0, 30).padEnd(30)} [${d.matchVia.padEnd(9)}] ${String(ds.length).padStart(4)} itens  R$ ${total.toLocaleString('pt-BR')}`)
   }
 
-  // 4) saídas pra revisão
+  // 4) diárias por deputado: a ALPB publica uma planilha .ods por mês com TODAS as diárias pagas
+  // (deputados + servidores). Casamos cada linha ao roster por NOME (a planilha não traz CPF), com
+  // o histórico (justificativa + destino + datas) como descrição. Servidores não casam e ficam fora.
+  const exatoNome = new Map<string, DeputadoAlpb>()
+  for (const d of deputados) for (const n of [d.nomeCompleto, d.nomeParlamentar, d.nomeRegistro]) if (n) exatoNome.set(norm(n), d)
+  try {
+    const links = linksDiariasDoHtml(await htmlDespesas()).filter((l) => l.ano >= ANO_INI && l.ano <= ANO_FIM)
+    console.log(`  diárias: ${links.length} planilhas mensais`)
+    let nDiaria = 0
+    const naoCasados = new Map<string, number>()
+    for (const l of links) {
+      const chave = `diarias/${l.ano}-${String(l.mes).padStart(2, '0')}`
+      let rows = cache.ler<DiariaRow[]>(chave)
+      const atrasoMeses = MES_ATUAL_ABS - (l.ano * 12 + l.mes)
+      const recente = atrasoMeses >= 0 && atrasoMeses <= JANELA_RETRY
+      if (!rows || (recente && rows.length === 0)) {
+        try { rows = parseDiarias(await baixarOds(l.url)); cache.gravar(chave, rows); await dormir(120) }
+        catch (e) { console.error(`  ! ${chave}: ${(e as Error).message}`); rows = rows ?? [] }
+      }
+      let seq = 0
+      for (const r of rows) {
+        const dep = casarDiaria(r.nome, deputados, exatoNome)
+        if (!dep) { if (ehCargoDeputado(r.cargo)) naoCasados.set(r.nome, (naoCasados.get(r.nome) ?? 0) + 1); continue }
+        const data = dataDiaria(r.datas) || `${l.ano}-${String(l.mes).padStart(2, '0')}-01`
+        const descricao = [r.justificativa, r.localidade, r.datas].map((s) => s.trim()).filter(Boolean).join(' · ')
+        todas.push({
+          id: `${dep.politicoId}-diaria-${l.ano}${String(l.mes).padStart(2, '0')}-${seq++}`,
+          politicoId: dep.politicoId, data, ano: l.ano, mes: l.mes,
+          item: 'Diárias', categoria: 'Diárias', fornecedor: { nome: '' }, descricao, valor: r.valor,
+        })
+        nDiaria++
+      }
+    }
+    console.log(`  diárias casadas a deputados: ${nDiaria} lançamentos`)
+    if (naoCasados.size) console.log(`  ! diárias com cargo de deputado mas SEM match de nome (conferir): ${[...naoCasados.keys()].slice(0, 10).join(', ')}`)
+  } catch (e) { console.error(`  ! diárias ALPB falharam: ${(e as Error).message}`) }
+
+  // 5) saídas pra revisão
   mkdirSync(resolve(saidaDir, 'despesas'), { recursive: true })
   writeFileSync(resolve(saidaDir, 'deputados.json'), JSON.stringify(deputados, null, 2))
   for (const d of deputados) {

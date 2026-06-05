@@ -7,7 +7,7 @@ import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
-import { agregarPerfil, totalAnualPorCasaParlamentar, serieMensalPorCategoria } from '@/lib/perfil'
+import { agregarPerfil, totalAnualPorCasaParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
 import { brl, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
@@ -176,8 +176,6 @@ export function PerfilView({
     }
   }, [pares, periodo, politico.id])
 
-  const mesesComGasto = ag.serieMensal.length
-  const mediaMensal = mesesComGasto ? ag.total / mesesComGasto : 0
   const vsMedia = mediaGeral > 0 ? ag.total / mediaGeral : 0
 
   const semNada = despesas.length === 0
@@ -199,27 +197,37 @@ export function PerfilView({
     politico.casa === 'senado'
       ? `https://www6g.senado.leg.br/transparencia/sen/${politico.id.replace('senado-', '')}`
       : undefined
-  // no municipal o "teto" é o da VIAP (não uma cota genérica); rotulamos a linha do gráfico assim
-  // para deixar claro, sobretudo nas cidades que pagam VIAP + diárias (a linha é só da VIAP).
   const rotuloTeto = politico.casa === 'camara_municipal' ? 'Teto da VIAP/mês' : 'Teto da cota/mês'
   const refCota =
     !custoCasa.cota.aproximado && custoCasa.cota.valor != null && custoCasa.cota.valor > 0
       ? { valor: custoCasa.cota.valor, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
       : undefined
+
+  // Diárias são uma categoria à parte (vereadores via TCE; deputados estaduais via planilha da ALPB).
+  // Quando há diárias E gasto de VIAP/cota com teto real, separamos os dois: 2 linhas no gráfico e a
+  // conta de "uso do teto" considera só a VIAP (o teto é da VIAP, não das diárias, que são variáveis).
+  const despDiaria = useMemo(() => despesas.filter((d) => d.categoria === 'Diárias'), [despesas])
+  const despNaoDiaria = useMemo(() => despesas.filter((d) => d.categoria !== 'Diárias'), [despesas])
+  const agDiaria = useMemo(() => agregarPerfil(despDiaria, periodo), [despDiaria, periodo])
+  const agNaoDiaria = useMemo(() => agregarPerfil(despNaoDiaria, periodo), [despNaoDiaria, periodo])
+
   // câmara que paga só diárias (sem VIAP fixa): não há "teto", então o card de cota×teto não se aplica;
   // mostramos um resumo de diárias (média por mês) em vez do "uso do teto" (que quebraria sem teto).
   const municipalSoDiaria = politico.casa === 'camara_municipal' && (municipioCusto?.viapTeto ?? 0) <= 0 && (municipioCusto?.temDiaria ?? false)
-  // câmara que paga VIAP E diárias: a evolução mensal vira 2 linhas (VIAP fixa × diárias variáveis),
-  // e o teto tracejado vale só para a VIAP. Junta-las numa linha só (vs. um teto de VIAP) confundiria.
-  const municipalViapEDiaria = politico.casa === 'camara_municipal' && (municipioCusto?.temViap ?? false) && (municipioCusto?.temDiaria ?? false)
+  // tem VIAP/cota (com teto real) E diárias → separa as duas no gráfico e no "uso do teto"
+  const separarDiarias = !municipalSoDiaria && refCota != null && agDiaria.total > 0 && agNaoDiaria.total > 0
+
+  const mesesComGasto = (separarDiarias ? agNaoDiaria : ag).serieMensal.length
+  const mediaMensal = mesesComGasto ? (separarDiarias ? agNaoDiaria.total : ag.total) / mesesComGasto : 0
+
   const linhasGrafico = useMemo(
-    () => municipalViapEDiaria
+    () => separarDiarias
       ? [
-          { chave: 'viap', rotulo: 'VIAP', cor: '#0f766e', serie: serieMensalPorCategoria(despesas, 'Verba indenizatória (VIAP)', periodo) },
-          { chave: 'diaria', rotulo: 'Diárias', cor: '#c87f1a', serie: serieMensalPorCategoria(despesas, 'Diárias', periodo) },
+          { chave: 'viap', rotulo: 'VIAP', cor: '#0f766e', serie: agNaoDiaria.serieMensal },
+          { chave: 'diaria', rotulo: 'Diárias', cor: '#c87f1a', serie: agDiaria.serieMensal },
         ]
       : undefined,
-    [municipalViapEDiaria, despesas, periodo],
+    [separarDiarias, agNaoDiaria, agDiaria],
   )
 
   return (
