@@ -72,18 +72,22 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
     crescPorCidade.set(c.slug, m)
   }
 
-  const dados = anos.map((ano) => {
-    const row: Record<string, number | null> = { ano }
-    for (const c of ativas) {
-      if (modo === 'valor') {
-        const a = c.anos.find((x) => x.ano === ano)
-        row[c.slug] = a ? valorArea(a) : null // null = ano fora da cobertura (linha some)
-      } else {
-        row[c.slug] = crescPorCidade.get(c.slug)?.get(ano) ?? null
+  const dados = anos
+    .map((ano) => {
+      const row: Record<string, number | null> = { ano }
+      for (const c of ativas) {
+        if (modo === 'valor') {
+          const a = c.anos.find((x) => x.ano === ano)
+          row[c.slug] = a ? valorArea(a) : null // null = ano fora da cobertura (linha some)
+        } else {
+          row[c.slug] = crescPorCidade.get(c.slug)?.get(ano) ?? null
+        }
       }
-    }
-    return row
-  })
+      return row
+    })
+    // tira anos sem nenhum valor: no modo % o primeiro ano (sem ano anterior) some do eixo,
+    // pra a linha não "nascer no ar" num ano vazio
+    .filter((row) => ativas.some((c) => row[c.slug] != null))
 
   const fmtEixo = (v: number) => (modo === 'valor' ? compacto(v) : `${Math.round(v)}%`)
   const fmtTooltip = (v: number) => (modo === 'valor' ? brl(v) : pct(v))
