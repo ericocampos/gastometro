@@ -61,8 +61,13 @@ function PizzaPoder({ poder }: { poder: PoderAno }) {
 }
 
 export function OrcamentoCidade({ orcamento }: { orcamento: OrcamentoMunicipio }) {
+  // Ano da coleta (do dado, não do relógio do navegador): o ano corrente ainda está em andamento,
+  // então é "parcial". Abrimos no último ano completo pra não parecer que o gasto caiu.
+  const anoColeta = Number(orcamento.atualizadoEm.slice(0, 4))
+  const ehParcial = (a: number) => a >= anoColeta
   const anosDisponiveis = orcamento.anos.map((a) => a.ano)
-  const [ano, setAno] = useState(anosDisponiveis[0])
+  const anoPadrao = (orcamento.anos.find((a) => !ehParcial(a.ano)) ?? orcamento.anos[0]).ano
+  const [ano, setAno] = useState(anoPadrao)
   const dadosAno = orcamento.anos.find((a) => a.ano === ano) ?? orcamento.anos[0]
   const fonte = orcamento.fontes.find((f) => f.ano === ano)
 
@@ -70,8 +75,11 @@ export function OrcamentoCidade({ orcamento }: { orcamento: OrcamentoMunicipio }
     <div className="rounded-xl border border-borda bg-superficie p-4">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm text-tinta-suave">Total pago em {ano}</p>
+          <p className="text-sm text-tinta-suave">Total pago em {ano}{ehParcial(ano) ? ' (parcial)' : ''}</p>
           <p className="font-display text-2xl font-semibold text-tinta">{brl(dadosAno.totalPago)}</p>
+          {ehParcial(ano) && (
+            <p className="text-xs text-tinta-tenue">Ano em andamento, valores até a última atualização da fonte.</p>
+          )}
         </div>
         <label className="flex items-center gap-2 text-sm text-tinta-suave">
           Ano
@@ -81,7 +89,7 @@ export function OrcamentoCidade({ orcamento }: { orcamento: OrcamentoMunicipio }
             onChange={(e) => setAno(Number(e.target.value))}
             className="rounded-md border border-borda bg-superficie px-2 py-1 text-sm text-tinta"
           >
-            {anosDisponiveis.map((a) => <option key={a} value={a}>{a}</option>)}
+            {anosDisponiveis.map((a) => <option key={a} value={a}>{ehParcial(a) ? `${a} (parcial)` : a}</option>)}
           </select>
         </label>
       </div>

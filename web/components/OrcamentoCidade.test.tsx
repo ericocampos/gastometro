@@ -54,4 +54,22 @@ describe('OrcamentoCidade', () => {
     const link = getByRole('link', { name: /fonte/i }) as HTMLAnchorElement
     expect(link.href).toContain('despesas-2025.zip')
   })
+
+  it('abre no último ano completo e marca o ano corrente como parcial', () => {
+    // coleta em 2026 (atualizadoEm), então 2026 é parcial e o padrão deve ser 2025.
+    const comParcial: OrcamentoMunicipio = {
+      ...orc,
+      atualizadoEm: '2026-06-05',
+      fontes: [{ ano: 2026, url: 'https://x/despesas-2026.zip' }, ...orc.fontes],
+      anos: [
+        { ano: 2026, totalPago: 1000, poderes: [{ poder: 'prefeitura', total: 1000, funcoes: [{ funcao: 'Saúde', pago: 1000, empenhado: 1000, liquidado: 1000 }] }] },
+        ...orc.anos,
+      ],
+    }
+    const { getByLabelText, getByText } = render(<OrcamentoCidade orcamento={comParcial} />)
+    // padrão = 2025 (último completo), e o seletor mostra 2025 selecionado
+    expect((getByLabelText(/ano/i) as HTMLSelectElement).value).toBe('2025')
+    // o ano corrente aparece rotulado como parcial na lista
+    expect(getByText('2026 (parcial)')).toBeTruthy()
+  })
 })
