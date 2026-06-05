@@ -9,8 +9,8 @@ const leve = (slug: string, nome: string): Municipio => ({
   custo: { slug, nome, salario: 6000, viapTeto: 0, viapMedia: null, gabineteMedia: 2000 },
 })
 
-const completo = (slug: string, nome: string): Municipio => ({
-  slug, nome, uf: 'PB', modelo: 'completo', numVereadores: 22, totalViapPeriodo: 1000, totalGabineteMes: 2000,
+const completo = (slug: string, nome: string, numVereadores = 22): Municipio => ({
+  slug, nome, uf: 'PB', modelo: 'completo', numVereadores, totalViapPeriodo: 1000, totalGabineteMes: 2000,
   custo: { slug, nome, salario: 17000, viapTeto: 15000, viapMedia: 12000, gabineteMedia: 40000 },
 })
 
@@ -49,10 +49,10 @@ describe('MunicipiosGrid (ordenação)', () => {
     expect(slugs[0]).toBe('santa-rita')
   })
 
-  it('preserva a ordem original dentro de cada grupo (sort estável)', () => {
-    const lista = [completo('jp', 'João Pessoa'), completo('cg', 'Campina Grande'), leve('x', 'X'), completo('sr', 'Santa Rita')]
+  it('ordena as completas por tamanho (maiores primeiro) e deixa as leve depois', () => {
+    const lista = [completo('patos', 'Patos', 17), completo('jp', 'João Pessoa', 28), leve('x', 'X'), completo('sr', 'Santa Rita', 22)]
     render(<MunicipiosGrid cidades={lista} />)
     const slugs = screen.getAllByRole('link').map((a) => a.getAttribute('href')?.replace(/^\/municipios\/|\/$/g, ''))
-    expect(slugs).toEqual(['jp', 'cg', 'sr', 'x'])
+    expect(slugs).toEqual(['jp', 'sr', 'patos', 'x']) // 28, 22, 17, depois a leve
   })
 })

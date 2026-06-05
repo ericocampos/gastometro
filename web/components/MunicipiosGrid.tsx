@@ -12,9 +12,15 @@ const norm = (s: string) =>
 export function MunicipiosGrid({ cidades }: { cidades: Municipio[] }) {
   const [busca, setBusca] = useState('')
 
-  // completas (mais detalhe) primeiro; ordem original preservada dentro de cada grupo (sort estável)
+  // completas (mais detalhe) primeiro e, entre elas, as maiores antes; leve depois, na ordem original
   const ordenadas = useMemo(
-    () => [...cidades].sort((a, b) => (a.modelo === 'completo' ? 0 : 1) - (b.modelo === 'completo' ? 0 : 1)),
+    () => [...cidades].sort((a, b) => {
+      const ma = a.modelo === 'completo' ? 0 : 1
+      const mb = b.modelo === 'completo' ? 0 : 1
+      if (ma !== mb) return ma - mb
+      if (ma === 0) return b.numVereadores - a.numVereadores // completas por tamanho (desc)
+      return 0 // leve: ordem original (sort estável)
+    }),
     [cidades],
   )
 

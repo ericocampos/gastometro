@@ -545,8 +545,8 @@ export function montarCidadeViapTce(
       + ` despesas com nota fiscal itemizada). O valor mais frequente no período é ${brlNum(valorVereador)} por vereador`
       + `${valorPresidente > 0 && valorPresidente !== valorVereador ? ` (${brlNum(valorPresidente)} para o presidente)` : ''}`
       + `${fracao > 0 ? `, ${fracaoTxt} do subsídio` : ''}. Esses valores são os empenhos de`
-      + ` “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB; a câmara publica`
-      + ` apenas comprovantes digitalizados, com defasagem.`
+      + ` “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui`
+      + ` porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.`
     : undefined
 
   const resumoMunicipio: Municipio = {
@@ -717,6 +717,39 @@ export function gravarCidade(saida: SaidaCidade, slug: string): void {
   }
 }
 
+// Coleta uma cidade no modelo COMPLETO via TCE (VIAP = "Indenizações" por vereador, casadas por CPF;
+// gabinete agregado). Reúne roster/subsídio/folha (servidores) + indenizações (despesas) do TCE,
+// monta e já gera as fotos do TSE. Usado pelas cidades em que a câmara não publica a VIAP de forma
+// legível por máquina (Santa Rita, Patos, ...). `camaraUrl` é o link humano da VIAP na câmara.
+export async function coletarCidadeViapTce(
+  cod: string, slug: string, nome: string, camaraUrl: string,
+  idxTse: Map<string, IndiceMunicipio>,
+): Promise<SaidaCidade> {
+  let linhas: LinhaTce[] = []
+  for (const ano of [new Date().getFullYear(), new Date().getFullYear() - 1]) {
+    try { linhas = linhas.concat(await baixarCamaraTce(cod, ano)) } catch { /* ano sem arquivo */ }
+    if (mesesComVereador(linhas, '202501').length > 0) break
+  }
+  const mesRef = mesesComVereador(linhas, '202501')[0]
+  const vereadores = extrairVereadoresTce(linhas, mesRef)
+  const folha = somarComissionadosTce(linhas, mesRef)
+  const indeniz = await baixarIndenizacoesCamara(cod, [2025, 2026]) // VIAP = empenhos pagos ao vereador
+  console.log(`  roster TCE: ${vereadores.length} vereadores | folha comissionados R$ ${folha.toFixed(2)} | TCE indenizações: ${indeniz.length}`)
+  const lookup = (n: string) => {
+    const c = matchCandidato(idxTse, nome, n)
+    return c ? { partido: c.partido, sq: c.sq } : null
+  }
+  const saida = montarCidadeViapTce(
+    { slug, nome, uf: 'PB' },
+    vereadores, indeniz, lookup, folha, `${mesRef.slice(0, 4)}-${mesRef.slice(4, 6)}`,
+    { tce: fonteUrlDespesas(cod, 2025), camara: camaraUrl },
+  )
+  await gerarFotosPoliticos(saida.politicos)
+  const c = saida.cobertura
+  console.log(`  cobertura: viap ${c.comViap}/${c.total}${c.naoCasados.length ? ` | Indenizações sem roster: ${c.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
+  return saida
+}
+
 async function main() {
   const resumos: Municipio[] = []
 
@@ -788,38 +821,23 @@ async function main() {
   const cc = saidaCg.cobertura
   console.log(`  cobertura CG: viap ${cc.comViap}/${cc.total}${cc.naoCasados.length ? ` | VIAP sem roster: ${cc.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
 
-  // Santa Rita — modelo COMPLETO via TCE (VIAP por vereador vinda das "Indenizações" do TCE, casada
-  // por CPF; gabinete agregado). A câmara só publica comprovantes digitalizados (PDF), então o TCE é
-  // a fonte primária da VIAP aqui — sem selo de conferência (seria circular).
-  console.log(`\n> Santa Rita (santa-rita) [completo · VIAP via TCE]`)
-  let linhasSr: LinhaTce[] = []
-  for (const ano of [new Date().getFullYear(), new Date().getFullYear() - 1]) {
-    try { linhasSr = linhasSr.concat(await baixarCamaraTce('171', ano)) } catch { /* ano sem arquivo */ }
-    if (mesesComVereador(linhasSr, '202501').length > 0) break
+  // Cidades COMPLETAS via TCE (a câmara não publica a VIAP de forma legível por máquina): a VIAP vem
+  // das "Indenizações" do TCE por vereador, casada por CPF; gabinete agregado; sem selo de conferência
+  // (o TCE é a fonte). `camara` é o link humano da VIAP na câmara.
+  const cidadesViapTce: { cod: string; slug: string; nome: string; camara: string }[] = [
+    { cod: '171', slug: 'santa-rita', nome: 'Santa Rita', camara: 'https://www.santarita.pb.leg.br/site/viap' },
+    { cod: '135', slug: 'patos', nome: 'Patos', camara: 'https://camarapatos.pb.gov.br/consultas/viap/p16_sectionid/163' },
+  ]
+  for (const cv of cidadesViapTce) {
+    console.log(`\n> ${cv.nome} (${cv.slug}) [completo · VIAP via TCE]`)
+    const saida = await coletarCidadeViapTce(cv.cod, cv.slug, cv.nome, cv.camara, idxTse)
+    gravarCidade(saida, cv.slug)
+    resumos.push(saida.resumoMunicipio)
   }
-  const mesRefSr = mesesComVereador(linhasSr, '202501')[0]
-  const vereadoresSr = extrairVereadoresTce(linhasSr, mesRefSr)
-  const folhaSr = somarComissionadosTce(linhasSr, mesRefSr)
-  const indenizSr = await baixarIndenizacoesCamara('171', [2025, 2026]) // VIAP = empenhos pagos ao vereador
-  console.log(`  roster TCE: ${vereadoresSr.length} vereadores | folha comissionados R$ ${folhaSr.toFixed(2)} | TCE indenizações: ${indenizSr.length}`)
-  const lookupSr = (nome: string) => {
-    const c = matchCandidato(idxTse, 'Santa Rita', nome)
-    return c ? { partido: c.partido, sq: c.sq } : null
-  }
-  const saidaSr = montarCidadeViapTce(
-    { slug: 'santa-rita', nome: 'Santa Rita', uf: 'PB' },
-    vereadoresSr, indenizSr, lookupSr, folhaSr, `${mesRefSr.slice(0, 4)}-${mesRefSr.slice(4, 6)}`,
-    { tce: fonteUrlDespesas('171', 2025), camara: 'https://www.santarita.pb.leg.br/site/viap' },
-  )
-  await gerarFotosPoliticos(saidaSr.politicos)
-  gravarCidade(saidaSr, 'santa-rita')
-  resumos.push(saidaSr.resumoMunicipio)
-  const cs = saidaSr.cobertura
-  console.log(`  cobertura SR: viap ${cs.comViap}/${cs.total}${cs.naoCasados.length ? ` | Indenizações sem roster: ${cs.naoCasados.map((n) => n.nome).join(', ')}` : ''}`)
 
-  // câmaras 'leve' (todas menos JP, CG e Santa Rita) pela fonte única do TCE-PB
+  // câmaras 'leve' (todas menos as completas) pela fonte única do TCE-PB
   console.log(`\n> câmaras leve via TCE-PB (dados abertos)`)
-  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande', 'santa-rita']) // completos
+  const pularSlugs = new Set([...CIDADES.map((c) => c.slug), 'campina-grande', ...cidadesViapTce.map((c) => c.slug)]) // completos
   const { cidades: leve, naoCobertas } = await coletarLeveTce(new Date().getFullYear(), pularSlugs, idxTse)
   resumos.push(...leve)
   if (naoCobertas.length > 0) console.log(`  não cobertas: ${naoCobertas.map((n) => n.nome).join(', ')}`)

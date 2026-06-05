@@ -11369,134 +11369,29 @@
       "slug": "patos",
       "nome": "Patos",
       "uf": "PB",
-      "modelo": "leve",
+      "modelo": "completo",
       "numVereadores": 17,
+      "totalViapPeriodo": 1272336.76,
+      "totalGabineteMes": 237865.08,
+      "periodoViap": {
+        "de": "2025-01",
+        "ate": "2026-05"
+      },
+      "viapDetalhada": false,
+      "gabinetePorVereador": false,
       "mesReferencia": "2026-04",
-      "folhaComissionados": 237865.08000000002,
-      "vereadores": [
-        {
-          "nome": "BRENNA VICTORIA LEONARDO FERREIRA NOBREGA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PSB",
-          "fotoUrl": "/fotos/vereadores/150001979359.webp"
-        },
-        {
-          "nome": "CICERA BEZERRA BATISTA",
-          "subsidio": 17000,
-          "presidente": false
-        },
-        {
-          "nome": "DAVID CARNEIRO MAIA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REDE",
-          "fotoUrl": "/fotos/vereadores/150001982146.webp"
-        },
-        {
-          "nome": "DECILANIO CANDIDO DA SILVA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979267.webp"
-        },
-        {
-          "nome": "EMANUEL RODRIGUES DE ARAUJO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REDE",
-          "fotoUrl": "/fotos/vereadores/150001982149.webp"
-        },
-        {
-          "nome": "FRANCISCO SIMOES DE LUCENA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979274.webp"
-        },
-        {
-          "nome": "HEBER TIBURTINO LEITE",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001974042.webp"
-        },
-        {
-          "nome": "JOAO BATISTA DE SOUZA JUNIOR",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001929022.webp"
-        },
-        {
-          "nome": "JONATAS KAIKY DE OLIVEIRA SANTANA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979263.webp"
-        },
-        {
-          "nome": "JOSE ITALO GOMES CANDIDO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979275.webp"
-        },
-        {
-          "nome": "MAIKON ROBERTO MINERVINO",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "PP",
-          "fotoUrl": "/fotos/vereadores/150001974046.webp"
-        },
-        {
-          "nome": "MARCO CESAR SOUZA SIQUEIRA",
-          "subsidio": 17000,
-          "presidente": false
-        },
-        {
-          "nome": "MARIA DE FATIMA MEDEIROS DE MARIA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979264.webp"
-        },
-        {
-          "nome": "NADIGERLANE RODRIGUES DE CARVALHO ALMEIDA GUEDES",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979266.webp"
-        },
-        {
-          "nome": "PERLA GADELHA MEDEIROS LIMA",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979273.webp"
-        },
-        {
-          "nome": "RAFAEL GOMES DANTAS",
-          "subsidio": 17000,
-          "presidente": false,
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/vereadores/150001929024.webp"
-        },
-        {
-          "nome": "VALTIDE PAULINO SANTOS",
-          "subsidio": 22000,
-          "presidente": true,
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/vereadores/150001979269.webp"
-        }
-      ],
+      "folhaComissionados": 237865.08,
       "custo": {
         "slug": "patos",
         "nome": "Patos",
         "salario": 17000,
-        "viapTeto": 0,
-        "viapMedia": null,
-        "gabineteMedia": 13992.063529411766
+        "viapTeto": 5000,
+        "viapMedia": 5268.046198714779,
+        "gabineteMedia": 13992.063529411764,
+        "viapFonteTce": true,
+        "viapNota": "Em Patos, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 5.000,00 por vereador, cerca de 29% do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
+        "viapFonteCamaraUrl": "https://camarapatos.pb.gov.br/consultas/viap/p16_sectionid/163",
+        "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/135/despesas/despesas-2025.zip"
       }
     },
     {
@@ -14439,7 +14334,7 @@
         "viapMedia": 13396.6881915515,
         "gabineteMedia": 43249.475000000006,
         "viapFonteTce": true,
-        "viapNota": "Em Santa Rita, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 11.333,33 por vereador (R$ 15.333,33 para o presidente), cerca de dois terços (2/3) do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB; a câmara publica apenas comprovantes digitalizados, com defasagem.",
+        "viapNota": "Em Santa Rita, a VIAP é um valor fixo pago todo mês a cada vereador (não um reembolso de despesas com nota fiscal itemizada). O valor mais frequente no período é R$ 11.333,33 por vereador (R$ 15.333,33 para o presidente), cerca de dois terços (2/3) do subsídio. Esses valores são os empenhos de “Indenizações e Restituições” pagos a cada vereador, registrados no TCE-PB, que é a fonte aqui porque a câmara não publica o detalhamento da VIAP de forma legível por máquina.",
         "viapFonteCamaraUrl": "https://www.santarita.pb.leg.br/site/viap",
         "viapFonteTceUrl": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/171/despesas/despesas-2025.zip"
       }
