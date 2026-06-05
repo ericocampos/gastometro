@@ -7,7 +7,7 @@ import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
-import { agregarPerfil, totalAnualParlamentar } from '@/lib/perfil'
+import { agregarPerfil, totalAnualPorCasaParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
 import { brl, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
@@ -159,13 +159,7 @@ export function PerfilView({
 
   const ag = useMemo(() => agregarPerfil(despesas, periodo), [despesas, periodo])
   // total anual do parlamentar, na esfera dele (barra na cor da casa; perfil é de uma só esfera)
-  const anual = useMemo(() =>
-    totalAnualParlamentar(despesas).map((a) => ({
-      ano: a.ano,
-      camara: politico.casa === 'camara' ? a.total : 0,
-      senado: politico.casa === 'senado' ? a.total : 0,
-      assembleia: politico.casa === 'assembleia' ? a.total : 0,
-    })), [despesas, politico.casa])
+  const anual = useMemo(() => totalAnualPorCasaParlamentar(despesas, politico.casa), [despesas, politico.casa])
   const despesasPeriodo = useMemo(
     () => despesas.filter((d) => anoNoPeriodo(d.ano, periodo)),
     [despesas, periodo],

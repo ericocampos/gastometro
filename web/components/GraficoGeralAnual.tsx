@@ -4,11 +4,11 @@ import type { TotalAnualCasa } from '@/lib/periodo'
 import { brl } from '@/lib/formato'
 import { tooltipContentStyle, tooltipLabelStyle, tooltipItemStyle } from './tooltipEstilo'
 
-type Casa = 'camara' | 'senado' | 'assembleia'
+type Casa = 'camara' | 'senado' | 'assembleia' | 'municipal'
 // mesmas cores das casas no resto do site (corCasa)
-const COR: Record<Casa, string> = { camara: '#2563eb', senado: '#c87f1a', assembleia: '#7c3aed' }
-const ROTULO: Record<Casa, string> = { camara: 'Câmara', senado: 'Senado', assembleia: 'Assembleia' }
-const ORDEM: Casa[] = ['camara', 'senado', 'assembleia']
+const COR: Record<Casa, string> = { camara: '#2563eb', senado: '#c87f1a', assembleia: '#7c3aed', municipal: '#0f766e' }
+const ROTULO: Record<Casa, string> = { camara: 'Câmara', senado: 'Senado', assembleia: 'Assembleia', municipal: 'Câmara Municipal' }
+const ORDEM: Casa[] = ['camara', 'senado', 'assembleia', 'municipal']
 
 function compacto(v: number): string {
   if (v >= 1_000_000) return `R$ ${(v / 1_000_000).toFixed(1).replace('.', ',')} mi`

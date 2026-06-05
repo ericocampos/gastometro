@@ -111,9 +111,11 @@ export function totalPorAnoPorEsfera(series: SerieParlamentar[]): TotalAnualEsfe
 
 // Gasto anual separado pelas 3 casas — deixa claro quanto cada uma gasta (cobertura difere: Câmara e
 // Senado desde 2008/2009; Assembleia só desde 2023).
-export interface TotalAnualCasa { ano: number; camara: number; senado: number; assembleia: number }
+export interface TotalAnualCasa { ano: number; camara: number; senado: number; assembleia: number; municipal: number }
 
 export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[] {
+  // o gráfico geral (home) compara só as casas federais/estadual; o municipal entra zerado aqui e só
+  // é usado no perfil do vereador (PerfilView monta o `anual` com a chave 'municipal' preenchida).
   const porAno = new Map<number, { camara: number; senado: number; assembleia: number }>()
   for (const s of series) {
     if (s.casa === 'camara_municipal') continue
@@ -125,7 +127,7 @@ export function totalPorAnoPorCasa(series: SerieParlamentar[]): TotalAnualCasa[]
       porAno.set(ano, e)
     }
   }
-  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v }))
+  return [...porAno.entries()].sort((a, b) => a[0] - b[0]).map(([ano, v]) => ({ ano, ...v, municipal: 0 }))
 }
 
 export function anosDisponiveis(series: SerieParlamentar[]): number[] {

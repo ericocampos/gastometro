@@ -1,5 +1,5 @@
-import type { Despesa, ItemCategoria, ItemFornecedor, PontoMensal } from './tipos'
-import { type Periodo, type TotalAnual, anoNoPeriodo } from './periodo'
+import type { Casa, Despesa, ItemCategoria, ItemFornecedor, PontoMensal } from './tipos'
+import { type Periodo, type TotalAnual, type TotalAnualCasa, anoNoPeriodo } from './periodo'
 
 export interface AgregadoPerfil {
   total: number
@@ -49,4 +49,16 @@ export function totalAnualParlamentar(despesas: Despesa[]): TotalAnual[] {
   const m = new Map<number, number>()
   for (const d of despesas) m.set(d.ano, (m.get(d.ano) ?? 0) + d.valor)
   return [...m.entries()].sort((a, b) => a[0] - b[0]).map(([ano, total]) => ({ ano, total }))
+}
+
+// Total anual do parlamentar na chave da SUA casa (o gráfico de comparação anual empilha por casa;
+// no perfil há só uma casa, então só essa chave recebe valor). 'camara_municipal' usa a chave
+// 'municipal' — sem ela, o gasto do vereador caía em nenhuma chave e o gráfico zerava.
+export function totalAnualPorCasaParlamentar(despesas: Despesa[], casa: Casa): TotalAnualCasa[] {
+  const chave = casa === 'camara_municipal' ? 'municipal' : casa
+  return totalAnualParlamentar(despesas).map((a) => ({
+    ano: a.ano,
+    camara: 0, senado: 0, assembleia: 0, municipal: 0,
+    [chave]: a.total,
+  }))
 }
