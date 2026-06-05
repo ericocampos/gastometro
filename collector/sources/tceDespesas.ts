@@ -82,6 +82,57 @@ export async function baixarIndenizacoesCamara(cod: string, anos: number[]): Pro
   return out
 }
 
+// Gasto rastreável por vereador no TCE, por tipo: 'viap' (Indenizações e Restituições, valor fixo
+// mensal) e 'diaria' (Diárias - Civil etc., variável, quem viajou). Em ambos o credor é o vereador.
+export type TipoDespesaVereador = 'viap' | 'diaria'
+// historico/empenho/dataEmpenho: o "documento" do pagamento que o TCE expõe. Diária não tem nota
+// fiscal (é adiantamento de viagem, autorizado por portaria); o histórico é o texto declarado pela
+// câmara no empenho (motivo/destino/datas). Usado no detalhamento de cada vereador.
+export interface DespesaVereadorTce { credor: string; credorCpf: string; mes: number; ano: number; valorPago: number; tipo: TipoDespesaVereador; historico?: string; empenho?: string; dataEmpenho?: string }
+
+const ehDiaria = (elemento: string): boolean => /di[áa]ria/i.test(elemento)
+
+// historico é a col 35 (índice 34) e há 5 colunas depois dela (36-40). O CSV não é citado, então se
+// o texto tiver ';' as colunas finais deslocam; como só nos importa o histórico (as colunas do
+// financeiro vêm ANTES, 4/5/11/29), rejuntamos do índice 34 até o fim menos as 5 colunas de cauda.
+const lerHistorico = (f: string[]): string =>
+  (f.length > 40 ? f.slice(34, f.length - 5).join(';') : (f[34] ?? '')).trim()
+
+/** Parseia os empenhos da Câmara pagos a vereadores (VIAP + diárias), com o tipo e o histórico. */
+export function parseDespesasVereador(textoCsv: string, ano: number): DespesaVereadorTce[] {
+  const linhas = textoCsv.split('\n')
+  const out: DespesaVereadorTce[] = []
+  for (let i = 1; i < linhas.length; i++) {
+    const f = linhas[i].split(';')
+    if (f.length < 29) continue
+    if (!/c[âa]mara\s+municipal/i.test(f[2] ?? '')) continue
+    const elemento = (f[28] ?? '').trim()
+    const tipo: TipoDespesaVereador | null =
+      elemento === ELEMENTO_VIAP ? 'viap' : ehDiaria(elemento) ? 'diaria' : null
+    if (!tipo) continue
+    const valorPago = valorBr(f[10] ?? '')
+    if (valorPago <= 0) continue
+    out.push({
+      credor: (f[7] ?? '').trim(), credorCpf: (f[6] ?? '').trim(),
+      mes: Number((f[5] ?? '').slice(0, 2)) || 0, ano, valorPago, tipo,
+      empenho: (f[3] ?? '').trim(), dataEmpenho: (f[4] ?? '').trim(), historico: lerHistorico(f),
+    })
+  }
+  return out
+}
+
+/** Baixa VIAP + diárias por vereador da câmara para os anos pedidos (ignora ano sem arquivo). */
+export async function baixarDespesasVereador(cod: string, anos: number[]): Promise<DespesaVereadorTce[]> {
+  const out: DespesaVereadorTce[] = []
+  for (const ano of anos) {
+    try {
+      const buf = await fetchBuffer(fonteUrlDespesas(cod, ano))
+      out.push(...parseDespesasVereador(inflarCsvZip(buf), ano))
+    } catch { /* ano sem arquivo */ }
+  }
+  return out
+}
+
 /**
  * Confere os valores que mostramos (um por mês) contra os empenhos pagos ao vereador no TCE, por
  * casamento de VALOR (tolerância de 1 centavo), consumindo cada empenho uma vez. 'conferido' = todo

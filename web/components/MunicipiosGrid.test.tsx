@@ -40,6 +40,29 @@ describe('MunicipiosGrid (busca)', () => {
   })
 })
 
+describe('MunicipiosGrid (rótulo do total VIAP/diárias)', () => {
+  const tce = (slug: string, nome: string, flags: { temViap: boolean; temDiaria: boolean }): Municipio => ({
+    slug, nome, uf: 'PB', modelo: 'completo', numVereadores: 9, totalViapPeriodo: 5000, totalGabineteMes: 2000,
+    custo: { slug, nome, salario: 9000, viapTeto: 0, viapMedia: null, gabineteMedia: 3000, viapFonteTce: true, ...flags },
+  })
+
+  it('cidade só de diárias mostra "Diárias no período"', () => {
+    render(<MunicipiosGrid cidades={[tce('bayeux', 'Bayeux', { temViap: false, temDiaria: true })]} />)
+    expect(screen.getByText('Diárias no período')).toBeTruthy()
+    expect(screen.queryByText('VIAP no período')).toBeNull()
+  })
+
+  it('cidade com VIAP e diárias mostra "VIAP + diárias no período"', () => {
+    render(<MunicipiosGrid cidades={[tce('santa-rita', 'Santa Rita', { temViap: true, temDiaria: true })]} />)
+    expect(screen.getByText('VIAP + diárias no período')).toBeTruthy()
+  })
+
+  it('cidade completa sem flags (JP/CG) mantém "VIAP no período"', () => {
+    render(<MunicipiosGrid cidades={[completo('joao-pessoa', 'João Pessoa', 27)]} />)
+    expect(screen.getByText('VIAP no período')).toBeTruthy()
+  })
+})
+
 describe('MunicipiosGrid (ordenação)', () => {
   it('coloca as completas no começo, mesmo que venham fora de ordem no dado', () => {
     // como ficaria Santa Rita: completa, mas no meio da lista vinda do municipios.json

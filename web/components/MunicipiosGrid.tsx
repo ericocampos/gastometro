@@ -9,6 +9,15 @@ const TEAL = '#0f766e'
 const norm = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()
 
+// rótulo do total da cidade conforme o que ela paga por vereador (VIAP, diárias ou ambos). Só as
+// cidades via TCE distinguem; JP/CG (VIAP itemizada) seguem "VIAP".
+function rotuloTotalCidade(c: Municipio): string {
+  const { temViap, temDiaria, viapFonteTce } = c.custo
+  if (viapFonteTce && temDiaria && !temViap) return 'Diárias no período'
+  if (viapFonteTce && temDiaria && temViap) return 'VIAP + diárias no período'
+  return 'VIAP no período'
+}
+
 export function MunicipiosGrid({ cidades }: { cidades: Municipio[] }) {
   const [busca, setBusca] = useState('')
 
@@ -77,7 +86,7 @@ export function MunicipiosGrid({ cidades }: { cidades: Municipio[] }) {
                   {c.modelo === 'completo' ? (
                     <>
                       <div className="flex items-baseline justify-between gap-2">
-                        <dt>VIAP no período</dt>
+                        <dt>{rotuloTotalCidade(c)}</dt>
                         <dd className="tabular-nums text-tinta-suave">{brlInteiro(c.totalViapPeriodo ?? 0)}</dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-2">

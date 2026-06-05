@@ -11,8 +11,16 @@ vi.mock('next/navigation', () => ({
   useSearchParams: () => new URLSearchParams('periodo=2025'),
 }))
 
-// recharts não renderiza com largura 0 no jsdom; mockamos os gráficos para não atrapalhar.
-vi.mock('./GraficoMensal', () => ({ GraficoMensal: () => <div data-testid="grafico-mensal" /> }))
+// recharts não renderiza com largura 0 no jsdom; mockamos os gráficos para não atrapalhar. O mock do
+// GraficoMensal expõe o rótulo do teto e as linhas (séries) para os testes verificarem a configuração.
+vi.mock('./GraficoMensal', () => ({
+  GraficoMensal: ({ referencia, linhas }: { referencia?: { rotulo: string }; linhas?: { chave: string; rotulo: string }[] }) => (
+    <div data-testid="grafico-mensal">
+      {referencia && <span data-testid="grafico-ref">{referencia.rotulo}</span>}
+      {linhas?.map((l) => <span key={l.chave} data-testid="grafico-linha">{l.rotulo}</span>)}
+    </div>
+  ),
+}))
 vi.mock('./GraficoGeralAnual', () => ({ GraficoGeralAnual: () => <div data-testid="grafico-anual" /> }))
 vi.mock('./GraficoGabinete', () => ({ GraficoGabinete: () => <div data-testid="grafico-gabinete" /> }))
 
@@ -106,6 +114,37 @@ describe('PerfilView · vereador municipal', () => {
   it('mostra nota neutra de fornecedor não disponível na fonte', () => {
     renderMunicipal()
     expect(screen.getByText(/não disponível na fonte/i)).toBeInTheDocument()
+  })
+
+  it('cidade só de diárias (sem teto): mostra resumo de diárias, sem "uso do teto"', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null} custos={custos}
+        municipioCusto={{ slug: 'areia', nome: 'Areia', salario: 7000, viapTeto: 0, viapMedia: null, gabineteMedia: 8000, viapFonteTce: true, temViap: false, temDiaria: true, diariaMedia: 6000 }}
+        municipioAtualizadoEm="2026-06-03" assessores={assessores}
+        alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText('Diárias · por mês')).toBeInTheDocument()
+    expect(screen.getByText(/não têm um teto fixo/i)).toBeInTheDocument()
+    // os cards do CotaVsTeto (cota × teto) não devem aparecer
+    expect(screen.queryByText('Cota · gasto real × teto')).not.toBeInTheDocument()
+    expect(screen.queryByText(/Teto da cota/i)).not.toBeInTheDocument()
+  })
+
+  it('cidade com VIAP + diárias: gráfico tem 2 linhas (VIAP e Diárias) e teto rotulado "Teto da VIAP/mês"', () => {
+    const mistas: Despesa[] = [
+      { id: 'v1', politicoId: 'cm-joao-pessoa-1', data: '2025-01-31', ano: 2025, mes: 1, categoria: 'Verba indenizatória (VIAP)', fornecedor: { nome: '' }, valor: 12000 },
+      { id: 'di1', politicoId: 'cm-joao-pessoa-1', data: '2025-01-20', ano: 2025, mes: 1, categoria: 'Diárias', fornecedor: { nome: '' }, valor: 800, descricao: 'VIAGEM', numeroEmpenho: '7' },
+    ]
+    const seriesMix: SerieParlamentar[] = [{ ...series[0], serieMensal: [{ anoMes: '2025-01', total: 12800 }] }]
+    render(
+      <PerfilView politico={politico} despesas={mistas} series={seriesMix} perfil={null} custos={custos}
+        municipioCusto={{ slug: 'joao-pessoa', nome: 'João Pessoa', salario: 17000, viapTeto: 15000, viapMedia: 12000, gabineteMedia: 40000, viapFonteTce: true, temViap: true, temDiaria: true, diariaMedia: 800 }}
+        municipioAtualizadoEm="2026-06-03" assessores={assessores}
+        alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    const linhas = screen.getAllByTestId('grafico-linha').map((e) => e.textContent)
+    expect(linhas).toEqual(['VIAP', 'Diárias'])
+    expect(screen.getByTestId('grafico-ref')).toHaveTextContent('Teto da VIAP/mês')
   })
 
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {

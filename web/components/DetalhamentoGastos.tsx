@@ -67,6 +67,11 @@ function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSena
   if (d.numeroNf) {
     return <span className="whitespace-nowrap text-tinta-tenue" title="A Câmara publica o número da nota fiscal, não o documento">NF {d.numeroNf}</span>
   }
+  // diária não tem nota fiscal (é adiantamento de viagem, autorizado por portaria); a referência do
+  // pagamento na fonte é o número do empenho no TCE-PB.
+  if (d.numeroEmpenho) {
+    return <span className="whitespace-nowrap text-tinta-tenue" title="Diária não tem nota fiscal: é autorizada por portaria. Este é o número do empenho no TCE-PB.">Emp. {d.numeroEmpenho}</span>
+  }
   return <span className="text-tinta-tenue">—</span>
 }
 
@@ -94,7 +99,7 @@ export function DetalhamentoGastos({
     const q = busca.trim().toLowerCase()
     return despesas
       .filter((d) => categoria === 'todas' || d.categoria === categoria)
-      .filter((d) => q === '' || d.fornecedor.nome.toLowerCase().includes(q))
+      .filter((d) => q === '' || d.fornecedor.nome.toLowerCase().includes(q) || (d.descricao ?? '').toLowerCase().includes(q))
       .slice()
       .sort((a, b) => b.data.localeCompare(a.data))
   }, [despesas, categoria, busca])
@@ -105,6 +110,8 @@ export function DetalhamentoGastos({
 
   // câmara que publica o número da NF mas não o documento (ex.: Campina Grande)
   const notaSoNumero = casa === 'camara_municipal' && despesas.some((d) => d.numeroNf) && !despesas.some((d) => d.urlDocumento)
+  // câmara com diárias por vereador (TCE): cada lançamento traz histórico + nº de empenho
+  const temDiarias = casa === 'camara_municipal' && despesas.some((d) => d.numeroEmpenho)
 
   const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
   const temMarcadas = useMemo(
@@ -166,6 +173,15 @@ export function DetalhamentoGastos({
         </p>
       )}
 
+      {temDiarias && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Diárias:</strong> diária não tem nota fiscal (é adiantamento
+          de viagem, autorizado por portaria). A coluna “Doc.” traz o <strong className="text-tinta-suave">número
+          do empenho</strong> no TCE-PB, a data é a do empenho e o texto é o <strong className="text-tinta-suave">histórico
+          declarado pela câmara</strong> (motivo e destino da viagem, como consta na fonte).
+        </p>
+      )}
+
       <p className="mb-2 text-xs text-tinta-suave">{filtradas.length} lançamentos</p>
 
       {temMarcadas && (
@@ -198,7 +214,9 @@ export function DetalhamentoGastos({
               </span>
               <span className="font-display text-base font-semibold tabular-nums text-tinta">{brl(d.valor)}</span>
             </div>
-            <p className="mt-1 text-sm text-tinta">{d.fornecedor.nome}</p>
+            {d.fornecedor.nome
+              ? <p className="mt-1 text-sm text-tinta">{d.fornecedor.nome}</p>
+              : d.descricao && <p className="mt-1 text-xs leading-snug text-tinta-suave">{d.descricao}</p>}
             {d.fornecedor.cnpjCpf && <p className="text-xs text-tinta-tenue">{d.fornecedor.cnpjCpf}</p>}
             <div className="mt-2 flex items-end justify-between gap-3">
               <span className="text-xs text-tinta-suave">{d.categoria}</span>
@@ -234,7 +252,11 @@ export function DetalhamentoGastos({
                 </td>
                 <td className="py-1.5 pr-2 text-tinta-suave">{d.categoria}</td>
                 <td className="py-1.5 pr-2 text-tinta">
-                  {d.fornecedor.nome}
+                  {d.fornecedor.nome
+                    ? d.fornecedor.nome
+                    : d.descricao
+                      ? <span className="text-xs leading-snug text-tinta-suave">{d.descricao}</span>
+                      : ''}
                   {d.fornecedor.cnpjCpf && (
                     <span className="block text-xs text-tinta-tenue">{d.fornecedor.cnpjCpf}</span>
                   )}

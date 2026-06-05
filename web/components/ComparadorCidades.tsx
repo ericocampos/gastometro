@@ -210,11 +210,11 @@ export function ComparadorCidades({ cidades }: { cidades: SerieCidadeComparativo
 
       <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
         {metrica === 'porVereador'
-          ? 'Média por vereador = VIAP total da câmara no ano dividida pelos vereadores com dado publicado naquele ano (normaliza cidades de tamanhos diferentes).'
-          : 'Total da câmara = soma da VIAP de todos os vereadores no ano (cidades maiores tendem a totais maiores por terem mais vereadores).'}{' '}
-        Só cidades no modelo completo entram aqui. A cobertura varia por cidade (João Pessoa tem dados de
-        anos anteriores; outras, só a partir de 2025), então uma linha pode começar depois. Trabalhamos com
-        os dados que conseguimos encontrar nas fontes oficiais.
+          ? 'Média por vereador = gasto rastreável (VIAP e/ou diárias) da câmara no ano dividido pelos vereadores com dado publicado naquele ano (normaliza cidades de tamanhos diferentes).'
+          : 'Total da câmara = soma do gasto por vereador (VIAP e/ou diárias) no ano (cidades maiores tendem a totais maiores por terem mais vereadores).'}{' '}
+        Só cidades no modelo completo entram aqui, e o que cada uma tem varia: algumas pagam VIAP fixa,
+        outras só diárias. A cobertura por ano também varia (João Pessoa tem dados anteriores; outras, só
+        a partir de 2025). Trabalhamos com os dados que conseguimos encontrar nas fontes oficiais.
       </p>
     </div>
   )

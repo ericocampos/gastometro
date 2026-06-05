@@ -24,6 +24,20 @@
     "valor": 2000
   },
   {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-135",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2025-03-26",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 660,
+    "descricao": "VALOR QUE EMPENHA RELATIVO AO PAGAMENTO DE DUAS DIÁRIAS PARA CIDADE DE JOÃO PESSOA - PB REALIZADAS NOS DIAS 10 E 11 DE MARÇO 2025 COM O OBJETIVO DE VISITAR ALGUMAS SECRETARIAS DE ESTADO PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO.",
+    "numeroEmpenho": "135"
+  },
+  {
     "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-viap-2025-04",
     "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
     "data": "2025-04-01",
@@ -34,6 +48,20 @@
       "nome": ""
     },
     "valor": 2000
+  },
+  {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-183",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 330,
+    "descricao": "VALOR QUE SE EMPENHA RELATIVO AO PAGAMENTO DE DUAS DIÁRIAS PARA CIDADE DE JOÃO PESSOA - PB REALIZADAS NOS DIAS 28 E 29 DE ABRIL 2025, NO GABINETE DO DEPUTADO FRANCISCO CAMPOS MENDES, PARTICIPANDO DE AUDIÊNCIAS COM A ASSESSORIA DE GABINETE, E EM ALGUMAS SECRETARIAS E ORGÃOS DO ESTADO DA PARAIBA, PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO.",
+    "numeroEmpenho": "183"
   },
   {
     "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-viap-2025-05",
@@ -166,5 +194,19 @@
       "nome": ""
     },
     "valor": 2000
+  },
+  {
+    "id": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira-diaria-183",
+    "politicoId": "cm-sao-jose-de-piranhas-silmara-tavares-bandeira",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 660,
+    "descricao": "VALOR QUE SE EMPENHA RELATIVO AO PAGAMENTO DE DUAS DIÁRIAS PARA CIDADE DE JOÃO PESSOA - PB REALIZADAS NOS DIAS 16 E 17 DE ABRIL 2026, NO GABINETE DO DEPUTADO FRANCISCO CAMPOS MENDES, PARTICIPANDO DE AUDIÊNCIAS COM A ASSESSORIA DE GABINETE, E EM ALGUMAS SECRETARIAS E ORGÃOS DO ESTADO DA PARAIBA, PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICÍPIO.",
+    "numeroEmpenho": "183"
   }
 ]

@@ -60,6 +60,20 @@
     "valor": 4000
   },
   {
+    "id": "cm-sape-rubens-luis-lucena-da-silva-diaria-360",
+    "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 02 DIARIAS PARCIAIS A FIM DE PARTICIPAR DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS REALIZADO NO CENTRO DE CONVENCOES DE JOAO PESSOA, NOS DIAS 28 , 29 E 30/05/2025.",
+    "numeroEmpenho": "360"
+  },
+  {
     "id": "cm-sape-rubens-luis-lucena-da-silva-viap-2025-06",
     "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
     "data": "2025-06-01",
@@ -202,5 +216,19 @@
       "nome": ""
     },
     "valor": 3600
+  },
+  {
+    "id": "cm-sape-rubens-luis-lucena-da-silva-diaria-288",
+    "politicoId": "cm-sape-rubens-luis-lucena-da-silva",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2000,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 02 DIARIAS INTEGRAIS, A FIM DE PATICIPAR DA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, NO PERIODO DE 18 A 21 DE MAIO DE 2026,EM BRASILIA DF.",
+    "numeroEmpenho": "288"
   }
 ]

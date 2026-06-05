@@ -1,5 +1,75 @@
 [
   {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-143",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-02-21",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 250,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA PARCIAL DESTINADA A CIDADE DE JOÃO PESSOA PARA PARTICIPAR DO EVENTO SOBRE ORIENTAÇÃO PARA UM MANDANTO EFICIENTE E TRANSPARENTE, REALIZADO NO TRIBUNAL DE CONTAS, NO DIA 27 DE JANEIRO DE 2025.",
+    "numeroEmpenho": "143"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-165",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-03-11",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 250,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA PARCIAL DESTINADA A CIDADE DE JOÃO PESSOA PARA PARTICIPAR DA SESSÃO ESPECIAL DO DIA INTERNACIONAL DA MULHER, A SER REALIZADO NA ASSEMBLÉIA LEGISLATIVA, NO PRÓXIMO DIA 12 DO CORRENTE.",
+    "numeroEmpenho": "165"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-244",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-03-24",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 500,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA INTEGRAL DESTINADA A CIDADE DE CAMPINA GRANDE-PB, PARA PARTICIPAR DE CURSO PROMOVIDO PELO TCE-PB SOBRE PRIMEIRA INFÂNCIA, NO PRÓXIMO DIA 26 DO CORRENTE.",
+    "numeroEmpenho": "244"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-273",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 750,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA INTEGRAL E 01 (UMA) DIÁRIA PARCIAL, DESTINADA A CIDADE DE JOÃO PESSOA-PB, PARA PARTICIPAR DO 2º CONFEP - CONGRESSO E FEITA DE OPORTUNIDADES PARA MUNICÍPIOS DO ESTADO DA PARAÍBA, NOS DIAS 02 E 03 DE ABRIL.",
+    "numeroEmpenho": "273"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-282",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-04-11",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1000,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 02 (DUAS) DIÁRIAS INTEGRAIS PARA A CIDADE DE BANANEIRAS-PB, PARA PARTICIPAR DO EVENTO OFICINAS INTERLEGIS ARTICULAÇÃO E COMPILAÇÃO DE NORMAS DE TEXTOS LEGAIS, NOS PRÓXIMOS DIAS 14 E 15 DO CORRENTE.",
+    "numeroEmpenho": "282"
+  },
+  {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2025-05",
     "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
     "data": "2025-05-01",
@@ -10,6 +80,34 @@
       "nome": ""
     },
     "valor": 1500
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-385",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-05-14",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 500,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA INTEGRAL PARA A CIDADE DE JOÃO PESSOA-PB, PARA PARTICIPAR DO EVENTO: FOCCO NO INÍCIO DA GESTÃO 2025, NO TCE PB.",
+    "numeroEmpenho": "385"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-465",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-05-27",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1000,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA INTEGRAL E 02 (DUAS) DIÁRIAS PARCIAL, PARA A CIDADE DE JOÃO PESSOA-PB, SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, NO PERÍODO DE 28 A 30 DE MAIO DE 2025 NO PAVILHÃO DE CONGRESSOS DO CENTRO DE CONVENÇÕES DE JOÃO PESSOA.",
+    "numeroEmpenho": "465"
   },
   {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2025-06",
@@ -24,6 +122,48 @@
     "valor": 1500
   },
   {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-600",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-07-10",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 250,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA PARCIAL, PARA A CIDADE DE JOÃO PESSOA-PB, SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARTICIPAR DE CONFERÊNCIA NO TCE PB, REALIZADO NO DIA 11 DO CORRENTE DAS 8:00 ÀS 13:00.",
+    "numeroEmpenho": "600"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-654",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-07-23",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1000,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 02 (DUAS) DIÁRIAS INTEGRAL, PARA A CIDADE DE BANANEIRAS-PB, SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARTICIPAR DO ENCONTRO NORDESTINO DE AGENTES E GESTORES PÚBLICOS QUE SERÁ REALIZADO NOS PRÓXIMOS DIAS 24 A 27 DO CORRENTE.",
+    "numeroEmpenho": "654"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-655",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-07-23",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3000,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 04 (QUATRO) DIÁRIAS INTEGRAL, PARA A CIDADE DE SALVADOR-BA, SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARTICIPAR DO ENCONTRO NACIONAL DE GESTORES LEGISLATIVOS MUNICIPAIS, QUE SERÁ REALIZADO NOS PRÓXIMOS DIAS 28 A 31 DE AGOSTO DE 2025.",
+    "numeroEmpenho": "655"
+  },
+  {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2025-08",
     "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
     "data": "2025-08-01",
@@ -34,6 +174,20 @@
       "nome": ""
     },
     "valor": 1500
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-693",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-08-15",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 250,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA PARCIAL PARA A CIDADE DE CAMPINA GRANDE-PB, SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARTICIPAR DO ENCONTRO ESTADUAL DA PRIMEIRA INFÂNCIA, QUE SERÁ REALIZADO NO PRÓXIMO DIA 18 DO CORRENTE.",
+    "numeroEmpenho": "693"
   },
   {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2025-09",
@@ -84,6 +238,20 @@
     "valor": 1500
   },
   {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-1084",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3000,
+    "descricao": "IMPORTÂNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 04 (QUATRO) DIÁRIAS INTEGRAIS PARA A CIDADE DE FOZ DO IGUAÇU/PR SOLICITADA PELO PRESIDENTE DA CÂMARA, PARA PARTICIPAR DO ENCONTRO NACIONAL DE GESTORES LEGISLATIVOS MUNICIPAIS, QUE SERÁ REALIZADO DE 09 A 12 DO CORRENTE.",
+    "numeroEmpenho": "1084"
+  },
+  {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2026-02",
     "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
     "data": "2026-02-01",
@@ -108,6 +276,20 @@
     "valor": 3500
   },
   {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-263",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 750,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA, PARA PAGAMENTO CORRESPONDENTE A 03 DIÁRIAS PARCIAIS SOLICITADA PELO PRESIDENTE JOSE FERREIRA DOS SANTOS JUNIOR PARA PARTICIPAR DO 3º CONFEP CONGRESSO E FEIRA DE OPORTUNIDADESPARA MUNICIPIOS DA PARAIBA QUE SE REALIZARA NA CIDADE DE CAMPINA GRANDE PB NOS DIAS 25 A 27 DE MARÇO DE 2026.",
+    "numeroEmpenho": "263"
+  },
+  {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2026-04",
     "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
     "data": "2026-04-01",
@@ -120,6 +302,34 @@
     "valor": 3500
   },
   {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-319",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 250,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA, PARA PAGAMENTO CORRESPONDENTE A 01 DIÁRIA PARCIAl SOLICITADA PELO PRESIDENTE JOSE FERREIRA DOS SANTOS JUNIOR PARA PARTICIPAR DA PRIMEIRA CONFERENCIA ESTADUAL DE ARQUIVOS (CEARQ/PB) QUE ESTA SENDO REALIZADO NO AUDITORIO DO SHOPPING SEBRAE NA CIDADE DE JOAO PESSOA PB NO DIA 09 DE ABRIL DE 2026.",
+    "numeroEmpenho": "319"
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-405",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3375,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA, PARA PAGAMENTO CORRESPONDENTE A 04 DIÁRIAS INTEGRAIS E UMA 01 PARCIAL TODAS INTERESTADUAL PARA VEREADOR PRESIDENTE JUNIOR FERREIRA PARA PARTICIPAR DA XXV MARCHA DOS GESTORES E LEGISLATIVOS MUNICIPAIS NO PERIODO DE 27 A 30 DE ABRIL EM BRASILIA DF.",
+    "numeroEmpenho": "405"
+  },
+  {
     "id": "cm-guarabira-jose-ferreira-dos-santos-junior-viap-2026-05",
     "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
     "data": "2026-05-01",
@@ -130,5 +340,19 @@
       "nome": ""
     },
     "valor": 3500
+  },
+  {
+    "id": "cm-guarabira-jose-ferreira-dos-santos-junior-diaria-528",
+    "politicoId": "cm-guarabira-jose-ferreira-dos-santos-junior",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 3000,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA, PARA PAGAMENTO CORRESPONDENTE A DIÁRIAS INTERESTADUAL PARA VEREADOR PRESIDENTE JUNIOR FERREIRA PARA Á CIDADE DE BRASILIA DF. PARA PARTICIPAR DA 2º CONFERENCIA NACIONAL DE ARQUIVOS CNARQ E VISITA AO MINISTERIO DA SAÚDE NO PERIODO DE 26 A 29 DE MAIO DE 2026 EM BRASILIA - DF.",
+    "numeroEmpenho": "528"
   }
 ]

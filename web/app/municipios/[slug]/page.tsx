@@ -47,12 +47,13 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
 
           {anualCidade.length > 0 && (
             <section className="mb-12">
-              <SecaoTitulo>VIAP da câmara · por ano (todos os vereadores)</SecaoTitulo>
+              <SecaoTitulo>Gasto por vereador · por ano (toda a câmara)</SecaoTitulo>
               <div className="rounded-xl border border-borda bg-superficie p-4">
                 <GraficoGeralAnual dados={anualCidade} semLegenda />
               </div>
               <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
-                O gráfico mostra a VIAP que a fonte oficial publica em cada ano
+                O gráfico soma, por ano, o gasto rastreável por vereador (VIAP e/ou diárias) que a fonte
+                oficial publica
                 {municipio.periodoViap ? ` (dados disponíveis de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)})` : ''}.
                 A cobertura varia: anos mais antigos costumam ter menos lançamentos publicados, então uma
                 diferença entre anos (um salto em determinado ano, por exemplo) pode refletir o que a fonte
@@ -62,7 +63,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
           )}
 
           <section>
-            <SecaoTitulo>Ranking de gastos (VIAP)</SecaoTitulo>
+            <SecaoTitulo>Ranking de gastos por vereador</SecaoTitulo>
             <RankingView series={series} />
           </section>
         </>

@@ -1,5 +1,47 @@
 [
   {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-120",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2025-04-08",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA REFERENTE A CONCESSAO DE DIARIA PARA A COBERTURA DE DESPESAS DECORRENTES DE VIAGEM REALIZADA A CAPITAL JOAO PESSOAPB PARA FINS ESPECIFICOS DE RESOLVER ASSUNTOS DE INTERESSES DA CAMARA MUNICIPAL  NO TRIBUNAL DE CONTAS",
+    "numeroEmpenho": "120"
+  },
+  {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-147",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2025-04-24",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA REFERENTE A CONCESSAO DE DIARIA PARA A COBERTURA DE DESPESAS DECORRENTES DE IDA A ASSEMBLEIA LEGISLATIVA NO GABINETE DO DEPUTADO ESTADUAL ADRIANO GALDINO PARA SOLICITAR ENMENDA PARLAMENTAR PARA CONSTRUCAO DE UM CALCADAO NA SAIDA DE SAO BENTO SENTIDO PAULISTA PB ATE O HOSPITAL DR JARQUES LUCIO",
+    "numeroEmpenho": "147"
+  },
+  {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-163",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2025-05-12",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE SE EMPENHA EM FAVOR DO CREDOR ACIMA PARA OCORRER O PAGAMENTO CORRESPONDENTE A REUNIAO COM O PRESIDENTE DA CAMARA MUNICIPAL NA CIDADE DE POMBALPB PARA TRATAR SOBRE O PL DA VIAP",
+    "numeroEmpenho": "163"
+  },
+  {
     "id": "cm-sao-bento-juliano-dantas-veras-lucio-viap-2025-06",
     "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
     "data": "2025-06-01",
@@ -82,5 +124,19 @@
       "nome": ""
     },
     "valor": 5496.98
+  },
+  {
+    "id": "cm-sao-bento-juliano-dantas-veras-lucio-diaria-35",
+    "politicoId": "cm-sao-bento-juliano-dantas-veras-lucio",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "VALOR QUE ORA SE EMPENHA REFERENTE A CONCESSAO DE DIARIAS PARA A COBERTURA DE DESPESAS DECORRENTES DE VIAGEM REALIZADA A BRASILIADF PARA SOLICITACAO DE EMENDAS PARLAMENTARES JUNTO AO DEPUTADO FEDERAL MURILO GALDINO AO SENADOR EFRAIM FILHO E AO SENADOR VENEZIANO",
+    "numeroEmpenho": "35"
   }
 ]

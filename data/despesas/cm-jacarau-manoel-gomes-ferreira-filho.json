@@ -46,5 +46,33 @@
       "nome": ""
     },
     "valor": 4982
+  },
+  {
+    "id": "cm-jacarau-manoel-gomes-ferreira-filho-diaria-100",
+    "politicoId": "cm-jacarau-manoel-gomes-ferreira-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 300,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DUAS DIARIAS POR OCASIÃO DA PARTICIPAÇÃO NO 3º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICÍPIOS DO ESTADO DA PARAÍBA, REALIZADO NA CIDADE DE CAMPINA GRANDE PB, NOS 25, 26 E 27/03/2026.",
+    "numeroEmpenho": "100"
+  },
+  {
+    "id": "cm-jacarau-manoel-gomes-ferreira-filho-diaria-155",
+    "politicoId": "cm-jacarau-manoel-gomes-ferreira-filho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1800,
+    "descricao": "\"VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DIARIAS POR OCASIÃO DE VIAGEM A BRASILIA DF, CAPITAL DO PAIS, PARA PARTICIPAR DA \"\"XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICÍPIOS\"\", REALIZADO PELA CNM-CONFEDERAÇÃO NACIONAL DOS MUNÍCIPIOS, NO PERÍODO DE 18 A 21 DE MAIO DO CORRENTE ANO.\"",
+    "numeroEmpenho": "155"
   }
 ]
