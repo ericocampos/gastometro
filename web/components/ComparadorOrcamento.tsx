@@ -59,16 +59,25 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
   const ativas = cidades.filter((c) => selecionadas.includes(c.slug))
   const anos = [...new Set(ativas.flatMap((c) => c.anos.map((a) => a.ano)))].sort((a, b) => a - b)
 
-  // crescimento ACUMULADO por cidade (variação % frente ao primeiro ano, na área escolhida). Acumulado
-  // em vez de ano a ano porque a taxa a/a desenha a derivada: a linha cai quando o crescimento
-  // desacelera, mesmo ainda subindo. No acumulado a linha sobe enquanto houver aumento (intuitivo).
+  // Dois recortes de crescimento por cidade, na área escolhida:
+  // - ACUMULADO (a linha): variação % frente ao PRIMEIRO ano. Acumulado em vez de ano a ano porque a
+  //   taxa a/a desenha a derivada (a linha cai quando o crescimento desacelera, mesmo ainda subindo);
+  //   no acumulado a linha sobe enquanto houver aumento (intuitivo).
+  // - ANO A ANO (no tooltip, entre parênteses): variação % frente ao ano ANTERIOR.
   const acumPorCidade = new Map<string, Map<number, number | null>>()
+  const yoyPorCidade = new Map<string, Map<number, number | null>>()
   for (const c of ativas) {
     const serie = c.anos.map((a) => ({ ano: a.ano, v: valorArea(a) })).sort((x, y) => x.ano - y.ano)
     const base = serie[0]?.v ?? 0
-    const m = new Map<number, number | null>()
-    for (const p of serie) m.set(p.ano, base > 0 ? (p.v / base - 1) * 100 : null) // 1º ano = 0%
-    acumPorCidade.set(c.slug, m)
+    const ma = new Map<number, number | null>()
+    const my = new Map<number, number | null>()
+    serie.forEach((p, i) => {
+      ma.set(p.ano, base > 0 ? (p.v / base - 1) * 100 : null) // 1º ano = 0%
+      const prev = i > 0 ? serie[i - 1].v : null
+      my.set(p.ano, i > 0 && prev! > 0 ? ((p.v - prev!) / prev!) * 100 : null) // 1º ano = sem anterior
+    })
+    acumPorCidade.set(c.slug, ma)
+    yoyPorCidade.set(c.slug, my)
   }
 
   const dados = anos
@@ -88,7 +97,6 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
     .filter((row) => ativas.some((c) => row[c.slug] != null))
 
   const fmtEixo = (v: number) => (modo === 'valor' ? compacto(v) : `${Math.round(v)}%`)
-  const fmtTooltip = (v: number) => (modo === 'valor' ? brl(v) : pct(v))
 
   const filtradas = busca.trim() ? cidades.filter((c) => norm(c.nome).includes(norm(busca))) : cidades
 
@@ -229,7 +237,15 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
               <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => fmtEixo(Number(v))} />
               {modo === 'crescimento' && <ReferenceLine y={0} stroke="var(--borda)" strokeDasharray="3 3" />}
               <Tooltip
-                formatter={(v, nome) => [fmtTooltip(Number(v)), String(nome)]}
+                formatter={(v, nome, entry) => {
+                  if (modo === 'valor') return [brl(Number(v)), String(nome)]
+                  // acumulado (valor da linha) + ano a ano entre parênteses
+                  const slug = entry?.dataKey as string | undefined
+                  const ano = (entry?.payload as { ano?: number } | undefined)?.ano
+                  const yoy = slug != null && ano != null ? yoyPorCidade.get(slug)?.get(ano) : null
+                  const txt = yoy != null ? `${pct(Number(v))} (${pct(yoy)} vs ano anterior)` : pct(Number(v))
+                  return [txt, String(nome)]
+                }}
                 labelFormatter={(l) => `${rotuloMetrica} · ${l}`}
                 contentStyle={tooltipContentStyle}
                 labelStyle={tooltipLabelStyle}
@@ -260,7 +276,7 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
 
       <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
         {modo === 'crescimento'
-          ? `Crescimento = de quanto o gasto ${metrica === TOTAL ? 'total da cidade' : `em ${rotuloMetrica}`} cresceu desde o primeiro ano (base 0%). A linha sobe enquanto houver aumento (um ponto acima do anterior é mais gasto que no ano passado) e só cai se o gasto encolher. Como é %, normaliza o porte: dá pra comparar cidades grandes e pequenas na mesma escala.`
+          ? `Crescimento = de quanto o gasto ${metrica === TOTAL ? 'total da cidade' : `em ${rotuloMetrica}`} cresceu desde o primeiro ano (base 0%). A linha sobe enquanto houver aumento (um ponto acima do anterior é mais gasto que no ano passado) e só cai se o gasto encolher. Como é %, normaliza o porte: dá pra comparar cidades grandes e pequenas na mesma escala. Passe o mouse pra ver, por ano, o acumulado e (entre parênteses) o crescimento frente ao ano anterior.`
           : metrica === TOTAL
             ? 'Total da cidade = tudo que a cidade pagou no ano (Prefeitura, Câmara e Previdência somadas). Cidades maiores tendem a valores maiores: use o modo % pra comparar portes diferentes.'
             : `${rotuloMetrica} = quanto a cidade inteira pagou nessa área no ano (somando todos os órgãos). Cidades maiores tendem a valores maiores: use o modo % pra comparar portes diferentes.`}{' '}
