@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts'
 import type { ComparativoOrcamentoCidade, OrcamentoCidadeAno } from '@/lib/tipos'
 import { brl } from '@/lib/formato'
 import { tooltipContentStyle, tooltipLabelStyle, tooltipItemStyle } from './tooltipEstilo'
@@ -8,6 +8,7 @@ import { tooltipContentStyle, tooltipLabelStyle, tooltipItemStyle } from './tool
 // uma cor por cidade (estável pela ordem recebida)
 const PALETA = ['#0f766e', '#2563eb', '#c87f1a', '#7c3aed', '#be185d', '#15803d', '#0891b2', '#b45309']
 const TOTAL = '__total__' // valor especial da métrica = total da cidade
+type Modo = 'valor' | 'crescimento'
 
 function compacto(v: number): string {
   if (v >= 1_000_000_000) return `R$ ${(v / 1_000_000_000).toFixed(1).replace('.', ',')} bi`
@@ -15,6 +16,7 @@ function compacto(v: number): string {
   if (v >= 1_000) return `R$ ${Math.round(v / 1_000)} mil`
   return brl(v)
 }
+const pct = (v: number) => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`
 
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
@@ -29,6 +31,7 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
   // começa com as primeiras (maiores) selecionadas; com poucas, são todas
   const [selecionadas, setSelecionadas] = useState<string[]>(() => cidades.slice(0, 3).map((c) => c.slug))
   const [metrica, setMetrica] = useState<string>(() => (areas.includes('Saúde') ? 'Saúde' : areas[0] ?? TOTAL))
+  const [modo, setModo] = useState<Modo>('valor')
   const [aberto, setAberto] = useState(false)
   const [busca, setBusca] = useState('')
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -49,22 +52,56 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
   const toggle = (slug: string) =>
     setSelecionadas((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : [...s, slug]))
 
-  const valorAno = (a: OrcamentoCidadeAno) => (metrica === TOTAL ? a.total : a.funcoes[metrica] ?? 0)
+  const valorArea = (a: OrcamentoCidadeAno) => (metrica === TOTAL ? a.total : a.funcoes[metrica] ?? 0)
   const rotuloMetrica = metrica === TOTAL ? 'Total da cidade' : metrica
 
   // ativas na ordem da lista original (cor/legenda estáveis)
   const ativas = cidades.filter((c) => selecionadas.includes(c.slug))
   const anos = [...new Set(ativas.flatMap((c) => c.anos.map((a) => a.ano)))].sort((a, b) => a - b)
+
+  // crescimento ano a ano por cidade (variação % frente ao ano anterior, na área escolhida)
+  const crescPorCidade = new Map<string, Map<number, number | null>>()
+  for (const c of ativas) {
+    const serie = c.anos.map((a) => ({ ano: a.ano, v: valorArea(a) })).sort((x, y) => x.ano - y.ano)
+    const m = new Map<number, number | null>()
+    serie.forEach((p, i) => {
+      if (i === 0) { m.set(p.ano, null); return }
+      const prev = serie[i - 1].v
+      m.set(p.ano, prev > 0 ? ((p.v - prev) / prev) * 100 : null)
+    })
+    crescPorCidade.set(c.slug, m)
+  }
+
   const dados = anos.map((ano) => {
     const row: Record<string, number | null> = { ano }
     for (const c of ativas) {
-      const a = c.anos.find((x) => x.ano === ano)
-      row[c.slug] = a ? valorAno(a) : null // null = ano fora da cobertura daquela cidade (linha some)
+      if (modo === 'valor') {
+        const a = c.anos.find((x) => x.ano === ano)
+        row[c.slug] = a ? valorArea(a) : null // null = ano fora da cobertura (linha some)
+      } else {
+        row[c.slug] = crescPorCidade.get(c.slug)?.get(ano) ?? null
+      }
     }
     return row
   })
 
+  const fmtEixo = (v: number) => (modo === 'valor' ? compacto(v) : `${Math.round(v)}%`)
+  const fmtTooltip = (v: number) => (modo === 'valor' ? brl(v) : pct(v))
+
   const filtradas = busca.trim() ? cidades.filter((c) => norm(c.nome).includes(norm(busca))) : cidades
+
+  const botaoModo = (m: Modo, rotulo: string) => (
+    <button
+      type="button"
+      onClick={() => setModo(m)}
+      aria-pressed={modo === m}
+      className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+        modo === m ? 'bg-marca text-white' : 'border border-borda text-tinta-suave hover:border-marca'
+      }`}
+    >
+      {rotulo}
+    </button>
+  )
 
   return (
     <div className="rounded-xl border border-borda bg-superficie p-4">
@@ -135,19 +172,26 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
           )}
         </div>
 
-        {/* seletor de área (função) */}
-        <label className="flex items-center gap-2 text-sm text-tinta-suave">
-          Área
-          <select
-            aria-label="Área (função) a comparar"
-            value={metrica}
-            onChange={(e) => setMetrica(e.target.value)}
-            className="max-w-[220px] rounded-md border border-borda bg-superficie px-2 py-1 text-sm text-tinta transition-colors hover:border-marca focus:border-marca"
-          >
-            <option value={TOTAL}>Total da cidade</option>
-            {areas.map((f) => <option key={f} value={f}>{f}</option>)}
-          </select>
-        </label>
+        <div className="flex flex-wrap items-center gap-2">
+          {/* seletor de área (função) */}
+          <label className="flex items-center gap-2 text-sm text-tinta-suave">
+            Área
+            <select
+              aria-label="Área (função) a comparar"
+              value={metrica}
+              onChange={(e) => setMetrica(e.target.value)}
+              className="max-w-[200px] rounded-md border border-borda bg-superficie px-2 py-1 text-sm text-tinta transition-colors hover:border-marca focus:border-marca"
+            >
+              <option value={TOTAL}>Total da cidade</option>
+              {areas.map((f) => <option key={f} value={f}>{f}</option>)}
+            </select>
+          </label>
+          {/* modo: valor absoluto x crescimento % */}
+          <div className="flex gap-1.5">
+            {botaoModo('valor', 'R$')}
+            {botaoModo('crescimento', '% a/a')}
+          </div>
+        </div>
       </div>
 
       {/* chips só das cidades escolhidas, cada um removível */}
@@ -180,9 +224,10 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
           <ResponsiveContainer>
             <LineChart data={dados} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
               <XAxis dataKey="ano" tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} />
-              <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => compacto(Number(v))} />
+              <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-tenue)' }} width={64} tickFormatter={(v) => fmtEixo(Number(v))} />
+              {modo === 'crescimento' && <ReferenceLine y={0} stroke="var(--borda)" strokeDasharray="3 3" />}
               <Tooltip
-                formatter={(v, nome) => [brl(Number(v)), String(nome)]}
+                formatter={(v, nome) => [fmtTooltip(Number(v)), String(nome)]}
                 labelFormatter={(l) => `${rotuloMetrica} · ${l}`}
                 contentStyle={tooltipContentStyle}
                 labelStyle={tooltipLabelStyle}
@@ -212,11 +257,12 @@ export function ComparadorOrcamento({ cidades }: { cidades: ComparativoOrcamento
       )}
 
       <p className="mt-2 text-xs leading-relaxed text-tinta-tenue">
-        {metrica === TOTAL
-          ? 'Total da cidade = tudo que a cidade pagou no ano (Prefeitura, Câmara e Previdência somadas).'
-          : `${rotuloMetrica} = quanto a cidade inteira pagou nessa área no ano (somando todos os órgãos).`}{' '}
-        Valores pagos conforme os dados abertos do TCE-PB. O ano corrente (parcial) fica de fora pra não
-        desenhar uma queda falsa. Cidades maiores tendem a valores maiores: compare quem tem porte parecido.
+        {modo === 'crescimento'
+          ? `Crescimento = variação % do gasto ${metrica === TOTAL ? 'total da cidade' : `em ${rotuloMetrica}`} frente ao ano anterior. A variação % normaliza o porte: dá pra comparar cidades grandes e pequenas na mesma escala (precisa de 2 ou mais anos).`
+          : metrica === TOTAL
+            ? 'Total da cidade = tudo que a cidade pagou no ano (Prefeitura, Câmara e Previdência somadas). Cidades maiores tendem a valores maiores: use o modo % pra comparar portes diferentes.'
+            : `${rotuloMetrica} = quanto a cidade inteira pagou nessa área no ano (somando todos os órgãos). Cidades maiores tendem a valores maiores: use o modo % pra comparar portes diferentes.`}{' '}
+        Valores pagos conforme os dados abertos do TCE-PB. O ano corrente (parcial) fica de fora.
       </p>
     </div>
   )

@@ -8,7 +8,7 @@ vi.mock('recharts', () => {
   const P = ({ children }: { children?: React.ReactNode }) => <div>{children}</div>
   return {
     ResponsiveContainer: P, LineChart: P,
-    Line: () => null, XAxis: () => null, YAxis: () => null, Tooltip: () => null, Legend: () => null,
+    Line: () => null, XAxis: () => null, YAxis: () => null, Tooltip: () => null, Legend: () => null, ReferenceLine: () => null,
   }
 })
 
@@ -70,5 +70,18 @@ describe('ComparadorOrcamento', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Remover Campina Grande' }))
     expect(screen.queryByRole('button', { name: 'Remover Campina Grande' })).not.toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
+  })
+
+  it('alterna entre valor (R$) e crescimento (% a/a), começando em R$', () => {
+    render(<ComparadorOrcamento cidades={cidades} />)
+    const rs = screen.getByRole('button', { name: 'R$' })
+    const cresc = screen.getByRole('button', { name: '% a/a' })
+    expect(rs).toHaveAttribute('aria-pressed', 'true')
+    expect(cresc).toHaveAttribute('aria-pressed', 'false')
+    fireEvent.click(cresc)
+    expect(cresc).toHaveAttribute('aria-pressed', 'true')
+    expect(rs).toHaveAttribute('aria-pressed', 'false')
+    // a nota explica o crescimento normalizando o porte
+    expect(screen.getByText(/normaliza o porte/i)).toBeInTheDocument()
   })
 })
