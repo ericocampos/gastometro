@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-2025-04",
+    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-107",
     "politicoId": "cm-umbuzeiro-jose-andre-da-cunha",
     "data": "2025-04-01",
     "ano": 2025,
@@ -9,22 +9,54 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1960
+    "valor": 1400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DIARIAS COMO VEREADOR PARA CUSTEIO DE DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOA-PB, PARA PARTICIPAR DO 2º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICIPIOS DO ESTADO DA PARAIBA REALIZADO PELA FAMUP NO CENTRO DE CONVENÇOES, NO PERIODO DE 02 A 04 DE ABRIL DE 2025.",
+    "numeroEmpenho": "107"
   },
   {
-    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-2025-05",
+    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-145",
     "politicoId": "cm-umbuzeiro-jose-andre-da-cunha",
-    "data": "2025-05-01",
+    "data": "2025-04-28",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 560,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DIARIAS COMO VEREADOR PARA CUSTEIO DE DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOA-PB, PARA PARTICIPAR DO PACTO PRIMEIRA INFANCIA NO CENRO DE CONVENÇOES, NO DIA 28/04/2025.",
+    "numeroEmpenho": "145"
+  },
+  {
+    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-169",
+    "politicoId": "cm-umbuzeiro-jose-andre-da-cunha",
+    "data": "2025-05-16",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 6720
+    "valor": 5600,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DIARIAS PARA VEREADOR VICE-PRESIDENTE PARA CUSTEIO DE DESPESAS QUANDO EM VIAGEM A CIDADE DE BRASILIA-DF, PARA PARTICIPAR DA XXVI MARCHA EM DEFESA DOS MUNICIPIOS NO PERIODO DE 18 A 22 DE MAIO DE 2025.",
+    "numeroEmpenho": "169"
   },
   {
-    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-2026-03",
+    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-191",
+    "politicoId": "cm-umbuzeiro-jose-andre-da-cunha",
+    "data": "2025-05-29",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1120,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM 02 (DUAS) DIARIAS AO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, ENTRE OS DIAS 28 E 30 DE MAIO, NO CENTRO DE CONVENÇÕES DE JOÃO PESSOA.",
+    "numeroEmpenho": "191"
+  },
+  {
+    "id": "cm-umbuzeiro-jose-andre-da-cunha-diaria-114",
     "politicoId": "cm-umbuzeiro-jose-andre-da-cunha",
     "data": "2026-03-01",
     "ano": 2026,
@@ -33,6 +65,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1680
+    "valor": 1680,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DIARIAS COMO VEREADOR PARA O 3° CONFEP 39° FORÚM REGIONAL DE FORTALECIMENTO A REDE DE PARCEIRAS NA CIDADE DE CAMPINA GRANDE-PB NOS DIAS 25/03/2026 Á 27/03/2026.",
+    "numeroEmpenho": "114"
   }
 ]

@@ -1,42 +1,62 @@
 [
   {
-    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-2025-04",
+    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-116",
     "politicoId": "cm-itabaiana-ronaldo-de-araujo",
-    "data": "2025-04-01",
+    "data": "2025-04-04",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 281.44
+    "valor": 281.44,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A MEIA DIÁRIA CONCEDIDA PARA CUSTEAR VIAGEM A CIDADE DE JOÃO PESSOA-PB, NO DIA 04/04/2025, PARA PARTICIPAR DO 2º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADE PARA MUNICIPIOS NO ESTADO DA PARAÍBA, CONFORME DOCUMENTO EM ANEXO.",
+    "numeroEmpenho": "116"
   },
   {
-    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-2025-05",
+    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-170",
     "politicoId": "cm-itabaiana-ronaldo-de-araujo",
-    "data": "2025-05-01",
+    "data": "2025-05-20",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2547.09
+    "valor": 2264.08,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A CONCESSÃO DE QUATRO DIÁRIAS PARA CUSTEAR DESPESAS EM VIAGEM A CIDADE DE JOÃO PESSOA-PB, NOS DIAS 21 A 24/05/2025, PARA PARTICIPAR DO VIII CONGRESSO NACIONAL DE AGENTES PÚBLICOS E POLÍTICOS, PROMOVIDO PELO APRENDER E CAPACITAR BRASIL, NO HOTEL LITORAL CABO BRANCO, CONFORME DOCUMENTO EM ANEXO.",
+    "numeroEmpenho": "170"
   },
   {
-    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-2025-12",
+    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-184",
     "politicoId": "cm-itabaiana-ronaldo-de-araujo",
-    "data": "2025-12-01",
+    "data": "2025-05-30",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 283.01,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A MEIA DIÁRIA, CONCEDIDAS PARA CUSTEAR VIAGEM A CIDADE DE JOÃO PESSOA-PB, NO DIA 30/05/2025, PARA PARTICIPAR DO 2º ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, IA, GOVERNANÇA E CONEXÃO CIDADÃ NAS CÂMARAS 4.0, CONFORME DOCUMENTO EM ANEXO.",
+    "numeroEmpenho": "184"
+  },
+  {
+    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-404",
+    "politicoId": "cm-itabaiana-ronaldo-de-araujo",
+    "data": "2025-12-18",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2301.88
+    "valor": 2301.88,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A QUATRO DIÁRIAS, CONCEDIDA PARA CUSTEAR VIAGEM A CIDADE DE CAMPINA GRANDE-PB, NOS DIAS 18 A 21/12/2025, PARA PARTICIPAR DO VII CONGRESSO REGIONAL DE GESTORES PÚBLICOS, PROMOVIDO PELA LEGIS CAPACITA, CONFORME DOCUMENTO EM ANEXO.",
+    "numeroEmpenho": "404"
   },
   {
-    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-2026-04",
+    "id": "cm-itabaiana-ronaldo-de-araujo-diaria-127",
     "politicoId": "cm-itabaiana-ronaldo-de-araujo",
     "data": "2026-04-01",
     "ano": 2026,
@@ -45,6 +65,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4952.84
+    "valor": 4952.84,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A QUATRO DIÁRIAS, NOS DIAS 27 A 30/04/2026, PARA CUSTEAR DESPESAS EM VIAGEM A CIDADE DE BRASÍLIA-DF, PARA PARTICIPAR DA XXV MARCHA DO GESTORES E LEGISLATIVOS MUNICIPAIS, CONFORME DOCUMENTO EM ANEXO.",
+    "numeroEmpenho": "127"
   }
 ]

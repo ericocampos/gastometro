@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-2025-08",
+    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-329",
     "politicoId": "cm-aroeiras-dimas-martins-de-santana",
     "data": "2025-08-01",
     "ano": 2025,
@@ -9,22 +9,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA REFERENTE A UMA DIARIA DE VIAGEM, SEM PERNOITE, A CIDADE DE JOÃO PESSOA-PB, AO ESCRITORIO DE ADVOCACIA, NO DIA 01/08/2025, PARA TRATAR DE ASSUNTOS DE INTERESSE DESTE LEGISLATIVO.",
+    "numeroEmpenho": "329"
   },
   {
-    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-2025-12",
+    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-603",
     "politicoId": "cm-aroeiras-dimas-martins-de-santana",
-    "data": "2025-12-01",
+    "data": "2025-12-04",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 1200,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA REFERENTE A  DIARIAS DE VIAGEM, COM PERNOITE, A CIDADE DE JOAO PESSOA-PB, AO ENCONTRO NORDESTINO DE LEGISLATIVO MUNICIPAL NO DIA 04/12/2025 AO DIA 06/12/2025,PARA TRATAR DE ASSUNTO DE INTERESSE DESTE LEGISLATIVO,",
+    "numeroEmpenho": "603"
   },
   {
-    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-2026-04",
+    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-195",
     "politicoId": "cm-aroeiras-dimas-martins-de-santana",
     "data": "2026-04-01",
     "ano": 2026,
@@ -33,6 +37,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 600
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA REFERENTE A  DIARIA DE VIAGEM, SEM PERNOITE, A CIDADE DE JOAO PESSOA-PB, AO ESCRITORIO ADVOCACIA NO DIA 17/04/2025 PARA TRATAR DE ASSUNTO DE INTERESSE DESTE LEGISLATIVO,",
+    "numeroEmpenho": "195"
+  },
+  {
+    "id": "cm-aroeiras-dimas-martins-de-santana-diaria-196",
+    "politicoId": "cm-aroeiras-dimas-martins-de-santana",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA REFERENTE A  DIARIA DE VIAGEM, SEM PERNOITE, A CIDADE DE JOAO PESSOA-PB, AO ESCRITORIO ADVOCACIA NO DIA 22/04/2025 PARA TRATAR DE ASSUNTO DE INTERESSE DESTE LEGISLATIVO,",
+    "numeroEmpenho": "196"
   }
 ]

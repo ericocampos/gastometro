@@ -1,30 +1,34 @@
 [
   {
-    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-2025-05",
+    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-149",
     "politicoId": "cm-caraubas-jose-franconero-silva-de-sousa",
-    "data": "2025-05-01",
+    "data": "2025-05-29",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1000
+    "valor": 1000,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 02 DIÁRIAS (VEREADOR), EM VIAGEM A CIDADE DE JOÃO PESSOA-PB, PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, DE 28 A 30 DE MAIO DE 2025.",
+    "numeroEmpenho": "149"
   },
   {
-    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-2025-11",
+    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-318",
     "politicoId": "cm-caraubas-jose-franconero-silva-de-sousa",
-    "data": "2025-11-01",
+    "data": "2025-11-04",
     "ano": 2025,
     "mes": 11,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 01 (UMA) DIÁRIA (VEREADOR), EM VIAGEM A CIDADE DE CABACEIRAS-PB, PARA PARTICIPAR DO I ENCONTRO DE CAMARA DE VEREADORES DO CARIRI PARAIBANO, NO DIA 04 DE NOVEMBRO DE 2025.",
+    "numeroEmpenho": "318"
   },
   {
-    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-2026-04",
+    "id": "cm-caraubas-jose-franconero-silva-de-sousa-diaria-116",
     "politicoId": "cm-caraubas-jose-franconero-silva-de-sousa",
     "data": "2026-04-01",
     "ano": 2026,
@@ -33,6 +37,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2187.5
+    "valor": 2187.5,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 03 DIÁRIAS E MEIA, EM VIAGEM A CIDADE DE BRASÍLIA-DF, PARA PARTICIPAR DA XXV MARCHA DOS GESTORES E LEGISLATIVOS MUNICIPAIS, DE 27 A 30 DE ABRIL DE 2026.",
+    "numeroEmpenho": "116"
   }
 ]

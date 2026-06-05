@@ -1,54 +1,118 @@
 [
   {
-    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-2025-01",
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-25",
     "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
-    "data": "2025-01-01",
+    "data": "2025-01-28",
     "ano": 2025,
     "mes": 1,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM MEIA DIARIA A VEREADORA ACIMA, COM DESTINO AS CIDADES DE CAMPINA GRANDE E BOQUEIRÃO, COM OBJETIVO DE RESOLVER ASSUNTOS DO INTERESSE DESTA EILIDADE JUNTO A CARTORIOS DE REGISTROS, NO DIA 02/01/2025.",
+    "numeroEmpenho": "25"
   },
   {
-    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-2025-02",
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-26",
     "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
-    "data": "2025-02-01",
+    "data": "2025-01-28",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM MEIA DIARIA A VEREADORA ACIMA, COM DESTINO AS CIDADES DE RIACHO DE SANTO ANTONIO E BARRA DE SANTANA, COM OBJETIVO DE RESOLVER ASSUNTOS DO INTERESSE DESTA EILIDADE JUNTO A CARTORIOS DE REGISTROS, NO DIA 03/01/2025.",
+    "numeroEmpenho": "26"
+  },
+  {
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-27",
+    "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
+    "data": "2025-01-28",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM MEIA DIARIA A VEREADORA ACIMA, COM DESTINO A CIDADE DE CAMPINA GRANDE, COM OBJETIVO DE RESOLVER ASSUNTOS DO INTERESSE DESTA EILIDADE JUNTO AO ESCRITORIO DE CONTABILIDADE, NO DIA 06/01/2025.",
+    "numeroEmpenho": "27"
+  },
+  {
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-28",
+    "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
+    "data": "2025-01-29",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM MEIA DIARIA A VEREADORA ACIMA, COM DESTINO A CIDADE DE QUEIMADAS, COM OBJETIVO DE RESOLVER ASSUNTOS DO INTERESSE DESTA EILIDADE JUNTO AO BANCO DO BRASIL, NO DIA 08/01/2025.",
+    "numeroEmpenho": "28"
+  },
+  {
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-37",
+    "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
+    "data": "2025-02-04",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2300
+    "valor": 1500,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 03 (TRES) DIARIAS COMPLETAS A VEREADORA ACIMA, COM DESTINO A CIDADE DE SALVADOR-BA, PERIODO DE 30/01 A 01/02/2025, REPRESENTANDO A CAMARA DE VEREADORES DESTE MUNICIPIO, NO EVENTO DE ENTREGA DE 01 AMBULÂNCIA/RENOVAÇÃO DE FROTA DO SAMU PARA ESTA CIDADE, NO DIA 31/01/2025.",
+    "numeroEmpenho": "37"
   },
   {
-    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-2025-04",
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-46",
     "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
-    "data": "2025-04-01",
+    "data": "2025-02-18",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800,
+    "descricao": "\"VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 02 (DUAS) DIARIAS COMPLETAS A VEREADORA ACIMA (PRESIDENTE DA CÂMARA), PARA DESLOCAR-SE A CIDADE DE JOÃO PESSOA, COM OBJETIVO DE PARTICIPAR DO CURSO \"\"LGPD DINÂMICA DE INSERÇÃO DA LEI DE PROTEÇÃO DE DADOS NA CÂMARA MUNICIPAL DE ALCANTIL\"\", NOS DIAS 19 E 20 DE FEVEREIRO 2025.\"",
+    "numeroEmpenho": "46"
+  },
+  {
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-113",
+    "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
+    "data": "2025-04-03",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 02 (DUAS) DIARIAS COMPLETAS AO VEREADOR ACIMA (PRESIDENTE DA CÂMARA), PARA DESLOCAR-SE A CIDADE DE JOÃO PESSOA-PB, COM OBJETIVO DE PARTICIPAR DO CONGRESSO E FEIRA DE OPORTUNIDADES PARA OS MUNICIPIOS DO ESTADO DA PARAIBA, NOS DIAS 03 E 04 DE ABRIL DE 2025.",
+    "numeroEmpenho": "113"
   },
   {
-    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-2025-05",
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-152",
     "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
-    "data": "2025-05-01",
+    "data": "2025-05-16",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2800
+    "valor": 2800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 04 (QUATRO) DIARIAS COMPLETAS AO VEREADOR ACIMA, REPRESENTANDO A CÃMARA MUNICIPAL DE ALCANTIL - PB, NA MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, NOS DIAS 19 A 22 DE MAIO DE 2025",
+    "numeroEmpenho": "152"
   },
   {
-    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-2026-05",
+    "id": "cm-alcantil-josefa-larissa-de-sousa-diaria-107",
     "politicoId": "cm-alcantil-josefa-larissa-de-sousa",
     "data": "2026-05-01",
     "ano": 2026,
@@ -57,6 +121,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2100
+    "valor": 2100,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 03 (TRÊS) DIARIAS COMPLETAS AO VEREADOR/PRESIDENTE ACIMA, REPRESENTANDO A CAMARA MUNICIPAL DE ALCANTIL-PB,NA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS QUE SERA REALIZADA NOS DIAS 18 A 21 DE MAIO DE 2026,NO CENTRO INTERNACIONAL DE CONVENÇÕES DO BRASIL,NO SETPR DE CLUBES ESPORTIVOS SUL.",
+    "numeroEmpenho": "107"
   }
 ]

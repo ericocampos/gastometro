@@ -1,30 +1,34 @@
 [
   {
-    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-2025-04",
+    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-127",
     "politicoId": "cm-pedra-lavrada-natan-vasconcelos-dantas",
-    "data": "2025-04-01",
+    "data": "2025-04-28",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 137.46
+    "valor": 137.46,
+    "descricao": "CORRESPONDE A CONCESSÃO DE 1/2 (MEIA) DIÁRIA, COM OBJETIVO DE DESLOCAMENTO À CODEVASF, EM JOÃO PESSOA/PB, PARA RECEBIMENTO DE MAQUINÁRIOS DESTINADOS AO MUNICIPIO.",
+    "numeroEmpenho": "127"
   },
   {
-    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-2025-05",
+    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-152",
     "politicoId": "cm-pedra-lavrada-natan-vasconcelos-dantas",
-    "data": "2025-05-01",
+    "data": "2025-05-16",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1647.08
+    "valor": 1647.08,
+    "descricao": "CORRESPONDETE A CONCESSÃO DE 4 (QUATRO) DIÁRIAS, COM O OBJETIVO DE PARTICIPAÇÃO NA XXVI MARCHA A BRASÍLIA EM DEFESA DOS MUNICIPIOS, EVENTO VOLTADO AO FORTALECIMENTO DA PAUTO MUNICIPALISTA.",
+    "numeroEmpenho": "152"
   },
   {
-    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-2026-03",
+    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-108",
     "politicoId": "cm-pedra-lavrada-natan-vasconcelos-dantas",
     "data": "2026-03-01",
     "ano": 2026,
@@ -33,10 +37,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 375
+    "valor": 375,
+    "descricao": "REFERENTE A PARTICIPAÇÃO NO 3° CONFEP, REALIZADO EM CAMPINA GRANDE/PB, PARA ACOMPLANHAMENTO DE ATIVIDADES VOLTADAS AO DESENVOLVIMENTO MUNICIPAL E FORTALECIMENTO INSTITUCIONAL.",
+    "numeroEmpenho": "108"
   },
   {
-    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-2026-05",
+    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-166",
     "politicoId": "cm-pedra-lavrada-natan-vasconcelos-dantas",
     "data": "2026-05-01",
     "ano": 2026,
@@ -45,6 +51,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2600
+    "valor": 1950,
+    "descricao": "REFERENTE A PARTICIPAÇÃO DO VEREADOR NA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, COM FOCO NO FORTALECIMENTO INSTITUCIONAL, ARTICULAÇÃO POLITICA E DEFESA DAS PAUTAS MUNICIPALISTAS JUNTO AO GOVERNO FEDERAL E AO CONGRESSO NACIONAL.",
+    "numeroEmpenho": "166"
+  },
+  {
+    "id": "cm-pedra-lavrada-natan-vasconcelos-dantas-diaria-193",
+    "politicoId": "cm-pedra-lavrada-natan-vasconcelos-dantas",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 650,
+    "descricao": "REFERENTE A COMPLEMENTO PARA PARTICIPAÇÃO DO VEREADOR NA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, COM FOCO NO FORTALECIMENTO INSTITUCIONAL, ARTICULAÇÃO POLITICA E DEFESA DAS PAUTAS MUNICIPALISTAS JUNTO AO GOVERNO FEDERAL E AO CONGRESSO NACIONAL.",
+    "numeroEmpenho": "193"
   }
 ]

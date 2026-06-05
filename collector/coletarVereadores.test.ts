@@ -167,15 +167,15 @@ describe('montarCidadeViapTce (completo via TCE: VIAP + diárias, casado por CPF
   ]
   // despesas do TCE com CPF cheio (14 díg.); o do meio (slice 3..9) casa com o mascarado.
   // Nome do credor difere do roster (SOUSA × SOUZA) — só o CPF garante o match. Cada uma traz o tipo.
-  const v = (credorCpf: string, mes: number, ano: number, valorPago: number, tipo: 'viap' | 'diaria', credor = 'X') => ({ credor, credorCpf, mes, ano, valorPago, tipo })
+  const v = (credorCpf: string, mes: number, ano: number, valorPago: number, tipo: 'viap' | 'diaria', credor = 'X', extra: { historico?: string; empenho?: string; dataEmpenho?: string } = {}) => ({ credor, credorCpf, mes, ano, valorPago, tipo, ...extra })
   const despesas = [
     v('00000012345699', 1, 2025, 5000, 'viap', 'OTAVIO CASSIANO DE SOUSA SILVA'),
     v('00000012345699', 1, 2025, 6333.33, 'viap', 'OTAVIO CASSIANO DE SOUSA SILVA'), // mesmo mês → soma
     v('00000012345699', 2, 2025, 11333.33, 'viap', 'OTAVIO CASSIANO DE SOUSA SILVA'),
     v('00000012345699', 12, 2024, 9999, 'viap', 'OTAVIO CASSIANO DE SOUSA SILVA'), // < 2025-01 → excluído
     v('00000078912399', 1, 2025, 15333.33, 'viap', 'EPITACIO VITURINO PRESIDENTE'),
-    v('00000055566677', 3, 2025, 1000, 'diaria', 'VEREADOR SO DIARIA'), // só diária
-    v('00000055566677', 4, 2025, 500, 'diaria', 'VEREADOR SO DIARIA'),
+    v('00000055566677', 3, 2025, 1000, 'diaria', 'VEREADOR SO DIARIA', { empenho: '101', dataEmpenho: '2025-03-12', historico: 'VIAGEM A JOAO PESSOA' }), // só diária
+    v('00000055566677', 4, 2025, 500, 'diaria', 'VEREADOR SO DIARIA', { empenho: '140', dataEmpenho: '2025-04-05', historico: 'VIAGEM A BRASILIA' }),
     v('00000099999999', 1, 2025, 14000, 'viap', 'JJ CONTABILIDADE LTDA'), // não é vereador
   ]
   const s = montarCidadeViapTce(
@@ -195,6 +195,16 @@ describe('montarCidadeViapTce (completo via TCE: VIAP + diárias, casado por CPF
     expect(s.porPolitico[id].total).toBeCloseTo(1500, 2)
     expect(s.despesasPorId[id].every((d) => d.categoria === 'Diárias')).toBe(true)
     expect(s.porPolitico[id].porCategoria).toEqual([{ categoria: 'Diárias', total: 1500 }])
+  })
+  it('cada diária é um lançamento próprio, com histórico, nº de empenho e data do empenho', () => {
+    const id = s.politicos.find((p) => /SO DIARIA/.test(p.nome))!.id
+    const ds = s.despesasPorId[id]
+    expect(ds).toHaveLength(2) // dois empenhos distintos, não agregados por mês
+    const mar = ds.find((d) => d.mes === 3)!
+    expect(mar.data).toBe('2025-03-12') // data real do empenho
+    expect(mar.numeroEmpenho).toBe('101')
+    expect(mar.descricao).toBe('VIAGEM A JOAO PESSOA')
+    expect(mar.valor).toBe(1000)
   })
   it('vereador sem nada fica com total 0 e sem despesas', () => {
     const id = s.politicos.find((p) => /SEM NADA/.test(p.nome))!.id

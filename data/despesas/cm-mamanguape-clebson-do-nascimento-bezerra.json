@@ -1,50 +1,58 @@
 [
   {
-    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-2025-07",
+    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-375",
     "politicoId": "cm-mamanguape-clebson-do-nascimento-bezerra",
-    "data": "2025-07-01",
+    "data": "2025-07-25",
     "ano": 2025,
     "mes": 7,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 286.03
+    "valor": 286.03,
+    "descricao": "Valor empenhado nesta data para pagamento referente a despesa com diarias para custear o deslocamento a cidade de BananeirasPB para participar do evento ENCONTRO NORDESTINO DE AGENTES E GESTORES PUBLICOS conforme documentacao em anexo",
+    "numeroEmpenho": "375"
   },
   {
-    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-2025-08",
+    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-391",
     "politicoId": "cm-mamanguape-clebson-do-nascimento-bezerra",
-    "data": "2025-08-01",
+    "data": "2025-08-15",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2860.26
+    "valor": 2860.26,
+    "descricao": "Valor empenhado nesta data referente a concessao de diarias para custear o deslocamento a cidade de BrasiliaDF para participar do ENCONTRO FORMATIVO PRESENCIAL PROMOVIDO PELA ESCOLA RENOVABR que sera realizado entre os dias 15 e 17 de agosto de 2025 conforme documentacao em anexo",
+    "numeroEmpenho": "391"
   },
   {
-    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-2025-10",
+    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-487",
     "politicoId": "cm-mamanguape-clebson-do-nascimento-bezerra",
-    "data": "2025-10-01",
+    "data": "2025-10-16",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2860.26
+    "valor": 2860.26,
+    "descricao": "Valor empenhado nesta data para pagamento referente a despesa com diarias para custear o deslocamento a cidade do Rio de JaneiroRJ para participar do evento ENCONTRO INFORMATIVO PRESENCIAL PROMOVIDO PELA ESCOLA RENOVABR que sera realizado entre os dias 17 a 19 de outubro de 2025 conforme documentacao em anexo",
+    "numeroEmpenho": "487"
   },
   {
-    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-2025-12",
+    "id": "cm-mamanguape-clebson-do-nascimento-bezerra-diaria-594",
     "politicoId": "cm-mamanguape-clebson-do-nascimento-bezerra",
-    "data": "2025-12-01",
+    "data": "2025-12-12",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2860.26
+    "valor": 2860.26,
+    "descricao": "Valor empenhado nesta data para pagamento referente a despesa com diarias para custear o deslocamento a cidade de Sao PauloSP para participar do ENCONTRO FORMATIVO PRESENCIAL promovido pela ESCOLA RENOVABR que sera realizado entre os dias 12 a 14 de dezembro",
+    "numeroEmpenho": "594"
   }
 ]

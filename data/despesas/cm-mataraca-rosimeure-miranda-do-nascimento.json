@@ -1,66 +1,104 @@
 [
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2025-03",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-153",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
-    "data": "2025-03-01",
+    "data": "2025-03-25",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01 DIARIAS SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA",
+    "numeroEmpenho": "153"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2025-04",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-159",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
-    "data": "2025-04-01",
+    "data": "2025-03-27",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 DIARIA SEM PERNOITE PARA A CAPITAL DO ESTADO  A SERVICO DESTA CASA LEGISLATIVA MUNICIPAL RELATIVO AO CURSO PRIMEIRA INFACIA NO CONTEXTO LDO",
+    "numeroEmpenho": "159"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-221",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2025-04-17",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3105
+    "valor": 3105,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 04QUATRO DIARIAS COM PERNOITE PARA VIAGEM EM VIRTUDE DA XXIV MARCHA GESTORES E LEGISLATIVOS MUNICIPAIS A SERVICO DESTA CASA LEGISLATIVA",
+    "numeroEmpenho": "221"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2025-05",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-301",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
-    "data": "2025-05-01",
+    "data": "2025-05-29",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIAS SEM PERNOITE PARA VIAGEM EM VIRTUDE DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS NA CAPITAL DO ESTADO",
+    "numeroEmpenho": "301"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2025-09",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-304",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
-    "data": "2025-09-01",
+    "data": "2025-05-30",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIAS SEM PERNOITE PARA VIAGEM EM VIRTUDE DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS NA CAPITAL DO ESTADO",
+    "numeroEmpenho": "304"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-517",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2025-09-22",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 DIARIA SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA MUNICIPAL RELATIVO A IDA AO MINISTERIO PUBLICO DE MAMANGUAPEPB A CONVITE DO PROMOTOR ITALO MACIO DE OLIVEIRA SOUSA",
+    "numeroEmpenho": "517"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2025-10",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-547",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
-    "data": "2025-10-01",
+    "data": "2025-10-02",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A 01 DIARIA SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA MUNICIPAL RELATIVO A IDA A ASSEMBLEIA LEGISLATIVA NA CAPITAL DO ESTADO CONFORME FORMULARIO DE CONCESSAO EM ANEXO",
+    "numeroEmpenho": "547"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2026-02",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-56",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
     "data": "2026-02-01",
     "ano": 2026,
@@ -69,10 +107,40 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 450
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIAS SEM PERNOITE PARA VIAGEM EM SERVICO DESTA CASA LEGISLATIVOS MUNICIPAL",
+    "numeroEmpenho": "56"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2026-04",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-64",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIA SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA",
+    "numeroEmpenho": "64"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-90",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIA SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA",
+    "numeroEmpenho": "90"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-172",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
     "data": "2026-04-01",
     "ano": 2026,
@@ -81,10 +149,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIA SEM PERNOITE PARA VIAGEM A SERVICO DESTA CASA LEGISLATIVA",
+    "numeroEmpenho": "172"
   },
   {
-    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-2026-05",
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-240",
     "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
     "data": "2026-05-01",
     "ano": 2026,
@@ -93,6 +163,36 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 450
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIA SEM PERNOITE PARA VIAGEM A JOAO PESSOA PARA PARTICIPAR DO SEMINARIO ESTADUAL DE POLITICAS PUBLICAS PARA A PRIMEIRA INFANCIA PROMOVIDO PELO TCEPB E MEC NO TEATRO PEDRA DO REINO NO CENTRO DE CONVENCOES",
+    "numeroEmpenho": "240"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-244",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01UMA DIARIA SEM PERNOITE PARA VIAGEM A JOAO PESSOA PARA PARTICIPAR DO SEMINARIO ESTADUAL DE POLITICAS PUBLICAS PARA A PRIMEIRA INFANCIA PROMOVIDO PELO TCEPB E MEC NO TEATRO PEDRA DO REINO NO CENTRO DE CONVENCOES",
+    "numeroEmpenho": "244"
+  },
+  {
+    "id": "cm-mataraca-rosimeure-miranda-do-nascimento-diaria-280",
+    "politicoId": "cm-mataraca-rosimeure-miranda-do-nascimento",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A CONCESSAO DE 01 DIARIA SEM PERNOITE IDA A JOAO PESSOA PARA TRATAR ASSUNTOS DE INTERESSE DA CAMARA MUNICIPAL DE MATARACAPB",
+    "numeroEmpenho": "280"
   }
 ]

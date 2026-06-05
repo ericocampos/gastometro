@@ -1,26 +1,58 @@
 [
   {
-    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-2025-03",
+    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-30",
     "politicoId": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes",
-    "data": "2025-03-01",
+    "data": "2025-03-06",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 200
+    "valor": 200,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 01 (UMA) DIARIA, CONCEDIDA A PRESIDENTE DA CAMARA, QUANDO EM VIAGEM A CIDADE DE SERRA BRANCA, PARA PARTICIPAR DE REUNIAO NO DIA 25/02, MINISTRADA PELA PROCURADORIA GERAL DO ESTADO, QUANDO NA OPORTUNIDADE FOI APRESENTADO O PROJETO AMIGO DA NATUREZA, ELABORADO PELO MINISTERIO PUBLICO ESTADUAL DA PARAIBA.",
+    "numeroEmpenho": "30"
   },
   {
-    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-2025-05",
+    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-89",
     "politicoId": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes",
-    "data": "2025-05-01",
+    "data": "2025-05-21",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2800
+    "valor": 2400,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 04 (QUATRO) DIARIAS, CONCEDIDAS A VEREADOR PRESIDENTE ACIMA CITADO, QUANDO EM VIAGEM A CIDADE DE BRASILIA, NO PERIODO DE 19/05 A 22/05 PARA PARTICIPAR DA MARCHA DOS PREFEITOS.",
+    "numeroEmpenho": "89"
+  },
+  {
+    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-90",
+    "politicoId": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes",
+    "data": "2025-05-23",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 01 (UMA) DIARIA, CONCEDIDA A PRESIDENTE DA CAMARA, QUANDO EM VIAGEM A CIDADE DE CAMPINA GRANDE, NO DIA 23/05, PARA TRATAR DE ASSUNTOS JUNTO AO COMERCIO LOCAL.",
+    "numeroEmpenho": "90"
+  },
+  {
+    "id": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes-diaria-93",
+    "politicoId": "cm-sao-sebastiao-do-umbuzeiro-jailson-freitas-nunes",
+    "data": "2025-05-29",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAGAMENTO REFERENTE A 01 (UMA) DIARIA, CONCEDIDA A PRESIDENTE DA CAMARA, QUANDO EM VIAGEM A CIDADE DE JOAO PESSOA, NO DIA 29/05, PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CAMATRAS MUNICIPAIS.",
+    "numeroEmpenho": "93"
   }
 ]

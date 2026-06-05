@@ -1,15 +1,31 @@
 [
   {
-    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-2025-05",
+    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-144",
     "politicoId": "cm-jacarau-admilson-ribeiro-duarte",
-    "data": "2025-05-01",
+    "data": "2025-05-16",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2100
+    "valor": 1800,
+    "descricao": "\"VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DIARIAS POR OCASIÃO DE VIAGEM A BRASILIA DF, CAPITAL DO PAIS, PARA PARTICIPAR DA \"\"XXVI MARCHA A BRASILIA EM DEFESA DOS MUNICÍPIOS\"\", REALIZADO PELA CNM-CONFEDERAÇÃO NACIONAL DOS MUNÍCIPIOS, NO PERÍODO DE 19 A 22 DE MAIO DO CORRENTE ANO.\"",
+    "numeroEmpenho": "144"
+  },
+  {
+    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-174",
+    "politicoId": "cm-jacarau-admilson-ribeiro-duarte",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 300,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DIARIAS POR OCASIÃO DE VIAGEM A CIDADE DE JOÃO PESSOA PB, PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, PROMOVIDO PELA CÂMARA MUNICIPAL DE JOÃO PESSOA PB, NO PERÍODO DE 28 A 30 DE MAIO DO CORRENTE ANO.",
+    "numeroEmpenho": "174"
   },
   {
     "id": "cm-jacarau-admilson-ribeiro-duarte-viap-2025-10",
@@ -48,7 +64,7 @@
     "valor": 4843.54
   },
   {
-    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-2026-03",
+    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-99",
     "politicoId": "cm-jacarau-admilson-ribeiro-duarte",
     "data": "2026-03-01",
     "ano": 2026,
@@ -57,10 +73,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 300,
+    "descricao": "VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DUAS DIARIAS POR OCASIÃO DA PARTICIPAÇÃO NO 3º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICÍPIOS DO ESTADO DA PARAÍBA, REALIZADO NA CIDADE DE CAMPINA GRANDE PB, NOS 25, 26 E 27/03/2026.",
+    "numeroEmpenho": "99"
   },
   {
-    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-2026-05",
+    "id": "cm-jacarau-admilson-ribeiro-duarte-diaria-152",
     "politicoId": "cm-jacarau-admilson-ribeiro-duarte",
     "data": "2026-05-01",
     "ano": 2026,
@@ -69,6 +87,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1800
+    "valor": 1800,
+    "descricao": "\"VALOR QUE SE EMPENHA NESTA DATA PARA PAGAMENTO DE DIARIAS POR OCASIÃO DE VIAGEM A BRASILIA DF, CAPITAL DO PAIS, PARA PARTICIPAR DA \"\"XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICÍPIOS\"\", REALIZADO PELA CNM-CONFEDERAÇÃO NACIONAL DOS MUNÍCIPIOS, NO PERÍODO DE 18 A 21 DE MAIO DO CORRENTE ANO.\"",
+    "numeroEmpenho": "152"
   }
 ]

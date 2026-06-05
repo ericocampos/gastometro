@@ -1,30 +1,48 @@
 [
   {
-    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-2025-05",
+    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-134",
     "politicoId": "cm-gado-bravo-jose-romulo-aureliano-da-silva",
-    "data": "2025-05-01",
+    "data": "2025-05-28",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A COCESSÃO DE 03 (TRÊS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NOS DIAS 28 A 30/05/2025, NO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, PROMOVIDO PELA CÂMARA MUNICIPAL DE JOÃO PESSOA.",
+    "numeroEmpenho": "134"
   },
   {
-    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-2025-09",
+    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-149",
     "politicoId": "cm-gado-bravo-jose-romulo-aureliano-da-silva",
-    "data": "2025-09-01",
+    "data": "2025-05-30",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A COCESSÃO DE 01 (uma) DIÁRIA DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NOS DIAS 28 A 30/05/2025, NO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, PROMOVIDO PELA CÂMARA MUNICIPAL DE JOÃO PESSOA.",
+    "numeroEmpenho": "149"
+  },
+  {
+    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-241",
+    "politicoId": "cm-gado-bravo-jose-romulo-aureliano-da-silva",
+    "data": "2025-09-09",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 01 (uma) DIÁRIA DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X SANTA LUZIA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NO I ENCONTRO PARAIBANO DE CAPACITAÇÃO DE LEGISLATIVO MUNICIPAL, PROMOVIDO PELA CÂMARA MUNICIPAL DE SANTA LUZIA.",
+    "numeroEmpenho": "241"
   },
   {
-    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-2026-02",
+    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-21",
     "politicoId": "cm-gado-bravo-jose-romulo-aureliano-da-silva",
     "data": "2026-02-01",
     "ano": 2026,
@@ -33,10 +51,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 02 (DUAS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NO EVENTO CONEXÃO CNM NOS DIAS 02 E 03 DE FEVEREIRO, REALIZADO NO CENTRO DE CONVENÇÕES DE JOÃO PESSOA.",
+    "numeroEmpenho": "21"
   },
   {
-    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-2026-05",
+    "id": "cm-gado-bravo-jose-romulo-aureliano-da-silva-diaria-134",
     "politicoId": "cm-gado-bravo-jose-romulo-aureliano-da-silva",
     "data": "2026-05-01",
     "ano": 2026,
@@ -45,6 +65,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2800
+    "valor": 2800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDERDESPESA COM A CONCESSÃO DE 04 (DUAS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X BRASÍLIA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NA PARTICIPAÇÃO NA MARCHA DOS PREFEITOS EDIÇÃO 2026.",
+    "numeroEmpenho": "134"
   }
 ]

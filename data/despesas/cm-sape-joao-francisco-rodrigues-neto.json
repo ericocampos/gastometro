@@ -132,16 +132,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-2025-11",
+    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-806",
     "politicoId": "cm-sape-joao-francisco-rodrigues-neto",
-    "data": "2025-11-01",
+    "data": "2025-11-28",
     "ano": 2025,
     "mes": 11,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA COM DESPESA EM 01 DIARIA PARCIAL, A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTE MUNICIPIO EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "806"
   },
   {
     "id": "cm-sape-joao-francisco-rodrigues-neto-viap-2025-12",
@@ -192,7 +194,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-2026-03",
+    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-143",
     "politicoId": "cm-sape-joao-francisco-rodrigues-neto",
     "data": "2026-03-01",
     "ano": 2026,
@@ -201,7 +203,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTE MUNICIPIO, EM JOAO PESSOA-PB, NESTA DATA.",
+    "numeroEmpenho": "143"
   },
   {
     "id": "cm-sape-joao-francisco-rodrigues-neto-viap-2026-04",
@@ -216,7 +220,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-2026-04",
+    "id": "cm-sape-joao-francisco-rodrigues-neto-diaria-250",
     "politicoId": "cm-sape-joao-francisco-rodrigues-neto",
     "data": "2026-04-01",
     "ano": 2026,
@@ -225,7 +229,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE TRATAR DE ASSUNTOS DE INTERESSE DESTE MUNICIPIO EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "250"
   },
   {
     "id": "cm-sape-joao-francisco-rodrigues-neto-viap-2026-05",

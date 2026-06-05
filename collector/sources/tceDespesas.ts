@@ -85,11 +85,20 @@ export async function baixarIndenizacoesCamara(cod: string, anos: number[]): Pro
 // Gasto rastreável por vereador no TCE, por tipo: 'viap' (Indenizações e Restituições, valor fixo
 // mensal) e 'diaria' (Diárias - Civil etc., variável, quem viajou). Em ambos o credor é o vereador.
 export type TipoDespesaVereador = 'viap' | 'diaria'
-export interface DespesaVereadorTce { credor: string; credorCpf: string; mes: number; ano: number; valorPago: number; tipo: TipoDespesaVereador }
+// historico/empenho/dataEmpenho: o "documento" do pagamento que o TCE expõe. Diária não tem nota
+// fiscal (é adiantamento de viagem, autorizado por portaria); o histórico é o texto declarado pela
+// câmara no empenho (motivo/destino/datas). Usado no detalhamento de cada vereador.
+export interface DespesaVereadorTce { credor: string; credorCpf: string; mes: number; ano: number; valorPago: number; tipo: TipoDespesaVereador; historico?: string; empenho?: string; dataEmpenho?: string }
 
 const ehDiaria = (elemento: string): boolean => /di[áa]ria/i.test(elemento)
 
-/** Parseia os empenhos da Câmara pagos a vereadores (VIAP + diárias), com o tipo de cada um. */
+// historico é a col 35 (índice 34) e há 5 colunas depois dela (36-40). O CSV não é citado, então se
+// o texto tiver ';' as colunas finais deslocam; como só nos importa o histórico (as colunas do
+// financeiro vêm ANTES, 4/5/11/29), rejuntamos do índice 34 até o fim menos as 5 colunas de cauda.
+const lerHistorico = (f: string[]): string =>
+  (f.length > 40 ? f.slice(34, f.length - 5).join(';') : (f[34] ?? '')).trim()
+
+/** Parseia os empenhos da Câmara pagos a vereadores (VIAP + diárias), com o tipo e o histórico. */
 export function parseDespesasVereador(textoCsv: string, ano: number): DespesaVereadorTce[] {
   const linhas = textoCsv.split('\n')
   const out: DespesaVereadorTce[] = []
@@ -106,6 +115,7 @@ export function parseDespesasVereador(textoCsv: string, ano: number): DespesaVer
     out.push({
       credor: (f[7] ?? '').trim(), credorCpf: (f[6] ?? '').trim(),
       mes: Number((f[5] ?? '').slice(0, 2)) || 0, ano, valorPago, tipo,
+      empenho: (f[3] ?? '').trim(), dataEmpenho: (f[4] ?? '').trim(), historico: lerHistorico(f),
     })
   }
   return out

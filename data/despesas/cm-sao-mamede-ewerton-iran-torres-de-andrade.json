@@ -1,30 +1,34 @@
 [
   {
-    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-2025-05",
+    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-223",
     "politicoId": "cm-sao-mamede-ewerton-iran-torres-de-andrade",
-    "data": "2025-05-01",
+    "data": "2025-05-27",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1040
+    "valor": 1040,
+    "descricao": "\"REFERENTE AO PAGAMENTO DE 02 (DUAS) DIÁRIAS COM PERNOITE AO VEREADOR DESTA CASA LEGISLATIVA, DESTINADAS A CUSTEAR DESPESAS COM DESLOCAMENTO À CIDADE DE JOÃO PESSOA-PB, ONDE PARTICIPARÁ DO \"\"II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS: IA, GOVERNANÇA E CONEXÃO CIDADÃ NAS CÂMARAS 4.0\"\", A SER REALIZADO NO PERÍODO DE 28 A 30 DE MAIO DE 2025, CONFORME DISPÕE A LEI MUNICIPAL Nº 1.200/2025 E DEMAIS DOCUMENTOS COMPROBATÓRIOS ANEXOS.\"",
+    "numeroEmpenho": "223"
   },
   {
-    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-2025-08",
+    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-329",
     "politicoId": "cm-sao-mamede-ewerton-iran-torres-de-andrade",
-    "data": "2025-08-01",
+    "data": "2025-08-15",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 200
+    "valor": 200,
+    "descricao": "REFERENTE AO PAGAMENTO DE 01 (UMA) DIÁRIA AO VEREADOR DESTA CASA LEGISLATIVA, DESTINADA A CUSTEAR DESPESAS COM DESLOCAMENTO À CIDADE DE CAMPINA GRANDE-PB, PARA PARTICIPAR DO ENCONTRO ESTADUAL PELA PRIMEIRA INFÂNCIA, PROMOVIDO PELO TCE - PB, A SER REALIZADO NO DIA 18 DE AGOSTO DE 2025",
+    "numeroEmpenho": "329"
   },
   {
-    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-2026-03",
+    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-127",
     "politicoId": "cm-sao-mamede-ewerton-iran-torres-de-andrade",
     "data": "2026-03-01",
     "ano": 2026,
@@ -33,6 +37,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 888
+    "valor": 688,
+    "descricao": "REFERENTE A CONCESSÃO DE 02 (DUAS) DIÁRIAS COM PERNOITE AO VEREADOR DESTA CASA, DESTINADAS A CUSTEAR DESPESAS COM VIAGEM A CAMPINA GRANDE - PB, PARA PARTICIPAÇÃO NO 3º CONFEP 2026 - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICÍPIOS DO ESTADO DA PARAÍBA, PROMOVIDO PELA FEDERAÇÃO DAS ASSOCIAÇÕES DE MUNICÍPIOS DA PARAÍBA (FAMUP), NOS DIAS 25 A 27 DE MARÇO DE 2026, CONFORME DISPÕE A LEI MUNICIPAL Nº 1.200/2025 E DEMAIS DOCUMENTOS COMPROBATÓRIOS ANEXOS.",
+    "numeroEmpenho": "127"
+  },
+  {
+    "id": "cm-sao-mamede-ewerton-iran-torres-de-andrade-diaria-128",
+    "politicoId": "cm-sao-mamede-ewerton-iran-torres-de-andrade",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200,
+    "descricao": "REFERENTE A CONCESSÃO DE 01 (UMA) DIÁRIAS SEM PERNOITE AO VEREADOR DESTA CASA, DESTINADAS A CUSTEAR DESPESAS COM VIAGEM A CAMPINA GRANDE - PB, PARA PARTICIPAÇÃO NO 3º CONFEP 2026 - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICÍPIOS DO ESTADO DA PARAÍBA, PROMOVIDO PELA FEDERAÇÃO DAS ASSOCIAÇÕES DE MUNICÍPIOS DA PARAÍBA (FAMUP), NOS DIAS 25 A 27 DE MARÇO DE 2026, CONFORME DISPÕE A LEI MUNICIPAL Nº 1.200/2025 E DEMAIS DOCUMENTOS COMPROBATÓRIOS ANEXOS.",
+    "numeroEmpenho": "128"
   }
 ]

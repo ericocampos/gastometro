@@ -1,14 +1,30 @@
 [
   {
-    "id": "cm-areial-anselmo-da-costa-souza-diaria-2025-04",
+    "id": "cm-areial-anselmo-da-costa-souza-diaria-111",
     "politicoId": "cm-areial-anselmo-da-costa-souza",
-    "data": "2025-04-01",
+    "data": "2025-04-15",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1350
+    "valor": 1200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DUAS DIÁRIAS PARA PARTICIPAR DA XXIV MARCHA DOS GESTORES LEGISLATIVOS MUNICIPAIS, REALIZADA EM BRASILIA-DF",
+    "numeroEmpenho": "111"
+  },
+  {
+    "id": "cm-areial-anselmo-da-costa-souza-diaria-99",
+    "politicoId": "cm-areial-anselmo-da-costa-souza",
+    "data": "2025-04-15",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM UMA DIÁRIA PARA PARTICIPAR DO 2º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADE PARA MUNICIPIOS DOS ESTADO DA PARAIBA, REALIZADO EM JOÃO PESSOA-PB.",
+    "numeroEmpenho": "99"
   }
 ]

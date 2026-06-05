@@ -1,26 +1,30 @@
 [
   {
-    "id": "cm-areia-edgley-de-brito-santos-diaria-2025-04",
+    "id": "cm-areia-edgley-de-brito-santos-diaria-161",
     "politicoId": "cm-areia-edgley-de-brito-santos",
-    "data": "2025-04-01",
+    "data": "2025-04-15",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3750
+    "valor": 3750,
+    "descricao": "Valor que se empenha para fazer face as despesas com cinco diarias com pernoite para custear o deslocamento a cidade de BrasiliaDF para participar do evento XXIV Marcha dos Gestores e Legislativos Municipais que ocorrera de 22 a 25 de abril de 2025",
+    "numeroEmpenho": "161"
   },
   {
-    "id": "cm-areia-edgley-de-brito-santos-diaria-2025-09",
+    "id": "cm-areia-edgley-de-brito-santos-diaria-418",
     "politicoId": "cm-areia-edgley-de-brito-santos",
-    "data": "2025-09-01",
+    "data": "2025-09-16",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 250
+    "valor": 250,
+    "descricao": "Valor que se empenha para fazer face a despesas com meia diaria com destino a cidade de Campina Grande PB para tratar de assuntos administrativos na CAGEPA GERENCIA REGIONAL DA BORBOREMA",
+    "numeroEmpenho": "418"
   }
 ]

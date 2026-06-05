@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2025-04",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-183",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
     "data": "2025-04-01",
     "ano": 2025,
@@ -9,46 +9,68 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1000
+    "valor": 1000,
+    "descricao": "CORRESPONDENTE AO PAGAMENTO DE DUAS DIARIAS E MEIA AO VEREADOR ANTONIO HENRIQUES PARA COBRIR DESPESAS, HOSPEDAGEM E ALIMENTAÇÃO NA PARTICIPAÇÃO DO CONGRESSO - 2 CONFEP, EM JOÃO PESSOA NOS DIAS 2, 3 E 4 DE ABRIL DE 2025, CONFORME ANEXO.",
+    "numeroEmpenho": "183"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2025-05",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-259",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
-    "data": "2025-05-01",
+    "data": "2025-05-13",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3200
+    "valor": 2400,
+    "descricao": "CORRESPONDENTE A 04 DIARIAS AO VEREADOR ANTONIO HENRIQUES PARA CUSTEAR DESPESAS RELACIONADAS A PARTICIPAÇÃO DA XXVI MARCHA A BRASÍLIA EM DEFESA DOS MUNICIPIOS, REALIZADA EM BRASÍLIA-DISTRITO FEDERAL, NOS DIAS 19 A 22 DE MAIO DE 2025, CONFORME ANEXO.",
+    "numeroEmpenho": "259"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2025-09",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-297",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
-    "data": "2025-09-01",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 800,
+    "descricao": "CORRESPONDENTE A DUAS DIARIAS AO VEREADOR ANTONIO ASSUNÇÃO PARA CUSTEAR DESPESAS COM DESLOCAMENTO E ESTADIA DURANTE A PARTICIPÇÃO NO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS REALIZADO NOS DIAS 28 E 30 DE MAIO 2025 NO CENTRO DE CONVENÇÕES EM JOAO PESSOA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "297"
+  },
+  {
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-509",
+    "politicoId": "cm-picui-antonio-assuncao-henriques",
+    "data": "2025-09-12",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "CORRESPONDENTE  A UMA DIÁRIA AO VEREADOR ANTONIO ASSUNÇÃO PARA CUSTEAR DESPESAS NA PARTICIPÇÃO NO FESTIVAL FUNETEC DE SUSTENTABILIDADE, INOVAÇÃO E CULTURA. REALIZADO NOS DIAS 12,13 E 14 DE SETEMBRO DE 2025 NO IFPB CAMPUS DE JOÃO PESSOA-PB, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "509"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2025-10",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-602",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
-    "data": "2025-10-01",
+    "data": "2025-10-22",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 200
+    "valor": 200,
+    "descricao": "CORRESPONDENTE  A MEIA DIARIA AO VEREADOR ANTONIO ASSUNÇÃOPARA CIDADE DE CAMPINA GRANDE PARA TRATAR DE ASSUNTOS LEGISLATIVOS DESTA CASA LEGISLATIVA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "602"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2026-01",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-30",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
     "data": "2026-01-01",
     "ano": 2026,
@@ -57,10 +79,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 200
+    "valor": 200,
+    "descricao": "CORRESPONDENTE  A MEIA DIARIA AO VEREADOR ANTONIO ASSUNÇÃO PARA CIDADE DE CAMPINA GRANDE, PARA TRATAR DE ASSUNTOS  LEGISLATIVOS DESTA CASA LEGISLATIVA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "30"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2026-03",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-109",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
     "data": "2026-03-01",
     "ano": 2026,
@@ -69,10 +93,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 200,
+    "descricao": "CORRESPONDENTE  A MEIA DIARIA AO VEREADOR ANTONIO ASSUNÇÃO PARA CIDADE DE JOÃO PESSOA, PARA TRATAR DE ASSUNTOS  LEGISLATIVOS DESTA CASA LEGISLATIVA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "109"
   },
   {
-    "id": "cm-picui-antonio-assuncao-henriques-diaria-2026-05",
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-174",
+    "politicoId": "cm-picui-antonio-assuncao-henriques",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1000,
+    "descricao": "CORRESPONDENTE A DUAS DIARIAS E MEIA PARA O VEREADOR ANTONIO ASSUNÇÃO, PARA CUSTEAR DESPESAS RELACIONADAS A PARTICIPAÇÃO DO 3 CONFEP NA CIDADE DE CAMPINA GRANDE QUE SERÁ REALIZADO NOS DIAS 25 A 27 DE MARÇO DE 2026, DESTA CASA LEGISLATIVA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "174"
+  },
+  {
+    "id": "cm-picui-antonio-assuncao-henriques-diaria-256",
     "politicoId": "cm-picui-antonio-assuncao-henriques",
     "data": "2026-05-01",
     "ano": 2026,
@@ -81,6 +121,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3000
+    "valor": 3000,
+    "descricao": "CORRESPONDENTE A 5(CINCO) DIARIAS E MEIA PARA O VEREADOR ANTONIO ASSUNÇÃO, PARA CUSTEAR DESPESAS A CAPITAL FEDERAL, A FIM DE VISITAS A GABINETES PARLAMENTARES E PARTICIPAÇÃO DA XXVII MARCHA A BRASÍLIA EM DEFESA DOS MUNICIPIOS DE MAIO DE 2026, CONFORME ANEXO.",
+    "numeroEmpenho": "256"
   }
 ]

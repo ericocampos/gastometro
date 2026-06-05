@@ -1,54 +1,118 @@
 [
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2025-02",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-70",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
-    "data": "2025-02-01",
+    "data": "2025-02-14",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 780
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM DIARIA QUANDO EM VIAGEM A GUARABIRA PARA PARTICIPAR DO SEMINARIO CAMARA 5.0, NO DIA 14 DE FEVEREIRO DE 2025, OCORRIDO NA CAMARA MUNICIPAL DA CIDADE.",
+    "numeroEmpenho": "70"
   },
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2025-05",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-100",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
-    "data": "2025-05-01",
+    "data": "2025-02-19",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM 01 (UMA) DIARIA PARA VISITA A ASSEMBLEIA LEGISLATIVA DA PARAIBA PARA ACOMPANHAR OS PLEITOS DOS VEREADORES E COBRAR ACOES NO SENTIDO DE ACELERAR AS PENDENCIAS COM O GOVERNO DO ESTADO.",
+    "numeroEmpenho": "100"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-270",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2025-05-14",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1170
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM 01 (UMA) DIARIA PARA VISITA A ASSEMBLEIA LEGISLATIVA DA PARAIBA PARA ACOMPANHAR OS PLEITOS DOS VEREADORES E COBRAR ACOES NO SENTIDO DE ACELERAR AS PENDENCIAS COM O GOVERNO DO ESTADO.",
+    "numeroEmpenho": "270"
   },
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2025-07",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-308",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
-    "data": "2025-07-01",
+    "data": "2025-05-29",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 780,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM 02 (DUAS) DIARIAS COM VIAGEM Á JOÃO PESSOA PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS DE 28 Á 30 DE MAIO DE 2025 NO PAVILHÃO DE CONGRESSO DO CENTRO DE CONVENÇÕES DE JOÃO PESSOA.",
+    "numeroEmpenho": "308"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-412",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2025-07-23",
     "ano": 2025,
     "mes": 7,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1560
+    "valor": 1560,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM 04 (QUATRO) DIARIAS COM VIAGEM Á JOÃO PESSOA PARA PARTICIPAR DO CONGRESSO NORDESTINO DE LEGISLATIVOS MUNICIPAIS NOS DIAS 23 Á 26 DE JULHO DE 2025.",
+    "numeroEmpenho": "412"
   },
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2025-12",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-706",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
-    "data": "2025-12-01",
+    "data": "2025-12-04",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1170
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO ENCONTRO NORDESTINO DE  LEGISLATIVOS MUNICIPAIS. DIÁRIA REFERENTE AO 2º DIA",
+    "numeroEmpenho": "706"
   },
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2026-01",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-713",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2025-12-05",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO ENCONTRO NORDESTINO DE  LEGISLATIVOS MUNICIPAIS. DIÁRIA REFERENTE AO 3º DIA",
+    "numeroEmpenho": "713"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-729",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2025-12-06",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO ENCONTRO NORDESTINO DE  LEGISLATIVOS MUNICIPAIS. DIÁRIA REFERENTE AO 4º DIA",
+    "numeroEmpenho": "729"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-43",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
     "data": "2026-01-01",
     "ano": 2026,
@@ -57,10 +121,54 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1560
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO X CONGRESSO NACIONAL DE AGENTES PUBLICOS DE 28 Á 31  DE JANEIRO DE 2026 ,DIÁRIA REFERENTE AO 1° DIA.",
+    "numeroEmpenho": "43"
   },
   {
-    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-2026-04",
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-55",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO X CONGRESSO NACIONAL DE AGENTES PUBLICOS DE 28 Á 31  DE JANEIRO DE 2026 ,DIÁRIA REFERENTE AO 2° DIA.",
+    "numeroEmpenho": "55"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-63",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO X CONGRESSO NACIONAL DE AGENTES PUBLICOS DE 28 Á 31  DE JANEIRO DE 2026 ,DIÁRIA REFERENTE AO 3° DIA.",
+    "numeroEmpenho": "63"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-71",
+    "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA PARTICIPAR DO X CONGRESSO NACIONAL DE AGENTES PUBLICOS DE 28 Á 31  DE JANEIRO DE 2026 ,DIÁRIA REFERENTE AO 4° DIA.",
+    "numeroEmpenho": "71"
+  },
+  {
+    "id": "cm-pocinhos-joao-batista-vasconcelos-costa-diaria-226",
     "politicoId": "cm-pocinhos-joao-batista-vasconcelos-costa",
     "data": "2026-04-01",
     "ano": 2026,
@@ -69,6 +177,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 390
+    "valor": 390,
+    "descricao": "VALOR QUE ORA SE EMPENHA P/ ATENDER DESPESA COM VIAGEM À JOÃO PESSOA-PB PARA  TRATAR DE ASSUNTOS DO MUNICIPIO DE POCINHOS NA ASSEMBLEIA LEGISLATIVVA DA PARAIBA,NO DIA 14 DE ABRIL DE 2026.",
+    "numeroEmpenho": "226"
   }
 ]

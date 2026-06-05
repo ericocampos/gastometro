@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-cacimba-de-dentro-joao-pedro-pereira-junior-diaria-2025-04",
+    "id": "cm-cacimba-de-dentro-joao-pedro-pereira-junior-diaria-122",
     "politicoId": "cm-cacimba-de-dentro-joao-pedro-pereira-junior",
-    "data": "2025-04-01",
+    "data": "2025-04-17",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3500
+    "valor": 3500,
+    "descricao": "Valor que se empenha para fazer face a despesa com diaria cedida ao vereador Joao Pedro Pereira Junior referente ao deslocamento a cidade de BrasiliaDF para participar da XXIV Marcha dos Gestores e Legislatlvos Municipais 2025",
+    "numeroEmpenho": "122"
   },
   {
-    "id": "cm-cacimba-de-dentro-joao-pedro-pereira-junior-diaria-2026-05",
+    "id": "cm-cacimba-de-dentro-joao-pedro-pereira-junior-diaria-170",
     "politicoId": "cm-cacimba-de-dentro-joao-pedro-pereira-junior",
     "data": "2026-05-01",
     "ano": 2026,
@@ -21,6 +23,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "Valor que se empenha para fazer face a despesa com diaria cedida ao Vereador Joao Pedro Pereira Junior referente ao deslocamento da cidade de Joao PessoaPB a BrasiliaDF para tratar de assuntos do Municipio",
+    "numeroEmpenho": "170"
   }
 ]

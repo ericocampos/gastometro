@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-2026-03",
+    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-149",
     "politicoId": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza",
     "data": "2026-03-01",
     "ano": 2026,
@@ -9,10 +9,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1750
+    "valor": 1750,
+    "descricao": "DESPESA QUE SE EMPENHA PARA PAGAMENTO DE 03 DIARIAS INTEGRAL E 01 DIARIA PARCIAL, DESTINADAS  A PARTICIPAÇÃO DE UM CONGRESSO DE GESTORES PUBLICOS NA CIDADE DE JOAO PESSOA, NOS DIAS 25 A 28 DE MARÇO DE 2026",
+    "numeroEmpenho": "149"
   },
   {
-    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-2026-04",
+    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-186",
     "politicoId": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza",
     "data": "2026-04-01",
     "ano": 2026,
@@ -21,10 +23,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "DESPESA QUE SE EMPENHA PARA PAGAMENTO DE 004 DIARIAS INTEGRAIS E 01 PARCIAL, DESTINADAS AO VEREADOR ACIMA, PARA PARTICIPAR DE UM FORUM DO LEGISLATIVO E EXECUTIVO MUNICIPAL NA CIDADE DE MACEIO/AL",
+    "numeroEmpenho": "186"
   },
   {
-    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-2026-05",
+    "id": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza-diaria-241",
     "politicoId": "cm-sao-jose-do-sabugi-aliomar-ribeiro-de-souza",
     "data": "2026-05-01",
     "ano": 2026,
@@ -33,6 +37,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 250
+    "valor": 250,
+    "descricao": "DESPESA QUE SE EMPENHA PARA PAFGAMENTO DE 01 DIARIA DESTINADA AO VEREADOR CITADO ACIMA,  COM DESTINO A CIDADE DE JOAO PESSOA PARA PARTICIPAR DE UM EVENTO DE LANÇAMENTO DOS INVESTIMENTOS DO MINISTERIO DO TURISMO",
+    "numeroEmpenho": "241"
   }
 ]

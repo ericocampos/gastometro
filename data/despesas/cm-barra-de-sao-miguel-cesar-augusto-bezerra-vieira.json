@@ -1,42 +1,48 @@
 [
   {
-    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-2025-01",
+    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-15",
     "politicoId": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira",
-    "data": "2025-01-01",
+    "data": "2025-01-31",
     "ano": 2025,
     "mes": 1,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 200
+    "valor": 200,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA CORRESPONDENTE AO PAGAMENTO DE DIARIA QUANDO EM VIAGEM A CIDADE CAMPINA GRANDE PARA TRATAR DE ASSUNTOS DO ENTERESSE DO LEGISLATIVO MUNICIPAL.",
+    "numeroEmpenho": "15"
   },
   {
-    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-2025-02",
+    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-35",
     "politicoId": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira",
-    "data": "2025-02-01",
+    "data": "2025-02-21",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2000
+    "valor": 2000,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA CORRESPONDENTE AO PAGAMENTO DE DIARIA QUANDO EM VIAGEM A CIDADE DE BRASILIA/DF PARA PARTICIPAR DO ENCONTRO NACIONAL DE GESTORES E LEGISLATIVOS MUNICIPAIS, ENTRE OS DIAS 18 A 21 DE FEVEREIRO DE 2025.",
+    "numeroEmpenho": "35"
   },
   {
-    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-2025-05",
+    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-105",
     "politicoId": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira",
-    "data": "2025-05-01",
+    "data": "2025-05-19",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2500
+    "valor": 2500,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA CORRESPONDENTE AO PAGAMENTO DE DIARIAS EM VIAGEM A CIDADE DE BRASILIA/DF PARA PARTICIPAR DA XXVI MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, ENTRE OS DIAS 19 A 22 DE MAIO DE 2025.",
+    "numeroEmpenho": "105"
   },
   {
-    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-2026-05",
+    "id": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira-diaria-107",
     "politicoId": "cm-barra-de-sao-miguel-cesar-augusto-bezerra-vieira",
     "data": "2026-05-01",
     "ano": 2026,
@@ -45,6 +51,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2500
+    "valor": 2500,
+    "descricao": "IMPORTANCIA QUE SE EMPEMHA CORRESPONDENE AO PAGAMENTO DE DIARIAS AO VEREADOR QUANDO EM VIAGEM A CIDADE DE BRASILIA PARA PARTICIPAÇÃO NA MARCHA DOS PREFEITOS 2026.",
+    "numeroEmpenho": "107"
   }
 ]

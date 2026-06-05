@@ -1,38 +1,58 @@
 [
   {
-    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-2025-02",
+    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-94",
     "politicoId": "cm-alagoa-nova-luciano-henrique-de-lima",
-    "data": "2025-02-01",
+    "data": "2025-02-25",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 250
+    "valor": 250,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIAARIA SEM PERNOITE PARA O VEREADOR CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 25 DE FEVEREIRO DE 2025 PARA TRATAR DE ASSUNTOS DE INTERESSE DESTE LEGISLATIVO JUNTO A ASSEMBLEIA LEGISLATIVA DO ESTADO GABINETE DO DEPUTADO INACIO FALCAO",
+    "numeroEmpenho": "94"
   },
   {
-    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-2025-05",
+    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-228",
     "politicoId": "cm-alagoa-nova-luciano-henrique-de-lima",
-    "data": "2025-05-01",
+    "data": "2025-05-12",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1000
+    "valor": 250,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIAARIA SEM PERNOITE PARA O VEREADOR CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 12 DE MAIO DE 2025 PARA TRATAR DE ASSUNTOS DE INTERESSE DESTE LEGISLATIVO MUNICIPAL",
+    "numeroEmpenho": "228"
   },
   {
-    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-2025-08",
+    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-281",
     "politicoId": "cm-alagoa-nova-luciano-henrique-de-lima",
-    "data": "2025-08-01",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 750,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A TRES  DIARIAS  O VEREADOR CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOA NO PERIODO DE 28 A 30 DEMAIO DE 2025 PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS NO CENTRO DE CONVENCOES DE JOAO PESSOAPB",
+    "numeroEmpenho": "281"
+  },
+  {
+    "id": "cm-alagoa-nova-luciano-henrique-de-lima-diaria-477",
+    "politicoId": "cm-alagoa-nova-luciano-henrique-de-lima",
+    "data": "2025-08-25",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1600
+    "valor": 1600,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A QUATRO DIARIAS COM PERNOITE PARA O VEREADOR DA CAMARA MUNICIPAL CUSTEAR DESPESAS COM REFEICAO QUANDO EM VIAGEM A CIDADE DE BRASILIADF NO PERIODO DE 26 A 29 DE AGOSTO DE 2025",
+    "numeroEmpenho": "477"
   }
 ]

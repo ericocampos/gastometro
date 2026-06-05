@@ -1,42 +1,62 @@
 [
   {
-    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-2025-05",
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-138",
     "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
-    "data": "2025-05-01",
+    "data": "2025-05-28",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A COCESSÃO DE 03 (TRÊS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NOS DIAS 28 A 30/05/2025, NO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, PROMOVIDO PELA CÂMARA MUNICIPAL DE JOÃO PESSOA.",
+    "numeroEmpenho": "138"
   },
   {
-    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-2025-09",
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-147",
     "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
-    "data": "2025-09-01",
+    "data": "2025-05-30",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A COCESSÃO DE 01 (uma) DIÁRIA DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NOS DIAS 28 A 30/05/2025, NO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, PROMOVIDO PELA CÂMARA MUNICIPAL DE JOÃO PESSOA.",
+    "numeroEmpenho": "147"
+  },
+  {
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-240",
+    "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
+    "data": "2025-09-09",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 01 (uma) DIÁRIA DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X SANTA LUZIA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NO I ENCONTRO PARAIBANO DE CAPACITAÇÃO DE LEGISLATIVO MUNICIPAL, PROMOVIDO PELA CÂMARA MUNICIPAL DE SANTA LUZIA.",
+    "numeroEmpenho": "240"
   },
   {
-    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-2025-11",
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-304",
     "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
-    "data": "2025-11-01",
+    "data": "2025-11-13",
     "ano": 2025,
     "mes": 11,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 300,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 01 (UMA) DIÁRIA DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X CAMPINA GRANDE, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NO 1º ENCONTRO DE DIREITO MUNICIPALISTA, REALIZADO NO TEATRO FACISA.",
+    "numeroEmpenho": "304"
   },
   {
-    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-2026-02",
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-17",
     "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
     "data": "2026-02-01",
     "ano": 2026,
@@ -45,10 +65,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 02 (DUAS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X JOÃO PESSOA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NO EVENTO CONEXÃO CNM NOS DIAS 02 E 03 DE FEVEREIRO, REALIZADO NO CENTRO DE CONVENÇÕES DE JOÃO PESSOA.",
+    "numeroEmpenho": "17"
   },
   {
-    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-2026-05",
+    "id": "cm-gado-bravo-vanessa-nascimento-da-silva-diaria-129",
     "politicoId": "cm-gado-bravo-vanessa-nascimento-da-silva",
     "data": "2026-05-01",
     "ano": 2026,
@@ -57,6 +79,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2800
+    "valor": 2800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM A CONCESSÃO DE 04 (DUAS) DIÁRIAS DE VIAGEM, PARA CUSTEAR DESPESAS NO DESLOCAMENTO GADO BRAVO X BRASÍLIA, PARA REPRESENTAÇÃO DO PODER LEGISLATIVO MUNICIPAL NA PARTICIPAÇÃO NA MARCHA DOS PREFEITOS EDIÇÃO 2026.",
+    "numeroEmpenho": "129"
   }
 ]

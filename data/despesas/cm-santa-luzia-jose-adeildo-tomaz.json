@@ -1,42 +1,48 @@
 [
   {
-    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-2025-04",
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-169",
     "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
-    "data": "2025-04-01",
+    "data": "2025-04-22",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3080
+    "valor": 3080,
+    "descricao": "PARA ATENDER AO PAGAMENTO DAS DESPESAS COM VIÁGEM Á BRASILIA-DF, PARA PARTICIPAR DA XXIV MARCHA DOS GESTORES E LEGISLATIVOS MUNICIPAIS NOS DIAS 22 À 25 DE ABRIL DE 2025, CONFORME RECIBO E COMPROVANTE DE PAGAMENTO CONSTANTES NO BALANCETE MENSAL.",
+    "numeroEmpenho": "169"
   },
   {
-    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-2025-10",
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-578",
     "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
-    "data": "2025-10-01",
+    "data": "2025-10-29",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3080
+    "valor": 3080,
+    "descricao": "PARA ATENDER AO PAGAMENTO DAS DESPESAS COM VIÁGEM Á NATAL-RN, PARA PARTICIPAR DO PRIMEIRO SEMINÁRIO REGIONAL DO LEGISLATIVO MUNICIPAL, REALIZADO NO AUDITÓRIO DA OAB/RN NA CIDADE DE NATAL-RN NOS DIAS 28/10/2025 À 31/10/2025, CONFORME COMPROVANTE DE PAGAMENTO CONSTANTES NO BALANCETE MENSAL.",
+    "numeroEmpenho": "578"
   },
   {
-    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-2025-12",
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-708",
     "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
-    "data": "2025-12-01",
+    "data": "2025-12-18",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1540
+    "valor": 1540,
+    "descricao": "PARA ATENDER AO PAGAMENTO DAS DESPESAS PARA PARTICIPAR DO SETIMO CONGRESSO REGIONAL DE GESTORES PUBLICOS, REALIZADO NO CENTRO DE EVENTOS GARDEN, NA CIDADE DE CAMPINA GRANDE-PB NOS DIAS 18/12/2025 À 21/12/2025, CONFORME COMPROVANTE DE PAGAMENTO CONSTANTES NO BALANCETE MENSAL.",
+    "numeroEmpenho": "708"
   },
   {
-    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-2026-02",
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-86",
     "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
     "data": "2026-02-01",
     "ano": 2026,
@@ -45,10 +51,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4900
+    "valor": 4900,
+    "descricao": "PARA ATENDER AO PAGAMENTO DE CINCO DIÁRIAS PARA CUSTEIO DAS DESPESAS DE VIÁGEM PARA PARTICIPAR DO CONGRESSO ESTADUAL DE VEREADORES E SERVIDORES DE CÂMARAS MUNICIPAIS E PREFEITURAS, REALIZADO PELA UVP - UNIÃO DOS VEREADORES DE PERNAMBUCO NOS DIAS 25 À 28 DE FEVEREIRO DE 2026 NO TEATRO BEBERIBE NO CENTRO DE CONVENÇÕES DE PERNAMBUCO NA CIDADE DE OLINDA, CONFORME COMPROVANTES DE PAGAMENTO CONSTANTES NO BALANCETE MENSAL.",
+    "numeroEmpenho": "86"
   },
   {
-    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-2026-03",
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-122",
     "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
     "data": "2026-03-01",
     "ano": 2026,
@@ -57,6 +65,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 7350
+    "valor": 4900,
+    "descricao": "PARA ATENDER AO PAGAMENTO DE TRÊS DIÁRIAS E MEIA PARA CUSTEIO DAS DESPESAS DE VIÁGEM PARA PARTICIPAR DO  ENCONTRO NACIONAL DE GESTORES E LEGISLATIVOS MUNICIPAIS, QUE ACONTECERÁ NOS DIAS 17 À 20 DE MARÇO DE 2026 NA CIDADE DE NATAL-RN, CONFORME COMPROVANTES DE PAGAMENTO CONSTANTES NO BALANCETE MENSAL.",
+    "numeroEmpenho": "122"
+  },
+  {
+    "id": "cm-santa-luzia-jose-adeildo-tomaz-diaria-156",
+    "politicoId": "cm-santa-luzia-jose-adeildo-tomaz",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2450,
+    "descricao": "PARA ATENDER AO PAGAMENTO DE DIÁRIAS NO CUSTEIO DE DESPESAS DE VIÁGEM PARA PARTICIPAR DO OITAVO CONGRESSO REGIONAL DE GESTORES PUBLICOS, REALIZADO NO AUDITÓRIO DO LITORAL NORTE HOTEL, NA CIDADE DE JOÃO PESSOA-PB NOS DIAS 25/03/2026 À 28/03/2026, CONFORME COMPROVANTE DE PAGAMENTO CONSTANTE NO BALANCETE MENSAL.",
+    "numeroEmpenho": "156"
   }
 ]

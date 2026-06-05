@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-2025-03",
+    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-108",
     "politicoId": "cm-nova-palmeira-gilvan-dantas-de-mendonca",
-    "data": "2025-03-01",
+    "data": "2025-03-25",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2100
+    "valor": 2100,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:três diárias e meia para participar de congresso legislativo na cidade de Natal/RN.",
+    "numeroEmpenho": "108"
   },
   {
-    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-2025-04",
+    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-120",
     "politicoId": "cm-nova-palmeira-gilvan-dantas-de-mendonca",
     "data": "2025-04-01",
     "ano": 2025,
@@ -21,22 +23,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para participar de evento na cidade de Cuité-PB.",
+    "numeroEmpenho": "120"
   },
   {
-    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-2025-05",
+    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-226",
     "politicoId": "cm-nova-palmeira-gilvan-dantas-de-mendonca",
-    "data": "2025-05-01",
+    "data": "2025-05-28",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para participar de um evento da FAMUP na cidade de Campina Grande - PB.",
+    "numeroEmpenho": "226"
   },
   {
-    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-2026-05",
+    "id": "cm-nova-palmeira-gilvan-dantas-de-mendonca-diaria-221",
     "politicoId": "cm-nova-palmeira-gilvan-dantas-de-mendonca",
     "data": "2026-05-01",
     "ano": 2026,
@@ -45,6 +51,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2400
+    "valor": 2400,
+    "descricao": "Valor que se registra em favor do credor acima destinado a execução de despesas com: 4 diárias completas para participar de um evento da CNM  em  Brasília -DF, conforme documentos em anexo.",
+    "numeroEmpenho": "221"
   }
 ]

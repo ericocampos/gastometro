@@ -1,6 +1,6 @@
 [
   {
-    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-2025-04",
+    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-182",
     "politicoId": "cm-picui-antonio-carlos-gomes-de-araujo",
     "data": "2025-04-01",
     "ano": 2025,
@@ -9,22 +9,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1000
+    "valor": 1000,
+    "descricao": "CORRESPONDENTE AO PAGAMENTO DE DUAS DIARIAS E MEIA AO VEREADOR ANTONIO CARLOS GOMES DE ARAÚJO PARA COBRIR DESPESAS,HOSPEDAGEM E ALIMENTAÇÃO NA PARTICIPAÇÃO DO CONGRESSO - 2 CONFEP, EM JOÃO PESSOA NOS DIAS 2, 3 E 4 DE ABRIL DE 2025, CONFORME ANEXO.",
+    "numeroEmpenho": "182"
   },
   {
-    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-2025-05",
+    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-299",
     "politicoId": "cm-picui-antonio-carlos-gomes-de-araujo",
-    "data": "2025-05-01",
+    "data": "2025-05-28",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "CORRESPONDENTE A DUAS DIARIAS AO VEREADOR INACIO ARAUJO PARA CUSTEAR DESPESAS COM DESLOCAMENTO E ESTADIA DURANTE A PARTICIPÇÃO NO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS REALIZADO NOS DIAS 28 E 30 DE MAIO 2025 NO CENTRO DE CONVENÇÕES EM JOAO PESSOA, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "299"
   },
   {
-    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-2026-03",
+    "id": "cm-picui-antonio-carlos-gomes-de-araujo-diaria-138",
     "politicoId": "cm-picui-antonio-carlos-gomes-de-araujo",
     "data": "2026-03-01",
     "ano": 2026,
@@ -33,6 +37,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2400
+    "valor": 2400,
+    "descricao": "CORRESPONDENTE A QUATRO DIARIAS AO VEREADOR INACIO ARAUJO PARA CUSTEAR DESPESAS NA PARTICIPAÇÃO NO ENCONTRO NACIONAL DE GESTORES E LEGISLATIVOS MUNICIPAIS EM NATAL-RN, NOS DIAS 17 A 20 DE MARÇO DE 2026, CONFORME CONSTA EM ANEXO.",
+    "numeroEmpenho": "138"
   }
 ]

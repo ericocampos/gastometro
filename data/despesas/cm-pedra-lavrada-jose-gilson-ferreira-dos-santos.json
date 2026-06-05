@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-2025-03",
+    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-88",
     "politicoId": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos",
-    "data": "2025-03-01",
+    "data": "2025-03-27",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 274.93
+    "valor": 274.93,
+    "descricao": "CORRESPONDE A UMA (1) DIARIA PARA VIAGEM COM DESTINO A CAPITAL PARAIBANA JOÃO PESSOA, COM MOTIVAÇÃO A VISITAÇÃO À SECRETARIA DE DESENVOLVIMENTO AGROPECUÁRIA E PESCA E À ASSEMBLEIA LEGISLATIVA DA PARAÍBA PARA BUSCAR RECURSOS E PARCERIAS PARA O MUNICÍPIO DE PEDRA LAVRADA.",
+    "numeroEmpenho": "88"
   },
   {
-    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-2025-04",
+    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-94",
     "politicoId": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos",
     "data": "2025-04-01",
     "ano": 2025,
@@ -21,22 +23,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 102.94
+    "valor": 102.94,
+    "descricao": "CORRESPONDE A CONCESSÃO DE 1/2 (MEIA) DIÁRIA, COM OBJETIVO DE PARTICIPAÇÃO DO CURSO DE FORMAÇÃO DE AGENTES DE CONTROLE SOCIAL, PROMOVIDO PELO MINISTÉRIO PÚBLICO DA PARAÍBA E DEMAIS ÓRGÃOS, COM O OBJETIVO DE CAPACITAR CIDADÃOS PARA O EXERCÍCIO DO CONTROLE SOCIAL. EVENTO REALIZADO NO AUDITÓRIO DA UFCG - CAMPUS CUITÉ.",
+    "numeroEmpenho": "94"
   },
   {
-    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-2025-05",
+    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-146",
     "politicoId": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos",
-    "data": "2025-05-01",
+    "data": "2025-05-16",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1647.08
+    "valor": 1647.08,
+    "descricao": "CORRESPONDE A CONCESSÃO DE 4 (QUATRO) DIÁRIAS, COM OBJETIVO DE PARTICIPAÇÃO NA XXVI MARCHA A BRASÍLIA EM DEFESA AOS MUNICIPIOS, EVENTO VOLTADO PARA O FORTALECIMENTO DA PAUTA MUNICIPALISTA.",
+    "numeroEmpenho": "146"
   },
   {
-    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-2026-05",
+    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-164",
     "politicoId": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos",
     "data": "2026-05-01",
     "ano": 2026,
@@ -45,6 +51,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2275
+    "valor": 1950,
+    "descricao": "REFERENTE A PARTICIPAÇÃO DO VEREADOR NA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, COM FOCO NO FORTALECIMENTO INSTITUCIONAL, ARTICULAÇÃO POLITICA E DEFESA DAS PAUTAS MUNICIPALISTAS JUNTO AO GOVERNO FEDERAL E AO CONGRESSO NACIONAL.",
+    "numeroEmpenho": "164"
+  },
+  {
+    "id": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos-diaria-189",
+    "politicoId": "cm-pedra-lavrada-jose-gilson-ferreira-dos-santos",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 325,
+    "descricao": "REFERENTE A COMPLEMENTO PARA PARTICIPAÇÃO DO VEREADOR NA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, COM FOCO NO FORTALECIMENTO INSTITUCIONAL, ARTICULAÇÃO POLITICA E DEFESA DAS PAUTAS MUNICIPALISTAS JUNTO AO GOVERNO FEDERAL E AO CONGRESSO NACIONAL.",
+    "numeroEmpenho": "189"
   }
 ]

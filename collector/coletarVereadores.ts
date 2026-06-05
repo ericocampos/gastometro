@@ -23,7 +23,7 @@ const ANO_ELEICAO_MUNICIPAL = 2024
 
 // ── Tipos do modelo flat que o web lê (definidos inline; NÃO importar tipos do web) ──
 interface Politico { id: string; nome: string; casa: 'camara' | 'senado' | 'assembleia' | 'camara_municipal'; partido: string; uf: string; legislaturas: number[]; fotoUrl?: string; municipio?: string }
-interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string; numeroNf?: string }
+interface Despesa { id: string; politicoId: string; data: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number; urlDocumento?: string; numeroNf?: string; descricao?: string; numeroEmpenho?: string }
 interface ItemRanking { politicoId: string; nome: string; partido: string; casa: string; total: number }
 interface PontoMensal { anoMes: string; total: number }
 interface ItemCategoria { categoria: string; total: number }
@@ -453,17 +453,26 @@ export function montarCidadeViapTce(
   fontes: { tce: string; camara: string },
   minAnoMes = '2025-01',
 ): SaidaCidade {
-  // agrupa por CPF, por TIPO (viap/diaria) e por mês (AAAA-MM), somando os empenhos pagos no mês
-  type Acc = { credor: string; viap: Map<string, number>; diaria: Map<string, number> }
+  // agrupa por CPF. VIAP: valor fixo, somado por mês (AAAA-MM). Diárias: guardadas lançamento a
+  // lançamento (cada empenho é uma viagem), para o detalhamento mostrar o histórico/empenho de cada.
+  type DiariaLanc = { anoMes: string; valor: number; historico: string; empenho: string; data: string }
+  type Acc = { credor: string; viap: Map<string, number>; diaria: DiariaLanc[] }
+  const ehDataIso = (s: string | undefined): boolean => /^\d{4}-\d{2}-\d{2}$/.test(s ?? '')
   const porCpf = new Map<string, Acc>()
   for (const d of despesasTce) {
     const k = chaveCpf(d.credorCpf)
     if (!k) continue
     const anoMes = `${d.ano}-${String(d.mes).padStart(2, '0')}`
     if (anoMes < minAnoMes) continue
-    const e = porCpf.get(k) ?? { credor: d.credor, viap: new Map(), diaria: new Map() }
-    const m = d.tipo === 'viap' ? e.viap : e.diaria
-    m.set(anoMes, (m.get(anoMes) ?? 0) + d.valorPago)
+    const e = porCpf.get(k) ?? { credor: d.credor, viap: new Map<string, number>(), diaria: [] as DiariaLanc[] }
+    if (d.tipo === 'viap') {
+      e.viap.set(anoMes, (e.viap.get(anoMes) ?? 0) + d.valorPago)
+    } else {
+      e.diaria.push({
+        anoMes, valor: d.valorPago, historico: (d.historico ?? '').trim(), empenho: (d.empenho ?? '').trim(),
+        data: ehDataIso(d.dataEmpenho) ? d.dataEmpenho! : `${anoMes}-01`,
+      })
+    }
     porCpf.set(k, e)
   }
 
@@ -501,21 +510,27 @@ export function montarCidadeViapTce(
     const entry = k ? porCpf.get(k) : undefined
     if (entry) usados.add(k)
     const viapMeses = entry && cidadeTemViap ? [...entry.viap.entries()].sort((a, b) => a[0].localeCompare(b[0])) : []
-    const diariaMeses = entry ? [...entry.diaria.entries()].sort((a, b) => a[0].localeCompare(b[0])) : []
+    const diariaLancs = entry ? [...entry.diaria].sort((a, b) => a.data.localeCompare(b.data) || a.empenho.localeCompare(b.empenho)) : []
 
-    // uma despesa por (tipo, mês); categorias separadas, total combinado
+    // VIAP: uma despesa por mês (valor fixo). Diárias: uma despesa por lançamento/empenho, com o
+    // histórico declarado (motivo/destino da viagem) e o nº de empenho como referência no TCE.
     const despesas: Despesa[] = []
     for (const [anoMes, valor] of viapMeses) {
       despesas.push({ id: `${id}-viap-${anoMes}`, politicoId: id, data: `${anoMes}-01`, ano: Number(anoMes.slice(0, 4)), mes: Number(anoMes.slice(5, 7)), categoria: CATEGORIA_VIAP, fornecedor: { nome: '' }, valor })
     }
-    for (const [anoMes, valor] of diariaMeses) {
-      despesas.push({ id: `${id}-diaria-${anoMes}`, politicoId: id, data: `${anoMes}-01`, ano: Number(anoMes.slice(0, 4)), mes: Number(anoMes.slice(5, 7)), categoria: CATEGORIA_DIARIA, fornecedor: { nome: '' }, valor })
+    for (const [i, l] of diariaLancs.entries()) {
+      despesas.push({
+        id: `${id}-diaria-${l.empenho || `${l.anoMes}-${i}`}`, politicoId: id, data: l.data,
+        ano: Number(l.anoMes.slice(0, 4)), mes: Number(l.anoMes.slice(5, 7)),
+        categoria: CATEGORIA_DIARIA, fornecedor: { nome: '' }, valor: l.valor,
+        descricao: l.historico || undefined, numeroEmpenho: l.empenho || undefined,
+      })
     }
     despesas.sort((a, b) => a.data.localeCompare(b.data))
     if (despesas.length) despesasPorId[id] = despesas
 
     const totalViap = viapMeses.reduce((s, [, v]) => s + v, 0)
-    const totalDiaria = diariaMeses.reduce((s, [, v]) => s + v, 0)
+    const totalDiaria = diariaLancs.reduce((s, l) => s + l.valor, 0)
     const total = totalViap + totalDiaria
     // série mensal = soma dos dois tipos por mês
     const porMes = new Map<string, number>()

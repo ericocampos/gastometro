@@ -1,42 +1,48 @@
 [
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2025-05",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-283",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
-    "data": "2025-05-01",
+    "data": "2025-05-28",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 750
+    "valor": 750,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A TRES  DIARIAS  PARA A  VEREADORA CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOA NO PERIODO DE 28 A 30 DEMAIO DE 2025 PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS NO CENTRO DE CONVENCOES DE JOAO PESSOAPB",
+    "numeroEmpenho": "283"
   },
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2025-08",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-478",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
-    "data": "2025-08-01",
+    "data": "2025-08-25",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1600
+    "valor": 1600,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A QUATRO DIARIAS COM PERNOITE PARA A VEREADORA DA CAMARA MUNICIPAL CUSTEAR DESPESAS COM REFEICAO QUANDO EM VIAGEM A CIDADE DE BRASILIADF NO PERIODO DE 26 A 29 DE AGOSTO DE 2025",
+    "numeroEmpenho": "478"
   },
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2025-09",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-498",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
-    "data": "2025-09-01",
+    "data": "2025-09-09",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 250
+    "valor": 250,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIARIA SEM PERNOITE  PARA A  VEREADORA  CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE SANTA LUZIAPB PARA PARTICIPAR DO I ENCONTRO E CAPACITACAO DE LEGISLATIVO MUNICIPAL NO DIA 09 DE SETEMBRO DE 2025",
+    "numeroEmpenho": "498"
   },
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2026-03",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-121",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
     "data": "2026-03-01",
     "ano": 2026,
@@ -45,10 +51,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 350
+    "valor": 350,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIARIA SEM PERNOITE PARA A VEREADORA DA CAMARA MUNICIPAL CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 10 DE MARCO DE 2026 PARA TRATAR DE ASSUNTOS DE INTERESSE DESTE LEGISLATIVO MUNICIPAL JUNTO A EMPAER",
+    "numeroEmpenho": "121"
   },
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2026-04",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-206",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
     "data": "2026-04-01",
     "ano": 2026,
@@ -57,10 +65,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 700
+    "valor": 350,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIARIA SEM PERNOITE PARA A VEREADORA DA CAMARA MUNICIPAL CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 02 DE ABRIL DE 2026 PARA PARTICIPAR DO ENCONTRO DE GESTORAS DAS CIDADES DO PROJETO DIGITALIZA MEI MULHER NO DIA 02 DE ABRIL DE 2026",
+    "numeroEmpenho": "206"
   },
   {
-    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-2026-05",
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-246",
+    "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 350,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIARIA SEM PERNOITE PARA A VEREADORA DA CAMARA MUNICIPAL CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 24 DE ABRIL DE 2026 A SERVICO DESTE LEGISLATIVO MUNICIPAL",
+    "numeroEmpenho": "246"
+  },
+  {
+    "id": "cm-alagoa-nova-maria-de-fatima-camara-de-souza-diaria-312",
     "politicoId": "cm-alagoa-nova-maria-de-fatima-camara-de-souza",
     "data": "2026-05-01",
     "ano": 2026,
@@ -69,6 +93,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 350
+    "valor": 350,
+    "descricao": "VALOR QUE SE EMPENHA CORRESPONDENTE A UMA DIARIA SEM PERNOITE PARA A VEREADORA DA CAMARA MUNICIPAL CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB NO DIA 25 DE MAIO DE 2026 A SERVICO DESTE LEGISLATIVO MUNICIPAL",
+    "numeroEmpenho": "312"
   }
 ]

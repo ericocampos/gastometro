@@ -24,16 +24,18 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-denis-formiga-sarmento-diaria-2025-02",
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-207",
     "politicoId": "cm-sousa-denis-formiga-sarmento",
-    "data": "2025-02-01",
+    "data": "2025-02-25",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR CORRESPONDENTE A 02DUAS DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB PARA TRATAR DE ASSUNTOS DE INTERESSE DA CAMARA MUNICIPAL DE SOUSA NA FUNDACAO NAPOLEAO LAUREANO E NA SECRETARIA DE ESTADO DA JUVENTUDE ESPORTE E LAZER NOS DIAS 26 E 27 DE FEVEREIRO DE 2025",
+    "numeroEmpenho": "207"
   },
   {
     "id": "cm-sousa-denis-formiga-sarmento-viap-2025-03",
@@ -60,16 +62,32 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-denis-formiga-sarmento-diaria-2025-04",
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-445",
     "politicoId": "cm-sousa-denis-formiga-sarmento",
-    "data": "2025-04-01",
+    "data": "2025-04-28",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 400,
+    "descricao": "VALOR CORRESPONDENTE A 01 UMA DIARIA QUANDO EM VIAGEM A JOAO PESSOAPB PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICIPIO DE SOUSA NA SECRETARIA DE ESTADO DA JUVENTUDE ESPORTE E LAZER EM ABRIL DE 2025",
+    "numeroEmpenho": "445"
+  },
+  {
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-457",
+    "politicoId": "cm-sousa-denis-formiga-sarmento",
+    "data": "2025-04-29",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR CORRESPONDENTE A 01UMA DIARIA QUANDO EM VIAGEM A JOAO PESSOAPB PARA PARTICIPAR DO LANCAMENTO DO PACTO PARAIBANO PELA PRIMEIRA INFANCIA NO TRIBUNAL DE CONTAS DO ESTADO DA PARAIBA NO DIA 28042025",
+    "numeroEmpenho": "457"
   },
   {
     "id": "cm-sousa-denis-formiga-sarmento-viap-2025-05",
@@ -96,16 +114,18 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-denis-formiga-sarmento-diaria-2025-06",
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-597",
     "politicoId": "cm-sousa-denis-formiga-sarmento",
-    "data": "2025-06-01",
+    "data": "2025-06-06",
     "ano": 2025,
     "mes": 6,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 1200,
+    "descricao": "VALOR CORRESPONDENTE A 03 DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB NO PERIODO DE 28 A 30 DE MAIO DE 2025 PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CAMARAS MUNICIPAIS",
+    "numeroEmpenho": "597"
   },
   {
     "id": "cm-sousa-denis-formiga-sarmento-viap-2025-07",
@@ -216,7 +236,7 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-denis-formiga-sarmento-diaria-2026-03",
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-327",
     "politicoId": "cm-sousa-denis-formiga-sarmento",
     "data": "2026-03-01",
     "ano": 2026,
@@ -225,7 +245,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR CORRESPONDENTE A 02DUAS DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB ONDE ESTEVE NA SECRETARIA DE ESTADO DA JUVENTUDEESPORTE E LAZER PARA TRATAR DE DE FUTUROS EVENTOS ESPORTIVOS A SEREM RELIZADOS NO MUNICIPIO DE SOUSAPB",
+    "numeroEmpenho": "327"
   },
   {
     "id": "cm-sousa-denis-formiga-sarmento-viap-2026-04",
@@ -240,7 +262,7 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-denis-formiga-sarmento-diaria-2026-04",
+    "id": "cm-sousa-denis-formiga-sarmento-diaria-377",
     "politicoId": "cm-sousa-denis-formiga-sarmento",
     "data": "2026-04-01",
     "ano": 2026,
@@ -249,7 +271,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR CORRESPONDENTE A 02DUAS DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB NOS DIAS 24 E 25032026 PARA REUNIAO COM O SECRETARIO LINDOLFO PIRES NETO E O DEPARTAMENTO DE DESPORTO DA SECRETARIA ONDE TRATOU DE ASSUNTOS REFERENTES A DEMANDAS ESPORTIVAS DO MUNICIPIO DE SOUSAPB",
+    "numeroEmpenho": "377"
   },
   {
     "id": "cm-sousa-denis-formiga-sarmento-viap-2026-05",

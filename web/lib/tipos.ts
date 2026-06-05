@@ -71,6 +71,8 @@ export interface Despesa {
   valor: number
   urlDocumento?: string
   numeroNf?: string   // número da nota fiscal (CG publica o número, não o documento)
+  descricao?: string  // histórico declarado no empenho (diárias: motivo/destino da viagem)
+  numeroEmpenho?: string  // nº do empenho no TCE (diárias não têm nota fiscal; é a referência do pagamento)
 }
 
 export interface Evidencia { despesaId?: string; descricao: string; valor?: number; data?: string; url?: string }

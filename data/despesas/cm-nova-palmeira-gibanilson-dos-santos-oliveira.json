@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-01",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-20",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-01-01",
+    "data": "2025-01-24",
     "ano": 2025,
     "mes": 1,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 meia diária a serviço desta Casa Legislativa, junto ao TCE - PB na cidade de João Pessoa-PB.",
+    "numeroEmpenho": "20"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-04",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-123",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
     "data": "2025-04-01",
     "ano": 2025,
@@ -21,70 +23,138 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2700
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária para participar de evento na cidade de Cuité-PB.",
+    "numeroEmpenho": "123"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-05",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-137",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-05-01",
+    "data": "2025-04-08",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para cobir gastos de viagem a serviço desta Casa Legislativa na cidade de João Pessoa/PB.",
+    "numeroEmpenho": "137"
+  },
+  {
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-164",
+    "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
+    "data": "2025-04-22",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2400,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:4 diárias para Brasília - DF para participar da XXVI Marcha dos getores e legislativos municipais.",
+    "numeroEmpenho": "164"
+  },
+  {
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-209",
+    "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
+    "data": "2025-05-20",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para a cidade de João Pessoa-PB, para tratar de demandas das atividades legislativas, conforme documento em anexo.",
+    "numeroEmpenho": "209"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-07",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-228",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-07-01",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para participar de um evento da FAMUP na cidade de Campina Grande - PB.",
+    "numeroEmpenho": "228"
+  },
+  {
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-307",
+    "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
+    "data": "2025-07-22",
     "ano": 2025,
     "mes": 7,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:",
+    "numeroEmpenho": "307"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-08",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-322",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-08-01",
+    "data": "2025-08-11",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:1/2 diária para tratar de assuntos desta Casa Legislativa e do município na cidade de João Pessoa PB.",
+    "numeroEmpenho": "322"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-10",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-412",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-10-01",
+    "data": "2025-10-16",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 450
+    "valor": 300,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1 diária para  tratar de assuntos de interesse do município - solicitar  materiais de distribuição gratuita -  junta as secretarias de governo do Estado - PB  na cidade de João Pessoa,  conforme documentos em anexo.",
+    "numeroEmpenho": "412"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2025-12",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-414",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
-    "data": "2025-12-01",
+    "data": "2025-10-17",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária para  tratar de assuntos de interesse do município -  junta as secretarias de governo do Estado - PB  na cidade de João Pessoa,  conforme documentos em anexo.",
+    "numeroEmpenho": "414"
+  },
+  {
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-518",
+    "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
+    "data": "2025-12-04",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária para  tratar de assuntos de interesse do município -  na cidade de João Pessoa,  conforme documentos em anexo.",
+    "numeroEmpenho": "518"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2026-02",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-32",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
     "data": "2026-02-01",
     "ano": 2026,
@@ -93,10 +163,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 150
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária para  tratar de assuntos de interesse do município -  na cidade de João Pessoa,  conforme documentos em anexo.",
+    "numeroEmpenho": "32"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2026-03",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-128",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
     "data": "2026-03-01",
     "ano": 2026,
@@ -105,10 +177,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 300
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária do vereador  desta Casa Legislativa para participar de um evento  na cidade de João Pessoa -PB,  conforme documentos em anexo.",
+    "numeroEmpenho": "128"
   },
   {
-    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-2026-04",
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-81",
+    "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 150,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com: 1/2 diária para  tratar de assuntos de interesse do município -  na cidade de João Pessoa,  conforme documentos em anexo.",
+    "numeroEmpenho": "81"
+  },
+  {
+    "id": "cm-nova-palmeira-gibanilson-dos-santos-oliveira-diaria-207",
     "politicoId": "cm-nova-palmeira-gibanilson-dos-santos-oliveira",
     "data": "2026-04-01",
     "ano": 2026,
@@ -117,6 +205,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2400
+    "valor": 2400,
+    "descricao": "Valor que se registra em favor de credor acima destinado a execução de despesas com:  4 diárias  do vereador desta Casa Legislativa para participar de um evento na cidade de Brasília-DF, conforme documento em anexo.",
+    "numeroEmpenho": "207"
   }
 ]

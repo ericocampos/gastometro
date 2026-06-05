@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-congo-adelson-candido-de-sousa-lima-diaria-2025-11",
+    "id": "cm-congo-adelson-candido-de-sousa-lima-diaria-255",
     "politicoId": "cm-congo-adelson-candido-de-sousa-lima",
-    "data": "2025-11-01",
+    "data": "2025-11-03",
     "ano": 2025,
     "mes": 11,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 100
+    "valor": 100,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA PARA ATENDER AO PAGAMENTO DE DIÁRIA PELO DESLOCAMENTO DO VEREADOR DA CAMARA MUNICIPAL A CIDADE DE CABACEIRAS-PB, PARA PARTICIPAR DO ENCONTRO DE VEREADORES DO CARIRI, CONFORME REQUISIÇÕES DE DIÁRIAS ANEXAS.",
+    "numeroEmpenho": "255"
   },
   {
-    "id": "cm-congo-adelson-candido-de-sousa-lima-diaria-2026-04",
+    "id": "cm-congo-adelson-candido-de-sousa-lima-diaria-132",
     "politicoId": "cm-congo-adelson-candido-de-sousa-lima",
     "data": "2026-04-01",
     "ano": 2026,
@@ -21,6 +23,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 1200,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA PARA ATENDER AO PAGAMENTO DE DIÁRIA PELO DESLOCAMENTO DO VEREADOR DA CAMARA MUNICIPAL A CAPITAL BRASILIA-DF, PARA PARTICIPAR DA MARCHA DOS LEGISLATIVOS, QUE OCORRERA NOS DIAS 27 A 30 DE ABRIL DO ANO EM CURSO, CONFORME REQUISIÇÕES DE DIÁRIAS ANEXAS.",
+    "numeroEmpenho": "132"
   }
 ]

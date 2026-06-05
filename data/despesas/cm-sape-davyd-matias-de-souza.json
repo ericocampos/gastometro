@@ -12,16 +12,32 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-01",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-38",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-01-01",
+    "data": "2025-01-27",
     "ano": 2025,
     "mes": 1,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 01 DIARIA PARCIAL, A FIM DE PARTICIPAR DE EVENTO REALIZADO PELA UVB EM CAMPINA GRANDE-PB.",
+    "numeroEmpenho": "38"
+  },
+  {
+    "id": "cm-sape-davyd-matias-de-souza-diaria-73",
+    "politicoId": "cm-sape-davyd-matias-de-souza",
+    "data": "2025-01-30",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 4000,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 4 DIARIAS INTEGRAIS, A FIM DE IR A BRASILIA-DF PARA PARTICIPAR DA POSSE DO PRESIDENTE DA CAMARA DOS DEPUTADOS HUGO MOTA-REPUBLICANOS E ABRIR DIALOGO COM A CAMARA FEDERAL, OU SEJA, DE LEGISLATIVO MUNICIPAL PARA LEGISLATIVO FEDERAL,  A FIM DE BUSCAR MELHORIAS PARA O MUNICIPIO DE SAPE.",
+    "numeroEmpenho": "73"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-02",
@@ -36,16 +52,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-02",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-131",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-02-01",
+    "data": "2025-02-27",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE PARTICIPAR DE EVENTO DE FUNDAÇÃO DA FEDERAÇÃO DAS CAMARA MUNICIPAIS-FECAM/PB EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "131"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-03",
@@ -60,16 +78,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-03",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-202",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-03-01",
+    "data": "2025-03-25",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3200
+    "valor": 3200,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 04 DIARIAS INTEGRAIS, A FIM DE PARTICIPAR DO EVENTO ENCONTRO DOS GESTORES DOS LEGISLATIVOS MUNICIPAIS, REALIZADO DE 25 A 28/03/2025 EM NATAL RN.",
+    "numeroEmpenho": "202"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-04",
@@ -108,16 +128,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-06",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-395",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-06-01",
+    "data": "2025-06-09",
     "ano": 2025,
     "mes": 6,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE PARTICIPAR DO EVENTO - VALORIZACAO DOS SERVIDORES REQUISITADOS PELA JUSTICA ELEITORAL AS PREFEITURA PARAIBANAS, REALIZADO PELO TRIBUNAL REGIONAL ELEITORAL, NA DATA DE 09/06/2025, EM CAMPINA GRANDE-PB.",
+    "numeroEmpenho": "395"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-07",
@@ -132,16 +154,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-07",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-520",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-07-01",
+    "data": "2025-07-31",
     "ano": 2025,
     "mes": 7,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTA CASA LEGISLATIVA EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "520"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-08",
@@ -156,16 +180,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-08",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-528",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-08-01",
+    "data": "2025-08-18",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE PARTICIPAR DO EVENTO ENCONTRO ESTADUAL PELA PRIMEIRA INFANCIA, PROMOVIDO PELO TRIBUNAL DE CONTAS DO ESTADO, NA CIDADE DE CAMPINA GRANDE-PB, NESTA DATA, E IDA A CAPITAL DO ESTADO PARA RESOLVER ASSUNTOS DE INTERESSE DESTE MUNICIPIO.",
+    "numeroEmpenho": "528"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-09",
@@ -192,16 +218,46 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-10",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-664",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-10-01",
+    "data": "2025-10-03",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1200
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE RESOLVER ASSUNTOS PERTINENTES A CONTABILIDADE DESTA CASA LEGISLATIVA NO ESCRITORIO DE CONTABILIDADE - CONPLAN, EM CAMPINA GRANDE-PB.",
+    "numeroEmpenho": "664"
+  },
+  {
+    "id": "cm-sape-davyd-matias-de-souza-diaria-713",
+    "politicoId": "cm-sape-davyd-matias-de-souza",
+    "data": "2025-10-28",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE PARTICIPAR DE EVENTO DE CAPACITACAO SOBRE O FUNCIONAMENTO DAS CASAS LEGISLATIVAS FRENTE AOS DESAFIOS DA CONTEPORANEIDADE, OCORRIDO EM CAMPINA GRANDE-PB.",
+    "numeroEmpenho": "713"
+  },
+  {
+    "id": "cm-sape-davyd-matias-de-souza-diaria-717",
+    "politicoId": "cm-sape-davyd-matias-de-souza",
+    "data": "2025-10-29",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTA CASA LEGISLATIVA, EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "717"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-11",
@@ -216,16 +272,18 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-11",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-744",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-11-01",
+    "data": "2025-11-13",
     "ano": 2025,
     "mes": 11,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTA CASA LEGISLATIVA, EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "744"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2025-12",
@@ -240,16 +298,32 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2025-12",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-816",
     "politicoId": "cm-sape-davyd-matias-de-souza",
-    "data": "2025-12-01",
+    "data": "2025-12-11",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE RESOLVER ASSUNTOS DE INTERESSE DESTE PODER LEGISLATIVO, EM JOAO PESSOA-PB, NESTA DATA.",
+    "numeroEmpenho": "816"
+  },
+  {
+    "id": "cm-sape-davyd-matias-de-souza-diaria-880",
+    "politicoId": "cm-sape-davyd-matias-de-souza",
+    "data": "2025-12-24",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL A FIM DE RESOLVER PENDENCIAS DO FECHAMENTO DO BALANCETE DEZEMBRO/2025 NO ESCRITORIO DE CONTABILIDADE EM CAMPINA GRANDE-PB.",
+    "numeroEmpenho": "880"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2026-01",
@@ -276,7 +350,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2026-02",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-63",
     "politicoId": "cm-sape-davyd-matias-de-souza",
     "data": "2026-02-01",
     "ano": 2026,
@@ -285,7 +359,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 01 DIARIA PARCIAL A FIM DE PARTICIPAR DA REUNIAO DA FECAM EM CAMPINA GRANDE-PB, NESTA DATA.",
+    "numeroEmpenho": "63"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2026-03",
@@ -300,7 +376,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2026-03",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-140",
     "politicoId": "cm-sape-davyd-matias-de-souza",
     "data": "2026-03-01",
     "ano": 2026,
@@ -309,7 +385,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE ORA SE EMPENHA COM DESPESA DE 02 DIARIAS PARCIAIS, A FIM DE PARTICIPAR DA REUNIAO PROMOVIDA PELA FEDERACAO DAS CAMARAS MUNICIPAIS DO ESTADO DA PARAIBA - FECAM PB, NESTA DATA, REALIZADO NO HOTEL ATLANTICO CABO BRANCO, EM JOAO PESSOA-PB, E IDA AO TRIBUNAL DE CONTAS EM JOAO PESSOA, DIA 18.03.2026, PARA TRATAR DE ASSUNTOS DE INTERESSE DESTA PODER LEGISLATIVO.",
+    "numeroEmpenho": "140"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2026-04",
@@ -324,7 +402,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2026-04",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-205",
     "politicoId": "cm-sape-davyd-matias-de-souza",
     "data": "2026-04-01",
     "ano": 2026,
@@ -333,7 +411,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 400
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE TRATAR DE ASSUNTOS DE INTERESSE DESTE MUNICIPIO, EM CAMPINA GRANDE, NESTA DATA.",
+    "numeroEmpenho": "205"
   },
   {
     "id": "cm-sape-davyd-matias-de-souza-viap-2026-05",
@@ -348,7 +428,7 @@
     "valor": 4000
   },
   {
-    "id": "cm-sape-davyd-matias-de-souza-diaria-2026-05",
+    "id": "cm-sape-davyd-matias-de-souza-diaria-272",
     "politicoId": "cm-sape-davyd-matias-de-souza",
     "data": "2026-05-01",
     "ano": 2026,
@@ -357,6 +437,22 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE TRATAR DE ASSUNTOS DE INTERESSE DESTE MUNICIPIO, EM JOAO PESSOA, NESTA DATA.",
+    "numeroEmpenho": "272"
+  },
+  {
+    "id": "cm-sape-davyd-matias-de-souza-diaria-282",
+    "politicoId": "cm-sape-davyd-matias-de-souza",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR QUE ORA SE EMPENHA PARA ATENDER DESPESA COM 1 DIARIA PARCIAL, A FIM DE PARTICIPAR DO EVENTO SOBRE POLITICAS PUBLICAS PARA A PRIMEIRA INFANCIA: DIAGNOSTICO E ACAO, REALIZADO EM JOAO PESSOA.",
+    "numeroEmpenho": "282"
   }
 ]

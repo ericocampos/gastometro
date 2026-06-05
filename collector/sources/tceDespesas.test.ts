@@ -2,10 +2,12 @@ import { describe, it, expect } from 'vitest'
 import { parseIndenizacoesCamara, parseDespesasVereador, conferirMeses, fonteUrlDespesas, chaveCpf } from './tceDespesas'
 
 // monta uma linha do CSV de despesas do TCE com as colunas nas posições certas (1-based):
-// 3 descricao_ug · 6 mes · 7 cpf_cnpj · 8 credor · 11 valor_pago · 29 elemento_despesa
-function linha({ ug, mes, credor, pago, elemento, cpf }: { ug: string; mes: string; credor: string; pago: string; elemento: string; cpf?: string }): string {
+// 4 numero_empenho · 5 data_empenho · 3 descricao_ug · 6 mes · 7 cpf_cnpj · 8 credor · 11 valor_pago ·
+// 29 elemento_despesa · 35 historico
+function linha({ ug, mes, credor, pago, elemento, cpf, empenho, data, historico }: { ug: string; mes: string; credor: string; pago: string; elemento: string; cpf?: string; empenho?: string; data?: string; historico?: string }): string {
   const f = new Array(40).fill('')
   f[2] = ug; f[5] = mes; f[6] = cpf ?? ''; f[7] = credor; f[10] = pago; f[28] = elemento
+  f[3] = empenho ?? ''; f[4] = data ?? ''; f[34] = historico ?? ''
   return f.join(';')
 }
 const HEADER = new Array(40).fill('x').join(';')
@@ -13,8 +15,8 @@ const CSV = [
   HEADER,
   linha({ ug: 'Câmara Municipal de Campina Grande', mes: '01-Janeiro', credor: 'ANA MARIA COSTA', pago: '12.000', elemento: 'Indenizações e Restituições' }),
   linha({ ug: 'Câmara Municipal de Campina Grande', mes: '02-Fevereiro', credor: 'ANA MARIA COSTA', pago: '16.987,64', elemento: 'Indenizações e Restituições' }),
-  // diárias da câmara: não é VIAP, deve ser ignorado
-  linha({ ug: 'Câmara Municipal de Campina Grande', mes: '01-Janeiro', credor: 'ANA MARIA COSTA', pago: '500', elemento: 'Diárias - Civil' }),
+  // diárias da câmara: não é VIAP, traz empenho/data/histórico
+  linha({ ug: 'Câmara Municipal de Campina Grande', mes: '01-Janeiro', credor: 'ANA MARIA COSTA', pago: '500', elemento: 'Diárias - Civil', empenho: '54', data: '2025-01-30', historico: 'DESLOCAMENTO A BRASILIA' }),
   // prefeitura: outra UG, ignorar
   linha({ ug: 'Prefeitura Municipal de Campina Grande', mes: '01-Janeiro', credor: 'FULANO', pago: '99.999', elemento: 'Indenizações e Restituições' }),
   // valor zero: ignorar
@@ -38,6 +40,25 @@ describe('tceDespesas', () => {
     expect(diaria[0]).toMatchObject({ credor: 'ANA MARIA COSTA', valorPago: 500, tipo: 'diaria' })
     // prefeitura e valor zero ficam de fora
     expect(r.every((x) => x.credor !== 'FULANO' && x.credor !== 'CLEDSON')).toBe(true)
+  })
+
+  it('parseDespesasVereador captura empenho, data e histórico de cada diária', () => {
+    const r = parseDespesasVereador(CSV, 2025)
+    const diaria = r.find((x) => x.tipo === 'diaria')!
+    expect(diaria.empenho).toBe('54')
+    expect(diaria.dataEmpenho).toBe('2025-01-30')
+    expect(diaria.historico).toBe('DESLOCAMENTO A BRASILIA')
+  })
+
+  it('lerHistorico tolera ; no texto do histórico (col 35), sem corromper as colunas anteriores', () => {
+    // 41 campos: o histórico tem um ';' no meio, empurrando a cauda — o financeiro (col 11/29) intacto
+    const f = new Array(41).fill('')
+    f[2] = 'Câmara Municipal de X'; f[5] = '01-Janeiro'; f[7] = 'BELTRANO'; f[10] = '300'; f[28] = 'Diárias - Civil'
+    f[3] = '7'; f[4] = '2025-01-10'; f[34] = 'IDA A JOAO PESSOA'; f[35] = 'E VOLTA NO MESMO DIA'
+    const r = parseDespesasVereador([new Array(41).fill('x').join(';'), f.join(';')].join('\n'), 2025)
+    expect(r).toHaveLength(1)
+    expect(r[0]).toMatchObject({ valorPago: 300, tipo: 'diaria', empenho: '7' })
+    expect(r[0].historico).toBe('IDA A JOAO PESSOA;E VOLTA NO MESMO DIA')
   })
 
   const mes = (anoMes: string, v: number, apr?: number) => ({ anoMes, reembolsado: v, apresentado: apr ?? v })

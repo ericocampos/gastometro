@@ -1,18 +1,20 @@
 [
   {
-    "id": "cm-sobrado-angelina-raquel-eurico-de-lima-diaria-2025-05",
+    "id": "cm-sobrado-angelina-raquel-eurico-de-lima-diaria-146",
     "politicoId": "cm-sobrado-angelina-raquel-eurico-de-lima",
-    "data": "2025-05-01",
+    "data": "2025-05-13",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1500
+    "valor": 1500,
+    "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A 03 DIARIAS COM DESTINO A BRASILIA PARA PARTICIPAR DA XXXVI MARCHA EM DEFESA DOS MUNICIPIOS",
+    "numeroEmpenho": "146"
   },
   {
-    "id": "cm-sobrado-angelina-raquel-eurico-de-lima-diaria-2026-03",
+    "id": "cm-sobrado-angelina-raquel-eurico-de-lima-diaria-61",
     "politicoId": "cm-sobrado-angelina-raquel-eurico-de-lima",
     "data": "2026-03-01",
     "ano": 2026,
@@ -21,6 +23,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 350
+    "valor": 350,
+    "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A 02 DIARIAS COM DESTINO A JOAO PESSOA PARA TRATAR ASSUNTOS JUNTO A ASSESSORIA JURIDICA",
+    "numeroEmpenho": "61"
   }
 ]

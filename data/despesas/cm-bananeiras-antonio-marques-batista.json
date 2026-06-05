@@ -1,54 +1,62 @@
 [
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2025-02",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-90",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
-    "data": "2025-02-01",
+    "data": "2025-02-21",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1800
+    "valor": 1800,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A DIARIAS CONCEDIDAS AO VEREADOR PARA CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB PARA PARTICIPAR DO 4 CONGRESSO REGIONAL DE GESTORES PUBLICOS NOS DIAS 24 A 27022025",
+    "numeroEmpenho": "90"
   },
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2025-04",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-208",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
-    "data": "2025-04-01",
+    "data": "2025-04-25",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 450
+    "valor": 450,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO REFERENTE A DIARIAS CONCEDIDAS AO VEREADOR PARA CUSTEAR DESPESAS QUANDO EM VIAGEM A CIDADE DE JOAO PESSOAPB PARA PARTICIPAR DE EVENTO REALIZADO NO TEATRO PEDRA DO REINO NO CENTRO DE CONVENCOES DE JOAO PESSOAPB",
+    "numeroEmpenho": "208"
   },
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2025-05",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-243",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
-    "data": "2025-05-01",
+    "data": "2025-05-15",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO CORRESPONDENTE A 05 DIARIAS INTEGRAIS PARA DESLOCAMENTO A  CIDADE DE BRASILIADF COM O INTUITO DE PARTICIPAR DA XXVI MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS REALIZADA PELA CONFEDERACAO NACIONAL DOS MUNICIPIOS",
+    "numeroEmpenho": "243"
   },
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2025-10",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-541",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
-    "data": "2025-10-01",
+    "data": "2025-10-27",
     "ano": 2025,
     "mes": 10,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1800
+    "valor": 1800,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO CORRESPONDENTE A 02 DIARIAS INTEGRAIS PARA DESLOCAMENTO A  CIDADE DE NATALRN PARA PARTICIPAR DO 2 ENCONTRO NORDESTINO DE AGENTES E GESTORES PUBLICOS",
+    "numeroEmpenho": "541"
   },
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2026-03",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-116",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
     "data": "2026-03-01",
     "ano": 2026,
@@ -57,10 +65,26 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1800
+    "valor": 450,
+    "descricao": "IMPORTNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO CORRESPONDENTE A 01 DIARIA PARA CUSTEAR DESPESAS DE DESLOCAMENTO A CIDADE DE JOAO PESSOA COM A FINALIDADE DE PROTOCOLAR PRESENCIALMENTE UM OFICIO JUNTO A CAGEPA",
+    "numeroEmpenho": "116"
   },
   {
-    "id": "cm-bananeiras-antonio-marques-batista-diaria-2026-05",
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-174",
+    "politicoId": "cm-bananeiras-antonio-marques-batista",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1350,
+    "descricao": "IMPORTNCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO CORRESPONDENTE A CONCESSAO DE TRES DIARIAS PARA PARTICIPAR DO 8 CONGRESSO REGIONAL DE GESTORES PUBLICOS – EDICAO ENCANTOS DA PARAIBA A SER REALIZADO NA CIDADE DE JOAO PESSOA – PB QUE OCORRERA ENTRE OS DIAS 25 A 28 DE MARCO DE 2026",
+    "numeroEmpenho": "174"
+  },
+  {
+    "id": "cm-bananeiras-antonio-marques-batista-diaria-276",
     "politicoId": "cm-bananeiras-antonio-marques-batista",
     "data": "2026-05-01",
     "ano": 2026,
@@ -69,6 +93,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "IMPORTANCIA QUE SE EMPENHA NESTA DATA PARA PAGAMENTO CORRESPONDENTE A CONCESSAO DE DIARIAS PARA PARTICIPACAO DA XXVII MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS QUE OCORRERA DOS DIAS 18 A 21 DE MAIO DE 2026 QUE OCORRERA EM BRASILIADF",
+    "numeroEmpenho": "276"
   }
 ]

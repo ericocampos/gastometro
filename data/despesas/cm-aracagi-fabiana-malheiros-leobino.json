@@ -1,26 +1,44 @@
 [
   {
-    "id": "cm-aracagi-fabiana-malheiros-leobino-diaria-2025-08",
+    "id": "cm-aracagi-fabiana-malheiros-leobino-diaria-503",
     "politicoId": "cm-aracagi-fabiana-malheiros-leobino",
-    "data": "2025-08-01",
+    "data": "2025-08-19",
     "ano": 2025,
     "mes": 8,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 250
+    "valor": 250,
+    "descricao": "valor que se emnpenha para fazer face com despesas com diaria de vereadora desta casa legislativa para participar do seminario focco no incio da gestao realizado no tcepb",
+    "numeroEmpenho": "503"
   },
   {
-    "id": "cm-aracagi-fabiana-malheiros-leobino-diaria-2025-12",
+    "id": "cm-aracagi-fabiana-malheiros-leobino-diaria-779",
     "politicoId": "cm-aracagi-fabiana-malheiros-leobino",
-    "data": "2025-12-01",
+    "data": "2025-12-15",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1250
+    "valor": 250,
+    "descricao": "valor que se emnpenha para fazer face com despesas com  uma diaria de vereadora desta casa legislativa para participar do primeiro encontro municipalista da paraiba na cidade de campina grandepb",
+    "numeroEmpenho": "779"
+  },
+  {
+    "id": "cm-aracagi-fabiana-malheiros-leobino-diaria-780",
+    "politicoId": "cm-aracagi-fabiana-malheiros-leobino",
+    "data": "2025-12-15",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1000,
+    "descricao": "valor que se emnpenha para fazer face com despesas com  4 diarias de vereadora desta casa legislativa para participar do congresso nordestino de legislativo municipais na cidade de Joao pessoaPB",
+    "numeroEmpenho": "780"
   }
 ]

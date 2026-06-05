@@ -1,51 +1,59 @@
 [
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-01",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-34",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
-    "data": "2025-01-01",
+    "data": "2025-01-27",
     "ano": 2025,
     "mes": 1,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4000
+    "valor": 4000,
+    "descricao": "\"VALOR QUE SE EMPENHA REFERENTE A O5 (CINCO)DIARIAS PARA O VEREADOR ACIMA CITADO PARTICIPAR DO 1239º CURSO DE CAPACITAÇÃO PARA VEREADORES,PREFEITOS,VICE-PREFEITOS,SECRETARIOS MUNICIPAIS,GESTORES,ASSESSORES E SERVIDORES PUBLICOS; ORGANIZAÇÃO E FUNCIONAMENTO DA CAMARA MUNICIPAL E O PAPEL DO VEREADOR,NO PERIODO DE 27 A 31 DE JANEIRO DE 2025,NA CIDADE DE FORTALEZA-CE,NO AUDITORIO DO HOTEL IRACEMA TRAVEL, CONFORME COMPROVANTE.\"",
+    "numeroEmpenho": "34"
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-02",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-101",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
-    "data": "2025-02-01",
+    "data": "2025-02-21",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A O2(DUAS)DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO SEMINARIO O LEGISLATIVO MUNICIPAL E OS DESAFIOS PARA O NOVO BIÊNIO,NOS DIAS 21 E 22 DE FEVEREIRO DE 2025,NA CIDADE DE BANANEIRAS-PB,NA SEDE DA CÂMARA MUNICIPAL DE BANANEIRAS-PB, CONFORME COMPROVANTE.",
+    "numeroEmpenho": "101"
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-03",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-169",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
-    "data": "2025-03-01",
+    "data": "2025-03-25",
     "ano": 2025,
     "mes": 3,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3200
+    "valor": 3200,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A O4(QUATRO)DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO 1246ºCURSO DE CAPACITAÇÃO PARA VEREADORES,PREFEITOS,VICE-PREFEITOS,SEC.MUNICIPAIS,GESTORES,ASSESSORES E SERV.PUBLICOS,NOS DIAS 25,26,27,28 E 29 DE MARÇO DE 2025,NO AUDITORIO DO HOTEL CONFORT HOTEL & SUITES NATAL, NA CIDADE DE NATAL-RN,CONFORME COMPROVANTE.",
+    "numeroEmpenho": "169"
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-06",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-292",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
-    "data": "2025-06-01",
+    "data": "2025-06-09",
     "ano": 2025,
     "mes": 6,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 3200
+    "valor": 3200,
+    "descricao": "VALOR QUE SE EMPENHA REFERENTE A O4(QUATRO)DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO CURSO DE PROGRAMA DE FORMAÇÃO LEGISLATIVA: CURSO PRATICO SOBRE ORÇAMENTO MUNICIPAL E EMENDAS PARLAMENTARES, NO PERIODO DE 10,11,12 E 13 DE JUNHO DE 2025,CONFORME COMPROVANTE.",
+    "numeroEmpenho": "292"
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2025-12",
@@ -60,16 +68,18 @@
     "valor": 6000
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2025-12",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-634",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
-    "data": "2025-12-01",
+    "data": "2025-12-02",
     "ano": 2025,
     "mes": 12,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4000
+    "valor": 4000,
+    "descricao": "\"VALOR QUE SE EMPENHA REFERENTE A O5(CINCO)DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO CURSO DE CAPACITAÇÃO PARA VEREADORES,PREFEITOS,VICE-PREFEITOS,SECRETÁRIOS MUNICIPAIS,GESTORES,ASSESSORES E SERVIDORES PÚBLICOS, \"\"INOVAÇÃO E MUNICIPIO INTELIGENTE,HUMANO E SUSTENTAVEL NO PERIODO DE 02,03,04,05 E 06 DE DEZEMBRO DE 2025,NA CIDADE DE FORTALEZA-CE,CONFORME COMPROVANTE.\"",
+    "numeroEmpenho": "634"
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-01",
@@ -84,7 +94,7 @@
     "valor": 10000
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2026-01",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-41",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
     "data": "2026-01-01",
     "ano": 2026,
@@ -93,7 +103,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "\"VALOR QUE SE EMPENHA REFERENTE A O5(CINCO) DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO 1286° CURSO DE CAPACITAÇÃO PARA VEREADORES, PREFEITOS, VICE-PREFEITOS, SECRETÁRIOS MUNICIPAIS, GESTORES, ASSESSORES E SERVIDORES PÚBLICOS \"\"GESTÃO PÚBLICA - ORIENTAÇÃO AOS GESTORES MUNICIPAIS, NO PERIODO DE 26, 27, 28, 29, 30 e 31 DE JANEIRO DE 2026, NA CIDADE DE FORTALEZA - CE - AUDITORIO DO HOTEL IRACEMA TRAVEL, CONFORME COMPROVANTE.\"",
+    "numeroEmpenho": "41"
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-03",
@@ -108,7 +120,7 @@
     "valor": 20000
   },
   {
-    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-2026-03",
+    "id": "cm-conde-munique-marinho-de-lima-rolim-diaria-176",
     "politicoId": "cm-conde-munique-marinho-de-lima-rolim",
     "data": "2026-03-01",
     "ano": 2026,
@@ -117,7 +129,9 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 4500
+    "valor": 4500,
+    "descricao": "\"VALOR QUE SE EMPENHA REFERENTE A O5(CINCO) DIARIAS PARA A VEREADORA ACIMA CITADA PARTICIPAR DO 1293° CURSO DE CAPACITAÇÃO PARA VEREADORES, PREFEITOS, VICE-PREFEITOS, SECRETÁRIOS MUNICIPAIS, GESTORES, ASSESSORES E SERVIDORES PUBLICOS,\"\"MODELO DE EXCELÊNCIA EM GESTÃO À REALIZAR-SE NOS DIAS 24,25, 26, 27 E 28 DE MARÇO DE 2026, NA CIDADE DE NATAL-RN AUDITORIO HOTEL TRANSAMERICA EXECUTE NATAL-RN,CONFORME COMPROVANTE.\"",
+    "numeroEmpenho": "176"
   },
   {
     "id": "cm-conde-munique-marinho-de-lima-rolim-viap-2026-04",

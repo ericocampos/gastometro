@@ -35,6 +35,29 @@ describe('DetalhamentoGastos', () => {
     expect(screen.getByText(/nenhuma despesa/i)).toBeInTheDocument()
   })
 
+  it('diária: mostra histórico no lugar do fornecedor, nº de empenho no Doc e nota explicativa', () => {
+    const diaria: Despesa = {
+      id: 'di-1', politicoId: 'cm-1', data: '2025-01-30', ano: 2025, mes: 1,
+      categoria: 'Diárias', fornecedor: { nome: '' }, valor: 2640,
+      descricao: 'DESLOCAMENTO A BRASILIA PARA AGENDA NOS MINISTERIOS', numeroEmpenho: '54',
+    }
+    render(<DetalhamentoGastos despesas={[diaria]} casa="camara_municipal" />)
+    expect(screen.getAllByText(/DESLOCAMENTO A BRASILIA/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getAllByText(/Emp\. 54/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/diária não tem nota fiscal/i)).toBeInTheDocument()
+  })
+
+  it('diária: a busca também encontra pelo texto do histórico', () => {
+    const diaria: Despesa = {
+      id: 'di-2', politicoId: 'cm-1', data: '2025-02-10', ano: 2025, mes: 2,
+      categoria: 'Diárias', fornecedor: { nome: '' }, valor: 165,
+      descricao: 'AUDIENCIA NO TCE EM JOAO PESSOA', numeroEmpenho: '4',
+    }
+    render(<DetalhamentoGastos despesas={[diaria]} casa="camara_municipal" />)
+    fireEvent.change(screen.getByLabelText(/buscar fornecedor/i), { target: { value: 'tce' } })
+    expect(screen.getAllByText(/AUDIENCIA NO TCE/).length).toBeGreaterThanOrEqual(1)
+  })
+
   it('marca as linhas que geraram ponto de atenção e mostra a legenda', () => {
     render(
       <DetalhamentoGastos

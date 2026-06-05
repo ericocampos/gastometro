@@ -24,16 +24,18 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-2025-02",
+    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-208",
     "politicoId": "cm-sousa-diogenes-ferreira-da-silva",
-    "data": "2025-02-01",
+    "data": "2025-02-25",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 800,
+    "descricao": "VALOR CORRESPONDENTE A 02DUAS DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB PARA TRATAR DE ASSUNTOS DE INTERESSE DA CAMARA MUNICIPAL DE SOUSA NA FUNDACAO NAPOLEAO LAUREANO E NA SECRETARIA DE ESTADO DA JUVENTUDE ESPORTE E LAZER NOS DIAS 26 E 27 DE FEVEREIRO DE 2025",
+    "numeroEmpenho": "208"
   },
   {
     "id": "cm-sousa-diogenes-ferreira-da-silva-viap-2025-03",
@@ -60,16 +62,32 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-2025-04",
+    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-446",
     "politicoId": "cm-sousa-diogenes-ferreira-da-silva",
-    "data": "2025-04-01",
+    "data": "2025-04-28",
     "ano": 2025,
     "mes": 4,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 800
+    "valor": 400,
+    "descricao": "VALOR CORRESPONDENTE A 01 UMA DIARIA QUANDO EM VIAGEM A JOAO PESSOAPB PARA TRATAR DE ASSUNTOS DE INTERESSE DO MUNICIPIO DE SOUSA NA SECRETARIA DE ESTADO DA JUVENTUDE ESPORTE E LAZER EM ABRIL DE 2025",
+    "numeroEmpenho": "446"
+  },
+  {
+    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-454",
+    "politicoId": "cm-sousa-diogenes-ferreira-da-silva",
+    "data": "2025-04-28",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "VALOR CORRESPONDENTE A 01 UMA DIARIA QUANDO EM VIAGEM A JOAO PESSOAPB PARA PARTICIPAR DO LANCAMENTO DO PACTO PARAIBANO PELA PRIMEIRA INFANCIA NA PARAIBA NO TEATRO PEDRA DO REINO EM ABRIL DE 2025",
+    "numeroEmpenho": "454"
   },
   {
     "id": "cm-sousa-diogenes-ferreira-da-silva-viap-2025-05",
@@ -216,7 +234,7 @@
     "valor": 6000
   },
   {
-    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-2026-04",
+    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-366",
     "politicoId": "cm-sousa-diogenes-ferreira-da-silva",
     "data": "2026-04-01",
     "ano": 2026,
@@ -225,7 +243,23 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2000
+    "valor": 800,
+    "descricao": "VALOR CORRESPONDENTE A 02DUAS DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB ONDE ESTEVE NA SECRETARIA DE ESTADO DA JUVENTUDEESPORTE E LAZERPARA TRATAR DE JOGOS DOS CIGANOS E A REDE DE ATENCAO A PESSOA COM DEFICIENCIA DA 10 REGIAO DE SAUDE",
+    "numeroEmpenho": "366"
+  },
+  {
+    "id": "cm-sousa-diogenes-ferreira-da-silva-diaria-407",
+    "politicoId": "cm-sousa-diogenes-ferreira-da-silva",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1200,
+    "descricao": "VALOR CORRESPONDENTE A 03TRES DIARIAS QUANDO EM VIAGEM A JOAO PESSOAPB NOS DIAS 13 A 15042026 ONDE VISITOU A SECRETARIA DE ESTADO DA JUVENTUDEESPORTE E LZER  SEJEL PARA TRTAR DE ASSUNTOS SOBRE OS JOGOS DOS CIGANOS E A GERENCIA DA REDE DE ATENCAO A PESSOA COM DEFICIENCIA DA 10 REGIAO DE SAUDE",
+    "numeroEmpenho": "407"
   },
   {
     "id": "cm-sousa-diogenes-ferreira-da-silva-viap-2026-05",

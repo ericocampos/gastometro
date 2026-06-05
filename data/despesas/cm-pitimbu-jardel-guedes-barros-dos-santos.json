@@ -1,14 +1,30 @@
 [
   {
-    "id": "cm-pitimbu-jardel-guedes-barros-dos-santos-diaria-2025-05",
+    "id": "cm-pitimbu-jardel-guedes-barros-dos-santos-diaria-248",
     "politicoId": "cm-pitimbu-jardel-guedes-barros-dos-santos",
-    "data": "2025-05-01",
+    "data": "2025-05-20",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1550
+    "valor": 1050,
+    "descricao": "VALOR CORRESPONDENTE AO PAGAMENTO DE 1,5 (UMA DIÁRIA E MEIA) EM FAVOR DO VEREADOR JARDEL GUEDES BARROS DOS SANTOS PARA PARTICIPAR DA XXVI MARCHA A BRASILIA EM DEFESA DOS MUNICIPIOS, DURANTE O PERÍODO DE 19 A 22 DE MAIO DE 2025",
+    "numeroEmpenho": "248"
+  },
+  {
+    "id": "cm-pitimbu-jardel-guedes-barros-dos-santos-diaria-274",
+    "politicoId": "cm-pitimbu-jardel-guedes-barros-dos-santos",
+    "data": "2025-05-28",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 500,
+    "descricao": "VALOR CORRESPONDENTE AO PAGAMENTO DE 1,5 (UMA DIÁRIA E MEIA) EM FAVOR DO VEREADOR JARDEL GUEDES BARROS DOS SANTOS PARA PARTICIPAR DO II ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS, QUE OCORRERÁ NOS DIAS 28, 29 E 30 DE MAIO DE 2025, NO CENTRO DE CONVENÇÕES POETA RONALDO CUNHA LIMA.",
+    "numeroEmpenho": "274"
   }
 ]

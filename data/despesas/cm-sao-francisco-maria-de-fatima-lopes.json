@@ -1,42 +1,62 @@
 [
   {
-    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-2025-02",
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-30",
     "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
-    "data": "2025-02-01",
+    "data": "2025-02-13",
     "ano": 2025,
     "mes": 2,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 712.5
+    "valor": 712.5,
+    "descricao": "\"VALOR QUE SE EMPENHA PARA FAZER FACE A PAGAMENTO DE 1 1/2 PARA A PRESEDENTE DO PODER LEGISLATIVO, PARTICIPAR  DO SEMINÁRIO \"\"CÂMARA 5.0: GESTÃO ESTRATÉGICA, INOVAÇÃO E COMUNICAÇÃO A SER REALIZADO NO DIA 14 DE FEVEREIRO NA CIDADE DE GUARABIRA/PB\"",
+    "numeroEmpenho": "30"
   },
   {
-    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-2025-05",
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-130",
     "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
-    "data": "2025-05-01",
+    "data": "2025-05-27",
     "ano": 2025,
     "mes": 5,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 1675
+    "valor": 1675,
+    "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A PAGAMENTO DE 04 DIÁRIAS PARA PARTICIPAÇÃO NO SEGUNDO ENCONTRO PARAIBANO DE CÂMARAS MUNICIPAIS A SER REALIZADO ENTRE OS DIAS 28, 29 E 30 DE MAIO NA CIDADE DE JOÃO PESSOA/PB",
+    "numeroEmpenho": "130"
   },
   {
-    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-2025-09",
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-230",
     "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
-    "data": "2025-09-01",
+    "data": "2025-09-08",
     "ano": 2025,
     "mes": 9,
     "categoria": "Diárias",
     "fornecedor": {
       "nome": ""
     },
-    "valor": 650
+    "valor": 250,
+    "descricao": "VALOR QUE SE EMPENHA PARA FAZER FACE A PAGAMENTO DE 1/2 DIÁRIA PARA PARTICIPAÇÃO NO PRIMEIRO ENCONTRO E CAPACITAÇÃO DE LEGISLATIVOS MUNICIPAIS A SER REALIZADO NO DIA 09 DE SETEMBRO NA CIDADE DE SANTA LUZIA/PB.",
+    "numeroEmpenho": "230"
   },
   {
-    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-2026-03",
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-234",
+    "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
+    "data": "2025-09-11",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "Diárias",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 400,
+    "descricao": "\"VALOR QUE SE EMPENHA PARA FAZER FACE A PAGAMENTO DE 01 DIÁRIA PARA PARTICIPAÇÃO DA ENTREGA DO SELO E COMENDA \"\"MUNICIPIO SUSTENTÁVEL\"\" AO MUNICIPIO DE SÃO FRANCISCO,A SER ENTREGUE NO DIA 12/09/2025 NA CIDADE DE JOÃO PESSOA, PREMIAÇÃO ORGANIZADA PELA ASSEMBLEIA LEGISLATIVA DA PARAÍBA, EM PARCERCIA COM A FUNETEC.\"",
+    "numeroEmpenho": "234"
+  },
+  {
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-82",
     "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
     "data": "2026-03-01",
     "ano": 2026,
@@ -45,10 +65,12 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 2200
+    "valor": 2200,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAZER FACE A PAGAMENTO DE DIARIAS PARA PARTICIPAÇÃO DO 3º CONFEP - CONGRESSO E FEIRA DE OPORTUNIDADES PARA MUNICIPIOS DO ESTADO DA PARAÍBA A SER REALIZADO ENTRE OS DIAS 25 E 27 DE MARÇO, A SER REALIZADO NA CIDADE DE CAMPIANA GRANDE/PB.",
+    "numeroEmpenho": "82"
   },
   {
-    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-2026-04",
+    "id": "cm-sao-francisco-maria-de-fatima-lopes-diaria-114",
     "politicoId": "cm-sao-francisco-maria-de-fatima-lopes",
     "data": "2026-04-01",
     "ano": 2026,
@@ -57,6 +79,8 @@
     "fornecedor": {
       "nome": ""
     },
-    "valor": 5800
+    "valor": 5800,
+    "descricao": "VALOR QUE SE EMPENHA PARA PAZER FACE A PAGAMENTO DE DIARIAS PARA PARTICIPAÇÃO NA 25ª MARCHA DOS GESTORES E LEGISLATIVOS MUNICIPAIS QUE ACONTECERÁ ENTRE OS DIAS 27 A 30 DE ABRIL DO CORRENTE ANO EM BRASILIA/DF.",
+    "numeroEmpenho": "114"
   }
 ]
