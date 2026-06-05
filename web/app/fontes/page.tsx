@@ -60,6 +60,16 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Câmara Municipal de Santa Rita (vereadores · modelo completo via TCE)',
+    intro: 'A câmara não publica a VIAP de forma legível por máquina (só PDFs digitalizados, com defasagem), mas o TCE-PB traz, por vereador e por mês, a VIAP como empenhos de "Indenizações e Restituições". Aqui o TCE é a fonte primária da VIAP (não um cruzamento), então não há selo de conferência. A VIAP de Santa Rita é um valor fixo mensal (não reembolso de despesa itemizada): em 2025, R$ 11.333,33 por vereador e R$ 15.333,33 para o presidente, cerca de 2/3 do subsídio.',
+    fontes: [
+      { oque: 'Despesas (VIAP) por vereador', onde: 'download.tce.pb.gov.br/dados-abertos/dados-por-municipio/171/despesas/despesas-{ano}.zip', formato: 'CSV (dados abertos)', obs: 'a VIAP é empenho de "Indenizações e Restituições" com credor = o próprio vereador; somamos por vereador e por mês. O casamento vereador × empenho é por CPF (os 6 dígitos do meio batem entre o CPF mascarado da folha e o CPF cheio das despesas), à prova das diferenças de grafia entre os dois datasets do TCE' },
+      { oque: 'Comprovantes (câmara)', onde: 'santarita.pb.leg.br/site/viap', formato: 'PDF digitalizado', obs: 'a câmara publica os comprovantes da VIAP só como PDF escaneado e com grande defasagem (em jun/2026, só um mês no ar). Servem como link humano para a fonte, não como dado: dá para conferir o fluxo do dinheiro no TCE, não o conteúdo de cada nota' },
+      { oque: 'Roster, subsídio e folha de comissionados', onde: 'download.tce.pb.gov.br/dados-abertos/dados-por-municipio/171/servidores/servidores-{ano}.zip', formato: 'CSV (dados abertos)', obs: 'Eletivos = vereador (subsídio); comissionados somados = folha do gabinete (agregada, sem atribuição por vereador), como em Campina Grande' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição municipal de 2024)', formato: 'CSV + JPG', obs: 'mesma fonte usada nas câmaras do modelo leve' },
+    ],
+  },
+  {
     casa: 'Câmaras municipais — demais cidades (modelo leve)',
     intro: 'Onde a fonte não detalha gasto por vereador, mostramos só os agregados que ela publica: o subsídio (fixo) e a folha de comissionados da câmara. Sem ranking nem perfil por vereador. A folha de todas essas câmaras vem de uma única fonte oficial: o TCE-PB (Tribunal de Contas do Estado), via Dados Abertos. O partido e a foto de cada vereador vêm do TSE (eleição municipal de 2024, que elegeu o mandato atual).',
     fontes: [

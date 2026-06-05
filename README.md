@@ -137,6 +137,19 @@ CG tem gasto **por vereador** porque a câmara publica a **VIAP itemizada**. É 
 
 > Por que completo sem gabinete por vereador? Porque a peça que define o modelo completo é o **gasto por vereador**, e a VIAP de CG é por vereador. O gabinete fica agregado porque **nenhuma fonte oficial** liga o comissionado ao vereador (sem inventar). O servidor da câmara rejeita requisições sem cara de browser (406) — o coletor manda `User-Agent`/`Accept` de navegador, com **cache em disco** (`data/raw/viap-cg/`) porque o host é lento.
 
+### Câmara Municipal de Santa Rita (vereadores · modelo completo via TCE)
+
+Santa Rita é o **terceiro** município no modelo completo, com um caminho diferente de JP/CG: a câmara **não publica a VIAP de forma legível por máquina** (só PDFs digitalizados, com grande defasagem; em jun/2026 só havia um mês no ar). Então a **fonte primária da VIAP aqui é o próprio TCE-PB** (`montarCidadeViapTce` em `coletarVereadores.ts`). É um modelo **TCE-primário** reutilizável para as próximas cidades, já que poucas publicam `.xlsx` itemizado como CG.
+
+| O quê | Endpoint / arquivo | Formato | Como ligamos ao vereador |
+| --- | --- | --- | --- |
+| **Roster + subsídio** | TCE-PB `servidores-{ano}.zip` (cod 171) | CSV (dados abertos) | Eletivos da câmara, mês mais recente, igual às câmaras leve |
+| **Despesas (VIAP)** | TCE-PB `dados-por-municipio/171/despesas/despesas-{ano}.zip` (`collector/sources/tceDespesas.ts`) | CSV (dados abertos) | a VIAP é empenho de "Indenizações e Restituições" com **credor = o vereador**; somamos por vereador/mês. Casamento **por CPF** (`chaveCpf`: os 6 dígitos do meio batem entre o CPF mascarado da folha e o CPF cheio das despesas), robusto às diferenças de grafia entre os dois datasets do TCE |
+| **Gabinete — comissionados** | TCE-PB (mesma fonte das câmaras leve) | CSV (dados abertos) | **agregado** (a fonte não atribui o comissionado a um vereador), como em CG |
+| **Partido e foto** | TSE (eleição municipal 2024) | CSV + JPG | mesma fonte das câmaras leve |
+
+> **A VIAP em Santa Rita é um valor fixo mensal** (não reembolso de despesa itemizada): em 2025, **R$ 11.333,33** por vereador e **R$ 15.333,33** para o presidente, **cerca de 2/3 do subsídio** (reajustado em 2026). Mostramos isso de forma neutra no perfil e na página da cidade, com link para a [verba indenizatória da Câmara](https://www.santarita.pb.leg.br/site/viap) e para os dados abertos do TCE. Como o TCE **é** a fonte (não um cruzamento), **não há selo de conferência** aqui (seria circular). A nota fiscal (documento) não é publicada de forma legível: dá para conferir o fluxo do dinheiro, não o conteúdo de cada nota (ver também a discussão de comprovação do reembolso).
+
 ### Câmaras municipais — modelo leve (demais cidades) · fonte única TCE-PB
 
 Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador.

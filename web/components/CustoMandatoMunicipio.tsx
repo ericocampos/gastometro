@@ -67,7 +67,7 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
     <div>
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Card icone={Icones.salario} rotulo="Subsídio mensal" valor={brlInteiro(salario)} legenda="Subsídio do vereador" cor={TEAL} />
-        <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapTeto)} legenda="Teto mensal de reembolso" cor={TEAL} />
+        <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapTeto)} legenda={municipio.custo.viapFonteTce ? 'Valor fixo mensal por vereador' : 'Teto mensal de reembolso'} cor={TEAL} />
         <Card
           icone={Icones.gabinete}
           rotulo="Verba de gabinete"
@@ -86,16 +86,34 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
       </div>
 
       <p className="mt-3 text-xs text-tinta-tenue">
-        Valores de referência. A VIAP é o teto mensal de reembolso por nota{municipio.viapDetalhada
-          ? ' (cada lançamento tem categoria, fornecedor e nota fiscal — veja no perfil de cada vereador)'
-          : ' (a fonte não traz detalhamento por fornecedor)'}.{' '}
+        Valores de referência. {municipio.custo.viapFonteTce
+          ? 'A VIAP aqui é um valor fixo mensal por vereador (não um reembolso por nota), apurado dos empenhos de “Indenizações e Restituições” pagos a cada vereador no TCE-PB.'
+          : 'A VIAP é o teto mensal de reembolso por nota' + (municipio.viapDetalhada
+              ? ' (cada lançamento tem categoria, fornecedor e nota fiscal — veja no perfil de cada vereador).'
+              : ' (a fonte não traz detalhamento por fornecedor).')}{' '}
         {municipio.gabinetePorVereador === false
           ? 'A folha de gabinete é a folha de comissionados da câmara (a fonte oficial não atribui cada comissionado a um vereador), em média por vereador.'
           : 'A folha de gabinete é a média real dos gabinetes no mês de referência.'}{' '}
         O total é uma estimativa.{municipio.periodoViap && ` VIAP coberta de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
       </p>
 
-      {municipio.periodoViap && (
+      {municipio.custo.viapFonteTce && municipio.custo.viapNota && (
+        <p className="mt-2 rounded-md border-l-2 border-gray-400 bg-gray-400/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          {municipio.custo.viapNota}{' '}
+          <span className="text-tinta-tenue">
+            Fonte:{' '}
+            {municipio.custo.viapFonteCamaraUrl && (
+              <a href={municipio.custo.viapFonteCamaraUrl} target="_blank" rel="noopener noreferrer" className="underline">verba indenizatória da Câmara ↗</a>
+            )}
+            {municipio.custo.viapFonteCamaraUrl && municipio.custo.viapFonteTceUrl && ' · '}
+            {municipio.custo.viapFonteTceUrl && (
+              <a href={municipio.custo.viapFonteTceUrl} target="_blank" rel="noopener noreferrer" className="underline">dados abertos do TCE-PB ↗</a>
+            )}.
+          </span>
+        </p>
+      )}
+
+      {municipio.periodoViap && !municipio.custo.viapFonteTce && (
         <p className="mt-2 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
           A Câmara publica a VIAP com defasagem (cada lançamento tem a nota fiscal anexada).
           {atualizadoEm ? ` Na importação destes dados (${dataBR(atualizadoEm)})` : ' Na última importação'},

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { montarCidade, montarCidadeLeve, montarCampinaGrande } from './coletarVereadores'
+import { montarCidade, montarCidadeLeve, montarCampinaGrande, montarCidadeViapTce } from './coletarVereadores'
 import type { CidadeConfig } from './cidades'
 import { normNome } from './sources/nomes'
 
@@ -154,5 +154,76 @@ describe('montarCampinaGrande (completo via VIAP itemizada)', () => {
     const cgC = s2.porPolitico[idC].conferidoTce!
     expect(cgC.meses[0].reembolsado).toBe(4000)
     expect(cgC.meses[0].tce).toBeNull() // 4000 não casa com o único empenho (1000)
+  })
+})
+
+describe('montarCidadeViapTce (completo via VIAP do TCE, casada por CPF — Santa Rita)', () => {
+  // roster do TCE com CPF mascarado ("***.123.456-**" → chave 123456)
+  const vereadoresTce = [
+    { nome: 'OTAVIO CASSIANO DE SOUZA SILVA', subsidio: 17000, presidente: false, cpf: '***.123.456-**' },
+    { nome: 'EPITACIO VITURINO PRESIDENTE', subsidio: 23000, presidente: true, cpf: '***.789.123-**' },
+    { nome: 'VEREADOR SEM VIAP', subsidio: 17000, presidente: false, cpf: '***.555.666-**' },
+  ]
+  // indenizações do TCE com CPF cheio (14 díg.); o do meio (slice 3..9) casa com o mascarado.
+  // Nome do credor difere do roster (SOUSA × SOUZA) — só o CPF garante o match.
+  const indeniz = [
+    { credor: 'OTAVIO CASSIANO DE SOUSA SILVA', credorCpf: '00000012345699', mes: 1, ano: 2025, valorPago: 5000 },
+    { credor: 'OTAVIO CASSIANO DE SOUSA SILVA', credorCpf: '00000012345699', mes: 1, ano: 2025, valorPago: 6333.33 }, // mesmo mês → soma
+    { credor: 'OTAVIO CASSIANO DE SOUSA SILVA', credorCpf: '00000012345699', mes: 2, ano: 2025, valorPago: 11333.33 },
+    { credor: 'OTAVIO CASSIANO DE SOUSA SILVA', credorCpf: '00000012345699', mes: 12, ano: 2024, valorPago: 9999 }, // < 2025-01 → excluído
+    { credor: 'EPITACIO VITURINO PRESIDENTE', credorCpf: '00000078912399', mes: 1, ano: 2025, valorPago: 15333.33 },
+    { credor: 'JJ CONTABILIDADE LTDA', credorCpf: '00000099999999', mes: 1, ano: 2025, valorPago: 14000 }, // não é vereador
+  ]
+  const s = montarCidadeViapTce(
+    { slug: 'santa-rita', nome: 'Santa Rita', uf: 'PB' },
+    vereadoresTce, indeniz, () => null, 900000, '2026-04',
+    { tce: 'https://tce/171', camara: 'https://camara/viap' },
+  )
+
+  it('casa vereador × empenho por CPF, mesmo com grafia diferente (SOUSA × SOUZA)', () => {
+    const id = s.politicos.find((p) => /OTAVIO/.test(p.nome))!.id
+    // jan (5000 + 6333,33 = 11333,33) + fev (11333,33), SEM o empenho de 2024
+    expect(s.porPolitico[id].total).toBeCloseTo(22666.66, 2)
+    expect(s.porPolitico[id].serieMensal).toHaveLength(2)
+    expect(s.porPolitico[id].serieMensal.find((m) => m.anoMes === '2025-01')!.total).toBeCloseTo(11333.33, 2)
+  })
+  it('exclui empenho anterior a 2025-01 (legislatura passada)', () => {
+    const id = s.politicos.find((p) => /OTAVIO/.test(p.nome))!.id
+    expect(s.despesasPorId[id].some((d) => d.ano === 2024)).toBe(false)
+  })
+  it('vereador sem empenho fica com total 0 e sem despesas', () => {
+    const id = s.politicos.find((p) => /SEM VIAP/.test(p.nome))!.id
+    expect(s.porPolitico[id].total).toBe(0)
+    expect(s.despesasPorId[id]).toBeUndefined()
+  })
+  it('credor que não é vereador (contabilidade) vira não casado', () => {
+    expect(s.cobertura.comViap).toBe(2)
+    expect(s.cobertura.naoCasados.some((n) => /CONTABILIDADE/.test(n.nome))).toBe(true)
+  })
+  it('despesas mensais sem fornecedor e sem documento (categoria VIAP)', () => {
+    const id = s.politicos.find((p) => /OTAVIO/.test(p.nome))!.id
+    const d = s.despesasPorId[id][0]
+    expect(d.categoria).toBe('Verba indenizatória (VIAP)')
+    expect(d.fornecedor.nome).toBe('')
+    expect(d.urlDocumento).toBeUndefined()
+    expect(d.numeroNf).toBeUndefined()
+  })
+  it('é completo, gabinete agregado e SEM selo de conferência (o TCE é a fonte)', () => {
+    expect(s.resumoMunicipio.modelo).toBe('completo')
+    expect(s.resumoMunicipio.viapDetalhada).toBe(false)
+    expect(s.resumoMunicipio.gabinetePorVereador).toBe(false)
+    expect(Object.keys(s.gabinetePorId)).toHaveLength(0)
+    const id = s.politicos.find((p) => /OTAVIO/.test(p.nome))!.id
+    expect(s.porPolitico[id].conferidoTce).toBeUndefined()
+  })
+  it('teto = maior valor fixo (presidente); nota neutra do valor fixo + fontes', () => {
+    const c = s.resumoMunicipio.custo
+    expect(c.viapTeto).toBeCloseTo(15333.33, 2)
+    expect(c.viapFonteTce).toBe(true)
+    expect(c.viapFonteCamaraUrl).toBe('https://camara/viap')
+    expect(c.viapFonteTceUrl).toBe('https://tce/171')
+    expect(c.viapNota).toMatch(/valor fixo/i)
+    expect(c.viapNota).toMatch(/11\.333,33/)
+    expect(c.viapNota).toMatch(/dois terços/)
   })
 })

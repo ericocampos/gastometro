@@ -288,7 +288,29 @@ export function PerfilView({
             />
           </div>
 
-          {politico.casa === 'camara_municipal' && ultimaViap && (
+          {/* VIAP vinda do TCE (a câmara não publica de forma legível por máquina): nota neutra com a
+              fonte e o valor fixo, em vez do aviso de defasagem (que pressupõe nota anexada por gasto). */}
+          {politico.casa === 'camara_municipal' && municipioCusto?.viapFonteTce && municipioCusto.viapNota && (
+            <div className="mb-8 rounded-md border-l-2 border-gray-400 bg-gray-400/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+              {municipioCusto.viapNota}{' '}
+              <span className="text-tinta-tenue">
+                Fonte:{' '}
+                {municipioCusto.viapFonteCamaraUrl && (
+                  <a href={municipioCusto.viapFonteCamaraUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    verba indenizatória da Câmara ↗
+                  </a>
+                )}
+                {municipioCusto.viapFonteCamaraUrl && municipioCusto.viapFonteTceUrl && ' · '}
+                {municipioCusto.viapFonteTceUrl && (
+                  <a href={municipioCusto.viapFonteTceUrl} target="_blank" rel="noopener noreferrer" className="underline">
+                    dados abertos do TCE-PB ↗
+                  </a>
+                )}.
+              </span>
+            </div>
+          )}
+
+          {politico.casa === 'camara_municipal' && !municipioCusto?.viapFonteTce && ultimaViap && (
             <p className="mb-8 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
               A VIAP é publicada pela Câmara com defasagem (cada gasto vem com a nota fiscal anexada).
               {municipioAtualizadoEm ? ` Na importação destes dados (${dataBR(municipioAtualizadoEm)})` : ' Na última importação'},
@@ -358,9 +380,9 @@ export function PerfilView({
                     ) : (
                       <p className="text-sm leading-relaxed text-tinta-suave">
                         <strong className="text-tinta">Detalhamento por fornecedor não disponível na fonte.</strong>{' '}
-                        A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o
-                        detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link
-                        da nota.
+                        {municipioCusto?.viapFonteTce
+                          ? 'Aqui a VIAP é um valor fixo mensal por vereador (não um reembolso por nota), apurado dos empenhos pagos no TCE-PB. Cada mês aparece no detalhamento abaixo.'
+                          : 'A VIAP é um reembolso mensal por nota fiscal (a Câmara publica a nota, não o detalhamento por fornecedor). Cada mês aparece no detalhamento abaixo com o link da nota.'}
                       </p>
                     )}
                   </div>

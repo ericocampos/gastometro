@@ -11,7 +11,19 @@ import { inflarCsvZip } from './cota-csv.js'
 
 const ELEMENTO_VIAP = 'Indenizações e Restituições'
 
-export interface IndenizacaoTce { credor: string; mes: number; ano: number; valorPago: number }
+export interface IndenizacaoTce { credor: string; credorCpf: string; mes: number; ano: number; valorPago: number }
+
+// Chave de casamento por CPF, robusta às DUAS grafias do TCE: a folha (servidores) mascara o CPF
+// como "***.388.584-**" (só os 6 dígitos do meio visíveis); as despesas trazem o CPF cheio, à
+// esquerda com zeros até 14 ("00006338858437" = CPF 063.388.584-37). Em ambos, os 6 dígitos do
+// MEIO do CPF são estáveis e batem — então a chave são esses 6 dígitos. '' quando não dá p/ extrair.
+export function chaveCpf(s: string): string {
+  const d = String(s ?? '').replace(/\D/g, '')
+  if (d.length === 0) return ''
+  if (d.length <= 6) return d            // já mascarado: os 6 dígitos visíveis são o meio do CPF
+  const cpf = d.slice(-11)               // despesas: CPF cheio (últimos 11 dos 14)
+  return cpf.length === 11 ? cpf.slice(3, 9) : ''
+}
 
 // Conferência POR MÊS, para a UI poder filtrar pelo período selecionado. Cada mês traz o que
 // mostramos (apresentado/reembolsado) e o empenho do TCE que casou (tce = valor pago, ou null).
@@ -49,6 +61,7 @@ export function parseIndenizacoesCamara(textoCsv: string, ano: number): Indeniza
     if (valorPago <= 0) continue
     out.push({
       credor: (f[7] ?? '').trim(),
+      credorCpf: (f[6] ?? '').trim(),
       mes: Number((f[5] ?? '').slice(0, 2)) || 0,
       ano,
       valorPago,
