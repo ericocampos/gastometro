@@ -23,9 +23,9 @@
             },
             {
               "funcao": "Administração",
-              "pago": 24752585.41999999,
-              "empenhado": 32397247.12999996,
-              "liquidado": 31979025.77999996
+              "pago": 26635073.899999976,
+              "empenhado": 35426295.41999996,
+              "liquidado": 34863528.82999995
             },
             {
               "funcao": "Urbanismo",
@@ -82,7 +82,7 @@
               "liquidado": 3200
             }
           ],
-          "total": 108731458.57000001
+          "total": 110613947.05
         },
         {
           "poder": "camara",
@@ -113,21 +113,9 @@
             }
           ],
           "total": 17129871.339999996
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 1882488.4799999997,
-              "empenhado": 3029048.2899999996,
-              "liquidado": 2884503.0499999993
-            }
-          ],
-          "total": 1882488.4799999997
         }
       ],
-      "totalPago": 133111133.97000001
+      "totalPago": 133111133.97
     },
     {
       "ano": 2025,
@@ -149,9 +137,9 @@
             },
             {
               "funcao": "Administração",
-              "pago": 73748580.74000004,
-              "empenhado": 84680373.21999997,
-              "liquidado": 84133606.19999997
+              "pago": 81517025.90000008,
+              "empenhado": 93393086.58999994,
+              "liquidado": 92806859.12
             },
             {
               "funcao": "Urbanismo",
@@ -202,7 +190,7 @@
               "liquidado": 1245.36
             }
           ],
-          "total": 296122298.9800001
+          "total": 303890744.1400001
         },
         {
           "poder": "camara",
@@ -233,21 +221,9 @@
             }
           ],
           "total": 53779748.53
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 7768445.160000002,
-              "empenhado": 8712713.37,
-              "liquidado": 8673252.92
-            }
-          ],
-          "total": 7768445.160000002
         }
       ],
-      "totalPago": 369406987.74000007
+      "totalPago": 369406987.7400001
     },
     {
       "ano": 2024,
@@ -262,22 +238,22 @@
               "liquidado": 102804512.5200001
             },
             {
+              "funcao": "Administração",
+              "pago": 81281644.87000003,
+              "empenhado": 85568510.10999994,
+              "liquidado": 84859068.38
+            },
+            {
               "funcao": "Saúde",
               "pago": 76960817.60999979,
               "empenhado": 88343443.39999984,
               "liquidado": 83944031.22999978
             },
             {
-              "funcao": "Administração",
-              "pago": 73925743.75000006,
-              "empenhado": 77734759.32000004,
-              "liquidado": 77033232.93999998
-            },
-            {
               "funcao": "Urbanismo",
-              "pago": 12477884.43,
-              "empenhado": 15987378.44,
-              "liquidado": 15905226.09
+              "pago": 12763898.44,
+              "empenhado": 16273392.45,
+              "liquidado": 16191240.1
             },
             {
               "funcao": "Assistêncial Social",
@@ -322,7 +298,7 @@
               "liquidado": 6085.66
             }
           ],
-          "total": 272802068.96000004
+          "total": 280443984.09
         },
         {
           "poder": "camara",
@@ -353,27 +329,9 @@
             }
           ],
           "total": 50510911.949999996
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 7355901.120000003,
-              "empenhado": 7833750.790000005,
-              "liquidado": 7825835.440000005
-            },
-            {
-              "funcao": "Urbanismo",
-              "pago": 286014.01,
-              "empenhado": 286014.01,
-              "liquidado": 286014.01
-            }
-          ],
-          "total": 7641915.130000003
         }
       ],
-      "totalPago": 341047102.88
+      "totalPago": 341047102.87999994
     },
     {
       "ano": 2023,
@@ -389,9 +347,9 @@
             },
             {
               "funcao": "Administração",
-              "pago": 81882545.87999979,
-              "empenhado": 88286739.9499998,
-              "liquidado": 87758935.83999981
+              "pago": 86012133.7499998,
+              "empenhado": 92763314.49999987,
+              "liquidado": 92235077.73999988
             },
             {
               "funcao": "Saúde",
@@ -401,9 +359,9 @@
             },
             {
               "funcao": "Urbanismo",
-              "pago": 13082698.959999999,
-              "empenhado": 16473095.129999997,
-              "liquidado": 16473095.129999997
+              "pago": 14234466.12,
+              "empenhado": 17624862.290000003,
+              "liquidado": 17624862.290000003
             },
             {
               "funcao": "Assistêncial Social",
@@ -424,6 +382,12 @@
               "liquidado": 1494353.5299999998
             },
             {
+              "funcao": "Segurança Pública",
+              "pago": 470581.5999999999,
+              "empenhado": 470581.5999999999,
+              "liquidado": 470581.5999999999
+            },
+            {
               "funcao": "Gestão Ambiental",
               "pago": 198248.4,
               "empenhado": 200168.4,
@@ -434,15 +398,9 @@
               "pago": 108648.62,
               "empenhado": 160392.33000000002,
               "liquidado": 160392.33000000002
-            },
-            {
-              "funcao": "Segurança Pública",
-              "pago": 35159.52,
-              "empenhado": 35159.52,
-              "liquidado": 35159.52
             }
           ],
-          "total": 250458757.43999815
+          "total": 256175534.54999816
         },
         {
           "poder": "camara",
@@ -473,30 +431,6 @@
             }
           ],
           "total": 40388019.15000001
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 4129587.8699999996,
-              "empenhado": 4476574.549999998,
-              "liquidado": 4476141.8999999985
-            },
-            {
-              "funcao": "Urbanismo",
-              "pago": 1151767.1600000001,
-              "empenhado": 1151767.1600000001,
-              "liquidado": 1151767.1600000001
-            },
-            {
-              "funcao": "Segurança Pública",
-              "pago": 435422.0799999999,
-              "empenhado": 435422.0799999999,
-              "liquidado": 435422.0799999999
-            }
-          ],
-          "total": 5716777.109999999
         }
       ],
       "totalPago": 305533568.11999816
@@ -515,9 +449,9 @@
             },
             {
               "funcao": "Administração",
-              "pago": 72376501.89000012,
-              "empenhado": 77604967.79,
-              "liquidado": 77081880.09000002
+              "pago": 73867682.41000004,
+              "empenhado": 79352907.65999995,
+              "liquidado": 78581582.04999998
             },
             {
               "funcao": "Saúde",
@@ -527,9 +461,9 @@
             },
             {
               "funcao": "Urbanismo",
-              "pago": 16149465.88,
-              "empenhado": 16790948.43,
-              "liquidado": 16559221.329999998
+              "pago": 16149835.88,
+              "empenhado": 16791318.43,
+              "liquidado": 16559591.329999998
             },
             {
               "funcao": "Assistêncial Social",
@@ -551,9 +485,9 @@
             },
             {
               "funcao": "Segurança Pública",
-              "pago": 94020,
-              "empenhado": 94020,
-              "liquidado": 94020
+              "pago": 212688,
+              "empenhado": 212688,
+              "liquidado": 212688
             },
             {
               "funcao": "Previdência Social",
@@ -574,7 +508,7 @@
               "liquidado": 1129.24
             }
           ],
-          "total": 238706697.64000002
+          "total": 240316916.15999994
         },
         {
           "poder": "camara",
@@ -605,33 +539,9 @@
             }
           ],
           "total": 34990539.20000001
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 1491180.52,
-              "empenhado": 1747939.8699999999,
-              "liquidado": 1499701.96
-            },
-            {
-              "funcao": "Segurança Pública",
-              "pago": 118668,
-              "empenhado": 118668,
-              "liquidado": 118668
-            },
-            {
-              "funcao": "Urbanismo",
-              "pago": 370,
-              "empenhado": 370,
-              "liquidado": 370
-            }
-          ],
-          "total": 1610218.52
         }
       ],
-      "totalPago": 282741774
+      "totalPago": 282741773.99999994
     },
     {
       "ano": 2021,
@@ -641,9 +551,9 @@
           "funcoes": [
             {
               "funcao": "Administração",
-              "pago": 79180167.05000004,
-              "empenhado": 83587767.57000004,
-              "liquidado": 81848055.35000007
+              "pago": 80920273.38000005,
+              "empenhado": 85431585.58000012,
+              "liquidado": 83677025.1800001
             },
             {
               "funcao": "Educação",
@@ -659,9 +569,9 @@
             },
             {
               "funcao": "Urbanismo",
-              "pago": 11767734.339999998,
-              "empenhado": 12021232.199999996,
-              "liquidado": 11803713.459999997
+              "pago": 11836741.339999998,
+              "empenhado": 12090239.199999996,
+              "liquidado": 11872720.459999997
             },
             {
               "funcao": "Assistêncial Social",
@@ -706,7 +616,7 @@
               "liquidado": 220764
             }
           ],
-          "total": 200234187.35
+          "total": 202043300.68
         },
         {
           "poder": "camara",
@@ -737,24 +647,6 @@
             }
           ],
           "total": 28567339.710000012
-        },
-        {
-          "poder": "outros",
-          "funcoes": [
-            {
-              "funcao": "Administração",
-              "pago": 1740106.3299999991,
-              "empenhado": 1843818.009999999,
-              "liquidado": 1828969.829999999
-            },
-            {
-              "funcao": "Urbanismo",
-              "pago": 69007,
-              "empenhado": 69007,
-              "liquidado": 69007
-            }
-          ],
-          "total": 1809113.3299999991
         }
       ],
       "totalPago": 237012611.12000003

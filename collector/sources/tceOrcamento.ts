@@ -29,8 +29,11 @@ export function classificarPoder(ug: string): Poder {
   if (/cons[óo]rcio/i.test(s)) return 'outros'
   if (/c[âa]mara/i.test(s)) return 'camara'
   if (/previd[êe]ncia|\bRPPS\b|instituto.*prev|\bIPM\b/i.test(s)) return 'previdencia'
-  if (/prefeitura|munic[íi]pio|munic[íi]pal|fundo|secretaria|executivo|gabinete do prefeito/i.test(s)) return 'prefeitura'
-  return 'outros'
+  // No município só existem dois poderes (Executivo e Legislativo); tirando câmara, previdência
+  // (RPPS, separada por clareza) e consórcios intermunicipais, todo o resto é o Executivo:
+  // prefeitura, secretarias, fundos, autarquias, fundações, institutos, superintendências,
+  // empresas e hospitais municipais. Por isso o fallback é 'prefeitura', não 'outros'.
+  return 'prefeitura'
 }
 
 const valorBr = (s: string): number => {

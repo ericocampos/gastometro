@@ -19,6 +19,13 @@ describe('classificarPoder', () => {
     expect(classificarPoder('Fundo Municipal de Saúde de Água Branca')).toBe('prefeitura')
     expect(classificarPoder('Consórcio Intermunicipal Regional')).toBe('outros')
   })
+
+  it('classifica autarquias, fundações, institutos e superintendências do executivo como prefeitura', () => {
+    expect(classificarPoder('Superintendência de Transp. e Trânsito de João Pessoa')).toBe('prefeitura')
+    expect(classificarPoder('Fundação Cultural de João Pessoa')).toBe('prefeitura')
+    expect(classificarPoder('Instituto Cândida Vargas')).toBe('prefeitura')
+    expect(classificarPoder('Autarquia Especial Municipal de Limpeza Urbana - Emlur')).toBe('prefeitura')
+  })
 })
 
 describe('agregarOrcamento', () => {
