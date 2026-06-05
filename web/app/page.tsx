@@ -65,7 +65,7 @@ export default function Home() {
 
       {municipios.cidades.length > 0 && (
         <section className="mb-12">
-          <SecaoTitulo>Vereadores · nível municipal</SecaoTitulo>
+          <SecaoTitulo>Municípios da Paraíba</SecaoTitulo>
           <CoberturaMunicipal indice={municipios} />
         </section>
       )}

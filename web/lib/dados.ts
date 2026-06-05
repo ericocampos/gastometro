@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PoderOrcamento, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -119,4 +119,32 @@ export function getOrcamentoSlugs(): string[] {
   const caminho = resolve(dataDir(), 'orcamento', '_index.json')
   if (!existsSync(caminho)) return []
   return lerJson<{ slugs: string[] }>(caminho).slugs
+}
+
+// Achata os orçamentos das cidades cobertas pra o comparador (total e por poder, ano a ano). O ano
+// corrente (parcial) fica de fora, pra não desenhar uma queda falsa. Ordena por total do ano mais
+// recente (maiores primeiro), pra a seleção inicial pegar as cidades de maior orçamento.
+export function getComparativoOrcamento(): ComparativoOrcamentoCidade[] {
+  const cidades = getOrcamentoSlugs()
+    .map((slug): ComparativoOrcamentoCidade | null => {
+      const o = getOrcamento(slug)
+      if (!o) return null
+      const anoColeta = Number(o.atualizadoEm.slice(0, 4))
+      const totalPoder = (a: OrcamentoMunicipio['anos'][number], p: PoderOrcamento) =>
+        a.poderes.find((x) => x.poder === p)?.total ?? 0
+      const anos = o.anos
+        .filter((a) => a.ano < anoColeta)
+        .map((a) => ({
+          ano: a.ano,
+          total: a.totalPago,
+          prefeitura: totalPoder(a, 'prefeitura'),
+          camara: totalPoder(a, 'camara'),
+          previdencia: totalPoder(a, 'previdencia'),
+        }))
+        .sort((x, y) => x.ano - y.ano)
+      if (anos.length === 0) return null
+      return { slug: o.slug, nome: o.nome, anos }
+    })
+    .filter((x): x is ComparativoOrcamentoCidade => x !== null)
+  return cidades.sort((a, b) => (b.anos[b.anos.length - 1]?.total ?? 0) - (a.anos[a.anos.length - 1]?.total ?? 0))
 }

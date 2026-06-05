@@ -5,14 +5,14 @@ import { NavLinks } from './NavLinks'
 vi.mock('next/navigation', () => ({ usePathname: () => '/municipios/joao-pessoa' }))
 
 describe('NavLinks', () => {
-  it('tem o atalho de Vereadores apontando para /municipios', () => {
+  it('tem o atalho de Municípios apontando para /municipios', () => {
     render(<NavLinks />)
-    const link = screen.getByRole('link', { name: 'Vereadores' })
+    const link = screen.getByRole('link', { name: 'Municípios' })
     expect(link.getAttribute('href')).toMatch(/^\/municipios\/?$/)
   })
 
-  it('marca Vereadores como ativo quando se está numa cidade', () => {
+  it('marca Municípios como ativo quando se está numa cidade', () => {
     render(<NavLinks />)
-    expect(screen.getByRole('link', { name: 'Vereadores' })).toHaveAttribute('aria-current', 'page')
+    expect(screen.getByRole('link', { name: 'Municípios' })).toHaveAttribute('aria-current', 'page')
   })
 })
