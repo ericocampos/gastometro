@@ -1,0 +1,562 @@
+{
+  "slug": "cajazeirinhas",
+  "cod": "047",
+  "nome": "Cajazeirinhas",
+  "anos": [
+    {
+      "ano": 2026,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 5514032.560000002,
+              "empenhado": 5565538.220000003,
+              "liquidado": 5565538.220000003
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 3900485.1400000015,
+              "empenhado": 3917968.8400000017,
+              "liquidado": 3917968.8400000017
+            },
+            {
+              "funcao": "Administração",
+              "pago": 3253700.169999999,
+              "empenhado": 3322866.6999999993,
+              "liquidado": 3322866.6999999993
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 695335.8200000001,
+              "empenhado": 705755.8,
+              "liquidado": 705755.8
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 642584.84,
+              "empenhado": 844034.27,
+              "liquidado": 781352.74
+            },
+            {
+              "funcao": "Saneamento",
+              "pago": 400000,
+              "empenhado": 400000,
+              "liquidado": 400000
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 129361.93000000005,
+              "empenhado": 129681.42000000007,
+              "liquidado": 129681.42000000007
+            },
+            {
+              "funcao": "Agricultura",
+              "pago": 97750,
+              "empenhado": 97750,
+              "liquidado": 97750
+            },
+            {
+              "funcao": "Cultura",
+              "pago": 67215.92,
+              "empenhado": 69958.15999999999,
+              "liquidado": 69541.5
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 47253.78,
+              "empenhado": 53987.509999999995,
+              "liquidado": 53987.509999999995
+            },
+            {
+              "funcao": "Desporto e Lazer",
+              "pago": 7085.709999999999,
+              "empenhado": 7085.709999999999,
+              "liquidado": 7085.709999999999
+            }
+          ],
+          "total": 14754805.870000001
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 753173.5900000001,
+              "empenhado": 754401.5900000001,
+              "liquidado": 754401.5900000001
+            }
+          ],
+          "total": 753173.5900000001
+        }
+      ],
+      "totalPago": 15507979.46
+    },
+    {
+      "ano": 2025,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 13320004.569999982,
+              "empenhado": 13443486.80999998,
+              "liquidado": 13443486.80999998
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 8574099.009999998,
+              "empenhado": 8574099.009999998,
+              "liquidado": 8574099.009999998
+            },
+            {
+              "funcao": "Administração",
+              "pago": 5037363.719999995,
+              "empenhado": 5094624.229999995,
+              "liquidado": 5094624.229999995
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 2502440.8400000012,
+              "empenhado": 2516927.2500000014,
+              "liquidado": 2516927.220000001
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 1837436.4900000042,
+              "empenhado": 1841078.040000004,
+              "liquidado": 1841078.040000004
+            },
+            {
+              "funcao": "Saneamento",
+              "pago": 578562.64,
+              "empenhado": 578562.64,
+              "liquidado": 578562.64
+            },
+            {
+              "funcao": "Cultura",
+              "pago": 520474.73,
+              "empenhado": 520474.73,
+              "liquidado": 520474.73
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 429404.8800000001,
+              "empenhado": 429404.8800000001,
+              "liquidado": 429404.8800000001
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 162676.42,
+              "empenhado": 162676.42,
+              "liquidado": 162676.42
+            },
+            {
+              "funcao": "Agricultura",
+              "pago": 60750,
+              "empenhado": 60750,
+              "liquidado": 60750
+            },
+            {
+              "funcao": "Gestão Ambiental",
+              "pago": 13018.929999999991,
+              "empenhado": 13018.929999999991,
+              "liquidado": 13018.929999999991
+            }
+          ],
+          "total": 33036232.22999998
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 1586783.4300000006,
+              "empenhado": 1586783.4300000006,
+              "liquidado": 1586783.4300000006
+            }
+          ],
+          "total": 1586783.4300000006
+        }
+      ],
+      "totalPago": 34623015.65999998
+    },
+    {
+      "ano": 2024,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 12040306.619999968,
+              "empenhado": 12324490.249999968,
+              "liquidado": 12324490.249999968
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 6977464.530000007,
+              "empenhado": 7124235.180000006,
+              "liquidado": 7124235.180000006
+            },
+            {
+              "funcao": "Administração",
+              "pago": 4116633.769999997,
+              "empenhado": 4157728.929999998,
+              "liquidado": 4155641.669999998
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 3157528.1100000027,
+              "empenhado": 3163096.5000000023,
+              "liquidado": 3163096.5000000023
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 1419540.089999999,
+              "empenhado": 1426460.9899999988,
+              "liquidado": 1424431.399999999
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 490382.92000000016,
+              "empenhado": 490384.03000000014,
+              "liquidado": 490384.03000000014
+            },
+            {
+              "funcao": "Cultura",
+              "pago": 486838.3500000009,
+              "empenhado": 486838.3500000009,
+              "liquidado": 486838.3500000009
+            },
+            {
+              "funcao": "Saneamento",
+              "pago": 439119.63,
+              "empenhado": 458587.18,
+              "liquidado": 458587.18
+            },
+            {
+              "funcao": "Gestão Ambiental",
+              "pago": 138882.1,
+              "empenhado": 138882.1,
+              "liquidado": 138882.1
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 121707.73999999998,
+              "empenhado": 121707.73999999998,
+              "liquidado": 121707.73999999998
+            }
+          ],
+          "total": 29388403.859999977
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 1373720.6800000006,
+              "empenhado": 1373720.6800000006,
+              "liquidado": 1373720.6800000006
+            }
+          ],
+          "total": 1373720.6800000006
+        }
+      ],
+      "totalPago": 30762124.539999977
+    },
+    {
+      "ano": 2023,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 12000558.050000014,
+              "empenhado": 12079897.950000014,
+              "liquidado": 12053106.470000016
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 5986008.189999987,
+              "empenhado": 6211548.129999987,
+              "liquidado": 6211548.129999987
+            },
+            {
+              "funcao": "Administração",
+              "pago": 3632692.290000001,
+              "empenhado": 3708778.710000001,
+              "liquidado": 3705645.6500000004
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 1895977.19,
+              "empenhado": 1909380.8100000003,
+              "liquidado": 1909380.8100000003
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 1389128.1900000002,
+              "empenhado": 1404608.87,
+              "liquidado": 1401887.8000000003
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 463024.0499999999,
+              "empenhado": 463024.0499999999,
+              "liquidado": 463024.0499999999
+            },
+            {
+              "funcao": "Cultura",
+              "pago": 447351.5199999999,
+              "empenhado": 448619.6,
+              "liquidado": 448325.61999999994
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 127100.48000000001,
+              "empenhado": 127100.48000000001,
+              "liquidado": 127100.48000000001
+            },
+            {
+              "funcao": "Gestão Ambiental",
+              "pago": 54002.06,
+              "empenhado": 54002.06,
+              "liquidado": 54002.06
+            },
+            {
+              "funcao": "Agricultura",
+              "pago": 17060,
+              "empenhado": 17060,
+              "liquidado": 17060
+            },
+            {
+              "funcao": "Desporto e Lazer",
+              "pago": 10882.6,
+              "empenhado": 10882.6,
+              "liquidado": 10882.6
+            }
+          ],
+          "total": 26023784.620000005
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 1286073.1199999996,
+              "empenhado": 1286073.1199999996,
+              "liquidado": 1286073.1199999996
+            }
+          ],
+          "total": 1286073.1199999996
+        }
+      ],
+      "totalPago": 27309857.740000006
+    },
+    {
+      "ano": 2022,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 9571486.799999993,
+              "empenhado": 9765458.149999997,
+              "liquidado": 9739503.399999995
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 5267634.679999986,
+              "empenhado": 5546440.289999983,
+              "liquidado": 5546440.289999983
+            },
+            {
+              "funcao": "Administração",
+              "pago": 5012550.639999997,
+              "empenhado": 5099291.499999997,
+              "liquidado": 5095612.639999998
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 1223768.1400000018,
+              "empenhado": 1253236.2500000014,
+              "liquidado": 1245311.2100000014
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 392235.11,
+              "empenhado": 392235.11,
+              "liquidado": 392235.11
+            },
+            {
+              "funcao": "Desporto e Lazer",
+              "pago": 141340.5,
+              "empenhado": 141340.5,
+              "liquidado": 141340.5
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 94745.93000000001,
+              "empenhado": 96368.34000000001,
+              "liquidado": 96368.34000000001
+            },
+            {
+              "funcao": "Saneamento",
+              "pago": 60432.759999999995,
+              "empenhado": 136277.5,
+              "liquidado": 136277.5
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 7403.42,
+              "empenhado": 7403.42,
+              "liquidado": 7403.42
+            },
+            {
+              "funcao": "Agricultura",
+              "pago": 0,
+              "empenhado": 240840,
+              "liquidado": 25840
+            }
+          ],
+          "total": 21771597.979999978
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 1025545.8799999993,
+              "empenhado": 1025545.8799999993,
+              "liquidado": 1025545.8799999993
+            }
+          ],
+          "total": 1025545.8799999993
+        }
+      ],
+      "totalPago": 22797143.859999977
+    },
+    {
+      "ano": 2021,
+      "poderes": [
+        {
+          "poder": "prefeitura",
+          "funcoes": [
+            {
+              "funcao": "Educação",
+              "pago": 6490598.429999993,
+              "empenhado": 6526385.779999993,
+              "liquidado": 6521696.859999993
+            },
+            {
+              "funcao": "Saúde",
+              "pago": 4781393.420000001,
+              "empenhado": 4808623.120000001,
+              "liquidado": 4808623.120000001
+            },
+            {
+              "funcao": "Administração",
+              "pago": 2733297.399999999,
+              "empenhado": 2800213.9699999993,
+              "liquidado": 2799371.869999999
+            },
+            {
+              "funcao": "Urbanismo",
+              "pago": 1774140.3100000008,
+              "empenhado": 1789358.4900000007,
+              "liquidado": 1789358.4900000007
+            },
+            {
+              "funcao": "Assistêncial Social",
+              "pago": 988946.41,
+              "empenhado": 1018471.1600000001,
+              "liquidado": 1014072.1600000001
+            },
+            {
+              "funcao": "Encargos Especias",
+              "pago": 347460.32999999996,
+              "empenhado": 347460.32999999996,
+              "liquidado": 347460.32999999996
+            },
+            {
+              "funcao": "Desporto e Lazer",
+              "pago": 169701.49,
+              "empenhado": 170701.49,
+              "liquidado": 170701.49
+            },
+            {
+              "funcao": "Direitos de Cidadania",
+              "pago": 84621.01,
+              "empenhado": 84621.01,
+              "liquidado": 84621.01
+            },
+            {
+              "funcao": "Cultura",
+              "pago": 43942.04999999999,
+              "empenhado": 43942.04999999999,
+              "liquidado": 43942.04999999999
+            },
+            {
+              "funcao": "Saneamento",
+              "pago": 39275.82,
+              "empenhado": 39275.82,
+              "liquidado": 39275.82
+            },
+            {
+              "funcao": "Gestão Ambiental",
+              "pago": 9850,
+              "empenhado": 9850,
+              "liquidado": 9850
+            }
+          ],
+          "total": 17463226.669999994
+        },
+        {
+          "poder": "camara",
+          "funcoes": [
+            {
+              "funcao": "Legislativa",
+              "pago": 772015.6,
+              "empenhado": 772015.6,
+              "liquidado": 772015.6
+            }
+          ],
+          "total": 772015.6
+        }
+      ],
+      "totalPago": 18235242.269999996
+    }
+  ],
+  "fontes": [
+    {
+      "ano": 2026,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2026.zip"
+    },
+    {
+      "ano": 2025,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2025.zip"
+    },
+    {
+      "ano": 2024,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2024.zip"
+    },
+    {
+      "ano": 2023,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2023.zip"
+    },
+    {
+      "ano": 2022,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2022.zip"
+    },
+    {
+      "ano": 2021,
+      "url": "https://download.tce.pb.gov.br/dados-abertos/dados-por-municipio/047/despesas/despesas-2021.zip"
+    }
+  ],
+  "atualizadoEm": "2026-06-05"
+}
