@@ -193,6 +193,8 @@ export interface Municipio {
   totalViapPeriodo?: number
   totalGabineteMes?: number
   periodoViap?: { de: string; ate: string } | null
+  viapDetalhada?: boolean   // a VIAP traz detalhamento por fornecedor (CG sim; JP não)
+  gabinetePorVereador?: boolean  // o gabinete é atribuído por vereador (JP sim; CG não, fica agregado)
   // leve:
   mesReferencia?: string          // mês de referência da folha (AAAA-MM)
   folhaComissionados?: number     // folha bruta agregada dos cargos comissionados da câmara

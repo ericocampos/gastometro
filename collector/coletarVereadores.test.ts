@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { montarCidade, montarCidadeLeve } from './coletarVereadores'
+import { montarCidade, montarCidadeLeve, montarCampinaGrande } from './coletarVereadores'
 import type { CidadeConfig } from './cidades'
 import { normNome } from './sources/nomes'
 
@@ -66,5 +66,74 @@ describe('montarCidadeLeve', () => {
     expect(m.custo.salario).toBe(20000)
     expect(m.custo.gabineteMedia).toBe(30000)
     expect(m.custo.viapTeto).toBe(0)
+  })
+})
+
+describe('montarCampinaGrande (completo via VIAP itemizada)', () => {
+  const vereadoresTce = [
+    { nome: 'ANTONIO ALVES PIMENTEL FILHO', subsidio: 20864, presidente: false },
+    { nome: 'CAROLINA FARIAS ALMEIDA GOMES', subsidio: 20864, presidente: false }, // grafia difere da VIAP
+    { nome: 'JOAQUIM PEREIRA DA COSTA', subsidio: 20864, presidente: false },      // sem VIAP
+  ]
+  const viap = [
+    { nome: 'ANTÔNIO ALVES PIMENTEL FILHO', meses: [
+      { anoMes: '2025-01', total: 17000, despesas: [
+        { item: 'DIVULGAÇÃO', fornecedor: { nome: 'ROMULO', cpfCnpj: '**.925/**' }, numeroNf: '9', data: '2025-01-24', ano: 2025, mes: 1, valor: 5000 },
+        { item: 'CONSULTORIA JURÍDICA', fornecedor: { nome: 'ADVOCACIA' }, numeroNf: '14', data: '2025-01-29', ano: 2025, mes: 1, valor: 12000 },
+      ] },
+      { anoMes: '2025-02', total: 3000, despesas: [
+        { item: 'DIVULGAÇÃO', fornecedor: { nome: 'ROMULO' }, data: '2025-02-10', ano: 2025, mes: 2, valor: 3000 },
+      ] },
+    ] },
+    // grafia divergente do roster (DE a mais): deve casar por tokens
+    { nome: 'CAROLINA FARIAS DE ALMEIDA GOMES', meses: [{ anoMes: '2025-03', total: 4000, despesas: [
+      { item: 'DIVULGAÇÃO', fornecedor: { nome: 'XPTO' }, data: '2025-03-05', ano: 2025, mes: 3, valor: 4000 },
+    ] }] },
+    // não é vereador atual: deve ficar como não casado
+    { nome: 'ROBERTO CARDOSO ANTIGO', meses: [{ anoMes: '2025-01', total: 1000, despesas: [] }] },
+  ] as any
+  const lookup = (nome: string) =>
+    /PIMENTEL/.test(normNome(nome)) ? { partido: 'PSB', sq: '150001989731' } : null
+
+  const s = montarCampinaGrande(vereadoresTce, viap, lookup, 1_800_000, '2026-04')
+
+  it('é completo, com gabinete agregado (sem gabinete por vereador)', () => {
+    expect(s.resumoMunicipio.modelo).toBe('completo')
+    expect(s.resumoMunicipio.numVereadores).toBe(3)
+    expect(s.resumoMunicipio.folhaComissionados).toBe(1_800_000)
+    expect(Object.keys(s.gabinetePorId)).toHaveLength(0)
+    expect(s.cobertura.comGabinete).toBe(0)
+  })
+  it('casa VIAP por nome civil (com acento) e soma o total do período', () => {
+    const id = s.politicos.find((p) => /PIMENTEL/.test(p.nome))!.id
+    expect(s.ranking.find((r) => r.politicoId === id)!.total).toBe(20000)
+    expect(s.porPolitico[id].serieMensal).toHaveLength(2)
+  })
+  it('despesas itemizadas com categoria e fornecedor', () => {
+    const id = s.politicos.find((p) => /PIMENTEL/.test(p.nome))!.id
+    const ds = s.despesasPorId[id]
+    expect(ds).toHaveLength(3)
+    expect(ds.some((d) => d.categoria === 'DIVULGAÇÃO' && d.fornecedor.nome === 'ROMULO')).toBe(true)
+    expect(s.porPolitico[id].porCategoria.find((c) => c.categoria === 'CONSULTORIA JURÍDICA')!.total).toBe(12000)
+    // ordena por total desc: ADVOCACIA (12000) antes de ROMULO (8000)
+    expect(s.porPolitico[id].porFornecedor[0].nome).toBe('ADVOCACIA')
+    expect(s.porPolitico[id].porFornecedor.find((f) => f.nome === 'ROMULO')!.total).toBe(8000)
+  })
+  it('casa por tokens quando a grafia da planilha difere do roster', () => {
+    const id = s.politicos.find((p) => /CAROLINA/.test(p.nome))!.id
+    expect(s.ranking.find((r) => r.politicoId === id)!.total).toBe(4000)
+    expect(s.cobertura.comViap).toBe(2)
+  })
+  it('vereador sem VIAP aparece com total 0; VIAP sem roster vira não casado', () => {
+    const semViap = s.politicos.find((p) => /JOAQUIM/.test(p.nome))!.id
+    expect(s.porPolitico[semViap].total).toBe(0)
+    expect(s.despesasPorId[semViap]).toBeUndefined()
+    expect(s.cobertura.naoCasados.some((n) => /ANTIGO/.test(n.nome))).toBe(true)
+    expect(s.cobertura.naoCasados.some((n) => /CAROLINA/.test(n.nome))).toBe(false) // casou por tokens
+  })
+  it('partido e foto vêm do TSE', () => {
+    const p = s.politicos.find((x) => /PIMENTEL/.test(x.nome))!
+    expect(p.partido).toBe('PSB')
+    expect(p.fotoUrl).toBe('/fotos/vereadores/150001989731.webp')
   })
 })

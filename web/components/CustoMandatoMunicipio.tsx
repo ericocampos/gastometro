@@ -72,7 +72,7 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
           icone={Icones.gabinete}
           rotulo="Verba de gabinete"
           valor={gabineteMedia === null ? '—' : brlInteiro(gabineteMedia)}
-          legenda="Média real da folha · mês"
+          legenda={municipio.gabinetePorVereador === false ? 'Folha de comissionados · média por vereador' : 'Média real da folha · mês'}
           cor={TEAL}
         />
         <Card
@@ -86,9 +86,13 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
       </div>
 
       <p className="mt-3 text-xs text-tinta-tenue">
-        Valores de referência. A VIAP é o teto mensal de reembolso por nota (a fonte não traz detalhamento
-        por fornecedor). A folha de gabinete é a média real dos gabinetes no mês de referência. O total é uma
-        estimativa.{municipio.periodoViap && ` VIAP coberta de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
+        Valores de referência. A VIAP é o teto mensal de reembolso por nota{municipio.viapDetalhada
+          ? ' (cada lançamento tem categoria, fornecedor e nota fiscal — veja no perfil de cada vereador)'
+          : ' (a fonte não traz detalhamento por fornecedor)'}.{' '}
+        {municipio.gabinetePorVereador === false
+          ? 'A folha de gabinete é a folha de comissionados da câmara (a fonte oficial não atribui cada comissionado a um vereador), em média por vereador.'
+          : 'A folha de gabinete é a média real dos gabinetes no mês de referência.'}{' '}
+        O total é uma estimativa.{municipio.periodoViap && ` VIAP coberta de ${mesAno(municipio.periodoViap.de)} a ${mesAno(municipio.periodoViap.ate)}.`}
       </p>
 
       {municipio.periodoViap && (

@@ -49,6 +49,15 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Câmara Municipal de Campina Grande (vereadores · modelo completo)',
+    intro: 'A câmara publica a VIAP (Verba Indenizatória de Apoio Parlamentar) itemizada por vereador, então CG tem gasto por vereador. O partido e a foto vêm do TSE; a folha de comissionados vem do TCE-PB.',
+    fontes: [
+      { oque: 'Despesas (VIAP) por vereador', onde: 'camaracg.pb.gov.br/transparencia/viap-{ano}/ → uma planilha .xlsx por vereador/mês', formato: '.xlsx oficial', obs: 'prestação de contas itemizada: categoria (consultoria, divulgação, produção audiovisual…), fornecedor, CPF/CNPJ, nº da nota fiscal, data e valor. Regulamentada nas Resoluções 017/2024 e 110/2024 (teto mensal). Casamento por nome civil do vereador' },
+      { oque: 'Folha de comissionados (gabinete)', onde: 'TCE-PB (mesma fonte das demais câmaras)', formato: 'CSV (dados abertos)', obs: 'a folha de comissionados da câmara entra agregada: nem o TCE nem a folha oficial da câmara atribuem cada comissionado a um vereador específico (lotação genérica), então não há gabinete por vereador como em João Pessoa' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição municipal de 2024)', formato: 'CSV + JPG', obs: 'mesma fonte usada nas câmaras do modelo leve' },
+    ],
+  },
+  {
     casa: 'Câmaras municipais — demais cidades (modelo leve)',
     intro: 'Onde a fonte não detalha gasto por vereador, mostramos só os agregados que ela publica: o subsídio (fixo) e a folha de comissionados da câmara. Sem ranking nem perfil por vereador. A folha de todas essas câmaras vem de uma única fonte oficial: o TCE-PB (Tribunal de Contas do Estado), via Dados Abertos. O partido e a foto de cada vereador vêm do TSE (eleição municipal de 2024, que elegeu o mandato atual).',
     fontes: [

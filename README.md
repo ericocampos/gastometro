@@ -120,6 +120,18 @@ Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por m
 
 > Os nomes vêm em dois mundos: **urna** (roster e lotação de gabinete) e **civil** (VIAP e folha). A ponte é o nome civil no início da bio do roster, então o casamento é por dado, sem adivinhação. Partículas (`de/da/dos/Santos/Silva`) não contam como âncora, para não atribuir o gasto de uma pessoa a outra. Quando um vereador não casa com gabinete ou VIAP, a peça aparece como **não encontrada** (sem inventar).
 
+### Câmara Municipal de Campina Grande (vereadores · modelo completo)
+
+CG tem gasto **por vereador** porque a câmara publica a **VIAP itemizada**. É o segundo município no modelo completo (depois de JP), com um detalhamento até **maior** que o de JP (tem fornecedor por lançamento).
+
+| O quê | Endpoint / arquivo | Formato | Como ligamos ao vereador |
+|---|---|---|---|
+| **Despesas (VIAP)** | `https://www.camaracg.pb.gov.br/transparencia/viap-{ano}/` → uma planilha `.xlsx` por vereador/mês (`VIAP-{NOME}-{MM}-{ano}.xlsx`) | `.xlsx` oficial | prestação de contas **itemizada**: categoria (consultoria, divulgação, produção audiovisual…), **fornecedor**, CPF/CNPJ, nº da NF, data e valor. Reaproveita o leitor de xlsx do `alpb.ts` (mesmo tipo de documento). Datas vêm como **serial do Excel**. Resoluções 017/2024 e 110/2024. Casamento por **nome civil** (linha `VEREADOR` da própria planilha) contra os Eletivos do TCE |
+| **Gabinete — comissionados** | TCE-PB (mesma fonte das câmaras leve) | CSV (dados abertos) | **agregado**: nem o TCE nem a folha oficial da câmara (PublicSoft) atribuem o comissionado a um vereador específico (lotação genérica "GABINETE"), então **não há gabinete por vereador** como em JP |
+| **Partido e foto** | TSE (eleição municipal 2024) | CSV + JPG | mesma fonte das câmaras leve |
+
+> Por que completo sem gabinete por vereador? Porque a peça que define o modelo completo é o **gasto por vereador**, e a VIAP de CG é por vereador (e itemizada). O gabinete fica agregado porque **nenhuma fonte oficial** liga o comissionado ao vereador (sem inventar). O `header` do servidor da câmara rejeita requisições sem cara de browser (406) — o coletor manda `User-Agent`/`Accept` de navegador.
+
 ### Câmaras municipais — modelo leve (demais cidades) · fonte única TCE-PB
 
 Fora de João Pessoa, as câmaras em geral não detalham gasto por vereador. Para elas usamos o **modelo leve**: a cidade vira só um registro em `data/municipios.json` (nº de vereadores + subsídio + folha de comissionados agregada da câmara), sem ranking nem perfil por vereador.
