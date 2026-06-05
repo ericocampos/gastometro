@@ -72,16 +72,17 @@ describe('ComparadorOrcamento', () => {
     expect(screen.getByRole('button', { name: 'Remover João Pessoa' })).toBeInTheDocument()
   })
 
-  it('alterna entre valor (R$) e crescimento (% a/a), começando em R$', () => {
+  it('alterna entre valor (R$) e crescimento acumulado, começando em R$', () => {
     render(<ComparadorOrcamento cidades={cidades} />)
     const rs = screen.getByRole('button', { name: 'R$' })
-    const cresc = screen.getByRole('button', { name: '% a/a' })
+    const cresc = screen.getByRole('button', { name: 'Crescimento' })
     expect(rs).toHaveAttribute('aria-pressed', 'true')
     expect(cresc).toHaveAttribute('aria-pressed', 'false')
     fireEvent.click(cresc)
     expect(cresc).toHaveAttribute('aria-pressed', 'true')
     expect(rs).toHaveAttribute('aria-pressed', 'false')
-    // a nota explica o crescimento normalizando o porte
+    // a nota explica o crescimento acumulado desde o primeiro ano, normalizando o porte
+    expect(screen.getByText(/desde o primeiro ano/i)).toBeInTheDocument()
     expect(screen.getByText(/normaliza o porte/i)).toBeInTheDocument()
   })
 })
