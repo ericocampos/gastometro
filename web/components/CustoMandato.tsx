@@ -23,6 +23,11 @@ const Icones = {
       <path d="M16 19a4 4 0 0 0-8 0" /><circle cx="12" cy="9" r="3" /><path d="M5 19a3 3 0 0 1 4-2.8M19 19a3 3 0 0 0-4-2.8" />
     </svg>
   ),
+  moradia: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 11l9-7 9 7" /><path d="M5 10v10h14V10" /><path d="M10 20v-6h4v6" />
+    </svg>
+  ),
   total: (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6" />
@@ -98,10 +103,13 @@ export function CustoMandato({
         </div>
       )}
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className={`grid grid-cols-2 gap-3 ${c.moradia ? 'lg:grid-cols-5' : 'lg:grid-cols-4'}`}>
         <Card icone={Icones.salario} rotulo="Salário bruto mensal" valor={brlInteiro(c.salario)} legenda="Subsídio parlamentar fixo" cor={cor} />
         <Card icone={Icones.cota} rotulo="Cota parlamentar" valor={valorItem(c.cota)} legenda={c.cota.rotulo} cor={cor} />
         <Card icone={Icones.gabinete} rotulo="Verba de gabinete" valor={valorItem(c.gabinete)} legenda={c.gabinete.rotulo} cor={cor} />
+        {c.moradia && (
+          <Card icone={Icones.moradia} rotulo="Moradia" valor={valorItem(c.moradia)} legenda={c.moradia.rotulo} cor={cor} />
+        )}
         <Card
           icone={Icones.total}
           rotulo="Custo total estimado"
@@ -114,6 +122,9 @@ export function CustoMandato({
 
       <p className="mt-3 text-xs text-tinta-tenue">
         Valores de referência · atualizado em {custos.atualizadoEm}.{' '}
+        {casa === 'camara' && (
+          'Na Câmara, a CEAP (cota) é prestada com nota fiscal item a item. O auxílio-moradia (ou imóvel funcional) fica FORA da cota: o valor mostrado é o teto do auxílio em espécie e varia por deputado (alguns ocupam imóvel funcional, sem dinheiro), por isso o total é aproximado. '
+        )}
         {casa === 'senado' && (c.gabinete.valor != null
           ? 'No Senado a cota tem parcela fixa + transporte aéreo variável; não há verba de gabinete fixa, então a parcela de pessoal é a média da folha real dos gabinetes — uma estimativa, já incluída no total. '
           : 'No Senado a cota tem parcela fixa + transporte aéreo variável e não há verba de gabinete fixa (até 50 assessores), então o total exclui o pessoal. ')}

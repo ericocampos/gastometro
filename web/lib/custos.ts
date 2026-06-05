@@ -1,11 +1,12 @@
 import type { Casa, CustoCasa, CustosMandato, Assessores } from './tipos'
 
-// Custo total mensal estimado: salário + cota + pessoal de gabinete.
+// Custo total mensal estimado: salário + cota + pessoal de gabinete (+ moradia, só federal).
 // Marca como aproximado se qualquer parcela for aproximada ou ausente (caso do Senado).
 export function custoTotal(c: CustoCasa): { total: number; aproximado: boolean } {
-  const total = c.salario + (c.cota.valor ?? 0) + (c.gabinete.valor ?? 0)
+  const total = c.salario + (c.cota.valor ?? 0) + (c.gabinete.valor ?? 0) + (c.moradia?.valor ?? 0)
   const aproximado =
     c.cota.aproximado || c.gabinete.aproximado || c.cota.valor === null || c.gabinete.valor === null
+    || (c.moradia != null && (c.moradia.aproximado || c.moradia.valor === null))
   return { total, aproximado }
 }
 

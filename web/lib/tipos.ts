@@ -19,6 +19,8 @@ export interface Politico {
   legislaturas: number[]
   fotoUrl?: string
   mandato?: MandatoParlamentar
+  // moradia do deputado FEDERAL (snapshot): imóvel funcional, auxílio em espécie (R$ fixo) ou reembolso
+  moradia?: { tipo: 'imovel' | 'especie' | 'reembolso'; valorMensal: number | null }
 }
 
 export interface ItemRanking {
@@ -107,6 +109,7 @@ export interface CustoCasa {
   salario: number
   cota: ItemCusto
   gabinete: ItemCusto
+  moradia?: ItemCusto // só federal: auxílio-moradia ou imóvel funcional (fora da cota/CEAP)
   fontes: { nome: string; url: string }[]
 }
 export interface CustosMandato {

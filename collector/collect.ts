@@ -7,6 +7,7 @@ import { FonteSenado } from './sources/senado.js'
 import { anosDoPolitico } from './legislaturas.js'
 import { agregar } from './normalize.js'
 import { CacheBruto } from './cache.js'
+import { baixarMoradia, chaveMoradia } from './sources/moradia.js'
 import { fontePerfilDaCasa } from './enriquecimento/index.js'
 import type { PerfilParlamentar } from './enriquecimento/tipos.js'
 import type { Despesa, FonteDados, Politico } from './sources/types.js'
@@ -51,6 +52,21 @@ async function main() {
       }
       console.log(`  ${p.nome}: ${todasDespesas.filter((d) => d.politicoId === p.id).length} despesas`)
     }
+  }
+
+  // Moradia dos deputados FEDERAIS (auxílio-moradia / imóvel funcional): NÃO está na CEAP; a Câmara
+  // publica à parte (snapshot do mês). Casa por nome parlamentar. Senado/ALPB não entram aqui.
+  try {
+    const moradia = await baixarMoradia()
+    let n = 0
+    for (const p of todosPoliticos) {
+      if (p.casa !== 'camara') continue
+      const m = moradia.get(chaveMoradia(p.nome))
+      if (m) { p.moradia = m; n++ }
+    }
+    console.log(`> Moradia (Câmara): ${moradia.size} beneficiários nacionais, ${n} casados na UF`)
+  } catch (e) {
+    console.error(`  ! moradia (Câmara) falhou: ${(e as Error).message} (deputados ficam sem moradia)`)
   }
 
   // Deputados estaduais (ALPB): mescla o dataset gerado por `npm run coletar:alpb`.

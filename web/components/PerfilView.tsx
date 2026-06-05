@@ -351,6 +351,7 @@ export function PerfilView({
                 <CotaVsTeto cota={custoCasa.cota} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
               </>
             )}
+            {politico.casa === 'camara' && politico.moradia && <Moradia moradia={politico.moradia} />}
           </section>
 
           <section className="mb-10">
@@ -449,6 +450,34 @@ function Estatistica({ rotulo, valor, hint, destaque }: { rotulo: string; valor:
         {valor}
       </div>
       {hint && <div className="text-xs text-tinta-tenue">{hint}</div>}
+    </div>
+  )
+}
+
+// Moradia do deputado FEDERAL (fora da cota/CEAP): imóvel funcional, auxílio em espécie (R$ fixo) ou
+// reembolso (até o teto). Snapshot do mês publicado pela Câmara. Mostra o que ESTE deputado recebe.
+function Moradia({ moradia }: { moradia: NonNullable<Politico['moradia']> }) {
+  const titulo =
+    moradia.tipo === 'imovel' ? 'Imóvel funcional'
+    : moradia.tipo === 'especie' ? 'Auxílio-moradia (em espécie)'
+    : 'Auxílio-moradia (por reembolso)'
+  const detalhe =
+    moradia.tipo === 'imovel' ? 'Ocupa um dos imóveis funcionais da Câmara em Brasília (benefício em espécie, sem valor em dinheiro). Não está na cota (CEAP).'
+    : moradia.tipo === 'especie' ? 'Recebe o valor fixo mensal, sem precisar apresentar recibo de aluguel. Não está na cota (CEAP).'
+    : 'Reembolso de aluguel até o teto, mediante recibo (o valor por deputado não é publicado nas listas). Não está na cota (CEAP).'
+  return (
+    <div className="mt-4 rounded-lg border border-borda bg-superficie p-3">
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="text-xs font-semibold uppercase tracking-wider text-tinta-suave">Moradia</span>
+        <span className="font-display text-base font-semibold tabular-nums text-tinta">
+          {moradia.valorMensal != null ? `${brl(moradia.valorMensal)}/mês` : 'em espécie'}
+        </span>
+      </div>
+      <p className="mt-1 text-sm text-tinta">{titulo}</p>
+      <p className="mt-1 text-xs text-tinta-tenue">
+        {detalhe}{' '}
+        <a href="https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia" target="_blank" rel="noopener noreferrer" className="text-marca underline">fonte ↗</a>
+      </p>
     </div>
   )
 }

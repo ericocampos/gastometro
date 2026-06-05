@@ -166,6 +166,30 @@ describe('PerfilView · vereador municipal', () => {
     expect(screen.getByTestId('grafico-ref')).toHaveTextContent('Teto da cota/mês')
   })
 
+  it('deputado federal com imóvel funcional: mostra o bloco de moradia (fora da CEAP)', () => {
+    const dep: Politico = { ...politico, id: 'camara-1', casa: 'camara', municipio: undefined, moradia: { tipo: 'imovel', valorMensal: null } }
+    const ds: Despesa[] = [{ id: 'c1', politicoId: 'camara-1', data: '2026-01-15', ano: 2026, mes: 1, categoria: 'COMBUSTÍVEIS', fornecedor: { nome: 'POSTO X' }, valor: 500 }]
+    const sr: SerieParlamentar[] = [{ ...series[0], politicoId: 'camara-1', casa: 'camara', municipio: undefined, serieMensal: [{ anoMes: '2026-01', total: 500 }] }]
+    render(
+      <PerfilView politico={dep} despesas={ds} series={sr} perfil={null} custos={custos}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText(/Imóvel funcional/i)).toBeInTheDocument()
+    expect(screen.getByText(/benefício em espécie/i)).toBeInTheDocument()
+  })
+
+  it('deputado federal em espécie: mostra o valor mensal do auxílio-moradia', () => {
+    const dep: Politico = { ...politico, id: 'camara-2', casa: 'camara', municipio: undefined, moradia: { tipo: 'especie', valorMensal: 4253 } }
+    const ds: Despesa[] = [{ id: 'c2', politicoId: 'camara-2', data: '2026-01-15', ano: 2026, mes: 1, categoria: 'TELEFONIA', fornecedor: { nome: 'CLARO' }, valor: 200 }]
+    const sr: SerieParlamentar[] = [{ ...series[0], politicoId: 'camara-2', casa: 'camara', municipio: undefined, serieMensal: [{ anoMes: '2026-01', total: 200 }] }]
+    render(
+      <PerfilView politico={dep} despesas={ds} series={sr} perfil={null} custos={custos}
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}} />,
+    )
+    expect(screen.getByText(/Auxílio-moradia \(em espécie\)/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/R\$ 4\.253/).length).toBeGreaterThanOrEqual(1)
+  })
+
   it('não renderiza a tabela/lista de fornecedores para municipal', () => {
     renderMunicipal()
     // o cabeçalho da tabela de fornecedores não deve aparecer
