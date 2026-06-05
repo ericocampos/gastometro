@@ -24,7 +24,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74467.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74467.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-141422",
@@ -64,7 +68,11 @@
       55,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74041.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74041.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-141490",
@@ -160,7 +168,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74043.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74043.jpg",
+    "moradia": {
+      "tipo": "especie",
+      "valorMensal": 4253
+    }
   },
   {
     "id": "camara-74414",
@@ -184,7 +196,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74044.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/74044.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-160527",
@@ -198,7 +214,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160527.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160527.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-74040",
@@ -224,7 +244,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160674.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-122195",
@@ -260,7 +284,11 @@
       54,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160629.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160629.jpg",
+    "moradia": {
+      "tipo": "especie",
+      "valorMensal": 4253
+    }
   },
   {
     "id": "camara-160635",
@@ -273,7 +301,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160635.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/160635.jpg",
+    "moradia": {
+      "tipo": "reembolso",
+      "valorMensal": 4253
+    }
   },
   {
     "id": "camara-160636",
@@ -365,7 +397,11 @@
       56,
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/204394.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/204394.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-204420",
@@ -409,7 +445,11 @@
     "legislaturas": [
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220574.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220574.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-220585",
@@ -420,7 +460,11 @@
     "legislaturas": [
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220585.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220585.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-220584",
@@ -431,7 +475,11 @@
     "legislaturas": [
       57
     ],
-    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220584.jpg"
+    "fotoUrl": "https://www.camara.leg.br/internet/deputado/bandep/220584.jpg",
+    "moradia": {
+      "tipo": "imovel",
+      "valorMensal": null
+    }
   },
   {
     "id": "camara-115200",

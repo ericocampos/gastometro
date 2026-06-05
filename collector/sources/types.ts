@@ -19,6 +19,8 @@ export const PoliticoSchema = z.object({
   legislaturas: z.array(z.number()),
   fotoUrl: z.string().optional(),
   mandato: MandatoSchema.optional(),
+  // moradia do deputado FEDERAL (snapshot do mês): imóvel funcional, auxílio em espécie ou reembolso
+  moradia: z.object({ tipo: z.enum(['imovel', 'especie', 'reembolso']), valorMensal: z.number().nullable() }).optional(),
 })
 export type Politico = z.infer<typeof PoliticoSchema>
 

@@ -7,10 +7,12 @@
       "salario": 46366.19,
       "cota": { "valor": 47826.36, "rotulo": "CEAP mensal · Paraíba", "aproximado": false },
       "gabinete": { "valor": 133170.54, "rotulo": "Verba de gabinete · até 25 secretários", "aproximado": false },
+      "moradia": { "valor": 4253, "rotulo": "Auxílio-moradia ou imóvel funcional", "aproximado": true },
       "fontes": [
         { "nome": "Câmara · salário de deputados", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/salario-de-deputados" },
         { "nome": "Câmara · cota parlamentar (CEAP)", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar" },
-        { "nome": "Câmara · verba de gabinete", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/verba-de-gabinete" }
+        { "nome": "Câmara · verba de gabinete", "url": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/verba-de-gabinete" },
+        { "nome": "Câmara · imóveis funcionais e auxílio-moradia", "url": "https://www2.camara.leg.br/transparencia/imoveis-funcionais-e-auxilio-moradia" }
       ]
     },
     "senado": {
