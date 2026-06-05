@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -107,4 +107,41 @@ export function getPerfil(id: string): PerfilParlamentar | null {
   const caminho = resolve(dataDir(), 'perfis', `${id}.json`)
   if (!existsSync(caminho)) return null
   return lerJson<PerfilParlamentar>(caminho)
+}
+
+export function getOrcamento(slug: string): OrcamentoMunicipio | null {
+  const caminho = resolve(dataDir(), 'orcamento', `${slug}.json`)
+  if (!existsSync(caminho)) return null
+  return lerJson<OrcamentoMunicipio>(caminho)
+}
+
+export function getOrcamentoSlugs(): string[] {
+  const caminho = resolve(dataDir(), 'orcamento', '_index.json')
+  if (!existsSync(caminho)) return []
+  return lerJson<{ slugs: string[] }>(caminho).slugs
+}
+
+// Achata os orçamentos das cidades cobertas pra o comparador (total e por poder, ano a ano). O ano
+// corrente (parcial) fica de fora, pra não desenhar uma queda falsa. Ordena por total do ano mais
+// recente (maiores primeiro), pra a seleção inicial pegar as cidades de maior orçamento.
+export function getComparativoOrcamento(): ComparativoOrcamentoCidade[] {
+  const cidades = getOrcamentoSlugs()
+    .map((slug): ComparativoOrcamentoCidade | null => {
+      const o = getOrcamento(slug)
+      if (!o) return null
+      const anoColeta = Number(o.atualizadoEm.slice(0, 4))
+      const anos = o.anos
+        .filter((a) => a.ano < anoColeta)
+        .map((a) => {
+          // gasto por área somando os poderes (quanto a cidade inteira pagou naquela função)
+          const funcoes: Record<string, number> = {}
+          for (const p of a.poderes) for (const f of p.funcoes) funcoes[f.funcao] = (funcoes[f.funcao] ?? 0) + f.pago
+          return { ano: a.ano, total: a.totalPago, funcoes }
+        })
+        .sort((x, y) => x.ano - y.ano)
+      if (anos.length === 0) return null
+      return { slug: o.slug, nome: o.nome, anos }
+    })
+    .filter((x): x is ComparativoOrcamentoCidade => x !== null)
+  return cidades.sort((a, b) => (b.anos[b.anos.length - 1]?.total ?? 0) - (a.anos[a.anos.length - 1]?.total ?? 0))
 }

@@ -1,26 +1,35 @@
-import { getMunicipios, getSeriesParlamentares } from '@/lib/dados'
+import { getMunicipios, getSeriesParlamentares, getComparativoOrcamento } from '@/lib/dados'
 import { comparativoAnualCidades } from '@/lib/periodo'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 import { ComparadorCidades } from '@/components/ComparadorCidades'
+import { ComparadorOrcamento } from '@/components/ComparadorOrcamento'
 
 export default function MunicipiosPage() {
   const { cidades, totalMunicipiosPB, naoCobertas } = getMunicipios()
   const temLeve = cidades.some((c) => c.modelo === 'leve')
   const completas = cidades.filter((c) => c.modelo === 'completo').map((c) => ({ slug: c.slug, nome: c.nome }))
   const comparativo = comparativoAnualCidades(getSeriesParlamentares(), completas)
+  const comparativoOrc = getComparativoOrcamento()
 
   return (
     <div>
       <section className="mb-6 surgir">
-        <SecaoTitulo>Vereadores por cidade</SecaoTitulo>
+        <SecaoTitulo>Municípios da Paraíba</SecaoTitulo>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tinta-suave">
           <strong className="text-tinta">{cidades.length} de {totalMunicipiosPB}</strong> cidades cobertas,
-          a partir de uma fonte única e oficial: a folha de pessoal das câmaras no Portal de Dados
-          Abertos do <strong className="text-tinta">TCE-PB</strong>. Algumas cidades têm o gasto detalhado
-          por vereador (ver o comparativo abaixo); as demais entram no modelo simples.
+          a partir de uma fonte única e oficial: o Portal de Dados Abertos do{' '}
+          <strong className="text-tinta">TCE-PB</strong>. Para onde vai o dinheiro da cidade inteira
+          (orçamento por área) e o gasto por vereador, lado a lado.
         </p>
       </section>
+
+      {comparativoOrc.length > 0 && (
+        <section className="mb-8">
+          <SecaoTitulo>Comparar cidades · gasto por área (Saúde, Educação...)</SecaoTitulo>
+          <ComparadorOrcamento cidades={comparativoOrc} />
+        </section>
+      )}
 
       {comparativo.length > 0 && (
         <section className="mb-8">

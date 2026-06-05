@@ -10,6 +10,7 @@
     "coletar:assessores": "tsx collector/coletarAssessores.ts",
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
+    "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
     "analisar": "tsx collector/analisar.ts"
   },
   "dependencies": {
