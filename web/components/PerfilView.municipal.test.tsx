@@ -147,6 +147,28 @@ describe('PerfilView · vereador municipal', () => {
   })
 
   // Campina Grande: municipal COM detalhamento por fornecedor + número da NF (sem documento)
+  it('mostra o selo de conferência com o TCE (conferido) e aponta o documento quando há link', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
+        custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
+        conferidoTce={{ status: 'conferido', meses: 2, conferidos: 2, totalNosso: 25000, totalTce: 25000, apresentado: 25000, fonte: 'https://tce/095' }} />,
+    )
+    expect(screen.getByText(/conferido com o TCE/i)).toBeInTheDocument()
+    // os fixtures de JP têm urlDocumento → aponta o comprovante no link "nota"
+    expect(screen.getByText(/comprovante de cada mês/i)).toBeInTheDocument()
+  })
+
+  it('no estado de glosa, mostra apresentado × reembolsado', () => {
+    render(
+      <PerfilView politico={politico} despesas={despesas} series={series} perfil={null}
+        custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm="2026-06-03"
+        assessores={assessores} alertas={{ quantidade: 0, temAlta: false, temMedia: false }} alertasPorDespesa={{}}
+        conferidoTce={{ status: 'conferido', meses: 2, conferidos: 2, totalNosso: 24000, totalTce: 24000, apresentado: 25000, fonte: 'https://tce/050' }} />,
+    )
+    expect(screen.getByText(/não foram reembolsados/i)).toBeInTheDocument()
+  })
+
   it('mostra a tabela de fornecedores e o número da NF quando a fonte detalha (CG)', () => {
     const despesasCg: Despesa[] = [
       { id: 'c1', politicoId: 'cm-joao-pessoa-1', data: '2025-01-31', ano: 2025, mes: 1,

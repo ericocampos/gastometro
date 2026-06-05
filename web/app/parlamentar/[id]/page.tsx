@@ -56,7 +56,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} />
     </Suspense>
   )
 }

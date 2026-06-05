@@ -27,11 +27,12 @@ describe('cmcgViap', () => {
     expect(div.valor).toBe(5000)
   })
 
-  it('total bate com a soma das despesas e ignora as linhas de rodapé', () => {
+  it('total apresentado e valor reembolsado batem com as notas e ignoram o rodapé', () => {
     const p = parsePlanilhaViapCg(buf)!
     const soma = p.despesas.reduce((s, d) => s + d.valor, 0)
-    expect(p.total).toBe(17000)
-    expect(soma).toBe(p.total)
+    expect(p.totalDespesas).toBe(17000)
+    expect(p.reembolsado).toBe(17000) // neste mês não houve glosa
+    expect(soma).toBe(p.totalDespesas)
     // nenhuma despesa é uma linha de total/reembolso
     expect(p.despesas.some((d) => /total|reembols/i.test(d.item))).toBe(false)
   })

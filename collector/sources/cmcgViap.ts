@@ -70,7 +70,10 @@ export interface DespesaViapCg {
   mes: number
   valor: number
 }
-export interface MesViapCg { anoMes: string; total: number; despesas: DespesaViapCg[] }
+// Por mês: o que foi APRESENTADO em notas (totalDespesas, soma dos lançamentos) e o que foi de fato
+// REEMBOLSADO (reembolsado, capado no teto e com eventuais glosas) — é o reembolsado que vira custo
+// público e bate com o empenho pago no TCE. Quando reembolsado < totalDespesas, houve glosa/teto.
+export interface MesViapCg { anoMes: string; totalDespesas: number; reembolsado: number; despesas: DespesaViapCg[] }
 export interface VereadorViapCg { nome: string; meses: MesViapCg[] }
 
 const norm = (s: string) =>
@@ -92,11 +95,12 @@ function dataIso(cel: string): string {
  * Lê uma planilha VIAP de CG: nome do vereador (linha "VEREADOR"), mês de referência (serial),
  * despesas itemizadas e total reembolsado. Retorna null se não achar o cabeçalho da tabela.
  */
-export function parsePlanilhaViapCg(buf: Buffer): { nome: string; anoMes: string; total: number; despesas: DespesaViapCg[] } | null {
+export function parsePlanilhaViapCg(buf: Buffer): { nome: string; anoMes: string; totalDespesas: number; reembolsado: number; despesas: DespesaViapCg[] } | null {
   const linhas = linhasDoXlsx(buf)
   let nome = ''
   let anoMes = ''
-  let total = 0
+  let totalDespesas = 0
+  let reembolsado = -1 // -1 = não encontrado (cai para o total de despesas)
   let hdr = -1
   const idx: Record<string, number> = {}
 
@@ -126,10 +130,12 @@ export function parsePlanilhaViapCg(buf: Buffer): { nome: string; anoMes: string
     const cel = (k: string) => (idx[k] >= 0 ? (f[idx[k]] ?? '') : '')
     const item = (cel('item') ?? '').trim()
     if (!item) {
-      // linhas de rodapé têm o rótulo deslocado: captura o total de despesas onde quer que apareça
-      if (f.map(norm).join(' ').includes('total de despesas')) {
-        total = valorXlsx(cel('valor') || f[f.length - 1] || '')
-      }
+      // linhas de rodapé têm o rótulo deslocado: captura o total de despesas e o valor reembolsado
+      // onde quer que apareçam (o valor está na coluna de valor ou na última célula da linha).
+      const linhaNorm = f.map(norm).join(' ')
+      const valorRodape = () => valorXlsx(cel('valor') || f[f.length - 1] || '')
+      if (linhaNorm.includes('total de despesas')) totalDespesas = valorRodape()
+      else if (linhaNorm.includes('valor reembolsado')) reembolsado = valorRodape()
       continue
     }
     const ni = norm(item)
@@ -148,8 +154,10 @@ export function parsePlanilhaViapCg(buf: Buffer): { nome: string; anoMes: string
       valor,
     })
   }
-  if (!total) total = despesas.reduce((s, d) => s + d.valor, 0)
-  return { nome, anoMes, total, despesas }
+  if (!totalDespesas) totalDespesas = despesas.reduce((s, d) => s + d.valor, 0)
+  // sem linha de "valor reembolsado": assume reembolso = total apresentado
+  if (reembolsado < 0) reembolsado = totalDespesas
+  return { nome, anoMes, totalDespesas, reembolsado, despesas }
 }
 
 /**
@@ -180,7 +188,7 @@ export async function coletarViapCg(anos: number[]): Promise<VereadorViapCg[]> {
     let v = porVer.get(chave)
     if (!v) { v = { nome: p.nome, meses: [] }; porVer.set(chave, v) }
     if (v.meses.some((m) => m.anoMes === p.anoMes)) continue // dedup mês
-    v.meses.push({ anoMes: p.anoMes, total: p.total, despesas: p.despesas })
+    v.meses.push({ anoMes: p.anoMes, totalDespesas: p.totalDespesas, reembolsado: p.reembolsado, despesas: p.despesas })
   }
   for (const v of porVer.values()) v.meses.sort((a, b) => a.anoMes.localeCompare(b.anoMes))
   return [...porVer.values()]

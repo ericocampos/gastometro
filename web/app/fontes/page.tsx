@@ -45,14 +45,16 @@ const BLOCOS: Bloco[] = [
     fontes: [
       { oque: 'Roster, foto, partido', onde: 'joaopessoa.pb.leg.br/vereadores', formato: 'HTML oficial', obs: 'nome de urna; o nome civil sai do início da bio de cada card, ligando ao nome civil da VIAP e da folha' },
       { oque: 'Despesas (VIAP)', onde: 'joaopessoa.pb.leg.br/transparencia/verbas-indenizatorias', formato: 'HTML oficial', obs: 'reembolso mensal por vereador (teto), com link da nota; a fonte não traz detalhamento por fornecedor' },
+      { oque: 'Conferência do reembolso (TCE)', onde: 'download.tce.pb.gov.br/dados-abertos/dados-por-municipio/095/despesas/despesas-{ano}.zip', formato: 'CSV (dados abertos)', obs: 'mesma validação de Campina Grande: a VIAP de cada vereador é conferida contra os empenhos de "Indenizações e Restituições" pagos a ele no TCE (selo "conferido" no perfil)' },
       { oque: 'Gabinete — comissionados', onde: 'transparencia-api.elmartecnologia.com.br/api/{ctx}/pessoal/folha_pagamento', formato: 'JSON (API)', obs: 'folha real por pessoa; lotação "GAB. VER." aponta o vereador; bruto e líquido do mês' },
     ],
   },
   {
     casa: 'Câmara Municipal de Campina Grande (vereadores · modelo completo)',
-    intro: 'A câmara publica a VIAP (Verba Indenizatória de Apoio Parlamentar) itemizada por vereador, então CG tem gasto por vereador. O partido e a foto vêm do TSE; a folha de comissionados vem do TCE-PB.',
+    intro: 'A câmara publica a VIAP (Verba Indenizatória de Apoio Parlamentar) itemizada por vereador, então CG tem gasto por vereador. O reembolso é conferido de forma cruzada com o TCE-PB. O partido e a foto vêm do TSE.',
     fontes: [
-      { oque: 'Despesas (VIAP) por vereador', onde: 'camaracg.pb.gov.br/transparencia/viap-{ano}/ → uma planilha .xlsx por vereador/mês', formato: '.xlsx oficial', obs: 'prestação de contas itemizada: categoria (consultoria, divulgação, produção audiovisual…), fornecedor, CPF/CNPJ, nº da nota fiscal, data e valor. Regulamentada nas Resoluções 017/2024 e 110/2024 (teto mensal). Casamento por nome civil do vereador' },
+      { oque: 'Despesas (VIAP) por vereador', onde: 'camaracg.pb.gov.br/transparencia/viap-{ano}/ → uma planilha .xlsx por vereador/mês', formato: '.xlsx oficial', obs: 'prestação de contas itemizada: categoria (consultoria, divulgação, produção audiovisual…), fornecedor, CPF/CNPJ, nº da nota fiscal, data e valor. A planilha traz o total APRESENTADO em notas e o VALOR REEMBOLSADO (capado no teto, com glosas) — a diferença é mostrada. Resoluções 017/2024 e 110/2024. O documento (imagem) da nota não é publicado' },
+      { oque: 'Conferência do reembolso (TCE)', onde: 'download.tce.pb.gov.br/dados-abertos/dados-por-municipio/050/despesas/despesas-{ano}.zip', formato: 'CSV (dados abertos)', obs: 'cruzamento de validação: no TCE, a VIAP aparece como empenhos de "Indenizações e Restituições" cujo credor é o próprio vereador. Conferimos, mês a mês, o reembolsado da planilha com o empenho pago no TCE. O perfil mostra um selo "conferido" (ou os dois valores, quando diferem)' },
       { oque: 'Folha de comissionados (gabinete)', onde: 'TCE-PB (mesma fonte das demais câmaras)', formato: 'CSV (dados abertos)', obs: 'a folha de comissionados da câmara entra agregada: nem o TCE nem a folha oficial da câmara atribuem cada comissionado a um vereador específico (lotação genérica), então não há gabinete por vereador como em João Pessoa' },
       { oque: 'Partido e foto', onde: 'TSE (eleição municipal de 2024)', formato: 'CSV + JPG', obs: 'mesma fonte usada nas câmaras do modelo leve' },
     ],

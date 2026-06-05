@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce } from '@/lib/tipos'
 import {
   type SerieParlamentar,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, valorPeriodoPadrao,
@@ -33,8 +33,66 @@ const casaLonga = (c: Casa) =>
 const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
 
+// Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
+// que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
+// empenho pago no TCE; 'divergente' mostra os dois totais (câmara × TCE) e o link da fonte.
+function SeloTce({ c, docPublicada }: { c: ConferenciaTce; docPublicada: boolean }) {
+  if (c.status === 'sem_dado' || c.meses === 0) return null
+  // estado calculado da cobertura: ≤1 mês de defasagem = conferido; maioria = conferir; pouco = neutro
+  const gap = c.meses - c.conferidos
+  const estado = gap <= 1 ? 'conferido' : c.conferidos >= c.meses / 2 ? 'conferir' : 'neutro'
+  const cor = estado === 'conferido' ? '#0f766e' : estado === 'conferir' ? '#c87f1a' : '#6b7280'
+  const glosa = c.apresentado - c.totalNosso // notas apresentadas além do reembolsado (teto/glosa)
+  const temGlosa = glosa > 0.5
+  const fonte = (
+    <a href={c.fonte} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: cor }}>
+      dados abertos do TCE-PB ↗
+    </a>
+  )
+  return (
+    <div
+      className="mb-3 rounded-md border-l-2 px-3 py-2 text-xs leading-relaxed text-tinta-suave"
+      style={{ borderColor: cor, background: `color-mix(in srgb, ${cor} 8%, transparent)` }}
+    >
+      {estado === 'conferido' ? (
+        <>
+          <strong style={{ color: cor }}>✓ Reembolso conferido com o TCE.</strong>{' '}
+          O valor reembolsado a este vereador bate com os empenhos pagos (“Indenizações e Restituições”)
+          registrados no Tribunal de Contas do Estado{gap === 1 ? ' (o mês mais recente pode ainda não constar lá)' : ''}.
+          Fonte cruzada: {fonte}.
+        </>
+      ) : estado === 'conferir' ? (
+        <>
+          <strong style={{ color: cor }}>Reembolso × TCE: conferir.</strong>{' '}
+          {c.conferidos} de {c.meses} meses batem com os empenhos do TCE.{' '}
+          <strong className="text-tinta">reembolsado: {brl(c.totalNosso)}</strong> ·{' '}
+          <strong className="text-tinta">pago no TCE: {brl(c.totalTce)}</strong>. Pode ser defasagem entre
+          competência e pagamento; confira nos {fonte}.
+        </>
+      ) : (
+        <>
+          <strong style={{ color: cor }}>Cruzamento com o TCE.</strong>{' '}
+          Não foi possível casar automaticamente a maioria dos meses com os empenhos do TCE
+          ({c.conferidos} de {c.meses}) — pode ser diferença de competência, homônimo ou registro à parte.
+          Veja os empenhos na fonte: {fonte}.
+        </>
+      )}
+      {temGlosa && (
+        <>
+          {' '}<span className="text-tinta-tenue">Das notas apresentadas ({brl(c.apresentado)}), a câmara
+          reembolsou {brl(c.totalNosso)} — <strong className="text-tinta-suave">{brl(glosa)}</strong> não
+          foram reembolsados (glosa ou teto).</span>
+        </>
+      )}
+      {' '}<span className="text-tinta-tenue">{docPublicada
+        ? 'O comprovante de cada mês (a discriminação da VIAP e as notas fiscais anexadas) está no link “nota” do detalhamento — dá para conferir o conteúdo de cada despesa.'
+        : 'A nota fiscal em si (o documento) não é publicada pela câmara nem pelo TCE — dá para conferir o fluxo do dinheiro, não o conteúdo de cada nota.'}</span>
+    </div>
+  )
+}
+
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -55,6 +113,7 @@ export function PerfilView({
   }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
+  conferidoTce?: ConferenciaTce
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -303,6 +362,7 @@ export function PerfilView({
               </div>
               <section>
                 <SecaoTitulo>Detalhamento de gastos</SecaoTitulo>
+                {conferidoTce && <SeloTce c={conferidoTce} docPublicada={despesas.some((d) => d.urlDocumento)} />}
                 <div className="rounded-xl border border-borda bg-superficie p-4">
                   <DetalhamentoGastos despesas={despesasPeriodo} portalSenado={portalSenado} casa={politico.casa} alertasPorDespesa={alertasPorDespesa} politicoId={politico.id} />
                 </div>

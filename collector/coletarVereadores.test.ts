@@ -77,20 +77,20 @@ describe('montarCampinaGrande (completo via VIAP itemizada)', () => {
   ]
   const viap = [
     { nome: 'ANTÔNIO ALVES PIMENTEL FILHO', meses: [
-      { anoMes: '2025-01', total: 17000, despesas: [
+      { anoMes: '2025-01', totalDespesas: 17000, reembolsado: 17000, despesas: [
         { item: 'DIVULGAÇÃO', fornecedor: { nome: 'ROMULO', cpfCnpj: '**.925/**' }, numeroNf: '9', data: '2025-01-24', ano: 2025, mes: 1, valor: 5000 },
         { item: 'CONSULTORIA JURÍDICA', fornecedor: { nome: 'ADVOCACIA' }, numeroNf: '14', data: '2025-01-29', ano: 2025, mes: 1, valor: 12000 },
       ] },
-      { anoMes: '2025-02', total: 3000, despesas: [
+      { anoMes: '2025-02', totalDespesas: 3000, reembolsado: 3000, despesas: [
         { item: 'DIVULGAÇÃO', fornecedor: { nome: 'ROMULO' }, data: '2025-02-10', ano: 2025, mes: 2, valor: 3000 },
       ] },
     ] },
     // grafia divergente do roster (DE a mais): deve casar por tokens
-    { nome: 'CAROLINA FARIAS DE ALMEIDA GOMES', meses: [{ anoMes: '2025-03', total: 4000, despesas: [
+    { nome: 'CAROLINA FARIAS DE ALMEIDA GOMES', meses: [{ anoMes: '2025-03', totalDespesas: 4000, reembolsado: 4000, despesas: [
       { item: 'DIVULGAÇÃO', fornecedor: { nome: 'XPTO' }, data: '2025-03-05', ano: 2025, mes: 3, valor: 4000 },
     ] }] },
     // não é vereador atual: deve ficar como não casado
-    { nome: 'ROBERTO CARDOSO ANTIGO', meses: [{ anoMes: '2025-01', total: 1000, despesas: [] }] },
+    { nome: 'ROBERTO CARDOSO ANTIGO', meses: [{ anoMes: '2025-01', totalDespesas: 1000, reembolsado: 1000, despesas: [] }] },
   ] as any
   const lookup = (nome: string) =>
     /PIMENTEL/.test(normNome(nome)) ? { partido: 'PSB', sq: '150001989731' } : null
@@ -135,5 +135,23 @@ describe('montarCampinaGrande (completo via VIAP itemizada)', () => {
     const p = s.politicos.find((x) => /PIMENTEL/.test(x.nome))!
     expect(p.partido).toBe('PSB')
     expect(p.fotoUrl).toBe('/fotos/vereadores/150001989731.webp')
+  })
+
+  it('confere a VIAP com o TCE (Indenizações por vereador) e marca conferido/divergente', () => {
+    const indeniz = [
+      // PIMENTEL: 17000 (jan) + 3000 (fev) batem -> conferido
+      { credor: 'ANTONIO ALVES PIMENTEL FILHO', mes: 1, ano: 2025, valorPago: 17000 },
+      { credor: 'ANTONIO ALVES PIMENTEL FILHO', mes: 3, ano: 2025, valorPago: 3000 },
+      // CAROLINA: TCE só tem 1000, nosso é 4000 -> divergente
+      { credor: 'CAROLINA FARIAS ALMEIDA GOMES', mes: 4, ano: 2025, valorPago: 1000 },
+    ]
+    const s2 = montarCampinaGrande(vereadoresTce, viap, lookup, 1_800_000, '2026-04', indeniz, 'https://tce/050')
+    const idP = s2.politicos.find((p) => /PIMENTEL/.test(p.nome))!.id
+    const idC = s2.politicos.find((p) => /CAROLINA/.test(p.nome))!.id
+    expect(s2.porPolitico[idP].conferidoTce!.status).toBe('conferido')
+    expect(s2.porPolitico[idP].conferidoTce!.fonte).toBe('https://tce/050')
+    expect(s2.porPolitico[idC].conferidoTce!.status).toBe('divergente')
+    expect(s2.porPolitico[idC].conferidoTce!.totalNosso).toBe(4000)
+    expect(s2.porPolitico[idC].conferidoTce!.totalTce).toBe(1000)
   })
 })
