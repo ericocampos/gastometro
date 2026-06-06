@@ -45,7 +45,9 @@ export class FonteSenado implements FonteDados {
   private cacheAno = new Map<number, LinhaCeaps[]>()
   constructor(private readonly legislaturas: number[], private readonly anoFinal: number) {}
 
-  async listarPoliticos(uf: string): Promise<Politico[]> {
+  // uf opcional: sem argumento, lista todos os senadores e usa a UF real de cada um;
+  // com argumento, filtra apenas os senadores da UF informada.
+  async listarPoliticos(uf?: string): Promise<Politico[]> {
     const porId = new Map<string, Politico>()
     for (const leg of this.legislaturas) {
       const xml = await fetchText(`${BASE_LISTA}/${leg}`, { headers: { Accept: 'application/xml' } })
@@ -54,7 +56,10 @@ export class FonteSenado implements FonteDados {
       const arr = Array.isArray(lista) ? lista : [lista]
       for (const p of arr) {
         const ident: IdentApi = p.IdentificacaoParlamentar
-        if (!ident || ufDoParlamentar(p) !== uf) continue
+        if (!ident) continue
+        const ufReal = ufDoParlamentar(p)
+        // quando UF foi fornecida, descarta senadores de outras UFs
+        if (uf !== undefined && ufReal !== uf) continue
         const id = `senado-${ident.CodigoParlamentar}`
         const existente = porId.get(id)
         if (existente) {
@@ -65,7 +70,8 @@ export class FonteSenado implements FonteDados {
             nome: ident.NomeParlamentar,
             casa: 'senado',
             partido: ident.SiglaPartidoParlamentar ?? '',
-            uf,
+            // usa a UF real do parlamentar; cai no parametro se a API nao trouxer
+            uf: ufReal ?? uf ?? '',
             legislaturas: [leg],
             fotoUrl: ident.UrlFotoParlamentar,
           })

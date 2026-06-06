@@ -49,4 +49,14 @@ describe('FonteSenado.listarPoliticos', () => {
     expect(ps).toHaveLength(1)
     expect(ps[0]).toMatchObject({ id: 'senado-3811', nome: 'Wilson Santiago', uf: 'PB' })
   })
+
+  it('sem UF, lista todos e usa a UF real de cada senador', async () => {
+    // fixture tem Veneziano (PB) e Alan Rick (AC): deve retornar ambos com a UF correta
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(xml, { status: 200 })))
+    const fonte = new FonteSenado([57], 2026)
+    const todos = await fonte.listarPoliticos() // sem argumento
+    const ufs = new Set(todos.map((p) => p.uf))
+    expect(ufs.size).toBeGreaterThan(1)
+    expect(todos.every((p) => p.casa === 'senado')).toBe(true)
+  })
 })
