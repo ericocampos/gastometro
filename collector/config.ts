@@ -18,8 +18,10 @@ export const ConfigSchema = z.object({
 export type Config = z.infer<typeof ConfigSchema>
 
 export function carregarConfig(): Config {
-  const here = dirname(fileURLToPath(import.meta.url))
-  const caminho = resolve(here, '../config/state.json')
-  const raw = JSON.parse(readFileSync(caminho, 'utf-8'))
+  // Configuracao inline (JSON em env var) tem prioridade; usada em testes e verificacoes sem state.json
+  const inline = process.env.GASTOMETRO_CONFIG_INLINE
+  const raw = inline
+    ? JSON.parse(inline)
+    : JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../config/state.json'), 'utf-8'))
   return ConfigSchema.parse(raw)
 }
