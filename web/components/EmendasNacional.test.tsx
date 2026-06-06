@@ -5,7 +5,7 @@ import type { Emendas } from '@/lib/tipos'
 
 const emendas: Emendas = {
   fonte: 'CGU', url: 'https://x', atualizadoEm: '2026-06', anoInicial: 2023,
-  porPolitico: { 'camara-1': { empenhado: 1500000, pago: 500000, nEmendas: 4, topMunicipios: [], topFuncoes: [] } },
+  porPolitico: { 'camara-1': { empenhado: 1500000, pago: 500000, nEmendas: 4, topMunicipios: [], topFuncoes: [], emendas: [] } },
   porUf: {}, coletivas: { comissao: { empenhado: 700, pago: 300 }, relator: { empenhado: 800, pago: 0 } },
   totais: { individual: { empenhado: 1500000, pago: 500000 }, bancada: { empenhado: 2000, pago: 1000 }, comissao: { empenhado: 700, pago: 300 }, relator: { empenhado: 800, pago: 0 } },
 }

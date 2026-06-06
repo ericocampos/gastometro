@@ -259,8 +259,9 @@ export interface CadeirasCamaraUf { fonte: string; atualizadoEm: string; cadeira
 
 export interface EmendaDestino { municipio: string; uf: string; empenhado: number; pago: number }
 export interface EmendaArea { funcao: string; empenhado: number; pago: number }
-export interface EmendasPolitico { empenhado: number; pago: number; nEmendas: number; topMunicipios: EmendaDestino[]; topFuncoes: EmendaArea[] }
+export interface EmendaItem { codigo: string; ano: number; municipio: string; uf: string; funcao: string; empenhado: number; pago: number }
 export interface EmendasUf { empenhado: number; pago: number; nEmendas: number; topMunicipios: EmendaDestino[]; topFuncoes: EmendaArea[] }
+export interface EmendasPolitico extends EmendasUf { emendas: EmendaItem[] }
 export interface Emendas {
   fonte: string; url: string; atualizadoEm: string; anoInicial: number
   porPolitico: Record<string, EmendasPolitico>

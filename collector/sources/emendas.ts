@@ -5,6 +5,7 @@
 import { normNome, tokensNome, nomesCompativeis } from './nomes.js'
 
 export interface RegistroEmenda {
+  codigo: string
   ano: number
   tipo: string
   autorCodigo: string
@@ -54,8 +55,9 @@ export function ufDaBancada(autorNome: string): string | null {
 interface PoliticoLite { id: string; nome: string; casa: string; uf: string }
 export interface EmendaDestino { municipio: string; uf: string; empenhado: number; pago: number }
 export interface EmendaArea { funcao: string; empenhado: number; pago: number }
-export interface EmendasPolitico { empenhado: number; pago: number; nEmendas: number; topMunicipios: EmendaDestino[]; topFuncoes: EmendaArea[] }
+export interface EmendaItem { codigo: string; ano: number; municipio: string; uf: string; funcao: string; empenhado: number; pago: number }
 export interface EmendasUf { empenhado: number; pago: number; nEmendas: number; topMunicipios: EmendaDestino[]; topFuncoes: EmendaArea[] }
+export interface EmendasPolitico extends EmendasUf { emendas: EmendaItem[] }
 export interface Emendas {
   fonte: string; url: string; atualizadoEm: string; anoInicial: number
   porPolitico: Record<string, EmendasPolitico>
@@ -87,8 +89,8 @@ export function agregarEmendas(registros: RegistroEmenda[], politicos: PoliticoL
     return id
   }
 
-  interface Acc { empenhado: number; pago: number; nEmendas: number; mun: Map<string, EmendaDestino>; fun: Map<string, EmendaArea> }
-  const novoAcc = (): Acc => ({ empenhado: 0, pago: 0, nEmendas: 0, mun: new Map(), fun: new Map() })
+  interface Acc { empenhado: number; pago: number; nEmendas: number; mun: Map<string, EmendaDestino>; fun: Map<string, EmendaArea>; ems: Map<string, EmendaItem> }
+  const novoAcc = (): Acc => ({ empenhado: 0, pago: 0, nEmendas: 0, mun: new Map(), fun: new Map(), ems: new Map() })
   const addAcc = (a: Acc, r: RegistroEmenda) => {
     a.empenhado += r.empenhado; a.pago += r.pago; a.nEmendas += 1
     if (r.municipio) {
@@ -100,12 +102,27 @@ export function agregarEmendas(registros: RegistroEmenda[], politicos: PoliticoL
       const f = a.fun.get(r.funcao) ?? { funcao: r.funcao, empenhado: 0, pago: 0 }
       f.empenhado += r.empenhado; f.pago += r.pago; a.fun.set(r.funcao, f)
     }
+    // itemizado por emenda (agrupa as linhas que dividem o mesmo Código da Emenda)
+    const ek = r.codigo || `${r.ano}|${r.municipio}|${r.funcao}`
+    const e = a.ems.get(ek)
+    if (!e) {
+      a.ems.set(ek, { codigo: r.codigo, ano: r.ano, municipio: r.municipio, uf: r.uf, funcao: r.funcao, empenhado: r.empenhado, pago: r.pago })
+    } else {
+      e.empenhado += r.empenhado; e.pago += r.pago
+      if (e.municipio !== r.municipio) e.municipio = 'Múltiplo'
+      if (e.uf !== r.uf) e.uf = ''
+      if (e.funcao !== r.funcao) e.funcao = 'Várias'
+    }
   }
-  const fechar = (a: Acc): EmendasPolitico => ({
+  const base = (a: Acc): EmendasUf => ({
     empenhado: cent(a.empenhado), pago: cent(a.pago), nEmendas: a.nEmendas,
     topMunicipios: topPor(a.mun, TOP_MUN).map((d) => ({ ...d, empenhado: cent(d.empenhado), pago: cent(d.pago) })),
     topFuncoes: topPor(a.fun, TOP_FUN).map((f) => ({ ...f, empenhado: cent(f.empenhado), pago: cent(f.pago) })),
   })
+  const listaEmendas = (a: Acc): EmendaItem[] =>
+    [...a.ems.values()]
+      .sort((x, y) => y.empenhado - x.empenhado)
+      .map((e) => ({ ...e, empenhado: cent(e.empenhado), pago: cent(e.pago) }))
 
   const accPol = new Map<string, Acc>()
   const accUf = new Map<string, Acc>()
@@ -131,9 +148,9 @@ export function agregarEmendas(registros: RegistroEmenda[], politicos: PoliticoL
   }
 
   const porPolitico: Record<string, EmendasPolitico> = {}
-  for (const [id, a] of accPol) porPolitico[id] = fechar(a)
+  for (const [id, a] of accPol) porPolitico[id] = { ...base(a), emendas: listaEmendas(a) }
   const porUf: Record<string, EmendasUf> = {}
-  for (const [uf, a] of accUf) porUf[uf] = fechar(a)
+  for (const [uf, a] of accUf) porUf[uf] = base(a)
 
   const arred = (o: { empenhado: number; pago: number }) => ({ empenhado: cent(o.empenhado), pago: cent(o.pago) })
   return {
@@ -152,6 +169,7 @@ export function parseEmendas(texto: string, anoMinimo: number): RegistroEmenda[]
   if (linhas.length < 2) return []
   const cab = colunas(linhas[0])
   const idx = (nome: string) => cab.indexOf(nome)
+  const iCodigo = idx('Código da Emenda')
   const iAno = idx('Ano da Emenda')
   const iTipo = idx('Tipo de Emenda')
   const iCod = idx('Código do Autor da Emenda')
@@ -168,6 +186,7 @@ export function parseEmendas(texto: string, anoMinimo: number): RegistroEmenda[]
     const ano = Number(c[iAno])
     if (!Number.isFinite(ano) || ano < anoMinimo) continue
     out.push({
+      codigo: (c[iCodigo] ?? '').trim(),
       ano,
       tipo: c[iTipo] ?? '',
       autorCodigo: (c[iCod] ?? '').trim(),
