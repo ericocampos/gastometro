@@ -31,10 +31,18 @@ async function main() {
 
   for (const fonte of fontes) {
     console.log(`> Listando políticos da ${fonte.casa}...`)
-    // Câmara: lista separadamente por UF e achata; Senado: lista todos de uma vez (escopo nacional)
-    const politicos = fonte.casa === 'camara'
-      ? (await Promise.all(cfg.ufsFederais.map((uf) => fonte.listarPoliticos(uf)))).flat()
-      : await fonte.listarPoliticos() // senado: todos
+    // Câmara: lista UF a UF, SEQUENCIAL (a API da Câmara devolve 504 sob dezenas de chamadas
+    // concorrentes); tolera falha numa UF sem derrubar o resto. Senado: lista todos de uma vez.
+    let politicos: Politico[]
+    if (fonte.casa === 'camara') {
+      politicos = []
+      for (const uf of cfg.ufsFederais) {
+        try { politicos.push(...await fonte.listarPoliticos(uf)) }
+        catch (e) { console.error(`  ! falha ao listar ${uf}: ${(e as Error).message} — UF pulada`) }
+      }
+    } else {
+      politicos = await fonte.listarPoliticos() // senado: todos
+    }
     todosPoliticos.push(...politicos)
     console.log(`  ${politicos.length} políticos`)
 
