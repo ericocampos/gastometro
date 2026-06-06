@@ -32,7 +32,12 @@ describe('DetalhamentoGastos', () => {
 
   it('mostra aviso quando não há despesas', () => {
     render(<DetalhamentoGastos despesas={[]} />)
-    expect(screen.getByText(/nenhuma despesa/i)).toBeInTheDocument()
+    expect(screen.getByText(/gerado a partir da fonte oficial/i)).toBeInTheDocument()
+  })
+
+  it('mostra nota neutra quando não há itemizado', () => {
+    render(<DetalhamentoGastos despesas={[]} />)
+    expect(screen.getByText(/gerado a partir da fonte oficial/i)).toBeInTheDocument()
   })
 
   it('diária: mostra histórico no lugar do fornecedor, nº de empenho no Doc e nota explicativa', () => {

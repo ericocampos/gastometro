@@ -133,7 +133,12 @@ export function DetalhamentoGastos({
   )
 
   if (despesas.length === 0) {
-    return <p className="text-sm text-tinta-suave">Nenhuma despesa neste período.</p>
+    return (
+      <p className="rounded-lg border border-borda bg-superficie p-4 text-sm text-tinta-suave">
+        O detalhamento nota a nota deste parlamentar é gerado a partir da fonte oficial e pode não estar
+        disponível neste momento. Os totais e gráficos acima vêm dos dados agregados.
+      </p>
+    )
   }
 
   return (
