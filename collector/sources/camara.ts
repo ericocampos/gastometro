@@ -69,7 +69,7 @@ export class FonteCamara implements FonteDados {
     if (!this.porAno.has(ano)) {
       try {
         const buf = await fetchBuffer(`${COTA_BASE}/Ano-${ano}.csv.zip`, { tentativas: 2 })
-        this.porAno.set(ano, parseCotaAnual(inflarCsvZip(buf), this.uf || politico.uf))
+        this.porAno.set(ano, parseCotaAnual(inflarCsvZip(buf)))
       } catch {
         // arquivo anual indisponível → usa a API por deputado como rede de segurança
         this.anosSemArquivo.add(ano)

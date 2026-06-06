@@ -93,3 +93,19 @@ describe('FonteCamara.buscarDespesas (arquivo anual)', () => {
     expect(ds[0].urlDocumento).toBe('https://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8076419')
   })
 })
+
+describe('FonteCamara cache nacional', () => {
+  it('buscarDespesas casa por id do político independentemente da UF', async () => {
+    const fonte = new FonteCamara([57])
+    // injeta o cache anual nacional direto (simula o parse do arquivo da cota)
+    const porAno = (fonte as unknown as { porAno: Map<number, Map<string, unknown[]>> }).porAno
+    porAno.set(2026, new Map([
+      ['camara-100', [{ id: 'a', politicoId: 'camara-100', valor: 250.5 }]],
+      ['camara-200', [{ id: 'b', politicoId: 'camara-200', valor: 1000 }]],
+    ]))
+    const pSP = { id: 'camara-200', nome: 'X', casa: 'camara' as const, partido: 'P', uf: 'SP', legislaturas: [57] }
+    const r = await fonte.buscarDespesas(pSP, 2026)
+    expect(r).toHaveLength(1)
+    expect((r[0] as { politicoId: string }).politicoId).toBe('camara-200')
+  })
+})
