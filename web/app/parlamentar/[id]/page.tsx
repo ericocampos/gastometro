@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas } from '@/lib/dados'
+import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas, getCeapPorUf } from '@/lib/dados'
 import type { MarcaAlerta } from '@/lib/tipos'
 import { PerfilView } from '@/components/PerfilView'
 
@@ -33,6 +33,8 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
     consultas: gab?.consultas,
   }
   const emendas = getEmendas()?.porPolitico[params.id] ?? null
+  // teto do gráfico para deputado federal: CEAP da UF dele (varia por estado)
+  const tetoCotaUf = getCeapPorUf()?.valores[resumo.politico.uf] ?? null
   const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
   const alertas = {
     quantidade: dosAlertas.length,
@@ -57,7 +59,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} tetoCotaUf={tetoCotaUf} />
     </Suspense>
   )
 }

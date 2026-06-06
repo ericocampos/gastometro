@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico } from '@/lib/tipos'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
@@ -99,7 +99,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, tetoCotaUf = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -122,6 +122,7 @@ export function PerfilView({
   alertasPorDespesa: Record<string, MarcaAlerta>
   conferidoTce?: ConferenciaTce
   emendas?: EmendasPolitico | null
+  tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -200,10 +201,15 @@ export function PerfilView({
       ? `https://www6g.senado.leg.br/transparencia/sen/${politico.id.replace('senado-', '')}`
       : undefined
   const rotuloTeto = politico.casa === 'camara_municipal' ? 'Teto da VIAP/mês' : 'Teto da cota/mês'
-  const refCota =
-    !custoCasa.cota.aproximado && custoCasa.cota.valor != null && custoCasa.cota.valor > 0
-      ? { valor: custoCasa.cota.valor, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
-      : undefined
+  // Cota de referência: deputado federal usa o CEAP da UF dele (varia por estado), não o valor
+  // genérico do config. Usada tanto no card "gasto real × teto" quanto na linha do gráfico.
+  const cotaRef: ItemCusto = politico.casa === 'camara' && tetoCotaUf != null && tetoCotaUf > 0
+    ? { ...custoCasa.cota, valor: tetoCotaUf }
+    : custoCasa.cota
+  const tetoCota = !cotaRef.aproximado && cotaRef.valor != null && cotaRef.valor > 0 ? cotaRef.valor : null
+  const refCota = tetoCota != null
+    ? { valor: tetoCota, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
+    : undefined
 
   // Diárias são uma categoria à parte (vereadores via TCE; deputados estaduais via planilha da ALPB).
   // Quando há diárias E gasto de VIAP/cota com teto real, separamos os dois: 2 linhas no gráfico e a
@@ -350,7 +356,7 @@ export function PerfilView({
             ) : (
               <>
                 <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
-                <CotaVsTeto cota={custoCasa.cota} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
+                <CotaVsTeto cota={cotaRef} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
               </>
             )}
             {(politico.casa === 'camara' || politico.casa === 'senado') && politico.moradia && <Moradia moradia={politico.moradia} casa={politico.casa} />}
