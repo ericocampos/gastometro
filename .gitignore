@@ -17,3 +17,7 @@ out/
 
 # Artefatos do brainstorm visual
 .superpowers/
+
+# Itemizado federal (nota a nota) — gerado no build/CI (npm run gerar:itemizado), pesado demais p/ o git
+/data/despesas/camara-*
+/data/despesas/senado-*
