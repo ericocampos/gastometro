@@ -21,3 +21,14 @@ export function dataBR(iso: string): string {
   if (!ano || !mes || !dia) return '—'
   return `${dia}/${mes}/${ano}`
 }
+
+// Valor grande compacto: R$ 2,0 bi / R$ 54 mi. Abaixo de 1 mi usa o inteiro.
+export function brlCompacto(valor: number): string {
+  if (valor >= 1_000_000_000) {
+    return `R$ ${(valor / 1_000_000_000).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} bi`
+  }
+  if (valor >= 1_000_000) {
+    return `R$ ${Math.round(valor / 1_000_000).toLocaleString('pt-BR')} mi`
+  }
+  return brlInteiro(valor)
+}

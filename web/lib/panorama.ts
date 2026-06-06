@@ -1,0 +1,127 @@
+import type { SerieParlamentar } from './periodo'
+import type { Assessores, CustosMandato } from './tipos'
+
+export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string }
+export interface CustoBancada { uf: string; total: number; cadeiras: number; porParlamentar: number }
+export interface GastoPartido { partido: string; cota: number; parlamentares: number; porParlamentar: number }
+export interface Panorama {
+  totalAnual: number
+  componentes: ComponenteCusto[]
+  perCapita: number | null
+  populacao: number | null
+  anoCota: number
+  bancadas: CustoBancada[]
+  partidos: GastoPartido[]
+}
+
+const SENADORES_POR_UF = 3
+const TOTAL_SENADORES = 81
+
+const ehFederal = (s: SerieParlamentar) => s.casa === 'camara' || s.casa === 'senado'
+const anoDe = (anoMes: string) => Number(anoMes.slice(0, 4))
+
+// último ano com 12 meses de dados; se nenhum, o maior ano com algum dado; se vazio, ano corrente.
+function ultimoAnoCompleto(fed: SerieParlamentar[]): number {
+  const meses = new Map<number, Set<string>>()
+  for (const s of fed) for (const p of s.serieMensal) {
+    const ano = anoDe(p.anoMes)
+    if (!meses.has(ano)) meses.set(ano, new Set())
+    meses.get(ano)!.add(p.anoMes.slice(5, 7))
+  }
+  const anos = [...meses.keys()].sort((a, b) => b - a)
+  for (const ano of anos) if ((meses.get(ano)?.size ?? 0) >= 12) return ano
+  return anos[0] ?? new Date().getFullYear()
+}
+
+const cotaNoAno = (s: SerieParlamentar, ano: number) =>
+  s.serieMensal.reduce((acc, p) => (anoDe(p.anoMes) === ano ? acc + p.total : acc), 0)
+
+function folhaFederalMes(assessores: Assessores | null): number {
+  if (!assessores) return 0
+  let total = 0
+  for (const [id, g] of Object.entries(assessores.porPolitico)) {
+    if (id.startsWith('camara-') || id.startsWith('senado-')) total += g.folha ?? 0
+  }
+  return total
+}
+
+function calcularBancadas(
+  fed: SerieParlamentar[], ano: number, subsidioMensal: number,
+  assessores: Assessores | null, cadeiras: Record<string, number> | null,
+): CustoBancada[] {
+  const ufDoId = new Map<string, string>()
+  const cotaUf = new Map<string, number>()
+  for (const s of fed) {
+    ufDoId.set(s.politicoId, s.uf)
+    cotaUf.set(s.uf, (cotaUf.get(s.uf) ?? 0) + cotaNoAno(s, ano))
+  }
+  const gabUf = new Map<string, number>()
+  if (assessores) {
+    for (const [id, g] of Object.entries(assessores.porPolitico)) {
+      const uf = ufDoId.get(id)
+      if (!uf) continue
+      gabUf.set(uf, (gabUf.get(uf) ?? 0) + (g.folha ?? 0) * 12)
+    }
+  }
+  const ufs = new Set<string>([...cotaUf.keys()])
+  const out: CustoBancada[] = []
+  for (const uf of ufs) {
+    const cadeirasUf = (cadeiras?.[uf] ?? 0) + SENADORES_POR_UF
+    const subsidio = cadeirasUf * subsidioMensal * 12
+    const total = (cotaUf.get(uf) ?? 0) + subsidio + (gabUf.get(uf) ?? 0)
+    out.push({ uf, total, cadeiras: cadeirasUf, porParlamentar: cadeirasUf ? total / cadeirasUf : 0 })
+  }
+  return out.sort((a, b) => b.total - a.total)
+}
+
+function calcularPartidos(fed: SerieParlamentar[], ano: number): GastoPartido[] {
+  const acc = new Map<string, { cota: number; n: number }>()
+  for (const s of fed) {
+    const partido = (s.partido ?? '').trim()
+    if (!partido || partido === '—') continue
+    const cota = cotaNoAno(s, ano)
+    if (cota <= 0) continue
+    const cur = acc.get(partido) ?? { cota: 0, n: 0 }
+    cur.cota += cota; cur.n += 1
+    acc.set(partido, cur)
+  }
+  return [...acc.entries()]
+    .map(([partido, v]) => ({ partido, cota: v.cota, parlamentares: v.n, porParlamentar: v.n ? v.cota / v.n : 0 }))
+    .sort((a, b) => b.cota - a.cota)
+}
+
+export function calcularPanorama(
+  series: SerieParlamentar[],
+  custos: CustosMandato,
+  assessores: Assessores | null,
+  populacao: number | null,
+  cadeiras: Record<string, number> | null,
+): Panorama {
+  const fed = series.filter(ehFederal)
+  const ano = ultimoAnoCompleto(fed)
+  const cota = fed.reduce((acc, s) => acc + cotaNoAno(s, ano), 0)
+
+  const subsidioMensal = custos.casas.camara.salario
+  const totalDeputados = cadeiras ? Object.values(cadeiras).reduce((a, b) => a + b, 0) : 513
+  const totalCadeiras = totalDeputados + TOTAL_SENADORES
+  const subsidio = totalCadeiras * subsidioMensal * 12
+
+  const gabinete = folhaFederalMes(assessores) * 12
+
+  const componentes: ComponenteCusto[] = [
+    { chave: 'subsidio', valor: subsidio, real: false, rotulo: `Subsídio fixo · ${totalCadeiras} cadeiras × 12 meses` },
+    { chave: 'cota', valor: cota, real: true, rotulo: `Cota efetivamente gasta em ${ano}` },
+    { chave: 'gabinete', valor: gabinete, real: false, rotulo: 'Folha real de gabinete (snapshot × 12)' },
+  ]
+  const totalAnual = subsidio + cota + gabinete
+
+  return {
+    totalAnual,
+    componentes,
+    perCapita: populacao ? totalAnual / populacao : null,
+    populacao,
+    anoCota: ano,
+    bancadas: calcularBancadas(fed, ano, subsidioMensal, assessores, cadeiras),
+    partidos: calcularPartidos(fed, ano),
+  }
+}
