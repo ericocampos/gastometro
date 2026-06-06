@@ -81,4 +81,25 @@ describe('RankingView', () => {
     // não deve quebrar com legislaturas vazias (sem opção de mandato)
     expect(screen.getByText('Vereador Um')).toBeInTheDocument()
   })
+
+  it('mostra a UF no card quando há mais de um estado (visão Brasil)', () => {
+    const multiUf: SerieParlamentar[] = [
+      {
+        politicoId: 'camara-sp', nome: 'Deputado Paulista', partido: 'PP', uf: 'SP', casa: 'camara',
+        legislaturas: [57], serieMensal: [{ anoMes: '2024-01', total: 100 }],
+      },
+      {
+        politicoId: 'camara-pb', nome: 'Deputado Paraibano', partido: 'PT', uf: 'PB', casa: 'camara',
+        legislaturas: [57], serieMensal: [{ anoMes: '2024-01', total: 80 }],
+      },
+    ]
+    render(<RankingView series={multiUf} />)
+    expect(screen.getByLabelText('Estado: SP')).toBeInTheDocument()
+    expect(screen.getByLabelText('Estado: PB')).toBeInTheDocument()
+  })
+
+  it('esconde a UF no card quando todas as séries são do mesmo estado', () => {
+    render(<RankingView series={series} />)
+    expect(screen.queryByLabelText('Estado: PB')).not.toBeInTheDocument()
+  })
 })

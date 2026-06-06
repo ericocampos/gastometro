@@ -22,6 +22,7 @@ export interface LinhaRanking {
   politicoId: string
   nome: string
   partido: string
+  uf: string
   casa: Casa
   total: number
   fotoUrl?: string
@@ -60,6 +61,7 @@ export function rankingNoPeriodo(series: SerieParlamentar[], periodo: Periodo): 
       politicoId: s.politicoId,
       nome: s.nome,
       partido: s.partido,
+      uf: s.uf,
       casa: s.casa,
       total: totalNoPeriodo(s.serieMensal, periodo),
       fotoUrl: s.fotoUrl,
