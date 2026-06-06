@@ -37,8 +37,17 @@ async function main() {
     if (fonte.casa === 'camara') {
       politicos = []
       for (const uf of cfg.ufsFederais) {
-        try { politicos.push(...await fonte.listarPoliticos(uf)) }
-        catch (e) { console.error(`  ! falha ao listar ${uf}: ${(e as Error).message} — UF pulada`) }
+        // a API da Câmara devolve 504 intermitente nas UFs grandes (SP/MG/PR); retenta com backoff
+        let listados: Politico[] | null = null
+        for (let tent = 1; tent <= 5 && listados === null; tent++) {
+          try { listados = await fonte.listarPoliticos(uf) }
+          catch (e) {
+            if (tent === 5) { console.error(`  ! ${uf} pulada apos 5 tentativas: ${(e as Error).message}`); break }
+            await new Promise((r) => setTimeout(r, 3000 * tent))
+          }
+        }
+        if (listados) politicos.push(...listados)
+        await new Promise((r) => setTimeout(r, 300)) // gentileza com a API entre UFs
       }
     } else {
       politicos = await fonte.listarPoliticos() // senado: todos
