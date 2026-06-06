@@ -133,7 +133,11 @@ export function DetalhamentoGastos({
   )
 
   if (despesas.length === 0) {
-    return <p className="text-sm text-tinta-suave">Nenhuma despesa neste período.</p>
+    return (
+      <p className="rounded-lg border border-borda bg-superficie p-4 text-sm text-tinta-suave">
+        Nenhuma despesa neste período.
+      </p>
+    )
   }
 
   return (

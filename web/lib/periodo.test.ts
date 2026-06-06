@@ -8,18 +8,18 @@ import {
 
 const series: SerieParlamentar[] = [
   {
-    politicoId: 'a', nome: 'A', partido: 'PP', casa: 'camara', legislaturas: [56, 57],
+    politicoId: 'a', nome: 'A', partido: 'PP', uf: 'PB', casa: 'camara', legislaturas: [56, 57],
     serieMensal: [
       { anoMes: '2022-05', total: 100 }, // leg 56
       { anoMes: '2024-03', total: 300 }, // leg 57
     ],
   },
   {
-    politicoId: 'b', nome: 'B', partido: 'PT', casa: 'senado', legislaturas: [57],
+    politicoId: 'b', nome: 'B', partido: 'PT', uf: 'PB', casa: 'senado', legislaturas: [57],
     serieMensal: [{ anoMes: '2024-01', total: 50 }],
   },
   {
-    politicoId: 'c', nome: 'C', partido: 'MDB', casa: 'camara', legislaturas: [55],
+    politicoId: 'c', nome: 'C', partido: 'MDB', uf: 'PB', casa: 'camara', legislaturas: [55],
     serieMensal: [], // sem gastos
   },
 ]
@@ -77,9 +77,9 @@ describe('periodo', () => {
 
   it('totalAnualMunicipio soma todos os vereadores por ano na chave municipal', () => {
     const cidade: SerieParlamentar[] = [
-      { politicoId: 'v1', nome: 'V1', partido: 'PP', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+      { politicoId: 'v1', nome: 'V1', partido: 'PP', uf: 'PB', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
         serieMensal: [{ anoMes: '2025-01', total: 11000 }, { anoMes: '2026-02', total: 12000 }] },
-      { politicoId: 'v2', nome: 'V2', partido: 'PT', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+      { politicoId: 'v2', nome: 'V2', partido: 'PT', uf: 'PB', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
         serieMensal: [{ anoMes: '2025-03', total: 9000 }] },
     ]
     expect(totalAnualMunicipio(cidade)).toEqual([
@@ -90,14 +90,14 @@ describe('periodo', () => {
 
   it('comparativoAnualCidades: total e nº de vereadores com dado por ano, por cidade', () => {
     const series: SerieParlamentar[] = [
-      { politicoId: 'jp1', nome: 'JP1', partido: '', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
+      { politicoId: 'jp1', nome: 'JP1', partido: '', uf: 'PB', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
         serieMensal: [{ anoMes: '2024-01', total: 5000 }, { anoMes: '2025-02', total: 6000 }] },
-      { politicoId: 'jp2', nome: 'JP2', partido: '', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
+      { politicoId: 'jp2', nome: 'JP2', partido: '', uf: 'PB', casa: 'camara_municipal', municipio: 'joao-pessoa', legislaturas: [],
         serieMensal: [{ anoMes: '2025-03', total: 4000 }] },
-      { politicoId: 'sr1', nome: 'SR1', partido: '', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
+      { politicoId: 'sr1', nome: 'SR1', partido: '', uf: 'PB', casa: 'camara_municipal', municipio: 'santa-rita', legislaturas: [],
         serieMensal: [{ anoMes: '2025-01', total: 11000 }] },
       // série federal não pode entrar
-      { politicoId: 'f1', nome: 'F1', partido: '', casa: 'camara', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 999 }] },
+      { politicoId: 'f1', nome: 'F1', partido: '', uf: 'PB', casa: 'camara', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 999 }] },
     ]
     const r = comparativoAnualCidades(series, [
       { slug: 'joao-pessoa', nome: 'João Pessoa' },

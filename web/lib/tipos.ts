@@ -249,3 +249,7 @@ export interface OrcamentoMunicipio {
 // somado entre os poderes (quanto a cidade inteira pagou naquela área).
 export interface OrcamentoCidadeAno { ano: number; total: number; funcoes: Record<string, number> }
 export interface ComparativoOrcamentoCidade { slug: string; nome: string; anos: OrcamentoCidadeAno[] }
+
+// Teto mensal da CEAP (cota da Câmara) por UF; varia com a distância de Brasília.
+// Só PB é confirmado; demais UFs ficam null até verificação contra a fonte oficial.
+export interface CeapPorUf { fonte: string; atualizadoEm: string; valores: Record<string, number | null> }

@@ -29,9 +29,26 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: web/package-lock.json
-      - name: Instalar dependências
+      - name: Instalar dependências (web)
         working-directory: web
         run: npm ci
+      # O itemizado nota a nota dos parlamentares FEDERAIS é gitignored (pesado demais p/ o git).
+      # Gera-se aqui antes do build, com cache MENSAL: no 1o deploy do mês (ou quando o roster muda)
+      # ele baixa da fonte; nos demais deploys do mês, restaura do cache e pula a geração.
+      - name: Mês corrente (chave do cache)
+        id: mes
+        run: echo "ym=$(date +%Y-%m)" >> "$GITHUB_OUTPUT"
+      - name: Instalar dependências (coletor, raiz)
+        run: npm ci
+      - name: Cache do itemizado federal (mensal)
+        id: cache-itemizado
+        uses: actions/cache@v4
+        with:
+          path: data/despesas
+          key: itemizado-federal-${{ steps.mes.outputs.ym }}-${{ hashFiles('data/politicos.json') }}
+      - name: Gerar itemizado federal
+        if: steps.cache-itemizado.outputs.cache-hit != 'true'
+        run: npm run gerar:itemizado
       - name: Build estático
         working-directory: web
         env:

@@ -30,9 +30,9 @@ describe('DetalhamentoGastos', () => {
     expect(screen.queryByText('POSTO A')).not.toBeInTheDocument()
   })
 
-  it('mostra aviso quando não há despesas', () => {
+  it('mostra aviso quando não há despesas no período', () => {
     render(<DetalhamentoGastos despesas={[]} />)
-    expect(screen.getByText(/nenhuma despesa/i)).toBeInTheDocument()
+    expect(screen.getByText(/Nenhuma despesa neste período/i)).toBeInTheDocument()
   })
 
   it('diária: mostra histórico no lugar do fornecedor, nº de empenho no Doc e nota explicativa', () => {

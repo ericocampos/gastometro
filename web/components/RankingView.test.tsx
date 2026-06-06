@@ -5,11 +5,11 @@ import type { SerieParlamentar } from '@/lib/periodo'
 
 const series: SerieParlamentar[] = [
   {
-    politicoId: 'senado-1', nome: 'Fulano Senador', partido: 'MDB', casa: 'senado', legislaturas: [57],
+    politicoId: 'senado-1', nome: 'Fulano Senador', partido: 'MDB', uf: 'PB', casa: 'senado', legislaturas: [57],
     serieMensal: [{ anoMes: '2024-01', total: 200 }],
   },
   {
-    politicoId: 'camara-1', nome: 'Beltrano Deputado', partido: 'PP', casa: 'camara', legislaturas: [56, 57],
+    politicoId: 'camara-1', nome: 'Beltrano Deputado', partido: 'PP', uf: 'PB', casa: 'camara', legislaturas: [56, 57],
     serieMensal: [{ anoMes: '2022-05', total: 90 }, { anoMes: '2024-03', total: 60 }],
   },
 ]
@@ -68,11 +68,11 @@ describe('RankingView', () => {
   it('esconde o filtro de casa quando todas as séries são da mesma casa', () => {
     const umaCasa: SerieParlamentar[] = [
       {
-        politicoId: 'mun-1', nome: 'Vereador Um', partido: 'PT', casa: 'camara_municipal',
+        politicoId: 'mun-1', nome: 'Vereador Um', partido: 'PT', uf: 'PB', casa: 'camara_municipal',
         municipio: 'joao-pessoa', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 100 }],
       },
       {
-        politicoId: 'mun-2', nome: 'Vereador Dois', partido: 'PL', casa: 'camara_municipal',
+        politicoId: 'mun-2', nome: 'Vereador Dois', partido: 'PL', uf: 'PB', casa: 'camara_municipal',
         municipio: 'joao-pessoa', legislaturas: [], serieMensal: [{ anoMes: '2025-01', total: 50 }],
       },
     ]
@@ -80,5 +80,26 @@ describe('RankingView', () => {
     expect(screen.queryByLabelText('Casa')).not.toBeInTheDocument()
     // não deve quebrar com legislaturas vazias (sem opção de mandato)
     expect(screen.getByText('Vereador Um')).toBeInTheDocument()
+  })
+
+  it('mostra a UF no card quando há mais de um estado (visão Brasil)', () => {
+    const multiUf: SerieParlamentar[] = [
+      {
+        politicoId: 'camara-sp', nome: 'Deputado Paulista', partido: 'PP', uf: 'SP', casa: 'camara',
+        legislaturas: [57], serieMensal: [{ anoMes: '2024-01', total: 100 }],
+      },
+      {
+        politicoId: 'camara-pb', nome: 'Deputado Paraibano', partido: 'PT', uf: 'PB', casa: 'camara',
+        legislaturas: [57], serieMensal: [{ anoMes: '2024-01', total: 80 }],
+      },
+    ]
+    render(<RankingView series={multiUf} />)
+    expect(screen.getByLabelText('Estado: SP')).toBeInTheDocument()
+    expect(screen.getByLabelText('Estado: PB')).toBeInTheDocument()
+  })
+
+  it('esconde a UF no card quando todas as séries são do mesmo estado', () => {
+    render(<RankingView series={series} />)
+    expect(screen.queryByLabelText('Estado: PB')).not.toBeInTheDocument()
   })
 })

@@ -39,6 +39,7 @@ export type Despesa = z.infer<typeof DespesaSchema>
 
 export interface FonteDados {
   readonly casa: 'camara' | 'senado'
-  listarPoliticos(uf: string): Promise<Politico[]>
+  // uf obrigatório para Câmara (por UF); opcional para Senado (escopo nacional quando omitido)
+  listarPoliticos(uf?: string): Promise<Politico[]>
   buscarDespesas(politico: Politico, ano: number): Promise<Despesa[]>
 }

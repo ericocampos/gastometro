@@ -28,6 +28,8 @@ export class PerfilSenado implements FontePerfil {
     const raiz = aut?.MateriasAutoriaParlamentar?.Parlamentar?.Autorias?.Autoria
       ?? aut?.MateriasAutoriaParlamentar?.Autorias?.Autoria
     const autorias = comoArray<any>(raiz)
+    // mesma política da Câmara: guarda só as 100 proposições mais recentes (por ano), pra não inchar o perfil
+    const PROPOSICOES_MAX = 100
     const proposicoes: ProposicaoResumo[] = autorias.map((a) => {
       const m = a.Materia ?? {}
       return {
@@ -38,7 +40,7 @@ export class PerfilSenado implements FontePerfil {
         data: m.Data || undefined,
         url: m.Codigo ? `https://www25.senado.leg.br/web/atividade/materias/-/materia/${m.Codigo}` : undefined,
       }
-    })
+    }).sort((a, b) => b.ano - a.ano).slice(0, PROPOSICOES_MAX)
 
     return PerfilParlamentarSchema.parse({
       id: politico.id,

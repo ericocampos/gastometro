@@ -13,7 +13,8 @@ import type { PerfilParlamentar } from './enriquecimento/tipos.js'
 import type { Despesa, FonteDados, Politico } from './sources/types.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
-const dataDir = resolve(here, '../data')
+// Diretório de saída configurável via variável de ambiente; padrão é data/ na raiz do projeto
+const dataDir = process.env.GASTOMETRO_DATA_DIR ?? resolve(here, '../data')
 
 async function main() {
   const cfg = carregarConfig()
@@ -30,7 +31,27 @@ async function main() {
 
   for (const fonte of fontes) {
     console.log(`> Listando políticos da ${fonte.casa}...`)
-    const politicos = await fonte.listarPoliticos(cfg.uf)
+    // Câmara: lista UF a UF, SEQUENCIAL (a API da Câmara devolve 504 sob dezenas de chamadas
+    // concorrentes); tolera falha numa UF sem derrubar o resto. Senado: lista todos de uma vez.
+    let politicos: Politico[]
+    if (fonte.casa === 'camara') {
+      politicos = []
+      for (const uf of cfg.ufsFederais) {
+        // a API da Câmara devolve 504 intermitente nas UFs grandes (SP/MG/PR); retenta com backoff
+        let listados: Politico[] | null = null
+        for (let tent = 1; tent <= 5 && listados === null; tent++) {
+          try { listados = await fonte.listarPoliticos(uf) }
+          catch (e) {
+            if (tent === 5) { console.error(`  ! ${uf} pulada apos 5 tentativas: ${(e as Error).message}`); break }
+            await new Promise((r) => setTimeout(r, 3000 * tent))
+          }
+        }
+        if (listados) politicos.push(...listados)
+        await new Promise((r) => setTimeout(r, 300)) // gentileza com a API entre UFs
+      }
+    } else {
+      politicos = await fonte.listarPoliticos() // senado: todos
+    }
     todosPoliticos.push(...politicos)
     console.log(`  ${politicos.length} políticos`)
 
@@ -72,7 +93,8 @@ async function main() {
   // Moradia dos SENADORES (auxílio-moradia R$ 5.500 ou imóvel funcional): CSV único do Senado,
   // já filtrado pela UF. Snapshot do mês, como o da Câmara.
   try {
-    const moradiaSen = await baixarMoradiaSenado(cfg.uf)
+    // Senado agora é nacional; baixarMoradiaSenado sem argumento retorna todos os senadores
+    const moradiaSen = await baixarMoradiaSenado()
     let n = 0
     for (const p of todosPoliticos) {
       if (p.casa !== 'senado') continue

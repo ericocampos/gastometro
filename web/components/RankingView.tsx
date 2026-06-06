@@ -40,6 +40,12 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
     () => new Set(series.map((s) => s.casa)).size > 1,
     [series],
   )
+  // a UF só ajuda quando há mais de um estado no conjunto (visão Brasil); numa página de estado
+  // ou de uma cidade todos teriam a mesma UF, então a chip só polui — escondemos.
+  const mostrarUf = useMemo(
+    () => new Set(series.map((s) => s.uf)).size > 1,
+    [series],
+  )
 
   const rankingPeriodo = useMemo(() => rankingNoPeriodo(series, periodo), [series, periodo])
 
@@ -159,6 +165,7 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
                 linha={l}
                 posicao={inicio + i + 1}
                 periodoVal={periodoVal}
+                mostrarUf={mostrarUf}
               />
             ))}
           </ol>
@@ -190,11 +197,12 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
 }
 
 function CardParlamentar({
-  linha, posicao, periodoVal,
+  linha, posicao, periodoVal, mostrarUf,
 }: {
   linha: LinhaRanking
   posicao: number
   periodoVal: string
+  mostrarUf: boolean
 }) {
   const cor = corCasa(linha.casa)
   const semGasto = linha.total === 0
@@ -227,6 +235,14 @@ function CardParlamentar({
               {linha.nome}
             </p>
             <p className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-tinta-suave">
+              {mostrarUf && (
+                <span
+                  className="rounded-full border border-borda px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-tinta"
+                  aria-label={`Estado: ${linha.uf}`}
+                >
+                  {linha.uf}
+                </span>
+              )}
               <span>{linha.partido} · {casaCurta(linha.casa)}</span>
               {linha.mandato?.tipo === 'suplente' && (
                 <span

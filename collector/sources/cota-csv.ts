@@ -36,7 +36,7 @@ function dividir(linha: string): string[] {
   return l.replace(/^"/, '').replace(/"$/, '').split('";"')
 }
 
-export function parseCotaAnual(texto: string, uf: string): Map<string, Despesa[]> {
+export function parseCotaAnual(texto: string, uf?: string): Map<string, Despesa[]> {
   const linhas = texto.split('\n')
   if (linhas.length === 0) return new Map()
 
@@ -49,7 +49,7 @@ export function parseCotaAnual(texto: string, uf: string): Map<string, Despesa[]
   for (let i = 1; i < linhas.length; i++) {
     const f = dividir(linhas[i])
     if (f.length < cabecalho.length) continue
-    if (f[idx.sgUF] !== uf) continue
+    if (uf !== undefined && f[idx.sgUF] !== uf) continue
     const ideCadastro = f[idx.ideCadastro]
     if (!ideCadastro) continue
 

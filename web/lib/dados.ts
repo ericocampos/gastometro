@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -38,6 +38,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     politicoId: r.politico.id,
     nome: r.politico.nome,
     partido: r.politico.partido,
+    uf: r.politico.uf,
     casa: r.politico.casa,
     legislaturas: r.politico.legislaturas,
     serieMensal: r.serieMensal,
@@ -45,6 +46,15 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     mandato: r.politico.mandato,
     municipio: r.politico.municipio,
   }))
+}
+
+// UFs com parlamentar FEDERAL (câmara/senado) nos dados, ordenadas. Alimenta o seletor de estado.
+export function getUfsDisponiveis(): string[] {
+  const ufs = new Set<string>()
+  for (const r of Object.values(agregados().porPolitico)) {
+    if (r.politico.casa === 'camara' || r.politico.casa === 'senado') ufs.add(r.politico.uf)
+  }
+  return [...ufs].filter(Boolean).sort()
 }
 
 export function getResumoTotais(): ResumoTotais {
@@ -89,6 +99,12 @@ export function getCloudflareToken(): string | null {
 
 export function getCustos(): CustosMandato {
   return lerJson<CustosMandato>(custosPath())
+}
+
+export function getCeapPorUf(): CeapPorUf | null {
+  const caminho = process.env.GASTOMETRO_CEAP ?? resolve(process.cwd(), '..', 'config', 'ceap-por-uf.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<CeapPorUf>(caminho)
 }
 
 export function getAssessores(): Assessores | null {

@@ -19,8 +19,9 @@ export default function MunicipiosPage() {
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-tinta-suave">
           <strong className="text-tinta">{cidades.length} de {totalMunicipiosPB}</strong> cidades cobertas,
           a partir de uma fonte única e oficial: o Portal de Dados Abertos do{' '}
-          <strong className="text-tinta">TCE-PB</strong>. Para onde vai o dinheiro da cidade inteira
-          (orçamento por área) e o gasto por vereador, lado a lado.
+          <strong className="text-tinta">TCE-PB</strong>. O dado municipal hoje existe só na Paraíba;
+          outras UFs entram quando o TCE de cada estado for integrado. Use o seletor de estado no topo
+          para a visão federal de cada UF.
         </p>
       </section>
 

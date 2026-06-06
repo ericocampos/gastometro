@@ -1,5 +1,8 @@
 import type { Despesa, Politico } from './sources/types.js'
 
+// Limita rankings de fornecedores para manter agregados nacionais leves
+const TOP_FORNECEDORES = 50
+
 export interface ItemRanking { politicoId: string; nome: string; partido: string; casa: string; total: number }
 export interface PontoMensal { anoMes: string; total: number }
 export interface ResumoPolitico {
@@ -39,6 +42,7 @@ export function agregar(politicos: Politico[], despesas: Despesa[]): Agregados {
 
     const forn = somaPorChave(ds, (d) => d.fornecedor.nome, (d) => d.valor)
     const porFornecedor = [...forn.entries()].sort((a, b) => b[1] - a[1])
+      .slice(0, TOP_FORNECEDORES)
       .map(([nome, t]) => {
         const cnpj = ds.find((d) => d.fornecedor.nome === nome)?.fornecedor.cnpjCpf
         return { nome, cnpjCpf: cnpj, total: t }
@@ -53,6 +57,7 @@ export function agregar(politicos: Politico[], despesas: Despesa[]): Agregados {
 
   const fornMap = somaPorChave(despesas, (d) => d.fornecedor.nome, (d) => d.valor)
   const fornecedores: ItemFornecedor[] = [...fornMap.entries()].sort((a, b) => b[1] - a[1])
+    .slice(0, TOP_FORNECEDORES)
     .map(([nome, total]) => {
       const cnpj = despesas.find((d) => d.fornecedor.nome === nome)?.fornecedor.cnpjCpf
       return { nome, cnpjCpf: cnpj, total }

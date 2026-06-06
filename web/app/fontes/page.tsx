@@ -14,7 +14,7 @@ const BLOCOS: Bloco[] = [
     intro: 'Dados Abertos da Câmara (legislativo) + Portal da Transparência (RH).',
     fontes: [
       { oque: 'Deputados, partido, foto', onde: 'dadosabertos.camara.leg.br/api/v2/deputados', formato: 'JSON' },
-      { oque: 'Despesas (cota / CEAP)', onde: 'camara.leg.br/cotas/Ano-{ano}.csv.zip', formato: 'CSV (zip), UTF-8', obs: 'liga ao deputado por ideCadastro; todos os anos desde 2008' },
+      { oque: 'Despesas (cota / CEAP)', onde: 'camara.leg.br/cotas/Ano-{ano}.csv.zip', formato: 'CSV (zip), UTF-8', obs: 'liga ao deputado por ideCadastro; a fonte tem todos os anos desde 2008, hoje carregamos a legislatura atual (2023+)' },
       { oque: 'Bio e proposições', onde: 'api/v2/deputados/{id} · /proposicoes', formato: 'JSON' },
       { oque: 'Gabinete — quem', onde: 'dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json', formato: 'JSON', obs: 'secretários parlamentares; lotação aponta o deputado; cargo traz o nível SP + GRG' },
       { oque: 'Gabinete — remuneração real', onde: 'camara.leg.br/transparencia/recursos-humanos (busca → ficha por pessoa)', formato: 'HTML oficial', obs: 'bruto pago no mês, por pessoa; sem auxílios/encargos (pagos à parte)' },
@@ -87,7 +87,8 @@ export default function FontesPage() {
       <p className="mb-2 max-w-2xl text-sm text-tinta-suave">
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
-        nem raspagem de fonte fechada. A coleta filtra pela Paraíba.
+        nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
+        (Assembleia) e o municipal cobrem hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o

@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import { ThemeToggle } from './ThemeToggle'
 import { NavLinks } from './NavLinks'
-import { getBranding } from '@/lib/dados'
+import { SeletorEstado } from './SeletorEstado'
+import { getBranding, getUfsDisponiveis } from '@/lib/dados'
 
 export function Cabecalho() {
   const branding = getBranding()
+  const ufs = getUfsDisponiveis()
   // "Gastômetro PB" → palavra + UF como selo
   const partes = branding.titulo.trim().split(' ')
   const uf = partes.length > 1 ? partes[partes.length - 1] : ''
@@ -27,6 +29,7 @@ export function Cabecalho() {
           aria-label="Navegação principal"
           className="ml-auto flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-sm font-medium"
         >
+          <SeletorEstado ufs={ufs} />
           <NavLinks />
           <ThemeToggle />
         </nav>
