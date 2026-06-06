@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -105,6 +105,18 @@ export function getCeapPorUf(): CeapPorUf | null {
   const caminho = process.env.GASTOMETRO_CEAP ?? resolve(process.cwd(), '..', 'config', 'ceap-por-uf.json')
   if (!existsSync(caminho)) return null
   return lerJson<CeapPorUf>(caminho)
+}
+
+export function getPopulacaoBrasil(): PopulacaoBrasil | null {
+  const caminho = process.env.GASTOMETRO_POPULACAO ?? resolve(process.cwd(), '..', 'config', 'populacao-brasil.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<PopulacaoBrasil>(caminho)
+}
+
+export function getCadeirasCamaraUf(): CadeirasCamaraUf | null {
+  const caminho = process.env.GASTOMETRO_CADEIRAS ?? resolve(process.cwd(), '..', 'config', 'cadeiras-camara-uf.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<CadeirasCamaraUf>(caminho)
 }
 
 export function getAssessores(): Assessores | null {

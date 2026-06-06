@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
+import { getPopulacaoBrasil, getCadeirasCamaraUf } from './dados'
 import { resolve } from 'node:path'
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -95,5 +96,21 @@ describe('getMunicipios', () => {
     expect(lido.totalMunicipiosPB).toBe(223)
     rmSync(dir, { recursive: true, force: true })
     restaurar()
+  })
+})
+
+describe('configs do panorama', () => {
+  it('lê a população do Brasil', () => {
+    const p = getPopulacaoBrasil()
+    expect(p).not.toBeNull()
+    expect(p!.populacao).toBeGreaterThan(200_000_000)
+  })
+
+  it('lê as cadeiras da Câmara e somam 513', () => {
+    const c = getCadeirasCamaraUf()
+    expect(c).not.toBeNull()
+    const soma = Object.values(c!.cadeiras).reduce((a, b) => a + b, 0)
+    expect(soma).toBe(513)
+    expect(Object.keys(c!.cadeiras).length).toBe(27)
   })
 })

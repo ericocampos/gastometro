@@ -253,3 +253,6 @@ export interface ComparativoOrcamentoCidade { slug: string; nome: string; anos: 
 // Teto mensal da CEAP (cota da Câmara) por UF; varia com a distância de Brasília.
 // Só PB é confirmado; demais UFs ficam null até verificação contra a fonte oficial.
 export interface CeapPorUf { fonte: string; atualizadoEm: string; valores: Record<string, number | null> }
+
+export interface PopulacaoBrasil { fonte: string; url: string; atualizadoEm: string; populacao: number }
+export interface CadeirasCamaraUf { fonte: string; atualizadoEm: string; cadeiras: Record<string, number> }
