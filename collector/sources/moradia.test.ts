@@ -60,3 +60,25 @@ describe('moradia (auxílio-moradia / imóvel funcional dos deputados federais)'
     expect(AUXILIO_MORADIA_SENADO).toBe(5500)
   })
 })
+
+// CSV com senadores de múltiplas UFs para testar cobertura nacional (sem filtro de UF)
+describe('parseMoradiaSenadoCsv nacional', () => {
+  // fixture com o cabeçalho real do CSV do Senado (latin-1, separador ;)
+  const csv = [
+    'ÚLTIMA ATUALIZAÇÃO;01/06/2026',
+    'NOME;ESTADO;PARTIDO;AUXÍLIO-MORADIA;IMÓVEL FUNCIONAL',
+    'Fulano de Tal;PB;X;NÃO;SIM',
+    'Beltrano Silva;SP;Y;SIM;NÃO',
+  ].join('\r\n')
+
+  it('sem UF, mapeia senadores de todas as UFs', () => {
+    // sem filtro: os dois entram (um com imóvel, outro com auxílio)
+    const m = parseMoradiaSenadoCsv(csv)
+    expect(m.size).toBe(2)
+  })
+
+  it('com UF, filtra apenas a UF solicitada', () => {
+    // com filtro PB: só o primeiro entra
+    expect(parseMoradiaSenadoCsv(csv, 'PB').size).toBe(1)
+  })
+})
