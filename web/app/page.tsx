@@ -1,6 +1,9 @@
-import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
+import { calcularPanorama } from '@/lib/panorama'
+import Link from 'next/link'
+import { brlCompacto, brl } from '@/lib/formato'
 import { RankingView } from '@/components/RankingView'
 import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { CustoMandato } from '@/components/CustoMandato'
@@ -29,6 +32,11 @@ export default function Home() {
     return { min, max, media, ufMin, ufMax }
   })()
 
+  const pop = getPopulacaoBrasil()
+  const cadeiras = getCadeirasCamaraUf()
+  const panorama = calcularPanorama(series, custos, getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null)
+  const gabPct = Math.round((panorama.componentes.find((c) => c.chave === 'gabinete')!.valor / panorama.totalAnual) * 100)
+
   return (
     <div>
       <section className="mb-10 surgir">
@@ -53,6 +61,21 @@ export default function Home() {
             <dd className="font-display text-xl font-semibold tabular-nums text-tinta">{periodoCoberto}</dd>
           </div>
         </dl>
+      </section>
+
+      <section className="mb-12">
+        <Link href="/brasil" className="group block rounded-xl border border-borda bg-superficie p-5 transition-all hover:-translate-y-0.5 hover:border-marca hover:shadow-carta">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Quanto custa o Legislativo federal</p>
+              <p className="font-display text-3xl font-semibold tabular-nums text-tinta">{brlCompacto(panorama.totalAnual)} <span className="text-base font-normal text-tinta-tenue">por ano</span></p>
+              {panorama.perCapita != null && (
+                <p className="mt-1 text-sm text-tinta-suave">{brl(panorama.perCapita)} por brasileiro / ano, e o pessoal de gabinete é {gabPct}% do custo.</p>
+              )}
+            </div>
+            <span className="text-sm font-medium text-marca transition-colors group-hover:text-tinta">Ver o panorama nacional →</span>
+          </div>
+        </Link>
       </section>
 
       <section className="mb-12">
