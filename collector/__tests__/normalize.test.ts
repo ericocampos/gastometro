@@ -31,4 +31,16 @@ describe('agregar', () => {
     const ag = agregar(politicos, despesas)
     expect(ag.fornecedores[0]).toMatchObject({ nome: 'BETA', total: 200 })
   })
+
+  it('limita porFornecedor por político e a lista global a top-N', () => {
+    const politicos = [{ id: 'camara-1', nome: 'A', casa: 'camara' as const, partido: 'P', uf: 'SP', legislaturas: [57] }]
+    const despesas = Array.from({ length: 60 }, (_, i) => ({
+      id: 'd' + i, politicoId: 'camara-1', data: '2026-01-01', ano: 2026, mes: 1,
+      categoria: 'C', fornecedor: { nome: 'F' + i }, valor: i + 1,
+    }))
+    const ag = agregar(politicos, despesas)
+    expect(ag.porPolitico['camara-1'].porFornecedor.length).toBeLessThanOrEqual(50)
+    expect(ag.fornecedores.length).toBeLessThanOrEqual(50)
+    expect(ag.porPolitico['camara-1'].porFornecedor[0].nome).toBe('F59')
+  })
 })
