@@ -6,7 +6,7 @@ describe('carregarConfig', () => {
     const cfg = carregarConfig()
     expect(cfg.uf).toBe('PB')
     expect(cfg.legislaturasCamara).toContain(57)
-    expect(cfg.anoInicial).toBe(2008)
+    expect(cfg.anoInicial).toBe(2023)
   })
 
   it('rejeita config inválida (uf ausente)', () => {
