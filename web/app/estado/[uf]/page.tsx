@@ -3,17 +3,7 @@ import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 import { brl } from '@/lib/formato'
-
-const UFS_NOME: Record<string, string> = {
-  AC: 'Acre', AL: 'Alagoas', AP: 'Amapá', AM: 'Amazonas', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal',
-  ES: 'Espírito Santo', GO: 'Goiás', MA: 'Maranhão', MT: 'Mato Grosso', MS: 'Mato Grosso do Sul', MG: 'Minas Gerais',
-  PA: 'Pará', PB: 'Paraíba', PR: 'Paraná', PE: 'Pernambuco', PI: 'Piauí', RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte',
-  RS: 'Rio Grande do Sul', RO: 'Rondônia', RR: 'Roraima', SC: 'Santa Catarina', SP: 'São Paulo', SE: 'Sergipe', TO: 'Tocantins',
-}
-
-export function ufValida(uf: string): boolean {
-  return getUfsDisponiveis().includes(uf.toUpperCase())
-}
+import { UFS_NOME } from './ufs'
 
 export function generateStaticParams() {
   return getUfsDisponiveis().map((uf) => ({ uf: uf.toLowerCase() }))
