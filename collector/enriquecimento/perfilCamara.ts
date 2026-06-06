@@ -36,12 +36,16 @@ export class PerfilCamara implements FontePerfil {
       ? `${d.municipioNascimento} - ${d.ufNascimento}`
       : undefined
 
+    // Guarda só as 100 proposições mais recentes (a API vem DESC por id). Deputado antigo pode ter
+    // milhares (muito requerimento procedural), o que inchava o perfil pra megabytes. 100 cobre a UI.
+    const PROPOSICOES_MAX = 100
     const proposicoes: ProposicaoResumo[] = []
     let pagina = 1
-    while (true) {
+    while (proposicoes.length < PROPOSICOES_MAX) {
       const url = `${BASE}/proposicoes?idDeputadoAutor=${idNum}&pagina=${pagina}&itens=100&ordem=DESC&ordenarPor=id`
       const resp = await fetchJson<{ dados: ProposicaoApi[]; links: { rel: string }[] }>(url)
       for (const p of resp.dados) {
+        if (proposicoes.length >= PROPOSICOES_MAX) break
         proposicoes.push({
           tipo: p.siglaTipo,
           numero: String(p.numero),
