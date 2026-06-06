@@ -20,15 +20,15 @@ export default function Home() {
     <div>
       <section className="mb-10 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">
-          Cota parlamentar · Paraíba
+          Cota parlamentar · Brasil
         </p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl lg:text-5xl">
           Quanto seus parlamentares
           <br className="hidden sm:block" /> gastam com a cota
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-suave">
-          Dados públicos da Câmara, do Senado e da Assembleia da Paraíba, reunidos para você acompanhar
-          de perto. Filtre por ano ou legislatura e veja quem mais gasta.
+          Dados públicos da Câmara e do Senado de todo o Brasil, reunidos para você acompanhar de perto.
+          Escolha um estado no topo para ver os parlamentares da sua UF.
         </p>
         <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <div>
@@ -65,7 +65,11 @@ export default function Home() {
 
       {municipios.cidades.length > 0 && (
         <section className="mb-12">
-          <SecaoTitulo>Municípios da Paraíba</SecaoTitulo>
+          <SecaoTitulo>Municípios · cobertura por estado</SecaoTitulo>
+          <p className="mb-3 text-sm text-tinta-suave">
+            Hoje com dado municipal só na Paraíba (orçamento das 223 cidades e gasto por vereador). Outras
+            UFs entram quando o TCE local for adicionado.
+          </p>
           <CoberturaMunicipal indice={municipios} />
         </section>
       )}
