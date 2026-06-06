@@ -73,15 +73,28 @@ function Card({
 }
 
 export function CustoMandato({
-  custos, casaFixa,
+  custos, casaFixa, faixaCeapCamara,
 }: {
   custos: CustosMandato
   casaFixa?: Casa
+  // na visão Brasil, a cota da Câmara (CEAP) varia por UF; passamos a faixa para mostrar
+  // "R$ X a Y" em vez do valor de um estado só. Ausente = usa o valor do config (fork de uma UF).
+  faixaCeapCamara?: { min: number; max: number; media: number; ufMin: string; ufMax: string }
 }) {
   const [casa, setCasa] = useState<Casa>(casaFixa ?? 'camara')
-  const c: CustoCasa = custos.casas[casa]
   const cor = corCasa(casa)
+
+  // cota efetiva: na Câmara, com faixa nacional, vira a média (pro total) com rótulo de faixa;
+  // o valor exibido no card é a faixa "R$ X a Y" (calculada abaixo).
+  const usaFaixa = casa === 'camara' && faixaCeapCamara != null
+  const cotaItem: ItemCusto = usaFaixa
+    ? { valor: faixaCeapCamara!.media, rotulo: `CEAP varia por UF (${faixaCeapCamara!.ufMin} a ${faixaCeapCamara!.ufMax})`, aproximado: true }
+    : custos.casas[casa].cota
+  const c: CustoCasa = usaFaixa ? { ...custos.casas[casa], cota: cotaItem } : custos.casas[casa]
   const total = custoTotal(c)
+  const cotaDisplay = usaFaixa
+    ? `R$ ${Math.round(faixaCeapCamara!.min / 1000)} a ${Math.round(faixaCeapCamara!.max / 1000)} mil`
+    : valorItem(c.cota)
 
   return (
     <div>
@@ -105,7 +118,7 @@ export function CustoMandato({
 
       <div className={`grid grid-cols-2 gap-3 ${c.moradia ? 'lg:grid-cols-5' : 'lg:grid-cols-4'}`}>
         <Card icone={Icones.salario} rotulo="Salário bruto mensal" valor={brlInteiro(c.salario)} legenda="Subsídio parlamentar fixo" cor={cor} />
-        <Card icone={Icones.cota} rotulo="Cota parlamentar" valor={valorItem(c.cota)} legenda={c.cota.rotulo} cor={cor} />
+        <Card icone={Icones.cota} rotulo="Cota parlamentar" valor={cotaDisplay} legenda={c.cota.rotulo} cor={cor} />
         <Card icone={Icones.gabinete} rotulo="Verba de gabinete" valor={valorItem(c.gabinete)} legenda={c.gabinete.rotulo} cor={cor} />
         {c.moradia && (
           <Card icone={Icones.moradia} rotulo="Moradia" valor={valorItem(c.moradia)} legenda={c.moradia.rotulo} cor={cor} />

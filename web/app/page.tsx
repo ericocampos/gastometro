@@ -1,4 +1,4 @@
-import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
 import { RankingView } from '@/components/RankingView'
@@ -15,6 +15,19 @@ export default function Home() {
   const porAno = totalPorAnoPorCasa(series)
   const anos = anosDisponiveis(series)
   const periodoCoberto = anos.length ? `${anos[anos.length - 1]}–${anos[0]}` : '—'
+
+  // CEAP da Câmara varia por UF; na home Brasil mostramos a FAIXA (menor a maior) em vez de um estado só.
+  const ceap = getCeapPorUf()
+  const faixaCeap = (() => {
+    if (!ceap) return undefined
+    const ent = (Object.entries(ceap.valores).filter(([, v]) => v != null) as [string, number][])
+      .sort((a, b) => a[1] - b[1])
+    if (ent.length === 0) return undefined
+    const [ufMin, min] = ent[0]
+    const [ufMax, max] = ent[ent.length - 1]
+    const media = Math.round(ent.reduce((s, [, v]) => s + v, 0) / ent.length)
+    return { min, max, media, ufMin, ufMax }
+  })()
 
   return (
     <div>
@@ -44,7 +57,7 @@ export default function Home() {
 
       <section className="mb-12">
         <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
-        <CustoMandato custos={custos} />
+        <CustoMandato custos={custos} faixaCeapCamara={faixaCeap} />
       </section>
 
       <section className="mb-12">
@@ -52,11 +65,11 @@ export default function Home() {
         <p className="mb-3 text-xs leading-relaxed text-tinta-tenue">
           Só a <strong className="text-tinta-suave">cota</strong> (CEAP/CEAPS/VIAP), empilhada por casa:{' '}
           <strong style={{ color: '#2563eb' }}>Câmara</strong> e <strong style={{ color: '#c87f1a' }}>Senado</strong>{' '}
-          com série desde 2009 (início da CEAP; <strong className="text-tinta-suave">2008</strong> parcial), e{' '}
-          <strong style={{ color: '#7c3aed' }}>Assembleia</strong> (VIAP) só a partir de 2023.{' '}
+          de todo o Brasil, mais <strong style={{ color: '#7c3aed' }}>Assembleia</strong> (VIAP, hoje só na Paraíba),{' '}
+          a partir de <strong className="text-tinta-suave">2023</strong> (legislatura atual).{' '}
           <strong className="text-tinta-suave">{new Date().getFullYear()}</strong> ainda está em andamento.{' '}
-          Salário e folha de gabinete <strong className="text-tinta-suave">não entram aqui</strong> — o gabinete não tem
-          série mês a mês; a estimativa mensal está no card de custo do mandato acima.
+          Salário e folha de gabinete <strong className="text-tinta-suave">não entram aqui</strong>: o gabinete não tem
+          série mês a mês, e a estimativa mensal está no card de custo do mandato acima.
         </p>
         <div className="rounded-xl border border-borda bg-superficie p-4">
           <GraficoGeralAnual dados={porAno} />
