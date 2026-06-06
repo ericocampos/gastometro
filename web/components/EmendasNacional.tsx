@@ -12,7 +12,7 @@ const CATS: { chave: 'individual' | 'bancada' | 'comissao' | 'relator'; rotulo: 
 
 export function EmendasNacional({ emendas, nomes }: { emendas: Emendas; nomes: Record<string, { nome: string; sub: string }> }) {
   const linhas: LinhaEmenda[] = Object.entries(emendas.porPolitico)
-    .map(([id, e]) => ({ rotulo: nomes[id]?.nome ?? id, sub: nomes[id]?.sub ?? '', empenhado: e.empenhado, pago: e.pago }))
+    .map(([id, e]) => ({ id, rotulo: nomes[id]?.nome ?? id, sub: nomes[id]?.sub ?? '', empenhado: e.empenhado, pago: e.pago }))
     .sort((a, b) => b.empenhado - a.empenhado)
     .slice(0, 50)
 
