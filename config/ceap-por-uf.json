@@ -1,10 +1,13 @@
 {
   "fonte": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar",
   "atualizadoEm": "2026-06",
+  "observacao": "Cota para o Exercício da Atividade Parlamentar (CEAP), valor mensal por UF. Vigência pós-reajuste de 13,75% de fev/2026 (PB = 47.826,36 antiga x 1,1375 = 54.402,48). Varia por UF pela distância de Brasília.",
   "valores": {
-    "AC": null, "AL": null, "AP": null, "AM": null, "BA": null, "CE": null, "DF": null,
-    "ES": null, "GO": null, "MA": null, "MT": null, "MS": null, "MG": null, "PA": null,
-    "PB": 47826.36, "PR": null, "PE": null, "PI": null, "RJ": null, "RN": null, "RS": null,
-    "RO": null, "RR": null, "SC": null, "SP": null, "SE": null, "TO": null
+    "AC": 57359.87, "AL": 53164.36, "AP": 55929.26, "AM": 56151.46, "BA": 50965.29,
+    "CE": 54879.34, "DF": 41612.55, "ES": 49160.15, "GO": 46979.73, "MA": 54537.99,
+    "MT": 51439.83, "MS": 52707.93, "MG": 47645.91, "PA": 54624.17, "PB": 54402.48,
+    "PR": 50807.19, "PE": 53997.81, "PI": 53195.84, "RJ": 47267.41, "RN": 55198.09,
+    "RS": 53086.78, "RO": 56267.90, "RR": 58474.70, "SC": 51951.42, "SP": 48727.46,
+    "SE": 52248.86, "TO": 51525.80
   }
 }
