@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico } from '@/lib/tipos'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
@@ -22,6 +22,7 @@ import { PerfilFornecedores } from './PerfilFornecedores'
 import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
+import { EmendasParlamentar } from './EmendasParlamentar'
 
 const casaLonga = (c: Casa) =>
   c === 'camara' ? 'Câmara dos Deputados'
@@ -98,7 +99,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -120,6 +121,7 @@ export function PerfilView({
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
   conferidoTce?: ConferenciaTce
+  emendas?: EmendasPolitico | null
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -368,6 +370,11 @@ export function PerfilView({
               gabinete={custoCasa.gabinete}
               casa={politico.casa}
             />
+          </section>
+
+          <section className="mb-10">
+            <SecaoTitulo>Emendas</SecaoTitulo>
+            <EmendasParlamentar dados={emendas ?? null} />
           </section>
 
           {/* Gráficos no topo, lado a lado — visão de tendência sem ocupar tanta vertical */}

@@ -18,6 +18,7 @@ const BLOCOS: Bloco[] = [
       { oque: 'Bio e proposições', onde: 'api/v2/deputados/{id} · /proposicoes', formato: 'JSON' },
       { oque: 'Gabinete — quem', onde: 'dadosabertos.camara.leg.br/arquivos/funcionarios/json/funcionarios.json', formato: 'JSON', obs: 'secretários parlamentares; lotação aponta o deputado; cargo traz o nível SP + GRG' },
       { oque: 'Gabinete — remuneração real', onde: 'camara.leg.br/transparencia/recursos-humanos (busca → ficha por pessoa)', formato: 'HTML oficial', obs: 'bruto pago no mês, por pessoa; sem auxílios/encargos (pagos à parte)' },
+      { oque: 'Emendas parlamentares', onde: 'portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares', formato: 'CSV (zip), latin-1', obs: 'execução de emendas (empenhado/pago) por autor, município e função; CGU. Vínculo ao parlamentar por nome' },
     ],
   },
   {
