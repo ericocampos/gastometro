@@ -311,11 +311,19 @@ async function main() {
   }
 
   // Câmara: troca o valor tabelado pela remuneração REAL da ficha oficial (raspagem; com fallback).
+  // No escopo nacional são ~10 mil secretários (~21 mil requisições ao Portal). `--rapido` pula a
+  // raspagem e mantém a folha pela TABELA oficial (já é o fallback) — útil pra ter cobertura nacional
+  // rápida e depois rodar o coletor completo (sem o flag) em background pra trazer o valor real.
+  const rapido = process.argv.includes('--rapido') || process.env.GABINETE_RAPIDO === '1'
   let mesCamara: string | undefined
-  try {
-    mesCamara = await enriquecerCamaraComRemuneracaoReal(porPolitico, deputados)
-  } catch (e) {
-    console.warn('! Falha ao buscar remuneração real da Câmara:', e instanceof Error ? e.message : e)
+  if (rapido) {
+    console.log(`> Modo rápido: pulando a raspagem da remuneração real da Câmara (${deputados.length} deputados ficam com a folha pela tabela oficial).`)
+  } else {
+    try {
+      mesCamara = await enriquecerCamaraComRemuneracaoReal(porPolitico, deputados)
+    } catch (e) {
+      console.warn('! Falha ao buscar remuneração real da Câmara:', e instanceof Error ? e.message : e)
+    }
   }
 
   // Senado: comissionados de gabinete/escritório (roster nominal + custo real da folha).
