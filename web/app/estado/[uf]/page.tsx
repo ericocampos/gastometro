@@ -27,9 +27,9 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
   return (
     <div>
       <section className="mb-8 surgir">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">Federal · {uf}</p>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">Quanto custa um parlamentar · {uf}</p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl">
-          Parlamentares federais de {nome}
+          Quanto custa um parlamentar federal de {nome}
         </h1>
         <p className="mt-3 text-sm text-tinta-suave">
           Cota mensal da Câmara (CEAP) em {nome}: {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.

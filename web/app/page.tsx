@@ -20,15 +20,15 @@ export default function Home() {
     <div>
       <section className="mb-10 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">
-          Cota parlamentar · Brasil
+          Quanto custa um parlamentar · Brasil
         </p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl lg:text-5xl">
-          Quanto seus parlamentares
-          <br className="hidden sm:block" /> gastam com a cota
+          Quanto custa
+          <br className="hidden sm:block" /> um parlamentar
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-suave">
-          Dados públicos da Câmara e do Senado de todo o Brasil, reunidos para você acompanhar de perto.
-          Escolha um estado no topo para ver os parlamentares da sua UF.
+          Salário, cota e gabinete, com dados públicos da Câmara e do Senado de todo o Brasil, reunidos
+          para você acompanhar de perto. Escolha um estado no topo para ver os parlamentares da sua UF.
         </p>
         <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <div>
