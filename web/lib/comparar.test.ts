@@ -4,11 +4,11 @@ import type { SerieParlamentar } from './periodo'
 
 const sel: SerieParlamentar[] = [
   {
-    politicoId: 'a', nome: 'A', partido: 'PP', casa: 'camara', legislaturas: [57],
+    politicoId: 'a', nome: 'A', partido: 'PP', uf: 'PB', casa: 'camara', legislaturas: [57],
     serieMensal: [{ anoMes: '2024-01', total: 100 }, { anoMes: '2024-02', total: 200 }],
   },
   {
-    politicoId: 'b', nome: 'B', partido: 'PT', casa: 'senado', legislaturas: [57],
+    politicoId: 'b', nome: 'B', partido: 'PT', uf: 'PB', casa: 'senado', legislaturas: [57],
     serieMensal: [{ anoMes: '2024-02', total: 50 }],
   },
 ]

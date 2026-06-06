@@ -38,6 +38,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     politicoId: r.politico.id,
     nome: r.politico.nome,
     partido: r.politico.partido,
+    uf: r.politico.uf,
     casa: r.politico.casa,
     legislaturas: r.politico.legislaturas,
     serieMensal: r.serieMensal,
@@ -45,6 +46,15 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     mandato: r.politico.mandato,
     municipio: r.politico.municipio,
   }))
+}
+
+// UFs com parlamentar FEDERAL (câmara/senado) nos dados, ordenadas. Alimenta o seletor de estado.
+export function getUfsDisponiveis(): string[] {
+  const ufs = new Set<string>()
+  for (const r of Object.values(agregados().porPolitico)) {
+    if (r.politico.casa === 'camara' || r.politico.casa === 'senado') ufs.add(r.politico.uf)
+  }
+  return [...ufs].filter(Boolean).sort()
 }
 
 export function getResumoTotais(): ResumoTotais {

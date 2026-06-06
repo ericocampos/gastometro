@@ -52,6 +52,7 @@ const series: SerieParlamentar[] = [
     politicoId: 'cm-joao-pessoa-1',
     nome: 'Fulano de Tal',
     partido: 'PT',
+    uf: 'PB',
     casa: 'camara_municipal',
     municipio: 'joao-pessoa',
     legislaturas: [2025],

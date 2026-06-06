@@ -9,6 +9,7 @@ export interface SerieParlamentar {
   politicoId: string
   nome: string
   partido: string
+  uf: string
   casa: Casa
   legislaturas: number[]
   serieMensal: PontoMensal[]
