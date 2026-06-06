@@ -31,7 +31,9 @@ export function RankingAgregado({
               key={l.rotulo}
               className="border-b border-borda/60 last:border-b-0"
               style={{
-                background: `linear-gradient(to right, color-mix(in srgb, ${cor} 8%, transparent) ${(l.total / max) * 100}%, transparent ${(l.total / max) * 100}%)`,
+                // barra proporcional: faixa cheia até a % do maior valor, depois transparente.
+                // ~30% de cor lê bem no claro e no escuro sem atrapalhar o texto por cima.
+                background: `linear-gradient(to right, color-mix(in srgb, ${cor} 32%, transparent) 0 ${(l.total / max) * 100}%, transparent ${(l.total / max) * 100}%)`,
               }}
             >
               <td data-testid="ranking-rotulo" className="px-4 py-2.5 font-semibold text-tinta">{l.rotulo}</td>

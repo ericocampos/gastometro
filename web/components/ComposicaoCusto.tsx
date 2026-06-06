@@ -38,10 +38,14 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
             <div className="flex items-center gap-2">
               <span className="h-3 w-3 rounded-full" style={{ background: COR[c.chave] }} aria-hidden />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-tinta-suave">{TITULO[c.chave]}</span>
-              <span className="ml-auto text-[11px] tabular-nums text-tinta-tenue">{Math.round((c.valor / totalAnual) * 100)}%</span>
             </div>
-            <p className="mt-2 font-display text-xl font-semibold tabular-nums text-tinta">{brlCompacto(c.valor)}</p>
-            <p className="mt-1 text-xs text-tinta-tenue">{c.rotulo}</p>
+            <div className="mt-2 flex items-baseline gap-2">
+              <span className="font-display text-4xl font-semibold leading-none tabular-nums sm:text-5xl" style={{ color: COR[c.chave] }}>
+                {Math.round((c.valor / totalAnual) * 100)}%
+              </span>
+              <span className="text-sm tabular-nums text-tinta-suave">{brlCompacto(c.valor)}</span>
+            </div>
+            <p className="mt-2 text-xs text-tinta-tenue">{c.rotulo}</p>
             <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c.real ? '#0a7d52' : '#9a6700' }}>
               {c.real ? 'Gasto real' : 'Estimativa anualizada'}
             </p>
