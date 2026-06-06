@@ -12,29 +12,36 @@ export function RankingAgregado({
   cor: string
 }) {
   const max = Math.max(1, ...linhas.map((l) => l.total))
+  // <table> em vez de grids separados: assim as colunas do cabeçalho e das linhas alinham sozinhas.
+  // A barra proporcional vira o gradiente de fundo da própria linha (não um span absoluto).
   return (
     <div className="overflow-hidden rounded-xl border border-borda bg-superficie">
-      <div className="grid grid-cols-[1fr_auto_auto] gap-x-4 border-b border-borda px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue sm:grid-cols-[1fr_auto_auto_auto]">
-        <span aria-hidden />
-        <span className="hidden text-right sm:block">{colN}</span>
-        <span className="text-right">{colTotal}</span>
-        <span className="text-right">{colPorUnidade}</span>
-      </div>
-      <ul className="divide-y divide-borda/60">
-        {linhas.map((l) => (
-          <li key={l.rotulo} className="relative grid grid-cols-[1fr_auto_auto] items-center gap-x-4 px-4 py-2.5 text-sm sm:grid-cols-[1fr_auto_auto_auto]">
-            <span
-              className="absolute inset-y-0 left-0 opacity-[0.07]"
-              style={{ width: `${(l.total / max) * 100}%`, background: cor }}
-              aria-hidden
-            />
-            <span data-testid="ranking-rotulo" className="z-10 font-semibold text-tinta">{l.rotulo}</span>
-            <span className="z-10 hidden text-right tabular-nums text-tinta-suave sm:block">{l.n}</span>
-            <span className="z-10 text-right font-display tabular-nums text-tinta">{brlInteiro(l.total)}</span>
-            <span className="z-10 text-right tabular-nums text-tinta-suave">{brlInteiro(l.porUnidade)}</span>
-          </li>
-        ))}
-      </ul>
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-borda text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">
+            <th className="px-4 py-2 text-left font-semibold" aria-label="Item" />
+            <th className="hidden px-4 py-2 text-right font-semibold sm:table-cell">{colN}</th>
+            <th className="px-4 py-2 text-right font-semibold">{colTotal}</th>
+            <th className="px-4 py-2 text-right font-semibold">{colPorUnidade}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {linhas.map((l) => (
+            <tr
+              key={l.rotulo}
+              className="border-b border-borda/60 last:border-b-0"
+              style={{
+                background: `linear-gradient(to right, color-mix(in srgb, ${cor} 8%, transparent) ${(l.total / max) * 100}%, transparent ${(l.total / max) * 100}%)`,
+              }}
+            >
+              <td data-testid="ranking-rotulo" className="px-4 py-2.5 font-semibold text-tinta">{l.rotulo}</td>
+              <td className="hidden px-4 py-2.5 text-right tabular-nums text-tinta-suave sm:table-cell">{l.n}</td>
+              <td className="px-4 py-2.5 text-right font-display tabular-nums text-tinta">{brlInteiro(l.total)}</td>
+              <td className="px-4 py-2.5 text-right tabular-nums text-tinta-suave">{brlInteiro(l.porUnidade)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
