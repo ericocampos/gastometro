@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -123,6 +123,12 @@ export function getAssessores(): Assessores | null {
   const caminho = resolve(dataDir(), 'assessores.json')
   if (!existsSync(caminho)) return null
   return lerJson<Assessores>(caminho)
+}
+
+export function getEmendas(): Emendas | null {
+  const caminho = resolve(dataDir(), 'emendas.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<Emendas>(caminho)
 }
 
 export function getMunicipios(): MunicipiosIndice {
