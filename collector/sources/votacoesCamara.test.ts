@@ -88,3 +88,40 @@ describe('montarRegistroCamara', () => {
     expect(montarRegistroCamara(semMerito, votos, orientacoes)).toBeNull()
   })
 })
+
+import { janelasTrimestrais, coletarCamara } from './votacoesCamara.js'
+
+describe('janelasTrimestrais', () => {
+  it('quebra o período em janelas de até 3 meses (início..fim inclusive)', () => {
+    const js = janelasTrimestrais('2024-01-01', '2024-06-30')
+    expect(js[0]).toEqual({ inicio: '2024-01-01', fim: '2024-03-31' })
+    expect(js[1]).toEqual({ inicio: '2024-04-01', fim: '2024-06-30' })
+    expect(js.length).toBe(2)
+  })
+})
+
+describe('coletarCamara', () => {
+  it('lista nominais, busca detalhe/votos/orientações e descarta não-mérito', async () => {
+    const respostas: Record<string, unknown> = {
+      // lista de uma janela
+      'votacoes?idOrgao=180&dataInicio=2024-01-01&dataFim=2024-03-31&itens=200&ordem=ASC&ordenarPor=dataHoraRegistro': {
+        dados: [
+          { id: 111, descricao: 'Aprovado SIM: 2, NÃO: 1' },   // nominal, será mérito
+          { id: 222, descricao: 'Simbólica' },                  // não nominal: ignora
+        ],
+      },
+      'votacoes/111/votos': { dados: [{ deputado_: { id: 9, siglaPartido: 'PT' }, tipoVoto: 'Sim' }] },
+      'votacoes/111/orientacoes': { dados: [{ siglaPartidoBloco: 'Governo', orientacaoVoto: 'Sim' }, { siglaPartidoBloco: 'PT', orientacaoVoto: 'Sim' }] },
+      'votacoes/111': { dados: { id: 111, dataHoraRegistro: '2024-02-01T10:00', aprovacao: 1, descricao: 'Aprovado SIM: 2, NÃO: 1', proposicoesAfetadas: [{ siglaTipo: 'PL', numero: '5', ano: 2024, ementa: 'Lei' }] } },
+    }
+    const fetchJson = async (url: string) => {
+      const chave = Object.keys(respostas).find((k) => url.includes(k))
+      if (!chave) throw new Error(`sem fake para ${url}`)
+      return respostas[chave]
+    }
+    const regs = await coletarCamara(fetchJson, '2024-01-01', '2024-03-31', () => {})
+    expect(regs.length).toBe(1)
+    expect(regs[0].id).toBe('camara-111')
+    expect(regs[0].votos[0]).toEqual({ politicoId: 'camara-9', v: 'S', orientacaoPartido: 'Sim' })
+  })
+})
