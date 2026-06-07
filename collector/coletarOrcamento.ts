@@ -9,6 +9,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSy
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fetchBuffer } from './http.js'
+import { gravarTextoZst, lerTextoZst } from './cacheZstd.js'
 import { inflarCsvZip } from './sources/cota-csv.js'
 import { MUNICIPIOS_TCE, type MunicipioTce } from './sources/tce.js'
 import { fonteUrlDespesas, montarOrcamentoMunicipio } from './sources/tceOrcamento.js'
@@ -23,15 +24,15 @@ const HOJE = new Date().toISOString().slice(0, 10)
 // Conjunto de demonstração: pequena (Água Branca), grandes (JP, CG) e médias.
 const DEMO = ['agua-branca', 'campina-grande', 'joao-pessoa', 'santa-rita', 'patos', 'bayeux']
 
-/** CSV inflado do ano, do cache ou da rede. null quando o ano não tem arquivo. */
+/** CSV inflado do ano, do cache (comprimido zstd) ou da rede. null quando o ano não tem arquivo. */
 async function obterCsvAno(cod: string, ano: number): Promise<string | null> {
   const cacheFile = resolve(CACHE, `${cod}-${ano}.csv`)
-  if (existsSync(cacheFile)) return readFileSync(cacheFile, 'utf-8')
+  const cached = lerTextoZst(cacheFile)
+  if (cached !== null) return cached
   try {
     const buf = await fetchBuffer(fonteUrlDespesas(cod, ano))
     const csv = inflarCsvZip(buf)
-    mkdirSync(dirname(cacheFile), { recursive: true })
-    writeFileSync(cacheFile, csv, 'utf-8')
+    gravarTextoZst(cacheFile, csv) // grava `{cacheFile}.zst` já comprimido
     return csv
   } catch {
     return null // ano sem arquivo / falha de rede

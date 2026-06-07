@@ -16,6 +16,7 @@
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
+    "comprimir:cache": "tsx collector/comprimirCache.ts",
     "analisar": "tsx collector/analisar.ts"
   },
   "dependencies": {
