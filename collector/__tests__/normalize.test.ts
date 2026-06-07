@@ -46,4 +46,18 @@ describe('agregar', () => {
     expect(ag.fornecedoresTotais.nFornecedores).toBe(60)
     expect(ag.fornecedoresTotais.total).toBe(1830) // soma de 1..60
   })
+
+  it('exclui deputado estadual leve (gasto 0) do ranking, mas mantém em porPolitico', () => {
+    const politicos: Politico[] = [
+      { id: 'camara-1', nome: 'Fed Um', casa: 'camara', partido: 'PT', uf: 'PB', legislaturas: [57] },
+      { id: 'ae-sp-111', nome: 'Estadual Leve', casa: 'assembleia', partido: 'PL', uf: 'SP', legislaturas: [] },
+    ]
+    const despesas: Despesa[] = [
+      { id: 'd1', politicoId: 'camara-1', data: '2025-01-10', ano: 2025, mes: 1, categoria: 'X', fornecedor: { nome: 'F' }, valor: 100 },
+    ]
+    const ag = agregar(politicos, despesas)
+    expect(ag.ranking.map((r) => r.politicoId)).toEqual(['camara-1'])
+    expect(ag.porPolitico['ae-sp-111']).toBeDefined()
+    expect(ag.porPolitico['ae-sp-111'].total).toBe(0)
+  })
 })

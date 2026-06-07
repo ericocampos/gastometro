@@ -101,6 +101,9 @@ export function agregar(politicos: Politico[], despesas: Despesa[]): Agregados {
   }
 
   const ranking: ItemRanking[] = Object.values(porPolitico)
+    // deputado estadual LEVE não tem despesa itemizada (total 0); não entra no ranking de gasto
+    // (apareceria como "gastou R$ 0"). Continua em porPolitico, para o perfil leve existir.
+    .filter((r) => !(r.politico.casa === 'assembleia' && r.total === 0))
     .map((r) => ({ politicoId: r.politico.id, nome: r.politico.nome, partido: r.politico.partido, casa: r.politico.casa, total: r.total }))
     .sort((a, b) => b.total - a.total)
 
