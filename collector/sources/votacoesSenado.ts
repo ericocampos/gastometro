@@ -1,6 +1,8 @@
 // Parsers do Senado (dados abertos) para votações nominais de mérito.
+// Forma da API confirmada ao vivo: /dadosabertos/votacao?ano= devolve um ARRAY de votações,
+// com a matéria em campos separados (sigla/numero/ementa) e os votos inline.
 // Orientação por partido não é casada na v1 (orientacaoPartido = null); só a do governo,
-// vinda da árvore orientacaoBancada e injetada por código de votação.
+// vinda da árvore orientacaoBancada (orientacoesLideranca, partido === 'Governo') por código.
 import type { Orientacao, RegistroVotacao, VotoSigla } from './votacoes.js'
 
 const TIPOS_MERITO = new Set(['PEC', 'PL', 'PLP', 'MPV', 'PLV'])
@@ -17,16 +19,29 @@ export function mapVotoSenado(sigla: string): VotoSigla {
   return '-'   // MIS, P-NRV, LP, e demais ausências/licenças
 }
 
+// "PLP 85/2024" -> 2024 (ano da matéria, que pode diferir do ano da sessão)
+function anoDaIdentificacao(identificacao: string, fallback: number): number {
+  const m = /\/(\d{4})\s*$/.exec(identificacao ?? '')
+  return m ? Number(m[1]) : fallback
+}
+
+function orientacaoDeVoto(voto: string): Orientacao {
+  const t = (voto ?? '').trim().toLowerCase()
+  if (t === 'sim') return 'Sim'
+  if (t.startsWith('n')) return 'Não'
+  return 'Liberado'   // LIVRE, OBSTRUÇÃO, vazio, etc.
+}
+
 interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string }
 interface VotacaoSenado {
   codigoVotacaoSve?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
-  siglaMateria?: string; numeroMateria?: string | number; anoMateria?: string | number
-  descricaoVotacao?: string; ementaMateria?: string; votos?: VotoSenadoItem[]
+  ano?: number; sigla?: string; numero?: string | number; identificacao?: string
+  descricaoVotacao?: string; ementa?: string; votos?: VotoSenadoItem[]
 }
 
 export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orientacao | null): RegistroVotacao | null {
   if ((v.votacaoSecreta ?? '').toUpperCase() === 'S') return null
-  if (!ehMeritoSenado(v.siglaMateria ?? '')) return null
+  if (!ehMeritoSenado(v.sigla ?? '')) return null
 
   let sim = 0, nao = 0, outros = 0
   const votos = (v.votos ?? []).map((it) => {
@@ -38,7 +53,11 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
   const cod = v.codigoVotacaoSve
   return {
     id: `senado-${cod}`, casa: 'senado', data: (v.dataSessao ?? '').slice(0, 10),
-    proposicao: { tipo: String(v.siglaMateria), numero: String(v.numeroMateria ?? ''), ano: Number(v.anoMateria) || 0, ementa: (v.ementaMateria ?? '').trim() },
+    proposicao: {
+      tipo: String(v.sigla ?? ''), numero: String(v.numero ?? ''),
+      ano: anoDaIdentificacao(v.identificacao ?? '', Number(v.ano) || 0),
+      ementa: (v.ementa ?? '').trim(),
+    },
     descricao: (v.descricaoVotacao ?? '').trim(),
     aprovada: v.resultadoVotacao === 'A' ? true : v.resultadoVotacao === 'R' ? false : null,
     placar: { sim, nao, outros },
@@ -50,16 +69,16 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
 
 export type FetchJson = (url: string) => Promise<any>
 
-// orientação do governo por código de votação, da árvore orientacaoBancada do período
+// orientação do governo por código de votação, da árvore orientacaoBancada do período.
+// Forma confirmada: { votacoes: [{ codigoVotacaoSve, orientacoesLideranca: [{ partido, voto }] }] }
 export function parseOrientacoesGoverno(payload: any): Record<string, Orientacao> {
   const out: Record<string, Orientacao> = {}
-  const itens: any[] = payload?.orientacoes ?? payload?.OrientacaoBancada ?? []
-  for (const o of itens) {
-    const bancada = String(o.bancada ?? o.siglaBancada ?? '').toLowerCase()
-    const cod = String(o.codigoVotacaoSve ?? o.codigoSessaoVotacao ?? '')
-    if (!cod || !bancada.includes('governo')) continue
-    const orient = String(o.orientacao ?? o.siglaOrientacao ?? '').toLowerCase()
-    out[cod] = orient === 'sim' ? 'Sim' : orient.startsWith('n') ? 'Não' : 'Liberado'
+  for (const v of payload?.votacoes ?? []) {
+    const cod = String(v.codigoVotacaoSve ?? '')
+    if (!cod) continue
+    const gov = (v.orientacoesLideranca ?? []).find((o: any) => String(o.partido ?? '').toLowerCase() === 'governo')
+    if (!gov) continue
+    out[cod] = orientacaoDeVoto(gov.voto ?? '')
   }
   return out
 }
@@ -68,7 +87,7 @@ export async function coletarSenado(fetchJson: FetchJson, anos: number[], log: (
   const registros: RegistroVotacao[] = []
   for (const ano of anos) {
     const lista = await fetchJson(`https://legis.senado.leg.br/dadosabertos/votacao?ano=${ano}`)
-    const votacoes: VotacaoSenado[] = lista?.votacoes ?? lista?.ListaVotacoes?.Votacoes?.Votacao ?? []
+    const votacoes: VotacaoSenado[] = Array.isArray(lista) ? lista : (lista?.votacoes ?? [])
     let orientacoes: Record<string, Orientacao> = {}
     try {
       const orientPayload = await fetchJson(`https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/${ano}0101/${ano}1231.json`)
