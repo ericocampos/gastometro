@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeAll } from 'vitest'
-import { getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas } from './dados'
-import { resolve } from 'node:path'
+import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getAssembleias } from './dados'
+import { resolve, join } from 'node:path'
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 
@@ -134,5 +134,26 @@ describe('getVotacoes', () => {
     const { getVotacoes } = await import('./dados')
     expect(getVotacoes()?.anoInicial).toBe(2023)
     delete process.env.GASTOMETRO_DATA_DIR
+  })
+})
+
+describe('getAssembleias', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'dados-assembleias-'))
+  writeFileSync(join(dir, 'assembleias.json'), JSON.stringify({
+    atualizadoEm: '2026-06-07',
+    casas: [{ uf: 'SP', sigla: 'ALESP', nome: 'ALESP', slug: 'sp', modelo: 'leve', subsidio: null, assentos: 94, nDeputados: 94, pisoCusto: null, deputados: [] }],
+  }))
+  afterAll(() => rmSync(dir, { recursive: true, force: true }))
+
+  it('lê o índice de assembleias', () => {
+    process.env.GASTOMETRO_DATA_DIR = dir
+    const idx = getAssembleias()
+    expect(idx?.casas[0].uf).toBe('SP')
+  })
+  it('retorna null quando o arquivo não existe', () => {
+    const prev = process.env.GASTOMETRO_DATA_DIR
+    process.env.GASTOMETRO_DATA_DIR = join(dir, 'inexistente')
+    expect(getAssembleias()).toBeNull()
+    process.env.GASTOMETRO_DATA_DIR = prev
   })
 })

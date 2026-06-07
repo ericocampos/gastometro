@@ -1,9 +1,10 @@
-import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas } from '@/lib/dados'
+import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias } from '@/lib/dados'
 import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 import { brl } from '@/lib/formato'
 import { UFS_NOME } from './ufs'
+import { AssembleiaSecao } from '@/components/AssembleiaSecao'
 
 export function generateStaticParams() {
   return getUfsDisponiveis().map((uf) => ({ uf: uf.toLowerCase() }))
@@ -16,6 +17,7 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
   const cidades = getMunicipios().cidades.filter((c) => c.uf === uf)
   const ceap = getCeapPorUf()?.valores[uf] ?? null
   const emendasUf = getEmendas()?.porUf[uf] ?? null
+  const casaAssembleia = getAssembleias()?.casas.find((c) => c.uf === uf) ?? null
 
   if (series.length === 0) {
     return (
@@ -58,6 +60,14 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
               <p className="font-display text-2xl font-semibold tabular-nums text-tinta-suave">{brl(emendasUf.pago)}</p>
             </div>
           </div>
+        </section>
+      )}
+
+      {casaAssembleia && casaAssembleia.deputados.length > 0 && (
+        <section className="mb-12">
+          <SecaoTitulo>Assembleia de {nome}</SecaoTitulo>
+          <p className="mb-3 text-xs text-tinta-tenue">{casaAssembleia.nome} ({casaAssembleia.sigla}).</p>
+          <AssembleiaSecao casa={casaAssembleia} />
         </section>
       )}
 

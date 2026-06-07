@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -196,4 +196,10 @@ export function getComparativoOrcamento(): ComparativoOrcamentoCidade[] {
     })
     .filter((x): x is ComparativoOrcamentoCidade => x !== null)
   return cidades.sort((a, b) => (b.anos[b.anos.length - 1]?.total ?? 0) - (a.anos[a.anos.length - 1]?.total ?? 0))
+}
+
+export function getAssembleias(): AssembleiasIndice | null {
+  const caminho = resolve(dataDir(), 'assembleias.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<AssembleiasIndice>(caminho)
 }

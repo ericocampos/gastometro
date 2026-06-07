@@ -138,6 +138,24 @@ async function main() {
     console.log('> ALPB ausente (rode `npm run coletar:alpb` para incluir os deputados estaduais)')
   }
 
+  // Deputados estaduais LEVES (demais casas, via TSE): roster sem despesa. Gerado por
+  // `npm run coletar:assembleias`. Cada deputado traz seu próprio uf. ALPB (PB) NÃO entra aqui
+  // (é completo e já foi mesclado acima).
+  const assembleiasRoster = resolve(dataDir, 'assembleias', 'deputados.json')
+  if (existsSync(assembleiasRoster)) {
+    interface DepLeve { id: string; uf: string; nome: string; partido: string; fotoUrl?: string }
+    const leves = JSON.parse(readFileSync(assembleiasRoster, 'utf-8')) as DepLeve[]
+    for (const d of leves) {
+      todosPoliticos.push({
+        id: d.id, nome: d.nome, casa: 'assembleia', partido: d.partido || '—',
+        uf: d.uf, legislaturas: [], fotoUrl: d.fotoUrl,
+      })
+    }
+    console.log(`> Assembleias leves mescladas: ${leves.length} deputados estaduais (sem despesa)`)
+  } else {
+    console.log('> Assembleias leves ausentes (rode `npm run coletar:assembleias`)')
+  }
+
   // Perfis (bio + proposições) — só Câmara/Senado têm enriquecimento; a ALPB entra sem perfil.
   const perfis: PerfilParlamentar[] = []
   for (const p of todosPoliticos) {
