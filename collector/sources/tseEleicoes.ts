@@ -100,6 +100,38 @@ export function matchCandidato(
   return null
 }
 
+export interface EleitoTse { sq: string; nome: string; nomeUrna: string; partido: string }
+
+// Situação no turno: 'ELEITO', 'ELEITO POR QP', 'ELEITO POR MEDIA'. Excluir 'NAO ELEITO'/'SUPLENTE'.
+// Normaliza (sem acento, caixa alta) e exige que a primeira palavra seja exatamente "ELEITO".
+function ehEleito(situacao: string): boolean {
+  const s = normTse(situacao) // já remove acento e sobe caixa
+  return s === 'ELEITO' || s.startsWith('ELEITO ')
+}
+
+/**
+ * Lista TODOS os eleitos de um cargo numa UF (roster primário das assembleias). Diferente do
+ * caminho de enriquecimento do vereador: aqui o TSE É o roster, não um índice para casar por nome.
+ */
+export function parseEleitosCsv(texto: string, cargo: string): EleitoTse[] {
+  const linhas = texto.split('\n').filter((l) => l.trim().length > 0)
+  if (linhas.length === 0) return []
+  const head = campos(linhas[0])
+  const col = (n: string) => head.indexOf(n)
+  const iCargo = col('DS_CARGO'), iSq = col('SQ_CANDIDATO'), iNome = col('NM_CANDIDATO'),
+    iUrna = col('NM_URNA_CANDIDATO'), iPart = col('SG_PARTIDO'), iSit = col('DS_SIT_TOT_TURNO')
+
+  const out: EleitoTse[] = []
+  const alvo = cargo.toUpperCase()
+  for (let i = 1; i < linhas.length; i++) {
+    const f = campos(linhas[i])
+    if ((f[iCargo] ?? '').toUpperCase() !== alvo) continue
+    if (!ehEleito(f[iSit] ?? '')) continue
+    out.push({ sq: f[iSq], nome: f[iNome], nomeUrna: f[iUrna], partido: f[iPart] })
+  }
+  return out
+}
+
 // O ZIP do TSE mistura as extensões .jpg e .jpeg (ambas existem). Tentamos as duas.
 const EXTENSOES_FOTO = ['jpg', 'jpeg'] as const
 /** Nomes possíveis do arquivo da foto no ZIP do TSE (uma SQ tem .jpg OU .jpeg). */
@@ -127,6 +159,25 @@ export async function baixarCandidatosUf(ano: number, uf: string): Promise<Map<s
     rmSync(dir, { recursive: true, force: true })
   }
 }
+
+/** Baixa o zip nacional de candidatos e devolve os eleitos do cargo na UF pedida. */
+export async function baixarEleitosUf(ano: number, uf: string, cargo: string): Promise<EleitoTse[]> {
+  const buf = await fetchBuffer(`${CDN}/odsele/consulta_cand/consulta_cand_${ano}.zip`)
+  const dir = mkdtempSync(join(tmpdir(), 'tse-cand-'))
+  try {
+    const zip = join(dir, 'cand.zip')
+    writeFileSync(zip, buf)
+    const csv = `consulta_cand_${ano}_${uf}.csv`
+    execFileSync('unzip', ['-o', '-j', zip, csv, '-d', dir], { stdio: 'ignore' })
+    const texto = readFileSync(join(dir, csv), 'latin1')
+    return parseEleitosCsv(texto, cargo)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
+/** Caminho público (relativo, sem basePath) da thumbnail webp do deputado estadual. */
+export const fotoUrlLocalDeputado = (sq: string): string => `/fotos/deputados/${sq}.webp`
 
 /** Baixa o zip de fotos da UF para um arquivo temporário e devolve o caminho do zip e do seu dir. */
 export async function baixarZipFotosUf(ano: number, uf: string): Promise<{ zip: string; dir: string }> {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { normTse, parseCandidatosCsv, matchCandidato, nomeArquivoFoto, nomesArquivoFoto, fotoUrlLocal } from './tseEleicoes'
+import { normTse, parseCandidatosCsv, matchCandidato, nomeArquivoFoto, nomesArquivoFoto, fotoUrlLocal, parseEleitosCsv } from './tseEleicoes'
 
 // Fixture mínima no formato do TSE (latin1 no arquivo real; aqui já em utf-8): cabeçalho com as
 // colunas usadas + linhas de VEREADOR (eleitos e suplentes) e uma de PREFEITO (deve ser ignorada).
@@ -60,5 +60,41 @@ describe('tseEleicoes', () => {
       'FPB150001989731_div.jpg', 'FPB150001989731_div.jpeg',
     ])
     expect(fotoUrlLocal('150001989731')).toBe('/fotos/vereadores/150001989731.webp')
+  })
+})
+
+// CSV do TSE: toda célula entre aspas, separador ';'. Cabeçalho com as colunas usadas.
+const ELEITOS_HEAD = '"DS_CARGO";"SQ_CANDIDATO";"NM_CANDIDATO";"NM_URNA_CANDIDATO";"SG_PARTIDO";"DS_SIT_TOT_TURNO"'
+const linhaEleito = (cargo: string, sq: string, nome: string, urna: string, part: string, sit: string) =>
+  `"${cargo}";"${sq}";"${nome}";"${urna}";"${part}";"${sit}"`
+
+describe('parseEleitosCsv', () => {
+  it('lista só os eleitos do cargo pedido', () => {
+    const csv = [
+      ELEITOS_HEAD,
+      linhaEleito('DEPUTADO ESTADUAL', '111', 'MARIA DA SILVA', 'MARIA SILVA', 'PT', 'ELEITO POR QP'),
+      linhaEleito('DEPUTADO ESTADUAL', '222', 'JOAO SOUZA', 'JOAO SOUZA', 'PL', 'ELEITO POR MEDIA'),
+      linhaEleito('DEPUTADO ESTADUAL', '333', 'ANA LIMA', 'ANINHA', 'MDB', 'SUPLENTE'),
+      linhaEleito('DEPUTADO ESTADUAL', '444', 'PEDRO REIS', 'PEDRO REIS', 'PP', 'NAO ELEITO'),
+      linhaEleito('DEPUTADO FEDERAL', '555', 'CARLOS DIAS', 'CARLOS DIAS', 'PSB', 'ELEITO'),
+    ].join('\n')
+    const eleitos = parseEleitosCsv(csv, 'DEPUTADO ESTADUAL')
+    expect(eleitos.map((e) => e.sq)).toEqual(['111', '222'])
+    expect(eleitos[0]).toEqual({ sq: '111', nome: 'MARIA DA SILVA', nomeUrna: 'MARIA SILVA', partido: 'PT' })
+  })
+
+  it('aceita o cargo distrital (DF)', () => {
+    const csv = [
+      ELEITOS_HEAD,
+      linhaEleito('DEPUTADO DISTRITAL', '777', 'LUCIA ALVES', 'LUCIA ALVES', 'PSD', 'ELEITO'),
+      linhaEleito('DEPUTADO ESTADUAL', '888', 'NAO ENTRA', 'NAO ENTRA', 'PT', 'ELEITO'),
+    ].join('\n')
+    const eleitos = parseEleitosCsv(csv, 'DEPUTADO DISTRITAL')
+    expect(eleitos.map((e) => e.sq)).toEqual(['777'])
+  })
+
+  it('não confunde ELEITO com NAO ELEITO (prefixo exato de palavra)', () => {
+    const csv = [ELEITOS_HEAD, linhaEleito('DEPUTADO ESTADUAL', '999', 'X', 'X', 'PT', 'NAO ELEITO')].join('\n')
+    expect(parseEleitosCsv(csv, 'DEPUTADO ESTADUAL')).toEqual([])
   })
 })
