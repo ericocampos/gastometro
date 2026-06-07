@@ -245,13 +245,15 @@ describe('PerfilView · vereador municipal', () => {
 
   it('o link de voltar aponta para o ranking de vereadores da cidade', () => {
     renderMunicipal()
-    const link = screen.getByRole('link', { name: /vereadores/i })
-    expect(link.getAttribute('href')).toMatch(/^\/municipios\/joao-pessoa\/?$/)
+    // o card de Custo também cita "vereadores" no texto; pega o link de voltar pelo href
+    const link = screen.getAllByRole('link', { name: /vereadores/i }).find((l) => l.getAttribute('href')?.startsWith('/municipios/'))
+    expect(link?.getAttribute('href')).toMatch(/^\/municipios\/joao-pessoa\/?$/)
   })
 
   it('compara com os pares (vereadores), não com todas as casas', () => {
     renderMunicipal()
-    expect(screen.getByText(/vs\. média dos vereadores/i)).toBeInTheDocument()
+    // o card de Custo mostra "× a média dos vereadores" (comparação com os pares, não com todas as casas)
+    expect(screen.getByText(/média dos vereadores/i)).toBeInTheDocument()
   })
 
   // Campina Grande: municipal COM detalhamento por fornecedor + número da NF (sem documento)
