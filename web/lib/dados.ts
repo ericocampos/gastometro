@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -78,6 +78,10 @@ export function getDespesasParlamentar(id: string): Despesa[] {
 
 export function getFornecedores(): ItemFornecedor[] {
   return agregados().fornecedores
+}
+
+export function getFornecedoresTotais(): FornecedoresTotais | null {
+  return agregados().fornecedoresTotais ?? null
 }
 
 export function getAlertas(): Alerta[] {

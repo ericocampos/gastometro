@@ -56,10 +56,13 @@ export interface ResumoPolitico {
   conferidoTce?: ConferenciaTce
 }
 
+// total REAL do universo de fornecedores (a lista guarda só os maiores)
+export interface FornecedoresTotais { nFornecedores: number; total: number }
 export interface Agregados {
   ranking: ItemRanking[]
   porPolitico: Record<string, ResumoPolitico>
   fornecedores: ItemFornecedor[]
+  fornecedoresTotais?: FornecedoresTotais
 }
 
 export interface Despesa {
