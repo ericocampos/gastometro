@@ -30,7 +30,7 @@ const beaconCloudflare = (token: string) =>
   `(function(){try{var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon',${JSON.stringify(JSON.stringify({ token }))});document.head.appendChild(s)}catch(_){}})()`
 
 export function generateMetadata() {
-  return { title: getBranding().titulo, description: 'Quanto custa um parlamentar: salário, cota e gabinete' }
+  return { title: getBranding().titulo, description: 'O que cada parlamentar gasta, destina e vota' }
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

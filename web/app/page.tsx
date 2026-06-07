@@ -1,13 +1,14 @@
-import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getVotacoes } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
 import { calcularPanorama } from '@/lib/panorama'
 import Link from 'next/link'
 import { brlCompacto, brl } from '@/lib/formato'
-import { RankingView } from '@/components/RankingView'
+import { RankingPreview } from '@/components/RankingPreview'
 import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { CustoMandato } from '@/components/CustoMandato'
 import { CoberturaMunicipal } from '@/components/CoberturaMunicipal'
+import { CardEixo } from '@/components/CardEixo'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
 export default function Home() {
@@ -32,6 +33,13 @@ export default function Home() {
     return { min, max, media, ufMin, ufMax }
   })()
 
+  // números-síntese dos outros eixos do portal, para os cards de índice da home
+  const emendas = getEmendas()
+  const emendasTotal = emendas ? Object.values(emendas.totais).reduce((s, t) => s + t.empenhado, 0) : null
+  const votacoes = getVotacoes()
+  const nVotacoes = votacoes ? Object.keys(votacoes.votacoes).length : null
+  const nCidades = municipios.cidades.length
+
   const pop = getPopulacaoBrasil()
   const cadeiras = getCadeirasCamaraUf()
   const panorama = calcularPanorama(series, custos, getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null)
@@ -41,15 +49,16 @@ export default function Home() {
     <div>
       <section className="mb-10 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">
-          Quanto custa um parlamentar · Brasil
+          Transparência parlamentar · Brasil
         </p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl lg:text-5xl">
-          Quanto custa
-          <br className="hidden sm:block" /> um parlamentar
+          O que cada parlamentar
+          <br className="hidden sm:block" /> gasta, destina e vota
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-suave">
-          Salário, cota e gabinete, com dados públicos da Câmara e do Senado de todo o Brasil, reunidos
-          para você acompanhar de perto. Escolha um estado no topo para ver os parlamentares da sua UF.
+          Custo (salário, cota e gabinete), emendas ao orçamento e como cada um votou, com dados públicos
+          da Câmara, do Senado e das assembleias, reunidos para você acompanhar de perto. Escolha um estado
+          no topo para ver os da sua UF.
         </p>
         <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
           <div>
@@ -76,6 +85,20 @@ export default function Home() {
             <span className="text-sm font-medium text-marca transition-colors group-hover:text-tinta">Ver o panorama nacional →</span>
           </div>
         </Link>
+      </section>
+
+      <section className="mb-12">
+        <div className="grid gap-4 sm:grid-cols-3">
+          {emendasTotal != null && (
+            <CardEixo href="/emendas" rotulo="Emendas" valor={brlCompacto(emendasTotal)} sub="Para onde os parlamentares destinam recursos do Orçamento." />
+          )}
+          {nVotacoes != null && (
+            <CardEixo href="/votacoes" rotulo="Votações" valor={`${nVotacoes} votações`} sub="Como cada um votou nas proposições de mérito, com a fonte oficial." />
+          )}
+          {nCidades > 0 && (
+            <CardEixo href="/municipios" rotulo="Municípios" valor={`${nCidades} cidades`} sub="Orçamento e gasto por vereador, cidade a cidade." />
+          )}
+        </div>
       </section>
 
       <section className="mb-12">
@@ -111,8 +134,10 @@ export default function Home() {
       )}
 
       <section>
-        <SecaoTitulo>Ranking de gastos</SecaoTitulo>
-        <RankingView series={series} />
+        <SecaoTitulo acao={<Link href="/ranking" className="shrink-0 text-xs font-medium text-marca transition-colors hover:text-tinta">Ver ranking completo →</Link>}>
+          Quem mais gastou
+        </SecaoTitulo>
+        <RankingPreview series={series} />
       </section>
     </div>
   )
