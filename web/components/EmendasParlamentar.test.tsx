@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { EmendasParlamentar } from './EmendasParlamentar'
 import type { EmendasPolitico } from '@/lib/tipos'
 
@@ -29,6 +29,14 @@ describe('EmendasParlamentar', () => {
     expect(screen.getByText('Transporte')).toBeInTheDocument() // área da emenda itemizada
     const link = screen.getByText('ver ↗').closest('a')
     expect(link).toHaveAttribute('href', 'https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=202412340001')
+  })
+
+  it('o detalhe por emenda é um expand (fechado por padrão, abre ao clicar)', () => {
+    render(<EmendasParlamentar dados={dados} />)
+    const botao = screen.getByRole('button', { name: /Cada emenda/i })
+    expect(botao).toHaveAttribute('aria-expanded', 'false')
+    fireEvent.click(botao)
+    expect(botao).toHaveAttribute('aria-expanded', 'true')
   })
 
   it('estado vazio quando não há emendas', () => {

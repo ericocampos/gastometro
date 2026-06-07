@@ -1,9 +1,12 @@
+'use client'
+import { useState } from 'react'
 import type { EmendasPolitico } from '@/lib/tipos'
 import { brlInteiro } from '@/lib/formato'
 
 const detalheUrl = (codigo: string) => `https://portaldatransparencia.gov.br/emendas/detalhe?codigoEmenda=${codigo}`
 
 export function EmendasParlamentar({ dados }: { dados: EmendasPolitico | null }) {
+  const [aberto, setAberto] = useState(false)
   if (!dados || dados.empenhado === 0) {
     return <p className="text-sm text-tinta-suave">Sem emendas individuais atribuídas no período.</p>
   }
@@ -56,9 +59,30 @@ export function EmendasParlamentar({ dados }: { dados: EmendasPolitico | null })
 
       {dados.emendas.length > 0 && (
         <div className="mt-5">
-          <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Cada emenda</p>
-          <div className="overflow-hidden rounded-lg border border-borda">
-            <table className="w-full text-sm">
+          <button
+            type="button"
+            onClick={() => setAberto((v) => !v)}
+            aria-expanded={aberto}
+            className="group flex w-full items-center justify-between rounded-lg border border-borda bg-superficie px-4 py-2.5 text-left transition-colors hover:border-marca"
+          >
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-tinta-suave">
+              Cada emenda <span className="text-tinta-tenue">· {dados.emendas.length}</span>
+            </span>
+            <span className="flex items-center gap-2 text-xs text-tinta-tenue transition-colors group-hover:text-marca">
+              <span className="hidden sm:inline">{aberto ? 'ocultar' : 'ver detalhe'}</span>
+              <svg
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                className={`h-4 w-4 transition-transform duration-300 ${aberto ? 'rotate-180' : ''}`}
+                aria-hidden
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </span>
+          </button>
+          <div className={`grid transition-all duration-300 ease-out ${aberto ? 'mt-2 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <div className="overflow-hidden rounded-lg border border-borda">
+                <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-borda text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">
                   <th className="px-3 py-2 text-left font-semibold" aria-label="Emenda" />
@@ -84,7 +108,9 @@ export function EmendasParlamentar({ dados }: { dados: EmendasPolitico | null })
                   </tr>
                 ))}
               </tbody>
-            </table>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       )}
