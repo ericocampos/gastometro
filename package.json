@@ -15,6 +15,7 @@
     "regenerar:fornecedores": "tsx collector/regenerarFornecedores.ts",
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
+    "coletar:assembleias": "tsx collector/coletarAssembleias.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
     "analisar": "tsx collector/analisar.ts"
   },
