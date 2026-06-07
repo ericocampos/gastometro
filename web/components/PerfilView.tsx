@@ -25,10 +25,10 @@ import { ProposicoesView } from './ProposicoesView'
 import { EmendasParlamentar } from './EmendasParlamentar'
 import { ComoVotou } from './ComoVotou'
 
-const casaLonga = (c: Casa) =>
+const casaLonga = (c: Casa, uf?: string) =>
   c === 'camara' ? 'Câmara dos Deputados'
   : c === 'senado' ? 'Senado Federal'
-  : c === 'assembleia' ? 'Assembleia Legislativa da Paraíba'
+  : c === 'assembleia' ? (uf === 'PB' ? 'Assembleia Legislativa da Paraíba' : uf === 'DF' ? 'Câmara Legislativa do DF' : `Assembleia Legislativa · ${uf ?? ''}`.trim())
   : 'Câmara Municipal'
 
 // "22/06/2023–16/12/2024 e desde 18/07/2025"
@@ -269,7 +269,7 @@ export function PerfilView({
           </h1>
           <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-tinta-suave">
             <span className="rounded-sm bg-superficie-2 px-1.5 py-0.5 font-medium text-tinta">{politico.partido}</span>
-            <span>{casaLonga(politico.casa)}</span>
+            <span>{casaLonga(politico.casa, politico.uf)}</span>
             {(politico.mandato?.tipo === 'suplente' || politico.mandato?.afastado) && (
               <span
                 className="rounded-sm border px-1.5 py-0.5 text-xs font-medium"
@@ -315,9 +315,18 @@ export function PerfilView({
       </div>
 
       {semNada ? (
-        <p className="rounded-lg border border-borda bg-superficie p-4 text-sm text-tinta-suave">
-          Sem despesas de cota registradas na base pública para este parlamentar.
-        </p>
+        politico.casa === 'assembleia' ? (
+          <section className="rounded-lg border border-borda bg-superficie p-6">
+            <p className="text-sm leading-relaxed text-tinta-suave">
+              Modelo leve: por enquanto temos o cadastro e o subsídio desta casa. As despesas itemizadas
+              (verba indenizatória, diárias, gabinete) entram quando a fonte oficial do estado for integrada.
+            </p>
+          </section>
+        ) : (
+          <p className="rounded-lg border border-borda bg-superficie p-4 text-sm text-tinta-suave">
+            Sem despesas de cota registradas na base pública para este parlamentar.
+          </p>
+        )
       ) : (
         <>
           {/* cards-resumo por eixo: visão em 5 segundos, cada um leva (âncora) à seção detalhada */}
