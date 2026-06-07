@@ -131,10 +131,14 @@ export function getEmendas(): Emendas | null {
   return lerJson<Emendas>(caminho)
 }
 
+// votacoes.json é grande (lido por perfil no build): em produção cacheia uma vez (como agregados).
+let cacheVotacoes: Votacoes | null | undefined
 export function getVotacoes(): Votacoes | null {
+  if (process.env.NODE_ENV === 'production' && cacheVotacoes !== undefined) return cacheVotacoes
   const caminho = resolve(dataDir(), 'votacoes.json')
-  if (!existsSync(caminho)) return null
-  return lerJson<Votacoes>(caminho)
+  const lido = existsSync(caminho) ? lerJson<Votacoes>(caminho) : null
+  if (process.env.NODE_ENV === 'production') cacheVotacoes = lido
+  return lido
 }
 
 export function getMunicipios(): MunicipiosIndice {
