@@ -269,3 +269,31 @@ export interface Emendas {
   coletivas: { comissao: { empenhado: number; pago: number }; relator: { empenhado: number; pago: number } }
   totais: { individual: { empenhado: number; pago: number }; bancada: { empenhado: number; pago: number }; comissao: { empenhado: number; pago: number }; relator: { empenhado: number; pago: number } }
 }
+
+export type VotoSigla = 'S' | 'N' | 'O' | 'A' | '-'
+export type OrientacaoVoto = 'Sim' | 'Não' | 'Liberado'
+export interface ProposicaoVotada { tipo: string; numero: string; ano: number; ementa: string }
+export interface PlacarVotacao { sim: number; nao: number; outros: number }
+export interface VotacaoMerito {
+  casa: 'camara' | 'senado'
+  data: string
+  proposicao: ProposicaoVotada
+  descricao: string
+  aprovada: boolean | null
+  placar: PlacarVotacao
+  orientacaoGoverno: OrientacaoVoto | null
+  urlOficial: string
+}
+export interface VotoPolitico { v: VotoSigla; gov: 'com' | 'contra' | 'lib' | null; part: 'fiel' | 'infiel' | 'lib' | null }
+export interface ResumoVotacoesPolitico {
+  total: number; comGoverno: number; contraGoverno: number; fielPartido: number; infielPartido: number
+}
+export interface VotacoesPolitico { resumo: ResumoVotacoesPolitico; votos: Record<string, VotoPolitico> }
+export interface Votacoes {
+  fonte: string; atualizadoEm: string; anoInicial: number
+  votacoes: Record<string, VotacaoMerito>
+  porPolitico: Record<string, VotacoesPolitico>
+}
+// montado na página do perfil: a votação + como a pessoa votou (para a seção ComoVotou)
+export interface ItemComoVotou { id: string; votacao: VotacaoMerito; voto: VotoPolitico }
+export interface ComoVotouDados { resumo: ResumoVotacoesPolitico; itens: ItemComoVotou[] }
