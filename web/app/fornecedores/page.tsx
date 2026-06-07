@@ -34,6 +34,7 @@ export default function FornecedoresPage() {
           <p className="mb-3 text-sm text-tinta-suave">
             O mesmo dinheiro da cota, somado por tipo de despesa. Um fornecedor grande (uma companhia aérea, por
             exemplo) entra na categoria dele, então aqui dá para ver onde o gasto se concentra.
+            {categorias.length > 15 && ` Mostrando as 15 categorias de maior valor, de ${categorias.length} no total.`}
           </p>
           <div className="overflow-x-auto rounded-xl border border-borda bg-superficie p-4">
             <TabelaCategorias categorias={categorias.slice(0, 15)} total={totalCategorias} />

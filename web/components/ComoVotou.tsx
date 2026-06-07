@@ -35,7 +35,7 @@ export function ComoVotou({ dados }: { dados: ComoVotouDados | null }) {
         </div>
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Votações de mérito</p>
-          <p className="font-display text-2xl font-semibold tabular-nums text-tinta-suave">{resumo.total}</p>
+          <p className="font-display text-2xl font-semibold tabular-nums text-tinta-suave">{itens.length}</p>
         </div>
       </div>
       <p className="mt-2 text-[11px] text-tinta-tenue">

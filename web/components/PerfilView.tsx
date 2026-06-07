@@ -341,8 +341,8 @@ export function PerfilView({
               <CardEixoPerfil
                 href="#votacoes"
                 rotulo="Como votou"
-                valor={temVotacoes ? `${comoVotou!.resumo.total} votações` : 'Sem votações'}
-                sub={temVotacoes ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel` : 'de mérito no período'}
+                valor={temVotacoes ? `${comoVotou!.itens.length} votações` : 'Sem votações'}
+                sub={temVotacoes ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel ao partido` : 'de mérito no período'}
               />
             )}
             {temGabinete && (
@@ -420,14 +420,19 @@ export function PerfilView({
             />
           </section>
 
-          <section id="emendas" className="mb-10 scroll-mt-[var(--header-h)]">
-            <SecaoTitulo>Emendas</SecaoTitulo>
-            <EmendasParlamentar dados={emendas ?? null} />
-          </section>
-          <section id="votacoes" className="mb-10 scroll-mt-[var(--header-h)]">
-            <SecaoTitulo>Como votou</SecaoTitulo>
-            <ComoVotou dados={comoVotou ?? null} />
-          </section>
+          {/* Emendas e votações são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}
+          {federal && (
+            <>
+              <section id="emendas" className="mb-10 scroll-mt-[var(--header-h)]">
+                <SecaoTitulo>Emendas</SecaoTitulo>
+                <EmendasParlamentar dados={emendas ?? null} />
+              </section>
+              <section id="votacoes" className="mb-10 scroll-mt-[var(--header-h)]">
+                <SecaoTitulo>Como votou</SecaoTitulo>
+                <ComoVotou dados={comoVotou ?? null} />
+              </section>
+            </>
+          )}
 
           {/* Gráficos no topo, lado a lado — visão de tendência sem ocupar tanta vertical */}
           <div className="mb-10 grid gap-6 lg:grid-cols-2">

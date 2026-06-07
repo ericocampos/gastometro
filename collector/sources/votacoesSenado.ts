@@ -36,7 +36,7 @@ function orientacaoDeVoto(voto: string): Orientacao {
 
 interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string; siglaPartidoParlamentar?: string }
 interface VotacaoSenado {
-  codigoVotacaoSve?: number; codigoMateria?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
+  codigoVotacaoSve?: number; codigoSessaoVotacao?: number; codigoMateria?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
   ano?: number; sigla?: string; numero?: string | number; identificacao?: string
   descricaoVotacao?: string; ementa?: string; votos?: VotoSenadoItem[]
 }
@@ -55,7 +55,10 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
   const maioria = orientacaoPorMaioria(comPartido)
   const votos = comPartido.map((x) => ({ politicoId: x.politicoId, v: x.v, orientacaoPartido: maioria[x.partido] ?? null }))
 
-  const cod = v.codigoVotacaoSve
+  // alguns registros vêm com codigoVotacaoSve null; usa o código da sessão de votação como id estável
+  // (senão todos os null colidiriam em "senado-null" e se sobrescreveriam)
+  const cod = v.codigoVotacaoSve ?? (v.codigoSessaoVotacao != null ? `s${v.codigoSessaoVotacao}` : null)
+  if (cod == null) return null
   return {
     id: `senado-${cod}`, casa: 'senado', data: (v.dataSessao ?? '').slice(0, 10),
     proposicao: {

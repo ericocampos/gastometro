@@ -66,17 +66,17 @@ export function VotacoesHub({ votacoes }: { votacoes: Record<string, VotacaoMeri
       </div>
 
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-        <div className="flex items-center gap-1.5">
+        <div role="group" aria-label="Filtrar por casa" className="flex items-center gap-1.5">
           {(['todas', 'camara', 'senado'] as FiltroCasa[]).map((c) => (
-            <button key={c} type="button" onClick={() => setCasa(c)} className={botaoFiltro(casa === c)}>
+            <button key={c} type="button" onClick={() => setCasa(c)} aria-pressed={casa === c} className={botaoFiltro(casa === c)}>
               {c === 'todas' ? 'Todas' : CASA_ROTULO[c]}
             </button>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
-          <button type="button" onClick={() => setTipo('todos')} className={botaoFiltro(tipo === 'todos')}>Todos</button>
+        <div role="group" aria-label="Filtrar por tipo de proposição" className="flex flex-wrap items-center gap-1.5">
+          <button type="button" onClick={() => setTipo('todos')} aria-pressed={tipo === 'todos'} className={botaoFiltro(tipo === 'todos')}>Todos</button>
           {TIPOS.map((t) => (
-            <button key={t} type="button" onClick={() => setTipo(t)} className={botaoFiltro(tipo === t)}>{t}</button>
+            <button key={t} type="button" onClick={() => setTipo(t)} aria-pressed={tipo === t} className={botaoFiltro(tipo === t)}>{t}</button>
           ))}
         </div>
         <input
@@ -96,7 +96,7 @@ export function VotacoesHub({ votacoes }: { votacoes: Record<string, VotacaoMeri
       </p>
 
       {filtradas.length > 0 && (
-        <div className="overflow-hidden rounded-xl border border-borda bg-superficie">
+        <div className="overflow-x-auto rounded-xl border border-borda bg-superficie">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-borda text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">
