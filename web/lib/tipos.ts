@@ -301,3 +301,18 @@ export interface Votacoes {
 // montado na página do perfil: a votação + como a pessoa votou (para a seção ComoVotou)
 export interface ItemComoVotou { id: string; votacao: VotacaoMerito; voto: VotoPolitico }
 export interface ComoVotouDados { resumo: ResumoVotacoesPolitico; itens: ItemComoVotou[] }
+
+export interface DeputadoLeve { id: string; nome: string; partido: string; fotoUrl?: string }
+export interface ResumoAssembleia {
+  uf: string
+  sigla: string
+  nome: string
+  slug: string
+  modelo: 'leve' | 'completo'
+  subsidio: number | null
+  assentos: number
+  nDeputados: number
+  pisoCusto: number | null
+  deputados: DeputadoLeve[]
+}
+export interface AssembleiasIndice { atualizadoEm: string; casas: ResumoAssembleia[] }
