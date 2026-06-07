@@ -25,11 +25,12 @@ describe('VotacaoDetalhe', () => {
     expect(screen.getByText('Aprovada')).toBeInTheDocument()
   })
 
-  it('agrupa os votantes por voto com a contagem', () => {
+  it('agrupa os votantes em painéis expansíveis com a contagem', () => {
     render(<VotacaoDetalhe votacao={votacao} votantes={votantes} />)
-    expect(screen.getByRole('heading', { name: /Sim · 2/ })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Não · 1/ })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Abstenção · 1/ })).toBeInTheDocument()
+    const sim = screen.getByRole('button', { name: /Sim · 2/ })
+    expect(sim).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('button', { name: /Não · 1/ })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Abstenção · 1/ })).toBeInTheDocument()
   })
 
   it('linka cada votante para o perfil', () => {

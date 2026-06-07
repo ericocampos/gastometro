@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import type { VotacaoMerito, VotoSigla } from '@/lib/tipos'
 import { dataBR } from '@/lib/formato'
+import { PainelVotantes } from './PainelVotantes'
 
 export interface Votante { id: string; nome: string; partido: string; uf: string; voto: VotoSigla }
 
@@ -40,32 +40,13 @@ export function VotacaoDetalhe({ votacao, votantes }: { votacao: VotacaoMerito; 
         </div>
       </section>
 
-      {GRUPOS.map((g) => {
-        const lista = votantes.filter((v) => v.voto === g.sigla).sort(ordenar)
-        if (lista.length === 0) return null
-        return (
-          <section key={g.sigla} className="mb-8">
-            <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold text-tinta">
-              <span className="inline-block h-3 w-3 rounded-full" style={{ background: g.cor }} aria-hidden />
-              {g.rotulo}
-              <span className="text-tinta-tenue">· {lista.length}</span>
-            </h2>
-            <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-              {lista.map((v) => (
-                <li key={v.id}>
-                  <Link
-                    href={`/parlamentar/${v.id}`}
-                    className="block rounded-lg border border-borda bg-superficie px-3 py-2 transition-colors hover:border-marca"
-                  >
-                    <span className="block truncate text-sm font-medium text-tinta" title={v.nome}>{v.nome}</span>
-                    <span className="block text-xs text-tinta-tenue">{v.partido} · {v.uf}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      })}
+      <div className="space-y-2">
+        {GRUPOS.map((g) => {
+          const lista = votantes.filter((v) => v.voto === g.sigla).sort(ordenar)
+          if (lista.length === 0) return null
+          return <PainelVotantes key={g.sigla} rotulo={g.rotulo} cor={g.cor} votantes={lista} />
+        })}
+      </div>
 
       <p className="mt-2 text-[11px] leading-relaxed text-tinta-tenue">
         Lista dos parlamentares no cadastro do portal; o placar oficial pode incluir suplentes ou substituições
