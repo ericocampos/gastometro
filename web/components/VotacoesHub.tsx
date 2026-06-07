@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import type { VotacaoMerito } from '@/lib/tipos'
 import { dataBR } from '@/lib/formato'
+import { CardResumo } from './CardResumo'
 
 const CASA_ROTULO: Record<'camara' | 'senado', string> = { camara: 'Câmara', senado: 'Senado' }
 const TIPOS = ['PEC', 'PL', 'PLP', 'MPV', 'PLV']
@@ -42,8 +43,28 @@ export function VotacoesHub({ votacoes }: { votacoes: Record<string, VotacaoMeri
 
   const visiveis = mostrarTodas ? filtradas : filtradas.slice(0, LIMITE_INICIAL)
 
+  // números-síntese do conjunto inteiro (escala, antes dos filtros)
+  const resumo = useMemo(() => {
+    const datas = ordenadas.map(([, v]) => v.data).filter(Boolean).sort()
+    const anoDe = datas[0]?.slice(0, 4)
+    const anoAte = datas[datas.length - 1]?.slice(0, 4)
+    const casas = new Set(ordenadas.map(([, v]) => v.casa))
+    const nomesCasa = [casas.has('camara') ? 'Câmara' : null, casas.has('senado') ? 'Senado' : null].filter(Boolean)
+    return {
+      total: ordenadas.length,
+      periodo: anoDe && anoAte ? (anoDe === anoAte ? anoDe : `${anoDe} a ${anoAte}`) : '—',
+      casas: nomesCasa.join(' e ') || '—',
+    }
+  }, [ordenadas])
+
   return (
     <div>
+      <div className="mb-6 grid grid-cols-3 gap-3">
+        <CardResumo rotulo="Votações" valor={`${resumo.total}`} legenda="nominais de mérito" />
+        <CardResumo rotulo="Período" valor={resumo.periodo} legenda="legislatura atual" />
+        <CardResumo rotulo="Casas" valor={resumo.casas} legenda="origem das votações" />
+      </div>
+
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <div className="flex items-center gap-1.5">
           {(['todas', 'camara', 'senado'] as FiltroCasa[]).map((c) => (
