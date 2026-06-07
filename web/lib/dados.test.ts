@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
-import { getPopulacaoBrasil, getCadeirasCamaraUf } from './dados'
+import { getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas } from './dados'
 import { resolve } from 'node:path'
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -112,5 +112,14 @@ describe('configs do panorama', () => {
     const soma = Object.values(c!.cadeiras).reduce((a, b) => a + b, 0)
     expect(soma).toBe(513)
     expect(Object.keys(c!.cadeiras).length).toBe(27)
+  })
+})
+
+describe('emendas', () => {
+  it('lê emendas.json (ou null se ausente)', () => {
+    const e = getEmendas()
+    if (e === null) return
+    expect(e.anoInicial).toBeGreaterThanOrEqual(2023)
+    expect(typeof e.totais.individual.empenhado).toBe('number')
   })
 })

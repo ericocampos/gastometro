@@ -256,3 +256,16 @@ export interface CeapPorUf { fonte: string; atualizadoEm: string; valores: Recor
 
 export interface PopulacaoBrasil { fonte: string; url: string; atualizadoEm: string; populacao: number }
 export interface CadeirasCamaraUf { fonte: string; atualizadoEm: string; cadeiras: Record<string, number> }
+
+export interface EmendaDestino { municipio: string; uf: string; empenhado: number; pago: number }
+export interface EmendaArea { funcao: string; empenhado: number; pago: number }
+export interface EmendaItem { codigo: string; ano: number; municipio: string; uf: string; funcao: string; empenhado: number; pago: number }
+export interface EmendasUf { empenhado: number; pago: number; nEmendas: number; topMunicipios: EmendaDestino[]; topFuncoes: EmendaArea[] }
+export interface EmendasPolitico extends EmendasUf { emendas: EmendaItem[] }
+export interface Emendas {
+  fonte: string; url: string; atualizadoEm: string; anoInicial: number
+  porPolitico: Record<string, EmendasPolitico>
+  porUf: Record<string, EmendasUf>
+  coletivas: { comissao: { empenhado: number; pago: number }; relator: { empenhado: number; pago: number } }
+  totais: { individual: { empenhado: number; pago: number }; bancada: { empenhado: number; pago: number }; comissao: { empenhado: number; pago: number }; relator: { empenhado: number; pago: number } }
+}
