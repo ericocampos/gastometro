@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import type { ComoVotouDados, VotoSigla } from '@/lib/tipos'
 
 const pct = (a: number, b: number): string | null => (a + b === 0 ? null : `${Math.round((a / (a + b)) * 100)}%`)
@@ -65,7 +66,7 @@ export function ComoVotou({ dados }: { dados: ComoVotouDados | null }) {
                 <li key={it.id} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-3 py-2.5">
                   <div className="min-w-0 flex-1">
                     <p className="text-sm text-tinta">
-                      <span className="font-semibold">{it.votacao.proposicao.tipo} {it.votacao.proposicao.numero}/{it.votacao.proposicao.ano}</span>
+                      <Link href={`/votacoes/${it.id}`} className="font-semibold underline-offset-2 hover:text-marca hover:underline">{it.votacao.proposicao.tipo} {it.votacao.proposicao.numero}/{it.votacao.proposicao.ano}</Link>
                       {it.votacao.proposicao.ementa && <span className="text-tinta-suave"> · {it.votacao.proposicao.ementa}</span>}
                     </p>
                     <p className="mt-1 flex flex-wrap items-center gap-1.5">

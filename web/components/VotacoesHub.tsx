@@ -1,5 +1,6 @@
 'use client'
 import { useMemo, useState } from 'react'
+import Link from 'next/link'
 import type { VotacaoMerito } from '@/lib/tipos'
 import { dataBR } from '@/lib/formato'
 
@@ -89,7 +90,7 @@ export function VotacoesHub({ votacoes }: { votacoes: Record<string, VotacaoMeri
               {visiveis.map(([id, v]) => (
                 <tr key={id} className="border-b border-borda/60 last:border-b-0 align-top">
                   <td className="px-4 py-2.5">
-                    <span data-testid="votacao-rotulo" className="font-semibold text-tinta">{v.proposicao.tipo} {v.proposicao.numero}/{v.proposicao.ano}</span>
+                    <Link href={`/votacoes/${id}`} data-testid="votacao-rotulo" className="font-semibold text-tinta underline-offset-2 hover:text-marca hover:underline">{v.proposicao.tipo} {v.proposicao.numero}/{v.proposicao.ano}</Link>
                     {v.proposicao.ementa && <span className="block max-w-xl text-xs text-tinta-tenue">{v.proposicao.ementa}</span>}
                     <span className="block text-xs text-tinta-tenue">{dataBR(v.data)}{v.orientacaoGoverno && ` · governo orientou ${v.orientacaoGoverno}`}</span>
                   </td>
