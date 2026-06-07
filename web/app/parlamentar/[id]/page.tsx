@@ -12,7 +12,16 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
   const resumo = getParlamentar(params.id)
   if (!resumo) notFound()
   const despesas = getDespesasParlamentar(params.id)
-  const series = getSeriesParlamentares()
+  // Só os PARES (mesma casa; no municipal, mesma cidade) entram na página: o PerfilView usa `series`
+  // apenas para a posição no ranking e a média, e sempre filtra por casa. Passar a lista inteira (todas
+  // as casas) inflava cada página por todos os ~2900 parlamentares e estourou o limite de 1 GB do Pages.
+  // Deputado leve (assembleia sem despesa) mostra só a nota de cobertura: não usa série nenhuma.
+  const ehLeve = resumo.politico.casa === 'assembleia' && despesas.length === 0
+  const series = ehLeve
+    ? []
+    : getSeriesParlamentares().filter((s) =>
+        s.casa === resumo.politico.casa &&
+        (resumo.politico.casa !== 'camara_municipal' || s.municipio === resumo.politico.municipio))
   const perfil = getPerfil(params.id)
   const custos = getCustos()
   const municipios = getMunicipios()
