@@ -2,7 +2,7 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados } from '@/lib/tipos'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
@@ -23,6 +23,7 @@ import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
 import { EmendasParlamentar } from './EmendasParlamentar'
+import { ComoVotou } from './ComoVotou'
 
 const casaLonga = (c: Casa) =>
   c === 'camara' ? 'Câmara dos Deputados'
@@ -99,7 +100,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, tetoCotaUf = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -122,6 +123,7 @@ export function PerfilView({
   alertasPorDespesa: Record<string, MarcaAlerta>
   conferidoTce?: ConferenciaTce
   emendas?: EmendasPolitico | null
+  comoVotou?: ComoVotouDados | null
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
 }) {
   const router = useRouter()
@@ -381,6 +383,10 @@ export function PerfilView({
           <section className="mb-10">
             <SecaoTitulo>Emendas</SecaoTitulo>
             <EmendasParlamentar dados={emendas ?? null} />
+          </section>
+          <section className="mb-10">
+            <SecaoTitulo>Como votou</SecaoTitulo>
+            <ComoVotou dados={comoVotou ?? null} />
           </section>
 
           {/* Gráficos no topo, lado a lado — visão de tendência sem ocupar tanta vertical */}
