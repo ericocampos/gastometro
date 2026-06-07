@@ -1,9 +1,11 @@
 // Parsers do Senado (dados abertos) para votações nominais de mérito.
 // Forma da API confirmada ao vivo: /dadosabertos/votacao?ano= devolve um ARRAY de votações,
 // com a matéria em campos separados (sigla/numero/ementa) e os votos inline.
-// Orientação por partido não é casada na v1 (orientacaoPartido = null); só a do governo,
-// vinda da árvore orientacaoBancada (orientacoesLideranca, partido === 'Governo') por código.
+// Orientação do governo vem da árvore orientacaoBancada (orientacoesLideranca, partido ===
+// 'Governo') por código. A "orientação do partido" é derivada da maioria do próprio partido
+// (campo siglaPartidoParlamentar dos votos), igual à Câmara.
 import type { Orientacao, RegistroVotacao, VotoSigla } from './votacoes.js'
+import { orientacaoPorMaioria } from './votacoes.js'
 
 const TIPOS_MERITO = new Set(['PEC', 'PL', 'PLP', 'MPV', 'PLV'])
 
@@ -32,7 +34,7 @@ function orientacaoDeVoto(voto: string): Orientacao {
   return 'Liberado'   // LIVRE, OBSTRUÇÃO, vazio, etc.
 }
 
-interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string }
+interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string; siglaPartidoParlamentar?: string }
 interface VotacaoSenado {
   codigoVotacaoSve?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
   ano?: number; sigla?: string; numero?: string | number; identificacao?: string
@@ -44,11 +46,14 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
   if (!ehMeritoSenado(v.sigla ?? '')) return null
 
   let sim = 0, nao = 0, outros = 0
-  const votos = (v.votos ?? []).map((it) => {
+  const comPartido = (v.votos ?? []).map((it) => {
     const voto = mapVotoSenado(it.siglaVotoParlamentar ?? '')
     if (voto === 'S') sim++; else if (voto === 'N') nao++; else outros++
-    return { politicoId: `senado-${it.codigoParlamentar}`, v: voto, orientacaoPartido: null }
+    return { politicoId: `senado-${it.codigoParlamentar}`, v: voto, partido: (it.siglaPartidoParlamentar ?? '').trim() }
   })
+  // orientação do partido = como votou a maioria do próprio partido naquela votação
+  const maioria = orientacaoPorMaioria(comPartido)
+  const votos = comPartido.map((x) => ({ politicoId: x.politicoId, v: x.v, orientacaoPartido: maioria[x.partido] ?? null }))
 
   const cod = v.codigoVotacaoSve
   return {

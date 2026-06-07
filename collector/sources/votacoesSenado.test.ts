@@ -28,11 +28,12 @@ describe('montarRegistroSenado', () => {
     ano: 2024, sigla: 'PLP', numero: '42', identificacao: 'PLP 42/2023', descricaoVotacao: 'Aprovação do PLP 42',
     ementa: 'Ementa do PLP',
     votos: [
-      { codigoParlamentar: 7, siglaVotoParlamentar: 'Sim' },
-      { codigoParlamentar: 8, siglaVotoParlamentar: 'Não' },
+      { codigoParlamentar: 7, siglaVotoParlamentar: 'Sim', siglaPartidoParlamentar: 'PT' },
+      { codigoParlamentar: 9, siglaVotoParlamentar: 'Sim', siglaPartidoParlamentar: 'PT' },
+      { codigoParlamentar: 8, siglaVotoParlamentar: 'Não', siglaPartidoParlamentar: 'PL' },
     ],
   }
-  it('monta o registro com governo via orientação injetada', () => {
+  it('monta o registro com governo injetado e partido pela maioria', () => {
     const r = montarRegistroSenado(votacao, 'Sim')!
     expect(r.id).toBe('senado-555')
     expect(r.casa).toBe('senado')
@@ -40,9 +41,11 @@ describe('montarRegistroSenado', () => {
     expect(r.proposicao).toEqual({ tipo: 'PLP', numero: '42', ano: 2023, ementa: 'Ementa do PLP' })  // ano vem de identificacao
     expect(r.aprovada).toBe(true)
     expect(r.orientacaoGoverno).toBe('Sim')
-    expect(r.placar).toEqual({ sim: 1, nao: 1, outros: 0 })
+    expect(r.placar).toEqual({ sim: 2, nao: 1, outros: 0 })
     expect(r.urlOficial).toContain('555')
-    expect(r.votos).toContainEqual({ politicoId: 'senado-7', v: 'S', orientacaoPartido: null })
+    // PT votou Sim (maioria Sim) -> orientacaoPartido Sim; PL votou Não (maioria Não)
+    expect(r.votos).toContainEqual({ politicoId: 'senado-7', v: 'S', orientacaoPartido: 'Sim' })
+    expect(r.votos).toContainEqual({ politicoId: 'senado-8', v: 'N', orientacaoPartido: 'Não' })
   })
   it('cai para o ano da sessão quando identificacao não traz o ano', () => {
     const r = montarRegistroSenado({ ...votacao, identificacao: 'PLP 42' }, null)!

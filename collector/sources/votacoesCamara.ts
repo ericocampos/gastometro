@@ -1,5 +1,6 @@
 // Parsers da Câmara (API de dados abertos v2) para votações nominais de mérito.
 import type { Orientacao, RegistroVotacao, VotoSigla } from './votacoes.js'
+import { orientacaoPorMaioria } from './votacoes.js'
 
 const TIPOS_MERITO = new Set(['PEC', 'PL', 'PLP', 'MPV', 'PLV'])
 
@@ -54,15 +55,17 @@ export function montarRegistroCamara(
   if (!proposicao) return null
   const id = `camara-${detalhe.id}`
   const data = (detalhe.dataHoraRegistro ?? '').slice(0, 10)
-  const { governo, porPartido } = parseOrientacoesCamara(orientacoes)
+  const { governo } = parseOrientacoesCamara(orientacoes)
 
   let sim = 0, nao = 0, outros = 0
-  const vs = (votos ?? []).map((it) => {
+  const comPartido = (votos ?? []).map((it) => {
     const v = mapVotoCamara(it.tipoVoto ?? '')
     if (v === 'S') sim++; else if (v === 'N') nao++; else outros++
-    const partido = (it.deputado_?.siglaPartido ?? '').trim()
-    return { politicoId: `camara-${it.deputado_?.id}`, v, orientacaoPartido: porPartido[partido] ?? null }
+    return { politicoId: `camara-${it.deputado_?.id}`, v, partido: (it.deputado_?.siglaPartido ?? '').trim() }
   })
+  // orientação do partido = como votou a maioria do próprio partido (robusto a rótulos de bloco)
+  const maioria = orientacaoPorMaioria(comPartido)
+  const vs = comPartido.map((x) => ({ politicoId: x.politicoId, v: x.v, orientacaoPartido: maioria[x.partido] ?? null }))
 
   return {
     id, casa: 'camara', data, proposicao,

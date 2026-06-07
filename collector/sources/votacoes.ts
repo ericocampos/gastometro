@@ -46,6 +46,23 @@ export interface Votacoes {
   porPolitico: Record<string, VotacoesPolitico>
 }
 
+// "Orientação do partido" derivada dos próprios votos: como a MAIORIA do partido votou
+// naquela votação. Robusto (usa a sigla limpa do partido, não rótulos de bloco/liderança)
+// e idêntico nas duas casas. Empate ou partido sem Sim/Não => 'Liberado' (não conta).
+export function orientacaoPorMaioria(votos: { partido: string; v: VotoSigla }[]): Record<string, Orientacao> {
+  const contagem = new Map<string, { sim: number; nao: number }>()
+  for (const { partido, v } of votos) {
+    const p = (partido ?? '').trim()
+    if (!p || (v !== 'S' && v !== 'N')) continue
+    const c = contagem.get(p) ?? { sim: 0, nao: 0 }
+    if (v === 'S') c.sim += 1; else c.nao += 1
+    contagem.set(p, c)
+  }
+  const out: Record<string, Orientacao> = {}
+  for (const [p, c] of contagem) out[p] = c.sim > c.nao ? 'Sim' : c.nao > c.sim ? 'Não' : 'Liberado'
+  return out
+}
+
 export function compararVoto(v: VotoSigla, orientacao: Orientacao | null): Comparacao {
   if (orientacao === null || orientacao === 'Liberado') return 'neutro'
   if (v !== 'S' && v !== 'N') return 'neutro'

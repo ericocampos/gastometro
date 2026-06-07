@@ -1,5 +1,21 @@
 import { describe, it, expect } from 'vitest'
-import { compararVoto, agregarVotacoes, type RegistroVotacao } from './votacoes.js'
+import { compararVoto, orientacaoPorMaioria, agregarVotacoes, type RegistroVotacao } from './votacoes.js'
+
+describe('orientacaoPorMaioria', () => {
+  it('a orientação de cada partido é como votou a maioria dele (ignora O/A/ausente)', () => {
+    const m = orientacaoPorMaioria([
+      { partido: 'PT', v: 'S' }, { partido: 'PT', v: 'S' }, { partido: 'PT', v: 'N' },  // PT maioria Sim
+      { partido: 'PL', v: 'N' }, { partido: 'PL', v: 'N' },                              // PL maioria Não
+      { partido: 'PT', v: 'O' }, { partido: 'PT', v: 'A' },                              // não contam
+    ])
+    expect(m['PT']).toBe('Sim')
+    expect(m['PL']).toBe('Não')
+  })
+  it('empate ou partido sem Sim/Não vira Liberado', () => {
+    expect(orientacaoPorMaioria([{ partido: 'X', v: 'S' }, { partido: 'X', v: 'N' }])['X']).toBe('Liberado')
+    expect(orientacaoPorMaioria([{ partido: 'Y', v: 'O' }, { partido: 'Y', v: 'A' }])['Y']).toBeUndefined()
+  })
+})
 
 describe('compararVoto', () => {
   it('igual quando o voto bate com a orientação', () => {
