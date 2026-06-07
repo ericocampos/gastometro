@@ -1,4 +1,4 @@
-import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getVotacoes } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getVotacoes, getFornecedores, getCategoriasGlobais } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
 import { calcularPanorama } from '@/lib/panorama'
@@ -9,6 +9,7 @@ import { GraficoGeralAnual } from '@/components/GraficoGeralAnual'
 import { CustoMandato } from '@/components/CustoMandato'
 import { CoberturaMunicipal } from '@/components/CoberturaMunicipal'
 import { CardEixo } from '@/components/CardEixo'
+import { PodioColuna, type ItemPodio } from '@/components/Podio'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 
 export default function Home() {
@@ -39,6 +40,14 @@ export default function Home() {
   const votacoes = getVotacoes()
   const nVotacoes = votacoes ? Object.keys(votacoes.votacoes).length : null
   const nCidades = municipios.cidades.length
+
+  // pódios da home: maiores fornecedores e maiores tipos de gasto (top 3 cada)
+  const topFornecedores: ItemPodio[] = getFornecedores().slice(0, 3).map((f) => ({
+    chave: f.nome, rotulo: f.nome, valor: brlCompacto(f.total),
+  }))
+  const topCategorias: ItemPodio[] = getCategoriasGlobais().slice(0, 3).map((c) => ({
+    chave: c.categoria, rotulo: c.categoria, valor: brlCompacto(c.total),
+  }))
 
   const pop = getPopulacaoBrasil()
   const cadeiras = getCadeirasCamaraUf()
@@ -133,11 +142,21 @@ export default function Home() {
         </section>
       )}
 
-      <section>
+      <section className="mb-12">
         <SecaoTitulo acao={<Link href="/ranking" className="shrink-0 text-xs font-medium text-marca transition-colors hover:text-tinta">Ver ranking completo →</Link>}>
           Quem mais gastou
         </SecaoTitulo>
         <RankingPreview series={series} />
+      </section>
+
+      <section>
+        <SecaoTitulo acao={<Link href="/fornecedores" className="shrink-0 text-xs font-medium text-marca transition-colors hover:text-tinta">Ver fornecedores →</Link>}>
+          Para onde o dinheiro da cota vai
+        </SecaoTitulo>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <PodioColuna titulo="Maiores fornecedores" itens={topFornecedores} />
+          <PodioColuna titulo="Por tipo de gasto" itens={topCategorias} />
+        </div>
       </section>
     </div>
   )
