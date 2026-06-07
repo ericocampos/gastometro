@@ -1,5 +1,7 @@
 import { getAssessores, getSeriesParlamentares } from '@/lib/dados'
 import { AssessoresView, type ItemAssessor } from '@/components/AssessoresView'
+import { CardResumo } from '@/components/CardResumo'
+import { brlCompacto } from '@/lib/formato'
 
 export default function AssessoresPage() {
   const ass = getAssessores()
@@ -29,6 +31,9 @@ export default function AssessoresPage() {
   }
   itens.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
 
+  const folhaMes = itens.reduce((s, i) => s + (i.remuneracao || 0), 0)
+  const nParlamentares = new Set(itens.map((i) => i.deputyId)).size
+
   return (
     <div>
       <h1 className="mb-2 font-display text-3xl font-semibold tracking-tight text-tinta">Assessores de gabinete</h1>
@@ -42,6 +47,11 @@ export default function AssessoresPage() {
         escritório, cargo e bruto oficial do mês. Assembleia: comissionado de gabinete, cargo/símbolo e bruto oficial do
         mês. Nenhuma fonte traz o CPF nem o que cada pessoa faz.
       </p>
+      <div className="mb-6 grid grid-cols-3 gap-3">
+        <CardResumo rotulo="Pessoas" valor={`${itens.length}`} legenda="nos gabinetes" />
+        <CardResumo rotulo="Folha / mês" valor={brlCompacto(folhaMes)} legenda="soma das remunerações" />
+        <CardResumo rotulo="Parlamentares" valor={`${nParlamentares}`} legenda="com gabinete listado" />
+      </div>
       <AssessoresView itens={itens} />
     </div>
   )

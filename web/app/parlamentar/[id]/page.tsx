@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas, getCeapPorUf } from '@/lib/dados'
-import type { MarcaAlerta } from '@/lib/tipos'
+import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas, getCeapPorUf, getVotacoes } from '@/lib/dados'
+import type { MarcaAlerta, ComoVotouDados, ItemComoVotou } from '@/lib/tipos'
 import { PerfilView } from '@/components/PerfilView'
 
 export function generateStaticParams() {
@@ -33,6 +33,20 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
     consultas: gab?.consultas,
   }
   const emendas = getEmendas()?.porPolitico[params.id] ?? null
+  const votacoesData = getVotacoes()
+  const vp = votacoesData?.porPolitico[params.id]
+  const comoVotou: ComoVotouDados | null = vp
+    ? {
+        resumo: vp.resumo,
+        itens: Object.entries(vp.votos)
+          .map(([id, voto]): ItemComoVotou | null => {
+            const votacao = votacoesData!.votacoes[id]
+            return votacao ? { id, votacao, voto } : null
+          })
+          .filter((x): x is ItemComoVotou => x !== null)
+          .sort((a, b) => b.votacao.data.localeCompare(a.votacao.data)),
+      }
+    : null
   // teto do gráfico para deputado federal: CEAP da UF dele (varia por estado)
   const tetoCotaUf = getCeapPorUf()?.valores[resumo.politico.uf] ?? null
   const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
@@ -59,7 +73,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} tetoCotaUf={tetoCotaUf} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} comoVotou={comoVotou} tetoCotaUf={tetoCotaUf} />
     </Suspense>
   )
 }

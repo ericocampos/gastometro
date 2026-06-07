@@ -123,3 +123,16 @@ describe('emendas', () => {
     expect(typeof e.totais.individual.empenhado).toBe('number')
   })
 })
+
+describe('getVotacoes', () => {
+  it('lê votacoes.json do data dir', async () => {
+    const dir = mkdtempSync(resolve(tmpdir(), 'vot-'))
+    writeFileSync(resolve(dir, 'votacoes.json'), JSON.stringify({
+      fonte: 'x', atualizadoEm: '2026-06-07', anoInicial: 2023, votacoes: {}, porPolitico: {},
+    }))
+    process.env.GASTOMETRO_DATA_DIR = dir
+    const { getVotacoes } = await import('./dados')
+    expect(getVotacoes()?.anoInicial).toBe(2023)
+    delete process.env.GASTOMETRO_DATA_DIR
+  })
+})

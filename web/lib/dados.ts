@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais } from './tipos'
+import type { Agregados, Alerta, Assessores, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -80,6 +80,14 @@ export function getFornecedores(): ItemFornecedor[] {
   return agregados().fornecedores
 }
 
+export function getFornecedoresTotais(): FornecedoresTotais | null {
+  return agregados().fornecedoresTotais ?? null
+}
+
+export function getCategoriasGlobais(): ItemCategoria[] {
+  return agregados().categorias ?? []
+}
+
 export function getAlertas(): Alerta[] {
   const caminho = resolve(dataDir(), 'analysis', 'alerts.json')
   if (!existsSync(caminho)) return []
@@ -129,6 +137,16 @@ export function getEmendas(): Emendas | null {
   const caminho = resolve(dataDir(), 'emendas.json')
   if (!existsSync(caminho)) return null
   return lerJson<Emendas>(caminho)
+}
+
+// votacoes.json é grande (lido por perfil no build): em produção cacheia uma vez (como agregados).
+let cacheVotacoes: Votacoes | null | undefined
+export function getVotacoes(): Votacoes | null {
+  if (process.env.NODE_ENV === 'production' && cacheVotacoes !== undefined) return cacheVotacoes
+  const caminho = resolve(dataDir(), 'votacoes.json')
+  const lido = existsSync(caminho) ? lerJson<Votacoes>(caminho) : null
+  if (process.env.NODE_ENV === 'production') cacheVotacoes = lido
+  return lido
 }
 
 export function getMunicipios(): MunicipiosIndice {

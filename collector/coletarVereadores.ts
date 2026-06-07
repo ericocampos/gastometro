@@ -727,8 +727,8 @@ export function gravarCidade(saida: SaidaCidade, slug: string): void {
   politicos.push(...saida.politicos)
 
   const agregadosArq = resolve(dataDir, 'agregados.json')
-  const agregados = lerJson<{ ranking: ItemRanking[]; porPolitico: Record<string, ResumoPolitico>; fornecedores: ItemFornecedor[] }>(
-    agregadosArq, { ranking: [], porPolitico: {}, fornecedores: [] },
+  const agregados = lerJson<{ ranking: ItemRanking[]; porPolitico: Record<string, ResumoPolitico>; fornecedores: ItemFornecedor[]; fornecedoresTotais?: { nFornecedores: number; total: number }; categorias?: { categoria: string; total: number }[] }>(
+    agregadosArq, { ranking: [], porPolitico: {}, fornecedores: [], fornecedoresTotais: { nFornecedores: 0, total: 0 }, categorias: [] },
   )
   agregados.ranking = agregados.ranking.filter((r) => !r.politicoId.startsWith(prefixo)).concat(saida.ranking)
   for (const k of Object.keys(agregados.porPolitico)) if (k.startsWith(prefixo)) delete agregados.porPolitico[k]

@@ -1,5 +1,6 @@
 import { RankingEmendas, type LinhaEmenda } from './RankingEmendas'
 import { SecaoTitulo } from './SecaoTitulo'
+import { CardResumo } from './CardResumo'
 import type { Emendas } from '@/lib/tipos'
 import { brlCompacto } from '@/lib/formato'
 
@@ -20,11 +21,7 @@ export function EmendasNacional({ emendas, nomes }: { emendas: Emendas; nomes: R
     <div>
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {CATS.map((c) => (
-          <div key={c.chave} className="rounded-xl border border-borda bg-superficie p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-suave">{c.rotulo}</p>
-            <p className="mt-1 font-display text-2xl font-semibold tabular-nums text-tinta">{brlCompacto(emendas.totais[c.chave].empenhado)}</p>
-            <p className="mt-0.5 text-[11px] text-tinta-tenue">empenhado</p>
-          </div>
+          <CardResumo key={c.chave} rotulo={c.rotulo} valor={brlCompacto(emendas.totais[c.chave].empenhado)} legenda="empenhado" />
         ))}
       </div>
 

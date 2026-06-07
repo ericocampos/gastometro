@@ -12,6 +12,8 @@
   --tinta-tenue: #8a847a;
   --borda: #e3ddcd;
   --marca: #0a7d52;
+  /* altura real do cabeçalho sticky (atualizada por AlturaHeader); fallback antes do JS */
+  --header-h: 4.5rem;
 }
 
 .dark {

@@ -2,14 +2,14 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados } from '@/lib/tipos'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
 import { agregarPerfil, totalAnualPorCasaParlamentar } from '@/lib/perfil'
 import { corCasa } from '@/lib/custos'
-import { brl, dataBR, mesAno } from '@/lib/formato'
+import { brl, brlCompacto, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
 import { CotaVsTeto } from './CotaVsTeto'
@@ -23,6 +23,7 @@ import { DetalhamentoGastos } from './DetalhamentoGastos'
 import { PerfilCabecalho } from './PerfilCabecalho'
 import { ProposicoesView } from './ProposicoesView'
 import { EmendasParlamentar } from './EmendasParlamentar'
+import { ComoVotou } from './ComoVotou'
 
 const casaLonga = (c: Casa) =>
   c === 'camara' ? 'Câmara dos Deputados'
@@ -33,6 +34,8 @@ const casaLonga = (c: Casa) =>
 // "22/06/2023–16/12/2024 e desde 18/07/2025"
 const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
   ex.map((p) => (p.fim ? `${dataBR(p.inicio)}–${dataBR(p.fim)}` : `desde ${dataBR(p.inicio)}`)).join(' e ')
+
+const pctAlinhamento = (a: number, b: number): string | null => (a + b === 0 ? null : `${Math.round((a / (a + b)) * 100)}%`)
 
 // Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
 // que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
@@ -99,7 +102,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, tetoCotaUf = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -122,6 +125,7 @@ export function PerfilView({
   alertasPorDespesa: Record<string, MarcaAlerta>
   conferidoTce?: ConferenciaTce
   emendas?: EmendasPolitico | null
+  comoVotou?: ComoVotouDados | null
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
 }) {
   const router = useRouter()
@@ -180,6 +184,16 @@ export function PerfilView({
   }, [pares, periodo, politico.id])
 
   const vsMedia = mediaGeral > 0 ? ag.total / mediaGeral : 0
+
+  // cards-resumo por eixo: derivados pela casa (emendas/votações são federais; municipal/estadual não
+  // mostra esses cards, em vez de exibi-los vazios — o que pareceria dado faltando)
+  const federal = politico.casa === 'camara' || politico.casa === 'senado'
+  const govPct = comoVotou ? pctAlinhamento(comoVotou.resumo.comGoverno, comoVotou.resumo.contraGoverno) : null
+  const fielPct = comoVotou ? pctAlinhamento(comoVotou.resumo.fielPartido, comoVotou.resumo.infielPartido) : null
+  const temGabinete = assessores.quantidade != null || (assessores.folha ?? 0) > 0
+  const temEmendas = !!emendas && emendas.empenhado > 0
+  const temVotacoes = !!comoVotou && comoVotou.itens.length > 0
+  const temProposicoes = !!perfil && perfil.proposicoes.length > 0
 
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
@@ -306,14 +320,42 @@ export function PerfilView({
         </p>
       ) : (
         <>
-          <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            <Estatistica rotulo="Total no período" valor={brl(ag.total)} destaque />
-            <Estatistica rotulo="Posição no ranking" valor={posicao ? `${posicao}º de ${totalRanqueados}` : '—'} />
-            <Estatistica
-              rotulo={politico.casa === 'camara_municipal' ? 'vs. média dos vereadores' : 'vs. média da casa'}
-              valor={vsMedia ? `${vsMedia.toFixed(1).replace('.', ',')}×` : '—'}
-              hint={vsMedia ? (vsMedia >= 1 ? 'acima da média' : 'abaixo da média') : undefined}
+          {/* cards-resumo por eixo: visão em 5 segundos, cada um leva (âncora) à seção detalhada */}
+          <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            <CardEixoPerfil
+              href="#custo"
+              rotulo="Gasto no período"
+              valor={brl(ag.total)}
+              destaque
+              sub={`${posicao ? `${posicao}º de ${totalRanqueados}` : 'sem ranking'}${vsMedia ? ` · ${vsMedia.toFixed(1).replace('.', ',')}× a ${politico.casa === 'camara_municipal' ? 'média dos vereadores' : 'média'}` : ''}`}
             />
+            {federal && (
+              <CardEixoPerfil
+                href="#emendas"
+                rotulo="Emendas"
+                valor={temEmendas ? brlCompacto(emendas!.empenhado) : 'Sem emendas'}
+                sub={temEmendas ? `${emendas!.nEmendas} emendas destinadas` : 'no período'}
+              />
+            )}
+            {federal && (
+              <CardEixoPerfil
+                href="#votacoes"
+                rotulo="Como votou"
+                valor={temVotacoes ? `${comoVotou!.itens.length} votações` : 'Sem votações'}
+                sub={temVotacoes ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel ao partido` : 'de mérito no período'}
+              />
+            )}
+            {temGabinete && (
+              <CardEixoPerfil
+                href="#gabinete"
+                rotulo="Gabinete"
+                valor={(assessores.folha ?? 0) > 0 ? `${brlCompacto(assessores.folha!)}/mês` : `${assessores.quantidade} no gabinete`}
+                sub={(assessores.folha ?? 0) > 0 && assessores.quantidade != null ? `${assessores.quantidade} pessoas na folha` : 'folha do gabinete'}
+              />
+            )}
+            {temProposicoes && (
+              <CardEixoPerfil href="#proposicoes" rotulo="Proposições" valor={`${perfil!.proposicoes.length}`} sub="apresentadas" />
+            )}
           </div>
 
           {/* VIAP vinda do TCE (a câmara não publica de forma legível por máquina): nota neutra com a
@@ -347,7 +389,7 @@ export function PerfilView({
             </p>
           )}
 
-          <section className="mb-10">
+          <section id="custo" className="mb-10 scroll-mt-[var(--header-h)]">
             {municipalSoDiaria ? (
               <>
                 <SecaoTitulo>Diárias · por mês</SecaoTitulo>
@@ -362,7 +404,7 @@ export function PerfilView({
             {(politico.casa === 'camara' || politico.casa === 'senado') && politico.moradia && <Moradia moradia={politico.moradia} casa={politico.casa} />}
           </section>
 
-          <section className="mb-10">
+          <section id="gabinete" className="mb-10 scroll-mt-[var(--header-h)]">
             <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
             <Assessores
               quantidade={assessores.quantidade}
@@ -378,10 +420,19 @@ export function PerfilView({
             />
           </section>
 
-          <section className="mb-10">
-            <SecaoTitulo>Emendas</SecaoTitulo>
-            <EmendasParlamentar dados={emendas ?? null} />
-          </section>
+          {/* Emendas e votações são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}
+          {federal && (
+            <>
+              <section id="emendas" className="mb-10 scroll-mt-[var(--header-h)]">
+                <SecaoTitulo>Emendas</SecaoTitulo>
+                <EmendasParlamentar dados={emendas ?? null} />
+              </section>
+              <section id="votacoes" className="mb-10 scroll-mt-[var(--header-h)]">
+                <SecaoTitulo>Como votou</SecaoTitulo>
+                <ComoVotou dados={comoVotou ?? null} />
+              </section>
+            </>
+          )}
 
           {/* Gráficos no topo, lado a lado — visão de tendência sem ocupar tanta vertical */}
           <div className="mb-10 grid gap-6 lg:grid-cols-2">
@@ -444,7 +495,7 @@ export function PerfilView({
       )}
 
       {perfil && perfil.proposicoes.length > 0 && (
-        <section className="mt-10">
+        <section id="proposicoes" className="mt-10 scroll-mt-[var(--header-h)]">
           <SecaoTitulo>Proposições apresentadas</SecaoTitulo>
           <div className="rounded-xl border border-borda bg-superficie p-4">
             <ProposicoesView proposicoes={perfil.proposicoes} />
@@ -452,6 +503,22 @@ export function PerfilView({
         </section>
       )}
     </article>
+  )
+}
+
+// Card-resumo de um eixo do perfil: número-chave + contexto, levando (âncora) à seção detalhada.
+// scroll-mt-[var(--header-h)] na seção destino compensa o cabeçalho sticky (que cresce no mobile).
+function CardEixoPerfil({ href, rotulo, valor, sub, destaque }: { href: string; rotulo: string; valor: string; sub?: string; destaque?: boolean }) {
+  return (
+    <a
+      href={href}
+      className="group flex flex-col rounded-lg border border-borda bg-superficie p-3 transition-all hover:-translate-y-0.5 hover:border-marca"
+    >
+      <span className="text-xs text-tinta-suave">{rotulo}</span>
+      <span className={`mt-0.5 font-semibold tabular-nums ${destaque ? 'font-display text-lg text-marca' : 'text-tinta'}`}>{valor}</span>
+      {sub && <span className="mt-0.5 text-xs leading-snug text-tinta-tenue">{sub}</span>}
+      <span className="mt-2 text-[11px] font-medium text-tinta-tenue transition-colors group-hover:text-marca">ver detalhe ↓</span>
+    </a>
   )
 }
 
