@@ -95,7 +95,7 @@ describe('montarRegistroCamara', () => {
     expect(r.aprovada).toBe(true)
     expect(r.orientacaoGoverno).toBe('Sim')
     expect(r.placar).toEqual({ sim: 1, nao: 1, outros: 1 })
-    expect(r.urlOficial).toBe('https://www.camara.leg.br/propostas-legislativas/557678/votacoes')
+    expect(r.urlOficial).toBe('https://www.camara.leg.br/propostas-legislativas/557678')
     expect(r.votos).toContainEqual({ politicoId: 'camara-9', v: 'S', orientacaoPartido: 'Sim' })
     expect(r.votos).toContainEqual({ politicoId: 'camara-7', v: 'N', orientacaoPartido: 'Não' })
     expect(r.votos).toContainEqual({ politicoId: 'camara-5', v: 'O', orientacaoPartido: 'Sim' })

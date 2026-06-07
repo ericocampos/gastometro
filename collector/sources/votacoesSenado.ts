@@ -67,8 +67,8 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
     aprovada: v.resultadoVotacao === 'A' ? true : v.resultadoVotacao === 'R' ? false : null,
     placar: { sim, nao, outros },
     orientacaoGoverno,
-    // fonte: página de votações da matéria no Senado (lista o voto nominal completo)
-    urlOficial: `https://www25.senado.leg.br/web/atividade/materias/-/materia/${v.codigoMateria ?? cod}/votacoes`,
+    // fonte: página da matéria no Senado (traz a tramitação e as votações)
+    urlOficial: `https://www25.senado.leg.br/web/atividade/materias/-/materia/${v.codigoMateria ?? cod}`,
     votos,
   }
 }

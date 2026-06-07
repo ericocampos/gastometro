@@ -42,7 +42,7 @@ describe('montarRegistroSenado', () => {
     expect(r.aprovada).toBe(true)
     expect(r.orientacaoGoverno).toBe('Sim')
     expect(r.placar).toEqual({ sim: 2, nao: 1, outros: 0 })
-    expect(r.urlOficial).toBe('https://www25.senado.leg.br/web/atividade/materias/-/materia/163623/votacoes')
+    expect(r.urlOficial).toBe('https://www25.senado.leg.br/web/atividade/materias/-/materia/163623')
     // PT votou Sim (maioria Sim) -> orientacaoPartido Sim; PL votou Não (maioria Não)
     expect(r.votos).toContainEqual({ politicoId: 'senado-7', v: 'S', orientacaoPartido: 'Sim' })
     expect(r.votos).toContainEqual({ politicoId: 'senado-8', v: 'N', orientacaoPartido: 'Não' })

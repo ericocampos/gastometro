@@ -87,9 +87,9 @@ export function montarRegistroCamara(
     aprovada: detalhe.aprovacao === 1 ? true : detalhe.aprovacao === 0 ? false : null,
     placar: { sim, nao, outros },
     orientacaoGoverno: governo,
-    // fonte: página de votações da proposição na Câmara (lista o voto nominal completo)
+    // fonte: página da proposição na Câmara (traz a tramitação e as votações; o sufixo /votacoes dá erro)
     urlOficial: idProp
-      ? `https://www.camara.leg.br/propostas-legislativas/${idProp}/votacoes`
+      ? `https://www.camara.leg.br/propostas-legislativas/${idProp}`
       : 'https://www.camara.leg.br/busca-portal',
     votos: vs,
   }
