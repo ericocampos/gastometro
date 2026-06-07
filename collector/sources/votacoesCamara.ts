@@ -105,8 +105,10 @@ export async function coletarCamara(fetchJson: FetchJson, inicio: string, fim: s
     const nominais = (lista?.dados ?? []).filter((v: { descricao?: string }) => ehNominalCamara(v))
     log(`Câmara ${j.inicio}..${j.fim}: ${nominais.length} nominais`)
     for (const v of nominais) {
-      const [detalhe, votos, orientacoes] = await Promise.all([
-        fetchJson(`${BASE}votacoes/${v.id}`).then((r) => r?.dados),
+      // detalhe primeiro: só busca votos/orientações se for de mérito (corta ~metade das chamadas)
+      const detalhe = await fetchJson(`${BASE}votacoes/${v.id}`).then((r) => r?.dados)
+      if (!proposicaoMeritoCamara(detalhe ?? {})) continue
+      const [votos, orientacoes] = await Promise.all([
         fetchJson(`${BASE}votacoes/${v.id}/votos`).then((r) => r?.dados ?? []),
         fetchJson(`${BASE}votacoes/${v.id}/orientacoes`).then((r) => r?.dados ?? []),
       ])

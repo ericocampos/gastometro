@@ -11,6 +11,7 @@
     "coletar:assessores": "tsx collector/coletarAssessores.ts",
     "coletar:assessores:rapido": "tsx collector/coletarAssessores.ts --rapido",
     "coletar:emendas": "tsx collector/coletarEmendas.ts",
+    "coletar:votacoes": "tsx collector/coletarVotacoes.ts",
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
