@@ -6,6 +6,7 @@ const LINKS = [
   { href: '/', rotulo: 'Ranking' },
   { href: '/brasil', rotulo: 'Brasil' },
   { href: '/emendas', rotulo: 'Emendas' },
+  { href: '/votacoes', rotulo: 'Votações' },
   { href: '/municipios', rotulo: 'Municípios' },
   { href: '/comparar', rotulo: 'Comparar' },
   { href: '/fornecedores', rotulo: 'Fornecedores' },
