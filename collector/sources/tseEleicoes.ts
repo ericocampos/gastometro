@@ -1,8 +1,10 @@
-// Fonte TSE (dados abertos): candidaturas e fotos da eleição MUNICIPAL de 2024 — a que elegeu o
-// mandato 2025-2028 que mostramos. Usada SÓ para enriquecer o modelo leve (TCE) com:
-//   - partido (SG_PARTIDO) e
-//   - foto oficial de candidatura, re-hospedada como thumbnail webp local (o site é estático e o
-//     TSE só serve as fotos em ZIP, não por URL individual estável).
+// Fonte TSE (dados abertos): candidaturas e fotos. Dois usos:
+//   1) ENRIQUECER o vereador leve (TCE) da eleição MUNICIPAL de 2024 com partido (SG_PARTIDO) e
+//      foto, casando por nome dentro do município (parseCandidatosCsv/matchCandidato).
+//   2) ROSTER dos deputados estaduais/distritais da eleição GERAL de 2022 (parseEleitosCsv/
+//      baixarEleitosUf): aqui o TSE É a fonte primária, listando todos os eleitos de um cargo na UF.
+// Em ambos a foto oficial de candidatura é re-hospedada como thumbnail webp local (o site é estático
+// e o TSE só serve as fotos em ZIP, não por URL individual estável).
 // Fontes:
 //   candidatos: https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_{ano}.zip
 //     (zip nacional; dentro, um CSV por UF: consulta_cand_{ano}_{UF}.csv — latin1, ';' com aspas)
