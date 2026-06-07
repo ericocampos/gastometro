@@ -89,7 +89,7 @@ describe('montarRegistroCamara', () => {
   })
 })
 
-import { janelasTrimestrais, coletarCamara } from './votacoesCamara.js'
+import { janelasTrimestrais, coletarCamara, listarPaginado } from './votacoesCamara.js'
 
 describe('janelasTrimestrais', () => {
   it('quebra o período em janelas de até 3 meses (início..fim inclusive)', () => {
@@ -100,15 +100,29 @@ describe('janelasTrimestrais', () => {
   })
 })
 
+describe('listarPaginado', () => {
+  it('segue o link rel="next" até acabar e concatena os dados', async () => {
+    const paginas: Record<string, unknown> = {
+      'page=1': { dados: [{ id: 1 }, { id: 2 }], links: [{ rel: 'next', href: 'http://x/page=2' }] },
+      'page=2': { dados: [{ id: 3 }], links: [{ rel: 'self', href: 'http://x/page=2' }] },  // sem next: fim
+    }
+    const fetchJson = async (url: string) => paginas[Object.keys(paginas).find((k) => url.includes(k))!]
+    const todas = await listarPaginado(fetchJson, 'http://x/page=1')
+    expect(todas.map((x: any) => x.id)).toEqual([1, 2, 3])
+  })
+})
+
 describe('coletarCamara', () => {
-  it('lista nominais, busca detalhe/votos/orientações e descarta não-mérito', async () => {
+  it('lista nominais (paginado), busca detalhe/votos/orientações e descarta não-mérito', async () => {
     const respostas: Record<string, unknown> = {
-      // lista de uma janela
-      'votacoes?idOrgao=180&dataInicio=2024-01-01&dataFim=2024-03-31&itens=200&ordem=ASC&ordenarPor=dataHoraRegistro': {
-        dados: [
-          { id: 111, descricao: 'Aprovado SIM: 2, NÃO: 1' },   // nominal, será mérito
-          { id: 222, descricao: 'Simbólica' },                  // não nominal: ignora
-        ],
+      // 1ª página da janela, com link para a 2ª
+      'dataInicio=2024-01-01&dataFim=2024-03-31&itens=100': {
+        dados: [{ id: 111, descricao: 'Aprovado SIM: 2, NÃO: 1' }],   // nominal, será mérito
+        links: [{ rel: 'next', href: `${'https://dadosabertos.camara.leg.br/api/v2/'}votacoes?pagina=2&token=B` }],
+      },
+      'votacoes?pagina=2&token=B': {
+        dados: [{ id: 222, descricao: 'Simbólica' }],                  // não nominal: ignora
+        links: [{ rel: 'self', href: 'x' }],
       },
       'votacoes/111/votos': { dados: [{ deputado_: { id: 9, siglaPartido: 'PT' }, tipoVoto: 'Sim' }] },
       'votacoes/111/orientacoes': { dados: [{ siglaPartidoBloco: 'Governo', orientacaoVoto: 'Sim' }, { siglaPartidoBloco: 'PT', orientacaoVoto: 'Sim' }] },

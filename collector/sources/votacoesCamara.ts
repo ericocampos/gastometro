@@ -98,11 +98,24 @@ export function janelasTrimestrais(inicio: string, fim: string): { inicio: strin
 
 const BASE = 'https://dadosabertos.camara.leg.br/api/v2/'
 
+// A listagem da Câmara é paginada (100 por página); é PRECISO seguir o link rel="next",
+// senão trimestres cheios ficam truncados (só a 1ª página).
+export async function listarPaginado(fetchJson: FetchJson, urlInicial: string): Promise<any[]> {
+  const todas: any[] = []
+  let url: string | null = urlInicial
+  while (url) {
+    const resp: any = await fetchJson(url)
+    todas.push(...(resp?.dados ?? []))
+    url = (resp?.links ?? []).find((l: any) => l.rel === 'next')?.href ?? null
+  }
+  return todas
+}
+
 export async function coletarCamara(fetchJson: FetchJson, inicio: string, fim: string, log: (m: string) => void): Promise<RegistroVotacao[]> {
   const registros: RegistroVotacao[] = []
   for (const j of janelasTrimestrais(inicio, fim)) {
-    const lista = await fetchJson(`${BASE}votacoes?idOrgao=180&dataInicio=${j.inicio}&dataFim=${j.fim}&itens=200&ordem=ASC&ordenarPor=dataHoraRegistro`)
-    const nominais = (lista?.dados ?? []).filter((v: { descricao?: string }) => ehNominalCamara(v))
+    const lista = await listarPaginado(fetchJson, `${BASE}votacoes?idOrgao=180&dataInicio=${j.inicio}&dataFim=${j.fim}&itens=100&ordem=ASC&ordenarPor=dataHoraRegistro`)
+    const nominais = lista.filter((v: { descricao?: string }) => ehNominalCamara(v))
     log(`Câmara ${j.inicio}..${j.fim}: ${nominais.length} nominais`)
     for (const v of nominais) {
       // detalhe primeiro: só busca votos/orientações se for de mérito (corta ~metade das chamadas)
