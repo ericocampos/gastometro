@@ -1,10 +1,27 @@
 import { describe, it, expect } from 'vitest'
-import { ehNominalCamara, proposicaoMeritoCamara, mapVotoCamara, parseOrientacoesCamara, montarRegistroCamara } from './votacoesCamara.js'
+import { ehNominalCamara, ehSubstantivaCamara, proposicaoMeritoCamara, mapVotoCamara, parseOrientacoesCamara, montarRegistroCamara } from './votacoesCamara.js'
 
 describe('ehNominalCamara', () => {
   it('nominal quando a descrição traz o placar "Sim:"', () => {
     expect(ehNominalCamara({ descricao: 'Aprovado SIM: 300, NÃO: 100' })).toBe(true)
     expect(ehNominalCamara({ descricao: 'Aprovada por acordo (simbólica)' })).toBe(false)
+  })
+})
+
+describe('ehSubstantivaCamara', () => {
+  it('mantém votos no conteúdo (texto, destaque, emenda, redação final, MP, projeto)', () => {
+    expect(ehSubstantivaCamara('Mantido o texto. Sim: 266; Não: 118')).toBe(true)
+    expect(ehSubstantivaCamara('Aprovado o Requerimento de Destaque (DVS). Sim: 200')).toBe(true)  // destaque é substantivo
+    expect(ehSubstantivaCamara('Aprovada a Emenda nº 3. Sim: 300')).toBe(true)
+    expect(ehSubstantivaCamara('Aprovada a redação final. Sim: 400')).toBe(true)
+    expect(ehSubstantivaCamara('Aprovada a Medida Provisória nº 1.177, de 2023. Sim: 270')).toBe(true)
+    expect(ehSubstantivaCamara('Aprovado o Projeto de Lei. Sim: 300')).toBe(true)
+  })
+  it('exclui votos de pauta (urgência, preferência, recurso, requerimento genérico)', () => {
+    expect(ehSubstantivaCamara('Aprovado o Requerimento de Urgência (Art. 154 do RICD). Sim: 366')).toBe(false)
+    expect(ehSubstantivaCamara('Aprovada a preferência. Sim: 309')).toBe(false)
+    expect(ehSubstantivaCamara('Rejeitado o Recurso. Sim: 139')).toBe(false)
+    expect(ehSubstantivaCamara('Aprovado o Requerimento. Sim: 204; não: 202')).toBe(false)  // requerimento genérico
   })
 })
 
@@ -55,7 +72,7 @@ describe('parseOrientacoesCamara', () => {
 describe('montarRegistroCamara', () => {
   const detalhe = {
     id: 2456731, dataHoraRegistro: '2024-03-12T20:00', aprovacao: 1,
-    proposicoesAfetadas: [{ siglaTipo: 'PL', numero: '2', ano: 2024, ementa: 'Lei' }],
+    proposicoesAfetadas: [{ id: 557678, siglaTipo: 'PL', numero: '2', ano: 2024, ementa: 'Lei' }],
     descricao: 'Aprovado SIM: 2, NÃO: 1',
   }
   const votos = [
@@ -78,7 +95,7 @@ describe('montarRegistroCamara', () => {
     expect(r.aprovada).toBe(true)
     expect(r.orientacaoGoverno).toBe('Sim')
     expect(r.placar).toEqual({ sim: 1, nao: 1, outros: 1 })
-    expect(r.urlOficial).toBe('https://www.camara.leg.br/votacoes/2456731')
+    expect(r.urlOficial).toBe('https://www.camara.leg.br/propostas-legislativas/557678/votacoes')
     expect(r.votos).toContainEqual({ politicoId: 'camara-9', v: 'S', orientacaoPartido: 'Sim' })
     expect(r.votos).toContainEqual({ politicoId: 'camara-7', v: 'N', orientacaoPartido: 'Não' })
     expect(r.votos).toContainEqual({ politicoId: 'camara-5', v: 'O', orientacaoPartido: 'Sim' })
@@ -117,7 +134,7 @@ describe('coletarCamara', () => {
     const respostas: Record<string, unknown> = {
       // 1ª página da janela, com link para a 2ª
       'dataInicio=2024-01-01&dataFim=2024-03-31&itens=100': {
-        dados: [{ id: 111, descricao: 'Aprovado SIM: 2, NÃO: 1' }],   // nominal, será mérito
+        dados: [{ id: 111, descricao: 'Aprovado o texto. Sim: 2, NÃO: 1' }],   // nominal + substantiva
         links: [{ rel: 'next', href: `${'https://dadosabertos.camara.leg.br/api/v2/'}votacoes?pagina=2&token=B` }],
       },
       'votacoes?pagina=2&token=B': {

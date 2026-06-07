@@ -53,7 +53,8 @@ async function main() {
   console.log(`  ${senado.length} votações de mérito (Senado)`)
 
   const votacoes = agregarVotacoes([...camara, ...senado], idsValidos)
-  writeFileSync(resolve(dataDir, 'votacoes.json'), JSON.stringify(votacoes, null, 2))
+  // minificado: o arquivo é grande (lido só no build, nunca vai pro cliente)
+  writeFileSync(resolve(dataDir, 'votacoes.json'), JSON.stringify(votacoes))
   const nVot = Object.keys(votacoes.votacoes).length
   const nPol = Object.keys(votacoes.porPolitico).length
   console.log(`OK: ${nVot} votações, ${nPol} parlamentares -> data/votacoes.json`)

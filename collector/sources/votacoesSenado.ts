@@ -36,7 +36,7 @@ function orientacaoDeVoto(voto: string): Orientacao {
 
 interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string; siglaPartidoParlamentar?: string }
 interface VotacaoSenado {
-  codigoVotacaoSve?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
+  codigoVotacaoSve?: number; codigoMateria?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
   ano?: number; sigla?: string; numero?: string | number; identificacao?: string
   descricaoVotacao?: string; ementa?: string; votos?: VotoSenadoItem[]
 }
@@ -67,7 +67,8 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
     aprovada: v.resultadoVotacao === 'A' ? true : v.resultadoVotacao === 'R' ? false : null,
     placar: { sim, nao, outros },
     orientacaoGoverno,
-    urlOficial: `https://www25.senado.leg.br/web/atividade/materias/-/materia/votacao/${cod}`,
+    // fonte: página de votações da matéria no Senado (lista o voto nominal completo)
+    urlOficial: `https://www25.senado.leg.br/web/atividade/materias/-/materia/${v.codigoMateria ?? cod}/votacoes`,
     votos,
   }
 }
