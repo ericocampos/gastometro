@@ -16,6 +16,7 @@ export interface ResumoPolitico {
   porFornecedor: { nome: string; cnpjCpf?: string; total: number }[]
 }
 export interface ItemFornecedor { nome: string; cnpjCpf?: string; total: number }
+export interface ItemCategoria { categoria: string; total: number }
 // total REAL do universo de fornecedores (não só do top guardado), para os cards do hub
 export interface FornecedoresTotais { nFornecedores: number; total: number }
 export interface Agregados {
@@ -23,6 +24,7 @@ export interface Agregados {
   porPolitico: Record<string, ResumoPolitico>
   fornecedores: ItemFornecedor[]
   fornecedoresTotais: FornecedoresTotais
+  categorias: ItemCategoria[]   // gasto por tipo (categoria CEAP), global, do maior para o menor
 }
 
 function somaPorChave<T>(itens: T[], chave: (t: T) => string, valor: (t: T) => number) {
@@ -43,6 +45,12 @@ export function fornecedoresGlobais(despesas: Despesa[], topN = TOP_FORNECEDORES
     })
   const total = [...fornMap.values()].reduce((s, v) => s + v, 0)
   return { fornecedores, totais: { nFornecedores: fornMap.size, total } }
+}
+
+// Gasto por TIPO (categoria CEAP), global, do maior para o menor. São poucas categorias, guarda inteiro.
+export function categoriasGlobais(despesas: Despesa[]): ItemCategoria[] {
+  const m = somaPorChave(despesas, (d) => d.categoria, (d) => d.valor)
+  return [...m.entries()].sort((a, b) => b[1] - a[1]).map(([categoria, total]) => ({ categoria, total }))
 }
 
 export function agregar(politicos: Politico[], despesas: Despesa[]): Agregados {
@@ -77,5 +85,5 @@ export function agregar(politicos: Politico[], despesas: Despesa[]): Agregados {
 
   const { fornecedores, totais } = fornecedoresGlobais(despesas)
 
-  return { ranking, porPolitico, fornecedores, fornecedoresTotais: totais }
+  return { ranking, porPolitico, fornecedores, fornecedoresTotais: totais, categorias: categoriasGlobais(despesas) }
 }

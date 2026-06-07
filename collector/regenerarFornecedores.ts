@@ -1,10 +1,10 @@
-// Regenera SÓ o trecho de fornecedores do agregados.json (lista global top-N + totais reais),
-// a partir dos data/despesas já gravados, sem rede e sem tocar em ranking/porPolitico/municipal.
-// A lista global é da cota federal/estadual (igual ao pipeline: o municipal não entra nela).
+// Regenera os agregados GLOBAIS de gasto do agregados.json (fornecedores top-N + totais reais,
+// e gasto por categoria), a partir dos data/despesas já gravados, sem rede e sem tocar em
+// ranking/porPolitico/municipal. Escopo: cota federal/estadual (o municipal não entra nessas listas).
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { fornecedoresGlobais } from './normalize.js'
+import { fornecedoresGlobais, categoriasGlobais } from './normalize.js'
 import type { Despesa } from './sources/types.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -26,17 +26,18 @@ function main() {
   console.log(`> ${despesas.length} despesas (cota federal/estadual)`)
 
   const { fornecedores, totais } = fornecedoresGlobais(despesas)
+  const categorias = categoriasGlobais(despesas)
 
   const agregadosArq = resolve(dataDir, 'agregados.json')
   const ag = JSON.parse(readFileSync(agregadosArq, 'utf-8'))
-  const antesTop3 = (ag.fornecedores ?? []).slice(0, 3).map((f: { nome: string }) => f.nome).join(', ')
   ag.fornecedores = fornecedores
   ag.fornecedoresTotais = totais
+  ag.categorias = categorias
   writeFileSync(agregadosArq, JSON.stringify(ag, null, 2))
 
-  console.log(`  top3 antes: ${antesTop3}`)
-  console.log(`  top3 agora: ${fornecedores.slice(0, 3).map((f) => f.nome).join(', ')}`)
-  console.log(`OK: ${fornecedores.length} fornecedores na lista, universo real ${totais.nFornecedores} (R$ ${Math.round(totais.total).toLocaleString('pt-BR')}) -> data/agregados.json`)
+  console.log(`  top3 fornecedores: ${fornecedores.slice(0, 3).map((f) => f.nome).join(', ')}`)
+  console.log(`  top3 categorias: ${categorias.slice(0, 3).map((c) => `${c.categoria} (${Math.round(c.total).toLocaleString('pt-BR')})`).join(' · ')}`)
+  console.log(`OK: ${fornecedores.length} fornecedores (universo ${totais.nFornecedores}, R$ ${Math.round(totais.total).toLocaleString('pt-BR')}), ${categorias.length} categorias -> data/agregados.json`)
 }
 
 main()

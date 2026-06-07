@@ -63,6 +63,7 @@ export interface Agregados {
   porPolitico: Record<string, ResumoPolitico>
   fornecedores: ItemFornecedor[]
   fornecedoresTotais?: FornecedoresTotais
+  categorias?: ItemCategoria[]   // gasto por tipo (categoria), global, do maior para o menor
 }
 
 export interface Despesa {
