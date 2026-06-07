@@ -24,33 +24,35 @@ export function EmendasParlamentar({ dados }: { dados: EmendasPolitico | null })
         </div>
       </div>
 
-      {dados.topMunicipios.length > 0 && (
-        <div className="mt-4">
-          <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Principais destinos</p>
-          <ul className="space-y-1 text-sm">
-            {dados.topMunicipios.map((m) => (
-              <li key={`${m.municipio}-${m.uf}`} className="flex items-baseline justify-between gap-3">
-                <span className="text-tinta">{m.municipio}{m.uf && <span className="text-tinta-tenue"> · {m.uf}</span>}</span>
-                <span className="tabular-nums text-tinta-suave">{brlInteiro(m.empenhado)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className="mt-4 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+        {dados.topMunicipios.length > 0 && (
+          <div>
+            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Principais destinos</p>
+            <ul className="space-y-1 text-sm">
+              {dados.topMunicipios.map((m) => (
+                <li key={`${m.municipio}-${m.uf}`} className="flex items-baseline justify-between gap-3">
+                  <span className="text-tinta">{m.municipio}{m.uf && <span className="text-tinta-tenue"> · {m.uf}</span>}</span>
+                  <span className="tabular-nums text-tinta-suave">{brlInteiro(m.empenhado)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-      {dados.topFuncoes.length > 0 && (
-        <div className="mt-4">
-          <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Principais áreas</p>
-          <ul className="space-y-1 text-sm">
-            {dados.topFuncoes.map((f) => (
-              <li key={f.funcao} className="flex items-baseline justify-between gap-3">
-                <span className="text-tinta">{f.funcao}</span>
-                <span className="tabular-nums text-tinta-suave">{brlInteiro(f.empenhado)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        {dados.topFuncoes.length > 0 && (
+          <div>
+            <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Principais áreas</p>
+            <ul className="space-y-1 text-sm">
+              {dados.topFuncoes.map((f) => (
+                <li key={f.funcao} className="flex items-baseline justify-between gap-3">
+                  <span className="text-tinta">{f.funcao}</span>
+                  <span className="tabular-nums text-tinta-suave">{brlInteiro(f.empenhado)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
 
       {dados.emendas.length > 0 && (
         <div className="mt-5">
