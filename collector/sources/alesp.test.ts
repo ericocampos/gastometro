@@ -39,6 +39,13 @@ describe('parseDespesas', () => {
   })
 })
 
+describe('parseDespesas (entidades XML)', () => {
+  it('desescapa &amp; no nome do fornecedor (processEntities:false + unescape)', () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?><despesas><despesa><Ano>2023</Ano><Matricula>300257</Matricula><Mes>5</Mes><Valor>10.0</Valor><CNPJ>1</CNPJ><Deputado>X</Deputado><Tipo>A</Tipo><Fornecedor>AUTO &amp; CIA LTDA</Fornecedor></despesa></despesas>`
+    expect(parseDespesas(xml, 2023)[0].fornecedor.nome).toBe('AUTO & CIA LTDA')
+  })
+})
+
 describe('montarDespesas', () => {
   it('mapeia matricula->politicoId e gera ids estáveis por deputado', () => {
     const recs = parseDespesas(DESPESAS, 2023)

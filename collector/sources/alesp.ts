@@ -7,14 +7,25 @@ import type { Despesa } from './types.js'
 import { normTse, type EleitoTse } from './tseEleicoes.js'
 import { vencimentoCargo } from './vencimentosAlesp.js'
 
-const parser = new XMLParser({ ignoreAttributes: true, parseTagValue: false, trimValues: true })
+// processEntities: false desliga a expansão de entidades (&lt; &amp; etc.). O roster traz biografias
+// cheias de HTML escapado, que estouram o limite de expansão do parser (billion-laughs guard); como só
+// lemos campos simples, ignoramos a expansão automática e desescapamos à mão as 5 entidades padrão nos
+// valores que guardamos (ex.: fornecedor "AUTO &amp; CIA" -> "AUTO & CIA").
+const parser = new XMLParser({ ignoreAttributes: true, parseTagValue: false, trimValues: true, processEntities: false })
 
 export interface DeputadoAlesp { idAlesp: number; matricula: string; idUa: string; nome: string; partido: string; situacao: string }
 export interface DespesaAlespRec { matricula: string; deputado: string; ano: number; mes: number; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; valor: number }
 export interface LotacaoAlesp { idUa: string; deputadoNome: string; nomeFuncionario: string; cargo: string }
 
 const arr = <T>(v: T | T[] | undefined): T[] => (v == null ? [] : Array.isArray(v) ? v : [v])
-const s = (v: unknown): string => (v == null ? '' : String(v)).trim()
+/** desescapa as 5 entidades XML padrão (e numéricas comuns) deixadas cruas por processEntities:false */
+function unescapeXml(t: string): string {
+  return t
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'").replace(/&#39;/g, "'").replace(/&#34;/g, '"')
+    .replace(/&amp;/g, '&')
+}
+const s = (v: unknown): string => unescapeXml((v == null ? '' : String(v)).trim())
 
 export function parseRoster(xml: string): DeputadoAlesp[] {
   const d = parser.parse(xml) as { Deputados?: { Deputado?: unknown } }
