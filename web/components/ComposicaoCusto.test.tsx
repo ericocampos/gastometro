@@ -35,4 +35,10 @@ describe('ComposicaoCusto', () => {
     const link = screen.getByRole('link', { name: /Assessores/ })
     expect(link).toHaveAttribute('href', '/assessores')
   })
+
+  it('usa o rótulo de per capita do panorama e mostra a nota de cobertura', () => {
+    render(<ComposicaoCusto panorama={{ ...panorama, perCapitaRotulo: 'Por habitante / ano', notaCobertura: 'Camada estadual: subsídio de 25 das 27 assembleias.' }} />)
+    expect(screen.getByText(/Por habitante \/ ano/i)).toBeInTheDocument()
+    expect(screen.getByText(/subsídio de 25 das 27 assembleias/i)).toBeInTheDocument()
+  })
 })

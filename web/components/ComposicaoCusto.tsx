@@ -6,7 +6,7 @@ const COR: Record<string, string> = { subsidio: '#0a7d52', cota: '#2563eb', gabi
 const TITULO: Record<string, string> = { subsidio: 'Subsídio', cota: 'Cota', gabinete: 'Gabinete (pessoal)' }
 
 export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
-  const { totalAnual, perCapita, componentes } = panorama
+  const { totalAnual, perCapita, componentes, perCapitaRotulo = 'Por brasileiro / ano', notaCobertura } = panorama
   return (
     <div>
       <div className="flex flex-wrap items-end gap-x-10 gap-y-3">
@@ -16,7 +16,7 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
         </div>
         {perCapita != null && (
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Por brasileiro / ano</p>
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">{perCapitaRotulo}</p>
             <p className="font-display text-2xl font-semibold tabular-nums text-tinta">{brl(perCapita)}</p>
           </div>
         )}
@@ -49,6 +49,7 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
             <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c.real ? '#0a7d52' : '#9a6700' }}>
               {c.real ? 'Gasto real' : 'Estimativa anualizada'}
             </p>
+            {c.nota && <p className="mt-1 text-[11px] leading-snug text-tinta-tenue">{c.nota}</p>}
             {c.chave === 'gabinete' && (
               <Link href="/assessores" className="mt-2 inline-block text-xs text-marca underline hover:text-tinta-suave">
                 Ver por pessoa em Assessores &rarr;
@@ -57,6 +58,9 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
           </div>
         ))}
       </div>
+      {notaCobertura && (
+        <p className="mt-4 text-xs leading-relaxed text-tinta-tenue">{notaCobertura}</p>
+      )}
     </div>
   )
 }
