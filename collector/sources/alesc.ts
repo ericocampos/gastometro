@@ -52,7 +52,7 @@ export function parseVerbaCsv(csv: string, anoMin: number): VerbaAlescRec[] {
 
 /** Converte os recs em Despesas normalizadas. politicoId = alesc-{slug(conta)}. Sem CNPJ na fonte.
  *  A fonte não dá id de nota; o seq é sequencial por deputado na ordem em que os recs chegam
- *  (estável enquanto a ordem do CSV não muda) -- id: {politicoId}-{ano}-{mm}-{seq}. */
+ *  (estável enquanto a ordem do CSV não muda). id: {politicoId}-{ano}-{mm}-{seq}. */
 export function montarDespesasAlesc(recs: VerbaAlescRec[]): Despesa[] {
   const seq = new Map<string, number>()
   const out: Despesa[] = []
