@@ -42,6 +42,45 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa de Minas Gerais (ALMG · modelo completo)',
+    intro: 'API de dados abertos da ALMG, com a verba indenizatória itemizada por deputado. O gabinete não é detalhado: a folha da ALMG é publicada só por matrícula, sem o nome do servidor (Deliberação da Mesa 2.555/2013), então não dá para vincular assessores e custo a cada deputado.',
+    fontes: [
+      { oque: 'Roster (em exercício)', onde: 'dadosabertos.almg.gov.br/ws/deputados/em_exercicio?formato=json', formato: 'JSON' },
+      { oque: 'Despesas (verba indenizatória)', onde: 'dadosabertos.almg.gov.br/ws/prestacao_contas/verbas_indenizatorias/deputados/{id}/{ano}/{mes}?formato=json', formato: 'JSON', obs: 'itemizada por mês; carregamos o mandato atual (2023+)' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a API da ALMG não traz foto; casamos por nome com o eleito de 2022' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha da ALMG sai só por matrícula, sem nome (Deliberação da Mesa 2.555/2013); não há como atribuir comissionados e custo a cada deputado' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de São Paulo (ALESP · modelo completo)',
+    intro: 'Três arquivos XML de dados abertos da ALESP (roster, despesas de gabinete itemizadas e lotação dos servidores). O gabinete entra com os nomes; o custo é estimado pela tabela oficial de vencimentos dos cargos (não a folha real por pessoa).',
+    fontes: [
+      { oque: 'Roster e partido', onde: 'al.sp.gov.br/repositorioDados/deputados/deputados.xml', formato: 'XML' },
+      { oque: 'Despesas (verba de gabinete)', onde: 'al.sp.gov.br/repositorioDados/deputados/despesas_gabinetes.xml', formato: 'XML', obs: 'itemizada com fornecedor e CNPJ/CPF; carregamos o mandato atual (2023+); arquivo grande (~169 MB), lido em streaming' },
+      { oque: 'Gabinete — quem', onde: 'al.sp.gov.br/repositorioDados/administracao/lotacoes.xml', formato: 'XML', obs: 'lotação atual por gabinete ("Gabinete do Deputado X")' },
+      { oque: 'Gabinete — custo estimado', onde: 'al.sp.gov.br/arquivos/.../Tabelas_Vencimentos_2025_03_01.pdf', formato: 'PDF oficial', obs: 'bruto da tabela de vencimentos por cargo (LC 1.431/2025), uma estimativa, não a folha real de cada pessoa' },
+      { oque: 'Foto', onde: 'TSE (eleição 2022)', formato: 'JPG', obs: 'a fonte da ALESP não traz foto; casamos por nome' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de Santa Catarina (ALESC · modelo completo)',
+    intro: 'CSV anual oficial da verba de gabinete, itemizada por deputado (a fonte não traz CNPJ do fornecedor). O gabinete entra com os nomes dos comissionados, mas SEM custo: o contracheque individual é bloqueado na fonte. As três fontes nomeiam o deputado de jeitos diferentes (verba usa nome curto ou apelido, a lista de servidores usa o nome parlamentar completo), então casamos cada nome a um candidato do TSE 2022.',
+    fontes: [
+      { oque: 'Despesas (verba)', onde: 'transparencia.alesc.sc.gov.br/gabinetes-parlamentares/csv/{ano}', formato: 'CSV (;, com BOM)', obs: 'itemizada por deputado (categoria, fornecedor, valor); o fornecedor vem só pelo nome, sem CNPJ; mandato atual (a partir de fev/2023)' },
+      { oque: 'Gabinete — comissionados', onde: 'transparencia.alesc.sc.gov.br/servidores', formato: 'HTML oficial', obs: 'nomes dos lotados em "GAB DEP {deputado}"; SEM custo: o contracheque individual responde 405. Mostramos quem e quantos, com nota de que o valor será atualizado quando a folha por servidor for acessível' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022, eleitos e suplentes)', formato: 'CSV + JPG', obs: 'resolve o nome curto/apelido da verba ao candidato (nome de urna, civil ou subconjunto único); recupera partido e foto inclusive de suplentes que assumiram a vaga' },
+    ],
+  },
+  {
+    casa: 'Demais Assembleias Legislativas (modelo leve)',
+    intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
+    fontes: [
+      { oque: 'Roster, partido e foto', onde: 'cdn.tse.jus.br/.../consulta_cand_2022.zip · .../fotos/foto_cand2022_{UF}_div.zip', formato: 'CSV + JPG (dados abertos)', obs: 'eleitos de deputado estadual/distrital na eleição de 2022 (o TSE é o roster primário). A foto é re-hospedada como thumbnail; quem não casa fica com as iniciais' },
+      { oque: 'Subsídio do deputado', onde: 'lei ou ato da mesa de cada casa', formato: 'valor oficial', obs: '25 das 27 casas têm valor oficial (a maioria fixou no teto de 75% do subsídio do deputado federal); Acre e Rondônia não têm fonte pública aberta e ficam como "subsídio não informado"' },
+      { oque: 'Verba indenizatória e gabinete', onde: 'ainda não integrado', formato: '—', obs: 'entra quando a fonte oficial do estado for integrada; até lá o custo estadual conta só o subsídio' },
+    ],
+  },
+  {
     casa: 'Câmara Municipal de João Pessoa (vereadores · modelo completo)',
     intro: 'Portal da Câmara (roster + VIAP) + API de dados abertos da folha (Elmar). Gasto por vereador.',
     fontes: [
@@ -90,8 +129,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado por enquanto só
-        na Paraíba (ALPB). O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em quatro casas
+        (Paraíba, Minas Gerais, São Paulo e Santa Catarina) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
