@@ -34,18 +34,22 @@ export function getRanking(): ItemRanking[] {
 
 export function getSeriesParlamentares(): SerieParlamentar[] {
   const { porPolitico } = agregados()
-  return Object.values(porPolitico).map((r) => ({
-    politicoId: r.politico.id,
-    nome: r.politico.nome,
-    partido: r.politico.partido,
-    uf: r.politico.uf,
-    casa: r.politico.casa,
-    legislaturas: r.politico.legislaturas,
-    serieMensal: r.serieMensal,
-    fotoUrl: r.politico.fotoUrl,
-    mandato: r.politico.mandato,
-    municipio: r.politico.municipio,
-  }))
+  return Object.values(porPolitico)
+    // deputado estadual leve (assembleia sem gasto) não é par de comparação de ninguém e infla as
+    // páginas/listas sem dado; fica fora da série (segue acessível pelo perfil e pela seção da assembleia)
+    .filter((r) => !(r.politico.casa === 'assembleia' && r.serieMensal.length === 0))
+    .map((r) => ({
+      politicoId: r.politico.id,
+      nome: r.politico.nome,
+      partido: r.politico.partido,
+      uf: r.politico.uf,
+      casa: r.politico.casa,
+      legislaturas: r.politico.legislaturas,
+      serieMensal: r.serieMensal,
+      fotoUrl: r.politico.fotoUrl,
+      mandato: r.politico.mandato,
+      municipio: r.politico.municipio,
+    }))
 }
 
 // UFs com parlamentar FEDERAL (câmara/senado) nos dados, ordenadas. Alimenta o seletor de estado.
