@@ -1,0 +1,6230 @@
+[
+  {
+    "id": "alesc-240001679646-2023-03-1",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.01
+  },
+  {
+    "id": "alesc-240001679646-2023-05-2",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-31",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 30.05
+  },
+  {
+    "id": "alesc-240001679646-2023-06-3",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-30",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 107.41
+  },
+  {
+    "id": "alesc-240001679646-2023-11-4",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 221.63
+  },
+  {
+    "id": "alesc-240001679646-2023-02-5",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-28",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-03-6",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-04-7",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-04-30",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-05-8",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-31",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-06-9",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-30",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-07-10",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-31",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-08-11",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-31",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-09-12",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-30",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-10-13",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-31",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-11-14",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-12-15",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-31",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2023-02-16",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-28",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.84
+  },
+  {
+    "id": "alesc-240001679646-2023-03-17",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.71
+  },
+  {
+    "id": "alesc-240001679646-2023-05-18",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-31",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 49
+  },
+  {
+    "id": "alesc-240001679646-2023-06-19",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-30",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.31
+  },
+  {
+    "id": "alesc-240001679646-2023-07-20",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-31",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 18.16
+  },
+  {
+    "id": "alesc-240001679646-2023-08-21",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-31",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.31
+  },
+  {
+    "id": "alesc-240001679646-2023-09-22",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-30",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 26.06
+  },
+  {
+    "id": "alesc-240001679646-2023-06-23",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-16",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": -945
+  },
+  {
+    "id": "alesc-240001679646-2023-06-24",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-16",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "EVANDRO PEGORARO"
+    },
+    "valor": -585
+  },
+  {
+    "id": "alesc-240001679646-2023-02-25",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-15",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1890
+  },
+  {
+    "id": "alesc-240001679646-2023-03-26",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-16",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2835
+  },
+  {
+    "id": "alesc-240001679646-2023-03-27",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-29",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-05-28",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-09",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1890
+  },
+  {
+    "id": "alesc-240001679646-2023-06-29",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-14",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-06-30",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-21",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-07-31",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-04",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1890
+  },
+  {
+    "id": "alesc-240001679646-2023-08-32",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-08",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1417.5
+  },
+  {
+    "id": "alesc-240001679646-2023-09-33",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-27",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-11-34",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-11-35",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2390
+  },
+  {
+    "id": "alesc-240001679646-2023-11-36",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-29",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1890
+  },
+  {
+    "id": "alesc-240001679646-2023-12-37",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-13",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 945
+  },
+  {
+    "id": "alesc-240001679646-2023-02-38",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-10",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "RUBIO MARCIANO FERREIRA"
+    },
+    "valor": 1170
+  },
+  {
+    "id": "alesc-240001679646-2023-02-39",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-15",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILSO VIZZOTTO"
+    },
+    "valor": 1170
+  },
+  {
+    "id": "alesc-240001679646-2023-06-40",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-14",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "EVANDRO PEGORARO"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-06-41",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-21",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "EVANDRO PEGORARO"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-06-42",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-06-43",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-09-44",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-19",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 1462.5
+  },
+  {
+    "id": "alesc-240001679646-2023-09-45",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-20",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MAURI JOSÉ ZUCCO"
+    },
+    "valor": 877.5
+  },
+  {
+    "id": "alesc-240001679646-2023-09-46",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-27",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-11-47",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 585
+  },
+  {
+    "id": "alesc-240001679646-2023-11-48",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 1450
+  },
+  {
+    "id": "alesc-240001679646-2023-03-49",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-07",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 773.71
+  },
+  {
+    "id": "alesc-240001679646-2023-03-50",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-28",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1234.69
+  },
+  {
+    "id": "alesc-240001679646-2023-03-51",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-30",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 448.45
+  },
+  {
+    "id": "alesc-240001679646-2023-03-52",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3017.02
+  },
+  {
+    "id": "alesc-240001679646-2023-05-53",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-08",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 925.81
+  },
+  {
+    "id": "alesc-240001679646-2023-05-54",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-23",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 960.16
+  },
+  {
+    "id": "alesc-240001679646-2023-06-55",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-06",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1189.09
+  },
+  {
+    "id": "alesc-240001679646-2023-06-56",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-06",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 908.91
+  },
+  {
+    "id": "alesc-240001679646-2023-06-57",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-15",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1189.09
+  },
+  {
+    "id": "alesc-240001679646-2023-06-58",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-15",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 938.66
+  },
+  {
+    "id": "alesc-240001679646-2023-08-59",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-02",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 644.32
+  },
+  {
+    "id": "alesc-240001679646-2023-08-60",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-28",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 524
+  },
+  {
+    "id": "alesc-240001679646-2023-09-61",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-18",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1579.12
+  },
+  {
+    "id": "alesc-240001679646-2023-09-62",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-19",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1095.15
+  },
+  {
+    "id": "alesc-240001679646-2023-10-63",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-06",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1394.34
+  },
+  {
+    "id": "alesc-240001679646-2023-10-64",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-06",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1851.43
+  },
+  {
+    "id": "alesc-240001679646-2023-11-65",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1080.61
+  },
+  {
+    "id": "alesc-240001679646-2023-11-66",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1080.62
+  },
+  {
+    "id": "alesc-240001679646-2023-11-67",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 0.01
+  },
+  {
+    "id": "alesc-240001679646-2023-11-68",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-29",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1197.54
+  },
+  {
+    "id": "alesc-240001679646-2023-11-69",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-29",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1197.54
+  },
+  {
+    "id": "alesc-240001679646-2023-12-70",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-11",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3913.19
+  },
+  {
+    "id": "alesc-240001679646-2023-12-71",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-13",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1312.75
+  },
+  {
+    "id": "alesc-240001679646-2023-11-72",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 1752.64
+  },
+  {
+    "id": "alesc-240001679646-2023-11-73",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 1816.66
+  },
+  {
+    "id": "alesc-240001679646-2023-02-74",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-10",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "RUBIO MARCIANO FERREIRA"
+    },
+    "valor": 143.59
+  },
+  {
+    "id": "alesc-240001679646-2023-02-75",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-10",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "RUBIO MARCIANO FERREIRA"
+    },
+    "valor": 146.73
+  },
+  {
+    "id": "alesc-240001679646-2023-06-76",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 88.71
+  },
+  {
+    "id": "alesc-240001679646-2023-06-77",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 106.99
+  },
+  {
+    "id": "alesc-240001679646-2023-06-78",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 148.68
+  },
+  {
+    "id": "alesc-240001679646-2023-06-79",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-23",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 148.68
+  },
+  {
+    "id": "alesc-240001679646-2023-11-80",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-21",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "MARCEL SCHMITZ GUTIA"
+    },
+    "valor": 80.59
+  },
+  {
+    "id": "alesc-240001679646-2023-06-81",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-27",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "MG IND ED GRAFICA COM E SER LTDA - ME"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2023-02-82",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-17",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 5.72
+  },
+  {
+    "id": "alesc-240001679646-2023-03-83",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-17",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 31.28
+  },
+  {
+    "id": "alesc-240001679646-2023-04-84",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-04-17",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 23.78
+  },
+  {
+    "id": "alesc-240001679646-2023-05-85",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-17",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 49
+  },
+  {
+    "id": "alesc-240001679646-2023-06-86",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-17",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 62.97
+  },
+  {
+    "id": "alesc-240001679646-2023-07-87",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-17",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 45.12
+  },
+  {
+    "id": "alesc-240001679646-2023-08-88",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-30",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 39.98
+  },
+  {
+    "id": "alesc-240001679646-2023-09-89",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-30",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 13.31
+  },
+  {
+    "id": "alesc-240001679646-2023-10-90",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-31",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 43.61
+  },
+  {
+    "id": "alesc-240001679646-2023-11-91",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.19
+  },
+  {
+    "id": "alesc-240001679646-2023-12-92",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-31",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 39.11
+  },
+  {
+    "id": "alesc-240001679646-2023-02-93",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-28",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-03-94",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-04-95",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-04-30",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-05-96",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-31",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-06-97",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-30",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 36.85
+  },
+  {
+    "id": "alesc-240001679646-2023-07-98",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-31",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-08-99",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-31",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-09-100",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-30",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 317.15
+  },
+  {
+    "id": "alesc-240001679646-2023-10-101",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-31",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-11-102",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-11-103",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 482.92
+  },
+  {
+    "id": "alesc-240001679646-2023-12-104",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-31",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2023-02-105",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-02-28",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-03-106",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-03-31",
+    "ano": 2023,
+    "mes": 3,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-04-107",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-04-30",
+    "ano": 2023,
+    "mes": 4,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-05-108",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-05-31",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-06-109",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-06-30",
+    "ano": 2023,
+    "mes": 6,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-07-110",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-07-31",
+    "ano": 2023,
+    "mes": 7,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-08-111",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-08-31",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-09-112",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-09-30",
+    "ano": 2023,
+    "mes": 9,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-10-113",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-10-31",
+    "ano": 2023,
+    "mes": 10,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-11-114",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-11-30",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2023-12-115",
+    "politicoId": "alesc-240001679646",
+    "data": "2023-12-31",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-03-116",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-31",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 996.05
+  },
+  {
+    "id": "alesc-240001679646-2024-06-117",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-30",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 863.97
+  },
+  {
+    "id": "alesc-240001679646-2024-07-118",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-31",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 55.24
+  },
+  {
+    "id": "alesc-240001679646-2024-08-119",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-31",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 878.53
+  },
+  {
+    "id": "alesc-240001679646-2024-09-120",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8.01
+  },
+  {
+    "id": "alesc-240001679646-2024-10-121",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 82.56
+  },
+  {
+    "id": "alesc-240001679646-2024-11-122",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 867.06
+  },
+  {
+    "id": "alesc-240001679646-2024-12-123",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-31",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 842.09
+  },
+  {
+    "id": "alesc-240001679646-2024-01-124",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-01-31",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2024-02-125",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-29",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2024-03-126",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-31",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.55
+  },
+  {
+    "id": "alesc-240001679646-2024-04-127",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-30",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-05-128",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-31",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-06-129",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-30",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-07-130",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-31",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-08-131",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-30",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-09-132",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-10-133",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 115.56
+  },
+  {
+    "id": "alesc-240001679646-2024-11-134",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 107.78
+  },
+  {
+    "id": "alesc-240001679646-2024-12-135",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-30",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2024-09-136",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 17.79
+  },
+  {
+    "id": "alesc-240001679646-2024-10-137",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.08
+  },
+  {
+    "id": "alesc-240001679646-2024-11-138",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9.29
+  },
+  {
+    "id": "alesc-240001679646-2024-12-139",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-30",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.16
+  },
+  {
+    "id": "alesc-240001679646-2024-02-140",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-21",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1976
+  },
+  {
+    "id": "alesc-240001679646-2024-02-141",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-27",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 988
+  },
+  {
+    "id": "alesc-240001679646-2024-03-142",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-13",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1482
+  },
+  {
+    "id": "alesc-240001679646-2024-04-143",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-03",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1482
+  },
+  {
+    "id": "alesc-240001679646-2024-04-144",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-08",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 4375
+  },
+  {
+    "id": "alesc-240001679646-2024-04-145",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-22",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 988
+  },
+  {
+    "id": "alesc-240001679646-2024-06-146",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-18",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1976
+  },
+  {
+    "id": "alesc-240001679646-2024-06-147",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-20",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 494
+  },
+  {
+    "id": "alesc-240001679646-2024-10-148",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-22",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 988
+  },
+  {
+    "id": "alesc-240001679646-2024-10-149",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-29",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1976
+  },
+  {
+    "id": "alesc-240001679646-2024-12-150",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-02",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3750
+  },
+  {
+    "id": "alesc-240001679646-2024-02-151",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-22",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1224
+  },
+  {
+    "id": "alesc-240001679646-2024-03-152",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-06",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 306
+  },
+  {
+    "id": "alesc-240001679646-2024-03-153",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-13",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILO BORTOLI"
+    },
+    "valor": 918
+  },
+  {
+    "id": "alesc-240001679646-2024-03-154",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-13",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 612
+  },
+  {
+    "id": "alesc-240001679646-2024-04-155",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-03",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 918
+  },
+  {
+    "id": "alesc-240001679646-2024-04-156",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-08",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 2653
+  },
+  {
+    "id": "alesc-240001679646-2024-05-157",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-02",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SUSANA RIGO"
+    },
+    "valor": 1836
+  },
+  {
+    "id": "alesc-240001679646-2024-05-158",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-29",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SUSANA RIGO"
+    },
+    "valor": 1836
+  },
+  {
+    "id": "alesc-240001679646-2024-06-159",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-10",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 612
+  },
+  {
+    "id": "alesc-240001679646-2024-06-160",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-11",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 612
+  },
+  {
+    "id": "alesc-240001679646-2024-06-161",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-27",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1224
+  },
+  {
+    "id": "alesc-240001679646-2024-06-162",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-27",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SUSANA RIGO"
+    },
+    "valor": 1836
+  },
+  {
+    "id": "alesc-240001679646-2024-11-163",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-21",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1836
+  },
+  {
+    "id": "alesc-240001679646-2024-11-164",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-26",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 612
+  },
+  {
+    "id": "alesc-240001679646-2024-11-165",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "GRÁFICA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 500
+  },
+  {
+    "id": "alesc-240001679646-2024-01-166",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-01-29",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1156.59
+  },
+  {
+    "id": "alesc-240001679646-2024-02-167",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-07",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1574.55
+  },
+  {
+    "id": "alesc-240001679646-2024-02-168",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-09",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1098.29
+  },
+  {
+    "id": "alesc-240001679646-2024-02-169",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-27",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1045.19
+  },
+  {
+    "id": "alesc-240001679646-2024-02-170",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-27",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1045.19
+  },
+  {
+    "id": "alesc-240001679646-2024-03-171",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-04",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 915.65
+  },
+  {
+    "id": "alesc-240001679646-2024-03-172",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-11",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 930.24
+  },
+  {
+    "id": "alesc-240001679646-2024-03-173",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-11",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 930.24
+  },
+  {
+    "id": "alesc-240001679646-2024-03-174",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-25",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 641.59
+  },
+  {
+    "id": "alesc-240001679646-2024-04-175",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-03",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3833.65
+  },
+  {
+    "id": "alesc-240001679646-2024-04-176",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-04",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 900.5
+  },
+  {
+    "id": "alesc-240001679646-2024-04-177",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-04",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1235.89
+  },
+  {
+    "id": "alesc-240001679646-2024-04-178",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-04",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 936.74
+  },
+  {
+    "id": "alesc-240001679646-2024-04-179",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-10",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 963.61
+  },
+  {
+    "id": "alesc-240001679646-2024-04-180",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-10",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 963.62
+  },
+  {
+    "id": "alesc-240001679646-2024-04-181",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-16",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 581.41
+  },
+  {
+    "id": "alesc-240001679646-2024-04-182",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-22",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1456.19
+  },
+  {
+    "id": "alesc-240001679646-2024-05-183",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-02",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 652.28
+  },
+  {
+    "id": "alesc-240001679646-2024-05-184",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-02",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 652.28
+  },
+  {
+    "id": "alesc-240001679646-2024-06-185",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-07",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 602.17
+  },
+  {
+    "id": "alesc-240001679646-2024-06-186",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-18",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1062.74
+  },
+  {
+    "id": "alesc-240001679646-2024-06-187",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-18",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1062.74
+  },
+  {
+    "id": "alesc-240001679646-2024-07-188",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-12",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 624.47
+  },
+  {
+    "id": "alesc-240001679646-2024-09-189",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-10",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 584.78
+  },
+  {
+    "id": "alesc-240001679646-2024-09-190",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-23",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 295.04
+  },
+  {
+    "id": "alesc-240001679646-2024-10-191",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-22",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 590.81
+  },
+  {
+    "id": "alesc-240001679646-2024-10-192",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-22",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 590.81
+  },
+  {
+    "id": "alesc-240001679646-2024-10-193",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-29",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 695.52
+  },
+  {
+    "id": "alesc-240001679646-2024-10-194",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-29",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 695.52
+  },
+  {
+    "id": "alesc-240001679646-2024-11-195",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-06",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 565.24
+  },
+  {
+    "id": "alesc-240001679646-2024-11-196",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-07",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 372.36
+  },
+  {
+    "id": "alesc-240001679646-2024-11-197",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-07",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 453.24
+  },
+  {
+    "id": "alesc-240001679646-2024-11-198",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-07",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2980.37
+  },
+  {
+    "id": "alesc-240001679646-2024-11-199",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-08",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 859.97
+  },
+  {
+    "id": "alesc-240001679646-2024-12-200",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-10",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 792.86
+  },
+  {
+    "id": "alesc-240001679646-2024-12-201",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-19",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 628.03
+  },
+  {
+    "id": "alesc-240001679646-2024-04-202",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-04",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1235.89
+  },
+  {
+    "id": "alesc-240001679646-2024-04-203",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-04",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 988.72
+  },
+  {
+    "id": "alesc-240001679646-2024-06-204",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-10",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 191.36
+  },
+  {
+    "id": "alesc-240001679646-2024-06-205",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-11",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 129.6
+  },
+  {
+    "id": "alesc-240001679646-2024-06-206",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-11",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 129.61
+  },
+  {
+    "id": "alesc-240001679646-2024-11-207",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-26",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "LEANDRO DURIGON"
+    },
+    "valor": 133.65
+  },
+  {
+    "id": "alesc-240001679646-2024-01-208",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-01-31",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 18.14
+  },
+  {
+    "id": "alesc-240001679646-2024-02-209",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-17",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.45
+  },
+  {
+    "id": "alesc-240001679646-2024-03-210",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-31",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 16.56
+  },
+  {
+    "id": "alesc-240001679646-2024-04-211",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-30",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 23.43
+  },
+  {
+    "id": "alesc-240001679646-2024-04-212",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-30",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 10.2
+  },
+  {
+    "id": "alesc-240001679646-2024-05-213",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-31",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 29.26
+  },
+  {
+    "id": "alesc-240001679646-2024-06-214",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-30",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.37
+  },
+  {
+    "id": "alesc-240001679646-2024-07-215",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-31",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.23
+  },
+  {
+    "id": "alesc-240001679646-2024-08-216",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-31",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.38
+  },
+  {
+    "id": "alesc-240001679646-2024-09-217",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 20.76
+  },
+  {
+    "id": "alesc-240001679646-2024-10-218",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 30.58
+  },
+  {
+    "id": "alesc-240001679646-2024-11-219",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.77
+  },
+  {
+    "id": "alesc-240001679646-2024-12-220",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-30",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 14.52
+  },
+  {
+    "id": "alesc-240001679646-2024-01-221",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-01-31",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-02-222",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-29",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 37.6
+  },
+  {
+    "id": "alesc-240001679646-2024-03-223",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-31",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-04-224",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-30",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-05-225",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-31",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-06-226",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-30",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-07-227",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-31",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-08-228",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-31",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.59
+  },
+  {
+    "id": "alesc-240001679646-2024-08-229",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-31",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-09-230",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.59
+  },
+  {
+    "id": "alesc-240001679646-2024-09-231",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-10-232",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.59
+  },
+  {
+    "id": "alesc-240001679646-2024-10-233",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-11-234",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.59
+  },
+  {
+    "id": "alesc-240001679646-2024-11-235",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-12-236",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-30",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 91.77
+  },
+  {
+    "id": "alesc-240001679646-2024-12-237",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-30",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2024-01-238",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-01-31",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-02-239",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-02-29",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-03-240",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-03-31",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-04-241",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-04-30",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-05-242",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-05-31",
+    "ano": 2024,
+    "mes": 5,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-06-243",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-06-30",
+    "ano": 2024,
+    "mes": 6,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-07-244",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-07-31",
+    "ano": 2024,
+    "mes": 7,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-08-245",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-08-31",
+    "ano": 2024,
+    "mes": 8,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-09-246",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-09-30",
+    "ano": 2024,
+    "mes": 9,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-10-247",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-10-31",
+    "ano": 2024,
+    "mes": 10,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-11-248",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-11-30",
+    "ano": 2024,
+    "mes": 11,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2024-12-249",
+    "politicoId": "alesc-240001679646",
+    "data": "2024-12-31",
+    "ano": 2024,
+    "mes": 12,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-02-250",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 101.72
+  },
+  {
+    "id": "alesc-240001679646-2025-03-251",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 950.52
+  },
+  {
+    "id": "alesc-240001679646-2025-05-252",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 102.61
+  },
+  {
+    "id": "alesc-240001679646-2025-06-253",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 17.39
+  },
+  {
+    "id": "alesc-240001679646-2025-07-254",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 51.74
+  },
+  {
+    "id": "alesc-240001679646-2025-08-255",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 90.39
+  },
+  {
+    "id": "alesc-240001679646-2025-09-256",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 16.02
+  },
+  {
+    "id": "alesc-240001679646-2025-10-257",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 918.66
+  },
+  {
+    "id": "alesc-240001679646-2025-11-258",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-30",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 2433.52
+  },
+  {
+    "id": "alesc-240001679646-2025-01-259",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-31",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-02-260",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-03-261",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-04-262",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-05-263",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-06-264",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-07-265",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-08-266",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-09-267",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-10-268",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-12-269",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-30",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-12-270",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2025-02-271",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 50.68
+  },
+  {
+    "id": "alesc-240001679646-2025-05-272",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 29.87
+  },
+  {
+    "id": "alesc-240001679646-2025-06-273",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.03
+  },
+  {
+    "id": "alesc-240001679646-2025-07-274",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 66.46
+  },
+  {
+    "id": "alesc-240001679646-2025-10-275",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 18.62
+  },
+  {
+    "id": "alesc-240001679646-2025-11-276",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-30",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.03
+  },
+  {
+    "id": "alesc-240001679646-2025-12-277",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.03
+  },
+  {
+    "id": "alesc-240001679646-2025-02-278",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-04",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1035
+  },
+  {
+    "id": "alesc-240001679646-2025-02-279",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-04",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 4585
+  },
+  {
+    "id": "alesc-240001679646-2025-02-280",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-19",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-02-281",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-20",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 517.5
+  },
+  {
+    "id": "alesc-240001679646-2025-02-282",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-26",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-04-283",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-08",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-04-284",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-22",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3930
+  },
+  {
+    "id": "alesc-240001679646-2025-05-285",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-13",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1035
+  },
+  {
+    "id": "alesc-240001679646-2025-05-286",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-13",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2620
+  },
+  {
+    "id": "alesc-240001679646-2025-05-287",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-21",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-06-288",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-12",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 5240
+  },
+  {
+    "id": "alesc-240001679646-2025-06-289",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-07-290",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-09",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-08-291",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-12",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1552.5
+  },
+  {
+    "id": "alesc-240001679646-2025-08-292",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-25",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-08-293",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-25",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 4585
+  },
+  {
+    "id": "alesc-240001679646-2025-09-294",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-11",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1035
+  },
+  {
+    "id": "alesc-240001679646-2025-09-295",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-24",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-10-296",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-08",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2070
+  },
+  {
+    "id": "alesc-240001679646-2025-10-297",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-16",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2620
+  },
+  {
+    "id": "alesc-240001679646-2025-12-298",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-11",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1552.5
+  },
+  {
+    "id": "alesc-240001679646-2025-01-299",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-28",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 2779
+  },
+  {
+    "id": "alesc-240001679646-2025-02-300",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-19",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MURILO DAMIANI PERDONA"
+    },
+    "valor": 1602.5
+  },
+  {
+    "id": "alesc-240001679646-2025-04-301",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "FELIPE BORTOLI"
+    },
+    "valor": 1602.5
+  },
+  {
+    "id": "alesc-240001679646-2025-04-302",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 1602.5
+  },
+  {
+    "id": "alesc-240001679646-2025-04-303",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-08",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ILTON CARVALHO"
+    },
+    "valor": 961.5
+  },
+  {
+    "id": "alesc-240001679646-2025-04-304",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-14",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MURILO DAMIANI PERDONA"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-04-305",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 961.5
+  },
+  {
+    "id": "alesc-240001679646-2025-05-306",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-21",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-07-307",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-11",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "RAUL RIBAS NETO"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-07-308",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-15",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MAURI JOSE ZUCCO"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-08-309",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-04",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "RAUL RIBAS NETO"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-08-310",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-14",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ILTON CARVALHO"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-08-311",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-26",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 2779
+  },
+  {
+    "id": "alesc-240001679646-2025-09-312",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-02",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-09-313",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-11",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-09-314",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-15",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILSO VIZZOTTO"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-09-315",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-24",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILSO VIZZOTTO"
+    },
+    "valor": 1282
+  },
+  {
+    "id": "alesc-240001679646-2025-10-316",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-08",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ILTON CARVALHO"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-11-317",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-19",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MURILO DAMIANI PERDONA"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-11-318",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-26",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MURILO DAMIANI PERDONA"
+    },
+    "valor": 961.5
+  },
+  {
+    "id": "alesc-240001679646-2025-11-319",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-26",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "ILTON CARVALHO"
+    },
+    "valor": 641
+  },
+  {
+    "id": "alesc-240001679646-2025-08-320",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-29",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "GRÁFICA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 200
+  },
+  {
+    "id": "alesc-240001679646-2025-01-321",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-27",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 797.01
+  },
+  {
+    "id": "alesc-240001679646-2025-01-322",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-27",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2795.87
+  },
+  {
+    "id": "alesc-240001679646-2025-01-323",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-29",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1167.05
+  },
+  {
+    "id": "alesc-240001679646-2025-02-324",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-06",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2304.78
+  },
+  {
+    "id": "alesc-240001679646-2025-02-325",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-20",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 880.93
+  },
+  {
+    "id": "alesc-240001679646-2025-02-326",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-26",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 739.12
+  },
+  {
+    "id": "alesc-240001679646-2025-03-327",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-18",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 855.32
+  },
+  {
+    "id": "alesc-240001679646-2025-03-328",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-18",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 855.33
+  },
+  {
+    "id": "alesc-240001679646-2025-04-329",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-09",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1984.11
+  },
+  {
+    "id": "alesc-240001679646-2025-04-330",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-09",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1606.65
+  },
+  {
+    "id": "alesc-240001679646-2025-04-331",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-10",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 990.83
+  },
+  {
+    "id": "alesc-240001679646-2025-04-332",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-29",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 903.2
+  },
+  {
+    "id": "alesc-240001679646-2025-05-333",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-08",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1052.36
+  },
+  {
+    "id": "alesc-240001679646-2025-05-334",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-08",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 762.61
+  },
+  {
+    "id": "alesc-240001679646-2025-05-335",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-08",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 995.35
+  },
+  {
+    "id": "alesc-240001679646-2025-05-336",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-27",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1716.87
+  },
+  {
+    "id": "alesc-240001679646-2025-05-337",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-27",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1000.51
+  },
+  {
+    "id": "alesc-240001679646-2025-05-338",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-27",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1080.45
+  },
+  {
+    "id": "alesc-240001679646-2025-05-339",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-27",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 677.49
+  },
+  {
+    "id": "alesc-240001679646-2025-06-340",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1096.67
+  },
+  {
+    "id": "alesc-240001679646-2025-07-341",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-09",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1366.84
+  },
+  {
+    "id": "alesc-240001679646-2025-08-342",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-25",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2007.7
+  },
+  {
+    "id": "alesc-240001679646-2025-08-343",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-25",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2007.69
+  },
+  {
+    "id": "alesc-240001679646-2025-08-344",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-25",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1179.84
+  },
+  {
+    "id": "alesc-240001679646-2025-09-345",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-16",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1033.76
+  },
+  {
+    "id": "alesc-240001679646-2025-09-346",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-16",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1033.77
+  },
+  {
+    "id": "alesc-240001679646-2025-09-347",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-22",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1167.81
+  },
+  {
+    "id": "alesc-240001679646-2025-09-348",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-22",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1167.82
+  },
+  {
+    "id": "alesc-240001679646-2025-10-349",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-07",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1773.1
+  },
+  {
+    "id": "alesc-240001679646-2025-10-350",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-07",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ZANILDE GRASIELA CRISTOFOLINI"
+    },
+    "valor": 1773.09
+  },
+  {
+    "id": "alesc-240001679646-2025-10-351",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-14",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 274
+  },
+  {
+    "id": "alesc-240001679646-2025-10-352",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-14",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 165
+  },
+  {
+    "id": "alesc-240001679646-2025-10-353",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-24",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ZANILDE GRASIELA CRISTOFOLINI"
+    },
+    "valor": 560.79
+  },
+  {
+    "id": "alesc-240001679646-2025-11-354",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 906.22
+  },
+  {
+    "id": "alesc-240001679646-2025-11-355",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 906.23
+  },
+  {
+    "id": "alesc-240001679646-2025-11-356",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-24",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1892.1
+  },
+  {
+    "id": "alesc-240001679646-2025-11-357",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-24",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1135.16
+  },
+  {
+    "id": "alesc-240001679646-2025-12-358",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-09",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3411.82
+  },
+  {
+    "id": "alesc-240001679646-2025-01-359",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-28",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 4670.03
+  },
+  {
+    "id": "alesc-240001679646-2025-01-360",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-28",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 1366.05
+  },
+  {
+    "id": "alesc-240001679646-2025-02-361",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-06",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 2267.84
+  },
+  {
+    "id": "alesc-240001679646-2025-08-362",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-26",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1411.8
+  },
+  {
+    "id": "alesc-240001679646-2025-08-363",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-26",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1411.8
+  },
+  {
+    "id": "alesc-240001679646-2025-04-364",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "ARLAN GULIANI"
+    },
+    "valor": 183.07
+  },
+  {
+    "id": "alesc-240001679646-2025-11-365",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Sabia Gestão Criativa Ltda"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-12-366",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-03",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Sabia Gestão Criativa Ltda"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-12-367",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Sabia Gestão Criativa Ltda"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-02-368",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-04",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.02
+  },
+  {
+    "id": "alesc-240001679646-2025-02-369",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-04",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.02
+  },
+  {
+    "id": "alesc-240001679646-2025-02-370",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-04",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 62.42
+  },
+  {
+    "id": "alesc-240001679646-2025-03-371",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-05",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.06
+  },
+  {
+    "id": "alesc-240001679646-2025-03-372",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-05",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.01
+  },
+  {
+    "id": "alesc-240001679646-2025-03-373",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-05",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 67.32
+  },
+  {
+    "id": "alesc-240001679646-2025-04-374",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.03
+  },
+  {
+    "id": "alesc-240001679646-2025-04-375",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.08
+  },
+  {
+    "id": "alesc-240001679646-2025-04-376",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.86
+  },
+  {
+    "id": "alesc-240001679646-2025-04-377",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 80.04
+  },
+  {
+    "id": "alesc-240001679646-2025-04-378",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 88.02
+  },
+  {
+    "id": "alesc-240001679646-2025-04-379",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 97.26
+  },
+  {
+    "id": "alesc-240001679646-2025-04-380",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 107.05
+  },
+  {
+    "id": "alesc-240001679646-2025-04-381",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-04",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 12.81
+  },
+  {
+    "id": "alesc-240001679646-2025-06-382",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-06",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 118.04
+  },
+  {
+    "id": "alesc-240001679646-2025-06-383",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-06",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 118.06
+  },
+  {
+    "id": "alesc-240001679646-2025-06-384",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-06",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 86.69
+  },
+  {
+    "id": "alesc-240001679646-2025-07-385",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-07",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 130.66
+  },
+  {
+    "id": "alesc-240001679646-2025-07-386",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-07",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 143
+  },
+  {
+    "id": "alesc-240001679646-2025-07-387",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-07",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 29.52
+  },
+  {
+    "id": "alesc-240001679646-2025-08-388",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-05",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 484.81
+  },
+  {
+    "id": "alesc-240001679646-2025-09-389",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-04",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Nova Print Grafica e Editora Ltda"
+    },
+    "valor": 3490
+  },
+  {
+    "id": "alesc-240001679646-2025-09-390",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-04",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Cristiano Soares"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-09-391",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-04",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 179.48
+  },
+  {
+    "id": "alesc-240001679646-2025-10-392",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-06",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 345.47
+  },
+  {
+    "id": "alesc-240001679646-2025-10-393",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-06",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Cristiano Soares"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-11-394",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 128.17
+  },
+  {
+    "id": "alesc-240001679646-2025-11-395",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Cristiano Soares"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-11-396",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-05",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Nova Print Grafica e Editora Ltda"
+    },
+    "valor": 1260
+  },
+  {
+    "id": "alesc-240001679646-2025-12-397",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-03",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 94.07
+  },
+  {
+    "id": "alesc-240001679646-2025-12-398",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-03",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Cristiano Soares"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-12-399",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Cristiano Soares"
+    },
+    "valor": 1500
+  },
+  {
+    "id": "alesc-240001679646-2025-12-400",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 145.53
+  },
+  {
+    "id": "alesc-240001679646-2025-01-401",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-31",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8.81
+  },
+  {
+    "id": "alesc-240001679646-2025-02-402",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 18.82
+  },
+  {
+    "id": "alesc-240001679646-2025-03-403",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 19.7
+  },
+  {
+    "id": "alesc-240001679646-2025-04-404",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 15.43
+  },
+  {
+    "id": "alesc-240001679646-2025-05-405",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8.03
+  },
+  {
+    "id": "alesc-240001679646-2025-06-406",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 24.77
+  },
+  {
+    "id": "alesc-240001679646-2025-07-407",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 14.76
+  },
+  {
+    "id": "alesc-240001679646-2025-08-408",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.63
+  },
+  {
+    "id": "alesc-240001679646-2025-09-409",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.71
+  },
+  {
+    "id": "alesc-240001679646-2025-10-410",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 18.8
+  },
+  {
+    "id": "alesc-240001679646-2025-11-411",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-30",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 22.68
+  },
+  {
+    "id": "alesc-240001679646-2025-12-412",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 25.1
+  },
+  {
+    "id": "alesc-240001679646-2025-01-413",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-31",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.45
+  },
+  {
+    "id": "alesc-240001679646-2025-01-414",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-31",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-02-415",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-02-416",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 263.45
+  },
+  {
+    "id": "alesc-240001679646-2025-03-417",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.44
+  },
+  {
+    "id": "alesc-240001679646-2025-03-418",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 86.84
+  },
+  {
+    "id": "alesc-240001679646-2025-03-419",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-04-420",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 217.1
+  },
+  {
+    "id": "alesc-240001679646-2025-04-421",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-05-422",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-05-423",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 217.1
+  },
+  {
+    "id": "alesc-240001679646-2025-06-424",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-06-425",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 212.38
+  },
+  {
+    "id": "alesc-240001679646-2025-07-426",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-08-427",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-08-428",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 204.14
+  },
+  {
+    "id": "alesc-240001679646-2025-09-429",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.44
+  },
+  {
+    "id": "alesc-240001679646-2025-09-430",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.73
+  },
+  {
+    "id": "alesc-240001679646-2025-10-431",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-30",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 261.45
+  },
+  {
+    "id": "alesc-240001679646-2025-10-432",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.25
+  },
+  {
+    "id": "alesc-240001679646-2025-11-433",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-30",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.53
+  },
+  {
+    "id": "alesc-240001679646-2025-12-434",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.41
+  },
+  {
+    "id": "alesc-240001679646-2025-01-435",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-01-31",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-02-436",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-02-28",
+    "ano": 2025,
+    "mes": 2,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-03-437",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-03-31",
+    "ano": 2025,
+    "mes": 3,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-04-438",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-04-30",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-05-439",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-05-31",
+    "ano": 2025,
+    "mes": 5,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 8663.73
+  },
+  {
+    "id": "alesc-240001679646-2025-06-440",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-06-30",
+    "ano": 2025,
+    "mes": 6,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-07-441",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-07-31",
+    "ano": 2025,
+    "mes": 7,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-08-442",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-08-31",
+    "ano": 2025,
+    "mes": 8,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-09-443",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-09-30",
+    "ano": 2025,
+    "mes": 9,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-10-444",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-10-31",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-11-445",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-11-30",
+    "ano": 2025,
+    "mes": 11,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2025-12-446",
+    "politicoId": "alesc-240001679646",
+    "data": "2025-12-31",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2026-02-447",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-28",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "ALMOXARIFADO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 138.39
+  },
+  {
+    "id": "alesc-240001679646-2026-01-448",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-31",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2026-02-449",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-28",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2026-03-450",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2026-04-451",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-30",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "ASSINATURA DE TV A CABO",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 103.26
+  },
+  {
+    "id": "alesc-240001679646-2026-03-452",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "CORRESPONDÊNCIA / TELEGRAMA",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 38.06
+  },
+  {
+    "id": "alesc-240001679646-2026-03-453",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": -1002
+  },
+  {
+    "id": "alesc-240001679646-2026-02-454",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-10",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2156
+  },
+  {
+    "id": "alesc-240001679646-2026-02-455",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-18",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1617
+  },
+  {
+    "id": "alesc-240001679646-2026-03-456",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-11",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2156
+  },
+  {
+    "id": "alesc-240001679646-2026-04-457",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-08",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1078
+  },
+  {
+    "id": "alesc-240001679646-2026-04-458",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-08",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 4092
+  },
+  {
+    "id": "alesc-240001679646-2026-04-459",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-16",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 3234
+  },
+  {
+    "id": "alesc-240001679646-2026-04-460",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-28",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2156
+  },
+  {
+    "id": "alesc-240001679646-2026-05-461",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-12",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2695
+  },
+  {
+    "id": "alesc-240001679646-2026-05-462",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-25",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2156
+  },
+  {
+    "id": "alesc-240001679646-2026-02-463",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-18",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILSO VIZZOTTO"
+    },
+    "valor": 668
+  },
+  {
+    "id": "alesc-240001679646-2026-03-464",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-09",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "CLAUDEMIR BASQUERA"
+    },
+    "valor": 1336
+  },
+  {
+    "id": "alesc-240001679646-2026-03-465",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-19",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MARCIA APARECIDA DA SILVA JUNG"
+    },
+    "valor": 1336
+  },
+  {
+    "id": "alesc-240001679646-2026-03-466",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-24",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1002
+  },
+  {
+    "id": "alesc-240001679646-2026-04-467",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 2672
+  },
+  {
+    "id": "alesc-240001679646-2026-04-468",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-08",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "CLAUDEMIR BASQUERA"
+    },
+    "valor": 2478
+  },
+  {
+    "id": "alesc-240001679646-2026-04-469",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-16",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 2004
+  },
+  {
+    "id": "alesc-240001679646-2026-04-470",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-17",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NATANIELI DE FATIMA FELIPE SCHREINER"
+    },
+    "valor": 668
+  },
+  {
+    "id": "alesc-240001679646-2026-04-471",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-24",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "MURILO DAMIANI PERDONA"
+    },
+    "valor": 334
+  },
+  {
+    "id": "alesc-240001679646-2026-04-472",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-28",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "NILSO VIZZOTTO"
+    },
+    "valor": 1336
+  },
+  {
+    "id": "alesc-240001679646-2026-05-473",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-04",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1336
+  },
+  {
+    "id": "alesc-240001679646-2026-05-474",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-12",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "CLAUDEMIR BASQUERA"
+    },
+    "valor": 334
+  },
+  {
+    "id": "alesc-240001679646-2026-06-475",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-06-03",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "DIÁRIAS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1336
+  },
+  {
+    "id": "alesc-240001679646-2026-01-476",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-29",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 590.67
+  },
+  {
+    "id": "alesc-240001679646-2026-01-477",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-29",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 590.67
+  },
+  {
+    "id": "alesc-240001679646-2026-02-478",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-05",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 577.67
+  },
+  {
+    "id": "alesc-240001679646-2026-02-479",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-05",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 577.67
+  },
+  {
+    "id": "alesc-240001679646-2026-02-480",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-05",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 699
+  },
+  {
+    "id": "alesc-240001679646-2026-02-481",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-16",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1875.17
+  },
+  {
+    "id": "alesc-240001679646-2026-02-482",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-16",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1875.17
+  },
+  {
+    "id": "alesc-240001679646-2026-03-483",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-23",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1978.48
+  },
+  {
+    "id": "alesc-240001679646-2026-03-484",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-25",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1105.06
+  },
+  {
+    "id": "alesc-240001679646-2026-03-485",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-25",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1105.06
+  },
+  {
+    "id": "alesc-240001679646-2026-03-486",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1599.04
+  },
+  {
+    "id": "alesc-240001679646-2026-03-487",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1599.04
+  },
+  {
+    "id": "alesc-240001679646-2026-03-488",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1633.76
+  },
+  {
+    "id": "alesc-240001679646-2026-04-489",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-14",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2231.86
+  },
+  {
+    "id": "alesc-240001679646-2026-04-490",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-16",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1814.51
+  },
+  {
+    "id": "alesc-240001679646-2026-04-491",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-22",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1671.69
+  },
+  {
+    "id": "alesc-240001679646-2026-04-492",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-28",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2009.51
+  },
+  {
+    "id": "alesc-240001679646-2026-05-493",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-12",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 2076.51
+  },
+  {
+    "id": "alesc-240001679646-2026-06-494",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1526.18
+  },
+  {
+    "id": "alesc-240001679646-2026-06-495",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "NEODI SARETTA"
+    },
+    "valor": 1526.19
+  },
+  {
+    "id": "alesc-240001679646-2026-03-496",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "CLAUDEMIR BASQUERA"
+    },
+    "valor": 1124.79
+  },
+  {
+    "id": "alesc-240001679646-2026-03-497",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "CLAUDEMIR BASQUERA"
+    },
+    "valor": 1124.79
+  },
+  {
+    "id": "alesc-240001679646-2026-06-498",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-06-02",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "PASSAGENS",
+    "fornecedor": {
+      "nome": "SANDRO ROBERTO MACIEL"
+    },
+    "valor": 1698.86
+  },
+  {
+    "id": "alesc-240001679646-2026-04-499",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-07",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "INSTITUTO ARTE PESQUISAS E CONSULTORIAS LTDA"
+    },
+    "valor": 5750
+  },
+  {
+    "id": "alesc-240001679646-2026-04-500",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-07",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Sabia Gestão Criativa Ltda"
+    },
+    "valor": 3000
+  },
+  {
+    "id": "alesc-240001679646-2026-05-501",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-05",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "INSTITUTO ARTE PESQUISAS E CONSULTORIAS LTDA"
+    },
+    "valor": 5750
+  },
+  {
+    "id": "alesc-240001679646-2026-05-502",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-05",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "Sabia Gestão Criativa Ltda"
+    },
+    "valor": 3000
+  },
+  {
+    "id": "alesc-240001679646-2026-02-503",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-20",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 33.94
+  },
+  {
+    "id": "alesc-240001679646-2026-03-504",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-03",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 434.03
+  },
+  {
+    "id": "alesc-240001679646-2026-04-505",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-07",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 285.49
+  },
+  {
+    "id": "alesc-240001679646-2026-05-506",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-05",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "REEMBOLSOS",
+    "fornecedor": {
+      "nome": "FACEBOOK SERVICOS ONLINE DO BRASIL LTDA"
+    },
+    "valor": 895.66
+  },
+  {
+    "id": "alesc-240001679646-2026-01-507",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-31",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 23.51
+  },
+  {
+    "id": "alesc-240001679646-2026-02-508",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-28",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 24.34
+  },
+  {
+    "id": "alesc-240001679646-2026-03-509",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 26.14
+  },
+  {
+    "id": "alesc-240001679646-2026-04-510",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-30",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 26.59
+  },
+  {
+    "id": "alesc-240001679646-2026-01-511",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-31",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 39.44
+  },
+  {
+    "id": "alesc-240001679646-2026-02-512",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-28",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.5
+  },
+  {
+    "id": "alesc-240001679646-2026-03-513",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "TELEFONE",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 40.67
+  },
+  {
+    "id": "alesc-240001679646-2026-01-514",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-01-31",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2026-02-515",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-02-28",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2026-03-516",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 9326.87
+  },
+  {
+    "id": "alesc-240001679646-2026-03-517",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-03-31",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 1008.24
+  },
+  {
+    "id": "alesc-240001679646-2026-04-518",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-04-30",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 10335.11
+  },
+  {
+    "id": "alesc-240001679646-2026-05-519",
+    "politicoId": "alesc-240001679646",
+    "data": "2026-05-31",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "VEÍCULOS",
+    "fornecedor": {
+      "nome": ""
+    },
+    "valor": 10335.11
+  }
+]
