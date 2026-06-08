@@ -6448,6 +6448,409 @@
           "fotoUrl": "/fotos/deputados/270001643541.webp"
         }
       ]
+    },
+    {
+      "uf": "PB",
+      "sigla": "ALPB",
+      "nome": "Assembleia Legislativa da Paraíba",
+      "slug": "pb",
+      "modelo": "completo",
+      "subsidio": null,
+      "assentos": 36,
+      "nDeputados": 67,
+      "pisoCusto": null,
+      "deputados": [
+        {
+          "id": "alpb-12731",
+          "nome": "Adriano Galdino",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/89/89_foto_parlamentar_Jq2avFH.jpg"
+        },
+        {
+          "id": "alpb-30541",
+          "nome": "Anderson Monteiro",
+          "partido": "PV",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/157/157_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-556",
+          "nome": "Anísio Maia",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-592",
+          "nome": "Branco Mendes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/66/66_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16714",
+          "nome": "Buba Germano",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-30551",
+          "nome": "Cabo Gilberto Silva",
+          "partido": "PL"
+        },
+        {
+          "id": "alpb-595",
+          "nome": "Caio Roberto",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/116/116_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16715",
+          "nome": "Camila Toscano",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/131/131_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30557",
+          "nome": "Chió",
+          "partido": "PV",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/164/164_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30555",
+          "nome": "Cida Ramos",
+          "partido": "PT",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/156/156_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-616",
+          "nome": "Doda de Tião",
+          "partido": "PTB"
+        },
+        {
+          "id": "alpb-30561",
+          "nome": "Drª Paula",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/166/166_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30545",
+          "nome": "Dr. Erico",
+          "partido": "CIDA"
+        },
+        {
+          "id": "alpb-627",
+          "nome": "Edmilson Soares",
+          "partido": "POD"
+        },
+        {
+          "id": "alpb-30543",
+          "nome": "Eduardo Carneiro",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/158/158_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16717",
+          "nome": "Estela Bezerra",
+          "partido": "PT"
+        },
+        {
+          "id": "alpb-30547",
+          "nome": "Felipe Leitão",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/160/160_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16711",
+          "nome": "Galego Souza",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/134/134_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-658",
+          "nome": "Hervázio Bezerra",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/117/117_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16718",
+          "nome": "Inácio Falcão",
+          "partido": "PCdoB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/141/141_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-34607",
+          "nome": "Drª Jane Panta",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/170/170_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16722",
+          "nome": "Jeová Campos",
+          "partido": "PT"
+        },
+        {
+          "id": "alpb-16723",
+          "nome": "Bosco Carneiro",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/52/52_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-665",
+          "nome": "João Gonçalves",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/59/59_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30549",
+          "nome": "Júnior Araújo",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/161/161_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-675",
+          "nome": "Jutay Meneses",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/122/122_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-12732",
+          "nome": "Manoel Ludgério",
+          "partido": "PSDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/55/55_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30559",
+          "nome": "Moacir Rodrigues",
+          "partido": "PL"
+        },
+        {
+          "id": "alpb-30566",
+          "nome": "Pollyanna Dutra",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-682",
+          "nome": "Raniery Paulino",
+          "partido": "REP"
+        },
+        {
+          "id": "alpb-16726",
+          "nome": "Ricardo Barbosa",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-30563",
+          "nome": "Dr. Taciano Diniz",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/167/167_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-687",
+          "nome": "Tião Gomes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/35/35_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16727",
+          "nome": "Tovar",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/140/140_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30565",
+          "nome": "Del Wallber Virgolino",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/168/168_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30553",
+          "nome": "Wilson Filho",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/163/163_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47918",
+          "nome": "Chico Mendes",
+          "partido": "PSB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/175/175_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47919",
+          "nome": "Danielle do Vale",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/176/176_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47922",
+          "nome": "Eduardo Brito",
+          "partido": "PSB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/178/178_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47923",
+          "nome": "Fabio Ramalho",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/179/179_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47925",
+          "nome": "Francisca Motta",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/14/14_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47926",
+          "nome": "George Morais",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/180/180_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47928",
+          "nome": "Gilbertinho",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/181/181_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47933",
+          "nome": "Sargento Neto",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/184/184_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47929",
+          "nome": "João Paulo Segundo",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/182/182_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47931",
+          "nome": "Luciano Cartaxo",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/101/101_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47932",
+          "nome": "Michel Henrique",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/183/183_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47921",
+          "nome": "Dr. Romualdo",
+          "partido": "PCdoB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/177/177_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47934",
+          "nome": "Tanilson Soares",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/185/185_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-49580",
+          "nome": "Silvia Benjamin",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/186/186_foto_parlamentar_DWibhHg.jpeg"
+        },
+        {
+          "id": "alpb-50116",
+          "nome": "Nilson Lacerda",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/187/187_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-50818",
+          "nome": "André Gadelha",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/91/91_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-51753",
+          "nome": "Alexandre de Zezé",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/190/190_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53388",
+          "nome": "Professor Francisco",
+          "partido": "REDE",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/195/195_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53289",
+          "nome": "Airton Pires",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/192/192_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53284",
+          "nome": "Juscelino do Peixe",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/194/194_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53389",
+          "nome": "Leonice Lopes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/193/193_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53473",
+          "nome": "Tarcisio Jardim",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/197/197_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55107",
+          "nome": "Lucinha Lima",
+          "partido": "PSD",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/198/198_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55108",
+          "nome": "Sargento Rui",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/200/200_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55991",
+          "nome": "Dinho Papaleguas",
+          "partido": "PSDB"
+        },
+        {
+          "id": "alpb-56534",
+          "nome": "Aron Andrade",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/202/202_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-6056",
+          "nome": "Márcio Roberto",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/76/foto_4.jpg"
+        },
+        {
+          "id": "alpb-59278",
+          "nome": "Cicinho Lima",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/203/foto.jpeg"
+        },
+        {
+          "id": "alpb-60239",
+          "nome": "Félix Araújo",
+          "partido": "REDE",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/204/foto_2.jpg"
+        },
+        {
+          "id": "alpb-63072",
+          "nome": "Dudu Soares",
+          "partido": "SD",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/205/205_foto_parlamentar_0D2KoFS.jpg"
+        },
+        {
+          "id": "alpb-67944",
+          "nome": "Dr. Aledson Moura",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/206/dr_aledson_moura.jpg"
+        }
+      ],
+      "totalPeriodo": 64675255.17000002
     }
   ]
 }
