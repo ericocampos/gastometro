@@ -1,6 +1,6 @@
 // collector/sources/alesc.test.ts
 import { describe, it, expect } from 'vitest'
-import { slug, numBr, dataBr, parseVerbaCsv } from './alesc.js'
+import { slug, numBr, dataBr, parseVerbaCsv, montarDespesasAlesc } from './alesc.js'
 
 // CSV real da ALESC: BOM no início, delimitador ';', cabeçalho exato, número BR, data BR.
 // Última linha é almoxarifado (Favorecido vazio). A 1ª linha é de 2022 (deve sair no filtro 2023+).
@@ -41,5 +41,30 @@ describe('parseVerbaCsv', () => {
     const interno = recs.find((r) => r.categoria === 'Combustível')!
     expect(interno.fornecedor).toBe('')
     expect(interno.valor).toBe(450.9)
+  })
+})
+
+describe('montarDespesasAlesc', () => {
+  it('gera Despesa na forma-padrão, politicoId por slug, id sequencial por deputado', () => {
+    const recs = parseVerbaCsv(CSV, 2023)
+    const ds = montarDespesasAlesc(recs)
+    // FERNANDO KRELLING tem 1 despesa 2023+; Ana Campos tem 2
+    const krelling = ds.filter((d) => d.politicoId === 'alesc-fernando-krelling')
+    const ana = ds.filter((d) => d.politicoId === 'alesc-ana-campos')
+    expect(krelling).toHaveLength(1)
+    expect(ana).toHaveLength(2)
+    expect(krelling[0]).toEqual({
+      id: 'alesc-fernando-krelling-2023-03-1',
+      politicoId: 'alesc-fernando-krelling',
+      data: '2023-03-15',
+      ano: 2023, mes: 3,
+      categoria: 'Locação de veículos',
+      fornecedor: { nome: 'LOCADORA CATARINENSE LTDA' },
+      valor: 3200,
+    })
+    // fornecedor vazio (uso interno) não inventa CNPJ nem nome
+    const interno = ana.find((d) => d.categoria === 'Combustível')!
+    expect(interno.fornecedor).toEqual({ nome: '' })
+    expect(interno.id).toBe('alesc-ana-campos-2023-04-2')
   })
 })
