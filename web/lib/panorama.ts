@@ -155,8 +155,8 @@ function montarNotaCobertura(cob: CoberturaEstadual, uf: string | undefined, ass
     if (!casa) return undefined
     if (casa.modelo === 'leve') {
       return casa.subsidio == null
-        ? `Da Assembleia (${casa.sigla}), o subsídio ainda não tem valor oficial; cota e gabinete estaduais entram quando a fonte do estado for integrada. Por ora, só o custo federal.`
-        : `Da Assembleia (${casa.sigla}), por ora só o subsídio estimado; cota e gabinete estaduais entram quando a fonte oficial do estado for integrada.`
+        ? `Este cálculo ainda não contabiliza a Assembleia (${casa.sigla}): a casa não tem valor de subsídio em fonte oficial. Por ora, só o custo federal; será atualizado assim que a fonte do estado for integrada.`
+        : `Da Assembleia (${casa.sigla}), este cálculo conta só o subsídio estimado (os salários dos deputados); a verba indenizatória e o gabinete ainda não entram, e serão somados assim que a fonte oficial do estado for integrada.`
     }
     // completo: pode faltar o subsídio oficial (ex.: ALPB) e/ou o gabinete (ex.: ALMG, ALESC)
     const partes: string[] = []

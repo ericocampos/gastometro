@@ -136,6 +136,18 @@ describe('calcularPanorama com camada estadual e escopo', () => {
     expect(p.perCapitaRotulo).toBe('Por habitante / ano')
     expect(p.bancadas).toEqual([])
   })
+  it('estado leve com subsídio: nota diz que conta só o subsídio e o resto entra quando integrado', () => {
+    const leveComSub: ResumoAssembleia[] = [
+      { uf: 'ES', sigla: 'ALES', nome: 'Assembleia Legislativa do Espírito Santo', slug: 'es', modelo: 'leve', subsidio: 30000, assentos: 30, nDeputados: 30, pisoCusto: null, deputados: [] },
+    ]
+    const p = calcularPanorama(series, custos, assessores, 4_000_000, cadeiras, leveComSub, { uf: 'ES', perCapitaRotulo: 'Por habitante / ano' })
+    expect(p.notaCobertura).toMatch(/só o subsídio estimado/i)
+    expect(p.notaCobertura).toMatch(/verba indenizatória e o gabinete/i)
+  })
+  it('estado leve sem subsídio oficial (AC): nota diz que ainda não contabiliza a Assembleia', () => {
+    const p = calcularPanorama(series, custos, assessores, 800_000, cadeiras, assembleias, { uf: 'AC', perCapitaRotulo: 'Por habitante / ano' })
+    expect(p.notaCobertura).toMatch(/ainda não contabiliza a Assembleia/i)
+  })
   it('estado completo sem subsídio oficial (ex.: ALPB): avisa na nota em vez de subestimar calado', () => {
     const semSub: ResumoAssembleia[] = [
       { uf: 'PB', sigla: 'ALPB', nome: 'Assembleia Legislativa da Paraíba', slug: 'pb', modelo: 'completo', subsidio: null, assentos: 36, nDeputados: 36, pisoCusto: null, deputados: [] },
