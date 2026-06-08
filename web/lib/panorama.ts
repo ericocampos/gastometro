@@ -1,7 +1,7 @@
 import type { SerieParlamentar } from './periodo'
 import type { Assessores, CustosMandato, ResumoAssembleia } from './tipos'
 
-export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string; nota?: string }
+export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string }
 export interface Contribuicao { subsidio: number; cota: number; gabinete: number; cadeiras: number }
 export interface CoberturaEstadual { totalCasas: number; comSubsidio: number; comCota: number; comGabinete: number; semSubsidioUfs: string[] }
 export interface CustoBancada { uf: string; total: number; cadeiras: number; porParlamentar: number }
@@ -142,16 +142,30 @@ function calcularPartidos(fed: SerieParlamentar[], ano: number): GastoPartido[] 
     .sort((a, b) => b.cota - a.cota)
 }
 
+/** "AC", "AC e RO", "AC, RO e PB" */
+function listaUfs(ufs: string[]): string {
+  if (ufs.length <= 1) return ufs[0] ?? ''
+  return `${ufs.slice(0, -1).join(', ')} e ${ufs[ufs.length - 1]}`
+}
+
 function montarNotaCobertura(cob: CoberturaEstadual, uf: string | undefined, assembleias: ResumoAssembleia[]): string | undefined {
   if (cob.totalCasas === 0) return undefined
   if (uf) {
     const casa = assembleias.find((c) => c.uf === uf)
     if (!casa) return undefined
-    if (casa.modelo === 'leve') return `Da Assembleia (${casa.sigla}), por ora só o subsídio estimado; cota e gabinete estaduais entram quando a fonte oficial do estado for integrada.`
-    if (cob.comGabinete === 0) return `Gabinete da Assembleia (${casa.sigla}) ainda não integrado (folha por servidor indisponível na fonte); subsídio e cota estaduais são desta casa.`
-    return undefined
+    if (casa.modelo === 'leve') {
+      return casa.subsidio == null
+        ? `Da Assembleia (${casa.sigla}), o subsídio ainda não tem valor oficial; cota e gabinete estaduais entram quando a fonte do estado for integrada. Por ora, só o custo federal.`
+        : `Da Assembleia (${casa.sigla}), por ora só o subsídio estimado; cota e gabinete estaduais entram quando a fonte oficial do estado for integrada.`
+    }
+    // completo: pode faltar o subsídio oficial (ex.: ALPB) e/ou o gabinete (ex.: ALMG, ALESC)
+    const partes: string[] = []
+    if (casa.subsidio == null) partes.push('o subsídio ainda não tem valor oficial')
+    if (cob.comGabinete === 0) partes.push('o gabinete ainda não foi integrado (folha por servidor indisponível na fonte)')
+    if (partes.length === 0) return undefined
+    return `Da Assembleia (${casa.sigla}), ${partes.join(' e ')}; o restante do custo estadual é desta casa.`
   }
-  const semSub = cob.semSubsidioUfs.length ? ` (${cob.semSubsidioUfs.join(' e ')} sem valor oficial)` : ''
+  const semSub = cob.semSubsidioUfs.length ? ` (${listaUfs(cob.semSubsidioUfs)} sem valor oficial)` : ''
   return `Camada estadual: subsídio de ${cob.comSubsidio} das ${cob.totalCasas} assembleias${semSub}; cota itemizada de ${cob.comCota} e gabinete de ${cob.comGabinete}. O resto entra conforme integramos os estados.`
 }
 

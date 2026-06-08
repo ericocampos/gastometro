@@ -136,4 +136,12 @@ describe('calcularPanorama com camada estadual e escopo', () => {
     expect(p.perCapitaRotulo).toBe('Por habitante / ano')
     expect(p.bancadas).toEqual([])
   })
+  it('estado completo sem subsídio oficial (ex.: ALPB): avisa na nota em vez de subestimar calado', () => {
+    const semSub: ResumoAssembleia[] = [
+      { uf: 'PB', sigla: 'ALPB', nome: 'Assembleia Legislativa da Paraíba', slug: 'pb', modelo: 'completo', subsidio: null, assentos: 36, nDeputados: 36, pisoCusto: null, deputados: [] },
+    ]
+    const seriePb: SerieParlamentar[] = [{ politicoId: 'alpb-1', nome: 'Dep PB', partido: 'Y', uf: 'PB', casa: 'assembleia', legislaturas: [], serieMensal: meses2024(300) }]
+    const p = calcularPanorama(seriePb, custos, assessores, 4_000_000, cadeiras, semSub, { uf: 'PB', perCapitaRotulo: 'Por habitante / ano' })
+    expect(p.notaCobertura).toMatch(/subsídio ainda não tem valor oficial/i)
+  })
 })

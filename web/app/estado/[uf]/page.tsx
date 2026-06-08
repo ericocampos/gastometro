@@ -17,11 +17,13 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
   const nome = UFS_NOME[uf] ?? uf
   // inclui os deputados estaduais (assembleia) no ranking da UF, junto dos federais, com gasto real.
   // Os leve (sem despesa itemizada) já saem fora em getSeriesParlamentares; sobram os completo (com R$).
-  const series = getSeriesParlamentares().filter((s) => (s.casa === 'camara' || s.casa === 'senado' || s.casa === 'assembleia') && s.uf === uf)
+  const todasSeries = getSeriesParlamentares()
+  const series = todasSeries.filter((s) => (s.casa === 'camara' || s.casa === 'senado' || s.casa === 'assembleia') && s.uf === uf)
   const cidades = getMunicipios().cidades.filter((c) => c.uf === uf)
   const ceap = getCeapPorUf()?.valores[uf] ?? null
   const emendasUf = getEmendas()?.porUf[uf] ?? null
-  const casaAssembleia = getAssembleias()?.casas.find((c) => c.uf === uf) ?? null
+  const casas = getAssembleias()?.casas ?? []
+  const casaAssembleia = casas.find((c) => c.uf === uf) ?? null
 
   if (series.length === 0) {
     return (
@@ -33,8 +35,8 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
 
   const popUf = getPopulacaoUf()?.populacao[uf] ?? null
   const panorama = calcularPanorama(
-    getSeriesParlamentares(), getCustos(), getAssessores(), popUf,
-    getCadeirasCamaraUf()?.cadeiras ?? null, getAssembleias()?.casas ?? [],
+    todasSeries, getCustos(), getAssessores(), popUf,
+    getCadeirasCamaraUf()?.cadeiras ?? null, casas,
     { uf, perCapitaRotulo: 'Por habitante / ano' },
   )
 

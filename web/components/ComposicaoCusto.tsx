@@ -49,7 +49,6 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
             <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c.real ? '#0a7d52' : '#9a6700' }}>
               {c.real ? 'Gasto real' : 'Estimativa anualizada'}
             </p>
-            {c.nota && <p className="mt-1 text-[11px] leading-snug text-tinta-tenue">{c.nota}</p>}
             {c.chave === 'gabinete' && (
               <Link href="/assessores" className="mt-2 inline-block text-xs text-marca underline hover:text-tinta-suave">
                 Ver por pessoa em Assessores &rarr;
