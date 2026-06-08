@@ -13,7 +13,9 @@ export function generateStaticParams() {
 export default function EstadoPage({ params }: { params: { uf: string } }) {
   const uf = params.uf.toUpperCase()
   const nome = UFS_NOME[uf] ?? uf
-  const series = getSeriesParlamentares().filter((s) => (s.casa === 'camara' || s.casa === 'senado') && s.uf === uf)
+  // inclui os deputados estaduais (assembleia) no ranking da UF, junto dos federais, com gasto real.
+  // Os leve (sem despesa itemizada) já saem fora em getSeriesParlamentares; sobram os completo (com R$).
+  const series = getSeriesParlamentares().filter((s) => (s.casa === 'camara' || s.casa === 'senado' || s.casa === 'assembleia') && s.uf === uf)
   const cidades = getMunicipios().cidades.filter((c) => c.uf === uf)
   const ceap = getCeapPorUf()?.valores[uf] ?? null
   const emendasUf = getEmendas()?.porUf[uf] ?? null
@@ -63,7 +65,9 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
         </section>
       )}
 
-      {casaAssembleia && casaAssembleia.deputados.length > 0 && (
+      {/* Casas LEVE (sem despesa itemizada) entram aqui como cadastro + subsídio; as completo já aparecem
+          no ranking acima, com gasto real, então não repetem a grade. */}
+      {casaAssembleia && casaAssembleia.modelo === 'leve' && casaAssembleia.deputados.length > 0 && (
         <section className="mb-12">
           <SecaoTitulo>Assembleia de {nome}</SecaoTitulo>
           <p className="mb-3 text-xs text-tinta-tenue">{casaAssembleia.nome} ({casaAssembleia.sigla}).</p>
