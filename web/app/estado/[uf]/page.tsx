@@ -24,7 +24,7 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
   if (series.length === 0) {
     return (
       <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
-        Sem parlamentares federais de {nome} nos dados ainda.
+        Sem parlamentares de {nome} nos dados ainda.
       </p>
     )
   }
@@ -34,10 +34,10 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
       <section className="mb-8 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">Quanto custa um parlamentar · {uf}</p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl">
-          Quanto custa um parlamentar federal de {nome}
+          Quanto custa um parlamentar de {nome}
         </h1>
         <p className="mt-3 text-sm text-tinta-suave">
-          Cota mensal da Câmara (CEAP) em {nome}: {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
+          Federais (Câmara e Senado) e estaduais (Assembleia) de {nome}. Cota mensal da Câmara federal (CEAP): {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
         </p>
       </section>
 
