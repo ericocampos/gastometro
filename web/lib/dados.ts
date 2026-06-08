@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 
 function dataDir(): string {
@@ -123,6 +123,12 @@ export function getPopulacaoBrasil(): PopulacaoBrasil | null {
   const caminho = process.env.GASTOMETRO_POPULACAO ?? resolve(process.cwd(), '..', 'config', 'populacao-brasil.json')
   if (!existsSync(caminho)) return null
   return lerJson<PopulacaoBrasil>(caminho)
+}
+
+export function getPopulacaoUf(): PopulacaoUf | null {
+  const caminho = process.env.GASTOMETRO_POPULACAO_UF ?? resolve(process.cwd(), '..', 'config', 'populacao-uf.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<PopulacaoUf>(caminho)
 }
 
 export function getCadeirasCamaraUf(): CadeirasCamaraUf | null {

@@ -261,6 +261,7 @@ export interface ComparativoOrcamentoCidade { slug: string; nome: string; anos: 
 export interface CeapPorUf { fonte: string; atualizadoEm: string; valores: Record<string, number | null> }
 
 export interface PopulacaoBrasil { fonte: string; url: string; atualizadoEm: string; populacao: number }
+export interface PopulacaoUf { fonte: string; url: string; atualizadoEm: string; populacao: Record<string, number> }
 export interface CadeirasCamaraUf { fonte: string; atualizadoEm: string; cadeiras: Record<string, number> }
 
 export interface EmendaDestino { municipio: string; uf: string; empenhado: number; pago: number }
