@@ -1,10 +1,12 @@
-import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias } from '@/lib/dados'
+import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias, getCustos, getAssessores, getCadeirasCamaraUf, getPopulacaoUf } from '@/lib/dados'
 import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 import { brl } from '@/lib/formato'
 import { UFS_NOME } from './ufs'
 import { AssembleiaSecao } from '@/components/AssembleiaSecao'
+import { calcularPanorama } from '@/lib/panorama'
+import { ComposicaoCusto } from '@/components/ComposicaoCusto'
 
 export function generateStaticParams() {
   return getUfsDisponiveis().map((uf) => ({ uf: uf.toLowerCase() }))
@@ -29,6 +31,13 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
     )
   }
 
+  const popUf = getPopulacaoUf()?.populacao[uf] ?? null
+  const panorama = calcularPanorama(
+    getSeriesParlamentares(), getCustos(), getAssessores(), popUf,
+    getCadeirasCamaraUf()?.cadeiras ?? null, getAssembleias()?.casas ?? [],
+    { uf, perCapitaRotulo: 'Por habitante / ano' },
+  )
+
   return (
     <div>
       <section className="mb-8 surgir">
@@ -39,6 +48,15 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
         <p className="mt-3 text-sm text-tinta-suave">
           Federais (Câmara e Senado) e estaduais (Assembleia) de {nome}. Cota mensal da Câmara federal (CEAP): {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
         </p>
+      </section>
+
+      <section className="mb-12">
+        <SecaoTitulo>Quanto custa · {nome}</SecaoTitulo>
+        <p className="mb-4 text-xs text-tinta-tenue">
+          Custo anual estimado da representação de {nome}: a bancada federal (Câmara e Senado) e a Assembleia estadual.
+          A cota é gasto real do ano; subsídio e gabinete são estimativas anualizadas.
+        </p>
+        <ComposicaoCusto panorama={panorama} />
       </section>
 
       <section className="mb-12">
