@@ -67,7 +67,9 @@ function LinkDoc({ d, portalSenado, casa, politicoId }: { d: Despesa; portalSena
   if (d.urlDocumento) {
     return <a href={d.urlDocumento} target="_blank" rel="noopener noreferrer" className="text-marca underline">nota</a>
   }
-  if (casa === 'assembleia' && politicoId && d.ano && d.mes) {
+  // A página da VIAP é específica da ALPB (URL por id+ano+mês). As outras assembleias (ALMG/ALESP/ALESC)
+  // têm fonte em massa (API/XML/CSV), sem documento por nota, então não recebem esse link (cai no — abaixo).
+  if (casa === 'assembleia' && politicoId && politicoId.startsWith('alpb-') && d.ano && d.mes) {
     return <a href={planilhaViap(politicoId, d.ano, d.mes)} target="_blank" rel="noopener noreferrer" className="text-marca underline">planilha ↗</a>
   }
   if (portalSenado) {
