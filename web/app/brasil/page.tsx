@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getSeriesParlamentares, getCustos, getAssessores, getPopulacaoBrasil, getCadeirasCamaraUf } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getPopulacaoBrasil, getCadeirasCamaraUf, getAssembleias } from '@/lib/dados'
 import { calcularPanorama } from '@/lib/panorama'
 import { totalPorAnoPorCasa } from '@/lib/periodo'
 import { ComposicaoCusto } from '@/components/ComposicaoCusto'
@@ -17,7 +17,7 @@ export default function BrasilPage() {
   const federal = series.filter((s) => s.casa === 'camara' || s.casa === 'senado')
   const pop = getPopulacaoBrasil()
   const cadeiras = getCadeirasCamaraUf()
-  const panorama = calcularPanorama(series, getCustos(), getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null)
+  const panorama = calcularPanorama(series, getCustos(), getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null, getAssembleias()?.casas ?? [])
   const porAno = totalPorAnoPorCasa(federal)
 
   return (

@@ -1,4 +1,4 @@
-import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getVotacoes, getFornecedores, getCategoriasGlobais } from '@/lib/dados'
+import { getSeriesParlamentares, getCustos, getAssessores, getMunicipios, getCeapPorUf, getPopulacaoBrasil, getCadeirasCamaraUf, getEmendas, getVotacoes, getFornecedores, getCategoriasGlobais, getAssembleias } from '@/lib/dados'
 import { totalPorAnoPorCasa, anosDisponiveis } from '@/lib/periodo'
 import { custosComGabineteEstimado } from '@/lib/custos'
 import { calcularPanorama } from '@/lib/panorama'
@@ -51,7 +51,7 @@ export default function Home() {
 
   const pop = getPopulacaoBrasil()
   const cadeiras = getCadeirasCamaraUf()
-  const panorama = calcularPanorama(series, custos, getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null)
+  const panorama = calcularPanorama(series, custos, getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null, getAssembleias()?.casas ?? [])
   const gabPct = Math.round((panorama.componentes.find((c) => c.chave === 'gabinete')!.valor / panorama.totalAnual) * 100)
 
   return (

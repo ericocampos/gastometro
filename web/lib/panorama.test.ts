@@ -11,14 +11,22 @@ const series: SerieParlamentar[] = [
   { politicoId: 'camara-2', nome: 'Dep SP B', partido: 'PL', uf: 'SP', casa: 'camara', legislaturas: [57], serieMensal: meses2024(2000) },
   { politicoId: 'camara-3', nome: 'Dep PB', partido: 'PT', uf: 'PB', casa: 'camara', legislaturas: [57], serieMensal: meses2024(500) },
   { politicoId: 'senado-9', nome: 'Suplente', partido: '', uf: 'SP', casa: 'senado', legislaturas: [57], serieMensal: [] },
+  { politicoId: 'alesp-1', nome: 'Dep SP', partido: 'X', uf: 'SP', casa: 'assembleia', legislaturas: [], serieMensal: meses2024(700) },
+  { politicoId: 'alpb-1', nome: 'Dep PB', partido: 'Y', uf: 'PB', casa: 'assembleia', legislaturas: [], serieMensal: meses2024(300) },
 ]
 
 const custos = { casas: { camara: { salario: 1000 }, senado: { salario: 1000 }, assembleia: { salario: 500 } } } as unknown as CustosMandato
-const assessores: Assessores = { porPolitico: { 'camara-1': { folha: 100, total: 1 }, 'camara-3': { folha: 50, total: 1 } } } as unknown as Assessores
+const assessores: Assessores = { porPolitico: { 'camara-1': { folha: 100, total: 1 }, 'camara-3': { folha: 50, total: 1 }, 'alesp-1': { folha: 200, total: 1 } } } as unknown as Assessores
 const cadeiras = { SP: 70, PB: 12 }
 
+const assembleias: ResumoAssembleia[] = [
+  { uf: 'SP', sigla: 'ALESP', nome: 'Assembleia Legislativa de São Paulo', slug: 'sp', modelo: 'completo', subsidio: 1000, assentos: 94, nDeputados: 94, pisoCusto: null, deputados: [] },
+  { uf: 'PB', sigla: 'ALPB', nome: 'Assembleia Legislativa da Paraíba', slug: 'pb', modelo: 'completo', subsidio: 1000, assentos: 36, nDeputados: 36, pisoCusto: null, deputados: [] },
+  { uf: 'AC', sigla: 'ALEAC', nome: 'Assembleia Legislativa do Acre', slug: 'ac', modelo: 'leve', subsidio: null, assentos: 24, nDeputados: 24, pisoCusto: null, deputados: [] },
+]
+
 describe('calcularPanorama', () => {
-  const p = calcularPanorama(series, custos, assessores, 200_000_000, cadeiras)
+  const p = calcularPanorama(series, custos, assessores, 200_000_000, cadeiras, assembleias)
 
   it('escolhe o último ano completo (2024) como referência da cota', () => {
     expect(p.anoCota).toBe(2024)
@@ -58,17 +66,12 @@ describe('calcularPanorama', () => {
   })
 
   it('degrada: sem população (perCapita null) e sem assessores (gabinete 0)', () => {
-    const q = calcularPanorama(series, custos, null, null, cadeiras)
+    const q = calcularPanorama(series, custos, null, null, cadeiras, assembleias)
     expect(q.perCapita).toBeNull()
     expect(q.componentes.find((c) => c.chave === 'gabinete')!.valor).toBe(0)
   })
 })
 
-const assembleias: ResumoAssembleia[] = [
-  { uf: 'SP', sigla: 'ALESP', nome: 'Assembleia Legislativa de São Paulo', slug: 'sp', modelo: 'completo', subsidio: 1000, assentos: 94, nDeputados: 94, pisoCusto: null, deputados: [] },
-  { uf: 'PB', sigla: 'ALPB', nome: 'Assembleia Legislativa da Paraíba', slug: 'pb', modelo: 'completo', subsidio: 1000, assentos: 36, nDeputados: 36, pisoCusto: null, deputados: [] },
-  { uf: 'AC', sigla: 'ALEAC', nome: 'Assembleia Legislativa do Acre', slug: 'ac', modelo: 'leve', subsidio: null, assentos: 24, nDeputados: 24, pisoCusto: null, deputados: [] },
-]
 const seriesAssembleia: SerieParlamentar[] = [
   { politicoId: 'alesp-1', nome: 'Dep SP', partido: 'X', uf: 'SP', casa: 'assembleia', legislaturas: [], serieMensal: meses2024(700) },
   { politicoId: 'alpb-1', nome: 'Dep PB', partido: 'Y', uf: 'PB', casa: 'assembleia', legislaturas: [], serieMensal: meses2024(300) },
@@ -112,5 +115,25 @@ describe('contribEstadual', () => {
     expect(cobertura.totalCasas).toBe(1)
     expect(cobertura.comSubsidio).toBe(0)
     expect(cobertura.semSubsidioUfs).toEqual(['AC'])
+  })
+})
+
+describe('calcularPanorama com camada estadual e escopo', () => {
+  it('Brasil: soma federal + estadual nos componentes e tem nota de cobertura', () => {
+    const p = calcularPanorama(series, custos, assessores, 200_000_000, cadeiras, assembleias)
+    const fed = contribFederal(series.filter((s) => s.casa === 'camara' || s.casa === 'senado'), custos, assessores, cadeiras, p.anoCota)
+    const est = contribEstadual(assembleias, series.filter((s) => s.casa === 'assembleia'), assessores, p.anoCota)
+    const byKey = Object.fromEntries(p.componentes.map((c) => [c.chave, c.valor]))
+    expect(byKey.subsidio).toBe(fed.subsidio + est.contrib.subsidio)
+    expect(byKey.cota).toBe(fed.cota + est.contrib.cota)
+    expect(byKey.gabinete).toBe(fed.gabinete + est.contrib.gabinete)
+    expect(p.notaCobertura).toMatch(/assembleias/i)
+    expect(p.perCapitaRotulo).toBe('Por brasileiro / ano')
+  })
+  it('estado (uf=SP): só SP, per capita pela população do estado e rótulo de habitante', () => {
+    const p = calcularPanorama(series, custos, assessores, 44_000_000, cadeiras, assembleias, { uf: 'SP', perCapitaRotulo: 'Por habitante / ano' })
+    expect(p.perCapita).toBeCloseTo(p.totalAnual / 44_000_000, 6)
+    expect(p.perCapitaRotulo).toBe('Por habitante / ano')
+    expect(p.bancadas).toEqual([])
   })
 })

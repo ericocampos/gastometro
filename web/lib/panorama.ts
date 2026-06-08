@@ -1,7 +1,7 @@
 import type { SerieParlamentar } from './periodo'
 import type { Assessores, CustosMandato, ResumoAssembleia } from './tipos'
 
-export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string }
+export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string; nota?: string }
 export interface Contribuicao { subsidio: number; cota: number; gabinete: number; cadeiras: number }
 export interface CoberturaEstadual { totalCasas: number; comSubsidio: number; comCota: number; comGabinete: number; semSubsidioUfs: string[] }
 export interface CustoBancada { uf: string; total: number; cadeiras: number; porParlamentar: number }
@@ -10,6 +10,8 @@ export interface Panorama {
   totalAnual: number
   componentes: ComponenteCusto[]
   perCapita: number | null
+  perCapitaRotulo?: string
+  notaCobertura?: string
   populacao: number | null
   anoCota: number
   bancadas: CustoBancada[]
@@ -37,15 +39,6 @@ function ultimoAnoCompleto(fed: SerieParlamentar[]): number {
 
 const cotaNoAno = (s: SerieParlamentar, ano: number) =>
   s.serieMensal.reduce((acc, p) => (anoDe(p.anoMes) === ano ? acc + p.total : acc), 0)
-
-function folhaFederalMes(assessores: Assessores | null): number {
-  if (!assessores) return 0
-  let total = 0
-  for (const [id, g] of Object.entries(assessores.porPolitico)) {
-    if (id.startsWith('camara-') || id.startsWith('senado-')) total += g.folha ?? 0
-  }
-  return total
-}
 
 const ehAssembleia = (s: SerieParlamentar) => s.casa === 'assembleia'
 
@@ -149,23 +142,41 @@ function calcularPartidos(fed: SerieParlamentar[], ano: number): GastoPartido[] 
     .sort((a, b) => b.cota - a.cota)
 }
 
+function montarNotaCobertura(cob: CoberturaEstadual, uf: string | undefined, assembleias: ResumoAssembleia[]): string | undefined {
+  if (cob.totalCasas === 0) return undefined
+  if (uf) {
+    const casa = assembleias.find((c) => c.uf === uf)
+    if (!casa) return undefined
+    if (casa.modelo === 'leve') return `Da Assembleia (${casa.sigla}), por ora só o subsídio estimado; cota e gabinete estaduais entram quando a fonte oficial do estado for integrada.`
+    if (cob.comGabinete === 0) return `Gabinete da Assembleia (${casa.sigla}) ainda não integrado (folha por servidor indisponível na fonte); subsídio e cota estaduais são desta casa.`
+    return undefined
+  }
+  const semSub = cob.semSubsidioUfs.length ? ` (${cob.semSubsidioUfs.join(' e ')} sem valor oficial)` : ''
+  return `Camada estadual: subsídio de ${cob.comSubsidio} das ${cob.totalCasas} assembleias${semSub}; cota itemizada de ${cob.comCota} e gabinete de ${cob.comGabinete}. O resto entra conforme integramos os estados.`
+}
+
+export interface OpcoesPanorama { uf?: string; perCapitaRotulo?: string }
+
 export function calcularPanorama(
   series: SerieParlamentar[],
   custos: CustosMandato,
   assessores: Assessores | null,
   populacao: number | null,
   cadeiras: Record<string, number> | null,
+  assembleias: ResumoAssembleia[],
+  opts: OpcoesPanorama = {},
 ): Panorama {
+  const { uf, perCapitaRotulo = 'Por brasileiro / ano' } = opts
   const fed = series.filter(ehFederal)
   const ano = ultimoAnoCompleto(fed)
-  const cota = fed.reduce((acc, s) => acc + cotaNoAno(s, ano), 0)
 
-  const subsidioMensal = custos.casas.camara.salario
-  const totalDeputados = cadeiras ? Object.values(cadeiras).reduce((a, b) => a + b, 0) : 513
-  const totalCadeiras = totalDeputados + TOTAL_SENADORES
-  const subsidio = totalCadeiras * subsidioMensal * 12
+  const cf = contribFederal(fed, custos, assessores, cadeiras, ano, uf)
+  const { contrib: ce, cobertura } = contribEstadual(assembleias, series.filter(ehAssembleia), assessores, ano, uf)
 
-  const gabinete = folhaFederalMes(assessores) * 12
+  const subsidio = cf.subsidio + ce.subsidio
+  const cota = cf.cota + ce.cota
+  const gabinete = cf.gabinete + ce.gabinete
+  const totalCadeiras = cf.cadeiras + ce.cadeiras
 
   const componentes: ComponenteCusto[] = [
     { chave: 'subsidio', valor: subsidio, real: false, rotulo: `Subsídio fixo · ${totalCadeiras} cadeiras × 12 meses` },
@@ -178,9 +189,11 @@ export function calcularPanorama(
     totalAnual,
     componentes,
     perCapita: populacao ? totalAnual / populacao : null,
+    perCapitaRotulo,
     populacao,
     anoCota: ano,
-    bancadas: calcularBancadas(fed, ano, subsidioMensal, assessores, cadeiras),
-    partidos: calcularPartidos(fed, ano),
+    notaCobertura: montarNotaCobertura(cobertura, uf, assembleias),
+    bancadas: uf ? [] : calcularBancadas(fed, ano, custos.casas.camara.salario, assessores, cadeiras),
+    partidos: uf ? [] : calcularPartidos(fed, ano),
   }
 }
