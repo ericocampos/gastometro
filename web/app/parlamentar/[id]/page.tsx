@@ -33,13 +33,15 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
   const gab = assessoresData?.porPolitico[params.id]
   const assessores = {
     quantidade: gab?.total ?? null,
-    folha: gab?.folha ?? null,
+    // quando o custo não foi validado (ALESC), a folha não conta como número: passa null
+    folha: gab?.semCusto ? null : (gab?.folha ?? null),
     secretarios: gab?.secretarios ?? [],
     verbaGabinete: assessoresData?.tabela?.verbaGabinete ?? null,
     consultaExataUrl: assessoresData?.tabela?.consultaExataUrl,
     atualizadoEm: assessoresData?.atualizadoEm,
     mesReferencia: gab?.mesReferencia,
     estimada: gab?.estimada,
+    semCusto: gab?.semCusto,
     consultas: gab?.consultas,
   }
   const emendas = getEmendas()?.porPolitico[params.id] ?? null
