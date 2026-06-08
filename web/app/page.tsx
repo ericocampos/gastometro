@@ -85,7 +85,7 @@ export default function Home() {
         <Link href="/brasil" className="group block rounded-xl border border-borda bg-superficie p-5 transition-all hover:-translate-y-0.5 hover:border-marca hover:shadow-carta">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Quanto custa o Legislativo federal</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Quanto custa o Legislativo (federal e estadual)</p>
               <p className="font-display text-3xl font-semibold tabular-nums text-tinta">{brlCompacto(panorama.totalAnual)} <span className="text-base font-normal text-tinta-tenue">por ano</span></p>
               {panorama.perCapita != null && (
                 <p className="mt-1 text-sm text-tinta-suave">{brl(panorama.perCapita)} por brasileiro / ano, e o pessoal de gabinete é {gabPct}% do custo.</p>
