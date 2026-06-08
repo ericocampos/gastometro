@@ -39,20 +39,36 @@ export function parseRoster(xml: string): DeputadoAlesp[] {
   }))
 }
 
+// O XML de despesas tem ~169MB (todos os anos). Montar o DOM inteiro (fast-xml-parser) ou cachear o
+// texto cru estoura a memória (Zone/heap). Como cada <despesa> é plano e uniforme (campos sem tags
+// aninhadas, valores sem '<'), varremos em uma passada com regex, filtrando o ano na hora e guardando
+// só os campos que importam. Memória limitada à lista de saída (já filtrada por ano).
+const RE_DESPESA = /<despesa>([\s\S]*?)<\/despesa>/g
+const tag = (seg: string, nome: string): string => {
+  const i = seg.indexOf(`<${nome}>`)
+  if (i < 0) return ''
+  const ini = i + nome.length + 2
+  const fim = seg.indexOf(`</${nome}>`, ini)
+  return fim < 0 ? '' : seg.slice(ini, fim)
+}
+
 export function parseDespesas(xml: string, anoMin: number): DespesaAlespRec[] {
-  const d = parser.parse(xml) as { despesas?: { despesa?: unknown } }
   const out: DespesaAlespRec[] = []
-  for (const x of arr<any>(d.despesas?.despesa)) {
-    const ano = Number(x.Ano)
+  RE_DESPESA.lastIndex = 0
+  let m: RegExpExecArray | null
+  while ((m = RE_DESPESA.exec(xml)) !== null) {
+    const seg = m[1]
+    const ano = Number(tag(seg, 'Ano'))
     if (!(ano >= anoMin)) continue
+    const cnpj = tag(seg, 'CNPJ')
     out.push({
-      matricula: s(x.Matricula),
-      deputado: s(x.Deputado),
+      matricula: s(tag(seg, 'Matricula')),
+      deputado: s(tag(seg, 'Deputado')),
       ano,
-      mes: Number(x.Mes),
-      categoria: s(x.Tipo),
-      fornecedor: { nome: s(x.Fornecedor), cnpjCpf: x.CNPJ != null ? s(x.CNPJ) : undefined },
-      valor: Number(x.Valor),
+      mes: Number(tag(seg, 'Mes')),
+      categoria: s(tag(seg, 'Tipo')),
+      fornecedor: { nome: s(tag(seg, 'Fornecedor')), cnpjCpf: cnpj ? s(cnpj) : undefined },
+      valor: Number(tag(seg, 'Valor')),
     })
   }
   return out
