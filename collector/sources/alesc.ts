@@ -74,3 +74,55 @@ export function montarDespesasAlesc(recs: VerbaAlescRec[]): Despesa[] {
   }
   return out
 }
+
+export interface ServidorAlesc { deputadoNome: string; nomeFuncionario: string }
+export interface SecretarioAlesc { nome: string; remuneracao: number; lotacaoTipo: 'gabinete'; semFolha: boolean }
+export interface GabineteAlesc { total: number; folha: number; mesReferencia: string; semCusto: boolean; secretarios: SecretarioAlesc[] }
+
+// Extrai os servidores lotados em gabinete a partir do HTML da lista de servidores. Pega, por <tr>,
+// o 1o <td> (nome do servidor) e a célula que contém "GAB DEP {nome do deputado}". Ignora linhas sem
+// "GAB DEP" (lotações administrativas ou aposentados). O markup real é table.table-hover com 5 <td>:
+// [nome, vínculo, lotação, ponto, ação]; a lotação de gabinete vem como "GAB DEP {NOME}".
+const RE_TR = /<tr\b[^>]*>([\s\S]*?)<\/tr>/gi
+const RE_TD = /<td\b[^>]*>([\s\S]*?)<\/td>/gi
+const txt = (s: string): string => s.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()
+const RE_GABDEP = /GAB\s*DEP\s+(.+)/i
+
+export function parseServidores(html: string): ServidorAlesc[] {
+  const out: ServidorAlesc[] = []
+  RE_TR.lastIndex = 0
+  let tr: RegExpExecArray | null
+  while ((tr = RE_TR.exec(html)) !== null) {
+    const celulas: string[] = []
+    RE_TD.lastIndex = 0
+    let td: RegExpExecArray | null
+    while ((td = RE_TD.exec(tr[1])) !== null) celulas.push(txt(td[1]))
+    if (celulas.length === 0) continue
+    const lot = celulas.find((c) => RE_GABDEP.test(c))
+    if (!lot) continue
+    const dep = lot.match(RE_GABDEP)![1].trim()
+    out.push({ deputadoNome: dep, nomeFuncionario: celulas[0] })
+  }
+  return out
+}
+
+/** Agrupa os servidores por deputado (casando o nome com nomeToId). SEM custo: folha 0, semCusto true,
+ *  cada secretário com semFolha true (o web mostra "—" e a nota de "valores não validados"). */
+export function montarGabinetesAlesc(
+  servidores: ServidorAlesc[],
+  nomeToId: Map<string, string>,
+  mesReferencia: string,
+): Record<string, GabineteAlesc> {
+  const out: Record<string, GabineteAlesc> = {}
+  for (const s of servidores) {
+    const politicoId = nomeToId.get(normTse(s.deputadoNome).replace(/  +/g, ' '))
+      ?? [...nomeToId.entries()].find(([k]) => normTse(k) === normTse(s.deputadoNome))?.[1]
+    if (!politicoId) continue
+    let g = out[politicoId]
+    if (!g) { g = { total: 0, folha: 0, mesReferencia, semCusto: true, secretarios: [] }; out[politicoId] = g }
+    g.secretarios.push({ nome: s.nomeFuncionario, remuneracao: 0, lotacaoTipo: 'gabinete', semFolha: true })
+    g.total += 1
+  }
+  for (const g of Object.values(out)) g.secretarios.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
+  return out
+}
