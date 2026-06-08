@@ -39,7 +39,7 @@ export const ASSEMBLEIAS: AssembleiaConfig[] = [
   { uf: 'MA', nome: 'Assembleia Legislativa do Maranhão', sigla: 'ALEMA', slug: 'ma', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 42 },
   { uf: 'MT', nome: 'Assembleia Legislativa de Mato Grosso', sigla: 'ALMT', slug: 'mt', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
   { uf: 'MS', nome: 'Assembleia Legislativa de Mato Grosso do Sul', sigla: 'ALEMS', slug: 'ms', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
-  { uf: 'MG', nome: 'Assembleia Legislativa de Minas Gerais', sigla: 'ALMG', slug: 'mg', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 77 },
+  { uf: 'MG', nome: 'Assembleia Legislativa de Minas Gerais', sigla: 'ALMG', slug: 'mg', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 77 },
   { uf: 'PA', nome: 'Assembleia Legislativa do Pará', sigla: 'ALEPA', slug: 'pa', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 41 },
   { uf: 'PB', nome: 'Assembleia Legislativa da Paraíba', sigla: 'ALPB', slug: 'pb', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: null, assentos: 36 },
   { uf: 'PR', nome: 'Assembleia Legislativa do Paraná', sigla: 'ALEP', slug: 'pr', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 54 },
