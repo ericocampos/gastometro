@@ -16,6 +16,7 @@
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
     "coletar:assembleias": "tsx collector/coletarAssembleias.ts",
+    "coletar:almg": "tsx collector/coletarAlmg.ts",
     "mesclar:assembleias": "tsx collector/mesclarAssembleias.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
     "comprimir:cache": "tsx collector/comprimirCache.ts",
