@@ -1,6 +1,7 @@
 // collector/sources/alesc.test.ts
 import { describe, it, expect } from 'vitest'
-import { slug, numBr, dataBr, parseVerbaCsv, montarDespesasAlesc, parseServidores, montarGabinetesAlesc } from './alesc.js'
+import { slug, numBr, dataBr, parseVerbaCsv, montarDespesasAlesc, parseServidores, montarGabinetesAlesc, resolverDeputado } from './alesc.js'
+import { normTse, type EleitoTse } from './tseEleicoes.js'
 import { montarDeputadoAlesc } from '../coletarAlesc.js'
 
 // CSV real da ALESC: BOM no início, delimitador ';', cabeçalho exato, número BR, data BR.
@@ -46,17 +47,22 @@ describe('parseVerbaCsv', () => {
 })
 
 describe('montarDespesasAlesc', () => {
-  it('gera Despesa na forma-padrão, politicoId por slug, id sequencial por deputado', () => {
+  // o coletor resolve a conta para o id canônico; aqui passamos o mapa pronto. FERNANDO KRELLING
+  // casou no TSE (id por sq), Ana Campos não (id por slug). Uma conta fora do mapa é descartada.
+  const contaToId = new Map<string, string>([
+    ['FERNANDO KRELLING', 'alesc-900'],
+    ['Ana Campos', 'alesc-ana-campos'],
+  ])
+  it('gera Despesa na forma-padrão, politicoId do mapa, id sequencial por deputado', () => {
     const recs = parseVerbaCsv(CSV, 2023)
-    const ds = montarDespesasAlesc(recs)
-    // FERNANDO KRELLING tem 1 despesa 2023+; Ana Campos tem 2
-    const krelling = ds.filter((d) => d.politicoId === 'alesc-fernando-krelling')
+    const ds = montarDespesasAlesc(recs, contaToId)
+    const krelling = ds.filter((d) => d.politicoId === 'alesc-900')
     const ana = ds.filter((d) => d.politicoId === 'alesc-ana-campos')
     expect(krelling).toHaveLength(1)
     expect(ana).toHaveLength(2)
     expect(krelling[0]).toEqual({
-      id: 'alesc-fernando-krelling-2023-03-1',
-      politicoId: 'alesc-fernando-krelling',
+      id: 'alesc-900-2023-03-1',
+      politicoId: 'alesc-900',
       data: '2023-03-15',
       ano: 2023, mes: 3,
       categoria: 'Locação de veículos',
@@ -68,6 +74,27 @@ describe('montarDespesasAlesc', () => {
     expect(interno.fornecedor).toEqual({ nome: '' })
     expect(interno.id).toBe('alesc-ana-campos-2023-04-2')
   })
+  it('descarta despesa cuja conta não está no mapa (ex.: ex-deputado, conta de bancada)', () => {
+    const recs = parseVerbaCsv(CSV, 2023)
+    const ds = montarDespesasAlesc(recs, new Map([['Ana Campos', 'alesc-ana-campos']]))
+    expect(ds.every((d) => d.politicoId === 'alesc-ana-campos')).toBe(true)
+    expect(ds).toHaveLength(2) // as 2 da Ana; a do Krelling sai
+  })
+})
+
+describe('resolverDeputado', () => {
+  const cands: EleitoTse[] = [
+    { sq: '1', nome: 'ANA CAROLINE CAMPAGNOLO GALVAO', nomeUrna: 'ANA CAMPAGNOLO', partido: 'PL', eleito: true },
+    { sq: '2', nome: 'MARCOS JOSE DE ABREU', nomeUrna: 'MARQUITO MARCOS JOSÉ ABREU', partido: 'PSOL', eleito: true },
+    { sq: '3', nome: 'ANA PAULA DA SILVA', nomeUrna: 'PAULINHA', partido: 'PODE', eleito: true },
+    { sq: '4', nome: 'FULANO SUPLENTE SOUZA', nomeUrna: 'FULANO SOUZA', partido: 'MDB', eleito: false },
+  ]
+  it('casa nome de urna exato', () => expect(resolverDeputado('Ana Campagnolo', cands)?.sq).toBe('1'))
+  it('casa por subconjunto de palavras (nome civil parcial)', () => expect(resolverDeputado('Ana Caroline Campagnolo', cands)?.sq).toBe('1'))
+  it('tira o apelido entre parênteses e casa no nome civil', () => expect(resolverDeputado('Ana Paula da Silva (Paulinha)', cands)?.sq).toBe('3'))
+  it('nome de uma palavra casa o 1o nome de urna de um eleito', () => expect(resolverDeputado('Marquito', cands)?.sq).toBe('2'))
+  it('casa suplente (não eleito) por nome de urna exato', () => expect(resolverDeputado('Fulano Souza', cands)?.sq).toBe('4'))
+  it('sem correspondência devolve null', () => expect(resolverDeputado('Pessoa Inexistente', cands)).toBeNull())
 })
 
 // Fixture do markup real de /servidores (table.table-hover): por <tr>, 5 <td>:
@@ -90,17 +117,16 @@ describe('parseServidores', () => {
 })
 
 describe('montarGabinetesAlesc', () => {
-  it('agrupa por deputado (por nome), sem custo, secretários com semFolha', () => {
+  it('agrupa por deputado (via resolve), sem custo, secretários com semFolha', () => {
     const ss = parseServidores(HTML_SERV)
-    const nomeToId = new Map<string, string>([
-      ['FERNANDO KRELLING', 'alesc-fernando-krelling'],
-      ['ANA CAMPOS', 'alesc-ana-campos'],
-    ])
-    const g = montarGabinetesAlesc(ss, nomeToId, '2026-06')
-    expect(g['alesc-fernando-krelling'].total).toBe(2)
-    expect(g['alesc-fernando-krelling'].semCusto).toBe(true)
-    expect(g['alesc-fernando-krelling'].folha).toBe(0)
-    expect(g['alesc-fernando-krelling'].secretarios[0]).toEqual({
+    // resolve mapeia o nome do GAB DEP para o id canônico de um deputado mantido (null se não casa)
+    const mapa: Record<string, string> = { 'FERNANDO KRELLING': 'alesc-900', 'ANA CAMPOS': 'alesc-ana-campos' }
+    const resolve = (nome: string) => mapa[normTse(nome)] ?? null
+    const g = montarGabinetesAlesc(ss, resolve, '2026-06')
+    expect(g['alesc-900'].total).toBe(2)
+    expect(g['alesc-900'].semCusto).toBe(true)
+    expect(g['alesc-900'].folha).toBe(0)
+    expect(g['alesc-900'].secretarios[0]).toEqual({
       nome: 'CARLOS ROCHA', remuneracao: 0, lotacaoTipo: 'gabinete', semFolha: true,
     }) // ordenado por nome (CARLOS antes de MARIANA)
     expect(g['alesc-ana-campos'].total).toBe(1)
@@ -108,18 +134,25 @@ describe('montarGabinetesAlesc', () => {
 })
 
 describe('montarDeputadoAlesc', () => {
-  it('monta o registro do deputado com id por slug, partido e foto do TSE', () => {
-    const eleitos = [{ sq: '900', nome: 'FERNANDO DE OLIVEIRA KRELLING', nomeUrna: 'FERNANDO KRELLING', partido: 'PODE' }]
-    expect(montarDeputadoAlesc('FERNANDO KRELLING', eleitos)).toEqual({
-      politicoId: 'alesc-fernando-krelling',
+  it('resolvido no TSE: id por sq, nome de urna, partido e foto', () => {
+    const cands: EleitoTse[] = [{ sq: '900', nome: 'FERNANDO DE OLIVEIRA KRELLING', nomeUrna: 'FERNANDO KRELLING', partido: 'PODE', eleito: true }]
+    expect(montarDeputadoAlesc('FERNANDO KRELLING', cands)).toEqual({
+      politicoId: 'alesc-900',
       nome: 'FERNANDO KRELLING',
       partido: 'PODE',
+      sq: '900',
       fotoUrl: '/fotos/deputados/900.webp',
     })
   })
-  it('sem match no TSE: partido vazio e sem foto', () => {
+  it('uma palavra casa o eleito (Marquito): id por sq e nome de urna completo', () => {
+    const cands: EleitoTse[] = [{ sq: '500', nome: 'MARCOS JOSE DE ABREU', nomeUrna: 'MARQUITO MARCOS JOSÉ ABREU', partido: 'PSOL', eleito: true }]
+    expect(montarDeputadoAlesc('Marquito', cands)).toEqual({
+      politicoId: 'alesc-500', nome: 'MARQUITO MARCOS JOSÉ ABREU', partido: 'PSOL', sq: '500', fotoUrl: '/fotos/deputados/500.webp',
+    })
+  })
+  it('sem match no TSE: id por slug do nome da conta, partido vazio e sem foto', () => {
     expect(montarDeputadoAlesc('DEPUTADO SEM TSE', [])).toEqual({
-      politicoId: 'alesc-deputado-sem-tse', nome: 'DEPUTADO SEM TSE', partido: '', fotoUrl: undefined,
+      politicoId: 'alesc-deputado-sem-tse', nome: 'DEPUTADO SEM TSE', partido: '', sq: undefined, fotoUrl: undefined,
     })
   })
 })
