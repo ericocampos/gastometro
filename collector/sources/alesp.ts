@@ -5,6 +5,7 @@
 import { XMLParser } from 'fast-xml-parser'
 import type { Despesa } from './types.js'
 import { normTse, type EleitoTse } from './tseEleicoes.js'
+import { vencimentoCargo } from './vencimentosAlesp.js'
 
 const parser = new XMLParser({ ignoreAttributes: true, parseTagValue: false, trimValues: true })
 
@@ -97,4 +98,40 @@ export function casarFotoTse(nomeDeputado: string, eleitos: EleitoTse[]): string
   if (porUrna) return porUrna.sq
   const porNome = eleitos.find((e) => normTse(e.nome) === alvo)
   return porNome ? porNome.sq : null
+}
+
+// tipos do payload de gabinete (subconjunto do que o web consome em assessores.json)
+export interface SecretarioAlesp { nome: string; cargo: string; remuneracao: number; lotacaoTipo: 'gabinete'; semFolha?: boolean }
+export interface GabineteAlesp { total: number; folha: number; mesReferencia: string; estimada: true; secretarios: SecretarioAlesp[] }
+
+/** Agrupa as lotações por deputado (idUa->politicoId) e estima a folha pela tabela de vencimentos. */
+export function montarGabinetes(
+  lotacoes: LotacaoAlesp[],
+  idUaToId: Map<string, string>,
+  mesReferencia: string,
+): Map<string, GabineteAlesp> {
+  const out = new Map<string, GabineteAlesp>()
+  for (const l of lotacoes) {
+    const politicoId = idUaToId.get(l.idUa)
+    if (!politicoId) continue
+    const venc = vencimentoCargo(l.cargo)
+    const sec: SecretarioAlesp = {
+      nome: l.nomeFuncionario,
+      cargo: l.cargo,
+      remuneracao: venc ?? 0,
+      lotacaoTipo: 'gabinete',
+      ...(venc == null ? { semFolha: true } : {}),
+    }
+    let g = out.get(politicoId)
+    if (!g) { g = { total: 0, folha: 0, mesReferencia, estimada: true, secretarios: [] }; out.set(politicoId, g) }
+    g.secretarios.push(sec)
+    g.total += 1
+    g.folha += venc ?? 0
+  }
+  // ordena por remuneração desc (convenção do app: ALPB/Câmara já vêm ordenados) e arredonda a folha
+  for (const g of out.values()) {
+    g.secretarios.sort((a, b) => b.remuneracao - a.remuneracao)
+    g.folha = Math.round(g.folha * 100) / 100
+  }
+  return out
 }
