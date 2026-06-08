@@ -149,6 +149,7 @@ export interface GabineteParlamentar {
   // Senado: a folha é o custo real oficial (bruto, mês de referência), não estimativa
   folhaOficial?: boolean
   mesReferencia?: string
+  estimada?: boolean   // ALESP: folha = soma do bruto da tabela de vencimentos (estimativa), não a folha real
   consultas?: ConsultaLotacao[]           // busca oficial por lotação (gabinete/escritório)
 }
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
