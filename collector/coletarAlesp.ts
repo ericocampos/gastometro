@@ -3,7 +3,9 @@
 // por deputado, com custo estimado pela tabela de vencimentos). 3 XMLs de dados abertos. Joins por ID:
 // despesa<->deputado por Matricula, lotacao<->deputado por IdUA. Foto via TSE 2022 (por nome). Cache cru em
 // data/raw/alesp (zstd). O XML de despesas tem ~169MB: rode com heap maior (o script npm ja injeta).
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, createWriteStream, readFileSync, statSync, rmSync } from 'node:fs'
+import { Readable } from 'node:stream'
+import { pipeline } from 'node:stream/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { fetchText } from './http.js'
@@ -45,12 +47,27 @@ async function baixarXml(chave: string, url: string): Promise<string> {
   return txt
 }
 
-// despesas: baixa os ~169MB, parseia (regex, sem DOM) filtrando ANO_MIN e cacheia SÓ os recs filtrados
-// (nunca o texto cru). Re-coletas usam o cache pequeno.
+// despesas: baixa os ~169MB e parseia (regex, sem DOM) filtrando ANO_MIN; cacheia SÓ os recs filtrados
+// (nunca o texto cru). O fetch().text() trunca silenciosamente arquivo desse tamanho, então baixamos em
+// STREAM para um arquivo temporário e conferimos o byte count contra o Content-Length (retry se vier
+// curto). Re-coletas usam o cache pequeno.
 async function baixarDespesas(): Promise<DespesaAlespRec[]> {
   const cached = cache.ler<DespesaAlespRec[]>('despesas-recs')
   if (cached) return cached
-  const xml = await fetchText(URL_DESPESAS)
+  const tmp = resolve(here, '../data/raw/alesp/despesas.xml.tmp')
+  let xml = ''
+  for (let i = 0; i < 3; i++) {
+    const resp = await fetch(URL_DESPESAS)
+    if (!resp.ok || !resp.body) throw new Error(`despesas HTTP ${resp.status}`)
+    await pipeline(Readable.fromWeb(resp.body as Parameters<typeof Readable.fromWeb>[0]), createWriteStream(tmp))
+    const esperado = Number(resp.headers.get('content-length') ?? 0)
+    const real = statSync(tmp).size
+    if (esperado && real < esperado) { console.error(`  ! despesas truncado (${real}/${esperado} bytes), tentativa ${i + 1}`); continue }
+    xml = readFileSync(tmp, 'utf-8')
+    break
+  }
+  rmSync(tmp, { force: true })
+  if (!xml) throw new Error('despesas: download truncado após 3 tentativas')
   const recs = parseDespesas(xml, ANO_MIN)
   cache.gravar('despesas-recs', recs)
   return recs
