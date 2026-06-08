@@ -120,6 +120,7 @@ export function PerfilView({
     atualizadoEm?: string
     mesReferencia?: string
     consultas?: ConsultaLotacao[]
+    estimada?: boolean
   }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
@@ -432,6 +433,7 @@ export function PerfilView({
                 consultaExataUrl={assessores.consultaExataUrl}
                 atualizadoEm={assessores.atualizadoEm}
                 mesReferencia={assessores.mesReferencia}
+                estimada={assessores.estimada}
                 consultas={assessores.consultas}
                 gabinete={custoCasa.gabinete}
                 casa={politico.casa}

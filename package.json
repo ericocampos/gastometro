@@ -21,7 +21,9 @@
     "integrar:completo": "tsx collector/integrarCompleto.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
     "comprimir:cache": "tsx collector/comprimirCache.ts",
-    "analisar": "tsx collector/analisar.ts"
+    "analisar": "tsx collector/analisar.ts",
+    "coletar:alesp": "NODE_OPTIONS=--max-old-space-size=4096 tsx collector/coletarAlesp.ts",
+    "integrar:completo": "tsx collector/integrarCompleto.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",

@@ -20,7 +20,7 @@ const mesBR = (m?: string) => {
 // Senado: bruto oficial da API de remunerações (gabinete + escritório). ALPB: bruto oficial do arquivo
 // de comissionados (COMISSIONADOS.ods). Senado e ALPB compartilham o layout de "valor oficial".
 export function Assessores({
-  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa,
+  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa, estimada = false,
 }: {
   quantidade: number | null
   folha?: number | null
@@ -32,6 +32,7 @@ export function Assessores({
   consultas?: ConsultaLotacao[]
   gabinete: ItemCusto
   casa: Casa
+  estimada?: boolean
 }) {
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null
@@ -73,14 +74,16 @@ export function Assessores({
         {temFolha ? (
           <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
             <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
-            <div className="text-xs text-tinta-suave">{temFolhaReal ? 'Folha do gabinete · custo real' : 'Folha mensal do gabinete'}</div>
+            <div className="text-xs text-tinta-suave">{estimada ? 'Folha do gabinete · custo estimado' : temFolhaReal ? 'Folha do gabinete · custo real' : 'Folha mensal do gabinete'}</div>
             <div className="mt-0.5 font-display text-xl font-semibold tabular-nums text-tinta sm:text-2xl lg:text-3xl">{brlInteiro(folha!)}</div>
             <div className="mt-0.5 text-xs text-tinta-tenue">
-              {temFolhaReal
-                ? `folha bruta oficial · ${mesBR(mesReferencia)}`
-                : mesReferencia
-                  ? `bruto real · ${mesBR(mesReferencia)}`
-                  : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
+              {estimada
+                ? `estimado pela tabela de vencimentos · ${mesBR(mesReferencia)}`
+                : temFolhaReal
+                  ? `folha bruta oficial · ${mesBR(mesReferencia)}`
+                  : mesReferencia
+                    ? `bruto real · ${mesBR(mesReferencia)}`
+                    : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
             </div>
           </div>
         ) : (
@@ -103,7 +106,7 @@ export function Assessores({
       {temFolha && secretarios.length > 0 && (
         <details className="mt-3 rounded-lg border border-borda bg-superficie">
           <summary className="cursor-pointer list-none px-3 py-2 text-sm font-medium text-tinta transition-colors hover:text-marca">
-            Ver {secretarios.length} {temFolhaReal ? 'comissionados e o cargo' : 'secretários do gabinete e a remuneração'}
+            Ver {secretarios.length} {estimada ? 'comissionados (cargo e bruto da tabela)' : temFolhaReal ? 'comissionados e o cargo' : 'secretários do gabinete e a remuneração'}
             <span className="ml-1 text-tinta-tenue">▾</span>
           </summary>
           <ul className="max-h-96 overflow-auto border-t border-borda px-3 py-2">

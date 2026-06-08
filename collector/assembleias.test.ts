@@ -5,10 +5,11 @@ describe('ASSEMBLEIAS', () => {
   it('tem 27 casas (26 estados + DF)', () => {
     expect(ASSEMBLEIAS).toHaveLength(27)
   })
-  it('PB e MG são completo; as demais são leve', () => {
+  it('PB, MG e SP são completo; as demais são leve', () => {
     expect(ASSEMBLEIAS.find((a) => a.uf === 'PB')?.modelo).toBe('completo')
     expect(ASSEMBLEIAS.find((a) => a.uf === 'MG')?.modelo).toBe('completo')
-    expect(ASSEMBLEIAS.filter((a) => a.modelo === 'leve')).toHaveLength(25)
+    expect(ASSEMBLEIAS.find((a) => a.uf === 'SP')?.modelo).toBe('completo')
+    expect(ASSEMBLEIAS.filter((a) => a.modelo === 'leve')).toHaveLength(24)
   })
   it('o DF usa o cargo distrital; os outros, estadual', () => {
     expect(ASSEMBLEIAS.find((a) => a.uf === 'DF')?.cargoTse).toBe('DEPUTADO DISTRITAL')

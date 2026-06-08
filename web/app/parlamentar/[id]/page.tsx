@@ -39,6 +39,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
     consultaExataUrl: assessoresData?.tabela?.consultaExataUrl,
     atualizadoEm: assessoresData?.atualizadoEm,
     mesReferencia: gab?.mesReferencia,
+    estimada: gab?.estimada,
     consultas: gab?.consultas,
   }
   const emendas = getEmendas()?.porPolitico[params.id] ?? null

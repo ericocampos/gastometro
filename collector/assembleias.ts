@@ -51,7 +51,7 @@ export const ASSEMBLEIAS: AssembleiaConfig[] = [
   { uf: 'RO', nome: 'Assembleia Legislativa de Rondônia', sigla: 'ALERO', slug: 'ro', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: null, assentos: 24 },
   { uf: 'RR', nome: 'Assembleia Legislativa de Roraima', sigla: 'ALERR', slug: 'rr', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
   { uf: 'SC', nome: 'Assembleia Legislativa de Santa Catarina', sigla: 'ALESC', slug: 'sc', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 40 },
-  { uf: 'SP', nome: 'Assembleia Legislativa de São Paulo', sigla: 'ALESP', slug: 'sp', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 94 },
+  { uf: 'SP', nome: 'Assembleia Legislativa de São Paulo', sigla: 'ALESP', slug: 'sp', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 94 },
   { uf: 'SE', nome: 'Assembleia Legislativa de Sergipe', sigla: 'ALESE', slug: 'se', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
   { uf: 'TO', nome: 'Assembleia Legislativa do Tocantins', sigla: 'ALETO', slug: 'to', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
 ]
