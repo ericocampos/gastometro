@@ -415,18 +415,28 @@ export function PerfilView({
 
           <section id="gabinete" className="mb-10 scroll-mt-[var(--header-h)]">
             <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
-            <Assessores
-              quantidade={assessores.quantidade}
-              folha={assessores.folha}
-              secretarios={assessores.secretarios}
-              verbaGabinete={assessores.verbaGabinete}
-              consultaExataUrl={assessores.consultaExataUrl}
-              atualizadoEm={assessores.atualizadoEm}
-              mesReferencia={assessores.mesReferencia}
-              consultas={assessores.consultas}
-              gabinete={custoCasa.gabinete}
-              casa={politico.casa}
-            />
+            {politico.casa === 'assembleia' && politico.uf === 'MG' ? (
+              <div className="rounded-lg border border-borda bg-superficie p-4 text-sm leading-relaxed text-tinta-suave">
+                Gabinete não detalhado: a folha da ALMG é publicada só por matrícula, sem o nome do servidor
+                (Deliberação da Mesa 2.555/2013), então não dá para vincular os assessores e o custo do gabinete
+                a cada deputado.{' '}
+                <a href="https://www.almg.gov.br/transparencia/prestacao-de-contas/despesa-com-pessoal/folha-de-pagamento/" target="_blank" rel="noopener noreferrer" className="text-marca underline">folha da ALMG ↗</a>{' '}·{' '}
+                <a href="https://www.terra.com.br/noticias/brasil/politica/assembleia-de-mg-esconde-nomes-de-servidores-e-salarios-outras-9-tem-transparencia-apenas-parcial,f9b9d505da82d3c678655fb1152133ba804a3n6v.html" target="_blank" rel="noopener noreferrer" className="text-marca underline">reportagem ↗</a>
+              </div>
+            ) : (
+              <Assessores
+                quantidade={assessores.quantidade}
+                folha={assessores.folha}
+                secretarios={assessores.secretarios}
+                verbaGabinete={assessores.verbaGabinete}
+                consultaExataUrl={assessores.consultaExataUrl}
+                atualizadoEm={assessores.atualizadoEm}
+                mesReferencia={assessores.mesReferencia}
+                consultas={assessores.consultas}
+                gabinete={custoCasa.gabinete}
+                casa={politico.casa}
+              />
+            )}
           </section>
 
           {/* Emendas e votações são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}
