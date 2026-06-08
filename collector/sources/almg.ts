@@ -2,6 +2,7 @@
 // /api/v2/ (o fetch segue). Datas vêm embrulhadas como { "@class": "sql-timestamp", "$": "yyyy-mm-dd" }.
 // A verba do mês vem em 2 níveis: list[] = categorias; cada categoria tem listaDetalheVerba[] = notas.
 import type { Despesa } from './types.js'
+import { normTse, type EleitoTse } from './tseEleicoes.js'
 
 export interface DeputadoAlmg { idAlmg: number; nome: string; partido: string }
 
@@ -31,6 +32,15 @@ interface NotaAlmg {
   cpfCnpj?: string; nomeEmitente?: string; descDocumento?: string; descTipoDespesa?: string
 }
 interface CategoriaAlmg { descTipoDespesa: string; listaDetalheVerba?: NotaAlmg[] }
+
+/** Casa o nome do deputado da ALMG com um eleito do TSE (nome de urna -> civil), devolvendo o sq da foto. */
+export function casarFotoTse(nomeDeputado: string, eleitos: EleitoTse[]): string | null {
+  const alvo = normTse(nomeDeputado)
+  const porUrna = eleitos.find((e) => normTse(e.nomeUrna) === alvo)
+  if (porUrna) return porUrna.sq
+  const porNome = eleitos.find((e) => normTse(e.nome) === alvo)
+  return porNome ? porNome.sq : null
+}
 
 /** Achata as categorias->notas do mês em Despesas normalizadas (valor = reembolsado). */
 export function parseVerbaMes(json: unknown, idAlmg: number): Despesa[] {

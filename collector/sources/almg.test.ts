@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseRoster, parseDatas, parseVerbaMes } from './almg.js'
+import { parseRoster, parseDatas, parseVerbaMes, casarFotoTse } from './almg.js'
 
 describe('parseRoster', () => {
   it('extrai id/nome/partido da lista', () => {
@@ -47,5 +47,21 @@ describe('parseVerbaMes', () => {
     expect(ds[0].valor).toBe(251.07)
     expect(ds[0].ano).toBe(2025)
     expect(ds[0].mes).toBe(2)
+  })
+})
+
+describe('casarFotoTse', () => {
+  const eleitos = [
+    { sq: '111', nome: 'ADALCLEVER LOPES MOURAO', nomeUrna: 'ADALCLEVER LOPES', partido: 'PV' },
+    { sq: '222', nome: 'MARIA DA SILVA', nomeUrna: 'MARIA SILVA', partido: 'PT' },
+  ]
+  it('casa por nome de urna normalizado e devolve o sq', () => {
+    expect(casarFotoTse('Adalclever Lopes', eleitos)).toBe('111')
+  })
+  it('casa por nome civil quando o de urna não bate', () => {
+    expect(casarFotoTse('Maria da Silva', eleitos)).toBe('222')
+  })
+  it('sem match devolve null', () => {
+    expect(casarFotoTse('Fulano Inexistente', eleitos)).toBeNull()
   })
 })
