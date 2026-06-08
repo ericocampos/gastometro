@@ -56,17 +56,20 @@ async function baixarDespesas(): Promise<DespesaAlespRec[]> {
   if (cached) return cached
   const tmp = resolve(here, '../data/raw/alesp/despesas.xml.tmp')
   let xml = ''
-  for (let i = 0; i < 3; i++) {
-    const resp = await fetch(URL_DESPESAS)
-    if (!resp.ok || !resp.body) throw new Error(`despesas HTTP ${resp.status}`)
-    await pipeline(Readable.fromWeb(resp.body as Parameters<typeof Readable.fromWeb>[0]), createWriteStream(tmp))
-    const esperado = Number(resp.headers.get('content-length') ?? 0)
-    const real = statSync(tmp).size
-    if (esperado && real < esperado) { console.error(`  ! despesas truncado (${real}/${esperado} bytes), tentativa ${i + 1}`); continue }
-    xml = readFileSync(tmp, 'utf-8')
-    break
+  try {
+    for (let i = 0; i < 3; i++) {
+      const resp = await fetch(URL_DESPESAS)
+      if (!resp.ok || !resp.body) throw new Error(`despesas HTTP ${resp.status}`)
+      await pipeline(Readable.fromWeb(resp.body as Parameters<typeof Readable.fromWeb>[0]), createWriteStream(tmp))
+      const esperado = Number(resp.headers.get('content-length') ?? 0)
+      const real = statSync(tmp).size
+      if (esperado && real < esperado) { console.error(`  ! despesas truncado (${real}/${esperado} bytes), tentativa ${i + 1}`); continue }
+      xml = readFileSync(tmp, 'utf-8')
+      break
+    }
+  } finally {
+    rmSync(tmp, { force: true })
   }
-  rmSync(tmp, { force: true })
   if (!xml) throw new Error('despesas: download truncado após 3 tentativas')
   const recs = parseDespesas(xml, ANO_MIN)
   cache.gravar('despesas-recs', recs)

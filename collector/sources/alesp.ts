@@ -75,7 +75,9 @@ export function parseDespesas(xml: string, anoMin: number): DespesaAlespRec[] {
 }
 
 /** Converte os recs em Despesas normalizadas, mapeando matricula->politicoId. Descarta sem mapa.
- *  id estável: alesp-{politicoId-sufixo}-{ano}-{mm}-{seq}, seq sequencial por deputado. */
+ *  id: {politicoId}-{ano}-{mm}-{seq}, seq sequencial por deputado. A fonte (XML) não dá id de nota, então
+ *  o seq é POSICIONAL: estável enquanto a ordem dos registros do XML não muda; uma re-coleta com registros
+ *  reordenados/inseridos renumera (sem id estável da fonte, é o melhor possível). */
 export function montarDespesas(recs: DespesaAlespRec[], matToId: Map<string, string>): Despesa[] {
   const seq = new Map<string, number>()
   const out: Despesa[] = []

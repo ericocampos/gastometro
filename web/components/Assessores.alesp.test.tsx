@@ -19,5 +19,9 @@ describe('Assessores (ALESP, folha estimada)', () => {
     )
     expect(screen.getAllByText(/estimad/i).length).toBeGreaterThan(0)
     expect(screen.queryByText(/custo real/i)).not.toBeInTheDocument()
+    // não pode vazar o texto da ALPB (folha oficial/exata) numa folha que é só estimativa
+    expect(screen.queryByText(/valor oficial/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/soma exata/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/tabela de vencimentos da ALESP/i)).toBeInTheDocument()
   })
 })

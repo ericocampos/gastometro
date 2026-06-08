@@ -209,6 +209,19 @@ export function Assessores({
               </span>
             )}
           </>
+        ) : estimada ? (
+          <>
+            <strong className="text-tinta">Custo estimado pela tabela de vencimentos.</strong>{' '}
+            O nome e o cargo de cada servidor vêm do arquivo oficial de lotações do gabinete; a remuneração é
+            o <strong className="text-tinta-suave">bruto da tabela oficial de vencimentos</strong> do cargo
+            (Lei Complementar 1.431/2025), não a folha real de cada pessoa. A folha do gabinete é a soma
+            desses brutos de tabela (uma estimativa, não valor pago individual). Não há líquido nem símbolo
+            por pessoa, nem descrição da atividade de cada um.
+            <span className="mt-1 block">
+              Fonte:{' '}
+              <a href="https://www.al.sp.gov.br/arquivos/administracao/gestao-de-pessoal/vencimentos/Tabelas_Vencimentos_2025_03_01.pdf" target="_blank" rel="noopener noreferrer" className="text-marca underline">tabela de vencimentos da ALESP ↗</a>
+            </span>
+          </>
         ) : temFolhaAlpb ? (
           <>
             <strong className="text-tinta">Valor oficial, da folha do mês.</strong>{' '}
