@@ -1,6 +1,7 @@
 // collector/sources/alesc.test.ts
 import { describe, it, expect } from 'vitest'
 import { slug, numBr, dataBr, parseVerbaCsv, montarDespesasAlesc, parseServidores, montarGabinetesAlesc } from './alesc.js'
+import { montarDeputadoAlesc } from '../coletarAlesc.js'
 
 // CSV real da ALESC: BOM no início, delimitador ';', cabeçalho exato, número BR, data BR.
 // Última linha é almoxarifado (Favorecido vazio). A 1ª linha é de 2022 (deve sair no filtro 2023+).
@@ -103,5 +104,22 @@ describe('montarGabinetesAlesc', () => {
       nome: 'CARLOS ROCHA', remuneracao: 0, lotacaoTipo: 'gabinete', semFolha: true,
     }) // ordenado por nome (CARLOS antes de MARIANA)
     expect(g['alesc-ana-campos'].total).toBe(1)
+  })
+})
+
+describe('montarDeputadoAlesc', () => {
+  it('monta o registro do deputado com id por slug, partido e foto do TSE', () => {
+    const eleitos = [{ sq: '900', nome: 'FERNANDO DE OLIVEIRA KRELLING', nomeUrna: 'FERNANDO KRELLING', partido: 'PODE' }]
+    expect(montarDeputadoAlesc('FERNANDO KRELLING', eleitos)).toEqual({
+      politicoId: 'alesc-fernando-krelling',
+      nome: 'FERNANDO KRELLING',
+      partido: 'PODE',
+      fotoUrl: '/fotos/deputados/900.webp',
+    })
+  })
+  it('sem match no TSE: partido vazio e sem foto', () => {
+    expect(montarDeputadoAlesc('DEPUTADO SEM TSE', [])).toEqual({
+      politicoId: 'alesc-deputado-sem-tse', nome: 'DEPUTADO SEM TSE', partido: '', fotoUrl: undefined,
+    })
   })
 })
