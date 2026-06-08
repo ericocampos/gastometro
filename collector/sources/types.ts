@@ -33,6 +33,7 @@ export const DespesaSchema = z.object({
   categoria: z.string(),
   fornecedor: z.object({ nome: z.string(), cnpjCpf: z.string().optional() }),
   valor: z.number(),
+  valorApresentado: z.number().optional(),
   urlDocumento: z.string().optional(),
 })
 export type Despesa = z.infer<typeof DespesaSchema>
