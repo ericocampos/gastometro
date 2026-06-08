@@ -83,7 +83,9 @@ async function main() {
   const despesasPorDep = new Map<string, Despesa[]>()
   for (const d of todas) { const a = despesasPorDep.get(d.politicoId); if (a) a.push(d); else despesasPorDep.set(d.politicoId, [d]) }
 
-  // 4) gabinete: raspa servidores e resolve o nome do GAB DEP ao id canônico de um deputado mantido
+  // 4) gabinete: raspa servidores e resolve o nome do GAB DEP ao id canônico de um deputado mantido.
+  // Só liga gabinetes a deputados resolvidos no TSE (id alesc-{sq}); os poucos que caíram no slug
+  // (sem casar no TSE) não recebem gabinete, o que é coerente (o nome do GAB DEP também não casaria).
   const keptIds = new Set(porId.keys())
   const resolveGab = (nome: string): string | null => {
     const c = resolverDeputado(nome, candidatos)
