@@ -150,6 +150,7 @@ export interface GabineteParlamentar {
   folhaOficial?: boolean
   mesReferencia?: string
   estimada?: boolean   // ALESP: folha = soma do bruto da tabela de vencimentos (estimativa), não a folha real
+  semCusto?: boolean   // ALESC: nomes + headcount do gabinete, mas SEM custo (folha individual bloqueada na fonte)
   consultas?: ConsultaLotacao[]           // busca oficial por lotação (gabinete/escritório)
 }
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }

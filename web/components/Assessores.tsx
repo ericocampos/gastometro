@@ -20,7 +20,7 @@ const mesBR = (m?: string) => {
 // Senado: bruto oficial da API de remunerações (gabinete + escritório). ALPB: bruto oficial do arquivo
 // de comissionados (COMISSIONADOS.ods). Senado e ALPB compartilham o layout de "valor oficial".
 export function Assessores({
-  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa, estimada = false,
+  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa, estimada = false, semCusto = false,
 }: {
   quantidade: number | null
   folha?: number | null
@@ -33,6 +33,7 @@ export function Assessores({
   gabinete: ItemCusto
   casa: Casa
   estimada?: boolean
+  semCusto?: boolean
 }) {
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null
@@ -50,7 +51,7 @@ export function Assessores({
         <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
           <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
           <div className="text-xs text-tinta-suave">
-            {temFolhaSenado ? 'Comissionados (gabinete + escritório)' : (temFolhaAlpb || temFolhaMunicipal) ? 'Comissionados do gabinete' : 'Assessores no gabinete'}
+            {temFolhaSenado ? 'Comissionados (gabinete + escritório)' : (temFolhaAlpb || temFolhaMunicipal || semCusto) ? 'Comissionados do gabinete' : 'Assessores no gabinete'}
           </div>
           {quantidade == null ? (
             <>
@@ -63,9 +64,11 @@ export function Assessores({
               <div className="mt-0.5 text-xs text-tinta-tenue">
                 {(temFolhaAlpb || temFolhaMunicipal)
                   ? `comissionados · ${mesBR(mesReferencia)}`
-                  : temFolhaSenado
-                    ? 'comissionados hoje'
-                    : `secretários hoje${atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}`}
+                  : semCusto
+                    ? 'comissionados no gabinete'
+                    : temFolhaSenado
+                      ? 'comissionados hoje'
+                      : `secretários hoje${atualizadoEm ? ` · ${dataBR(atualizadoEm)}` : ''}`}
               </div>
             </>
           )}
@@ -85,6 +88,13 @@ export function Assessores({
                     ? `bruto real · ${mesBR(mesReferencia)}`
                     : `${pctTeto != null ? `${pctTeto}% do teto` : 'soma da folha'}${tetoCamara ? ` · teto ${tetoCamara}` : ''}`}
             </div>
+          </div>
+        ) : semCusto ? (
+          <div className="relative overflow-hidden rounded-lg border border-borda bg-superficie p-3 sm:p-4">
+            <span className="absolute inset-y-0 left-0 w-1" style={{ background: cor }} aria-hidden />
+            <div className="text-xs text-tinta-suave">Custo do gabinete</div>
+            <div className="mt-0.5 font-display text-xl font-semibold text-tinta sm:text-2xl lg:text-3xl">—</div>
+            <div className="mt-0.5 text-xs text-tinta-tenue">valor ainda não validado</div>
           </div>
         ) : (
           <div className="rounded-lg border border-borda bg-superficie p-3 sm:p-4">
@@ -156,6 +166,22 @@ export function Assessores({
         </details>
       )}
 
+      {semCusto && secretarios.length > 0 && (
+        <details className="mt-3 rounded-lg border border-borda bg-superficie">
+          <summary className="cursor-pointer list-none px-3 py-2 text-sm font-medium text-tinta transition-colors hover:text-marca">
+            Ver {secretarios.length} comissionados do gabinete
+            <span className="ml-1 text-tinta-tenue">▾</span>
+          </summary>
+          <ul className="max-h-96 overflow-auto border-t border-borda px-3 py-2">
+            {secretarios.map((s, i) => (
+              <li key={`${s.nome}-${i}`} className="border-b border-borda/60 py-1.5 text-xs text-tinta last:border-0">
+                {tituloNome(s.nome)}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+
       <p className="mt-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
         {temFolhaCamara ? (
           <>
@@ -220,6 +246,18 @@ export function Assessores({
             <span className="mt-1 block">
               Fonte:{' '}
               <a href="https://www.al.sp.gov.br/arquivos/administracao/gestao-de-pessoal/vencimentos/Tabelas_Vencimentos_2025_03_01.pdf" target="_blank" rel="noopener noreferrer" className="text-marca underline">tabela de vencimentos da ALESP ↗</a>
+            </span>
+          </>
+        ) : semCusto ? (
+          <>
+            <strong className="text-tinta">Nomes públicos, valores não validados.</strong>{' '}
+            A ALESC publica os comissionados lotados em cada gabinete (nome e vínculo), mas a folha
+            individual por servidor não está acessível de forma automatizada. Mostramos quem está
+            no gabinete e quantos são; o custo será atualizado quando a folha por pessoa ficar disponível.
+            Não há descrição da atividade de cada pessoa: é dinheiro público pago sem dizer em troca de quê.
+            <span className="mt-1 block">
+              Fonte:{' '}
+              <a href="https://transparencia.alesc.sc.gov.br/servidores" target="_blank" rel="noopener noreferrer" className="text-marca underline">servidores da ALESC ↗</a>
             </span>
           </>
         ) : temFolhaAlpb ? (
