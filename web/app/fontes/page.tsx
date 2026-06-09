@@ -92,6 +92,16 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa da Bahia (ALBA · modelo completo)',
+    intro: 'Portal de transparência da ALBA (páginas HTML por deputado). A verba indenizatória é itemizada por deputado, com categoria nomeada, fornecedor, CPF/CNPJ, valor e o PDF da própria nota fiscal (a ALBA é a única casa que publica o documento da nota). O gabinete por deputado não existe na fonte: a folha de comissionados é por lotação administrativa (departamentos, coordenações), sem vínculo a cada deputado, igual à ALMG.',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'al.ba.gov.br/transparencia/verbas-idenizatorias?deputado={id}&ano={ano} → /{processo}/', formato: 'HTML oficial', obs: 'lista por deputado/ano (competência mês/ano, categoria, valor) e detalhe por processo (CPF/CNPJ, fornecedor, nº da nota, valor, glosa e o PDF da nota fiscal). 14 categorias nomeadas; mandato atual (2023+)' },
+      { oque: 'Documento da nota (PDF)', onde: 'al.ba.gov.br/fserver/...', formato: 'PDF oficial', obs: 'a imagem/PDF da nota fiscal de cada despesa, linkado no detalhamento ("nota")' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a fonte da ALBA não traz foto; casamos o nome ao candidato eleito de 2022 (urna/civil)' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha de comissionados da ALBA (portalrh.alba.ba.gov.br) é por lotação administrativa, sem atribuição a cada deputado; não há como montar o gabinete por deputado, igual à ALMG' },
+    ],
+  },
+  {
     casa: 'Demais Assembleias Legislativas (modelo leve)',
     intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
     fontes: [
@@ -149,8 +159,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em seis casas
-        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal e Pernambuco) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em sete casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco e Bahia) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
