@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alepe-lucas-ramos-2023-01-1",
+    "politicoId": "alepe-lucas-ramos",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 2",
+    "fornecedor": {
+      "nome": "NUNES SERVICOS LTDA",
+      "cnpjCpf": "30248426000120"
+    },
+    "valor": 10620
+  },
+  {
+    "id": "alepe-lucas-ramos-2023-01-2",
+    "politicoId": "alepe-lucas-ramos",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 4",
+    "fornecedor": {
+      "nome": "CETAP CENTRO TEC DE ASSESSORIA E PLAN COMUNITARIO",
+      "cnpjCpf": "00148580000240"
+    },
+    "valor": 8200
+  },
+  {
+    "id": "alepe-lucas-ramos-2023-01-3",
+    "politicoId": "alepe-lucas-ramos",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 3",
+    "fornecedor": {
+      "nome": "rafael ferraz sociedae inividual de advocacia",
+      "cnpjCpf": "14523420000167"
+    },
+    "valor": 10800
+  },
+  {
+    "id": "alepe-lucas-ramos-2023-01-4",
+    "politicoId": "alepe-lucas-ramos",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 5",
+    "fornecedor": {
+      "nome": "mova filmes ltda",
+      "cnpjCpf": "41461863000143"
+    },
+    "valor": 10000
+  }
+]
