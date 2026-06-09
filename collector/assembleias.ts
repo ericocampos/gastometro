@@ -30,7 +30,7 @@ export const ASSEMBLEIAS: AssembleiaConfig[] = [
   { uf: 'AC', nome: 'Assembleia Legislativa do Acre', sigla: 'ALEAC', slug: 'ac', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: null, assentos: 24 },
   { uf: 'AL', nome: 'Assembleia Legislativa de Alagoas', sigla: 'ALEAL', slug: 'al', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 27 },
   { uf: 'AP', nome: 'Assembleia Legislativa do Amapá', sigla: 'ALEAP', slug: 'ap', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: 33448.48, assentos: 24 },
-  { uf: 'AM', nome: 'Assembleia Legislativa do Amazonas', sigla: 'ALEAM', slug: 'am', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
+  { uf: 'AM', nome: 'Assembleia Legislativa do Amazonas', sigla: 'ALEAM', slug: 'am', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
   { uf: 'BA', nome: 'Assembleia Legislativa da Bahia', sigla: 'ALBA', slug: 'ba', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 63 },
   { uf: 'CE', nome: 'Assembleia Legislativa do Ceará', sigla: 'ALECE', slug: 'ce', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: 34776.64, assentos: 46 },
   { uf: 'DF', nome: 'Câmara Legislativa do Distrito Federal', sigla: 'CLDF', slug: 'df', modelo: 'completo', cargoTse: 'DEPUTADO DISTRITAL', subsidio: TETO, assentos: 24 },
