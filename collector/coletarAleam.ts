@@ -74,7 +74,11 @@ async function main() {
         let html = ''
         try { html = await getCotaHtml(d.id, ano, mes) } catch { continue }
         const cards = parseCards(html)
-        if (cards.length && /page-numbers/.test(html)) console.log(`  ! possível paginação em ${d.nome} ${ano}-${mes} (${cards.length} cards)`)
+        // paginação real é <a/span class="page-numbers">; o CSS do tema também contém a string, então
+        // o teste ignora os blocos <style> (senão alarma falso em toda página)
+        if (cards.length && /<(a|span|li)[^>]*page-numbers/.test(html.replace(/<style[\s\S]*?<\/style>/g, ''))) {
+          console.log(`  ! possível paginação em ${d.nome} ${ano}-${mes} (${cards.length} cards)`)
+        }
         for (const c of cards) {
           if (!civilPorConta.has(d.nome) && c.deputadoCivil) civilPorConta.set(d.nome, c.deputadoCivil)
           const dt = dataBr(c.emissao)
