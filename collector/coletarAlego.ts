@@ -64,10 +64,17 @@ async function main() {
   // 2) TSE GO 2022 e resolução por nome (preferindo o partido atual da ALEGO quando casar)
   let candidatos: EleitoTse[] = []
   try { candidatos = await baixarCandidatosCargoUf(2022, 'GO', 'DEPUTADO ESTADUAL') } catch (e) { console.error(`  ! TSE GO: ${(e as Error).message}`) }
+  // 2ª tentativa para nomes com prefixo de título (ex.: "Dra. Zeli" -> "Zeli"): só aceita se o nome sem o
+  // título casar de forma única no TSE (conservador). Recupera o único eleito 2022 que vinha com título.
+  const TITULOS = /^(DEL|DR|DRA|DELEGAD[OA]|PROF|PROFA|PROFESSOR[A]?|DOUTOR[A]?|CEL|CORONEL|SGT|SARGENTO|TEN|TENENTE|MAJ|MAJOR|CB|CABO|PR|PASTOR|BISPO|VEREADOR[A]?)\.?\s+/i
   const contaToId = new Map<string, string>()
   const porId = new Map<string, DeputadoResolvido>()
   for (const nome of [...new Set(recs.map((r) => r.conta))].sort()) {
-    const dep = montarDeputadoAlego(nome, candidatos)
+    let dep = montarDeputadoAlego(nome, candidatos)
+    if (!dep.sq && TITULOS.test(nome)) {
+      const d2 = montarDeputadoAlego(nome.replace(TITULOS, ''), candidatos)
+      if (d2.sq) dep = d2
+    }
     const partidoAlego = partidoPorConta.get(nome)
     if (partidoAlego) dep.partido = partidoAlego // o partido atual da casa é mais fiel que o de 2022
     contaToId.set(nome, dep.politicoId)
