@@ -24,7 +24,8 @@
     "comprimir:cache": "tsx collector/comprimirCache.ts",
     "analisar": "tsx collector/analisar.ts",
     "coletar:alesp": "NODE_OPTIONS=--max-old-space-size=4096 tsx collector/coletarAlesp.ts",
-    "coletar:alesc": "tsx collector/coletarAlesc.ts"
+    "coletar:alesc": "tsx collector/coletarAlesc.ts",
+    "coletar:cldf": "tsx collector/coletarCldf.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",

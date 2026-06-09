@@ -1,6 +1,8 @@
 // collector/sources/cldf.test.ts
 import { describe, it, expect } from 'vitest'
 import { nomeDeDeputado, numUs, soDigitos, parseVerbaCldf, montarDespesasCldf, parseServidoresCldf } from './cldf.js'
+import { montarDeputadoCldf } from '../coletarCldf.js'
+import type { EleitoTse } from './tseEleicoes.js'
 
 // records como vêm do datastore_search da CLDF
 const RECORDS = [
@@ -69,5 +71,19 @@ describe('parseServidoresCldf', () => {
     expect(ss).toHaveLength(2)
     expect(ss[0]).toEqual({ deputadoNome: 'CHICO VIGILANTE', nomeFuncionario: 'MARIA DA SILVA' })
     expect(ss[1]).toEqual({ deputadoNome: 'JOAQUIM RORIZ NETO', nomeFuncionario: 'JOAO SOUZA' })
+  })
+})
+
+describe('montarDeputadoCldf', () => {
+  it('resolve no TSE -> id cldf-{sq}, nome de urna, partido e foto', () => {
+    const cands: EleitoTse[] = [{ sq: '700', nome: 'JOAQUIM RORIZ NETO', nomeUrna: 'JOAQUIM RORIZ', partido: 'PL', eleito: true }]
+    expect(montarDeputadoCldf('Joaquim Roriz Neto', cands)).toEqual({
+      politicoId: 'cldf-700', nome: 'JOAQUIM RORIZ', partido: 'PL', sq: '700', fotoUrl: '/fotos/deputados/700.webp',
+    })
+  })
+  it('sem match -> id cldf-{slug}, sem foto/partido', () => {
+    expect(montarDeputadoCldf('Fulano Sem Tse', [])).toEqual({
+      politicoId: 'cldf-fulano-sem-tse', nome: 'Fulano Sem Tse', partido: '', sq: undefined, fotoUrl: undefined,
+    })
   })
 })
