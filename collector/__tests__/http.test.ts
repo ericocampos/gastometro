@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
-import { fetchJson } from '../http.js'
+import { fetchJson, fetchText } from '../http.js'
 
 afterEach(() => vi.restoreAllMocks())
 
@@ -25,5 +25,22 @@ describe('fetchJson', () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response('erro', { status: 500 })))
     await expect(fetchJson('https://x', { tentativas: 2, baseDelayMs: 0 }))
       .rejects.toThrow(/HTTP 500/)
+  })
+})
+
+describe('fetchText', () => {
+  it('fetchText repassa method e body (POST form)', async () => {
+    const f = vi.fn(async () => new Response('ok-post', { status: 200 }))
+    vi.stubGlobal('fetch', f)
+    const out = await fetchText('https://x.test/form', {
+      method: 'POST',
+      body: 'ano=2025&mes=03&dados=3',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    })
+    expect(out).toBe('ok-post')
+    expect(f).toHaveBeenCalledWith(
+      'https://x.test/form',
+      expect.objectContaining({ method: 'POST', body: 'ano=2025&mes=03&dados=3' }),
+    )
   })
 })

@@ -2,6 +2,8 @@ export interface OpcoesHttp {
   tentativas?: number
   baseDelayMs?: number
   headers?: Record<string, string>
+  method?: string
+  body?: string
 }
 
 const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -12,7 +14,7 @@ async function comRetry(url: string, opts: OpcoesHttp): Promise<Response> {
   let ultimoErro: unknown
   for (let i = 0; i < tentativas; i++) {
     try {
-      const resp = await fetch(url, { headers: opts.headers })
+      const resp = await fetch(url, { headers: opts.headers, method: opts.method, body: opts.body })
       if (resp.ok) return resp
       ultimoErro = new Error(`HTTP ${resp.status} em ${url}`)
     } catch (e) {
