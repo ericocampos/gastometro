@@ -406,6 +406,15 @@ export function PerfilView({
             </p>
           )}
 
+          {politico.casa === 'assembleia' && politico.uf === 'DF' && (
+            <p className="mb-8 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+              <strong className="text-tinta">Cobertura parcial da fonte.</strong>{' '}
+              O dado de 2023 está completo, mas o portal da CLDF publicou 2024 e 2025 de forma parcial
+              (bem menos lançamentos do que o esperado), então o total dos anos recentes pode estar
+              subestimado. Atualizamos automaticamente conforme a fonte oficial completar.
+            </p>
+          )}
+
           <section id="custo" className="mb-10 scroll-mt-[var(--header-h)]">
             {municipalSoDiaria ? (
               <>

@@ -72,6 +72,15 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Câmara Legislativa do Distrito Federal (CLDF · modelo completo)',
+    intro: 'API de dados abertos (CKAN) da CLDF. A verba indenizatória é itemizada por deputado distrital, com fornecedor e CNPJ. O gabinete entra com os nomes dos comissionados, mas sem custo (os cargos são texto e a tabela de remuneração é por nível, sem correspondência na fonte). Cobertura desigual: 2023 está completo; 2024 e 2025 estão parciais no portal (bem menos lançamentos do que o esperado), e atualizamos conforme a fonte completar.',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'dados.cl.df.gov.br/api/3/action/datastore_search (dataset verbas-indenizatorias)', formato: 'JSON (CKAN)', obs: 'itemizada com NOME_PRESTADOR e CNPJ/CPF, nº do comprovante, data, valor e classificação; um recurso por ano (2023+), descobertos via package_show. 2024 e 2025 ainda parciais na fonte' },
+      { oque: 'Gabinete — comissionados', onde: 'dados.cl.df.gov.br (dataset relacao-nominal-de-deputados-e-servidores)', formato: 'JSON (CKAN)', obs: 'nomes dos lotados em "GABINETE DO DEPUTADO {nome}", do mês mais recente com datastore ativo; SEM custo (o cargo é texto, sem mapa para a tabela de remuneração por nível)' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022, deputado distrital)', formato: 'CSV + JPG', obs: 'resolve o nome da verba (civil) e o do gabinete (urna) ao candidato; recupera partido e foto, inclusive de suplentes' },
+    ],
+  },
+  {
     casa: 'Demais Assembleias Legislativas (modelo leve)',
     intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
     fontes: [
@@ -129,8 +138,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em quatro casas
-        (Paraíba, Minas Gerais, São Paulo e Santa Catarina) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em cinco casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina e Distrito Federal) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
