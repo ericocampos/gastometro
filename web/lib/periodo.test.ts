@@ -2,9 +2,32 @@ import { describe, it, expect } from 'vitest'
 import {
   anosDaLegislatura, pontoNoPeriodo, totalNoPeriodo, rankingNoPeriodo,
   resumoNoPeriodo, anosDisponiveis, mandatosDisponiveis, totalGeralPorAno,
-  totalAnualMunicipio, comparativoAnualCidades,
+  totalAnualMunicipio, comparativoAnualCidades, valorPeriodoPadrao,
   type SerieParlamentar,
 } from './periodo'
+
+const meses = (ano: number, n: number): { anoMes: string; total: number }[] =>
+  Array.from({ length: n }, (_, i) => ({ anoMes: `${ano}-${String(i + 1).padStart(2, '0')}`, total: 100 }))
+
+describe('valorPeriodoPadrao', () => {
+  it('abre no ano COMPLETO mais recente, não no ano corrente parcial', () => {
+    // federal com 2025 completo (12 meses) e 2026 só com 2 meses; uma assembleia sem 2026
+    const s: SerieParlamentar[] = [
+      { politicoId: 'f', nome: 'F', partido: 'PP', uf: 'DF', casa: 'camara', legislaturas: [57], serieMensal: [...meses(2025, 12), ...meses(2026, 2)] },
+      { politicoId: 'd', nome: 'D', partido: 'PT', uf: 'DF', casa: 'assembleia', legislaturas: [], serieMensal: meses(2025, 11) },
+    ]
+    expect(valorPeriodoPadrao(s)).toBe('ano:2025') // não "ano:2026"
+  })
+  it('sem ano completo, cai para o ano mais recente com dados', () => {
+    const s: SerieParlamentar[] = [
+      { politicoId: 'x', nome: 'X', partido: 'PP', uf: 'PB', casa: 'camara', legislaturas: [57], serieMensal: meses(2026, 3) },
+    ]
+    expect(valorPeriodoPadrao(s)).toBe('ano:2026')
+  })
+  it('sem dados, cai para tudo', () => {
+    expect(valorPeriodoPadrao([])).toBe('tudo')
+  })
+})
 
 const series: SerieParlamentar[] = [
   {

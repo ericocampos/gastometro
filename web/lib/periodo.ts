@@ -186,11 +186,21 @@ export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   return [...anos].sort((a, b) => b - a)
 }
 
-// Valor padrão do filtro: o ano mais recente com dados (ex.: "ano:2026").
-// Se não houver dados, cai para "tudo".
+// Valor padrão do filtro: o ano COMPLETO (12 meses de dados em alguma série) mais recente. Evita
+// abrir num ano corrente recém-começado (ex.: 2026 com 2 meses), que subestima todo mundo e some com
+// as casas cuja fonte ainda não publicou o ano (ex.: o DF, sem dado de 2026). Sem ano completo, cai
+// para o ano mais recente com dados; sem dados, "tudo".
 export function valorPeriodoPadrao(series: SerieParlamentar[]): string {
-  const anos = anosDisponiveis(series)
-  return anos.length ? `ano:${anos[0]}` : 'tudo'
+  const anos = anosDisponiveis(series) // já vem desc
+  if (!anos.length) return 'tudo'
+  const meses = new Map<number, Set<string>>()
+  for (const s of series) for (const p of s.serieMensal) {
+    const ano = Number(p.anoMes.slice(0, 4))
+    if (!meses.has(ano)) meses.set(ano, new Set())
+    meses.get(ano)!.add(p.anoMes.slice(5, 7))
+  }
+  const completo = anos.find((a) => (meses.get(a)?.size ?? 0) >= 12)
+  return `ano:${completo ?? anos[0]}`
 }
 
 export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {
