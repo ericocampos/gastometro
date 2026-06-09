@@ -1,0 +1,94 @@
+[
+  {
+    "id": "alego-90001653803-2023-01-1",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Fornecimento de alimentação parlamentar",
+    "fornecedor": {
+      "nome": "RESTAURANTE NOVO SABOR",
+      "cnpjCpf": "44416023000157"
+    },
+    "valor": 2400
+  },
+  {
+    "id": "alego-90001653803-2023-01-2",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "DARILZA VALERIA CORREA MACHADO COSTA",
+      "cnpjCpf": "62889168115"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alego-90001653803-2023-01-3",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "YASMIN LEMES SAMPAIO",
+      "cnpjCpf": "02158687142"
+    },
+    "valor": 5200
+  },
+  {
+    "id": "alego-90001653803-2023-01-4",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "PETROMIX",
+      "cnpjCpf": "34513906000121"
+    },
+    "valor": 2093.86
+  },
+  {
+    "id": "alego-90001653803-2023-01-5",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "VALPOSTO  COMBUSTIVEIS",
+      "cnpjCpf": "25124074000160"
+    },
+    "valor": 3657.54,
+    "valorApresentado": 4044.53
+  },
+  {
+    "id": "alego-90001653803-2023-01-6",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-27",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "JM DANTAS ASSESSORIA CONTABIL",
+      "cnpjCpf": "13537409000193"
+    },
+    "valor": 6000
+  },
+  {
+    "id": "alego-90001653803-2023-01-7",
+    "politicoId": "alego-90001653803",
+    "data": "2023-01-27",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "LUNARY CANDIDO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "40592666000109"
+    },
+    "valor": 3000
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "id": "alego-90001644190-2026-04-1",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-29",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Fornecimento de alimentação",
+    "fornecedor": {
+      "nome": "NOSSO BOTECO LOZANDES",
+      "cnpjCpf": "16720981000181"
+    },
+    "valor": 147.51
+  },
+  {
+    "id": "alego-90001644190-2026-04-2",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-27",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "AAUTO POSTO JEAN",
+      "cnpjCpf": "19914893000109"
+    },
+    "valor": 412.16,
+    "valorApresentado": 430.02
+  },
+  {
+    "id": "alego-90001644190-2026-04-3",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-24",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO SANTA MARIA",
+      "cnpjCpf": "24527917000107"
+    },
+    "valor": 500
+  },
+  {
+    "id": "alego-90001644190-2026-04-4",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-18",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "AAUTO POSTO JEAN",
+      "cnpjCpf": "19914893000109"
+    },
+    "valor": 481.02
+  },
+  {
+    "id": "alego-90001644190-2026-04-5",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-30",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "MINASWEB COMUNICAÇÃO E CONSULTORIA LTDA",
+      "cnpjCpf": "41780707000145"
+    },
+    "valor": 6500
+  },
+  {
+    "id": "alego-90001644190-2026-04-6",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-24",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "REINALDO GAMA DE LIMA 02097963161",
+      "cnpjCpf": "43041761000102"
+    },
+    "valor": 5000
+  },
+  {
+    "id": "alego-90001644190-2026-04-7",
+    "politicoId": "alego-90001644190",
+    "data": "2026-04-30",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Apoio técnico em marketing e comunicação parlamentar",
+    "fornecedor": {
+      "nome": "QUINTAL PRODUTORA E PUBLICIDADE LTDA",
+      "cnpjCpf": "39232462000170"
+    },
+    "valor": 20000
+  }
+]

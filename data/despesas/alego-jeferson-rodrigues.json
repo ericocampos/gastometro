@@ -1,0 +1,42 @@
+[
+  {
+    "id": "alego-jeferson-rodrigues-2023-01-1",
+    "politicoId": "alego-jeferson-rodrigues",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO PARANAIBA",
+      "cnpjCpf": "14137177000149"
+    },
+    "valor": 8351.4,
+    "valorApresentado": 9198.36
+  },
+  {
+    "id": "alego-jeferson-rodrigues-2023-01-2",
+    "politicoId": "alego-jeferson-rodrigues",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "MALAQUIAS ASSOCIADOS ADVOGADOS",
+      "cnpjCpf": "23394096000115"
+    },
+    "valor": 9000
+  },
+  {
+    "id": "alego-jeferson-rodrigues-2023-01-3",
+    "politicoId": "alego-jeferson-rodrigues",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "CONEX MIDIA",
+      "cnpjCpf": "10684153000159"
+    },
+    "valor": 9000
+  }
+]

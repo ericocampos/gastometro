@@ -1,0 +1,55 @@
+[
+  {
+    "id": "alego-90001648386-2023-01-1",
+    "politicoId": "alego-90001648386",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "IAGHO FERNANDES DE OLIVEIRA",
+      "cnpjCpf": "04436595161"
+    },
+    "valor": 7500
+  },
+  {
+    "id": "alego-90001648386-2023-01-2",
+    "politicoId": "alego-90001648386",
+    "data": "2023-01-26",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO OITO",
+      "cnpjCpf": "01135532000107"
+    },
+    "valor": 9222.99,
+    "valorApresentado": 9267.98
+  },
+  {
+    "id": "alego-90001648386-2023-01-3",
+    "politicoId": "alego-90001648386",
+    "data": "2023-01-25",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "MONTELO & MONTELO ADVOGADOS ASSOCIADOS",
+      "cnpjCpf": "19914343000190"
+    },
+    "valor": 6000
+  },
+  {
+    "id": "alego-90001648386-2023-01-4",
+    "politicoId": "alego-90001648386",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "JULLIERME AFONSO MIRANDA ME",
+      "cnpjCpf": "14545191000181"
+    },
+    "valor": 3000
+  }
+]

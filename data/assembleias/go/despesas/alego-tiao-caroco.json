@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alego-tiao-caroco-2023-01-1",
+    "politicoId": "alego-tiao-caroco",
+    "data": "2023-01-25",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "RS PRODUTOS E SERVIÇOS",
+      "cnpjCpf": "06273582000166"
+    },
+    "valor": 9200
+  },
+  {
+    "id": "alego-tiao-caroco-2023-01-2",
+    "politicoId": "alego-tiao-caroco",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "AUTO POSTO JEL SHADDAY",
+      "cnpjCpf": "33328618000134"
+    },
+    "valor": 3649.14
+  },
+  {
+    "id": "alego-tiao-caroco-2023-01-3",
+    "politicoId": "alego-tiao-caroco",
+    "data": "2023-01-26",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO TERRA",
+      "cnpjCpf": "09068583000167"
+    },
+    "valor": 2883.53
+  },
+  {
+    "id": "alego-tiao-caroco-2023-01-4",
+    "politicoId": "alego-tiao-caroco",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "B.R.A. CREDITOS E CONSULTORIA",
+      "cnpjCpf": "45041344000187"
+    },
+    "valor": 9200
+  }
+]

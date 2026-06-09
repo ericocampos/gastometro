@@ -1,0 +1,68 @@
+[
+  {
+    "id": "alego-alysson-lima-2023-01-1",
+    "politicoId": "alego-alysson-lima",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "RENDACAR",
+      "cnpjCpf": "36561369000110"
+    },
+    "valor": 7200
+  },
+  {
+    "id": "alego-alysson-lima-2023-01-2",
+    "politicoId": "alego-alysson-lima",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "AUTO POSTO VERA CRUZ",
+      "cnpjCpf": "02066488000185"
+    },
+    "valor": 458.75
+  },
+  {
+    "id": "alego-alysson-lima-2023-01-3",
+    "politicoId": "alego-alysson-lima",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "AUTO POSTO LUMIAR",
+      "cnpjCpf": "02868460000161"
+    },
+    "valor": 689.48,
+    "valorApresentado": 689.49
+  },
+  {
+    "id": "alego-alysson-lima-2023-01-4",
+    "politicoId": "alego-alysson-lima",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "OTAVIO E MARQUES ADVOGADOS ASSOCIADOS SS",
+      "cnpjCpf": "14515163000111"
+    },
+    "valor": 8800
+  },
+  {
+    "id": "alego-alysson-lima-2023-01-5",
+    "politicoId": "alego-alysson-lima",
+    "data": "2023-01-27",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "FABRICA MIDIA",
+      "cnpjCpf": "28762494000160"
+    },
+    "valor": 8500
+  }
+]

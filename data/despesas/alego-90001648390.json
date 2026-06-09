@@ -1,0 +1,107 @@
+[
+  {
+    "id": "alego-90001648390-2023-01-1",
+    "politicoId": "alego-90001648390",
+    "data": "2023-02-03",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Fornecimento de alimentação parlamentar",
+    "fornecedor": {
+      "nome": "PIZZARIA E RESTAURANTE GOIANÃO",
+      "cnpjCpf": "02585541000154"
+    },
+    "valor": 3600
+  },
+  {
+    "id": "alego-90001648390-2023-01-2",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "MAX TUR TURISMO",
+      "cnpjCpf": "15014698000171"
+    },
+    "valor": 6800
+  },
+  {
+    "id": "alego-90001648390-2023-01-3",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO XANDAO",
+      "cnpjCpf": "43564258000123"
+    },
+    "valor": 7201.83
+  },
+  {
+    "id": "alego-90001648390-2023-01-4",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-18",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO GOIATUBA 2",
+      "cnpjCpf": "04207022000188"
+    },
+    "valor": 172.08
+  },
+  {
+    "id": "alego-90001648390-2023-01-5",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-16",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO GOIATUBA 2",
+      "cnpjCpf": "04207022000188"
+    },
+    "valor": 348.72,
+    "valorApresentado": 348.78
+  },
+  {
+    "id": "alego-90001648390-2023-01-6",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-09",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO GOIATUBA 2",
+      "cnpjCpf": "04207022000188"
+    },
+    "valor": 206.52
+  },
+  {
+    "id": "alego-90001648390-2023-01-7",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-09",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO GOIATUBA 2",
+      "cnpjCpf": "04207022000188"
+    },
+    "valor": 200
+  },
+  {
+    "id": "alego-90001648390-2023-01-8",
+    "politicoId": "alego-90001648390",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "PAULA CARDOSO ADVOCACIA",
+      "cnpjCpf": "24704321000135"
+    },
+    "valor": 7500
+  }
+]
