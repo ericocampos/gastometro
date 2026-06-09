@@ -11,8 +11,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import { fetchText } from './http.js'
 import { CacheBruto } from './cache.js'
-import { baixarCandidatosCargoUf, baixarZipFotosUf, gerarThumbsWebp, fotoUrlLocalDeputado, normTse, type EleitoTse } from './sources/tseEleicoes.js'
-import { slug, resolverDeputado, parseVerbaCsv, montarDespesasAlesc, parseServidores, montarGabinetesAlesc, type GabineteAlesc } from './sources/alesc.js'
+import { baixarCandidatosCargoUf, baixarZipFotosUf, gerarThumbsWebp, normTse, type EleitoTse } from './sources/tseEleicoes.js'
+import { resolverDeputado, montarDeputadoTse, parseVerbaCsv, montarDespesasAlesc, parseServidores, montarGabinetesAlesc, type GabineteAlesc } from './sources/alesc.js'
 import type { Despesa } from './sources/types.js'
 
 const BASE = 'https://transparencia.alesc.sc.gov.br'
@@ -32,9 +32,7 @@ export interface DeputadoAlescOut { politicoId: string; nome: string; partido: s
 /** Montagem pura: resolve a conta a um candidato do TSE. Casa -> id por sq, nome de urna, partido e
  *  foto; não casa -> id por slug do nome da conta, partido vazio, sem foto. */
 export function montarDeputadoAlesc(conta: string, candidatos: EleitoTse[]): DeputadoAlescOut {
-  const c = resolverDeputado(conta, candidatos)
-  if (c) return { politicoId: `alesc-${c.sq}`, nome: c.nomeUrna, partido: c.partido, sq: c.sq, fotoUrl: fotoUrlLocalDeputado(c.sq) }
-  return { politicoId: `alesc-${slug(conta)}`, nome: conta, partido: '', sq: undefined, fotoUrl: undefined }
+  return montarDeputadoTse(conta, candidatos, 'alesc')
 }
 
 const here = dirname(fileURLToPath(import.meta.url))

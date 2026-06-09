@@ -6,7 +6,7 @@
 // Tudo função pura/testável; o IO fica no coletor.
 import { parse } from 'csv-parse/sync'
 import type { Despesa } from './types.js'
-import { normTse, type EleitoTse } from './tseEleicoes.js'
+import { normTse, fotoUrlLocalDeputado, type EleitoTse } from './tseEleicoes.js'
 
 /** id estável a partir do nome do deputado (a fonte não dá ID): "Ana Campos" -> "ana-campos". */
 export function slug(nome: string): string {
@@ -52,6 +52,16 @@ export function resolverDeputado(nome: string, candidatos: EleitoTse[]): EleitoT
   // nome de uma só palavra (ex.: "Marquito"): só casa se for o 1o nome de urna de um ÚNICO eleito
   const primeiraUrna = candidatos.filter((c) => c.eleito && palavras(c.nomeUrna)[0] === alvo)
   return primeiraUrna.length === 1 ? primeiraUrna[0] : null
+}
+
+export interface DeputadoResolvido { politicoId: string; nome: string; partido: string; sq?: string; fotoUrl?: string }
+
+/** Resolve um nome a um candidato do TSE e monta o registro do deputado com o prefixo dado.
+ *  Casa -> id {prefixo}-{sq}, nome de urna, partido, foto; senão -> {prefixo}-{slug(nome)}, sem foto/partido. */
+export function montarDeputadoTse(conta: string, candidatos: EleitoTse[], prefixo: string): DeputadoResolvido {
+  const c = resolverDeputado(conta, candidatos)
+  if (c) return { politicoId: `${prefixo}-${c.sq}`, nome: c.nomeUrna, partido: c.partido, sq: c.sq, fotoUrl: fotoUrlLocalDeputado(c.sq) }
+  return { politicoId: `${prefixo}-${slug(conta)}`, nome: conta, partido: '', sq: undefined, fotoUrl: undefined }
 }
 
 /** número no formato BR ("1.842,58") -> 1842.58 */

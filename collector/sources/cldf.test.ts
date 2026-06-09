@@ -1,6 +1,6 @@
 // collector/sources/cldf.test.ts
 import { describe, it, expect } from 'vitest'
-import { nomeDeDeputado, numUs, soDigitos, parseVerbaCldf, montarDespesasCldf } from './cldf.js'
+import { nomeDeDeputado, numUs, soDigitos, parseVerbaCldf, montarDespesasCldf, parseServidoresCldf } from './cldf.js'
 
 // records como vêm do datastore_search da CLDF
 const RECORDS = [
@@ -54,5 +54,20 @@ describe('montarDespesasCldf', () => {
       categoria: 'Combustível', fornecedor: { nome: 'Auto Posto Cinco Estrelas', cnpjCpf: '00692418002070' }, valor: 281.66,
     })
     expect(ds[1].id).toBe('cldf-100-2023-05-2')
+  })
+})
+
+describe('parseServidoresCldf', () => {
+  const recs = [
+    { Nome: 'FRANCISCO DOMINGOS DOS SANTOS', CargoFuncao: 'DEPUTADO DISTRITAL', Lotacao: 'GABINETE DO DEPUTADO CHICO VIGILANTE' },
+    { Nome: 'MARIA DA SILVA', CargoFuncao: 'SECRETARIO PARLAMENTAR', Lotacao: 'GABINETE DO DEPUTADO CHICO VIGILANTE' },
+    { Nome: 'JOAO SOUZA', CargoFuncao: 'CARGO ESPECIAL DE GABINETE', Lotacao: 'GABINETE DO DEPUTADO JOAQUIM RORIZ NETO' },
+    { Nome: 'PEDRO LIMA', CargoFuncao: 'ANALISTA', Lotacao: 'DIRETORIA DE RECURSOS HUMANOS' },
+  ]
+  it('pega só comissionados de gabinete, excluindo o próprio deputado e lotações administrativas', () => {
+    const ss = parseServidoresCldf(recs)
+    expect(ss).toHaveLength(2)
+    expect(ss[0]).toEqual({ deputadoNome: 'CHICO VIGILANTE', nomeFuncionario: 'MARIA DA SILVA' })
+    expect(ss[1]).toEqual({ deputadoNome: 'JOAQUIM RORIZ NETO', nomeFuncionario: 'JOAO SOUZA' })
   })
 })
