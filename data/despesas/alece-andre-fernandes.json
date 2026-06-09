@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alece-andre-fernandes-2023-01-1",
+    "politicoId": "alece-andre-fernandes",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2889
+  },
+  {
+    "id": "alece-andre-fernandes-2023-01-2",
+    "politicoId": "alece-andre-fernandes",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 1904
+  },
+  {
+    "id": "alece-andre-fernandes-2023-01-3",
+    "politicoId": "alece-andre-fernandes",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "RAEL KASSOUF GARCIA - SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "39287902000196"
+    },
+    "valor": 25000
+  },
+  {
+    "id": "alece-andre-fernandes-2023-02-4",
+    "politicoId": "alece-andre-fernandes",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 28.56
+  }
+]

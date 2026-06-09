@@ -1,0 +1,548 @@
+[
+  {
+    "id": "alece-julio-cesar-filho-2023-01-1",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2889
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-01-2",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "FABIANA CALIXTO GOMES DINIZ ME",
+      "cnpjCpf": "03582294000103"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-05-3",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-05-01",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "FABIANA CALIXTO GOMES DINIZ ME",
+      "cnpjCpf": "03582294000103"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-05-4",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-05-01",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 3852
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-05-5",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-05-01",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "HB TUR LOCADORA DE VEICULOS LTDA - EPP",
+      "cnpjCpf": "12354213000109"
+    },
+    "valor": 14968
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-05-6",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-05-01",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 10000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-05-7",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-05-01",
+    "ano": 2023,
+    "mes": 5,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 981.52
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-12-8",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "FABIANA CALIXTO GOMES DINIZ ME",
+      "cnpjCpf": "03582294000103"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-12-9",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 3852
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-12-10",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 7000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-12-11",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "HB TUR LOCADORA DE VEICULOS LTDA - EPP",
+      "cnpjCpf": "12354213000109"
+    },
+    "valor": 14968
+  },
+  {
+    "id": "alece-julio-cesar-filho-2023-12-12",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 6000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2024-01-13",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2024-01-01",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 3852
+  },
+  {
+    "id": "alece-julio-cesar-filho-2025-01-14",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2025-01-01",
+    "ano": 2025,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2025-04-15",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2025-04-01",
+    "ano": 2025,
+    "mes": 4,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 228.78
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-01-16",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-01-01",
+    "ano": 2026,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-02-17",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 7000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-02-18",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 7500
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-02-19",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "VIA ROYALE LOCAÇÕES DE VEÍCULOS LTDA",
+      "cnpjCpf": "16661158000142"
+    },
+    "valor": 17037.36
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-02-20",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-02-01",
+    "ano": 2026,
+    "mes": 2,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-21",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 10000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-22",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 7000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-23",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": 66.64
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-24",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": 66.64
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-25",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "VIA ROYALE LOCAÇÕES DE VEÍCULOS LTDA",
+      "cnpjCpf": "16661158000142"
+    },
+    "valor": 17037.36
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-26",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-27",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": 66.64
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-03-28",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-03-01",
+    "ano": 2026,
+    "mes": 3,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 299.88
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-29",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 299.88
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-30",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 299.88
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-31",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-32",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-33",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "VIA ROYALE LOCAÇÕES DE VEÍCULOS LTDA",
+      "cnpjCpf": "16661158000142"
+    },
+    "valor": 17037.36
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-34",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": -3.08
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-04-35",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-04-01",
+    "ano": 2026,
+    "mes": 4,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": -3.08
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-05-36",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 299.88
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-05-37",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": 66.64
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-05-38",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 16000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-05-39",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-05-01",
+    "ano": 2026,
+    "mes": 5,
+    "categoria": "Cursos e inscrições",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 16000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-06-40",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-06-41",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 299.88
+  },
+  {
+    "id": "alece-julio-cesar-filho-2026-06-42",
+    "politicoId": "alece-julio-cesar-filho",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TIM S A",
+      "cnpjCpf": "02421421000111"
+    },
+    "valor": 66.64
+  }
+]

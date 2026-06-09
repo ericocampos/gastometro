@@ -1,0 +1,80 @@
+[
+  {
+    "id": "alece-60001635807-2023-01-1",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "A3 TURISMO LTDA ME",
+      "cnpjCpf": "12848540000109"
+    },
+    "valor": 2234.01
+  },
+  {
+    "id": "alece-60001635807-2023-01-2",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 10400
+  },
+  {
+    "id": "alece-60001635807-2023-01-3",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 3852
+  },
+  {
+    "id": "alece-60001635807-2023-01-4",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 963
+  },
+  {
+    "id": "alece-60001635807-2023-01-5",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5712
+  },
+  {
+    "id": "alece-60001635807-2023-01-6",
+    "politicoId": "alece-60001635807",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "DINAMICA SOLUCOES EM TELEATENDIMENTO LTDA",
+      "cnpjCpf": "36701237000147"
+    },
+    "valor": 8000
+  }
+]

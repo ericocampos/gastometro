@@ -1,0 +1,80 @@
+[
+  {
+    "id": "alece-guilherme-bismark-2023-08-1",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2023-08-01",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "E.R. MELO MESQUITA PUBLICIDADE",
+      "cnpjCpf": "22409689000145"
+    },
+    "valor": 500
+  },
+  {
+    "id": "alece-guilherme-bismark-2023-08-2",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2023-08-01",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "LA SERVIÇOS, CONSULTORIA E MARKETING LTDA",
+      "cnpjCpf": "45055318000108"
+    },
+    "valor": 3000
+  },
+  {
+    "id": "alece-guilherme-bismark-2023-08-3",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2023-08-01",
+    "ano": 2023,
+    "mes": 8,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "LA SERVIÇOS, CONSULTORIA E MARKETING LTDA",
+      "cnpjCpf": "45055318000108"
+    },
+    "valor": -3000
+  },
+  {
+    "id": "alece-guilherme-bismark-2025-10-4",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2025-10-01",
+    "ano": 2025,
+    "mes": 10,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5711.4
+  },
+  {
+    "id": "alece-guilherme-bismark-2025-12-5",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2025-12-01",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": 7250
+  },
+  {
+    "id": "alece-guilherme-bismark-2025-12-6",
+    "politicoId": "alece-guilherme-bismark",
+    "data": "2025-12-01",
+    "ano": 2025,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GP &amp; SERVIÇOS ADMINISTRATIVOS LT",
+      "cnpjCpf": "58149940000127"
+    },
+    "valor": -7250
+  }
+]

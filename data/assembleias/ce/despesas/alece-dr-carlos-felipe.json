@@ -1,0 +1,93 @@
+[
+  {
+    "id": "alece-dr-carlos-felipe-2023-01-1",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2889
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-01-2",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 1926
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-01-3",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "MARIA L P XIMENES-ME",
+      "cnpjCpf": "26194601000176"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-01-4",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 9000
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-02-5",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "MARIA L P XIMENES-ME",
+      "cnpjCpf": "26194601000176"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-02-6",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 14200
+  },
+  {
+    "id": "alece-dr-carlos-felipe-2023-02-7",
+    "politicoId": "alece-dr-carlos-felipe",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 9
+  }
+]
