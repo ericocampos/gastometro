@@ -186,21 +186,12 @@ export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   return [...anos].sort((a, b) => b - a)
 }
 
-// Valor padrão do filtro: o ano COMPLETO (12 meses de dados em alguma série) mais recente. Evita
-// abrir num ano corrente recém-começado (ex.: 2026 com 2 meses), que subestima todo mundo e some com
-// as casas cuja fonte ainda não publicou o ano (ex.: o DF, sem dado de 2026). Sem ano completo, cai
-// para o ano mais recente com dados; sem dados, "tudo".
-export function valorPeriodoPadrao(series: SerieParlamentar[]): string {
-  const anos = anosDisponiveis(series) // já vem desc
-  if (!anos.length) return 'tudo'
-  const meses = new Map<number, Set<string>>()
-  for (const s of series) for (const p of s.serieMensal) {
-    const ano = Number(p.anoMes.slice(0, 4))
-    if (!meses.has(ano)) meses.set(ano, new Set())
-    meses.get(ano)!.add(p.anoMes.slice(5, 7))
-  }
-  const completo = anos.find((a) => (meses.get(a)?.size ?? 0) >= 12)
-  return `ano:${completo ?? anos[0]}`
+// Valor padrão do filtro: o MANDATO inteiro ("tudo", que nos dados carregados é a legislatura atual,
+// 2023+). Abrir no mandato (e não num único ano) mostra todos os parlamentares com gasto, inclusive os
+// de casas cuja fonte publicou os anos de forma desigual (ex.: o DF, com 2024/2025 parciais e o grosso
+// em 2023). O usuário troca para um ano específico no seletor.
+export function valorPeriodoPadrao(_series: SerieParlamentar[]): string {
+  return 'tudo'
 }
 
 export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {
