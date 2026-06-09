@@ -1,9 +1,11 @@
 // collector/sources/alece.ts
-// Parsers da ALECE (Ceará). VDP (Verba de Desempenho Parlamentar) itemizada por deputado via CSV oficial
-// (1 por mês). Colunas: DEPUTADO;PERIODO;EMPENHO;DESCRICAO;CNPJ;CREDOR;VALOR. Só as linhas com DEPUTADO
-// preenchido são por deputado (as vazias são benefícios coletivos). Sem coluna de categoria: derivamos da
-// descrição do empenho por palavra-chave (texto oficial), com fallback "Outros". Sem gabinete por deputado
-// (não existe na fonte, igual ALMG/ALBA). Tudo função pura/testável; o IO fica no coletor.
+// Parsers da ALECE (Ceará). VDP (Verba de Desempenho Parlamentar) itemizada por deputado.
+// IMPORTANTE: a fonte tem DUAS visões. O CSV bulk por mês traz a coluna DEPUTADO como texto livre SUJO
+// (typos "ALMIIR BIE", sufixos "- COMBUSTIVEIS", "POR SOLICITACAO DO DEPUTADO" com estornos), o que
+// fragmenta os deputados. A visão LIMPA é a página de lista (botões com data-bs-nome canônico +
+// data-bs-codigo) que leva ao DETALHE por deputado/mês. Usamos lista + detalhe (igual ALBA).
+// Sem coluna de categoria: derivamos da descrição do empenho por palavra-chave (texto oficial), fallback
+// "Outros". Sem gabinete por deputado (não existe na fonte, igual ALMG/ALBA). Tudo função pura/testável.
 import type { Despesa } from './types.js'
 import { type EleitoTse } from './tseEleicoes.js'
 import { numBr, montarDeputadoTse, type DeputadoResolvido } from './alesc.js'
@@ -11,32 +13,54 @@ import { numBr, montarDeputadoTse, type DeputadoResolvido } from './alesc.js'
 export function soDigitos(s: string): string { return String(s ?? '').replace(/\D/g, '') }
 
 const semAcento = (s: string): string => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase()
+const txt = (s: string): string => s.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()
+const tdsDe = (tr: string): string[] => {
+  const out: string[] = []
+  const re = /<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi
+  let m: RegExpExecArray | null
+  while ((m = re.exec(tr)) !== null) out.push(txt(m[1]))
+  return out
+}
+const trsDe = (html: string): string[] => {
+  const out: string[] = []
+  const re = /<tr\b[^>]*>([\s\S]*?)<\/tr>/gi
+  let m: RegExpExecArray | null
+  while ((m = re.exec(html)) !== null) out.push(m[1])
+  return out
+}
 
-export interface VdpLinhaAlece { deputado: string; ano: number; mes: number; empenho: string; descricao: string; cnpjCpf: string; credor: string; valor: number }
+export interface DeputadoListaAlece { codigo: string; nome: string }
 
-/** Parseia o CSV da VDP. Pula a 1ª linha (lixo) e acha o header (começa com "DEPUTADO;"). Só linhas com
- *  DEPUTADO preenchido. Parseia pelas PONTAS (deputado/periodo/empenho do início; valor/credor/cnpj do fim;
- *  descrição = o miolo) para que vírgulas na descrição não desloquem as colunas financeiras. */
-export function parseCsvVdp(csv: string): VdpLinhaAlece[] {
-  const linhas = csv.split(/\r?\n/)
-  const out: VdpLinhaAlece[] = []
-  for (const linha of linhas) {
-    if (!linha || /^﻿?;*$/.test(linha)) continue
-    const p = linha.split(';')
-    if (p.length < 7) continue
-    const deputado = p[0].replace(/^﻿/, '').trim()
-    if (!deputado || semAcento(deputado) === 'DEPUTADO') continue // header e coletivas (vazio)
-    const periodo = p[1].trim() // "03/2025"
-    const m = /(\d{1,2})\/(\d{4})/.exec(periodo)
-    if (!m) continue
-    const valor = numBr(p[p.length - 1])
-    const credor = p[p.length - 2].trim()
-    const cnpjCpf = soDigitos(p[p.length - 3])
-    const descricao = p.slice(3, p.length - 3).join(';').trim()
+/** Lista de deputados da página da VDP (após escolher ano/mês): botões que abrem o modal de detalhes, com
+ *  data-bs-codigo (base64 de "{ano}_{mes}_DEP {NOME}") e data-bs-nome (canônico). Tira o prefixo "DEP ".
+ *  Tolera a ordem dos atributos. */
+export function parseDeputadosLista(html: string): DeputadoListaAlece[] {
+  const out: DeputadoListaAlece[] = []
+  const btns = html.match(/<button\b[^>]*data-bs-target="#detalhesParlamentar"[^>]*>/gi) ?? []
+  for (const b of btns) {
+    const c = /data-bs-codigo="([^"]+)"/i.exec(b)
+    const n = /data-bs-nome="([^"]+)"/i.exec(b)
+    if (c && n) out.push({ codigo: c[1], nome: n[1].replace(/^\s*DEP\.?\s+/i, '').trim() })
+  }
+  return out
+}
+
+export interface DetalheItemAlece { empenho: string; descricao: string; cnpjCpf: string; credor: string; valor: number }
+
+/** Itens do detalhe de um deputado/mês. Tabela [EMPENHO, DESCRIÇÃO, CNPJ, CREDOR, VALOR]. Só linhas cujo
+ *  empenho casa "{ano}NE{num}" (pula o cabeçalho e a linha "TOTAL GERAL"). */
+export function parseDetalheVdp(html: string): DetalheItemAlece[] {
+  const out: DetalheItemAlece[] = []
+  for (const tr of trsDe(html)) {
+    const tds = tdsDe(tr)
+    if (tds.length < 5) continue
+    if (!/^\d{4}NE\d+/i.test(tds[0].trim())) continue
     out.push({
-      deputado: deputado.replace(/^DEP\.?\s+/i, '').trim(),
-      ano: Number(m[2]), mes: Number(m[1]),
-      empenho: p[2].trim(), descricao, cnpjCpf, credor, valor,
+      empenho: tds[0].trim(),
+      descricao: tds[1].trim(),
+      cnpjCpf: soDigitos(tds[2]),
+      credor: tds[3].trim(),
+      valor: numBr(tds[4].replace(/R\$\s*/i, '')),
     })
   }
   return out

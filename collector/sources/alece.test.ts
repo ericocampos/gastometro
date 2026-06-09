@@ -1,17 +1,21 @@
 // collector/sources/alece.test.ts
 import { describe, it, expect } from 'vitest'
 import {
-  soDigitos, parseCsvVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec,
+  soDigitos, parseDeputadosLista, parseDetalheVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec,
 } from './alece.js'
 import type { EleitoTse } from './tseEleicoes.js'
 
-const CSV = [
-  '﻿;;;',
-  'DEPUTADO;PERIODO;EMPENHO;DESCRICAO;CNPJ;CREDOR;VALOR',
-  ';03/2025;2025NE000664;REFERE-SE AO REEMBOLSO ... SEGURO DE VIDA;83446605304;Simao Pedro Alves Pequeno;1.691.775,23',
-  'DEP ACRISIO SENA;03/2025;2025NE001009;REFERE-SE A DISPONIBILIZACAO DO BENEFICIO ALIMENTACAO, DE ABRIL/2025, CONFORME EDITAL;47866934000174;TICKET SERVICOS S/A;4.000,00',
-  'DEP AGENOR NETO;03/2025;2025NE000673;REFERE-SE AO CONTRATO 60/2024, DE SERVICOS DE TELEFONIA MOVEL, CONFORME ATO 343/2024;02421421000111;TIM S A;95,34',
-].join('\n')
+// fixtures reais: botões da lista (codigo = base64 de "ano_mes_DEP NOME") + tabela de detalhe por deputado.
+const LISTA = `
+<button class="btn" id="documento" data-bs-toggle="modal" data-bs-target="#detalhesParlamentar" data-bs-codigo="MjAyNV8wM19ERVAgQUNSSVNJTyBTRU5B" data-bs-nome="DEP ACRISIO SENA"><span>Detalhes</span></button>
+<button data-bs-target="#detalhesParlamentar" data-bs-nome="DEP AGENOR NETO" data-bs-codigo="MjAyNV8wM19ERVAgQUdFTk9SIE5FVE8="></button>`
+
+const DETALHE = `
+<table><thead><tr><th>EMPENHO</th><th>DESCRIÇÃO</th><th>CNPJ</th><th>CREDOR</th><th>VALOR</th></tr></thead>
+<tbody>
+<tr><td>2025NE001009</td><td>REFERE-SE À DISPONIBILIZAÇÃO DO BENEFICIO ALIMENTACAO, CONFORME EDITAL</td><td>47.866.934/0001-74</td><td>TICKET SERVIÇOS S/A</td><td>4.000,00</td></tr>
+<tr><td>TOTAL GERAL</td><td>4.000,00</td></tr>
+</tbody></table>`
 
 describe('soDigitos', () => {
   it('deixa só dígitos', () => {
@@ -20,20 +24,24 @@ describe('soDigitos', () => {
   })
 })
 
-describe('parseCsvVdp', () => {
-  it('pega só linhas com DEPUTADO preenchido; tira "DEP "; periodo->{mes,ano}; CNPJ dígitos; valor BR', () => {
-    const rows = parseCsvVdp(CSV)
-    expect(rows).toHaveLength(2) // a linha coletiva (DEPUTADO vazio) fica de fora
-    expect(rows[0]).toEqual({
-      deputado: 'ACRISIO SENA', ano: 2025, mes: 3, empenho: '2025NE001009',
-      descricao: 'REFERE-SE A DISPONIBILIZACAO DO BENEFICIO ALIMENTACAO, DE ABRIL/2025, CONFORME EDITAL',
-      cnpjCpf: '47866934000174', credor: 'TICKET SERVICOS S/A', valor: 4000,
-    })
-    expect(rows[1]).toMatchObject({ deputado: 'AGENOR NETO', credor: 'TIM S A', valor: 95.34, cnpjCpf: '02421421000111' })
+describe('parseDeputadosLista', () => {
+  it('extrai codigo + nome canônico (sem "DEP "), tolerando a ordem dos atributos', () => {
+    expect(parseDeputadosLista(LISTA)).toEqual([
+      { codigo: 'MjAyNV8wM19ERVAgQUNSSVNJTyBTRU5B', nome: 'ACRISIO SENA' },
+      { codigo: 'MjAyNV8wM19ERVAgQUdFTk9SIE5FVE8=', nome: 'AGENOR NETO' },
+    ])
   })
-  it('parseia pelas pontas: descrição com vírgula não quebra as colunas financeiras', () => {
-    const rows = parseCsvVdp(CSV)
-    expect(rows[1].descricao).toContain('TELEFONIA MOVEL') // a vírgula da descrição não vazou pro credor/valor
+})
+
+describe('parseDetalheVdp', () => {
+  it('extrai itens (empenho NE...), pulando cabeçalho e TOTAL GERAL; CNPJ dígitos, valor BR', () => {
+    const itens = parseDetalheVdp(DETALHE)
+    expect(itens).toHaveLength(1)
+    expect(itens[0]).toEqual({
+      empenho: '2025NE001009',
+      descricao: 'REFERE-SE À DISPONIBILIZAÇÃO DO BENEFICIO ALIMENTACAO, CONFORME EDITAL',
+      cnpjCpf: '47866934000174', credor: 'TICKET SERVIÇOS S/A', valor: 4000,
+    })
   })
 })
 

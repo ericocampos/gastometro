@@ -1,18 +1,20 @@
 // collector/coletarAlece.ts
-// Coletor COMPLETO da ALECE (CE): VDP itemizada por deputado via CSV oficial (1 por mês). O portal exige
-// User-Agent de navegador (403 sem) e o CSV é latin-1. Sem gabinete por deputado (modelo ALMG/ALBA -> NÃO
-// escreve gabinete.json). Resolve nomes ao TSE 2022 CE. Idempotente; cache cru (zstd) por mês.
+// Coletor COMPLETO da ALECE (CE): VDP itemizada por deputado. NÃO usamos o CSV bulk (a coluna DEPUTADO é
+// texto livre sujo: typos, sufixos de categoria, estornos -> fragmenta os deputados). Usamos a página de
+// LISTA por ano/mês (nomes canônicos via data-bs-nome + codigo) -> DETALHE por deputado (itens com CNPJ).
+// O portal exige User-Agent de navegador (403 sem); as páginas HTML são UTF-8. Sem gabinete por deputado
+// (modelo ALMG/ALBA -> NÃO escreve gabinete.json). Resolve ao TSE 2022 CE. Idempotente; cache zstd.
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import { fetchBuffer } from './http.js'
+import { fetchText } from './http.js'
 import { CacheBruto } from './cache.js'
 import { baixarCandidatosCargoUf, baixarZipFotosUf, gerarThumbsWebp, type EleitoTse } from './sources/tseEleicoes.js'
-import { parseCsvVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec } from './sources/alece.js'
+import { parseDeputadosLista, parseDetalheVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec } from './sources/alece.js'
 import type { DeputadoResolvido } from './sources/alesc.js'
 import type { Despesa } from './sources/types.js'
 
-const CSV_URL = 'https://transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar/csv'
+const VDP = 'https://transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar'
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
 const ANOS = [2023, 2024, 2025, 2026]
 
@@ -22,33 +24,36 @@ const fotosDir = resolve(here, '../web/public/fotos/deputados')
 const cache = new CacheBruto(resolve(here, '../data/raw/alece'))
 const dormir = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
-// CSV latin-1; cacheia o texto já decodificado. UA de navegador (403 sem).
-async function csvMes(ano: number, mes: number): Promise<string> {
-  const chave = `vdp-${ano}-${String(mes).padStart(2, '0')}`
+// HTML UTF-8; cacheia o texto. UA de navegador (403 sem).
+async function getHtml(chave: string, url: string): Promise<string> {
   const hit = cache.ler<string>(chave)
   if (hit !== null) return hit
   await dormir(120)
-  const buf = await fetchBuffer(`${CSV_URL}?ano=${ano}&mes=${String(mes).padStart(2, '0')}`, { headers: { 'User-Agent': UA } })
-  const txt = buf.toString('latin1')
-  cache.gravar(chave, txt)
-  return txt
+  const t = await fetchText(url, { headers: { 'User-Agent': UA } })
+  cache.gravar(chave, t)
+  return t
 }
 
 async function main() {
-  // 1) baixa e parseia o CSV de cada mês (2023-2026)
+  // 1) por ano/mês: lista (nomes canônicos + codigo) -> detalhe por deputado (itens com CNPJ)
   const recs: VerbaAleceRec[] = []
   for (const ano of ANOS) {
     for (let mes = 1; mes <= 12; mes++) {
-      let csv = ''
-      try { csv = await csvMes(ano, mes) } catch { continue }
-      for (const l of parseCsvVdp(csv)) {
-        recs.push({
-          conta: l.deputado,
-          categoria: categoriaVdp(l.descricao),
-          fornecedor: { nome: l.credor, ...(l.cnpjCpf ? { cnpjCpf: l.cnpjCpf } : {}) },
-          ano: l.ano, mes: l.mes, data: `${l.ano}-${String(l.mes).padStart(2, '0')}-01`,
-          valor: l.valor,
-        })
+      const mm = String(mes).padStart(2, '0')
+      let listaHtml = ''
+      try { listaHtml = await getHtml(`lista-${ano}-${mm}`, `${VDP}?ano=${ano}&mes=${mm}`) } catch { continue }
+      for (const dep of parseDeputadosLista(listaHtml)) {
+        let detHtml = ''
+        try { detHtml = await getHtml(`det-${ano}-${mm}-${dep.codigo}`, `${VDP}/detalhes?codigo=${encodeURIComponent(dep.codigo)}`) } catch { continue }
+        for (const item of parseDetalheVdp(detHtml)) {
+          recs.push({
+            conta: dep.nome,
+            categoria: categoriaVdp(item.descricao),
+            fornecedor: { nome: item.credor, ...(item.cnpjCpf ? { cnpjCpf: item.cnpjCpf } : {}) },
+            ano, mes, data: `${ano}-${mm}-01`,
+            valor: item.valor,
+          })
+        }
       }
     }
   }
