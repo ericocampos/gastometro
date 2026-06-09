@@ -120,6 +120,15 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa do Amazonas (ALEAM · modelo completo)',
+    intro: 'Portal de transparência da ALEAM (consulta oficial de controle de cota parlamentar). A cota é itemizada por deputado, com categoria nomeada (descrição da verba), fornecedor com CPF/CNPJ e cadastro da Receita, número do documento, data de emissão e os valores bruto, glosa e líquido. Mostramos o valor líquido como gasto, e o bruto quando difere (glosa). O gabinete por deputado não existe na fonte (a folha não liga o comissionado a um deputado), igual à ALMG, à Bahia, ao Ceará e a Goiás.',
+    fontes: [
+      { oque: 'Despesas (cota parlamentar)', onde: 'aleam.gov.br/transparencia/controle-de-cota-parlamentar (consulta por deputado, ano e mês)', formato: 'HTML oficial', obs: 'itemizada por deputado: descrição da verba (categoria), fornecedor, CPF/CNPJ, documento, emissão e bruto/glosa/líquido; mandato atual (2023+)' },
+      { oque: 'Partido e foto', onde: 'aleam.gov.br/deputados (partido) · TSE eleição 2022 (foto)', formato: 'HTML + CSV/JPG', obs: 'o partido vem da própria ALEAM (atual); a foto, do TSE, por consistência com as outras casas' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a consulta de vencimentos da ALEAM não traz lotação por gabinete; não há como montar o gabinete por deputado, igual à ALMG, à Bahia, ao Ceará e a Goiás' },
+    ],
+  },
+  {
     casa: 'Demais Assembleias Legislativas (modelo leve)',
     intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
     fontes: [
@@ -177,8 +186,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em nove casas
-        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco, Bahia, Ceará e Goiás) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em dez casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco, Bahia, Ceará, Goiás e Amazonas) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
