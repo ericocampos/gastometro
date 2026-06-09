@@ -29,7 +29,8 @@
     "coletar:alepe": "tsx collector/coletarAlepe.ts",
     "coletar:alba": "tsx collector/coletarAlba.ts",
     "coletar:alece": "tsx collector/coletarAlece.ts",
-    "coletar:alego": "tsx collector/coletarAlego.ts"
+    "coletar:alego": "tsx collector/coletarAlego.ts",
+    "coletar:aleam": "tsx collector/coletarAleam.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",
