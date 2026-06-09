@@ -32,7 +32,7 @@ export const ASSEMBLEIAS: AssembleiaConfig[] = [
   { uf: 'AP', nome: 'Assembleia Legislativa do Amapá', sigla: 'ALEAP', slug: 'ap', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: 33448.48, assentos: 24 },
   { uf: 'AM', nome: 'Assembleia Legislativa do Amazonas', sigla: 'ALEAM', slug: 'am', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
   { uf: 'BA', nome: 'Assembleia Legislativa da Bahia', sigla: 'ALBA', slug: 'ba', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 63 },
-  { uf: 'CE', nome: 'Assembleia Legislativa do Ceará', sigla: 'ALECE', slug: 'ce', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: 34776.64, assentos: 46 },
+  { uf: 'CE', nome: 'Assembleia Legislativa do Ceará', sigla: 'ALECE', slug: 'ce', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: 34776.64, assentos: 46 },
   { uf: 'DF', nome: 'Câmara Legislativa do Distrito Federal', sigla: 'CLDF', slug: 'df', modelo: 'completo', cargoTse: 'DEPUTADO DISTRITAL', subsidio: TETO, assentos: 24 },
   { uf: 'ES', nome: 'Assembleia Legislativa do Espírito Santo', sigla: 'ALES', slug: 'es', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 30 },
   { uf: 'GO', nome: 'Assembleia Legislativa de Goiás', sigla: 'ALEGO', slug: 'go', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 41 },
