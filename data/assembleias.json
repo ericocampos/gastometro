@@ -1332,157 +1332,121 @@
       "sigla": "CLDF",
       "nome": "Câmara Legislativa do Distrito Federal",
       "slug": "df",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 24,
-      "nDeputados": 24,
+      "nDeputados": 18,
       "pisoCusto": 834591.36,
       "deputados": [
         {
-          "id": "ae-df-70001615869",
-          "nome": "THIAGO MANZONI",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/70001615869.webp"
-        },
-        {
-          "id": "ae-df-70001620312",
-          "nome": "JAQUELINE SILVA",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/70001620312.webp"
-        },
-        {
-          "id": "ae-df-70001728079",
-          "nome": "PAULA BELMONTE",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/70001728079.webp"
-        },
-        {
-          "id": "ae-df-70001596090",
-          "nome": "GABRIEL MAGNO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/70001596090.webp"
-        },
-        {
-          "id": "ae-df-70001601758",
-          "nome": "FÁBIO FELIX",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/70001601758.webp"
-        },
-        {
-          "id": "ae-df-70001609144",
-          "nome": "EDUARDO PEDROSA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/70001609144.webp"
-        },
-        {
-          "id": "ae-df-70001616707",
-          "nome": "MARTINS MACHADO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/70001616707.webp"
-        },
-        {
-          "id": "ae-df-70001600818",
+          "id": "cldf-70001600818",
           "nome": "ROGÉRIO MORRO DA CRUZ",
           "partido": "PMN",
           "fotoUrl": "/fotos/deputados/70001600818.webp"
         },
         {
-          "id": "ae-df-70001615877",
-          "nome": "ROOSEVELT VILELA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/70001615877.webp"
-        },
-        {
-          "id": "ae-df-70001620311",
-          "nome": "DOUTORA JANE",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/70001620311.webp"
-        },
-        {
-          "id": "ae-df-70001596100",
+          "id": "cldf-70001596100",
           "nome": "CHICO VIGILANTE",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/70001596100.webp"
         },
         {
-          "id": "ae-df-70001650810",
-          "nome": "IOLANDO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/70001650810.webp"
-        },
-        {
-          "id": "ae-df-70001611506",
-          "nome": "JOAO CARDOSO PROFESSOR AUDITOR",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/70001611506.webp"
-        },
-        {
-          "id": "ae-df-70001650210",
-          "nome": "PASTOR DANIEL DE CASTRO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/70001650210.webp"
-        },
-        {
-          "id": "ae-df-70001650204",
-          "nome": "PEPA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/70001650204.webp"
-        },
-        {
-          "id": "ae-df-70001615885",
+          "id": "cldf-70001615885",
           "nome": "DANIEL DONIZET",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/70001615885.webp"
         },
         {
-          "id": "ae-df-70001636075",
+          "id": "cldf-70001636075",
           "nome": "DAYSE AMARILIO",
           "partido": "PSB",
           "fotoUrl": "/fotos/deputados/70001636075.webp"
         },
         {
-          "id": "ae-df-70001650807",
+          "id": "cldf-70001601758",
+          "nome": "FÁBIO FELIX",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/70001601758.webp"
+        },
+        {
+          "id": "cldf-70001596090",
+          "nome": "GABRIEL MAGNO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/70001596090.webp"
+        },
+        {
+          "id": "cldf-70001650807",
           "nome": "HERMETO",
           "partido": "MDB",
           "fotoUrl": "/fotos/deputados/70001650807.webp"
         },
         {
-          "id": "ae-df-70001654552",
-          "nome": "JORGE VIANNA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/70001654552.webp"
+          "id": "cldf-70001650810",
+          "nome": "IOLANDO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/70001650810.webp"
         },
         {
-          "id": "ae-df-70001615870",
+          "id": "cldf-70001620312",
+          "nome": "JAQUELINE SILVA",
+          "partido": "AGIR",
+          "fotoUrl": "/fotos/deputados/70001620312.webp"
+        },
+        {
+          "id": "cldf-jane-klebia-do-nascimento-da-silva",
+          "nome": "Jane Klébia do Nascimento da Silva",
+          "partido": ""
+        },
+        {
+          "id": "cldf-70001615870",
           "nome": "JOAQUIM RORIZ NETO",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/70001615870.webp"
         },
         {
-          "id": "ae-df-70001654541",
-          "nome": "ROBÉRIO NEGREIROS",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/70001654541.webp"
+          "id": "cldf-70001611506",
+          "nome": "JOAO CARDOSO PROFESSOR AUDITOR",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/70001611506.webp"
         },
         {
-          "id": "ae-df-70001596094",
-          "nome": "RICARDO VALE",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/70001596094.webp"
+          "id": "cldf-70001616707",
+          "nome": "MARTINS MACHADO",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/70001616707.webp"
         },
         {
-          "id": "ae-df-70001650805",
-          "nome": "WELLINGTON LUIZ ",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/70001650805.webp"
-        },
-        {
-          "id": "ae-df-70001601757",
+          "id": "cldf-70001601757",
           "nome": "MAX MACIEL",
           "partido": "PSOL",
           "fotoUrl": "/fotos/deputados/70001601757.webp"
+        },
+        {
+          "id": "cldf-70001650204",
+          "nome": "PEPA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/70001650204.webp"
+        },
+        {
+          "id": "cldf-70001728079",
+          "nome": "PAULA BELMONTE",
+          "partido": "CIDADANIA",
+          "fotoUrl": "/fotos/deputados/70001728079.webp"
+        },
+        {
+          "id": "cldf-70001615877",
+          "nome": "ROOSEVELT VILELA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/70001615877.webp"
+        },
+        {
+          "id": "cldf-70001615869",
+          "nome": "THIAGO MANZONI",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/70001615869.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 2358847.4299999997
     },
     {
       "uf": "ES",
