@@ -186,12 +186,15 @@ export function anosDisponiveis(series: SerieParlamentar[]): number[] {
   return [...anos].sort((a, b) => b - a)
 }
 
-// Valor padrão do filtro: o MANDATO inteiro ("tudo", que nos dados carregados é a legislatura atual,
-// 2023+). Abrir no mandato (e não num único ano) mostra todos os parlamentares com gasto, inclusive os
-// de casas cuja fonte publicou os anos de forma desigual (ex.: o DF, com 2024/2025 parciais e o grosso
-// em 2023). O usuário troca para um ano específico no seletor.
-export function valorPeriodoPadrao(_series: SerieParlamentar[]): string {
-  return 'tudo'
+// Valor padrão do filtro: a LEGISLATURA ATUAL (o mandato corrente). Mostra a informação do mandato
+// atual por inteiro (todos os parlamentares com gasto no período da legislatura), inclusive os de casas
+// cuja fonte publicou os anos de forma desigual (ex.: o DF, com 2024/2025 parciais e o grosso em 2023).
+// Pega a legislatura mais recente presente na série; quando a série não tem legislatura (ex.: perfil de
+// deputado de assembleia, cujos políticos não carregam o número), cai para "tudo", que nos dados
+// carregados (2023+) já é o mandato atual. O usuário troca para um ano específico no seletor.
+export function valorPeriodoPadrao(series: SerieParlamentar[]): string {
+  const legs = mandatosDisponiveis(series) // já vem desc; a 1ª é a legislatura atual
+  return legs.length ? `mandato:${legs[0]}` : 'tudo'
 }
 
 export function mandatosDisponiveis(series: SerieParlamentar[]): number[] {

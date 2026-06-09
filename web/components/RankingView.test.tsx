@@ -15,17 +15,22 @@ const series: SerieParlamentar[] = [
 ]
 
 describe('RankingView', () => {
-  it('lista os parlamentares e formata os totais (padrão = todo o período)', () => {
+  it('lista os parlamentares; o padrão (legislatura atual) exclui anos de outra legislatura', () => {
     render(<RankingView series={series} />)
-    // o padrão agora é o mandato inteiro ("tudo"), então os totais já vêm somados
     expect(screen.getByText('Fulano Senador')).toBeInTheDocument()
-    expect(screen.getByText(/R\$ 200,00/)).toBeInTheDocument()
-    expect(screen.getByText(/R\$ 150,00/)).toBeInTheDocument() // 90 + 60
+    expect(screen.getByText(/R\$ 200,00/)).toBeInTheDocument() // senado, 2024 (57ª)
+    expect(screen.getByText(/R\$ 60,00/)).toBeInTheDocument() // camara só 2024-03; o de 2022 é da 56ª, fora
   })
 
-  it('inicia pré-selecionado no mandato inteiro ("tudo")', () => {
+  it('ao escolher "todo o período", soma também os anos de outra legislatura', () => {
     render(<RankingView series={series} />)
-    expect((screen.getByLabelText('Período') as HTMLSelectElement).value).toBe('tudo')
+    fireEvent.change(screen.getByLabelText('Período'), { target: { value: 'tudo' } })
+    expect(screen.getByText(/R\$ 150,00/)).toBeInTheDocument() // 90 (2022) + 60 (2024)
+  })
+
+  it('inicia pré-selecionado na legislatura atual (mandato:57)', () => {
+    render(<RankingView series={series} />)
+    expect((screen.getByLabelText('Período') as HTMLSelectElement).value).toBe('mandato:57')
   })
 
   it('filtra por casa', () => {

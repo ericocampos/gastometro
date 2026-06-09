@@ -10,10 +10,15 @@ const meses = (ano: number, n: number): { anoMes: string; total: number }[] =>
   Array.from({ length: n }, (_, i) => ({ anoMes: `${ano}-${String(i + 1).padStart(2, '0')}`, total: 100 }))
 
 describe('valorPeriodoPadrao', () => {
-  it('abre no mandato inteiro ("tudo"), mostrando todos os parlamentares com gasto', () => {
-    // mesmo com um ano corrente parcial (2026) e dados desiguais por ano, o padrão é o mandato todo
+  it('abre na legislatura atual (a mais recente da série), não num único ano', () => {
     const s: SerieParlamentar[] = [
-      { politicoId: 'f', nome: 'F', partido: 'PP', uf: 'DF', casa: 'camara', legislaturas: [57], serieMensal: [...meses(2025, 12), ...meses(2026, 2)] },
+      { politicoId: 'f', nome: 'F', partido: 'PP', uf: 'DF', casa: 'camara', legislaturas: [56, 57], serieMensal: [...meses(2025, 12), ...meses(2026, 2)] },
+      { politicoId: 'd', nome: 'D', partido: 'PT', uf: 'DF', casa: 'assembleia', legislaturas: [], serieMensal: meses(2023, 11) },
+    ]
+    expect(valorPeriodoPadrao(s)).toBe('mandato:57') // a legislatura mais recente presente
+  })
+  it('série sem legislatura (perfil de assembleia) cai para tudo (= mandato atual nos dados 2023+)', () => {
+    const s: SerieParlamentar[] = [
       { politicoId: 'd', nome: 'D', partido: 'PT', uf: 'DF', casa: 'assembleia', legislaturas: [], serieMensal: meses(2023, 11) },
     ]
     expect(valorPeriodoPadrao(s)).toBe('tudo')
