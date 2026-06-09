@@ -43,7 +43,7 @@ export const ASSEMBLEIAS: AssembleiaConfig[] = [
   { uf: 'PA', nome: 'Assembleia Legislativa do Pará', sigla: 'ALEPA', slug: 'pa', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 41 },
   { uf: 'PB', nome: 'Assembleia Legislativa da Paraíba', sigla: 'ALPB', slug: 'pb', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: null, assentos: 36 },
   { uf: 'PR', nome: 'Assembleia Legislativa do Paraná', sigla: 'ALEP', slug: 'pr', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 54 },
-  { uf: 'PE', nome: 'Assembleia Legislativa de Pernambuco', sigla: 'ALEPE', slug: 'pe', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 49 },
+  { uf: 'PE', nome: 'Assembleia Legislativa de Pernambuco', sigla: 'ALEPE', slug: 'pe', modelo: 'completo', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 49 },
   { uf: 'PI', nome: 'Assembleia Legislativa do Piauí', sigla: 'ALEPI', slug: 'pi', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 30 },
   { uf: 'RJ', nome: 'Assembleia Legislativa do Rio de Janeiro', sigla: 'ALERJ', slug: 'rj', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 70 },
   { uf: 'RN', nome: 'Assembleia Legislativa do Rio Grande do Norte', sigla: 'ALRN', slug: 'rn', modelo: 'leve', cargoTse: 'DEPUTADO ESTADUAL', subsidio: TETO, assentos: 24 },
