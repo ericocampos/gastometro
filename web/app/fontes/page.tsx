@@ -102,6 +102,15 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa do Ceará (ALECE · modelo completo)',
+    intro: 'Portal de transparência da ALECE. A Verba de Desempenho Parlamentar (VDP) é itemizada por deputado, com fornecedor (credor), CPF/CNPJ, empenho e valor, baixada em CSV (um por mês). Não há coluna de categoria na fonte, então derivamos a categoria da descrição oficial do empenho (Telefonia, Alimentação, Consultoria e assessoria, Locação de veículo, Divulgação, etc.); o que não casa com clareza fica como "Outros". Benefícios coletivos (seguro de vida, plano de saúde) que a fonte não atribui a um deputado ficam de fora do gasto por deputado. O gabinete por deputado não existe na fonte (a folha não liga o comissionado a um deputado), igual à ALMG e à Bahia.',
+    fontes: [
+      { oque: 'Despesas (VDP)', onde: 'transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar/csv?ano={ano}&mes={mes}', formato: 'CSV oficial', obs: 'itemizada por deputado: empenho, descrição, CPF/CNPJ, credor e valor; mandato atual (2023+). Categoria derivada da descrição do empenho (texto oficial), com "Outros" para o que não casa' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a fonte da ALECE não traz foto; casamos o nome (sem o prefixo "DEP ") ao candidato eleito de 2022' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha da ALECE traz remuneração por servidor, mas a área de atuação é a formação (Direito, Administração...), não a lotação por gabinete; não há como montar o gabinete por deputado, igual à ALMG e à Bahia' },
+    ],
+  },
+  {
     casa: 'Demais Assembleias Legislativas (modelo leve)',
     intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
     fontes: [
@@ -159,8 +168,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em sete casas
-        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco e Bahia) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em oito casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco, Bahia e Ceará) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
