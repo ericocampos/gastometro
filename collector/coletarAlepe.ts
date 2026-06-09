@@ -10,7 +10,7 @@ import { CacheBruto } from './cache.js'
 import { baixarCandidatosCargoUf, baixarZipFotosUf, gerarThumbsWebp, normTse, type EleitoTse } from './sources/tseEleicoes.js'
 import { resolverDeputado, type DeputadoResolvido } from './sources/alesc.js'
 import {
-  parseNotas, montarDespesasAlepe, parseServidoresAlepe, montarTabelaRemuneracao, montarGabinetesAlepe,
+  parseNotas, mesPtParaNumero, montarDespesasAlepe, parseServidoresAlepe, montarTabelaRemuneracao, montarGabinetesAlepe,
   montarDeputadoAlepe, type VerbaAlepeRec, type NotaAlepeRaw, type ServidorAlepeRaw, type RemuneracaoAlepeRaw,
   type GabineteAlepe,
 } from './sources/alepe.js'
@@ -19,12 +19,16 @@ import type { Despesa } from './sources/types.js'
 const DADOS = 'https://dadosabertos.alepe.pe.gov.br/api/v1'
 const VI = 'https://www.alepe.pe.gov.br/servicos/transparencia/adm'
 const ANOS = [2023, 2024, 2025, 2026]
-const MAX_DEP = 80
-const VAZIOS_SEGUIDOS_PARA_PARAR = 12
+// Lista de ids da verba: os ids `dep` NÃO são 1..49; são esparsos (atuais + históricos, até ~4500).
+// A mesma lista que o portal da VI usa para o dropdown (deputados.php?leg=-16) dá o id<->nome oficial,
+// então varremos exatamente esses ids (quem não tem gasto 2023+ devolve vazio e sai no filtro final).
+const DEP_LISTA = 'https://www.alepe.pe.gov.br/servicos/transparencia/dep/deputados.php'
+const LEG_VI = -16
 const MES_REF = '2026-06'
 
 interface RosterAlepe { nomeParlamentar: string; partido: string }
-interface DocAlepe { docid: string; deputado: string }
+interface DocAlepe { docid: string; deputado: string; ano: string; mes: string }
+interface DeputadoListaAlepe { id: string; nome: string }
 
 const here = dirname(fileURLToPath(import.meta.url))
 const saidaDir = resolve(here, '../data/assembleias/pe')
@@ -42,12 +46,10 @@ async function getCacheado<T>(chave: string, url: string): Promise<T> {
   return j
 }
 
-async function varrerVerba(): Promise<{ recs: VerbaAlepeRec[]; nomes: Set<string> }> {
+async function varrerVerba(ids: string[]): Promise<{ recs: VerbaAlepeRec[]; nomes: Set<string> }> {
   const recs: VerbaAlepeRec[] = []
   const nomes = new Set<string>()
-  let vaziosSeguidos = 0
-  for (let dep = 1; dep <= MAX_DEP; dep++) {
-    let teveAlgo = false
+  for (const dep of ids) {
     for (const ano of ANOS) {
       let meses: { mes: string }[] = []
       try { meses = await getCacheado(`meses-${dep}-${ano}`, `${VI}/verbaindenizatoria-dep-meses.php?dep=${dep}&ano=${ano}`) } catch { meses = [] }
@@ -56,14 +58,14 @@ async function varrerVerba(): Promise<{ recs: VerbaAlepeRec[]; nomes: Set<string
         try { docs = await getCacheado(`docs-${dep}-${ano}-${mes}`, `${VI}/verbaindenizatoria.php?dep=${dep}&ano=${ano}&mes=${mes}`) } catch { docs = [] }
         for (const d of docs) {
           const nome = (d.deputado ?? '').trim()
-          if (nome) { nomes.add(nome); teveAlgo = true }
+          if (nome) nomes.add(nome)
           let notas: NotaAlepeRaw[] = []
           try { notas = await getCacheado(`notas-${d.docid}`, `${VI}/verbaindenizatorianotas.php?docid=${d.docid}`) } catch { notas = [] }
-          recs.push(...parseNotas(notas, nome))
+          // ano/mes da COMPETÊNCIA do documento (não da data da nota): mês = nome em PT-BR; ano da varredura como fallback
+          recs.push(...parseNotas(notas, nome, Number(d.ano) || ano, mesPtParaNumero(d.mes) || Number(mes)))
         }
       }
     }
-    if (teveAlgo) { vaziosSeguidos = 0 } else { vaziosSeguidos++; if (vaziosSeguidos >= VAZIOS_SEGUIDOS_PARA_PARAR && dep >= 49) break }
   }
   return { recs, nomes }
 }
@@ -77,8 +79,11 @@ async function main() {
   const tabela = montarTabelaRemuneracao(await fetchJson<RemuneracaoAlepeRaw[]>(`${DADOS}/remuneracao/?formato=json`))
   console.log(`> servidores: ${servRaw.length} | cargos na tabela: ${tabela.size}`)
 
-  // 2) varre a verba (descobre dep-id + nome juntos)
-  const { recs, nomes } = await varrerVerba()
+  // 2) lista oficial de ids da verba (a mesma do dropdown do portal) e varre a verba por esses ids
+  const lista = await fetchJson<DeputadoListaAlepe[]>(`${DEP_LISTA}?leg=${LEG_VI}`)
+  const ids = [...new Set(lista.map((d) => d.id))]
+  console.log(`> ids da verba: ${ids.length} na lista oficial (deputados.php?leg=${LEG_VI})`)
+  const { recs, nomes } = await varrerVerba(ids)
   console.log(`> verba: ${recs.length} itens, ${nomes.size} deputados com gasto`)
 
   // 3) TSE PE 2022 -> resolve nomes; partido do roster quando casa

@@ -1,6 +1,6 @@
 // collector/sources/alepe.test.ts
 import { describe, it, expect } from 'vitest'
-import { soDigitos, categoriaRubrica, parseNotas, montarDespesasAlepe, type NotaAlepeRaw } from './alepe.js'
+import { soDigitos, categoriaRubrica, mesPtParaNumero, parseNotas, montarDespesasAlepe, type NotaAlepeRaw } from './alepe.js'
 import {
   parseServidoresAlepe, montarTabelaRemuneracao, vencimentoCargo, montarGabinetesAlepe,
   montarDeputadoAlepe, type ServidorAlepeRaw, type RemuneracaoAlepeRaw,
@@ -27,9 +27,18 @@ describe('categoriaRubrica', () => {
   })
 })
 
+describe('mesPtParaNumero', () => {
+  it('mapeia o nome do mês (com/sem acento) para número; desconhecido -> 0', () => {
+    expect(mesPtParaNumero('Janeiro')).toBe(1)
+    expect(mesPtParaNumero('Março')).toBe(3)
+    expect(mesPtParaNumero('Dezembro')).toBe(12)
+    expect(mesPtParaNumero('xx')).toBe(0)
+  })
+})
+
 describe('parseNotas', () => {
-  it('converte itens em recs com fornecedor (CNPJ em dígitos), data ISO, valor BR e categoria Rubrica N', () => {
-    const recs = parseNotas(NOTAS, 'Antônio Moraes')
+  it('ano/mes vêm da competência do documento; fornecedor (CNPJ em dígitos), data e valor BR, categoria Rubrica N', () => {
+    const recs = parseNotas(NOTAS, 'Antônio Moraes', 2024, 1)
     expect(recs).toHaveLength(3)
     expect(recs[0]).toEqual({
       conta: 'Antônio Moraes', categoria: 'Rubrica 2',
@@ -39,11 +48,18 @@ describe('parseNotas', () => {
     expect(recs[1].valor).toBe(11132.8)
     expect(recs[2].fornecedor).toEqual({ nome: '' }) // sem cnpj -> sem cnpjCpf; empresa vazia -> ''
   })
+  it('usa a competência (não a data da nota) e corrige ano implausível na exibição', () => {
+    const typo: NotaAlepeRaw[] = [{ rubrica: '5', sequencial: '1', data: '30/12/2202', cnpj: '', empresa: 'x', valor: '22000' }]
+    const recs = parseNotas(typo, 'Fulano', 2025, 12)
+    expect(recs[0].ano).toBe(2025)
+    expect(recs[0].mes).toBe(12)
+    expect(recs[0].data).toBe('2025-12-30') // ano corrigido p/ competência; dia/mês da nota mantidos
+  })
 })
 
 describe('montarDespesasAlepe', () => {
   it('usa contaToId, id sequencial por deputado, descarta fora do mapa', () => {
-    const recs = parseNotas(NOTAS, 'Antônio Moraes')
+    const recs = parseNotas(NOTAS, 'Antônio Moraes', 2024, 1)
     const ds = montarDespesasAlepe(recs, new Map([['Antônio Moraes', 'alepe-700']]))
     expect(ds).toHaveLength(3)
     expect(ds[0]).toEqual({

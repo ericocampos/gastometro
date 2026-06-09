@@ -25,18 +25,37 @@ export function categoriaRubrica(rubrica: string | number): string {
 export interface NotaAlepeRaw { rubrica: string; sequencial: string; data: string; cnpj: string; empresa: string; valor: string }
 export interface VerbaAlepeRec { conta: string; categoria: string; fornecedor: { nome: string; cnpjCpf?: string }; ano: number; mes: number; data: string; valor: number }
 
-/** Converte os itens de uma nota (verbaindenizatorianotas.php) em recs. `deputado` é o nome que veio
- *  no documento (verbaindenizatoria.php). cnpj vazio -> sem cnpjCpf; empresa vazia -> nome ''. */
-export function parseNotas(notas: NotaAlepeRaw[], deputado: string): VerbaAlepeRec[] {
+const MESES_PT: Record<string, number> = {
+  janeiro: 1, fevereiro: 2, marco: 3, abril: 4, maio: 5, junho: 6,
+  julho: 7, agosto: 8, setembro: 9, outubro: 10, novembro: 11, dezembro: 12,
+}
+
+/** Nome do mês como a fonte manda no documento ("Janeiro".."Dezembro") -> número (0 se desconhecido). */
+export function mesPtParaNumero(mes: string): number {
+  const k = (mes ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()
+  return MESES_PT[k] ?? 0
+}
+
+/** Converte os itens de uma nota (verbaindenizatorianotas.php) em recs. `deputado` é o nome que veio no
+ *  documento. ano/mes vêm da COMPETÊNCIA do documento (verbaindenizatoria.php), NÃO da data da nota: a
+ *  data da nota é a do comprovante e pode ter typo (ex.: "30/12/2202"), enquanto a verba é organizada por
+ *  mês de competência. A data da nota é mantida para exibição, com o ANO corrigido para a competência
+ *  quando vier implausível. cnpj vazio -> sem cnpjCpf; empresa vazia -> nome ''. */
+export function parseNotas(notas: NotaAlepeRaw[], deputado: string, ano: number, mes: number): VerbaAlepeRec[] {
   const out: VerbaAlepeRec[] = []
+  const mm = String(mes).padStart(2, '0')
   for (const n of notas) {
-    const d = dataBr(n.data)
     const cnpjCpf = soDigitos(n.cnpj)
+    const [dd, mmNota, aaNota] = String(n.data ?? '').split('/')
+    const anoNota = Number(aaNota)
+    const data = anoNota >= 2000 && anoNota <= ano + 1
+      ? `${aaNota}-${(mmNota ?? '').padStart(2, '0')}-${(dd ?? '').padStart(2, '0')}`
+      : `${ano}-${mm}-${(dd || '01').padStart(2, '0')}`
     out.push({
       conta: deputado.trim(),
       categoria: categoriaRubrica(n.rubrica),
       fornecedor: { nome: (n.empresa ?? '').trim(), ...(cnpjCpf ? { cnpjCpf } : {}) },
-      ano: d.ano, mes: d.mes, data: d.iso,
+      ano, mes, data,
       valor: numBr(n.valor),
     })
   }
