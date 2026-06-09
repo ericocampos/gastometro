@@ -20,7 +20,7 @@ const mesBR = (m?: string) => {
 // Senado: bruto oficial da API de remunerações (gabinete + escritório). ALPB: bruto oficial do arquivo
 // de comissionados (COMISSIONADOS.ods). Senado e ALPB compartilham o layout de "valor oficial".
 export function Assessores({
-  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa, estimada = false, semCusto = false,
+  quantidade, folha, secretarios = [], verbaGabinete, consultaExataUrl, atualizadoEm, mesReferencia, consultas = [], gabinete, casa, estimada = false, semCusto = false, fonteGabinete,
 }: {
   quantidade: number | null
   folha?: number | null
@@ -34,6 +34,7 @@ export function Assessores({
   casa: Casa
   estimada?: boolean
   semCusto?: boolean
+  fonteGabinete?: { label: string; url: string }
 }) {
   const cor = corCasa(casa)
   const temFolhaCamara = casa === 'camara' && folha != null
@@ -251,13 +252,13 @@ export function Assessores({
         ) : semCusto ? (
           <>
             <strong className="text-tinta">Nomes públicos, valores não validados.</strong>{' '}
-            A ALESC publica os comissionados lotados em cada gabinete (nome e vínculo), mas a folha
+            Os comissionados lotados em cada gabinete são públicos (nome e vínculo), mas a folha
             individual por servidor não está acessível de forma automatizada. Mostramos quem está
             no gabinete e quantos são; o custo será atualizado quando a folha por pessoa ficar disponível.
             Não há descrição da atividade de cada pessoa: é dinheiro público pago sem dizer em troca de quê.
             <span className="mt-1 block">
               Fonte:{' '}
-              <a href="https://transparencia.alesc.sc.gov.br/servidores" target="_blank" rel="noopener noreferrer" className="text-marca underline">servidores da ALESC ↗</a>
+              <a href={(fonteGabinete ?? { url: 'https://transparencia.alesc.sc.gov.br/servidores', label: 'servidores da ALESC' }).url} target="_blank" rel="noopener noreferrer" className="text-marca underline">{(fonteGabinete ?? { label: 'servidores da ALESC' }).label} ↗</a>
             </span>
           </>
         ) : temFolhaAlpb ? (

@@ -155,15 +155,15 @@ function montarNotaCobertura(cob: CoberturaEstadual, uf: string | undefined, ass
     if (!casa) return undefined
     if (casa.modelo === 'leve') {
       return casa.subsidio == null
-        ? `Este cálculo ainda não contabiliza a Assembleia (${casa.sigla}): a casa não tem valor de subsídio em fonte oficial. Por ora, só o custo federal; será atualizado assim que a fonte do estado for integrada.`
-        : `Da Assembleia (${casa.sigla}), este cálculo conta só o subsídio estimado (os salários dos deputados); a verba indenizatória e o gabinete ainda não entram, e serão somados assim que a fonte oficial do estado for integrada.`
+        ? `Este cálculo ainda não contabiliza a casa (${casa.sigla}): a casa não tem valor de subsídio em fonte oficial. Por ora, só o custo federal; será atualizado assim que a fonte do estado for integrada.`
+        : `Da casa (${casa.sigla}), este cálculo conta só o subsídio estimado (os salários dos deputados); a verba indenizatória e o gabinete ainda não entram, e serão somados assim que a fonte oficial do estado for integrada.`
     }
     // completo: pode faltar o subsídio oficial (ex.: ALPB) e/ou o gabinete (ex.: ALMG, ALESC)
     const partes: string[] = []
     if (casa.subsidio == null) partes.push('o subsídio ainda não tem valor oficial')
     if (cob.comGabinete === 0) partes.push('o gabinete ainda não foi integrado (folha por servidor indisponível na fonte)')
     if (partes.length === 0) return undefined
-    return `Da Assembleia (${casa.sigla}), ${partes.join(' e ')}; o restante do custo estadual é desta casa.`
+    return `Da casa (${casa.sigla}), ${partes.join(' e ')}; o restante do custo é desta casa.`
   }
   const semSub = cob.semSubsidioUfs.length ? ` (${listaUfs(cob.semSubsidioUfs)} sem valor oficial)` : ''
   return `Camada estadual: subsídio de ${cob.comSubsidio} das ${cob.totalCasas} assembleias${semSub}; cota itemizada de ${cob.comCota} e gabinete de ${cob.comGabinete}. O resto entra conforme integramos os estados.`

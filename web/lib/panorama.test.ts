@@ -144,9 +144,9 @@ describe('calcularPanorama com camada estadual e escopo', () => {
     expect(p.notaCobertura).toMatch(/só o subsídio estimado/i)
     expect(p.notaCobertura).toMatch(/verba indenizatória e o gabinete/i)
   })
-  it('estado leve sem subsídio oficial (AC): nota diz que ainda não contabiliza a Assembleia', () => {
+  it('estado leve sem subsídio oficial (AC): nota diz que ainda não contabiliza a casa', () => {
     const p = calcularPanorama(series, custos, assessores, 800_000, cadeiras, assembleias, { uf: 'AC', perCapitaRotulo: 'Por habitante / ano' })
-    expect(p.notaCobertura).toMatch(/ainda não contabiliza a Assembleia/i)
+    expect(p.notaCobertura).toMatch(/ainda não contabiliza a casa/i)
   })
   it('estado completo sem subsídio oficial (ex.: ALPB): avisa na nota em vez de subestimar calado', () => {
     const semSub: ResumoAssembleia[] = [

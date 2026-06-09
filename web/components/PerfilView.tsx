@@ -37,6 +37,12 @@ const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
 
 const pctAlinhamento = (a: number, b: number): string | null => (a + b === 0 ? null : `${Math.round((a / (a + b)) * 100)}%`)
 
+// fonte oficial do gabinete por casa, para a nota do quadro sem custo (nomes + headcount)
+const FONTE_GABINETE_SEMCUSTO: Record<string, { label: string; url: string }> = {
+  SC: { label: 'servidores da ALESC', url: 'https://transparencia.alesc.sc.gov.br/servidores' },
+  DF: { label: 'relação nominal de deputados e servidores da CLDF', url: 'https://dados.cl.df.gov.br/dataset/relacao-nominal-de-deputados-e-servidores' },
+}
+
 // Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
 // que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
 // empenho pago no TCE; 'divergente' mostra os dois totais (câmara × TCE) e o link da fonte.
@@ -436,6 +442,7 @@ export function PerfilView({
                 mesReferencia={assessores.mesReferencia}
                 estimada={assessores.estimada}
                 semCusto={assessores.semCusto}
+                fonteGabinete={FONTE_GABINETE_SEMCUSTO[politico.uf]}
                 consultas={assessores.consultas}
                 gabinete={custoCasa.gabinete}
                 casa={politico.casa}

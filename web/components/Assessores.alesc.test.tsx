@@ -30,4 +30,21 @@ describe('Assessores (ALESC, gabinete sem custo validado)', () => {
     expect(screen.queryByText(/valor oficial/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/verba de gabinete \(teto\)/i)).not.toBeInTheDocument()
   })
+
+  it('usa a fonte de gabinete passada por prop (ex.: CLDF)', () => {
+    render(
+      <Assessores
+        quantidade={3}
+        folha={null}
+        semCusto
+        fonteGabinete={{ label: 'relação nominal da CLDF', url: 'https://dados.cl.df.gov.br/dataset/relacao-nominal-de-deputados-e-servidores' }}
+        secretarios={[{ nome: 'CARLOS ROCHA', remuneracao: 0, lotacaoTipo: 'gabinete', semFolha: true }]}
+        mesReferencia="2026-06"
+        gabinete={{ valor: null, rotulo: '', aproximado: false }}
+        casa="assembleia"
+      />,
+    )
+    expect(screen.getByText(/relação nominal da CLDF/i)).toBeInTheDocument()
+    expect(screen.queryByText(/servidores da ALESC/i)).not.toBeInTheDocument()
+  })
 })
