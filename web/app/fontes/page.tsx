@@ -81,6 +81,17 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa de Pernambuco (ALEPE · modelo completo)',
+    intro: 'API de transparência da ALEPE (endpoints JSON). A verba indenizatória é itemizada por deputado, com fornecedor, CNPJ, data e valor de cada nota. A categoria aparece como "Rubrica N": a ALEPE numera as rubricas mas não publica hoje o nome de cada categoria (o endpoint de rubricas vem vazio), então mostramos a numeração da própria fonte; os itens, com CNPJ e valor, são integrais. O gabinete entra com os comissionados e o custo estimado pela tabela oficial de remuneração por cargo (snapshot atual).',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'alepe.pe.gov.br/servicos/transparencia/adm/ (verbaindenizatoria.php → verbaindenizatorianotas.php, por deputado e mês)', formato: 'JSON', obs: 'itemizada com fornecedor, CNPJ, data e valor por nota; mandato atual (2023+). A categoria sai como "Rubrica N" porque a fonte não publica hoje o nome de cada rubrica' },
+      { oque: 'Gabinete — comissionados', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/servidores', formato: 'JSON', obs: 'comissionados lotados em "GAB.DEP. {nome}"; quem e quantos, snapshot atual' },
+      { oque: 'Gabinete — custo estimado', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/remuneracao', formato: 'JSON', obs: 'bruto por cargo da tabela oficial de remuneração (Cargo Comissionado de Gabinete), uma estimativa, não a folha real de cada pessoa; cargo sem correspondência conta no headcount com valor zero' },
+      { oque: 'Partido', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/parlamentares', formato: 'JSON', obs: 'partido atual do roster oficial da ALEPE, casado por nome' },
+      { oque: 'Foto', onde: 'TSE (eleição 2022)', formato: 'JPG', obs: 'a fonte da ALEPE não traz foto; casamos por nome com o eleito de 2022' },
+    ],
+  },
+  {
     casa: 'Demais Assembleias Legislativas (modelo leve)',
     intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
     fontes: [
@@ -138,8 +149,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em cinco casas
-        (Paraíba, Minas Gerais, São Paulo, Santa Catarina e Distrito Federal) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em seis casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal e Pernambuco) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o
