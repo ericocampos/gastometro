@@ -6,9 +6,9 @@
 import type { Despesa } from './types.js'
 import type { ServidorAlesc } from './alesc.js'
 
-/** tira o prefixo "Deputado "/"Deputada " do nome do parlamentar */
+/** tira o prefixo "Deputado "/"Deputada "/"Dep. " do nome do parlamentar */
 export function nomeDeDeputado(s: string): string {
-  return String(s ?? '').replace(/^\s*deputad[oa]\s+/i, '').trim()
+  return String(s ?? '').replace(/^\s*(deputad[oa]|dep\.?)\s+/i, '').trim()
 }
 
 /** número decimal com ponto ("1,234.56" -> 1234.56); ignora vírgula de milhar (formato US) */
@@ -36,9 +36,11 @@ export function parseVerbaCldf(records: RecordCldf[], anoMin: number): VerbaCldf
     const data = str(r['DATA_COMPROVANTE']).slice(0, 10) // "2023-01-15T..." -> "2023-01-15"
     const ano = Number(data.slice(0, 4))
     if (!(ano >= anoMin)) continue
+    const conta = nomeDeDeputado(str(r['NOME_PARLAMENTAR']))
+    if (!conta) continue // registro sem parlamentar (linha vazia/agregado) fica de fora
     const cnpjCpf = soDigitos(str(r['CNPJ_PRESTADOR']) || str(r['CPF_PRESTADOR']))
     out.push({
-      conta: nomeDeDeputado(str(r['NOME_PARLAMENTAR'])),
+      conta,
       categoria: str(r['CLASSIFICACAO']),
       fornecedor: { nome: str(r['NOME_PRESTADOR']), ...(cnpjCpf ? { cnpjCpf } : {}) },
       data,

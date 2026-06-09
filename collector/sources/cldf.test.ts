@@ -12,9 +12,11 @@ const RECORDS = [
 ]
 
 describe('helpers', () => {
-  it('nomeDeDeputado tira o prefixo Deputado/Deputada', () => {
+  it('nomeDeDeputado tira o prefixo Deputado/Deputada/Dep.', () => {
     expect(nomeDeDeputado('Deputado Joaquim Roriz Neto')).toBe('Joaquim Roriz Neto')
     expect(nomeDeDeputado('Deputada Jaqueline Silva')).toBe('Jaqueline Silva')
+    expect(nomeDeDeputado('Dep. PEPA')).toBe('PEPA')
+    expect(nomeDeDeputado('Dep PEPA')).toBe('PEPA')
   })
   it('numUs lê decimal com ponto (e ignora vírgula de milhar)', () => {
     expect(numUs('281.66')).toBe(281.66)
@@ -38,6 +40,10 @@ describe('parseVerbaCldf', () => {
     })
     expect(recs[2].fornecedor).toEqual({ nome: 'Maria Souza', cnpjCpf: '12345678900' })
     expect(recs[2].valor).toBe(2000.5)
+  })
+  it('descarta registro sem parlamentar (NOME_PARLAMENTAR vazio)', () => {
+    const comVazio = [...RECORDS, { NOME_PARLAMENTAR: '', CLASSIFICACAO: 'X', NOME_PRESTADOR: 'Y', CNPJ_PRESTADOR: '', CPF_PRESTADOR: '', DATA_COMPROVANTE: '2023-06-01T00:00:00', VALOR_DESPESA: '10' }]
+    expect(parseVerbaCldf(comVazio, 2023)).toHaveLength(3) // o vazio fica de fora
   })
   it('descarta ano anterior ao mínimo', () => {
     const so2024 = parseVerbaCldf(RECORDS, 2024)

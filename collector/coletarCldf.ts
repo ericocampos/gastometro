@@ -23,7 +23,7 @@ export function montarDeputadoCldf(conta: string, candidatos: EleitoTse[]): Depu
   return montarDeputadoTse(conta, candidatos, 'cldf')
 }
 
-interface CkanResource { id: string; name: string; format: string }
+interface CkanResource { id: string; name: string; format: string; datastore_active?: boolean }
 const here = dirname(fileURLToPath(import.meta.url))
 const saidaDir = resolve(here, '../data/assembleias/df')
 const fotosDir = resolve(here, '../web/public/fotos/deputados')
@@ -93,7 +93,10 @@ async function main() {
 
   // 4) gabinete: relação nominal mais recente
   const recursosRel = await listarRecursos('relacao-nominal-de-deputados-e-servidores')
-  const recRel = recursosRel.filter((r) => /^\d{4}-\d{2}/.test(r.name)).sort((a, b) => b.name.localeCompare(a.name))[0] ?? recursosRel[0]
+  // o recurso mais recente às vezes ainda não tem o datastore ativo (datastore_search dá 404);
+  // pega o mês mais novo COM datastore_active.
+  const recRel = recursosRel.filter((r) => r.datastore_active && /^\d{4}-\d{2}/.test(r.name)).sort((a, b) => b.name.localeCompare(a.name))[0]
+    ?? recursosRel.filter((r) => /^\d{4}-\d{2}/.test(r.name)).sort((a, b) => b.name.localeCompare(a.name))[0] ?? recursosRel[0]
   const keptIds = new Set(porId.keys())
   const resolveGab = (nome: string): string | null => {
     const c = resolverDeputado(nome, candidatos)
@@ -118,8 +121,11 @@ async function main() {
     } catch (e) { console.error(`  ! fotos DF: ${(e as Error).message}`) }
   }
 
-  // grava só deputados com gasto líquido positivo (descarta sobra de transição igual ALESC)
-  mkdirSync(resolve(saidaDir, 'despesas'), { recursive: true })
+  // grava só deputados com gasto líquido positivo (descarta sobra de transição igual ALESC).
+  // limpa a pasta de despesas antes (idempotente: re-coletas não deixam arquivos órfãos de ids antigos).
+  const despesasDir = resolve(saidaDir, 'despesas')
+  rmSync(despesasDir, { recursive: true, force: true })
+  mkdirSync(despesasDir, { recursive: true })
   const totalDep = (id: string): number => (despesasPorDep.get(id) ?? []).reduce((a, x) => a + x.valor, 0)
   const comDespesa = [...porId.values()].filter((d) => (despesasPorDep.get(d.politicoId)?.length ?? 0) > 0)
   const comGasto = comDespesa.filter((d) => { const t = totalDep(d.politicoId); return t > 0 && (d.sq || t >= 1000) })
