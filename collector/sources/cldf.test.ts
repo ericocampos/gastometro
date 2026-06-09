@@ -18,10 +18,14 @@ describe('helpers', () => {
     expect(nomeDeDeputado('Dep. PEPA')).toBe('PEPA')
     expect(nomeDeDeputado('Dep PEPA')).toBe('PEPA')
   })
-  it('numUs lê decimal com ponto (e ignora vírgula de milhar)', () => {
+  it('numUs lê US e BR (a fonte mistura), tirando R$', () => {
     expect(numUs('281.66')).toBe(281.66)
     expect(numUs('1500.0')).toBe(1500)
-    expect(numUs('1,234.56')).toBe(1234.56)
+    expect(numUs('1,234.56')).toBe(1234.56) // US com vírgula de milhar
+    expect(numUs('R$ 3.000,00')).toBe(3000) // BR com prefixo
+    expect(numUs('R$ 10.050,00')).toBe(10050)
+    expect(numUs('50,00')).toBe(50)
+    expect(numUs('3.800,00')).toBe(3800)
   })
   it('soDigitos deixa só os dígitos do CNPJ/CPF', () => {
     expect(soDigitos('00.692.418/0020-70')).toBe('00692418002070')

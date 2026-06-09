@@ -11,9 +11,14 @@ export function nomeDeDeputado(s: string): string {
   return String(s ?? '').replace(/^\s*(deputad[oa]|dep\.?)\s+/i, '').trim()
 }
 
-/** número decimal com ponto ("1,234.56" -> 1234.56); ignora vírgula de milhar (formato US) */
+/** valor da CLDF: a fonte MISTURA formatos. A maioria é US ("173.07", "1500.0", "1,234.56" com vírgula
+ *  de milhar), mas parte vem em BR com prefixo "R$" ("R$ 3.000,00", "50,00"). Regra: tira "R$"/espaços
+ *  e usa o separador mais à DIREITA como decimal (BR = vírgula decimal + ponto de milhar; US = o inverso). */
 export function numUs(s: string): number {
-  return Number(String(s ?? '').trim().replace(/,/g, '')) || 0
+  const t = String(s ?? '').replace(/r\$/i, '').replace(/\s/g, '')
+  if (!t) return 0
+  if (t.lastIndexOf(',') > t.lastIndexOf('.')) return Number(t.replace(/\./g, '').replace(',', '.')) || 0
+  return Number(t.replace(/,/g, '')) || 0
 }
 
 /** só os dígitos de um CNPJ/CPF formatado */
