@@ -6,7 +6,7 @@
 // estimado (snapshot), na mesma forma do ALESP (estimada: true). Reusa o resolvedor TSE do alesc.
 // Tudo função pura/testável; o IO fica no coletor.
 import type { Despesa } from './types.js'
-import { normTse, fotoUrlLocalDeputado, type EleitoTse } from './tseEleicoes.js'
+import { normTse, type EleitoTse } from './tseEleicoes.js'
 import { numBr, dataBr, slug, resolverDeputado, montarDeputadoTse, type DeputadoResolvido } from './alesc.js'
 
 export { numBr, dataBr, slug, resolverDeputado }
