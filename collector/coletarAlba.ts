@@ -67,8 +67,10 @@ async function main() {
             categoria: item.categoria || it.categoria,
             fornecedor: { nome: item.fornecedor, ...(item.cnpjCpf ? { cnpjCpf: item.cnpjCpf } : {}) },
             ano: it.ano, mes: it.mes, data: `${it.ano}-${mm}-01`,
+            // valor = a coluna VALOR oficial (o que a ALBA publica como verba do item; casa exato com a
+            // lista). A GLOSA aparece numa coluna à parte, mas a fonte não rotula se VALOR é o líquido
+            // (reembolsado) ou o bruto (apresentado), então não derivamos valorApresentado (não inventar).
             valor: item.valor,
-            ...(item.glosa > 0 ? { valorApresentado: Math.round((item.valor + item.glosa) * 100) / 100 } : {}),
             ...(item.pdfUrl ? { urlDocumento: item.pdfUrl } : {}),
           })
         }
