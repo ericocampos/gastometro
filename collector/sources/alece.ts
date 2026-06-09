@@ -31,16 +31,29 @@ const trsDe = (html: string): string[] => {
 
 export interface DeputadoListaAlece { codigo: string; nome: string }
 
+/** Limpa o rótulo do deputado vindo da fonte (texto livre): tira o prefixo "DEP ", o sufixo de categoria
+ *  " - COMBUSTIVEIS E LUBRIFICANTES...", e o qualificador " POR SOLICITACAO D{A,O}..." (estornos), que
+ *  poluem o nome e fragmentariam o deputado. (O codigo do detalhe segue o nome ORIGINAL; quem limpa é só
+ *  a `conta` usada para casar/agrupar.) */
+export function nomeDeputadoAlece(bruto: string): string {
+  return bruto
+    .replace(/^\s*DEP\.?\s+/i, '')
+    .replace(/\s+-\s+.*$/, '')
+    .replace(/\s+POR\s+SOLICITAC.*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 /** Lista de deputados da página da VDP (após escolher ano/mês): botões que abrem o modal de detalhes, com
- *  data-bs-codigo (base64 de "{ano}_{mes}_DEP {NOME}") e data-bs-nome (canônico). Tira o prefixo "DEP ".
- *  Tolera a ordem dos atributos. */
+ *  data-bs-codigo (base64 de "{ano}_{mes}_DEP {NOME}") e data-bs-nome. O codigo (pro detalhe) preserva o
+ *  rótulo ORIGINAL; o `nome` (pra casar/agrupar) é limpo. Tolera a ordem dos atributos. */
 export function parseDeputadosLista(html: string): DeputadoListaAlece[] {
   const out: DeputadoListaAlece[] = []
   const btns = html.match(/<button\b[^>]*data-bs-target="#detalhesParlamentar"[^>]*>/gi) ?? []
   for (const b of btns) {
     const c = /data-bs-codigo="([^"]+)"/i.exec(b)
     const n = /data-bs-nome="([^"]+)"/i.exec(b)
-    if (c && n) out.push({ codigo: c[1], nome: n[1].replace(/^\s*DEP\.?\s+/i, '').trim() })
+    if (c && n) out.push({ codigo: c[1], nome: nomeDeputadoAlece(n[1]) })
   }
   return out
 }

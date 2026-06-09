@@ -62,10 +62,17 @@ async function main() {
   // 2) TSE CE 2022 e resolução por nome
   let candidatos: EleitoTse[] = []
   try { candidatos = await baixarCandidatosCargoUf(2022, 'CE', 'DEPUTADO ESTADUAL') } catch (e) { console.error(`  ! TSE CE: ${(e as Error).message}`) }
+  // 2ª tentativa para nomes com prefixo de título (ex.: "AP LUIZ HENRIQUE" -> "APÓSTOLO LUIZ HENRIQUE"):
+  // só aceita se o nome sem o título casar de forma única no TSE (conservador; não casa errado).
+  const TITULOS = /^(AP|APOSTOLO|DR|DRA|DELEGAD[OA]|PROFESSOR[A]?|SARGENTO|SOLDADO|CORONEL|CEL|PASTOR|CABO|TENENTE|MAJOR|BISPO|DOUTOR[A]?)\s+/i
   const contaToId = new Map<string, string>()
   const porId = new Map<string, DeputadoResolvido>()
   for (const nome of [...new Set(recs.map((r) => r.conta))].sort()) {
-    const dep = montarDeputadoAlece(nome, candidatos)
+    let dep = montarDeputadoAlece(nome, candidatos)
+    if (!dep.sq && TITULOS.test(nome)) {
+      const d2 = montarDeputadoAlece(nome.replace(TITULOS, ''), candidatos)
+      if (d2.sq) dep = d2
+    }
     contaToId.set(nome, dep.politicoId)
     if (!porId.has(dep.politicoId)) porId.set(dep.politicoId, dep)
   }

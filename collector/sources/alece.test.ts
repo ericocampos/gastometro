@@ -1,7 +1,7 @@
 // collector/sources/alece.test.ts
 import { describe, it, expect } from 'vitest'
 import {
-  soDigitos, parseDeputadosLista, parseDetalheVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec,
+  soDigitos, parseDeputadosLista, nomeDeputadoAlece, parseDetalheVdp, categoriaVdp, montarDespesasAlece, montarDeputadoAlece, type VerbaAleceRec,
 } from './alece.js'
 import type { EleitoTse } from './tseEleicoes.js'
 
@@ -30,6 +30,14 @@ describe('parseDeputadosLista', () => {
       { codigo: 'MjAyNV8wM19ERVAgQUNSSVNJTyBTRU5B', nome: 'ACRISIO SENA' },
       { codigo: 'MjAyNV8wM19ERVAgQUdFTk9SIE5FVE8=', nome: 'AGENOR NETO' },
     ])
+  })
+})
+
+describe('nomeDeputadoAlece', () => {
+  it('tira "DEP ", sufixo de categoria e "POR SOLICITACAO" (estornos), pra não fragmentar', () => {
+    expect(nomeDeputadoAlece('DEP ALMIR BIE - COMBUSTIVEIS E LUBRIFICANTES AUTOMOTIVOS')).toBe('ALMIR BIE')
+    expect(nomeDeputadoAlece('DEP DAVI DE RAIMUNDAO POR SOLICITACAO DO DEPUTADO')).toBe('DAVI DE RAIMUNDAO')
+    expect(nomeDeputadoAlece('DEP AGENOR NETO')).toBe('AGENOR NETO')
   })
 })
 
