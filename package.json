@@ -26,7 +26,8 @@
     "coletar:alesp": "NODE_OPTIONS=--max-old-space-size=4096 tsx collector/coletarAlesp.ts",
     "coletar:alesc": "tsx collector/coletarAlesc.ts",
     "coletar:cldf": "tsx collector/coletarCldf.ts",
-    "coletar:alepe": "tsx collector/coletarAlepe.ts"
+    "coletar:alepe": "tsx collector/coletarAlepe.ts",
+    "coletar:alba": "tsx collector/coletarAlba.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",
