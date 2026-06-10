@@ -495,157 +495,158 @@
       "sigla": "ALEAM",
       "nome": "Assembleia Legislativa do Amazonas",
       "slug": "am",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 24,
       "nDeputados": 24,
       "pisoCusto": 834591.36,
       "deputados": [
         {
-          "id": "ae-am-40001609183",
+          "id": "aleam-40001609183",
           "nome": "ABDALA FRAXE",
           "partido": "AVANTE",
           "fotoUrl": "/fotos/deputados/40001609183.webp"
         },
         {
-          "id": "ae-am-40001609193",
-          "nome": "DANIEL ALMEIDA",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609193.webp"
-        },
-        {
-          "id": "ae-am-40001600310",
-          "nome": "ROZENHA",
-          "partido": "PMB",
-          "fotoUrl": "/fotos/deputados/40001600310.webp"
-        },
-        {
-          "id": "ae-am-40001650506",
-          "nome": "WILKER BARRETO",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/40001650506.webp"
-        },
-        {
-          "id": "ae-am-40001633341",
-          "nome": "DELEGADO PERICLES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633341.webp"
-        },
-        {
-          "id": "ae-am-40001633325",
-          "nome": "CABO MACIEL",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633325.webp"
-        },
-        {
-          "id": "ae-am-40001609324",
-          "nome": "JOÃO LUIZ",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/40001609324.webp"
-        },
-        {
-          "id": "ae-am-40001618475",
-          "nome": "DR GEORGE LINS",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618475.webp"
-        },
-        {
-          "id": "ae-am-40001609186",
-          "nome": "MAYRA DIAS",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609186.webp"
-        },
-        {
-          "id": "ae-am-40001618468",
-          "nome": "THIAGO ABRAHIM",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618468.webp"
-        },
-        {
-          "id": "ae-am-40001618459",
-          "nome": "JOANA DARC",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618459.webp"
-        },
-        {
-          "id": "ae-am-40001633257",
-          "nome": "CARLINHOS BESSA ",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/40001633257.webp"
-        },
-        {
-          "id": "ae-am-40001609189",
-          "nome": "WANDERLEY MONTEIRO",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609189.webp"
-        },
-        {
-          "id": "ae-am-40001609310",
-          "nome": "DRA MAYARA",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/40001609310.webp"
-        },
-        {
-          "id": "ae-am-40001618455",
-          "nome": "MÁRIO CÉSAR FILHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618455.webp"
-        },
-        {
-          "id": "ae-am-40001633265",
-          "nome": "PROFESSOR SINÉSIO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/40001633265.webp"
-        },
-        {
-          "id": "ae-am-40001618664",
-          "nome": "DR GOMES",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618664.webp"
-        },
-        {
-          "id": "ae-am-40001618658",
-          "nome": "ALESSANDRA CAMPELO",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618658.webp"
-        },
-        {
-          "id": "ae-am-40001633336",
-          "nome": "DEBORA MENEZES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633336.webp"
-        },
-        {
-          "id": "ae-am-40001620692",
-          "nome": "FELIPE SOUZA",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/40001620692.webp"
-        },
-        {
-          "id": "ae-am-40001618661",
-          "nome": "COMANDANTE DAN",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618661.webp"
-        },
-        {
-          "id": "ae-am-40001612909",
-          "nome": "CRISTIANO DANGELO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/40001612909.webp"
-        },
-        {
-          "id": "ae-am-40001618467",
+          "id": "aleam-40001618467",
           "nome": "ADJUTO AFONSO",
           "partido": "UNIÃO",
           "fotoUrl": "/fotos/deputados/40001618467.webp"
         },
         {
-          "id": "ae-am-40001618472",
+          "id": "aleam-40001618658",
+          "nome": "ALESSANDRA CAMPELO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001618658.webp"
+        },
+        {
+          "id": "aleam-40001633325",
+          "nome": "CABO MACIEL",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633325.webp"
+        },
+        {
+          "id": "aleam-40001633257",
+          "nome": "CARLINHOS BESSA ",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001633257.webp"
+        },
+        {
+          "id": "aleam-40001618661",
+          "nome": "COMANDANTE DAN",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001618661.webp"
+        },
+        {
+          "id": "aleam-40001612909",
+          "nome": "CRISTIANO DANGELO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/40001612909.webp"
+        },
+        {
+          "id": "aleam-40001609193",
+          "nome": "DANIEL ALMEIDA",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/40001609193.webp"
+        },
+        {
+          "id": "aleam-40001633341",
+          "nome": "DELEGADO PERICLES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633341.webp"
+        },
+        {
+          "id": "aleam-40001618475",
+          "nome": "DR GEORGE LINS",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618475.webp"
+        },
+        {
+          "id": "aleam-40001618664",
+          "nome": "DR GOMES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618664.webp"
+        },
+        {
+          "id": "aleam-40001609310",
+          "nome": "DRA MAYARA",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001609310.webp"
+        },
+        {
+          "id": "aleam-40001633336",
+          "nome": "DEBORA MENEZES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633336.webp"
+        },
+        {
+          "id": "aleam-40001620692",
+          "nome": "FELIPE SOUZA",
+          "partido": "PODEMOS",
+          "fotoUrl": "/fotos/deputados/40001620692.webp"
+        },
+        {
+          "id": "aleam-40001618459",
+          "nome": "JOANA DARC",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618459.webp"
+        },
+        {
+          "id": "aleam-40001609324",
+          "nome": "JOÃO LUIZ",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001609324.webp"
+        },
+        {
+          "id": "aleam-40001609186",
+          "nome": "MAYRA DIAS",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001609186.webp"
+        },
+        {
+          "id": "aleam-40001618455",
+          "nome": "MÁRIO CÉSAR FILHO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618455.webp"
+        },
+        {
+          "id": "aleam-40001618472",
           "nome": "ROBERTO CIDADE",
           "partido": "UNIÃO",
           "fotoUrl": "/fotos/deputados/40001618472.webp"
+        },
+        {
+          "id": "aleam-40001600310",
+          "nome": "ROZENHA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001600310.webp"
+        },
+        {
+          "id": "aleam-40001633265",
+          "nome": "PROFESSOR SINÉSIO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/40001633265.webp"
+        },
+        {
+          "id": "aleam-40001618468",
+          "nome": "THIAGO ABRAHIM",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/40001618468.webp"
+        },
+        {
+          "id": "aleam-40001609189",
+          "nome": "WANDERLEY MONTEIRO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001609189.webp"
+        },
+        {
+          "id": "aleam-40001650506",
+          "nome": "WILKER BARRETO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001650506.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 45917872.95999999
     },
     {
       "uf": "BA",
