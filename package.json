@@ -18,6 +18,7 @@
     "coletar:assembleias": "tsx collector/coletarAssembleias.ts",
     "coletar:almg": "tsx collector/coletarAlmg.ts",
     "mesclar:assembleias": "tsx collector/mesclarAssembleias.ts",
+    "mesclar:roster-completo": "tsx collector/mesclarRosterCompleto.ts",
     "integrar:completo": "tsx collector/integrarCompleto.ts",
     "indexar:alpb": "tsx collector/indexarAlpb.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
