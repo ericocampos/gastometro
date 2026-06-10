@@ -1,0 +1,41 @@
+[
+  {
+    "id": "alepe-170001620372-2023-01-1",
+    "politicoId": "alepe-170001620372",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 2",
+    "fornecedor": {
+      "nome": "TPX COMERCIO DE VEICULOS EIRELI",
+      "cnpjCpf": "38946002000140"
+    },
+    "valor": 12500
+  },
+  {
+    "id": "alepe-170001620372-2023-01-2",
+    "politicoId": "alepe-170001620372",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 3",
+    "fornecedor": {
+      "nome": "MARCILIO DE OLIVEIRA CUMARU",
+      "cnpjCpf": "35186768000186"
+    },
+    "valor": 10800
+  },
+  {
+    "id": "alepe-170001620372-2023-01-3",
+    "politicoId": "alepe-170001620372",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 5",
+    "fornecedor": {
+      "nome": "DENYSSON  ALMEIDA RODRIGUES DE ALBUQUERQUE",
+      "cnpjCpf": "38310255000123"
+    },
+    "valor": 16431
+  }
+]

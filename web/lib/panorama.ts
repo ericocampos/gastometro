@@ -1,13 +1,17 @@
 import type { SerieParlamentar } from './periodo'
-import type { Assessores, CustosMandato } from './tipos'
+import type { Assessores, CustosMandato, ResumoAssembleia } from './tipos'
 
 export interface ComponenteCusto { chave: 'subsidio' | 'cota' | 'gabinete'; valor: number; real: boolean; rotulo: string }
+export interface Contribuicao { subsidio: number; cota: number; gabinete: number; cadeiras: number }
+export interface CoberturaEstadual { totalCasas: number; comSubsidio: number; comCota: number; comGabinete: number; semSubsidioUfs: string[] }
 export interface CustoBancada { uf: string; total: number; cadeiras: number; porParlamentar: number }
 export interface GastoPartido { partido: string; cota: number; parlamentares: number; porParlamentar: number }
 export interface Panorama {
   totalAnual: number
   componentes: ComponenteCusto[]
   perCapita: number | null
+  perCapitaRotulo?: string
+  notaCobertura?: string
   populacao: number | null
   anoCota: number
   bancadas: CustoBancada[]
@@ -36,13 +40,61 @@ function ultimoAnoCompleto(fed: SerieParlamentar[]): number {
 const cotaNoAno = (s: SerieParlamentar, ano: number) =>
   s.serieMensal.reduce((acc, p) => (anoDe(p.anoMes) === ano ? acc + p.total : acc), 0)
 
-function folhaFederalMes(assessores: Assessores | null): number {
-  if (!assessores) return 0
-  let total = 0
-  for (const [id, g] of Object.entries(assessores.porPolitico)) {
-    if (id.startsWith('camara-') || id.startsWith('senado-')) total += g.folha ?? 0
+const ehAssembleia = (s: SerieParlamentar) => s.casa === 'assembleia'
+
+/** Contribuição federal do escopo. uf = filtra àquele estado (deputados do UF + 3 senadores);
+ *  sem uf = Brasil inteiro (todos os deputados via `cadeiras` + 81 senadores). */
+export function contribFederal(
+  fed: SerieParlamentar[], custos: CustosMandato, assessores: Assessores | null,
+  cadeiras: Record<string, number> | null, ano: number, uf?: string,
+): Contribuicao {
+  const escopo = uf ? fed.filter((s) => s.uf === uf) : fed
+  const cota = escopo.reduce((acc, s) => acc + cotaNoAno(s, ano), 0)
+  const salario = custos.casas.camara.salario
+  const deputados = uf ? (cadeiras?.[uf] ?? 0) : (cadeiras ? Object.values(cadeiras).reduce((a, b) => a + b, 0) : 513)
+  const senadores = uf ? SENADORES_POR_UF : TOTAL_SENADORES
+  const cadeirasTot = deputados + senadores
+  const ufDoId = new Map(fed.map((s) => [s.politicoId, s.uf]))
+  let folha = 0
+  if (assessores) for (const [id, g] of Object.entries(assessores.porPolitico)) {
+    if (!(id.startsWith('camara-') || id.startsWith('senado-'))) continue
+    if (uf && ufDoId.get(id) !== uf) continue
+    folha += g.folha ?? 0
   }
-  return total
+  return { subsidio: cadeirasTot * salario * 12, cota, gabinete: folha * 12, cadeiras: cadeirasTot }
+}
+
+/** Contribuição estadual do escopo. subsídio = Σ assentos × subsídio × 12 (pula casa com subsídio null);
+ *  cota = Σ cota real das séries de assembleia; gabinete = Σ folha × 12 dos políticos de assembleia. */
+export function contribEstadual(
+  assembleias: ResumoAssembleia[], seriesAssembleia: SerieParlamentar[], assessores: Assessores | null,
+  ano: number, uf?: string,
+): { contrib: Contribuicao; cobertura: CoberturaEstadual } {
+  const casas = uf ? assembleias.filter((c) => c.uf === uf) : assembleias
+  let subsidio = 0, comSubsidio = 0, assentos = 0
+  const semSubsidioUfs: string[] = []
+  for (const c of casas) {
+    if (c.subsidio == null) { semSubsidioUfs.push(c.uf); continue }
+    subsidio += c.assentos * c.subsidio * 12
+    assentos += c.assentos
+    comSubsidio += 1
+  }
+  const escopo = uf ? seriesAssembleia.filter((s) => s.uf === uf) : seriesAssembleia
+  const cota = escopo.reduce((acc, s) => acc + cotaNoAno(s, ano), 0)
+  const ufsComCota = new Set(escopo.filter((s) => cotaNoAno(s, ano) > 0).map((s) => s.uf))
+  const ufDoId = new Map(seriesAssembleia.map((s) => [s.politicoId, s.uf]))
+  let folha = 0
+  const ufsComGab = new Set<string>()
+  if (assessores) for (const [id, g] of Object.entries(assessores.porPolitico)) {
+    const u = ufDoId.get(id)
+    if (!u || (uf && u !== uf)) continue
+    const f = g.folha ?? 0
+    if (f > 0) { folha += f; ufsComGab.add(u) }
+  }
+  return {
+    contrib: { subsidio, cota, gabinete: folha * 12, cadeiras: assentos },
+    cobertura: { totalCasas: casas.length, comSubsidio, comCota: ufsComCota.size, comGabinete: ufsComGab.size, semSubsidioUfs },
+  }
 }
 
 function calcularBancadas(
@@ -90,23 +142,55 @@ function calcularPartidos(fed: SerieParlamentar[], ano: number): GastoPartido[] 
     .sort((a, b) => b.cota - a.cota)
 }
 
+/** "AC", "AC e RO", "AC, RO e PB" */
+function listaUfs(ufs: string[]): string {
+  if (ufs.length <= 1) return ufs[0] ?? ''
+  return `${ufs.slice(0, -1).join(', ')} e ${ufs[ufs.length - 1]}`
+}
+
+function montarNotaCobertura(cob: CoberturaEstadual, uf: string | undefined, assembleias: ResumoAssembleia[]): string | undefined {
+  if (cob.totalCasas === 0) return undefined
+  if (uf) {
+    const casa = assembleias.find((c) => c.uf === uf)
+    if (!casa) return undefined
+    if (casa.modelo === 'leve') {
+      return casa.subsidio == null
+        ? `Este cálculo ainda não contabiliza a casa (${casa.sigla}): a casa não tem valor de subsídio em fonte oficial. Por ora, só o custo federal; será atualizado assim que a fonte do estado for integrada.`
+        : `Da casa (${casa.sigla}), este cálculo conta só o subsídio estimado (os salários dos deputados); a verba indenizatória e o gabinete ainda não entram, e serão somados assim que a fonte oficial do estado for integrada.`
+    }
+    // completo: pode faltar o subsídio oficial (ex.: ALPB) e/ou o gabinete (ex.: ALMG, ALESC)
+    const partes: string[] = []
+    if (casa.subsidio == null) partes.push('o subsídio ainda não tem valor oficial')
+    if (cob.comGabinete === 0) partes.push('o gabinete ainda não foi integrado (folha por servidor indisponível na fonte)')
+    if (partes.length === 0) return undefined
+    return `Da casa (${casa.sigla}), ${partes.join(' e ')}; o restante do custo é desta casa.`
+  }
+  const semSub = cob.semSubsidioUfs.length ? ` (${listaUfs(cob.semSubsidioUfs)} sem valor oficial)` : ''
+  return `Camada estadual: subsídio de ${cob.comSubsidio} das ${cob.totalCasas} assembleias${semSub}; cota itemizada de ${cob.comCota} e gabinete de ${cob.comGabinete}. O resto entra conforme integramos os estados.`
+}
+
+export interface OpcoesPanorama { uf?: string; perCapitaRotulo?: string }
+
 export function calcularPanorama(
   series: SerieParlamentar[],
   custos: CustosMandato,
   assessores: Assessores | null,
   populacao: number | null,
   cadeiras: Record<string, number> | null,
+  assembleias: ResumoAssembleia[],
+  opts: OpcoesPanorama = {},
 ): Panorama {
+  const { uf, perCapitaRotulo = 'Por brasileiro / ano' } = opts
   const fed = series.filter(ehFederal)
   const ano = ultimoAnoCompleto(fed)
-  const cota = fed.reduce((acc, s) => acc + cotaNoAno(s, ano), 0)
 
-  const subsidioMensal = custos.casas.camara.salario
-  const totalDeputados = cadeiras ? Object.values(cadeiras).reduce((a, b) => a + b, 0) : 513
-  const totalCadeiras = totalDeputados + TOTAL_SENADORES
-  const subsidio = totalCadeiras * subsidioMensal * 12
+  const cf = contribFederal(fed, custos, assessores, cadeiras, ano, uf)
+  const { contrib: ce, cobertura } = contribEstadual(assembleias, series.filter(ehAssembleia), assessores, ano, uf)
 
-  const gabinete = folhaFederalMes(assessores) * 12
+  const subsidio = cf.subsidio + ce.subsidio
+  const cota = cf.cota + ce.cota
+  const gabinete = cf.gabinete + ce.gabinete
+  const totalCadeiras = cf.cadeiras + ce.cadeiras
 
   const componentes: ComponenteCusto[] = [
     { chave: 'subsidio', valor: subsidio, real: false, rotulo: `Subsídio fixo · ${totalCadeiras} cadeiras × 12 meses` },
@@ -119,9 +203,11 @@ export function calcularPanorama(
     totalAnual,
     componentes,
     perCapita: populacao ? totalAnual / populacao : null,
+    perCapitaRotulo,
     populacao,
     anoCota: ano,
-    bancadas: calcularBancadas(fed, ano, subsidioMensal, assessores, cadeiras),
-    partidos: calcularPartidos(fed, ano),
+    notaCobertura: montarNotaCobertura(cobertura, uf, assembleias),
+    bancadas: uf ? [] : calcularBancadas(fed, ano, custos.casas.camara.salario, assessores, cadeiras),
+    partidos: uf ? [] : calcularPartidos(fed, ano),
   }
 }

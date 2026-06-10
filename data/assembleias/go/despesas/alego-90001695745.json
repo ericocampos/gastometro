@@ -1,0 +1,68 @@
+[
+  {
+    "id": "alego-90001695745-2023-01-1",
+    "politicoId": "alego-90001695745",
+    "data": "2023-02-02",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "Joao Jose Simao",
+      "cnpjCpf": "11722053100"
+    },
+    "valor": 2800
+  },
+  {
+    "id": "alego-90001695745-2023-01-2",
+    "politicoId": "alego-90001695745",
+    "data": "2023-02-02",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "William Henrique de Almeida",
+      "cnpjCpf": "46667083168"
+    },
+    "valor": 6422.99,
+    "valorApresentado": 6800
+  },
+  {
+    "id": "alego-90001695745-2023-01-3",
+    "politicoId": "alego-90001695745",
+    "data": "2023-02-08",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO VILLAGE",
+      "cnpjCpf": "00799366000172"
+    },
+    "valor": 7950.67
+  },
+  {
+    "id": "alego-90001695745-2023-01-4",
+    "politicoId": "alego-90001695745",
+    "data": "2023-02-02",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "BOAVENTURA & ARAUJO ADVOGADOS ASSOCIADOS S/S",
+      "cnpjCpf": "05524503000180"
+    },
+    "valor": 5000
+  },
+  {
+    "id": "alego-90001695745-2023-01-5",
+    "politicoId": "alego-90001695745",
+    "data": "2023-02-02",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "M.S.I. CONTABILIDADE",
+      "cnpjCpf": "26706259000146"
+    },
+    "valor": 4000
+  }
+]

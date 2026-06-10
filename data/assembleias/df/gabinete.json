@@ -1,0 +1,2388 @@
+{
+  "cldf-70001600818": {
+    "total": 31,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "AKILLA MARIA DE MELO MARINHO FREDDI",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANASTACIO MOTA NOGUEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO MARCOS MASCARENHAS DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRUNO METRE FERNANDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDSON ROGERIO DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ELIAS JOAO DA ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ELILSON DE NERI MORAES DE SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EMERSON WILLIAM DA SILVA SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FELIPE AMORIM MORAIS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FORLAND OLIVEIRA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GABRIELA SOARES DE FREITAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ISAEL MARTINS DA CONCEICAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IVAN CANDIDO DE MORAES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JONAS SIQUEIRA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSEMAR COSTA DAS GRACAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JULIENE VASCONCELOS FREIRE DE MELO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "KELLY OLIVEIRA LIMA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LARYSSE MARTINS PEREIRA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUCIETE OLIVEIRA PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MACIEL JERONIMO DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIO ANTONIO SALLENAVE FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MICHELLE PRADO GONCALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NATALIA PIMENTA DA SILVA ALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO CEZAR DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "POLYANA DE CASSIA SILVA FERNANDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAPHAEL TORRES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SABRINA MACIEL DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SANDRO LOPES MENDONCA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "TADASHI RAMOA MAE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WELDO GONCALVES DA SILVA AMORIM",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WERIK APARECIDO NUNES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001596100": {
+    "total": 28,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ALAIDE OLIVEIRA DO NASCIMENTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ALEXANDRE FELIX DE ARAUJO MARTINS DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANDRE DUARTE DE SOUZA SENA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CRISTINA LIMA DE OLIVEIRA ESTEVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DENISE SIMOES PINTO DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDUARDO OCTAVIO TEIXEIRA ALVARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ELANDIA COSTA DOS REIS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HANNAH VICTORIA DUARTE SA SOARES DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IZADORA NUNES DE QUADROS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JANAINA FERREIRA SCARTAZZINI",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JEANE DIAS SIRQUEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAO LINO GONCALVES SOARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE SEBASTIAO DE ALMEIDA FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA ISNEIDE DE LUCENA E SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA NAZARE BRITO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA NUNES MEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MONICA DA COSTA FREIRE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NATANAEL RIBEIRO DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NELSON MOREIRA SOBRINHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NILZETE DOS SANTOS BISPO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PEDRO EVANGELISTA DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAFAEL MOSART ALVES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "REUZA DE SOUZA DURSO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RODRIGO LEANDRO DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROSENI DE SOUSA VIEIRA MOURA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THOMAZ PIRES DE CAMPOS MARTINS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VILANY CARRILHA MISQUITA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WEBERTON JEFFERSON PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001615885": {
+    "total": 25,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ANA PAULA SOUZA LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CAMILA DOS SANTOS GONCALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CAROLINE LARA CARDOSO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CELIO ALVES DE FREITAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLAUDIO FRANCISCO RIBEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLEIDER DE FARIA PAIVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLEO SANTOS DE SOUSA ABREU",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DALLIANA DAYANA FONTELE DE LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DAYANE DA SILVA SANTANA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DOUGLAS ANTONIO DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDILENE DIAS CERQUEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDMILSON DE SOUZA BISPO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ELLEN CRISTINA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FLAVIO MACIEL VIEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GUILHERME CESAR DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IVAI ABIMAEL MARTINS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JEAN CARLOS DE SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LINDIENE SAMAYANA TEIXEIRA MARQUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LIVIA LOPES FIDELES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MAIONE DOS SANTOS DIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCELO RIBEIRO MONTEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NILSON ASSIS DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PEDRO ANTONIO NUNES DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SONIA CORREA COTRIM",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "TALITA LUIZA DE ANDRADE FALCAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001601758": {
+    "total": 28,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ALVARO AUGUSTO CERQUEIRA MANGABEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "AMANDA SANTOS RUBIN",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANA LARISSA BARROSO AGUIAR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANDRE MOLINAR VELOSO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BEATRIZ FERREIRA BARBOSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CARLOS HIAGO MARQUES DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DANIEL COSTA RIBEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DANIEL OLIVEIRA JACO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDUARDO OLIVEIRA DIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EMILSON FERREIRA FONSECA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FILLIPE BRUNO DOS SANTOS LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GABRIEL SANTOS ELIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GIZELE CHAVES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GUSTAVO MAMEDE PACHECO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HENRIQUE LIMA MEUREN",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JANAINA FERREIRA BITTENCOURT PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "KAIO DA SILVA SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUCCI DEL SANTOS LAPORTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUIZ PHILIPE SILVA RODRIGUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCIA ROBERTA VIEIRA MATOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCOS OLIVEIRA DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA JOSE COSTA ALMEIDA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIANA ABUCHAIN FREITAS MOURA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NATALIA STANZIONI CABEZAS ENCISO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAFAELA DE ANDRADE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RONALDO FRANCISCO SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THIAGO CARVALHO PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VICTOR SALES GORMAN",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001596090": {
+    "total": 30,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ADEVALDO PEREIRA DIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO JORGE GONCALVES DE OLIVEIRA JUNIOR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ARIDES ALMEIDA DE LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BEATRIZ LEITE GOULART",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CARMEM GORETE COELHO SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DAMIAO RODRIGUES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GABRIELA MELO NUNES CALDAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GEOVANNY COSTA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HENRIQUE RODRIGUES TORRES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HENRIQUE VIEIRA PONTES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "INACIO RANGEL FERNANDES SOARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAN GOES MARTINS FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEANDRO DA ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUCAS GONCALVES DA COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUDMILA OLIVEIRA MATOS BRASIL FERNANDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUISA HELENA FIGUEIREDO VILLA VERDE CARVALHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MAGNO ROCHA RAMOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCO ANTONIO BARATTO RIBEIRO DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA AURIENE VIEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA SOCORRO GOMES LEITAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARLENE DE FATIMA AZEVEDO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARLON MOISES DE BRITO ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MIGUEL EDGAR ALVES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MONICA DE SOUZA SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PEDRO MACHADO DE ASSIS BORGES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PIETRA SOARES DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RENATA DE PAULA LAURINDO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RONALDO ROCHA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SIMONE PARTELLI DA ROSA GARCIA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "STEVIE VICTOR DE SOUZA GALVAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001650807": {
+    "total": 28,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ADEMAR RODRIGUES DIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO DE PADUA MARQUES RAMALHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BEATRIZ AREA LEAO DE ALMEIDA ANDRADE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRAYAN PALMEIRA CRUZ",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CENIR MARIA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DANIELA RODRIGUES DO PRADO BRAGA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FERNANDA MEIRA BORGES DE MORAES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HEITOR MITSUAKI KANEGAE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ILDEMAR OLIVEIRA GUIMARAES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IRANY DOMINGOS GOMES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IURY LIUGI MARQUES SOARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAO DANTAS DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE DE ASSIS SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LICERGIO OLIVEIRA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCIO BITENCOURT SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIANA LOYANE SERAFIM DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MATHEUS SAMPAIO CASTRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NARA BERNARDO GUIGNHONE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NAYARA GRAZIELLY AGUIAR SANTANA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICK SILVA DAMASCENO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAFAELA OLIVEIRA DA COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAIMUNDO NONATO DAMASCENO ALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RICARDO DA SILVA MOURA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROSENY GUEDES DE JESUS COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROSIMERE MAGALHAES ABRANCHES NACFUR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SANDRO JOSE FERREIRA DE ANDRADE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THAIS MARIA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WALTER MARQUES SIQUEIRA DE LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001650810": {
+    "total": 27,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ADEMAR DE SENA SAMPAIO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ADRIANO SANCHES SAO PEDRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANDRE LUIS QUEIROZ ROSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CHARLES MARYOSHI DE OLIVEIRA TINEN",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DAMIAO MIGUEL FERREIRA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DEBORA DE ABREU MARTINS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DENIS ALVES RODRIGUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ELIANA URFER BACHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IRENE HOLANDA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JAIR MACHADO DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE ALDENOR PESSOA DA CRUZ",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LAZARO JULIANO DA SILVA FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LETICIA MICAELA DE ARAUJO GONCALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEVI CARVALHO DE FARIA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MANOEL PEREIRA XAVIER",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MATHEUS CESAR CORTES NOGUEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MIRIAM SILVA DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "OZENALVA ALVES BARBOSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICIA AMARAL DE ARAUJO LIMA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO MARCOS DE BARROS MARINHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAYSSA LOYANE DA SILVA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SAMUEL BARBOSA CRUZ",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SORAYA BARBOSA SALES DE ALMEIDA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THAINA CANTANHEDE DE ABREU",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VALDEBERTO PEREIRA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VILMA DOS SANTOS NUNES ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WANIA MIGUEL DE MENDONCA DE MELO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001615870": {
+    "total": 27,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ANGELA CAROLLINE ROCHA PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BIANCA OLIVEIRA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRUNO FELICIANO PEREIRA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BYANCA PAIVA LEITE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CONRADO DE SOUZA FERREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CRISTINA SOUZA MATOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DIEGO DA SILVA RODRIGUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GRESCIA GRAZZIELLA VIEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HUGO BATISTA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JEFFERSON PEREIRA GUIMARAES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE AFONSO DUARTE COELHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LAURA DE SOUZA MACIEL",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEONARDO CIMON SIMOES DE ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MICHEL DE SOUSA MEDEIROS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MIRACI OLIVEIRA MARQUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NELSON CAORU SUGUINO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICIA CORREIA DA VICTORIA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICIA DELA COLETA MACEDO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICIA FERNANDA DUARTE DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO GILBERTO PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "POLIANA APARECIDA DE SIQUEIRA KRUGER",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAIMILENE DO SOCORRO ROCHA SOARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RODRIGO GONCALVES BORGES MESQUITA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SAMUEL COSTA MARTINS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SHERMAN BARRETO SALGADO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "TATIANA RODRIGUES DRUMOND",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WBERTHYER COSTA DE ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001611506": {
+    "total": 27,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ANDERSON DE SOUSA CARVALHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO LUIZ MEDEIROS DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRUNO CEZAR PEREIRA DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLEONICE ALVES LEITE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DAVI PEREIRA VALVERDE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DORGIVAL CLAUDIO FERREIRA JUNIOR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FABRICIO RAUL FERREIRA ALVES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAO PAULO VELOSO DAS CHAGAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE MARCIO VALVERDE SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE ONILDE NUNES DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LYSA FERREIRA AMORIM",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCOS ANTONIO PEREIRA DELGADO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MATHEUS PASSOS SANTANA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NILTON BATISTA DA NOBREGA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "OSIRES AGUIAR DE ALMEIDA JUNIOR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "OVERMAN RODRIGUES DA COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "OZENALDO BARBOSA DE MEDEIROS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULA MUNIZ FALCAO RABELO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO CESAR MAGALHAES FONSECA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO RIBEIRO MOTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PAULO SERGIO BARBOSA DE SA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAFAEL MERAZZI RABETHGE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RENATA FORTES FERNANDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROSANGELA CECILIA DE FREITAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SAMUEL KALEBE FREITAS MAIA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "TIAGO TARSIS ADALDO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VALTECIO DE ALMEIDA BATISTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001616707": {
+    "total": 28,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ADRIANA RIBEIRO DE AZEVEDO DE SANTANA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANA CARLA ROGADO DA SILVA PINTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "AUDERLAM ROLIM DE SOUSA DUARTE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "AURICELIO PRAXEDES DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CARLOS ALEXANDRE COSTA DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CAROLINE PASSOS SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CATIA APARECIDA DE OLIVEIRA ARAUJO DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "COSMO BESERRA DE SOBRAL MARQUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DANIEL FERREIRA DE ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DANIELLA VASCONCELOS SANTANA BRITO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EUFRAZIO SANTIAGO NUNES DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FABIOLA SANTOS ALBERTI",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FERNANDA DIAS DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FLAVIA COUTINHO CARVALHO DE REZENDE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAQUIM MAURO DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSIMAR FRANCISCO DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JULIO CESAR LOPES LIMA RODRIGUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LARA RODRIGUES DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEILA ROCHA MADEIRA OSCAR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUIZ CARLOS SOARES DE CARVALHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA DO SOCORRO RAMOS MOTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PATRICIA GOMES MATOS DE ALBUQUERQUE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAIMUNDO WAGNER SIQUEIRA CARDOZO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SUELI ROSE DE MORAES SILVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VITORIA COSTA ANDRADE FERREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WALDIR DE CARVALHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WALLACY DE BRITO ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WILLISSON MARTINS DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001601757": {
+    "total": 21,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "AMANDA FIGUEIREDO DE ALMEIDA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANA PAULA SOUZA MATOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANGELA COSTA AMARAL",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ARINA CYNTHIA DOS SANTOS COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRUNNA AZEVEDO PALMER",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CINTIA NATALIA RIBEIRO DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DEBORA ALVES DE ABREU",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ESTER NOGUEIRA DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GRAZIELLY MIRANDA DE SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "HENRIQUE PENA DE JESUS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOAO LUCAS ALVES DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUAN HENRIQUE SILVA BASTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCELO VINICIUS DE OLIVEIRA SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIANA PAIVA SOARES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MIRIAM REJANE DA COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NATALIA TEIXEIRA DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "NATHALIA CAEIRO GOMES SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PRISCILLA RODRIGUES CASTRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAIANE PAULO DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THAIS CARDOSO PEREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THAYENE DE OLIVEIRA ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001650204": {
+    "total": 28,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ANDRE RODRIGUES SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANDRE SIQUEIRA MARANHAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO ELDES INACIO DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANTONIO PIMENTEL DE MORAIS JUNIOR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CICERO EMIDIO DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLAUDIO AGRA DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FLAVIA NERES NOGUEIRA ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FRANCISCO DAS CHAGAS GERALDO FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FRANCISCO DE ASSIS DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "IRANEY RICARDO DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JANAINA NAIARA SILVA DE ALMEIDA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE ANTONIO PEREIRA CAMPOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JULIANA RAVAZZI ESTRELA CORREA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEONARDO DE SOUSA OLINTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUCAS DE SOUSA PAULA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LUIS ROBERIO FROTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCIO ALVES MOREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAIMUNDA ELIEZITA MATOS MONTEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROGERIO FERREIRA DE ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SANDRO ERIC DA SILVA MELO MONTEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SEVULO JOSE FILHO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SUELEN CRISTINA SIELSKI DO CARMO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THERRIS DO PARTO SOUSA SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THIAGO PAES DE ANDRADE GUEDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VERA ALVES LAMOUNIER",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VICTOR BADU RIBEIRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VICTOR PATRICK DA SILVA MALAQUIAS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WADISLEY LIMA SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001615877": {
+    "total": 24,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ANA PAULA DAMASCENO DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANA THAIS DA ROCHA NASCIMENTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ANDRE LUIZ MIRANDA DE AZEVEDO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ARNON LESSA CASTRO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CAMILA FONTANA DE OLIVEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CAMILA SILVA MATOS MOURA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CARLOS ALBERTO PEREIRA DE ALBUQUERQUE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CHARLENY ALARCAO ARAUJO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDUARDO DIAS HENRIQUE",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE BONIFACIO SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSE SINEZIO RODRIGUES DE SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JOSIENE NUNES CHERVINSKI",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LEIDIANE RODRIGUES DA SILVA SALMORIA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LYNDON JOHNSON DE SOUZA THOMAZ",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCIA LIZ DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARIA CAROLINA DIAZ DA SILVA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MCJERRY DI ANDRADE CAMARGO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MICHELLE ANDRE MARTINS BENEDITO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "PETRONIO ALVARES DE LACERDA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RAPHAEL SILVANO LIMA PIRES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RICARDO DE SOUZA LIMA CAIAFA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROBERT DA SILVA SANTANA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "RODNEY FREIRE DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "THAYS MENDES FERREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  },
+  "cldf-70001615869": {
+    "total": 27,
+    "folha": 0,
+    "mesReferencia": "2026-06",
+    "semCusto": true,
+    "secretarios": [
+      {
+        "nome": "ALVARO ANTONIO CAPUTE CORREA PINTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "BRUNO EUSTAQUIO ARANTES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CARLA MAYARA SOUZA LEPESTEUR DA COSTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CLAUDIA CARDOSO CARVALHO DE SOUZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "CRISLEI OLIVEIRA SOUSA VIEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DENYS DOUGLAS SOARES BARBOZA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "DIVANIR MOURA MATTOS JUNIOR",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDMUNDO GUIMARAES LINS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EDUARDA MUNIZ DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "EMERSON RIBEIRO BARBOSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FABIOLA PEREIRA DOS SANTOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FELIPE BASSUL FERREIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "FILIPE ALVES LIMA BRANDAO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GABRIELA OLIVEIRA BARBOSA MOTTA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "GLAICON SOUZA DO NASCIMENTO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "JEREMIAS ALVES DE SOUSA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "KENIA NASCIMENTO DE ABREU",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LAURO THIAGO AMARAL VIEIRA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "LETICIA MARTINS ROCHA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCIA MARIA RIBEIRO DE AZEVEDO RAMOS",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "MARCOS ROBERTO DE SOUZA RODRIGUES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "ROBERTO KENNEDY FERREIRA DA SILVA DE QUEIROZ",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SANDRA MOREIRA PADILHA VITORIANO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SAULO MAGESTE FRANCA",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "SINVERSON BARROSO DE SA TELES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "VICTOR SILVEIRA MENDES",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      },
+      {
+        "nome": "WELINGTON LUCIO REGO",
+        "remuneracao": 0,
+        "lotacaoTipo": "gabinete",
+        "semFolha": true
+      }
+    ]
+  }
+}

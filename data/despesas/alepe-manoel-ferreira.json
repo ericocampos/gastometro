@@ -1,0 +1,41 @@
+[
+  {
+    "id": "alepe-manoel-ferreira-2023-01-1",
+    "politicoId": "alepe-manoel-ferreira",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 2",
+    "fornecedor": {
+      "nome": "LOCADORA DE VEÍCULOS CAXANGÁ LTDA",
+      "cnpjCpf": "00329696000102"
+    },
+    "valor": 3500
+  },
+  {
+    "id": "alepe-manoel-ferreira-2023-01-2",
+    "politicoId": "alepe-manoel-ferreira",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 2",
+    "fornecedor": {
+      "nome": "EV LOCADORA LTDA EPP",
+      "cnpjCpf": "03574135000159"
+    },
+    "valor": 3700
+  },
+  {
+    "id": "alepe-manoel-ferreira-2023-01-3",
+    "politicoId": "alepe-manoel-ferreira",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Rubrica 3",
+    "fornecedor": {
+      "nome": "LIRA,OLIVEIRA,BANDEIRA CAMPELO ADVOGADOS",
+      "cnpjCpf": "13252450000113"
+    },
+    "valor": 10437
+  }
+]

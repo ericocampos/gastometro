@@ -84,6 +84,28 @@ describe('DetalhamentoGastos', () => {
     expect(screen.queryByRole('link', { name: /planilha/i })).toBeNull()
   })
 
+  it('glosa: mostra o valor apresentado quando difere do reembolsado, e a nota explicativa', () => {
+    const comGlosa: Despesa = {
+      id: 'g-1', politicoId: 'alego-1', data: '2025-03-20', ano: 2025, mes: 3,
+      categoria: 'Alimentação', fornecedor: { nome: 'MERCADO X', cnpjCpf: '00' }, valor: 60.1, valorApresentado: 145.05,
+    }
+    render(<DetalhamentoGastos despesas={[comGlosa]} casa="assembleia" politicoId="alego-1" />)
+    // reembolsado em destaque + apresentado abaixo (mobile + desktop)
+    expect(screen.getAllByText(/R\$ 60,10/).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getAllByText(/de R\$ 145,05 apres\./).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/Apresentado . reembolsado/i)).toBeInTheDocument()
+  })
+
+  it('sem glosa (apresentado == reembolsado): não mostra a anotação nem a nota', () => {
+    const semGlosa: Despesa = {
+      id: 'sg-1', politicoId: 'alego-1', data: '2025-03-20', ano: 2025, mes: 3,
+      categoria: 'Alimentação', fornecedor: { nome: 'MERCADO X', cnpjCpf: '00' }, valor: 100, valorApresentado: 100,
+    }
+    render(<DetalhamentoGastos despesas={[semGlosa]} casa="assembleia" politicoId="alego-1" />)
+    expect(screen.queryByText(/apres\./)).toBeNull()
+    expect(screen.queryByText(/Apresentado . reembolsado/i)).toBeNull()
+  })
+
   it('marca as linhas que geraram ponto de atenção e mostra a legenda', () => {
     render(
       <DetalhamentoGastos

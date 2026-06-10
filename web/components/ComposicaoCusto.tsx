@@ -6,7 +6,7 @@ const COR: Record<string, string> = { subsidio: '#0a7d52', cota: '#2563eb', gabi
 const TITULO: Record<string, string> = { subsidio: 'Subsídio', cota: 'Cota', gabinete: 'Gabinete (pessoal)' }
 
 export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
-  const { totalAnual, perCapita, componentes } = panorama
+  const { totalAnual, perCapita, componentes, perCapitaRotulo = 'Por brasileiro / ano', notaCobertura } = panorama
   return (
     <div>
       <div className="flex flex-wrap items-end gap-x-10 gap-y-3">
@@ -16,7 +16,7 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
         </div>
         {perCapita != null && (
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">Por brasileiro / ano</p>
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-tinta-tenue">{perCapitaRotulo}</p>
             <p className="font-display text-2xl font-semibold tabular-nums text-tinta">{brl(perCapita)}</p>
           </div>
         )}
@@ -57,6 +57,9 @@ export function ComposicaoCusto({ panorama }: { panorama: Panorama }) {
           </div>
         ))}
       </div>
+      {notaCobertura && (
+        <p className="mt-4 text-xs leading-relaxed text-tinta-tenue">{notaCobertura}</p>
+      )}
     </div>
   )
 }

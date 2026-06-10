@@ -16,10 +16,22 @@
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
     "coletar:assembleias": "tsx collector/coletarAssembleias.ts",
+    "coletar:almg": "tsx collector/coletarAlmg.ts",
     "mesclar:assembleias": "tsx collector/mesclarAssembleias.ts",
+    "mesclar:roster-completo": "tsx collector/mesclarRosterCompleto.ts",
+    "integrar:completo": "tsx collector/integrarCompleto.ts",
+    "indexar:alpb": "tsx collector/indexarAlpb.ts",
     "coletar:orcamento": "tsx collector/coletarOrcamento.ts",
     "comprimir:cache": "tsx collector/comprimirCache.ts",
-    "analisar": "tsx collector/analisar.ts"
+    "analisar": "tsx collector/analisar.ts",
+    "coletar:alesp": "NODE_OPTIONS=--max-old-space-size=4096 tsx collector/coletarAlesp.ts",
+    "coletar:alesc": "tsx collector/coletarAlesc.ts",
+    "coletar:cldf": "tsx collector/coletarCldf.ts",
+    "coletar:alepe": "tsx collector/coletarAlepe.ts",
+    "coletar:alba": "tsx collector/coletarAlba.ts",
+    "coletar:alece": "tsx collector/coletarAlece.ts",
+    "coletar:alego": "tsx collector/coletarAlego.ts",
+    "coletar:aleam": "tsx collector/coletarAleam.ts"
   },
   "dependencies": {
     "csv-parse": "^5.5.6",

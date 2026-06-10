@@ -7,6 +7,7 @@ export interface MandatoParlamentar {
   legislatura: number
   afastado?: boolean
   exercicios?: { inicio: string; fim: string | null }[]
+  origem?: 'roster-tse' // entrada R$0 sintetizada do roster eleito (titular que não gastou)
 }
 
 export interface Politico {
@@ -74,7 +75,8 @@ export interface Despesa {
   mes: number
   categoria: string
   fornecedor: { nome: string; cnpjCpf?: string }
-  valor: number
+  valor: number  // o que de fato saiu do erário (líquido/reembolsado)
+  valorApresentado?: number  // valor bruto na nota quando difere do reembolsado (a diferença é a glosa)
   urlDocumento?: string
   numeroNf?: string   // número da nota fiscal (CG publica o número, não o documento)
   descricao?: string  // histórico declarado no empenho (diárias: motivo/destino da viagem)
@@ -149,6 +151,8 @@ export interface GabineteParlamentar {
   // Senado: a folha é o custo real oficial (bruto, mês de referência), não estimativa
   folhaOficial?: boolean
   mesReferencia?: string
+  estimada?: boolean   // ALESP: folha = soma do bruto da tabela de vencimentos (estimativa), não a folha real
+  semCusto?: boolean   // ALESC: nomes + headcount do gabinete, mas SEM custo (folha individual bloqueada na fonte)
   consultas?: ConsultaLotacao[]           // busca oficial por lotação (gabinete/escritório)
 }
 export interface TabelaGabinete { vigencia: string; verbaGabinete: number; fonte: string; consultaExataUrl: string }
@@ -259,6 +263,7 @@ export interface ComparativoOrcamentoCidade { slug: string; nome: string; anos: 
 export interface CeapPorUf { fonte: string; atualizadoEm: string; valores: Record<string, number | null> }
 
 export interface PopulacaoBrasil { fonte: string; url: string; atualizadoEm: string; populacao: number }
+export interface PopulacaoUf { fonte: string; url: string; atualizadoEm: string; populacao: Record<string, number> }
 export interface CadeirasCamaraUf { fonte: string; atualizadoEm: string; cadeiras: Record<string, number> }
 
 export interface EmendaDestino { municipio: string; uf: string; empenhado: number; pago: number }

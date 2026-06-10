@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alece-delegado-cavalcante-2023-01-1",
+    "politicoId": "alece-delegado-cavalcante",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 1155.6
+  },
+  {
+    "id": "alece-delegado-cavalcante-2023-01-2",
+    "politicoId": "alece-delegado-cavalcante",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 3659.4
+  },
+  {
+    "id": "alece-delegado-cavalcante-2023-01-3",
+    "politicoId": "alece-delegado-cavalcante",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 3617.6
+  },
+  {
+    "id": "alece-delegado-cavalcante-2023-02-4",
+    "politicoId": "alece-delegado-cavalcante",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "PRINTCOLOR GRAFICA E EDITORA LTDA - EPP",
+      "cnpjCpf": "02824298000180"
+    },
+    "valor": 11743.2
+  }
+]

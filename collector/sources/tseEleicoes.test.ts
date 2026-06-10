@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { normTse, parseCandidatosCsv, matchCandidato, nomeArquivoFoto, nomesArquivoFoto, fotoUrlLocal, parseEleitosCsv } from './tseEleicoes'
+import { normTse, parseCandidatosCsv, matchCandidato, nomeArquivoFoto, nomesArquivoFoto, fotoUrlLocal, parseEleitosCsv, parseCandidatosCargo } from './tseEleicoes'
 
 // Fixture mínima no formato do TSE (latin1 no arquivo real; aqui já em utf-8): cabeçalho com as
 // colunas usadas + linhas de VEREADOR (eleitos e suplentes) e uma de PREFEITO (deve ser ignorada).
@@ -80,7 +80,7 @@ describe('parseEleitosCsv', () => {
     ].join('\n')
     const eleitos = parseEleitosCsv(csv, 'DEPUTADO ESTADUAL')
     expect(eleitos.map((e) => e.sq)).toEqual(['111', '222'])
-    expect(eleitos[0]).toEqual({ sq: '111', nome: 'MARIA DA SILVA', nomeUrna: 'MARIA SILVA', partido: 'PT' })
+    expect(eleitos[0]).toEqual({ sq: '111', nome: 'MARIA DA SILVA', nomeUrna: 'MARIA SILVA', partido: 'PT', eleito: true })
   })
 
   it('aceita o cargo distrital (DF)', () => {
@@ -96,5 +96,20 @@ describe('parseEleitosCsv', () => {
   it('não confunde ELEITO com NAO ELEITO (prefixo exato de palavra)', () => {
     const csv = [ELEITOS_HEAD, linhaEleito('DEPUTADO ESTADUAL', '999', 'X', 'X', 'PT', 'NAO ELEITO')].join('\n')
     expect(parseEleitosCsv(csv, 'DEPUTADO ESTADUAL')).toEqual([])
+  })
+})
+
+describe('parseCandidatosCargo', () => {
+  it('lista TODOS os candidatos do cargo (eleitos e não), marcando eleito', () => {
+    const csv = [
+      ELEITOS_HEAD,
+      linhaEleito('DEPUTADO ESTADUAL', '111', 'MARIA DA SILVA', 'MARIA SILVA', 'PT', 'ELEITO POR QP'),
+      linhaEleito('DEPUTADO ESTADUAL', '333', 'ANA LIMA', 'ANINHA', 'MDB', 'SUPLENTE'),
+      linhaEleito('DEPUTADO FEDERAL', '555', 'CARLOS DIAS', 'CARLOS DIAS', 'PSB', 'ELEITO'),
+    ].join('\n')
+    const cs = parseCandidatosCargo(csv, 'DEPUTADO ESTADUAL')
+    expect(cs.map((c) => c.sq)).toEqual(['111', '333']) // o federal fica de fora; o suplente entra
+    expect(cs.find((c) => c.sq === '111')?.eleito).toBe(true)
+    expect(cs.find((c) => c.sq === '333')?.eleito).toBe(false)
   })
 })

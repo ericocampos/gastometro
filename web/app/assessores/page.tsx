@@ -5,13 +5,15 @@ import { brlCompacto } from '@/lib/formato'
 
 export default function AssessoresPage() {
   const ass = getAssessores()
-  const dep = new Map(getSeriesParlamentares().map((s) => [s.politicoId, { nome: s.nome, partido: s.partido }]))
+  const dep = new Map(getSeriesParlamentares().map((s) => [s.politicoId, { nome: s.nome, partido: s.partido, casa: s.casa }]))
 
   const itens: ItemAssessor[] = []
   for (const [deputyId, gab] of Object.entries(ass?.porPolitico ?? {})) {
     const d = dep.get(deputyId)
+    // casa vem do dado (não do prefixo do id): assembleia cobre ALPB/ALMG/ALESP/ALESC, não só ALPB.
     const casa: 'camara' | 'senado' | 'assembleia' =
-      deputyId.startsWith('senado-') ? 'senado' : deputyId.startsWith('alpb-') ? 'assembleia' : 'camara'
+      d?.casa === 'senado' || d?.casa === 'assembleia' ? d.casa
+      : deputyId.startsWith('senado-') ? 'senado' : 'camara'
     for (const s of gab.secretarios) {
       itens.push({
         nome: s.nome,

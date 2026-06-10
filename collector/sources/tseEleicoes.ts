@@ -102,7 +102,7 @@ export function matchCandidato(
   return null
 }
 
-export interface EleitoTse { sq: string; nome: string; nomeUrna: string; partido: string }
+export interface EleitoTse { sq: string; nome: string; nomeUrna: string; partido: string; eleito?: boolean }
 
 // Situação no turno: 'ELEITO', 'ELEITO POR QP', 'ELEITO POR MEDIA'. Excluir 'NAO ELEITO'/'SUPLENTE'.
 // Normaliza (sem acento, caixa alta) e exige que a primeira palavra seja exatamente "ELEITO".
@@ -129,7 +129,30 @@ export function parseEleitosCsv(texto: string, cargo: string): EleitoTse[] {
     const f = campos(linhas[i])
     if ((f[iCargo] ?? '').toUpperCase() !== alvo) continue
     if (!ehEleito(f[iSit] ?? '')) continue
-    out.push({ sq: f[iSq], nome: f[iNome], nomeUrna: f[iUrna], partido: f[iPart] })
+    out.push({ sq: f[iSq], nome: f[iNome], nomeUrna: f[iUrna], partido: f[iPart], eleito: true })
+  }
+  return out
+}
+
+/**
+ * Lista TODOS os candidatos de um cargo numa UF (eleitos E não eleitos), marcando quem foi eleito.
+ * Usado para casar nomes de fontes que incluem suplentes (que assumiram a vaga) com o TSE, recuperando
+ * partido e foto: o suplente não está entre os eleitos, mas é um candidato de 2022.
+ */
+export function parseCandidatosCargo(texto: string, cargo: string): EleitoTse[] {
+  const linhas = texto.split('\n').filter((l) => l.trim().length > 0)
+  if (linhas.length === 0) return []
+  const head = campos(linhas[0])
+  const col = (n: string) => head.indexOf(n)
+  const iCargo = col('DS_CARGO'), iSq = col('SQ_CANDIDATO'), iNome = col('NM_CANDIDATO'),
+    iUrna = col('NM_URNA_CANDIDATO'), iPart = col('SG_PARTIDO'), iSit = col('DS_SIT_TOT_TURNO')
+
+  const out: EleitoTse[] = []
+  const alvo = cargo.toUpperCase()
+  for (let i = 1; i < linhas.length; i++) {
+    const f = campos(linhas[i])
+    if ((f[iCargo] ?? '').toUpperCase() !== alvo) continue
+    out.push({ sq: f[iSq], nome: f[iNome], nomeUrna: f[iUrna], partido: f[iPart], eleito: ehEleito(f[iSit] ?? '') })
   }
   return out
 }
@@ -173,6 +196,22 @@ export async function baixarEleitosUf(ano: number, uf: string, cargo: string): P
     execFileSync('unzip', ['-o', '-j', zip, csv, '-d', dir], { stdio: 'ignore' })
     const texto = readFileSync(join(dir, csv), 'latin1')
     return parseEleitosCsv(texto, cargo)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
+/** Baixa o zip nacional e devolve TODOS os candidatos do cargo na UF (eleitos + não eleitos). */
+export async function baixarCandidatosCargoUf(ano: number, uf: string, cargo: string): Promise<EleitoTse[]> {
+  const buf = await fetchBuffer(`${CDN}/odsele/consulta_cand/consulta_cand_${ano}.zip`)
+  const dir = mkdtempSync(join(tmpdir(), 'tse-cand-'))
+  try {
+    const zip = join(dir, 'cand.zip')
+    writeFileSync(zip, buf)
+    const csv = `consulta_cand_${ano}_${uf}.csv`
+    execFileSync('unzip', ['-o', '-j', zip, csv, '-d', dir], { stdio: 'ignore' })
+    const texto = readFileSync(join(dir, csv), 'latin1')
+    return parseCandidatosCargo(texto, cargo)
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }

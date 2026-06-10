@@ -30,7 +30,7 @@
     "assembleia": {
       "rotulo": "Deputado Estadual",
       "salario": 34774.64,
-      "cota": { "valor": 50000, "rotulo": "VIAP mensal · crédito (acumula saldo)", "aproximado": false },
+      "cota": { "valor": 50000, "rotulo": "verba indenizatória · teto varia por estado", "aproximado": true },
       "gabinete": { "valor": null, "rotulo": "Comissionados pagos pela ALPB · não divulgado por parlamentar", "aproximado": true },
       "fontes": [
         { "nome": "ALPB · VIAP (verba indenizatória)", "url": "http://www.al.pb.leg.br/transparencia/deputados/viap-v2" },

@@ -1,10 +1,13 @@
-import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias } from '@/lib/dados'
+import Link from 'next/link'
+import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias, getCustos, getAssessores, getCadeirasCamaraUf, getPopulacaoUf } from '@/lib/dados'
 import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
 import { MunicipiosGrid } from '@/components/MunicipiosGrid'
 import { brl } from '@/lib/formato'
 import { UFS_NOME } from './ufs'
 import { AssembleiaSecao } from '@/components/AssembleiaSecao'
+import { calcularPanorama } from '@/lib/panorama'
+import { ComposicaoCusto } from '@/components/ComposicaoCusto'
 
 export function generateStaticParams() {
   return getUfsDisponiveis().map((uf) => ({ uf: uf.toLowerCase() }))
@@ -13,34 +16,74 @@ export function generateStaticParams() {
 export default function EstadoPage({ params }: { params: { uf: string } }) {
   const uf = params.uf.toUpperCase()
   const nome = UFS_NOME[uf] ?? uf
-  const series = getSeriesParlamentares().filter((s) => (s.casa === 'camara' || s.casa === 'senado') && s.uf === uf)
+  // inclui os deputados estaduais (assembleia) no ranking da UF, junto dos federais, com gasto real.
+  // Os leve (sem despesa itemizada) já saem fora em getSeriesParlamentares; sobram os completo (com R$).
+  const todasSeries = getSeriesParlamentares()
+  const series = todasSeries.filter((s) => (s.casa === 'camara' || s.casa === 'senado' || s.casa === 'assembleia') && s.uf === uf)
   const cidades = getMunicipios().cidades.filter((c) => c.uf === uf)
   const ceap = getCeapPorUf()?.valores[uf] ?? null
   const emendasUf = getEmendas()?.porUf[uf] ?? null
-  const casaAssembleia = getAssembleias()?.casas.find((c) => c.uf === uf) ?? null
+  const casas = getAssembleias()?.casas ?? []
+  const casaAssembleia = casas.find((c) => c.uf === uf) ?? null
 
   if (series.length === 0) {
     return (
       <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
-        Sem parlamentares federais de {nome} nos dados ainda.
+        Sem parlamentares de {nome} nos dados ainda.
       </p>
     )
   }
+
+  const popUf = getPopulacaoUf()?.populacao[uf] ?? null
+  const panorama = calcularPanorama(
+    todasSeries, getCustos(), getAssessores(), popUf,
+    getCadeirasCamaraUf()?.cadeiras ?? null, casas,
+    { uf, perCapitaRotulo: 'Por habitante / ano' },
+  )
 
   return (
     <div>
       <section className="mb-8 surgir">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-marca">Quanto custa um parlamentar · {uf}</p>
         <h1 className="font-display text-3xl font-semibold leading-[1.08] tracking-tight text-tinta sm:text-4xl">
-          Quanto custa um parlamentar federal de {nome}
+          Quanto custa um parlamentar de {nome}
         </h1>
         <p className="mt-3 text-sm text-tinta-suave">
-          Cota mensal da Câmara (CEAP) em {nome}: {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
+          Federais (Câmara e Senado) e estaduais (Assembleia) de {nome}. Cota mensal da Câmara federal (CEAP): {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
         </p>
+        {casaAssembleia && (
+          <p className="mt-3">
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                casaAssembleia.modelo === 'completo' ? 'bg-marca/10 text-marca' : 'border border-borda text-tinta-suave'
+              }`}
+            >
+              {casaAssembleia.modelo === 'completo'
+                ? `${casaAssembleia.sigla}: dados completos · gasto itemizado por deputado`
+                : `${casaAssembleia.sigla}: cobertura parcial · cadastro e subsídio`}
+            </span>
+          </p>
+        )}
+      </section>
+
+      <section className="mb-12">
+        <SecaoTitulo>Quanto custa · {nome}</SecaoTitulo>
+        <p className="mb-4 text-xs text-tinta-tenue">
+          Custo anual estimado da representação de {nome}: a bancada federal (Câmara e Senado) e a Assembleia estadual.
+          A cota é gasto real do ano; subsídio e gabinete são estimativas anualizadas.
+        </p>
+        <ComposicaoCusto panorama={panorama} />
       </section>
 
       <section className="mb-12">
         <SecaoTitulo>Ranking de gastos · {uf}</SecaoTitulo>
+        {casaAssembleia?.modelo === 'completo' && (
+          <p className="mb-3 text-xs leading-relaxed text-tinta-tenue">
+            <span className="mr-1.5 rounded-full bg-marca/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-marca">dados completos</span>
+            A {casaAssembleia.sigla} entra aqui com gasto <strong className="text-tinta-suave">itemizado por deputado</strong> (fornecedor, CPF/CNPJ e categoria da verba indenizatória), ao lado da bancada federal.{' '}
+            <Link href="/fontes" className="text-marca hover:underline">Como apuramos →</Link>
+          </p>
+        )}
         <RankingView series={series} />
       </section>
 
@@ -63,7 +106,9 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
         </section>
       )}
 
-      {casaAssembleia && casaAssembleia.deputados.length > 0 && (
+      {/* Casas LEVE (sem despesa itemizada) entram aqui como cadastro + subsídio; as completo já aparecem
+          no ranking acima, com gasto real, então não repetem a grade. */}
+      {casaAssembleia && casaAssembleia.modelo === 'leve' && casaAssembleia.deputados.length > 0 && (
         <section className="mb-12">
           <SecaoTitulo>Assembleia de {nome}</SecaoTitulo>
           <p className="mb-3 text-xs text-tinta-tenue">{casaAssembleia.nome} ({casaAssembleia.sigla}).</p>

@@ -1,0 +1,55 @@
+[
+  {
+    "id": "alego-90001648403-2023-01-1",
+    "politicoId": "alego-90001648403",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Fornecimento de alimentação parlamentar",
+    "fornecedor": {
+      "nome": "AROMAS GRILL",
+      "cnpjCpf": "19072331000165"
+    },
+    "valor": 3840
+  },
+  {
+    "id": "alego-90001648403-2023-01-2",
+    "politicoId": "alego-90001648403",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO SÃO PAULO",
+      "cnpjCpf": "02382578000185"
+    },
+    "valor": 9100,
+    "valorApresentado": 9200
+  },
+  {
+    "id": "alego-90001648403-2023-01-3",
+    "politicoId": "alego-90001648403",
+    "data": "2023-01-27",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "HS SOCIEDADE DE ADVOGADOS",
+      "cnpjCpf": "31584446000134"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alego-90001648403-2023-01-4",
+    "politicoId": "alego-90001648403",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "ARMAZEM DA PROPAGANDA E ASSESSORIA",
+      "cnpjCpf": "27490361000110"
+    },
+    "valor": 5000
+  }
+]

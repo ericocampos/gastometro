@@ -1,0 +1,80 @@
+[
+  {
+    "id": "alece-60001603543-2026-06-1",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2500
+  },
+  {
+    "id": "alece-60001603543-2026-06-2",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2500
+  },
+  {
+    "id": "alece-60001603543-2026-06-3",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 21.32
+  },
+  {
+    "id": "alece-60001603543-2026-06-4",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5711.4
+  },
+  {
+    "id": "alece-60001603543-2026-06-5",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Passagens e hospedagem",
+    "fornecedor": {
+      "nome": "LIA FERREIRA GOMES",
+      "cnpjCpf": "25904302304"
+    },
+    "valor": 185
+  },
+  {
+    "id": "alece-60001603543-2026-06-6",
+    "politicoId": "alece-60001603543",
+    "data": "2026-06-01",
+    "ano": 2026,
+    "mes": 6,
+    "categoria": "Passagens e hospedagem",
+    "fornecedor": {
+      "nome": "LIA FERREIRA GOMES",
+      "cnpjCpf": "25904302304"
+    },
+    "valor": 370
+  }
+]

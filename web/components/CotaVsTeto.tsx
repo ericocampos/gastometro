@@ -26,7 +26,7 @@ export function CotaVsTeto({
         <Card
           rotulo="Uso do teto"
           valor={pct == null ? '—' : `${pct.toFixed(0)}%`}
-          legenda={pct == null ? 'teto variável no Senado' : pct > 100 ? 'acima do teto mensal' : 'do teto mensal'}
+          legenda={pct == null ? (casa === 'senado' ? 'teto variável no Senado' : casa === 'assembleia' ? 'teto varia por estado' : 'sem teto de referência') : pct > 100 ? 'acima do teto mensal' : 'do teto mensal'}
           alerta={pct != null && pct > 100}
         />
       </div>

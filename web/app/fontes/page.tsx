@@ -42,6 +42,102 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Assembleia Legislativa de Minas Gerais (ALMG · modelo completo)',
+    intro: 'API de dados abertos da ALMG, com a verba indenizatória itemizada por deputado. O gabinete não é detalhado: a folha da ALMG é publicada só por matrícula, sem o nome do servidor (Deliberação da Mesa 2.555/2013), então não dá para vincular assessores e custo a cada deputado.',
+    fontes: [
+      { oque: 'Roster (em exercício)', onde: 'dadosabertos.almg.gov.br/ws/deputados/em_exercicio?formato=json', formato: 'JSON' },
+      { oque: 'Despesas (verba indenizatória)', onde: 'dadosabertos.almg.gov.br/ws/prestacao_contas/verbas_indenizatorias/deputados/{id}/{ano}/{mes}?formato=json', formato: 'JSON', obs: 'itemizada por mês; carregamos o mandato atual (2023+)' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a API da ALMG não traz foto; casamos por nome com o eleito de 2022' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha da ALMG sai só por matrícula, sem nome (Deliberação da Mesa 2.555/2013); não há como atribuir comissionados e custo a cada deputado' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de São Paulo (ALESP · modelo completo)',
+    intro: 'Três arquivos XML de dados abertos da ALESP (roster, despesas de gabinete itemizadas e lotação dos servidores). O gabinete entra com os nomes; o custo é estimado pela tabela oficial de vencimentos dos cargos (não a folha real por pessoa).',
+    fontes: [
+      { oque: 'Roster e partido', onde: 'al.sp.gov.br/repositorioDados/deputados/deputados.xml', formato: 'XML' },
+      { oque: 'Despesas (verba de gabinete)', onde: 'al.sp.gov.br/repositorioDados/deputados/despesas_gabinetes.xml', formato: 'XML', obs: 'itemizada com fornecedor e CNPJ/CPF; carregamos o mandato atual (2023+); arquivo grande (~169 MB), lido em streaming' },
+      { oque: 'Gabinete — quem', onde: 'al.sp.gov.br/repositorioDados/administracao/lotacoes.xml', formato: 'XML', obs: 'lotação atual por gabinete ("Gabinete do Deputado X")' },
+      { oque: 'Gabinete — custo estimado', onde: 'al.sp.gov.br/arquivos/.../Tabelas_Vencimentos_2025_03_01.pdf', formato: 'PDF oficial', obs: 'bruto da tabela de vencimentos por cargo (LC 1.431/2025), uma estimativa, não a folha real de cada pessoa' },
+      { oque: 'Foto', onde: 'TSE (eleição 2022)', formato: 'JPG', obs: 'a fonte da ALESP não traz foto; casamos por nome' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de Santa Catarina (ALESC · modelo completo)',
+    intro: 'CSV anual oficial da verba de gabinete, itemizada por deputado (a fonte não traz CNPJ do fornecedor). O gabinete entra com os nomes dos comissionados, mas SEM custo: o contracheque individual é bloqueado na fonte. As três fontes nomeiam o deputado de jeitos diferentes (verba usa nome curto ou apelido, a lista de servidores usa o nome parlamentar completo), então casamos cada nome a um candidato do TSE 2022.',
+    fontes: [
+      { oque: 'Despesas (verba)', onde: 'transparencia.alesc.sc.gov.br/gabinetes-parlamentares/csv/{ano}', formato: 'CSV (;, com BOM)', obs: 'itemizada por deputado (categoria, fornecedor, valor); o fornecedor vem só pelo nome, sem CNPJ; mandato atual (a partir de fev/2023)' },
+      { oque: 'Gabinete — comissionados', onde: 'transparencia.alesc.sc.gov.br/servidores', formato: 'HTML oficial', obs: 'nomes dos lotados em "GAB DEP {deputado}"; SEM custo: o contracheque individual responde 405. Mostramos quem e quantos, com nota de que o valor será atualizado quando a folha por servidor for acessível' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022, eleitos e suplentes)', formato: 'CSV + JPG', obs: 'resolve o nome curto/apelido da verba ao candidato (nome de urna, civil ou subconjunto único); recupera partido e foto inclusive de suplentes que assumiram a vaga' },
+    ],
+  },
+  {
+    casa: 'Câmara Legislativa do Distrito Federal (CLDF · modelo completo)',
+    intro: 'API de dados abertos (CKAN) da CLDF. A verba indenizatória é itemizada por deputado distrital, com fornecedor e CNPJ. O gabinete entra com os nomes dos comissionados, mas sem custo (os cargos são texto e a tabela de remuneração é por nível, sem correspondência na fonte). Cobertura desigual: 2023 está completo; 2024 e 2025 estão parciais no portal (bem menos lançamentos do que o esperado), e atualizamos conforme a fonte completar.',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'dados.cl.df.gov.br/api/3/action/datastore_search (dataset verbas-indenizatorias)', formato: 'JSON (CKAN)', obs: 'itemizada com NOME_PRESTADOR e CNPJ/CPF, nº do comprovante, data, valor e classificação; um recurso por ano (2023+), descobertos via package_show. 2024 e 2025 ainda parciais na fonte' },
+      { oque: 'Gabinete — comissionados', onde: 'dados.cl.df.gov.br (dataset relacao-nominal-de-deputados-e-servidores)', formato: 'JSON (CKAN)', obs: 'nomes dos lotados em "GABINETE DO DEPUTADO {nome}", do mês mais recente com datastore ativo; SEM custo (o cargo é texto, sem mapa para a tabela de remuneração por nível)' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022, deputado distrital)', formato: 'CSV + JPG', obs: 'resolve o nome da verba (civil) e o do gabinete (urna) ao candidato; recupera partido e foto, inclusive de suplentes' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de Pernambuco (ALEPE · modelo completo)',
+    intro: 'API de transparência da ALEPE (endpoints JSON). A verba indenizatória é itemizada por deputado, com fornecedor, CNPJ, data e valor de cada nota. A categoria aparece como "Rubrica N": a ALEPE numera as rubricas mas não publica hoje o nome de cada categoria (o endpoint de rubricas vem vazio), então mostramos a numeração da própria fonte; os itens, com CNPJ e valor, são integrais. O gabinete entra com os comissionados e o custo estimado pela tabela oficial de remuneração por cargo (snapshot atual).',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'alepe.pe.gov.br/servicos/transparencia/adm/ (verbaindenizatoria.php → verbaindenizatorianotas.php, por deputado e mês)', formato: 'JSON', obs: 'itemizada com fornecedor, CNPJ, data e valor por nota; mandato atual (2023+). A categoria sai como "Rubrica N" porque a fonte não publica hoje o nome de cada rubrica' },
+      { oque: 'Gabinete — comissionados', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/servidores', formato: 'JSON', obs: 'comissionados lotados em "GAB.DEP. {nome}"; quem e quantos, snapshot atual' },
+      { oque: 'Gabinete — custo estimado', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/remuneracao', formato: 'JSON', obs: 'bruto por cargo da tabela oficial de remuneração (Cargo Comissionado de Gabinete), uma estimativa, não a folha real de cada pessoa; cargo sem correspondência conta no headcount com valor zero' },
+      { oque: 'Partido', onde: 'dadosabertos.alepe.pe.gov.br/api/v1/parlamentares', formato: 'JSON', obs: 'partido atual do roster oficial da ALEPE, casado por nome' },
+      { oque: 'Foto', onde: 'TSE (eleição 2022)', formato: 'JPG', obs: 'a fonte da ALEPE não traz foto; casamos por nome com o eleito de 2022' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa da Bahia (ALBA · modelo completo)',
+    intro: 'Portal de transparência da ALBA (páginas HTML por deputado). A verba indenizatória é itemizada por deputado, com categoria nomeada, fornecedor, CPF/CNPJ, valor e o PDF da própria nota fiscal (a ALBA é a única casa que publica o documento da nota). O gabinete por deputado não existe na fonte: a folha de comissionados é por lotação administrativa (departamentos, coordenações), sem vínculo a cada deputado, igual à ALMG.',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'al.ba.gov.br/transparencia/verbas-idenizatorias?deputado={id}&ano={ano} → /{processo}/', formato: 'HTML oficial', obs: 'lista por deputado/ano (competência mês/ano, categoria, valor) e detalhe por processo (CPF/CNPJ, fornecedor, nº da nota, valor, glosa e o PDF da nota fiscal). 14 categorias nomeadas; mandato atual (2023+)' },
+      { oque: 'Documento da nota (PDF)', onde: 'al.ba.gov.br/fserver/...', formato: 'PDF oficial', obs: 'a imagem/PDF da nota fiscal de cada despesa, linkado no detalhamento ("nota")' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a fonte da ALBA não traz foto; casamos o nome ao candidato eleito de 2022 (urna/civil)' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha de comissionados da ALBA (portalrh.alba.ba.gov.br) é por lotação administrativa, sem atribuição a cada deputado; não há como montar o gabinete por deputado, igual à ALMG' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa do Ceará (ALECE · modelo completo)',
+    intro: 'Portal de transparência da ALECE. A Verba de Desempenho Parlamentar (VDP) é itemizada por deputado, com fornecedor (credor), CPF/CNPJ, empenho e valor. Para cada mês, a lista de deputados leva ao detalhe de cada um (a fonte também publica um CSV agregado, mas com o rótulo do deputado em texto livre e inconsistente, por isso usamos a lista, que traz o nome canônico). Não há coluna de categoria na fonte, então derivamos a categoria da descrição oficial do empenho (Telefonia, Alimentação, Consultoria e assessoria, Locação de veículo, Divulgação, etc.); o que não casa com clareza fica como "Outros". Benefícios coletivos (seguro de vida, plano de saúde) que a fonte não atribui a um deputado ficam de fora do gasto por deputado. O gabinete por deputado não existe na fonte (a folha não liga o comissionado a um deputado), igual à ALMG e à Bahia.',
+    fontes: [
+      { oque: 'Despesas (VDP)', onde: 'transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar (lista por ano/mês → detalhe por deputado)', formato: 'HTML oficial', obs: 'itemizada por deputado: empenho, descrição, CPF/CNPJ, credor e valor; mandato atual (2023+). Categoria derivada da descrição do empenho (texto oficial), com "Outros" para o que não casa' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'a fonte da ALECE não traz foto; casamos o nome (sem o prefixo "DEP " nem títulos como "Ap."/"Dr.") ao candidato eleito de 2022. Suplentes e ex-deputados que gastaram no período aparecem sem foto/partido' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a folha da ALECE traz remuneração por servidor, mas a área de atuação é a formação (Direito, Administração...), não a lotação por gabinete; não há como montar o gabinete por deputado, igual à ALMG e à Bahia' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa de Goiás (ALEGO · modelo completo)',
+    intro: 'Portal de transparência da ALEGO, que adotou o modelo de prestação de contas da Câmara dos Deputados. A verba indenizatória é itemizada por deputado, via API JSON oficial, com categoria nomeada (grupo da despesa), fornecedor, CPF/CNPJ, data e número da nota, e os valores apresentado e indenizado (reembolsado). Mostramos o valor indenizado como gasto, e o apresentado quando difere. O gabinete por deputado não existe na fonte (a folha não liga o comissionado a um deputado), igual à ALMG, à Bahia e ao Ceará.',
+    fontes: [
+      { oque: 'Despesas (verba indenizatória)', onde: 'transparencia.al.go.leg.br/api/transparencia/verbas_indenizatorias (períodos → deputados do mês → detalhe por deputado)', formato: 'API JSON oficial', obs: 'itemizada por deputado: grupo (categoria), fornecedor, CPF/CNPJ, data, número da nota e os valores apresentado/indenizado; mandato atual (2023+)' },
+      { oque: 'Partido e foto', onde: 'TSE (eleição 2022)', formato: 'CSV + JPG', obs: 'usamos a foto do TSE por consistência com as outras casas; o partido vem da própria ALEGO (atual). Suplentes e ex-deputados que gastaram no período aparecem sem foto' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'o endpoint de remunerações por gabinete da ALEGO não retorna vínculo do comissionado a cada deputado; não há como montar o gabinete por deputado, igual à ALMG, à Bahia e ao Ceará' },
+    ],
+  },
+  {
+    casa: 'Assembleia Legislativa do Amazonas (ALEAM · modelo completo)',
+    intro: 'Portal de transparência da ALEAM (consulta oficial de controle de cota parlamentar). A cota é itemizada por deputado, com categoria nomeada (descrição da verba), fornecedor com CPF/CNPJ e cadastro da Receita, número do documento, data de emissão e os valores bruto, glosa e líquido. Mostramos o valor líquido como gasto, e o bruto quando difere (glosa). O gabinete por deputado não existe na fonte (a folha não liga o comissionado a um deputado), igual à ALMG, à Bahia, ao Ceará e a Goiás.',
+    fontes: [
+      { oque: 'Despesas (cota parlamentar)', onde: 'aleam.gov.br/transparencia/controle-de-cota-parlamentar (consulta por deputado, ano e mês)', formato: 'HTML oficial', obs: 'itemizada por deputado: descrição da verba (categoria), fornecedor, CPF/CNPJ, documento, emissão e bruto/glosa/líquido; mandato atual (2023+)' },
+      { oque: 'Partido e foto', onde: 'aleam.gov.br/deputados (partido) · TSE eleição 2022 (foto)', formato: 'HTML + CSV/JPG', obs: 'o partido vem da própria ALEAM (atual); a foto, do TSE, por consistência com as outras casas' },
+      { oque: 'Gabinete — por deputado', onde: 'não disponível na fonte', formato: '—', obs: 'a consulta de vencimentos da ALEAM não traz lotação por gabinete; não há como montar o gabinete por deputado, igual à ALMG, à Bahia, ao Ceará e a Goiás' },
+    ],
+  },
+  {
+    casa: 'Demais Assembleias Legislativas (modelo leve)',
+    intro: 'Onde ainda não integramos a fonte de gasto do estado, mostramos o cadastro e o subsídio. O gasto itemizado (verba indenizatória e gabinete) entra conforme a fonte oficial de cada estado for integrada.',
+    fontes: [
+      { oque: 'Roster, partido e foto', onde: 'cdn.tse.jus.br/.../consulta_cand_2022.zip · .../fotos/foto_cand2022_{UF}_div.zip', formato: 'CSV + JPG (dados abertos)', obs: 'eleitos de deputado estadual/distrital na eleição de 2022 (o TSE é o roster primário). A foto é re-hospedada como thumbnail; quem não casa fica com as iniciais' },
+      { oque: 'Subsídio do deputado', onde: 'lei ou ato da mesa de cada casa', formato: 'valor oficial', obs: '25 das 27 casas têm valor oficial (a maioria fixou no teto de 75% do subsídio do deputado federal); Acre e Rondônia não têm fonte pública aberta e ficam como "subsídio não informado"' },
+      { oque: 'Verba indenizatória e gabinete', onde: 'ainda não integrado', formato: '—', obs: 'entra quando a fonte oficial do estado for integrada; até lá o custo estadual conta só o subsídio' },
+    ],
+  },
+  {
     casa: 'Câmara Municipal de João Pessoa (vereadores · modelo completo)',
     intro: 'Portal da Câmara (roster + VIAP) + API de dados abertos da folha (Elmar). Gasto por vereador.',
     fontes: [
@@ -90,8 +186,8 @@ export default function FontesPage() {
         Tudo aqui vem de bases <strong className="text-tinta">públicas e oficiais</strong> das próprias casas
         legislativas, pela porta da frente (APIs de dados abertos e arquivos de transparência). Não há dado privado
         nem raspagem de fonte fechada. No nível federal (Câmara e Senado) a cobertura é das 27 UFs; o nível estadual
-        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado por enquanto só
-        na Paraíba (ALPB). O nível municipal cobre hoje a Paraíba.
+        (Assembleias) também cobre as 27 UFs (cadastro e subsídio), com gasto itemizado por deputado em dez casas
+        (Paraíba, Minas Gerais, São Paulo, Santa Catarina, Distrito Federal, Pernambuco, Bahia, Ceará, Goiás e Amazonas) e cadastro + subsídio nas demais. O nível municipal cobre hoje a Paraíba.
       </p>
       <p className="mb-8 max-w-2xl text-xs text-tinta-tenue">
         Os valores de gabinete são o bruto pago no mês (sem auxílios/encargos, pagos à parte). Nenhuma fonte traz o

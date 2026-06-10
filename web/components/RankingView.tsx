@@ -26,6 +26,7 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
   const [partido, setPartido] = useState('todos')
   const [busca, setBusca] = useState('')
   const [pagina, setPagina] = useState(0)
+  const [mostrarZeros, setMostrarZeros] = useState(false)
 
   const periodo = useMemo(() => parsePeriodoValor(periodoVal), [periodoVal])
   const anos = useMemo(() => anosDisponiveis(series), [series])
@@ -60,34 +61,29 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
     [rankingPeriodo, casa, partido, mandato],
   )
 
-  // contagem considera só quem efetivamente gastou (exclui suplentes/zerados em qualquer visão)
+  // quem efetivamente gastou no período (o denominador "gastaram"); exclui zerados em qualquer visão
   const conjunto = useMemo(
     () => porCasaPartido.filter((l) => l.total > 0),
     [porCasaPartido],
-  )
-  const contagem = useMemo(
-    () => ({
-      total: conjunto.length,
-      camara: conjunto.filter((l) => l.casa === 'camara').length,
-      senado: conjunto.filter((l) => l.casa === 'senado').length,
-      assembleia: conjunto.filter((l) => l.casa === 'assembleia').length,
-    }),
-    [conjunto],
   )
 
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase()
     const base = q === '' ? porCasaPartido : porCasaPartido.filter((l) => l.nome.toLowerCase().includes(q))
-    return periodo.tipo === 'tudo' ? base : base.filter((l) => l.total > 0)
-  }, [porCasaPartido, busca, periodo])
+    return mostrarZeros ? base : base.filter((l) => l.total > 0)
+  }, [porCasaPartido, busca, mostrarZeros])
 
   // volta pra primeira página quando o conjunto muda
-  useEffect(() => { setPagina(0) }, [periodoVal, casa, mandato, partido, busca])
+  useEffect(() => { setPagina(0) }, [periodoVal, casa, mandato, partido, busca, mostrarZeros])
 
   const totalPaginas = Math.max(1, Math.ceil(filtrados.length / POR_PAGINA))
   const paginaAtual = Math.min(pagina, totalPaginas - 1)
   const inicio = paginaAtual * POR_PAGINA
   const visiveis = filtrados.slice(inicio, inicio + POR_PAGINA)
+
+  const exerceram = porCasaPartido.length
+  const gastaram = conjunto.length
+  const zerosOcultos = exerceram - gastaram
 
   return (
     <div>
@@ -145,16 +141,47 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
       </div>
 
       {/* contagem reativa — logo abaixo dos filtros, reforçando que reflete o filtro aplicado */}
-      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <CardContagem rotulo="Parlamentares" valor={contagem.total} cor="var(--marca)" />
-        <CardContagem rotulo="Câmara · federal" valor={contagem.camara} cor="#2563eb" />
-        <CardContagem rotulo="Senado" valor={contagem.senado} cor="#c87f1a" />
-        <CardContagem rotulo="Assembleia · estadual" valor={contagem.assembleia} cor="#7c3aed" />
+      <div className="mb-3 grid grid-cols-3 gap-3">
+        <CardContagem rotulo="Exerceram no mandato" valor={exerceram} cor="var(--marca)" />
+        <CardContagem rotulo="Gastaram no período" valor={gastaram} cor="#2563eb" />
+        <CardContagem rotulo="Não gastaram (R$ 0)" valor={zerosOcultos} cor="#7c3aed" />
       </div>
+      <label className="mb-2 inline-flex cursor-pointer select-none items-center gap-2.5 text-sm text-tinta-suave transition-colors hover:text-tinta">
+        <span className="relative inline-flex h-5 w-9 shrink-0 items-center">
+          <input
+            type="checkbox"
+            role="switch"
+            checked={mostrarZeros}
+            onChange={(e) => setMostrarZeros(e.target.checked)}
+            className="peer sr-only"
+          />
+          <span
+            aria-hidden
+            className="absolute inset-0 rounded-full border border-borda bg-superficie-2 transition-colors peer-checked:border-marca peer-checked:bg-marca peer-focus-visible:ring-2 peer-focus-visible:ring-marca/40"
+          />
+          <span
+            aria-hidden
+            className="absolute left-0.5 h-4 w-4 rounded-full bg-tinta-tenue shadow-sm transition-transform duration-200 ease-out peer-checked:translate-x-4 peer-checked:bg-white"
+          />
+        </span>
+        <span>
+          Incluir quem não gastou
+          {zerosOcultos > 0 && (
+            <span className="ml-1 rounded-full bg-superficie-2 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-tinta-suave">
+              {zerosOcultos}
+            </span>
+          )}
+        </span>
+      </label>
+      {mostrarZeros && periodo.tipo === 'ano' && (
+        <p className="mb-4 text-xs text-tinta-tenue">
+          R$ 0 num ano isolado pode incluir quem assumiu ou saiu no meio do período: o exercício é apurado por mandato, não por mês.
+        </p>
+      )}
 
       {filtrados.length === 0 ? (
         <p className="rounded-lg border border-borda bg-superficie p-6 text-center text-sm text-tinta-suave">
-          Nenhum parlamentar com gasto neste período/filtro.
+          {mostrarZeros ? 'Nenhum parlamentar neste filtro.' : 'Nenhum parlamentar com gasto neste período/filtro. Marque "incluir quem não gastou" para ver quem exerceu sem gastar.'}
         </p>
       ) : (
         <>

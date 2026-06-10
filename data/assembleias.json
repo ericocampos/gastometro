@@ -495,994 +495,1078 @@
       "sigla": "ALEAM",
       "nome": "Assembleia Legislativa do Amazonas",
       "slug": "am",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 24,
       "nDeputados": 24,
       "pisoCusto": 834591.36,
       "deputados": [
         {
-          "id": "ae-am-40001609183",
+          "id": "aleam-40001609183",
           "nome": "ABDALA FRAXE",
           "partido": "AVANTE",
           "fotoUrl": "/fotos/deputados/40001609183.webp"
         },
         {
-          "id": "ae-am-40001609193",
-          "nome": "DANIEL ALMEIDA",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609193.webp"
-        },
-        {
-          "id": "ae-am-40001600310",
-          "nome": "ROZENHA",
-          "partido": "PMB",
-          "fotoUrl": "/fotos/deputados/40001600310.webp"
-        },
-        {
-          "id": "ae-am-40001650506",
-          "nome": "WILKER BARRETO",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/40001650506.webp"
-        },
-        {
-          "id": "ae-am-40001633341",
-          "nome": "DELEGADO PERICLES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633341.webp"
-        },
-        {
-          "id": "ae-am-40001633325",
-          "nome": "CABO MACIEL",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633325.webp"
-        },
-        {
-          "id": "ae-am-40001609324",
-          "nome": "JOÃO LUIZ",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/40001609324.webp"
-        },
-        {
-          "id": "ae-am-40001618475",
-          "nome": "DR GEORGE LINS",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618475.webp"
-        },
-        {
-          "id": "ae-am-40001609186",
-          "nome": "MAYRA DIAS",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609186.webp"
-        },
-        {
-          "id": "ae-am-40001618468",
-          "nome": "THIAGO ABRAHIM",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618468.webp"
-        },
-        {
-          "id": "ae-am-40001618459",
-          "nome": "JOANA DARC",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618459.webp"
-        },
-        {
-          "id": "ae-am-40001633257",
-          "nome": "CARLINHOS BESSA ",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/40001633257.webp"
-        },
-        {
-          "id": "ae-am-40001609189",
-          "nome": "WANDERLEY MONTEIRO",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/40001609189.webp"
-        },
-        {
-          "id": "ae-am-40001609310",
-          "nome": "DRA MAYARA",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/40001609310.webp"
-        },
-        {
-          "id": "ae-am-40001618455",
-          "nome": "MÁRIO CÉSAR FILHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/40001618455.webp"
-        },
-        {
-          "id": "ae-am-40001633265",
-          "nome": "PROFESSOR SINÉSIO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/40001633265.webp"
-        },
-        {
-          "id": "ae-am-40001618664",
-          "nome": "DR GOMES",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618664.webp"
-        },
-        {
-          "id": "ae-am-40001618658",
-          "nome": "ALESSANDRA CAMPELO",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618658.webp"
-        },
-        {
-          "id": "ae-am-40001633336",
-          "nome": "DEBORA MENEZES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/40001633336.webp"
-        },
-        {
-          "id": "ae-am-40001620692",
-          "nome": "FELIPE SOUZA",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/40001620692.webp"
-        },
-        {
-          "id": "ae-am-40001618661",
-          "nome": "COMANDANTE DAN",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/40001618661.webp"
-        },
-        {
-          "id": "ae-am-40001612909",
-          "nome": "CRISTIANO DANGELO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/40001612909.webp"
-        },
-        {
-          "id": "ae-am-40001618467",
+          "id": "aleam-40001618467",
           "nome": "ADJUTO AFONSO",
           "partido": "UNIÃO",
           "fotoUrl": "/fotos/deputados/40001618467.webp"
         },
         {
-          "id": "ae-am-40001618472",
+          "id": "aleam-40001618658",
+          "nome": "ALESSANDRA CAMPELO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001618658.webp"
+        },
+        {
+          "id": "aleam-40001633325",
+          "nome": "CABO MACIEL",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633325.webp"
+        },
+        {
+          "id": "aleam-40001633257",
+          "nome": "CARLINHOS BESSA ",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001633257.webp"
+        },
+        {
+          "id": "aleam-40001618661",
+          "nome": "COMANDANTE DAN",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001618661.webp"
+        },
+        {
+          "id": "aleam-40001612909",
+          "nome": "CRISTIANO DANGELO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/40001612909.webp"
+        },
+        {
+          "id": "aleam-40001609193",
+          "nome": "DANIEL ALMEIDA",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/40001609193.webp"
+        },
+        {
+          "id": "aleam-40001633341",
+          "nome": "DELEGADO PERICLES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633341.webp"
+        },
+        {
+          "id": "aleam-40001618475",
+          "nome": "DR GEORGE LINS",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618475.webp"
+        },
+        {
+          "id": "aleam-40001618664",
+          "nome": "DR GOMES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618664.webp"
+        },
+        {
+          "id": "aleam-40001609310",
+          "nome": "DRA MAYARA",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001609310.webp"
+        },
+        {
+          "id": "aleam-40001633336",
+          "nome": "DEBORA MENEZES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/40001633336.webp"
+        },
+        {
+          "id": "aleam-40001620692",
+          "nome": "FELIPE SOUZA",
+          "partido": "PODEMOS",
+          "fotoUrl": "/fotos/deputados/40001620692.webp"
+        },
+        {
+          "id": "aleam-40001618459",
+          "nome": "JOANA DARC",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618459.webp"
+        },
+        {
+          "id": "aleam-40001609324",
+          "nome": "JOÃO LUIZ",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/40001609324.webp"
+        },
+        {
+          "id": "aleam-40001609186",
+          "nome": "MAYRA DIAS",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001609186.webp"
+        },
+        {
+          "id": "aleam-40001618455",
+          "nome": "MÁRIO CÉSAR FILHO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001618455.webp"
+        },
+        {
+          "id": "aleam-40001618472",
           "nome": "ROBERTO CIDADE",
           "partido": "UNIÃO",
           "fotoUrl": "/fotos/deputados/40001618472.webp"
+        },
+        {
+          "id": "aleam-40001600310",
+          "nome": "ROZENHA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001600310.webp"
+        },
+        {
+          "id": "aleam-40001633265",
+          "nome": "PROFESSOR SINÉSIO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/40001633265.webp"
+        },
+        {
+          "id": "aleam-40001618468",
+          "nome": "THIAGO ABRAHIM",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/40001618468.webp"
+        },
+        {
+          "id": "aleam-40001609189",
+          "nome": "WANDERLEY MONTEIRO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/40001609189.webp"
+        },
+        {
+          "id": "aleam-40001650506",
+          "nome": "WILKER BARRETO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/40001650506.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 45917872.95999999
     },
     {
       "uf": "BA",
       "sigla": "ALBA",
       "nome": "Assembleia Legislativa da Bahia",
       "slug": "ba",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 63,
-      "nDeputados": 63,
+      "nDeputados": 71,
       "pisoCusto": 2190802.32,
       "deputados": [
         {
-          "id": "ae-ba-50001607297",
-          "nome": "RICARDO RODRIGUES",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607297.webp"
-        },
-        {
-          "id": "ae-ba-50001607301",
-          "nome": "CLAUDIA OLIVEIRA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607301.webp"
-        },
-        {
-          "id": "ae-ba-50001609456",
-          "nome": "LEANDRO DE JESUS",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/50001609456.webp"
-        },
-        {
-          "id": "ae-ba-50001605968",
-          "nome": "ANGELO ALMEIDA",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/50001605968.webp"
-        },
-        {
-          "id": "ae-ba-50001619298",
-          "nome": "JURAILTON SANTOS",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/50001619298.webp"
-        },
-        {
-          "id": "ae-ba-50001648293",
-          "nome": "MARCINHO OLIVEIRA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648293.webp"
-        },
-        {
-          "id": "ae-ba-50001648281",
-          "nome": "ALAN SANCHES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648281.webp"
-        },
-        {
-          "id": "ae-ba-50001647074",
-          "nome": "FELIPE DUARTE",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647074.webp"
-        },
-        {
-          "id": "ae-ba-50001647048",
-          "nome": "NILTINHO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647048.webp"
-        },
-        {
-          "id": "ae-ba-50001606428",
-          "nome": "OSNI",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606428.webp"
-        },
-        {
-          "id": "ae-ba-50001606396",
-          "nome": "MARIA DEL CARMEN",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606396.webp"
-        },
-        {
-          "id": "ae-ba-50001606389",
-          "nome": "LUDMILLA FISCINA",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/50001606389.webp"
-        },
-        {
-          "id": "ae-ba-50001607292",
+          "id": "alba-50001607292",
           "nome": "ADOLFO MENEZES",
           "partido": "PSD",
           "fotoUrl": "/fotos/deputados/50001607292.webp"
         },
         {
-          "id": "ae-ba-50001620017",
-          "nome": "PANCADINHA",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/50001620017.webp"
-        },
-        {
-          "id": "ae-ba-50001619261",
-          "nome": "SAMUEL JUNIOR",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/50001619261.webp"
-        },
-        {
-          "id": "ae-ba-50001648299",
-          "nome": "KATIA OLIVEIRA",
+          "id": "alba-50001648281",
+          "nome": "ALAN SANCHES",
           "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648299.webp"
+          "fotoUrl": "/fotos/deputados/50001648281.webp"
         },
         {
-          "id": "ae-ba-50001648297",
-          "nome": "SANDRO RÉGIS",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648297.webp"
-        },
-        {
-          "id": "ae-ba-50001647023",
-          "nome": "NELSON LEAL",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647023.webp"
-        },
-        {
-          "id": "ae-ba-50001606433",
-          "nome": "OLIVIA SANTANA",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/50001606433.webp"
-        },
-        {
-          "id": "ae-ba-50001609451",
-          "nome": "DR. DIEGO CASTRO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/50001609451.webp"
-        },
-        {
-          "id": "ae-ba-50001607295",
-          "nome": "EURES RIBEIRO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607295.webp"
-        },
-        {
-          "id": "ae-ba-50001607294",
-          "nome": "ANGELO CORONEL FILHO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607294.webp"
-        },
-        {
-          "id": "ae-ba-50001607296",
-          "nome": "EDUARDO ALENCAR",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607296.webp"
-        },
-        {
-          "id": "ae-ba-50001648336",
-          "nome": "ROBINHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648336.webp"
-        },
-        {
-          "id": "ae-ba-50001606436",
-          "nome": "MARQUINHO VIANA",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/50001606436.webp"
-        },
-        {
-          "id": "ae-ba-50001606413",
-          "nome": "BOBÔ",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/50001606413.webp"
-        },
-        {
-          "id": "ae-ba-50001609434",
-          "nome": "RAIMUNDINHO DA JR",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/50001609434.webp"
-        },
-        {
-          "id": "ae-ba-50001605984",
-          "nome": "SOANE GALVÃO",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/50001605984.webp"
-        },
-        {
-          "id": "ae-ba-50001620926",
-          "nome": "EMERSON PENALVA",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/50001620926.webp"
-        },
-        {
-          "id": "ae-ba-50001600622",
-          "nome": "HILTON COELHO",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/50001600622.webp"
-        },
-        {
-          "id": "ae-ba-50001620001",
-          "nome": "LUCIANO ARAUJO",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/50001620001.webp"
-        },
-        {
-          "id": "ae-ba-50001619281",
-          "nome": "JOSE DE ARIMATEIA",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/50001619281.webp"
-        },
-        {
-          "id": "ae-ba-50001648309",
-          "nome": "MARCELINHO VEIGA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648309.webp"
-        },
-        {
-          "id": "ae-ba-50001647027",
-          "nome": "ANTÔNIO HENRIQUE JR.",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647027.webp"
-        },
-        {
-          "id": "ae-ba-50001606403",
-          "nome": "PAULO RANGEL",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606403.webp"
-        },
-        {
-          "id": "ae-ba-50001606417",
-          "nome": "ROBINSON",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606417.webp"
-        },
-        {
-          "id": "ae-ba-50001606408",
-          "nome": "FABRÍCIO",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/50001606408.webp"
-        },
-        {
-          "id": "ae-ba-50001607306",
+          "id": "alba-50001607306",
           "nome": "ALEX DA PIATÃ",
           "partido": "PSD",
           "fotoUrl": "/fotos/deputados/50001607306.webp"
         },
         {
-          "id": "ae-ba-50001609449",
-          "nome": "VITOR AZEVEDO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/50001609449.webp"
+          "id": "alba-50001605968",
+          "nome": "ANGELO ALMEIDA",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/50001605968.webp"
         },
         {
-          "id": "ae-ba-50001614699",
-          "nome": "ROGÉRIO ANDRADE",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/50001614699.webp"
+          "id": "alba-50001607294",
+          "nome": "ANGELO CORONEL FILHO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607294.webp"
         },
         {
-          "id": "ae-ba-50001613913",
-          "nome": "PABLO ROBERTO ",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/50001613913.webp"
-        },
-        {
-          "id": "ae-ba-50001647028",
-          "nome": "EDUARDO SALLES",
+          "id": "alba-50001647027",
+          "nome": "ANTÔNIO HENRIQUE JR.",
           "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647028.webp"
+          "fotoUrl": "/fotos/deputados/50001647027.webp"
         },
         {
-          "id": "ae-ba-50001606416",
-          "nome": "JUNIOR MUNIZ",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606416.webp"
-        },
-        {
-          "id": "ae-ba-50001606406",
-          "nome": "VITOR BONFIM",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/50001606406.webp"
-        },
-        {
-          "id": "ae-ba-50001610379",
+          "id": "alba-50001610379",
           "nome": "BINHO GALINHA",
           "partido": "PATRIOTA",
           "fotoUrl": "/fotos/deputados/50001610379.webp"
         },
         {
-          "id": "ae-ba-50001648303",
-          "nome": "MANUEL ROCHA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648303.webp"
+          "id": "alba-50001606413",
+          "nome": "BOBÔ",
+          "partido": "PC do B",
+          "fotoUrl": "/fotos/deputados/50001606413.webp"
         },
         {
-          "id": "ae-ba-50001648327",
-          "nome": "PEDRO TAVARES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648327.webp"
-        },
-        {
-          "id": "ae-ba-50001604617",
-          "nome": "LAERTE DO VANDO",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/50001604617.webp"
-        },
-        {
-          "id": "ae-ba-50001607305",
+          "id": "alba-50001607305",
           "nome": "CAFU BARRETO",
           "partido": "PSD",
           "fotoUrl": "/fotos/deputados/50001607305.webp"
         },
         {
-          "id": "ae-ba-50001607307",
-          "nome": "IVANA BASTOS",
+          "id": "alba-50001607301",
+          "nome": "CLAUDIA OLIVEIRA",
           "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/50001607307.webp"
+          "fotoUrl": "/fotos/deputados/50001607301.webp"
         },
         {
-          "id": "ae-ba-50001648313",
-          "nome": "LUCIANO SIMÕES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648313.webp"
+          "id": "alba-50001609451",
+          "nome": "DR. DIEGO CASTRO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/50001609451.webp"
         },
         {
-          "id": "ae-ba-50001648300",
-          "nome": "JUNIOR NASCIMENTO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/50001648300.webp"
+          "id": "alba-50001607296",
+          "nome": "EDUARDO ALENCAR",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607296.webp"
         },
         {
-          "id": "ae-ba-50001647026",
-          "nome": "HASSAN DE ZÉ COCÁ",
+          "id": "alba-50001647028",
+          "nome": "EDUARDO SALLES",
           "partido": "PP",
-          "fotoUrl": "/fotos/deputados/50001647026.webp"
+          "fotoUrl": "/fotos/deputados/50001647028.webp"
         },
         {
-          "id": "ae-ba-50001606402",
-          "nome": "ROSEMBERG",
+          "id": "alba-50001606438",
+          "nome": "EUCLIDES FERNANDES",
           "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606402.webp"
+          "fotoUrl": "/fotos/deputados/50001606438.webp"
         },
         {
-          "id": "ae-ba-50001606437",
+          "id": "alba-50001607295",
+          "nome": "EURES RIBEIRO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607295.webp"
+        },
+        {
+          "id": "alba-50001605970",
+          "nome": "DRA FABIOLA MANSUR",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/50001605970.webp"
+        },
+        {
+          "id": "alba-50001606408",
+          "nome": "FABRÍCIO",
+          "partido": "PC do B",
+          "fotoUrl": "/fotos/deputados/50001606408.webp"
+        },
+        {
+          "id": "alba-50001606437",
           "nome": "FATIMA NUNES",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/50001606437.webp"
         },
         {
-          "id": "ae-ba-50001606439",
-          "nome": "ZÉ RAIMUNDO FONTES",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606439.webp"
+          "id": "alba-50001647074",
+          "nome": "FELIPE DUARTE",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/50001647074.webp"
         },
         {
-          "id": "ae-ba-50001603011",
-          "nome": "PATRICK LOPES",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/50001603011.webp"
+          "id": "alba-50001647026",
+          "nome": "HASSAN DE ZÉ COCÁ",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/50001647026.webp"
         },
         {
-          "id": "ae-ba-50001614689",
-          "nome": "MATHEUS DE GERALDO JÚNIOR",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/50001614689.webp"
+          "id": "alba-50001600622",
+          "nome": "HILTON COELHO",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/50001600622.webp"
         },
         {
-          "id": "ae-ba-50001613902",
-          "nome": "TIAGO CORREIA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/50001613902.webp"
+          "id": "alba-50001607307",
+          "nome": "IVANA BASTOS",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607307.webp"
         },
         {
-          "id": "ae-ba-50001613908",
+          "id": "alba-50001613908",
           "nome": "JORDAVIO RAMOS",
           "partido": "PSDB",
           "fotoUrl": "/fotos/deputados/50001613908.webp"
         },
         {
-          "id": "ae-ba-50001606432",
-          "nome": "ZÓ",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/50001606432.webp"
+          "id": "alba-50001619281",
+          "nome": "JOSE DE ARIMATEIA",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/50001619281.webp"
         },
         {
-          "id": "ae-ba-50001606388",
+          "id": "alba-50001606416",
+          "nome": "JUNIOR MUNIZ",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606416.webp"
+        },
+        {
+          "id": "alba-50001648300",
+          "nome": "JUNIOR NASCIMENTO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648300.webp"
+        },
+        {
+          "id": "alba-50001619298",
+          "nome": "JURAILTON SANTOS",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/50001619298.webp"
+        },
+        {
+          "id": "alba-50001607303",
+          "nome": "JUSMARI OLIVEIRA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607303.webp"
+        },
+        {
+          "id": "alba-50001648299",
+          "nome": "KATIA OLIVEIRA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648299.webp"
+        },
+        {
+          "id": "alba-50001604617",
+          "nome": "LAERTE DO VANDO",
+          "partido": "PSC",
+          "fotoUrl": "/fotos/deputados/50001604617.webp"
+        },
+        {
+          "id": "alba-50001609456",
+          "nome": "LEANDRO DE JESUS",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/50001609456.webp"
+        },
+        {
+          "id": "alba-50001620001",
+          "nome": "LUCIANO ARAUJO",
+          "partido": "SOLIDARIEDADE",
+          "fotoUrl": "/fotos/deputados/50001620001.webp"
+        },
+        {
+          "id": "alba-50001648313",
+          "nome": "LUCIANO SIMÕES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648313.webp"
+        },
+        {
+          "id": "alba-50001606399",
+          "nome": "LUCINHA DO MST",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606399.webp"
+        },
+        {
+          "id": "alba-50001606389",
+          "nome": "LUDMILLA FISCINA",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/50001606389.webp"
+        },
+        {
+          "id": "alba-50001648303",
+          "nome": "MANUEL ROCHA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648303.webp"
+        },
+        {
+          "id": "alba-50001648309",
+          "nome": "MARCELINHO VEIGA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648309.webp"
+        },
+        {
+          "id": "alba-50001606398",
+          "nome": "MARCELINO GALO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606398.webp"
+        },
+        {
+          "id": "alba-50001648293",
+          "nome": "MARCINHO OLIVEIRA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648293.webp"
+        },
+        {
+          "id": "alba-50001607304",
+          "nome": "MARCONE AMARAL",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607304.webp"
+        },
+        {
+          "id": "alba-50001606396",
+          "nome": "MARIA DEL CARMEN",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606396.webp"
+        },
+        {
+          "id": "alba-50001606436",
+          "nome": "MARQUINHO VIANA",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/50001606436.webp"
+        },
+        {
+          "id": "alba-50001614689",
+          "nome": "MATHEUS DE GERALDO JÚNIOR",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/50001614689.webp"
+        },
+        {
+          "id": "alba-50001647023",
+          "nome": "NELSON LEAL",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/50001647023.webp"
+        },
+        {
+          "id": "alba-50001606395",
+          "nome": "NEUSA CADORE",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606395.webp"
+        },
+        {
+          "id": "alba-50001647048",
+          "nome": "NILTINHO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/50001647048.webp"
+        },
+        {
+          "id": "alba-50001606433",
+          "nome": "OLIVIA SANTANA",
+          "partido": "PC do B",
+          "fotoUrl": "/fotos/deputados/50001606433.webp"
+        },
+        {
+          "id": "alba-50001606428",
+          "nome": "OSNI",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606428.webp"
+        },
+        {
+          "id": "alba-50001613913",
+          "nome": "PABLO ROBERTO ",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/50001613913.webp"
+        },
+        {
+          "id": "alba-50001620017",
+          "nome": "PANCADINHA",
+          "partido": "SOLIDARIEDADE",
+          "fotoUrl": "/fotos/deputados/50001620017.webp"
+        },
+        {
+          "id": "alba-50001603011",
+          "nome": "PATRICK LOPES",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/50001603011.webp"
+        },
+        {
+          "id": "alba-50001613898",
+          "nome": "PAULO CÂMARA",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/50001613898.webp"
+        },
+        {
+          "id": "alba-50001606403",
+          "nome": "PAULO RANGEL",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606403.webp"
+        },
+        {
+          "id": "alba-50001648327",
+          "nome": "PEDRO TAVARES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648327.webp"
+        },
+        {
+          "id": "alba-penalva",
+          "nome": "Penalva",
+          "partido": ""
+        },
+        {
+          "id": "alba-50001606421",
+          "nome": "RADIOVALDO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606421.webp"
+        },
+        {
+          "id": "alba-50001609434",
+          "nome": "RAIMUNDINHO DA JR",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/50001609434.webp"
+        },
+        {
+          "id": "alba-50001607297",
+          "nome": "RICARDO RODRIGUES",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/50001607297.webp"
+        },
+        {
+          "id": "alba-50001606388",
           "nome": "ROBERTO CARLOS",
           "partido": "PV",
           "fotoUrl": "/fotos/deputados/50001606388.webp"
         },
         {
-          "id": "ae-ba-50001606438",
-          "nome": "EUCLIDES FERNANDES",
+          "id": "alba-50001648336",
+          "nome": "ROBINHO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648336.webp"
+        },
+        {
+          "id": "alba-50001606417",
+          "nome": "ROBINSON",
           "partido": "PT",
-          "fotoUrl": "/fotos/deputados/50001606438.webp"
+          "fotoUrl": "/fotos/deputados/50001606417.webp"
+        },
+        {
+          "id": "alba-50001614699",
+          "nome": "ROGÉRIO ANDRADE",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/50001614699.webp"
+        },
+        {
+          "id": "alba-50001606402",
+          "nome": "ROSEMBERG",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606402.webp"
+        },
+        {
+          "id": "alba-50001619261",
+          "nome": "SAMUEL JUNIOR",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/50001619261.webp"
+        },
+        {
+          "id": "alba-50001648297",
+          "nome": "SANDRO RÉGIS",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/50001648297.webp"
+        },
+        {
+          "id": "alba-50001605984",
+          "nome": "SOANE GALVÃO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/50001605984.webp"
+        },
+        {
+          "id": "alba-50001613902",
+          "nome": "TIAGO CORREIA",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/50001613902.webp"
+        },
+        {
+          "id": "alba-50001609449",
+          "nome": "VITOR AZEVEDO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/50001609449.webp"
+        },
+        {
+          "id": "alba-50001606406",
+          "nome": "VITOR BONFIM",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/50001606406.webp"
+        },
+        {
+          "id": "alba-50001606439",
+          "nome": "ZÉ RAIMUNDO FONTES",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/50001606439.webp"
+        },
+        {
+          "id": "alba-50001606432",
+          "nome": "ZÓ",
+          "partido": "PC do B",
+          "fotoUrl": "/fotos/deputados/50001606432.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 48069130.69
     },
     {
       "uf": "CE",
       "sigla": "ALECE",
       "nome": "Assembleia Legislativa do Ceará",
       "slug": "ce",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34776.64,
       "assentos": 46,
-      "nDeputados": 46,
+      "nDeputados": 60,
       "pisoCusto": 1599725.44,
       "deputados": [
         {
-          "id": "ae-ce-60001646075",
-          "nome": "LUCINILDO FROTA",
-          "partido": "PMN",
-          "fotoUrl": "/fotos/deputados/60001646075.webp"
-        },
-        {
-          "id": "ae-ce-60001633671",
-          "nome": "DE ASSIS DINIZ",
+          "id": "alece-60001633668",
+          "nome": "ACRISIO SENA",
           "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633671.webp"
+          "fotoUrl": "/fotos/deputados/60001633668.webp"
         },
         {
-          "id": "ae-ce-60001603522",
-          "nome": "JEOVÁ MOTA",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603522.webp"
+          "id": "alece-aderlania-noronha",
+          "nome": "ADERLANIA NORONHA",
+          "partido": ""
         },
         {
-          "id": "ae-ce-60001608929",
-          "nome": "DR. OSCAR RODRIGUES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/60001608929.webp"
-        },
-        {
-          "id": "ae-ce-60001633653",
-          "nome": "JÔ FARIAS",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633653.webp"
-        },
-        {
-          "id": "ae-ce-60001603545",
-          "nome": "MARCOS SOBREIRA",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603545.webp"
-        },
-        {
-          "id": "ae-ce-60001633816",
-          "nome": "MARTA GONÇALVES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/60001633816.webp"
-        },
-        {
-          "id": "ae-ce-60001619175",
-          "nome": "LEONARDO PINHEIRO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/60001619175.webp"
-        },
-        {
-          "id": "ae-ce-60001723725",
-          "nome": "LUANA RIBEIRO",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/60001723725.webp"
-        },
-        {
-          "id": "ae-ce-60001608940",
-          "nome": "FIRMO CAMURÇA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/60001608940.webp"
-        },
-        {
-          "id": "ae-ce-60001633648",
-          "nome": "MISSIAS DO MST",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633648.webp"
-        },
-        {
-          "id": "ae-ce-60001603536",
-          "nome": "QUEIROZ FILHO",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603536.webp"
-        },
-        {
-          "id": "ae-ce-60001633828",
-          "nome": "DRA SILVANA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/60001633828.webp"
-        },
-        {
-          "id": "ae-ce-60001608946",
-          "nome": "FELIPE MOTA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/60001608946.webp"
-        },
-        {
-          "id": "ae-ce-60001603516",
-          "nome": "SERGIO AGUIAR",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603516.webp"
-        },
-        {
-          "id": "ae-ce-60001603528",
-          "nome": "ROMEU ALDIGUERI",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603528.webp"
-        },
-        {
-          "id": "ae-ce-60001603520",
-          "nome": "OSMAR BAQUIT",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603520.webp"
-        },
-        {
-          "id": "ae-ce-60001633791",
-          "nome": "CARMELO NETO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/60001633791.webp"
-        },
-        {
-          "id": "ae-ce-60001633829",
-          "nome": "PR.ALCIDES FERNANDES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/60001633829.webp"
-        },
-        {
-          "id": "ae-ce-60001613523",
-          "nome": "DEP FERNANDO HUGO - DR HUGO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/60001613523.webp"
-        },
-        {
-          "id": "ae-ce-60001619178",
-          "nome": "JOÃO JAIME",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/60001619178.webp"
-        },
-        {
-          "id": "ae-ce-60001635805",
-          "nome": "DANNIEL OLIVEIRA",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/60001635805.webp"
-        },
-        {
-          "id": "ae-ce-60001613104",
-          "nome": "RENATO ROSENO",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/60001613104.webp"
-        },
-        {
-          "id": "ae-ce-60001603525",
-          "nome": "GUILHERME LANDIM",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603525.webp"
-        },
-        {
-          "id": "ae-ce-60001619179",
-          "nome": "ZEZINHO ALBUQUERQUE",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/60001619179.webp"
-        },
-        {
-          "id": "ae-ce-60001635812",
-          "nome": "DAVI DE RAIMUNDÃO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/60001635812.webp"
-        },
-        {
-          "id": "ae-ce-60001635809",
+          "id": "alece-60001635809",
           "nome": "AGENOR NETO",
           "partido": "MDB",
           "fotoUrl": "/fotos/deputados/60001635809.webp"
         },
         {
-          "id": "ae-ce-60001608816",
-          "nome": "DAVID DURAND",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/60001608816.webp"
+          "id": "alece-60001633829",
+          "nome": "PR.ALCIDES FERNANDES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/60001633829.webp"
         },
         {
-          "id": "ae-ce-60001633659",
-          "nome": "JULINHO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633659.webp"
+          "id": "alece-60001619181",
+          "nome": "ALMIR BIÉ",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/60001619181.webp"
         },
         {
-          "id": "ae-ce-60001633672",
+          "id": "alece-60001633672",
           "nome": "ALYSSON AGUIAR",
           "partido": "PC do B",
           "fotoUrl": "/fotos/deputados/60001633672.webp"
         },
         {
-          "id": "ae-ce-60001603518",
-          "nome": "SALMITO",
+          "id": "alece-andre-fernandes",
+          "nome": "ANDRE FERNANDES",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001603541",
+          "nome": "ANTONIO GRANJA",
           "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603518.webp"
+          "fotoUrl": "/fotos/deputados/60001603541.webp"
         },
         {
-          "id": "ae-ce-60001603529",
-          "nome": "CLÁUDIO PINHO",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603529.webp"
-        },
-        {
-          "id": "ae-ce-60001613535",
-          "nome": "DR. LUCÍLVIO GIRÃO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/60001613535.webp"
-        },
-        {
-          "id": "ae-ce-60001613538",
-          "nome": "GABRIELLA AGUIAR",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/60001613538.webp"
-        },
-        {
-          "id": "ae-ce-60001723722",
-          "nome": "EMILIA PESSOA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/60001723722.webp"
-        },
-        {
-          "id": "ae-ce-60001608819",
-          "nome": "APÓSTOLO LUIZ HENRIQUE",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/60001608819.webp"
-        },
-        {
-          "id": "ae-ce-60001633655",
-          "nome": "FERNANDO SANTANA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633655.webp"
-        },
-        {
-          "id": "ae-ce-60001603523",
-          "nome": "ORIEL FILHO",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603523.webp"
-        },
-        {
-          "id": "ae-ce-60001603543",
-          "nome": "LIA GOMES",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/60001603543.webp"
-        },
-        {
-          "id": "ae-ce-60001603547",
+          "id": "alece-60001603547",
           "nome": "ANTONIO HENRIQUE",
           "partido": "PDT",
           "fotoUrl": "/fotos/deputados/60001603547.webp"
         },
         {
-          "id": "ae-ce-60001603535",
+          "id": "alece-60001608819",
+          "nome": "APÓSTOLO LUIZ HENRIQUE",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/60001608819.webp"
+        },
+        {
+          "id": "alece-60001613525",
+          "nome": "APOLLO VICZ",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613525.webp"
+        },
+        {
+          "id": "alece-60001633671",
+          "nome": "DE ASSIS DINIZ",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/60001633671.webp"
+        },
+        {
+          "id": "alece-60001635804",
+          "nome": "AUDIC MOTA",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/60001635804.webp"
+        },
+        {
+          "id": "alece-augusta-brito",
+          "nome": "AUGUSTA BRITO",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001603532",
+          "nome": "BRUNO PEDROSA",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603532.webp"
+        },
+        {
+          "id": "alece-carmelo-bolsonaro",
+          "nome": "CARMELO BOLSONARO",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001633791",
+          "nome": "CARMELO NETO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/60001633791.webp"
+        },
+        {
+          "id": "alece-60001603529",
+          "nome": "CLÁUDIO PINHO",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603529.webp"
+        },
+        {
+          "id": "alece-60001635805",
+          "nome": "DANNIEL OLIVEIRA",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/60001635805.webp"
+        },
+        {
+          "id": "alece-davi-de-raimnudao",
+          "nome": "DAVI DE RAIMNUDAO",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001635812",
+          "nome": "DAVI DE RAIMUNDÃO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/60001635812.webp"
+        },
+        {
+          "id": "alece-60001608816",
+          "nome": "DAVID DURAND",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/60001608816.webp"
+        },
+        {
+          "id": "alece-60001633823",
+          "nome": "DAVID PROARMAS",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/60001633823.webp"
+        },
+        {
+          "id": "alece-de-assis-dinz",
+          "nome": "DE ASSIS DINZ",
+          "partido": ""
+        },
+        {
+          "id": "alece-delegado-cavalcante",
+          "nome": "DELEGADO CAVALCANTE",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001608941",
+          "nome": "DR. ALOÍSIO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/60001608941.webp"
+        },
+        {
+          "id": "alece-dr-carlos-felipe",
+          "nome": "DR CARLOS FELIPE",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001608929",
+          "nome": "DR. OSCAR RODRIGUES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/60001608929.webp"
+        },
+        {
+          "id": "alece-dra-dilvana",
+          "nome": "DRA DILVANA",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001633828",
+          "nome": "DRA SILVANA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/60001633828.webp"
+        },
+        {
+          "id": "alece-60001723722",
+          "nome": "EMILIA PESSOA",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/60001723722.webp"
+        },
+        {
+          "id": "alece-60001613527",
+          "nome": "ERIKA AMORIM",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613527.webp"
+        },
+        {
+          "id": "alece-60001608828",
+          "nome": "EVALDO COSTA",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/60001608828.webp"
+        },
+        {
+          "id": "alece-60001603535",
           "nome": "EVANDRO LEITÃO",
           "partido": "PDT",
           "fotoUrl": "/fotos/deputados/60001603535.webp"
         },
         {
-          "id": "ae-ce-60001608935",
-          "nome": "SARGENTO REGINAURO",
+          "id": "alece-60001635818",
+          "nome": "FELIPE AGUIAR",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/60001635818.webp"
+        },
+        {
+          "id": "alece-60001608946",
+          "nome": "FELIPE MOTA",
           "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/60001608935.webp"
+          "fotoUrl": "/fotos/deputados/60001608946.webp"
         },
         {
-          "id": "ae-ce-60001633656",
-          "nome": "LARISSA GASPAR",
+          "id": "alece-fernanda-pessoa",
+          "nome": "FERNANDA PESSOA",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001613523",
+          "nome": "DEP FERNANDO HUGO - DR HUGO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613523.webp"
+        },
+        {
+          "id": "alece-60001633655",
+          "nome": "FERNANDO SANTANA",
           "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633656.webp"
+          "fotoUrl": "/fotos/deputados/60001633655.webp"
         },
         {
-          "id": "ae-ce-60001633675",
+          "id": "alece-firmo-camuca",
+          "nome": "FIRMO CAMUCA",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001608940",
+          "nome": "FIRMO CAMURÇA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/60001608940.webp"
+        },
+        {
+          "id": "alece-60001613538",
+          "nome": "GABRIELLA AGUIAR",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613538.webp"
+        },
+        {
+          "id": "alece-60001723713",
+          "nome": "GORDIM ARAUJO",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/60001723713.webp"
+        },
+        {
+          "id": "alece-60001603538",
+          "nome": "GUILHERME BISMARCK",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603538.webp"
+        },
+        {
+          "id": "alece-guilherme-bismark",
+          "nome": "GUILHERME BISMARK",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001603525",
+          "nome": "GUILHERME LANDIM",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603525.webp"
+        },
+        {
+          "id": "alece-60001633635",
+          "nome": "GUILHERME SAMPAIO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/60001633635.webp"
+        },
+        {
+          "id": "alece-60001608921",
+          "nome": "HEITOR FÉRRER",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/60001608921.webp"
+        },
+        {
+          "id": "alece-jao-jaime",
+          "nome": "JAO JAIME",
+          "partido": ""
+        },
+        {
+          "id": "alece-60001603522",
+          "nome": "JEOVÁ MOTA",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603522.webp"
+        },
+        {
+          "id": "alece-60001633653",
+          "nome": "JÔ FARIAS",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/60001633653.webp"
+        },
+        {
+          "id": "alece-60001619178",
+          "nome": "JOÃO JAIME",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/60001619178.webp"
+        },
+        {
+          "id": "alece-60001633675",
           "nome": "JULIANA LUCENA",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/60001633675.webp"
         },
         {
-          "id": "ae-ce-60001633642",
-          "nome": "MOISES BRAZ",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/60001633642.webp"
+          "id": "alece-julio-cesar-filho",
+          "nome": "JULIO CESAR FILHO",
+          "partido": ""
         },
         {
-          "id": "ae-ce-60001634432",
-          "nome": "STUART CASTRO",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/60001634432.webp"
+          "id": "alece-60001613534",
+          "nome": "KEIVIA DIAS",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613534.webp"
+        },
+        {
+          "id": "alece-60001633656",
+          "nome": "LARISSA GASPAR",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/60001633656.webp"
+        },
+        {
+          "id": "alece-60001635807",
+          "nome": "LEONARDO ARAÚJO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/60001635807.webp"
+        },
+        {
+          "id": "alece-60001619175",
+          "nome": "LEONARDO PINHEIRO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/60001619175.webp"
+        },
+        {
+          "id": "alece-60001603543",
+          "nome": "LIA GOMES",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/60001603543.webp"
+        },
+        {
+          "id": "alece-60001613535",
+          "nome": "DR. LUCÍLVIO GIRÃO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/60001613535.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 38209942.74999998
     },
     {
       "uf": "DF",
       "sigla": "CLDF",
       "nome": "Câmara Legislativa do Distrito Federal",
       "slug": "df",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 24,
-      "nDeputados": 24,
+      "nDeputados": 18,
       "pisoCusto": 834591.36,
       "deputados": [
         {
-          "id": "ae-df-70001615869",
-          "nome": "THIAGO MANZONI",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/70001615869.webp"
-        },
-        {
-          "id": "ae-df-70001620312",
-          "nome": "JAQUELINE SILVA",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/70001620312.webp"
-        },
-        {
-          "id": "ae-df-70001728079",
-          "nome": "PAULA BELMONTE",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/70001728079.webp"
-        },
-        {
-          "id": "ae-df-70001596090",
-          "nome": "GABRIEL MAGNO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/70001596090.webp"
-        },
-        {
-          "id": "ae-df-70001601758",
-          "nome": "FÁBIO FELIX",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/70001601758.webp"
-        },
-        {
-          "id": "ae-df-70001609144",
-          "nome": "EDUARDO PEDROSA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/70001609144.webp"
-        },
-        {
-          "id": "ae-df-70001616707",
-          "nome": "MARTINS MACHADO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/70001616707.webp"
-        },
-        {
-          "id": "ae-df-70001600818",
+          "id": "cldf-70001600818",
           "nome": "ROGÉRIO MORRO DA CRUZ",
           "partido": "PMN",
           "fotoUrl": "/fotos/deputados/70001600818.webp"
         },
         {
-          "id": "ae-df-70001615877",
-          "nome": "ROOSEVELT VILELA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/70001615877.webp"
-        },
-        {
-          "id": "ae-df-70001620311",
-          "nome": "DOUTORA JANE",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/70001620311.webp"
-        },
-        {
-          "id": "ae-df-70001596100",
+          "id": "cldf-70001596100",
           "nome": "CHICO VIGILANTE",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/70001596100.webp"
         },
         {
-          "id": "ae-df-70001650810",
-          "nome": "IOLANDO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/70001650810.webp"
-        },
-        {
-          "id": "ae-df-70001611506",
-          "nome": "JOAO CARDOSO PROFESSOR AUDITOR",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/70001611506.webp"
-        },
-        {
-          "id": "ae-df-70001650210",
-          "nome": "PASTOR DANIEL DE CASTRO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/70001650210.webp"
-        },
-        {
-          "id": "ae-df-70001650204",
-          "nome": "PEPA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/70001650204.webp"
-        },
-        {
-          "id": "ae-df-70001615885",
+          "id": "cldf-70001615885",
           "nome": "DANIEL DONIZET",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/70001615885.webp"
         },
         {
-          "id": "ae-df-70001636075",
+          "id": "cldf-70001636075",
           "nome": "DAYSE AMARILIO",
           "partido": "PSB",
           "fotoUrl": "/fotos/deputados/70001636075.webp"
         },
         {
-          "id": "ae-df-70001650807",
+          "id": "cldf-70001601758",
+          "nome": "FÁBIO FELIX",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/70001601758.webp"
+        },
+        {
+          "id": "cldf-70001596090",
+          "nome": "GABRIEL MAGNO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/70001596090.webp"
+        },
+        {
+          "id": "cldf-70001650807",
           "nome": "HERMETO",
           "partido": "MDB",
           "fotoUrl": "/fotos/deputados/70001650807.webp"
         },
         {
-          "id": "ae-df-70001654552",
-          "nome": "JORGE VIANNA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/70001654552.webp"
+          "id": "cldf-70001650810",
+          "nome": "IOLANDO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/70001650810.webp"
         },
         {
-          "id": "ae-df-70001615870",
+          "id": "cldf-70001620312",
+          "nome": "JAQUELINE SILVA",
+          "partido": "AGIR",
+          "fotoUrl": "/fotos/deputados/70001620312.webp"
+        },
+        {
+          "id": "cldf-jane-klebia-do-nascimento-da-silva",
+          "nome": "Jane Klébia do Nascimento da Silva",
+          "partido": ""
+        },
+        {
+          "id": "cldf-70001615870",
           "nome": "JOAQUIM RORIZ NETO",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/70001615870.webp"
         },
         {
-          "id": "ae-df-70001654541",
-          "nome": "ROBÉRIO NEGREIROS",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/70001654541.webp"
+          "id": "cldf-70001611506",
+          "nome": "JOAO CARDOSO PROFESSOR AUDITOR",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/70001611506.webp"
         },
         {
-          "id": "ae-df-70001596094",
-          "nome": "RICARDO VALE",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/70001596094.webp"
+          "id": "cldf-70001616707",
+          "nome": "MARTINS MACHADO",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/70001616707.webp"
         },
         {
-          "id": "ae-df-70001650805",
-          "nome": "WELLINGTON LUIZ ",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/70001650805.webp"
-        },
-        {
-          "id": "ae-df-70001601757",
+          "id": "cldf-70001601757",
           "nome": "MAX MACIEL",
           "partido": "PSOL",
           "fotoUrl": "/fotos/deputados/70001601757.webp"
+        },
+        {
+          "id": "cldf-70001650204",
+          "nome": "PEPA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/70001650204.webp"
+        },
+        {
+          "id": "cldf-70001728079",
+          "nome": "PAULA BELMONTE",
+          "partido": "CIDADANIA",
+          "fotoUrl": "/fotos/deputados/70001728079.webp"
+        },
+        {
+          "id": "cldf-70001615877",
+          "nome": "ROOSEVELT VILELA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/70001615877.webp"
+        },
+        {
+          "id": "cldf-70001615869",
+          "nome": "THIAGO MANZONI",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/70001615869.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 2524625.0599999996
     },
     {
       "uf": "ES",
@@ -1682,259 +1766,423 @@
       "sigla": "ALEGO",
       "nome": "Assembleia Legislativa de Goiás",
       "slug": "go",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 41,
-      "nDeputados": 41,
+      "nDeputados": 70,
       "pisoCusto": 1425760.24,
       "deputados": [
         {
-          "id": "ae-go-90001653000",
-          "nome": "QUIRINO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/90001653000.webp"
-        },
-        {
-          "id": "ae-go-90001645561",
-          "nome": "HENRIQUE CÉSAR",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/90001645561.webp"
-        },
-        {
-          "id": "ae-go-90001614663",
-          "nome": "GUGU NADER",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/90001614663.webp"
-        },
-        {
-          "id": "ae-go-90001648401",
-          "nome": "VIRMONDES CRUVINEL",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/90001648401.webp"
-        },
-        {
-          "id": "ae-go-90001647430",
-          "nome": "GUSTAVO SEBBA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/90001647430.webp"
-        },
-        {
-          "id": "ae-go-90001644180",
-          "nome": "ZELI",
-          "partido": "PRTB",
-          "fotoUrl": "/fotos/deputados/90001644180.webp"
-        },
-        {
-          "id": "ae-go-90001653797",
-          "nome": "MAJOR ARAÚJO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/90001653797.webp"
-        },
-        {
-          "id": "ae-go-90001605405",
-          "nome": "KARLOS CABRAL",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/90001605405.webp"
-        },
-        {
-          "id": "ae-go-90001644205",
-          "nome": "CORONEL ADAILTON",
-          "partido": "PRTB",
-          "fotoUrl": "/fotos/deputados/90001644205.webp"
-        },
-        {
-          "id": "ae-go-90001653593",
-          "nome": "VETER MARTINS",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/90001653593.webp"
-        },
-        {
-          "id": "ae-go-90001643080",
-          "nome": "CRISTIANO GALINDO",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/90001643080.webp"
-        },
-        {
-          "id": "ae-go-90001712193",
-          "nome": "JAMIL CALIFE",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/90001712193.webp"
-        },
-        {
-          "id": "ae-go-90001651106",
-          "nome": "ANDERSON TEODORO",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/90001651106.webp"
-        },
-        {
-          "id": "ae-go-90001648408",
-          "nome": "RENATO DE CASTRO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/90001648408.webp"
-        },
-        {
-          "id": "ae-go-90001652979",
-          "nome": "CLECIO ALVES",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/90001652979.webp"
-        },
-        {
-          "id": "ae-go-90001649546",
-          "nome": "BIA DE LIMA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/90001649546.webp"
-        },
-        {
-          "id": "ae-go-90001653197",
-          "nome": "ISSY QUINAN",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653197.webp"
-        },
-        {
-          "id": "ae-go-90001648400",
-          "nome": "BRUNO PEIXOTO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/90001648400.webp"
-        },
-        {
-          "id": "ae-go-90001648411",
-          "nome": "TALLES BARRETO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/90001648411.webp"
-        },
-        {
-          "id": "ae-go-90001649533",
-          "nome": "MAURO RUBEM",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/90001649533.webp"
-        },
-        {
-          "id": "ae-go-90001653595",
-          "nome": "CRISTÓVÃO",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/90001653595.webp"
-        },
-        {
-          "id": "ae-go-90001614649",
-          "nome": "ROSANGELA REZENDE",
-          "partido": "AGIR",
-          "fotoUrl": "/fotos/deputados/90001614649.webp"
-        },
-        {
-          "id": "ae-go-90001712179",
-          "nome": "VIVIAN NAVES",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/90001712179.webp"
-        },
-        {
-          "id": "ae-go-90001653191",
-          "nome": "AMILTON FILHO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653191.webp"
-        },
-        {
-          "id": "ae-go-90001653166",
-          "nome": "LUCAS CALIL",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653166.webp"
-        },
-        {
-          "id": "ae-go-90001653182",
-          "nome": "CHARLES BENTO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653182.webp"
-        },
-        {
-          "id": "ae-go-90001653796",
-          "nome": "DELEGADO EDUARDO PRADO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/90001653796.webp"
-        },
-        {
-          "id": "ae-go-90001712181",
+          "id": "alego-90001712181",
           "nome": "ALESSANDRO MOREIRA",
           "partido": "PP",
           "fotoUrl": "/fotos/deputados/90001712181.webp"
         },
         {
-          "id": "ae-go-90001653821",
-          "nome": "PAULO CEZAR MARTINS",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/90001653821.webp"
+          "id": "alego-alysson-lima",
+          "nome": "Alysson Lima",
+          "partido": "PSB"
         },
         {
-          "id": "ae-go-90001653165",
-          "nome": "LUCAS DO VALE",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653165.webp"
-        },
-        {
-          "id": "ae-go-90001648384",
+          "id": "alego-90001648384",
           "nome": "AMAURI RIBEIRO",
-          "partido": "UNIÃO",
+          "partido": "UB",
           "fotoUrl": "/fotos/deputados/90001648384.webp"
         },
         {
-          "id": "ae-go-90001647409",
-          "nome": "DR. JOSÉ MACHADO",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/90001647409.webp"
-        },
-        {
-          "id": "ae-go-90001644185",
-          "nome": "JULIO PINA",
-          "partido": "PRTB",
-          "fotoUrl": "/fotos/deputados/90001644185.webp"
-        },
-        {
-          "id": "ae-go-90001644216",
-          "nome": "WAGNER NETO",
-          "partido": "PRTB",
-          "fotoUrl": "/fotos/deputados/90001644216.webp"
-        },
-        {
-          "id": "ae-go-90001649538",
-          "nome": "ANTÔNIO GOMIDE",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/90001649538.webp"
-        },
-        {
-          "id": "ae-go-90001611924",
-          "nome": "DR GEORGE MORAIS",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/90001611924.webp"
-        },
-        {
-          "id": "ae-go-90001695749",
-          "nome": "WILDE CAMBÃO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/90001695749.webp"
-        },
-        {
-          "id": "ae-go-90001695741",
-          "nome": "CAIRO SALIM",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/90001695741.webp"
-        },
-        {
-          "id": "ae-go-90001653187",
-          "nome": "LINEU OLIMPIO",
+          "id": "alego-90001653191",
+          "nome": "AMILTON FILHO",
           "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/90001653187.webp"
+          "fotoUrl": "/fotos/deputados/90001653191.webp"
         },
         {
-          "id": "ae-go-90001651107",
+          "id": "alego-90001651106",
+          "nome": "ANDERSON TEODORO",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/90001651106.webp"
+        },
+        {
+          "id": "alego-90001651107",
           "nome": "ANDRE DO PREMIUM",
           "partido": "AVANTE",
           "fotoUrl": "/fotos/deputados/90001651107.webp"
         },
         {
-          "id": "ae-go-90001648385",
+          "id": "alego-90001649538",
+          "nome": "ANTÔNIO GOMIDE",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/90001649538.webp"
+        },
+        {
+          "id": "alego-90001649546",
+          "nome": "BIA DE LIMA",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/90001649546.webp"
+        },
+        {
+          "id": "alego-90001648400",
+          "nome": "BRUNO PEIXOTO",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648400.webp"
+        },
+        {
+          "id": "alego-90001695741",
+          "nome": "CAIRO SALIM",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/90001695741.webp"
+        },
+        {
+          "id": "alego-90001653182",
+          "nome": "CHARLES BENTO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653182.webp"
+        },
+        {
+          "id": "alego-90001648403",
+          "nome": "CHICO KGL",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648403.webp"
+        },
+        {
+          "id": "alego-90001653803",
+          "nome": "CLAUDIO MEIRELLES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/90001653803.webp"
+        },
+        {
+          "id": "alego-90001652979",
+          "nome": "CLECIO ALVES",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/90001652979.webp"
+        },
+        {
+          "id": "alego-90001644205",
+          "nome": "CORONEL ADAILTON",
+          "partido": "SD",
+          "fotoUrl": "/fotos/deputados/90001644205.webp"
+        },
+        {
+          "id": "alego-90001643080",
+          "nome": "CRISTIANO GALINDO",
+          "partido": "SD",
+          "fotoUrl": "/fotos/deputados/90001643080.webp"
+        },
+        {
+          "id": "alego-90001653595",
+          "nome": "CRISTÓVÃO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/90001653595.webp"
+        },
+        {
+          "id": "alego-del-adriana-accorsi",
+          "nome": "Del. Adriana Accorsi",
+          "partido": "PT"
+        },
+        {
+          "id": "alego-del-humberto-teofilo",
+          "nome": "Del. Humberto Teófilo",
+          "partido": "PATRIOTA"
+        },
+        {
+          "id": "alego-90001643085",
+          "nome": "DELEGADA FERNANDA",
+          "partido": "SOLIDARIEDADE",
+          "fotoUrl": "/fotos/deputados/90001643085.webp"
+        },
+        {
+          "id": "alego-90001653796",
+          "nome": "DELEGADO EDUARDO PRADO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/90001653796.webp"
+        },
+        {
+          "id": "alego-90001648386",
+          "nome": "DR. ANTÔNIO",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648386.webp"
+        },
+        {
+          "id": "alego-90001611924",
+          "nome": "DR GEORGE MORAIS",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/90001611924.webp"
+        },
+        {
+          "id": "alego-90001651127",
+          "nome": "DR RODRIGO FERNANDES",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/90001651127.webp"
+        },
+        {
+          "id": "alego-90001644180",
+          "nome": "ZELI",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001644180.webp"
+        },
+        {
+          "id": "alego-90001644190",
+          "nome": "ELIEL JUNIOR",
+          "partido": "PRTB",
+          "fotoUrl": "/fotos/deputados/90001644190.webp"
+        },
+        {
+          "id": "alego-90001644198",
+          "nome": "DR FERNANDO CURADO",
+          "partido": "PRTB",
+          "fotoUrl": "/fotos/deputados/90001644198.webp"
+        },
+        {
+          "id": "alego-90001653178",
+          "nome": "FRANCISCO OLIVEIRA",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653178.webp"
+        },
+        {
+          "id": "alego-90001653977",
+          "nome": "FRED RODRIGUES",
+          "partido": "DC",
+          "fotoUrl": "/fotos/deputados/90001653977.webp"
+        },
+        {
+          "id": "alego-90001614663",
+          "nome": "GUGU NADER",
+          "partido": "AGIR",
+          "fotoUrl": "/fotos/deputados/90001614663.webp"
+        },
+        {
+          "id": "alego-90001647430",
+          "nome": "GUSTAVO SEBBA",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/90001647430.webp"
+        },
+        {
+          "id": "alego-helio-de-sousa",
+          "nome": "Helio de Sousa",
+          "partido": "PSDB"
+        },
+        {
+          "id": "alego-90001653185",
+          "nome": "HENRIQUE ARANTES",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653185.webp"
+        },
+        {
+          "id": "alego-90001645561",
+          "nome": "HENRIQUE CÉSAR",
+          "partido": "PSC",
+          "fotoUrl": "/fotos/deputados/90001645561.webp"
+        },
+        {
+          "id": "alego-90001653197",
+          "nome": "ISSY QUINAN",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653197.webp"
+        },
+        {
+          "id": "alego-90001712193",
+          "nome": "JAMIL CALIFE",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/90001712193.webp"
+        },
+        {
+          "id": "alego-jeferson-rodrigues",
+          "nome": "Jeferson Rodrigues",
+          "partido": "REPUBLICANOS"
+        },
+        {
+          "id": "alego-90001647409",
+          "nome": "DR. JOSÉ MACHADO",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/90001647409.webp"
+        },
+        {
+          "id": "alego-90001644185",
+          "nome": "JULIO PINA",
+          "partido": "SD",
+          "fotoUrl": "/fotos/deputados/90001644185.webp"
+        },
+        {
+          "id": "alego-90001605405",
+          "nome": "KARLOS CABRAL",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/90001605405.webp"
+        },
+        {
+          "id": "alego-90001648385",
           "nome": "LINCOLN TEJOTA",
-          "partido": "UNIÃO",
+          "partido": "UB",
           "fotoUrl": "/fotos/deputados/90001648385.webp"
+        },
+        {
+          "id": "alego-90001653187",
+          "nome": "LINEU OLIMPIO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653187.webp"
+        },
+        {
+          "id": "alego-lissauer-vieira",
+          "nome": "Lissauer Vieira",
+          "partido": "PSD"
+        },
+        {
+          "id": "alego-90001653166",
+          "nome": "LUCAS CALIL",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653166.webp"
+        },
+        {
+          "id": "alego-90001653165",
+          "nome": "LUCAS DO VALE",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653165.webp"
+        },
+        {
+          "id": "alego-90001643092",
+          "nome": "LUIZ SAMPAIO",
+          "partido": "SOLIDARIEDADE",
+          "fotoUrl": "/fotos/deputados/90001643092.webp"
+        },
+        {
+          "id": "alego-90001645560",
+          "nome": "LÉO PORTILHO",
+          "partido": "PSC",
+          "fotoUrl": "/fotos/deputados/90001645560.webp"
+        },
+        {
+          "id": "alego-leda-borges",
+          "nome": "Lêda Borges",
+          "partido": "PSDB"
+        },
+        {
+          "id": "alego-90001653797",
+          "nome": "MAJOR ARAÚJO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/90001653797.webp"
+        },
+        {
+          "id": "alego-90001649533",
+          "nome": "MAURO RUBEM",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/90001649533.webp"
+        },
+        {
+          "id": "alego-90001695745",
+          "nome": "MAX MENEZES",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/90001695745.webp"
+        },
+        {
+          "id": "alego-90001653821",
+          "nome": "PAULO CEZAR MARTINS",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/90001653821.webp"
+        },
+        {
+          "id": "alego-paulo-trabalho",
+          "nome": "Paulo Trabalho",
+          "partido": "PL"
+        },
+        {
+          "id": "alego-rafael-gouveia",
+          "nome": "Rafael Gouveia",
+          "partido": "REPUBLICANOS"
+        },
+        {
+          "id": "alego-90001648408",
+          "nome": "RENATO DE CASTRO",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648408.webp"
+        },
+        {
+          "id": "alego-90001653000",
+          "nome": "QUIRINO",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/90001653000.webp"
+        },
+        {
+          "id": "alego-90001614649",
+          "nome": "ROSANGELA REZENDE",
+          "partido": "AGIR",
+          "fotoUrl": "/fotos/deputados/90001614649.webp"
+        },
+        {
+          "id": "alego-90001648402",
+          "nome": "RUBENS MARQUES",
+          "partido": "PROS",
+          "fotoUrl": "/fotos/deputados/90001648402.webp"
+        },
+        {
+          "id": "alego-90001605409",
+          "nome": "SERGIO BRAVO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/90001605409.webp"
+        },
+        {
+          "id": "alego-90001648411",
+          "nome": "TALLES BARRETO",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648411.webp"
+        },
+        {
+          "id": "alego-90001653172",
+          "nome": "THIAGO ALBERNAZ",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653172.webp"
+        },
+        {
+          "id": "alego-tiao-caroco",
+          "nome": "Tião Caroço",
+          "partido": "UB"
+        },
+        {
+          "id": "alego-90001653593",
+          "nome": "VETER MARTINS",
+          "partido": "PATRIOTA",
+          "fotoUrl": "/fotos/deputados/90001653593.webp"
+        },
+        {
+          "id": "alego-90001648401",
+          "nome": "VIRMONDES CRUVINEL",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648401.webp"
+        },
+        {
+          "id": "alego-90001712179",
+          "nome": "VIVIAN NAVES",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/90001712179.webp"
+        },
+        {
+          "id": "alego-90001644216",
+          "nome": "WAGNER NETO",
+          "partido": "SD",
+          "fotoUrl": "/fotos/deputados/90001644216.webp"
+        },
+        {
+          "id": "alego-90001695749",
+          "nome": "WILDE CAMBÃO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/90001695749.webp"
+        },
+        {
+          "id": "alego-ze-carapo",
+          "nome": "Zé Carapô",
+          "partido": "PROS"
+        },
+        {
+          "id": "alego-90001653193",
+          "nome": "ZÉ DA IMPERIAL",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/90001653193.webp"
+        },
+        {
+          "id": "alego-90001648390",
+          "nome": "ÁLVARO GUIMARÃES",
+          "partido": "UB",
+          "fotoUrl": "/fotos/deputados/90001648390.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 60526314.42000005
     },
     {
       "uf": "MA",
@@ -2520,475 +2768,463 @@
       "sigla": "ALMG",
       "nome": "Assembleia Legislativa de Minas Gerais",
       "slug": "mg",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 77,
       "nDeputados": 77,
       "pisoCusto": 2677647.28,
       "deputados": [
         {
-          "id": "ae-mg-130001607426",
-          "nome": "MACAÉ EVARISTO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607426.webp"
+          "id": "almg-12193",
+          "nome": "Adalclever Lopes",
+          "partido": "PV"
         },
         {
-          "id": "ae-mg-130001607394",
-          "nome": "LUIZINHO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607394.webp"
-        },
-        {
-          "id": "ae-mg-130001607427",
-          "nome": "MARQUINHO LEMOS",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607427.webp"
-        },
-        {
-          "id": "ae-mg-130001607392",
-          "nome": "BEATRIZ CERQUEIRA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607392.webp"
-        },
-        {
-          "id": "ae-mg-130001634063",
-          "nome": "MAURO TRAMONTE",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/130001634063.webp"
-        },
-        {
-          "id": "ae-mg-130001615639",
-          "nome": "ZÉ GUILHERME",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/130001615639.webp"
-        },
-        {
-          "id": "ae-mg-130001615280",
-          "nome": "BELLA GONÇALVES",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/130001615280.webp"
-        },
-        {
-          "id": "ae-mg-130001607407",
-          "nome": "BETINHO PINTO COELHO ALBERTO",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/130001607407.webp"
-        },
-        {
-          "id": "ae-mg-130001607412",
-          "nome": "LOHANNA",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/130001607412.webp"
-        },
-        {
-          "id": "ae-mg-130001671877",
-          "nome": "MARLI RIBEIRO",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/130001671877.webp"
-        },
-        {
-          "id": "ae-mg-130001615642",
-          "nome": "CHIARA BIONDINI",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/130001615642.webp"
-        },
-        {
-          "id": "ae-mg-130001619031",
-          "nome": "CAPOREZZO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619031.webp"
-        },
-        {
-          "id": "ae-mg-130001619046",
-          "nome": "CORONEL HENRIQUE",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619046.webp"
-        },
-        {
-          "id": "ae-mg-130001619045",
-          "nome": "BRUNO ENGLER",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619045.webp"
-        },
-        {
-          "id": "ae-mg-130001604365",
-          "nome": "DELEGADO CHRISTIANO XAVIER",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604365.webp"
-        },
-        {
-          "id": "ae-mg-130001604368",
-          "nome": "GIL PEREIRA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604368.webp"
-        },
-        {
-          "id": "ae-mg-130001673951",
-          "nome": "LUCAS LASMAR",
-          "partido": "REDE",
-          "fotoUrl": "/fotos/deputados/130001673951.webp"
-        },
-        {
-          "id": "ae-mg-130001607416",
-          "nome": "MÁRIO HENRIQUE CAIXA",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/130001607416.webp"
-        },
-        {
-          "id": "ae-mg-130001607397",
-          "nome": "RICARDO CAMPOS",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607397.webp"
-        },
-        {
-          "id": "ae-mg-130001613144",
-          "nome": "NEILANDO PIMENTA",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/130001613144.webp"
-        },
-        {
-          "id": "ae-mg-130001607721",
-          "nome": "IONE PINHEIRO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/130001607721.webp"
-        },
-        {
-          "id": "ae-mg-130001619068",
-          "nome": "SARGENTO RODRIGUES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619068.webp"
-        },
-        {
-          "id": "ae-mg-130001619065",
-          "nome": "CORONEL SANDRO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619065.webp"
-        },
-        {
-          "id": "ae-mg-130001604353",
-          "nome": "TITO TORRES",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604353.webp"
-        },
-        {
-          "id": "ae-mg-130001604376",
-          "nome": "DOUTOR WILSON BATISTA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604376.webp"
-        },
-        {
-          "id": "ae-mg-130001606717",
-          "nome": "ALENCAR DA SILVEIRA JR",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/130001606717.webp"
-        },
-        {
-          "id": "ae-mg-130001607423",
-          "nome": "DR. JEAN FREIRE",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607423.webp"
-        },
-        {
-          "id": "ae-mg-130001607361",
-          "nome": "CRISTIANO SILVEIRA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607361.webp"
-        },
-        {
-          "id": "ae-mg-130001605806",
-          "nome": "GREGO",
-          "partido": "PMN",
-          "fotoUrl": "/fotos/deputados/130001605806.webp"
-        },
-        {
-          "id": "ae-mg-130001607410",
-          "nome": "PROFESSOR CLEITON (CLEITINHO)",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/130001607410.webp"
-        },
-        {
-          "id": "ae-mg-130001607391",
-          "nome": "ANDREIA DE JESUS",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607391.webp"
-        },
-        {
-          "id": "ae-mg-130001634019",
-          "nome": "CARLOS HENRIQUE",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/130001634019.webp"
-        },
-        {
-          "id": "ae-mg-130001607673",
-          "nome": "ARNALDO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/130001607673.webp"
-        },
-        {
-          "id": "ae-mg-130001613290",
-          "nome": "LEONÍDIO BOUÇAS",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/130001613290.webp"
-        },
-        {
-          "id": "ae-mg-130001678188",
-          "nome": "JOÃO MAGALHÃES",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/130001678188.webp"
-        },
-        {
-          "id": "ae-mg-130001604380",
-          "nome": "RAFAEL MARTINS",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604380.webp"
-        },
-        {
-          "id": "ae-mg-130001598589",
-          "nome": "ZÉ LAVIOLA",
-          "partido": "NOVO",
-          "fotoUrl": "/fotos/deputados/130001598589.webp"
-        },
-        {
-          "id": "ae-mg-130001607378",
-          "nome": "LELECO PIMENTEL",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607378.webp"
-        },
-        {
-          "id": "ae-mg-130001607388",
-          "nome": "BETÃO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607388.webp"
-        },
-        {
-          "id": "ae-mg-130001607376",
-          "nome": "LENINHA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/130001607376.webp"
-        },
-        {
-          "id": "ae-mg-130001605840",
-          "nome": "ENES CANDIDO",
-          "partido": "PMN",
-          "fotoUrl": "/fotos/deputados/130001605840.webp"
-        },
-        {
-          "id": "ae-mg-130001607400",
-          "nome": "CELINHO SINTROCEL",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/130001607400.webp"
-        },
-        {
-          "id": "ae-mg-130001611596",
-          "nome": "MARIA CLARA MARRA",
-          "partido": "DC",
-          "fotoUrl": "/fotos/deputados/130001611596.webp"
-        },
-        {
-          "id": "ae-mg-130001678167",
-          "nome": "TADEUZINHO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/130001678167.webp"
-        },
-        {
-          "id": "ae-mg-130001634257",
-          "nome": "LUD FALCAO",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/130001634257.webp"
-        },
-        {
-          "id": "ae-mg-130001604379",
-          "nome": "CASSIO SOARES",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604379.webp"
-        },
-        {
-          "id": "ae-mg-130001671880",
-          "nome": "EDUARDO AZEVEDO",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/130001671880.webp"
-        },
-        {
-          "id": "ae-mg-130001596287",
-          "nome": "ROBERTO ANDRADE",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/130001596287.webp"
-        },
-        {
-          "id": "ae-mg-130001596299",
-          "nome": "DR. PAULO",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/130001596299.webp"
-        },
-        {
-          "id": "ae-mg-130001607705",
-          "nome": "RODRIGO LOPES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/130001607705.webp"
-        },
-        {
-          "id": "ae-mg-130001615632",
-          "nome": "VITORIO JUNIOR",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/130001615632.webp"
-        },
-        {
-          "id": "ae-mg-130001615635",
-          "nome": "ADRIANO ALVARENGA",
+          "id": "almg-28859",
+          "nome": "Adriano Alvarenga",
           "partido": "PP",
           "fotoUrl": "/fotos/deputados/130001615635.webp"
         },
         {
-          "id": "ae-mg-130001615613",
-          "nome": "OSCAR TEIXEIRA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/130001615613.webp"
-        },
-        {
-          "id": "ae-mg-130001613297",
-          "nome": "JOÃO VITOR XAVIER",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/130001613297.webp"
-        },
-        {
-          "id": "ae-mg-130001613323",
-          "nome": "RAUL BELÉM",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/130001613323.webp"
-        },
-        {
-          "id": "ae-mg-130001598556",
-          "nome": "DR MAURÍCIO",
-          "partido": "NOVO",
-          "fotoUrl": "/fotos/deputados/130001598556.webp"
-        },
-        {
-          "id": "ae-mg-130001607547",
-          "nome": "ELISMAR PRADO",
-          "partido": "PROS",
-          "fotoUrl": "/fotos/deputados/130001607547.webp"
-        },
-        {
-          "id": "ae-mg-130001613029",
-          "nome": "PROFESSOR WENDEL MESQUITA",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/130001613029.webp"
-        },
-        {
-          "id": "ae-mg-130001634030",
-          "nome": "CHARLES SANTOS",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/130001634030.webp"
-        },
-        {
-          "id": "ae-mg-130001596308",
-          "nome": "DOORGAL ANDRADA",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/130001596308.webp"
-        },
-        {
-          "id": "ae-mg-130001615623",
-          "nome": "NAYARA ROCHA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/130001615623.webp"
-        },
-        {
-          "id": "ae-mg-130001613319",
-          "nome": "BOSCO",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/130001613319.webp"
-        },
-        {
-          "id": "ae-mg-130001603688",
-          "nome": "BIM DA AMBULÂNCIA",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/130001603688.webp"
-        },
-        {
-          "id": "ae-mg-130001619055",
-          "nome": "GUSTAVO SANTANA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619055.webp"
-        },
-        {
-          "id": "ae-mg-130001619030",
-          "nome": "ANTONIO CARLOS ARANTES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619030.webp"
-        },
-        {
-          "id": "ae-mg-130001619041",
-          "nome": "DELEGADA SHEILA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/130001619041.webp"
-        },
-        {
-          "id": "ae-mg-130001619043",
-          "nome": "ALÊ PORTELA",
+          "id": "almg-16234",
+          "nome": "Alê Portela",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/130001619043.webp"
         },
         {
-          "id": "ae-mg-130001604370",
-          "nome": "LEANDRO GENARO",
+          "id": "almg-30238",
+          "nome": "Amanda Teixeira Dias",
+          "partido": "PL"
+        },
+        {
+          "id": "almg-19150",
+          "nome": "Ana Paula Siqueira",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001615219.webp"
+        },
+        {
+          "id": "almg-26143",
+          "nome": "Andréia de Jesus",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607391.webp"
+        },
+        {
+          "id": "almg-7327",
+          "nome": "Antonio Carlos Arantes",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619030.webp"
+        },
+        {
+          "id": "almg-9652",
+          "nome": "Arlen Santiago",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/130001603710.webp"
+        },
+        {
+          "id": "almg-22514",
+          "nome": "Arnaldo Silva",
+          "partido": "UNIÃO"
+        },
+        {
+          "id": "almg-26098",
+          "nome": "Beatriz Cerqueira",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607392.webp"
+        },
+        {
+          "id": "almg-28860",
+          "nome": "Bella Gonçalves",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001615280.webp"
+        },
+        {
+          "id": "almg-26145",
+          "nome": "Betão",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607388.webp"
+        },
+        {
+          "id": "almg-13425",
+          "nome": "Betinho Pinto Coelho",
+          "partido": "UNIÃO"
+        },
+        {
+          "id": "almg-28861",
+          "nome": "Bim da Ambulância",
+          "partido": "AVANTE",
+          "fotoUrl": "/fotos/deputados/130001603688.webp"
+        },
+        {
+          "id": "almg-18857",
+          "nome": "Bosco",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001613319.webp"
+        },
+        {
+          "id": "almg-26148",
+          "nome": "Bruno Engler",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619045.webp"
+        },
+        {
+          "id": "almg-28862",
+          "nome": "Caporezzo",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619031.webp"
+        },
+        {
+          "id": "almg-10002",
+          "nome": "Carlos Henrique",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/130001634019.webp"
+        },
+        {
+          "id": "almg-7758",
+          "nome": "Carlos Pimenta",
+          "partido": "PSB"
+        },
+        {
+          "id": "almg-15330",
+          "nome": "Carol Caram",
+          "partido": "AVANTE"
+        },
+        {
+          "id": "almg-18848",
+          "nome": "Cassio Soares",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604379.webp"
+        },
+        {
+          "id": "almg-18849",
+          "nome": "Celinho Sintrocel",
+          "partido": "PCdoB",
+          "fotoUrl": "/fotos/deputados/130001607400.webp"
+        },
+        {
+          "id": "almg-26062",
+          "nome": "Charles Santos",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/130001634030.webp"
+        },
+        {
+          "id": "almg-28863",
+          "nome": "Chiara Biondini",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001615642.webp"
+        },
+        {
+          "id": "almg-26149",
+          "nome": "Coronel Henrique",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619046.webp"
+        },
+        {
+          "id": "almg-22523",
+          "nome": "Cristiano Silveira",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607361.webp"
+        },
+        {
+          "id": "almg-9655",
+          "nome": "Dalmo Ribeiro",
+          "partido": "PSDB"
+        },
+        {
+          "id": "almg-26164",
+          "nome": "Delegada Sheila",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619041.webp"
+        },
+        {
+          "id": "almg-28864",
+          "nome": "Delegado Christiano Xavier",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604365.webp"
+        },
+        {
+          "id": "almg-26151",
+          "nome": "Doorgal Andrada",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/130001596308.webp"
+        },
+        {
+          "id": "almg-22581",
+          "nome": "Doutor Jean Freire",
+          "partido": "PT"
+        },
+        {
+          "id": "almg-26152",
+          "nome": "Doutor Paulo",
+          "partido": "UNIÃO"
+        },
+        {
+          "id": "almg-18850",
+          "nome": "Doutor Wilson Batista",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604376.webp"
+        },
+        {
+          "id": "almg-28865",
+          "nome": "Dr. Maurício",
+          "partido": "NOVO",
+          "fotoUrl": "/fotos/deputados/130001598556.webp"
+        },
+        {
+          "id": "almg-17919",
+          "nome": "Duarte Bechir",
+          "partido": "PSD"
+        },
+        {
+          "id": "almg-28866",
+          "nome": "Eduardo Azevedo",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001671880.webp"
+        },
+        {
+          "id": "almg-18852",
+          "nome": "Elismar Prado",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001607547.webp"
+        },
+        {
+          "id": "almg-28867",
+          "nome": "Enes Cândido",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001605840.webp"
+        },
+        {
+          "id": "almg-7762",
+          "nome": "Gil Pereira",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604368.webp"
+        },
+        {
+          "id": "almg-28868",
+          "nome": "Grego da Fundação",
+          "partido": "UNIÃO"
+        },
+        {
+          "id": "almg-24621",
+          "nome": "Gustavo Santana",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619055.webp"
+        },
+        {
+          "id": "almg-12202",
+          "nome": "Gustavo Valadares",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001605805.webp"
+        },
+        {
+          "id": "almg-8095",
+          "nome": "Ione Pinheiro",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/130001607721.webp"
+        },
+        {
+          "id": "almg-22561",
+          "nome": "João Magalhães",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001678188.webp"
+        },
+        {
+          "id": "almg-10434",
+          "nome": "Leandro Genaro",
           "partido": "PSD",
           "fotoUrl": "/fotos/deputados/130001604370.webp"
         },
         {
-          "id": "ae-mg-130001604390",
-          "nome": "DUARTE",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604390.webp"
+          "id": "almg-12552",
+          "nome": "Leleco Pimentel",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607378.webp"
         },
         {
-          "id": "ae-mg-130001606759",
-          "nome": "THIAGO COTA",
+          "id": "almg-26153",
+          "nome": "Leninha",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607376.webp"
+        },
+        {
+          "id": "almg-7769",
+          "nome": "Leonídio Bouças",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/130001613290.webp"
+        },
+        {
+          "id": "almg-28869",
+          "nome": "Lohanna",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/130001607412.webp"
+        },
+        {
+          "id": "almg-28870",
+          "nome": "Lucas Lasmar",
+          "partido": "REDE",
+          "fotoUrl": "/fotos/deputados/130001673951.webp"
+        },
+        {
+          "id": "almg-28871",
+          "nome": "Lud Falcão",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/130001634257.webp"
+        },
+        {
+          "id": "almg-28872",
+          "nome": "Luizinho",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607394.webp"
+        },
+        {
+          "id": "almg-28873",
+          "nome": "Macaé Evaristo",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607426.webp"
+        },
+        {
+          "id": "almg-28874",
+          "nome": "Maria Clara Marra",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/130001611596.webp"
+        },
+        {
+          "id": "almg-21125",
+          "nome": "Mário Henrique Caixa",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/130001607416.webp"
+        },
+        {
+          "id": "almg-28875",
+          "nome": "Marli Ribeiro",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001671877.webp"
+        },
+        {
+          "id": "almg-4458",
+          "nome": "Marquinho Lemos",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607427.webp"
+        },
+        {
+          "id": "almg-26111",
+          "nome": "Mauro Tramonte",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/130001634063.webp"
+        },
+        {
+          "id": "almg-18022",
+          "nome": "Nayara Rocha",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/130001615623.webp"
+        },
+        {
+          "id": "almg-18863",
+          "nome": "Neilando Pimenta",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/130001613144.webp"
+        },
+        {
+          "id": "almg-22521",
+          "nome": "Noraldino Júnior",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/130001671870.webp"
+        },
+        {
+          "id": "almg-28876",
+          "nome": "Oscar Teixeira",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/130001615613.webp"
+        },
+        {
+          "id": "almg-26119",
+          "nome": "Professor Cleiton",
+          "partido": "PV"
+        },
+        {
+          "id": "almg-17872",
+          "nome": "Professor Wendel Mesquita",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/130001613029.webp"
+        },
+        {
+          "id": "almg-26138",
+          "nome": "Rafael Martins",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604380.webp"
+        },
+        {
+          "id": "almg-26114",
+          "nome": "Raul Belém",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001613323.webp"
+        },
+        {
+          "id": "almg-11307",
+          "nome": "Ricardo Campos",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/130001607397.webp"
+        },
+        {
+          "id": "almg-22607",
+          "nome": "Roberto Andrade",
+          "partido": "PRD",
+          "fotoUrl": "/fotos/deputados/130001596287.webp"
+        },
+        {
+          "id": "almg-28877",
+          "nome": "Rodrigo Lopes",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/130001607705.webp"
+        },
+        {
+          "id": "almg-9673",
+          "nome": "Sargento Rodrigues",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/130001619068.webp"
+        },
+        {
+          "id": "almg-18860",
+          "nome": "Tadeu Leite",
+          "partido": "MDB"
+        },
+        {
+          "id": "almg-22515",
+          "nome": "Thiago Cota",
           "partido": "PDT",
           "fotoUrl": "/fotos/deputados/130001606759.webp"
         },
         {
-          "id": "ae-mg-130001615219",
-          "nome": "ANA PAULA SIQUEIRA",
-          "partido": "REDE",
-          "fotoUrl": "/fotos/deputados/130001615219.webp"
+          "id": "almg-22616",
+          "nome": "Tito Torres",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/130001604353.webp"
         },
         {
-          "id": "ae-mg-130001607390",
-          "nome": "ULYSSES GOMES",
+          "id": "almg-18867",
+          "nome": "Ulysses Gomes",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/130001607390.webp"
         },
         {
-          "id": "ae-mg-130001605805",
-          "nome": "GUSTAVO VALADARES",
-          "partido": "PMN",
-          "fotoUrl": "/fotos/deputados/130001605805.webp"
+          "id": "almg-28878",
+          "nome": "Vitório Júnior",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/130001615632.webp"
         },
         {
-          "id": "ae-mg-130001671870",
-          "nome": "NORALDINO JÚNIOR",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/130001671870.webp"
+          "id": "almg-26105",
+          "nome": "Zé Guilherme",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/130001615639.webp"
         },
         {
-          "id": "ae-mg-130001603710",
-          "nome": "ARLEN SANTIAGO",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/130001603710.webp"
-        },
-        {
-          "id": "ae-mg-130001603664",
-          "nome": "FÁBIO AVELAR",
-          "partido": "AVANTE",
-          "fotoUrl": "/fotos/deputados/130001603664.webp"
-        },
-        {
-          "id": "ae-mg-130001604374",
-          "nome": "DOUGLAS MELO",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/130001604374.webp"
+          "id": "almg-28879",
+          "nome": "Zé Laviola",
+          "partido": "NOVO",
+          "fotoUrl": "/fotos/deputados/130001598589.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 82664395.55000001
     },
     {
       "uf": "PA",
@@ -3591,307 +3827,405 @@
       "sigla": "ALEPE",
       "nome": "Assembleia Legislativa de Pernambuco",
       "slug": "pe",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 49,
-      "nDeputados": 49,
+      "nDeputados": 67,
       "pisoCusto": 1703957.3599999999,
       "deputados": [
         {
-          "id": "ae-pe-170001608972",
-          "nome": "GILMAR JUNIOR",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/170001608972.webp"
-        },
-        {
-          "id": "ae-pe-170001608974",
-          "nome": "JOÃO DE NADEGI",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/170001608974.webp"
-        },
-        {
-          "id": "ae-pe-170001608977",
-          "nome": "DORIEL",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/170001608977.webp"
-        },
-        {
-          "id": "ae-pe-170001620380",
-          "nome": "SILENO",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620380.webp"
-        },
-        {
-          "id": "ae-pe-170001618738",
-          "nome": "ANTONIO MORAES",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618738.webp"
-        },
-        {
-          "id": "ae-pe-170001618728",
-          "nome": "PASTOR CLEITON COLLINS",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618728.webp"
-        },
-        {
-          "id": "ae-pe-170001619710",
-          "nome": "RENATO ANTUNES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/170001619710.webp"
-        },
-        {
-          "id": "ae-pe-170001609868",
-          "nome": "JOÃOZINHO TENÓRIO",
-          "partido": "PATRIOTA",
-          "fotoUrl": "/fotos/deputados/170001609868.webp"
-        },
-        {
-          "id": "ae-pe-170001620382",
-          "nome": "WALDEMAR BORGES",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620382.webp"
-        },
-        {
-          "id": "ae-pe-170001620371",
-          "nome": "AGLAILSON VICTOR",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620371.webp"
-        },
-        {
-          "id": "ae-pe-170001620394",
-          "nome": "ERIBERTO FILHO",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620394.webp"
-        },
-        {
-          "id": "ae-pe-170001618730",
-          "nome": "JEFERSON TIMÓTEO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618730.webp"
-        },
-        {
-          "id": "ae-pe-170001610732",
-          "nome": "GUSTAVO GOUVEIA",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/170001610732.webp"
-        },
-        {
-          "id": "ae-pe-170001609297",
-          "nome": "CHAPARRAL",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/170001609297.webp"
-        },
-        {
-          "id": "ae-pe-170001608960",
-          "nome": "ROSA AMORIM",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/170001608960.webp"
-        },
-        {
-          "id": "ae-pe-170001608973",
-          "nome": "JOAQUIM LIRA",
-          "partido": "PV",
-          "fotoUrl": "/fotos/deputados/170001608973.webp"
-        },
-        {
-          "id": "ae-pe-170001608952",
-          "nome": "JOÃO PAULO COSTA",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/170001608952.webp"
-        },
-        {
-          "id": "ae-pe-170001618737",
-          "nome": "KAIO MANIÇOBA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618737.webp"
-        },
-        {
-          "id": "ae-pe-170001619707",
-          "nome": "JOEL DA HARPA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/170001619707.webp"
-        },
-        {
-          "id": "ae-pe-170001619693",
+          "id": "alepe-170001619693",
           "nome": "ABIMAEL SANTOS",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/170001619693.webp"
         },
         {
-          "id": "ae-pe-170001609284",
-          "nome": "SOCORRO PIMENTEL",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/170001609284.webp"
-        },
-        {
-          "id": "ae-pe-170001609264",
-          "nome": "ROMERO SALES FILHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/170001609264.webp"
-        },
-        {
-          "id": "ae-pe-170001618395",
-          "nome": "DANI PORTELA",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/170001618395.webp"
-        },
-        {
-          "id": "ae-pe-170001605490",
-          "nome": "IZAIAS REGIS",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/170001605490.webp"
-        },
-        {
-          "id": "ae-pe-170001620384",
-          "nome": "DANNILO GODOY",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620384.webp"
-        },
-        {
-          "id": "ae-pe-170001620393",
-          "nome": "FRANCISMAR",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620393.webp"
-        },
-        {
-          "id": "ae-pe-170001618756",
-          "nome": "CLAUDIANO FILHO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618756.webp"
-        },
-        {
-          "id": "ae-pe-170001610750",
-          "nome": "FABRIZIO FERRAZ",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/170001610750.webp"
-        },
-        {
-          "id": "ae-pe-170001609265",
-          "nome": "ROMERO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/170001609265.webp"
-        },
-        {
-          "id": "ae-pe-170001595431",
-          "nome": "WILLIAM BRIGIDO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/170001595431.webp"
-        },
-        {
-          "id": "ae-pe-170001608984",
-          "nome": "JOÃO PAULO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/170001608984.webp"
-        },
-        {
-          "id": "ae-pe-170001620397",
-          "nome": "DELEGADA GLEIDE ANGELO",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620397.webp"
-        },
-        {
-          "id": "ae-pe-170001620381",
-          "nome": "RODRIGO NOVAES",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620381.webp"
-        },
-        {
-          "id": "ae-pe-170001618759",
-          "nome": "HENRIQUE QUEIROZ FILHO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618759.webp"
-        },
-        {
-          "id": "ae-pe-170001618752",
-          "nome": "PASTOR JUNIOR TERCIO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/170001618752.webp"
-        },
-        {
-          "id": "ae-pe-170001619685",
-          "nome": "CORONEL ALBERTO FEITOSA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/170001619685.webp"
-        },
-        {
-          "id": "ae-pe-170001595443",
-          "nome": "MARIO RICARDO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/170001595443.webp"
-        },
-        {
-          "id": "ae-pe-170001605464",
-          "nome": "ALVARO PORTO",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/170001605464.webp"
-        },
-        {
-          "id": "ae-pe-170001605482",
-          "nome": "DEBORA ALMEIDA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/170001605482.webp"
-        },
-        {
-          "id": "ae-pe-170001620379",
-          "nome": "SIMONE SANTANA",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620379.webp"
-        },
-        {
-          "id": "ae-pe-170001620399",
-          "nome": "JOSÉ PATRIOTA",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620399.webp"
-        },
-        {
-          "id": "ae-pe-170001620402",
-          "nome": "JARBAS FILHO",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620402.webp"
-        },
-        {
-          "id": "ae-pe-170001618735",
+          "id": "alepe-170001618735",
           "nome": "ADALTO SANTOS",
           "partido": "PP",
           "fotoUrl": "/fotos/deputados/170001618735.webp"
         },
         {
-          "id": "ae-pe-170001610741",
-          "nome": "LUCIANO DUQUE",
-          "partido": "SOLIDARIEDADE",
-          "fotoUrl": "/fotos/deputados/170001610741.webp"
+          "id": "alepe-170001620371",
+          "nome": "AGLAILSON VICTOR",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001620371.webp"
         },
         {
-          "id": "ae-pe-170001620376",
-          "nome": "FRANCE HACKER",
+          "id": "alepe-alessandra-vieira",
+          "nome": "Alessandra Vieira",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001609285",
+          "nome": "ANTONIO COELHO",
+          "partido": "União",
+          "fotoUrl": "/fotos/deputados/170001609285.webp"
+        },
+        {
+          "id": "alepe-170001618753",
+          "nome": "ANTONIO FERNANDO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618753.webp"
+        },
+        {
+          "id": "alepe-170001618738",
+          "nome": "ANTONIO MORAES",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001618738.webp"
+        },
+        {
+          "id": "alepe-170001618756",
+          "nome": "CLAUDIANO FILHO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618756.webp"
+        },
+        {
+          "id": "alepe-170001609297",
+          "nome": "CHAPARRAL",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/170001609297.webp"
+        },
+        {
+          "id": "alepe-clodoaldo-magalhaes",
+          "nome": "Clodoaldo Magalhães",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001618736",
+          "nome": "CLÓVIS PAIVA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618736.webp"
+        },
+        {
+          "id": "alepe-170001619685",
+          "nome": "CORONEL ALBERTO FEITOSA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/170001619685.webp"
+        },
+        {
+          "id": "alepe-170001618395",
+          "nome": "DANI PORTELA",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/170001618395.webp"
+        },
+        {
+          "id": "alepe-170001620384",
+          "nome": "DANNILO GODOY",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001620384.webp"
+        },
+        {
+          "id": "alepe-170001620395",
+          "nome": "DIOGO MORAES",
           "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620395.webp"
+        },
+        {
+          "id": "alepe-170001608977",
+          "nome": "DORIEL",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/170001608977.webp"
+        },
+        {
+          "id": "alepe-dulci-amorim",
+          "nome": "Dulci Amorim",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001605482",
+          "nome": "DEBORA ALMEIDA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001605482.webp"
+        },
+        {
+          "id": "alepe-170001609260",
+          "nome": "EDSON VIEIRA",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001609260.webp"
+        },
+        {
+          "id": "alepe-170001620394",
+          "nome": "ERIBERTO FILHO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620394.webp"
+        },
+        {
+          "id": "alepe-170001618743",
+          "nome": "DELEGADO LESSA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618743.webp"
+        },
+        {
+          "id": "alepe-170001610750",
+          "nome": "FABRIZIO FERRAZ",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001610750.webp"
+        },
+        {
+          "id": "alepe-fabiola-cabral",
+          "nome": "Fabíola Cabral",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001620376",
+          "nome": "FRANCE HACKER",
+          "partido": "PP",
           "fotoUrl": "/fotos/deputados/170001620376.webp"
         },
         {
-          "id": "ae-pe-170001620383",
-          "nome": "RODRIGO FARIAS",
+          "id": "alepe-170001620393",
+          "nome": "FRANCISMAR",
           "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/170001620383.webp"
+          "fotoUrl": "/fotos/deputados/170001620393.webp"
         },
         {
-          "id": "ae-pe-170001619691",
-          "nome": "NINO DE ENOQUE",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/170001619691.webp"
+          "id": "alepe-170001608972",
+          "nome": "GILMAR JUNIOR",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/170001608972.webp"
         },
         {
-          "id": "ae-pe-170001610753",
+          "id": "alepe-guilherme-uchoa",
+          "nome": "Guilherme Uchoa",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001610732",
+          "nome": "GUSTAVO GOUVEIA",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001610732.webp"
+        },
+        {
+          "id": "alepe-170001618759",
+          "nome": "HENRIQUE QUEIROZ FILHO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618759.webp"
+        },
+        {
+          "id": "alepe-170001620385",
+          "nome": "ISALTINO NASCIMENTO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620385.webp"
+        },
+        {
+          "id": "alepe-170001620402",
+          "nome": "JARBAS FILHO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001620402.webp"
+        },
+        {
+          "id": "alepe-170001618730",
+          "nome": "JEFERSON TIMÓTEO",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001618730.webp"
+        },
+        {
+          "id": "alepe-170001608973",
+          "nome": "JOAQUIM LIRA",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/170001608973.webp"
+        },
+        {
+          "id": "alepe-170001619707",
+          "nome": "JOEL DA HARPA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001619707.webp"
+        },
+        {
+          "id": "alepe-170001620399",
+          "nome": "JOSÉ PATRIOTA",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620399.webp"
+        },
+        {
+          "id": "alepe-170001608952",
+          "nome": "JOÃO PAULO COSTA",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/170001608952.webp"
+        },
+        {
+          "id": "alepe-170001608974",
+          "nome": "JOÃO DE NADEGI",
+          "partido": "PV",
+          "fotoUrl": "/fotos/deputados/170001608974.webp"
+        },
+        {
+          "id": "alepe-170001609868",
+          "nome": "JOÃOZINHO TENÓRIO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001609868.webp"
+        },
+        {
+          "id": "alepe-juntas",
+          "nome": "Juntas",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001618737",
+          "nome": "KAIO MANIÇOBA",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618737.webp"
+        },
+        {
+          "id": "alepe-lucas-ramos",
+          "nome": "Lucas Ramos",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001610741",
+          "nome": "LUCIANO DUQUE",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001610741.webp"
+        },
+        {
+          "id": "alepe-170001610753",
           "nome": "LULA CABRAL",
           "partido": "SOLIDARIEDADE",
           "fotoUrl": "/fotos/deputados/170001610753.webp"
         },
         {
-          "id": "ae-pe-170001609285",
-          "nome": "ANTONIO COELHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/170001609285.webp"
+          "id": "alepe-manoel-ferreira",
+          "nome": "Manoel Ferreira",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001620401",
+          "nome": "MARCO AURELIO MEU AMIGO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620401.webp"
+        },
+        {
+          "id": "alepe-170001595443",
+          "nome": "MARIO RICARDO",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001595443.webp"
+        },
+        {
+          "id": "alepe-170001619691",
+          "nome": "NINO DE ENOQUE",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/170001619691.webp"
+        },
+        {
+          "id": "alepe-170001618728",
+          "nome": "PASTOR CLEITON COLLINS",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618728.webp"
+        },
+        {
+          "id": "alepe-170001618752",
+          "nome": "PASTOR JUNIOR TERCIO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618752.webp"
+        },
+        {
+          "id": "alepe-170001619710",
+          "nome": "RENATO ANTUNES",
+          "partido": "Novo",
+          "fotoUrl": "/fotos/deputados/170001619710.webp"
+        },
+        {
+          "id": "alepe-170001618757",
+          "nome": "ROBERTA ARRAES",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/170001618757.webp"
+        },
+        {
+          "id": "alepe-170001620383",
+          "nome": "RODRIGO FARIAS",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620383.webp"
+        },
+        {
+          "id": "alepe-170001620381",
+          "nome": "RODRIGO NOVAES",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620381.webp"
+        },
+        {
+          "id": "alepe-rogerio-leao",
+          "nome": "Rogério Leão",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001609265",
+          "nome": "ROMERO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001609265.webp"
+        },
+        {
+          "id": "alepe-170001609264",
+          "nome": "ROMERO SALES FILHO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001609264.webp"
+        },
+        {
+          "id": "alepe-romario-dias",
+          "nome": "Romário Dias",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001608960",
+          "nome": "ROSA AMORIM",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/170001608960.webp"
+        },
+        {
+          "id": "alepe-170001620380",
+          "nome": "SILENO",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620380.webp"
+        },
+        {
+          "id": "alepe-170001620379",
+          "nome": "SIMONE SANTANA",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620379.webp"
+        },
+        {
+          "id": "alepe-170001609284",
+          "nome": "SOCORRO PIMENTEL",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001609284.webp"
+        },
+        {
+          "id": "alepe-teresa-leitao",
+          "nome": "Teresa Leitão",
+          "partido": ""
+        },
+        {
+          "id": "alepe-170001620372",
+          "nome": "TONY GEL",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620372.webp"
+        },
+        {
+          "id": "alepe-170001620382",
+          "nome": "WALDEMAR BORGES",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/170001620382.webp"
+        },
+        {
+          "id": "alepe-170001610727",
+          "nome": "WANDERSON",
+          "partido": "Podemos",
+          "fotoUrl": "/fotos/deputados/170001610727.webp"
+        },
+        {
+          "id": "alepe-170001595431",
+          "nome": "WILLIAM BRIGIDO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/170001595431.webp"
+        },
+        {
+          "id": "alepe-170001605464",
+          "nome": "ALVARO PORTO",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/170001605464.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 91587199.38
     },
     {
       "uf": "PI",
@@ -5338,830 +5672,933 @@
       "sigla": "ALESC",
       "nome": "Assembleia Legislativa de Santa Catarina",
       "slug": "sc",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 40,
-      "nDeputados": 40,
+      "nDeputados": 60,
       "pisoCusto": 1390985.6,
       "deputados": [
         {
-          "id": "ae-sc-240001644398",
-          "nome": "RODRIGO MINOTTO",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/240001644398.webp"
-        },
-        {
-          "id": "ae-sc-240001614384",
-          "nome": "NAPOLEÃO BERNARDES",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/240001614384.webp"
-        },
-        {
-          "id": "ae-sc-240001612510",
-          "nome": "DR. VICENTE",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/240001612510.webp"
-        },
-        {
-          "id": "ae-sc-240001679648",
-          "nome": "PADRE PEDRO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/240001679648.webp"
-        },
-        {
-          "id": "ae-sc-240001614348",
-          "nome": "ANA CAMPAGNOLO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614348.webp"
-        },
-        {
-          "id": "ae-sc-240001614335",
-          "nome": "BERLANDA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614335.webp"
-        },
-        {
-          "id": "ae-sc-240001614350",
-          "nome": "JESSÉ LOPES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614350.webp"
-        },
-        {
-          "id": "ae-sc-240001616196",
-          "nome": "REPÓRTER SÉRGIO GUIMARÃES",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/240001616196.webp"
-        },
-        {
-          "id": "ae-sc-240001605913",
-          "nome": "MAURO DE NADAL",
+          "id": "alesc-240001645019",
+          "nome": "ADILSON GIRARDI",
           "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605913.webp"
+          "fotoUrl": "/fotos/deputados/240001645019.webp"
         },
         {
-          "id": "ae-sc-240001605916",
-          "nome": "ANTÍDIO LUNELLI",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605916.webp"
-        },
-        {
-          "id": "ae-sc-240001610835",
-          "nome": "CAMILO MARTINS",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/240001610835.webp"
-        },
-        {
-          "id": "ae-sc-240001679643",
-          "nome": "LUCIANE CARMINATTI",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/240001679643.webp"
-        },
-        {
-          "id": "ae-sc-240001614342",
-          "nome": "MASSOCCO",
+          "id": "alesc-240001614349",
+          "nome": "A ALEX BRASIL",
           "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614342.webp"
+          "fotoUrl": "/fotos/deputados/240001614349.webp"
         },
         {
-          "id": "ae-sc-240001614329",
-          "nome": "SARGENTO LIMA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614329.webp"
-        },
-        {
-          "id": "ae-sc-240001614334",
-          "nome": "SORATTO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614334.webp"
-        },
-        {
-          "id": "ae-sc-240001614356",
-          "nome": "IVAN NAATZ",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614356.webp"
-        },
-        {
-          "id": "ae-sc-240001644772",
-          "nome": "PEPÊ COLLAÇO",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/240001644772.webp"
-        },
-        {
-          "id": "ae-sc-240001644767",
+          "id": "alesc-240001644767",
           "nome": "ALTAIR SILVA",
           "partido": "PP",
           "fotoUrl": "/fotos/deputados/240001644767.webp"
         },
         {
-          "id": "ae-sc-240001605911",
-          "nome": "TIAGO ZILLI",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605911.webp"
-        },
-        {
-          "id": "ae-sc-240001612502",
-          "nome": "MARCOS VIEIRA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/240001612502.webp"
-        },
-        {
-          "id": "ae-sc-240001614339",
-          "nome": "MARCIUS MACHADO",
+          "id": "alesc-240001614348",
+          "nome": "ANA CAMPAGNOLO",
           "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614339.webp"
+          "fotoUrl": "/fotos/deputados/240001614348.webp"
         },
         {
-          "id": "ae-sc-240001644756",
-          "nome": "ZÉ MILTON",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/240001644756.webp"
-        },
-        {
-          "id": "ae-sc-240001610226",
-          "nome": "SERGIO MOTTA",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/240001610226.webp"
-        },
-        {
-          "id": "ae-sc-240001616186",
-          "nome": "MARCOS DA ROSA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/240001616186.webp"
-        },
-        {
-          "id": "ae-sc-240001605920",
-          "nome": "JERRY COMPER",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605920.webp"
-        },
-        {
-          "id": "ae-sc-240001605921",
-          "nome": "VOLNEI WEBER",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605921.webp"
-        },
-        {
-          "id": "ae-sc-240001597559",
-          "nome": "MATHEUS CADORIN",
-          "partido": "NOVO",
-          "fotoUrl": "/fotos/deputados/240001597559.webp"
-        },
-        {
-          "id": "ae-sc-240001614337",
-          "nome": "CARLOS HUMBERTO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614337.webp"
-        },
-        {
-          "id": "ae-sc-240001614346",
-          "nome": "OSCAR GUTZ",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614346.webp"
-        },
-        {
-          "id": "ae-sc-240001614331",
-          "nome": "MAURICIO ESKUDLARK",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/240001614331.webp"
-        },
-        {
-          "id": "ae-sc-240001616203",
-          "nome": "JAIR MIOTTO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/240001616203.webp"
-        },
-        {
-          "id": "ae-sc-240001605919",
-          "nome": "FERNANDO KRELLING",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/240001605919.webp"
-        },
-        {
-          "id": "ae-sc-240001614390",
-          "nome": "JULIO GARCIA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/240001614390.webp"
-        },
-        {
-          "id": "ae-sc-240001679627",
-          "nome": "FABIANO DA LUZ",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/240001679627.webp"
-        },
-        {
-          "id": "ae-sc-240001614375",
-          "nome": "MARIO MOTTA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/240001614375.webp"
-        },
-        {
-          "id": "ae-sc-240001610066",
-          "nome": "MARQUITO MARCOS JOSÉ ABREU",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/240001610066.webp"
-        },
-        {
-          "id": "ae-sc-240001614282",
-          "nome": "DELEGADO EGIDIO FERRARI",
-          "partido": "PTB",
-          "fotoUrl": "/fotos/deputados/240001614282.webp"
-        },
-        {
-          "id": "ae-sc-240001679646",
-          "nome": "NEODI SARETTA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/240001679646.webp"
-        },
-        {
-          "id": "ae-sc-240001610824",
+          "id": "alesc-240001610824",
           "nome": "PAULINHA",
           "partido": "PODE",
           "fotoUrl": "/fotos/deputados/240001610824.webp"
         },
         {
-          "id": "ae-sc-240001610819",
+          "id": "alesc-240001597531",
+          "nome": "ANDRÉ DE OLIVEIRA",
+          "partido": "NOVO",
+          "fotoUrl": "/fotos/deputados/240001597531.webp"
+        },
+        {
+          "id": "alesc-240001605916",
+          "nome": "ANTÍDIO LUNELLI",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605916.webp"
+        },
+        {
+          "id": "alesc-240001614335",
+          "nome": "BERLANDA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614335.webp"
+        },
+        {
+          "id": "alesc-240001610835",
+          "nome": "CAMILO MARTINS",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/240001610835.webp"
+        },
+        {
+          "id": "alesc-240001614329",
+          "nome": "SARGENTO LIMA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614329.webp"
+        },
+        {
+          "id": "alesc-240001614337",
+          "nome": "CARLOS HUMBERTO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614337.webp"
+        },
+        {
+          "id": "alesc-240001605918",
+          "nome": "CLEITON FOSSA",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605918.webp"
+        },
+        {
+          "id": "alesc-240001610837",
+          "nome": "DANIEL CANDIDO",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/240001610837.webp"
+        },
+        {
+          "id": "alesc-240001614282",
+          "nome": "DELEGADO EGIDIO FERRARI",
+          "partido": "PTB",
+          "fotoUrl": "/fotos/deputados/240001614282.webp"
+        },
+        {
+          "id": "alesc-240001605925",
+          "nome": "DIRCE HEIDERSCHEIDT",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605925.webp"
+        },
+        {
+          "id": "alesc-240001614342",
+          "nome": "MASSOCCO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614342.webp"
+        },
+        {
+          "id": "alesc-240001605929",
+          "nome": "EMERSON STEIN",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605929.webp"
+        },
+        {
+          "id": "alesc-240001614334",
+          "nome": "SORATTO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614334.webp"
+        },
+        {
+          "id": "alesc-240001679627",
+          "nome": "FABIANO DA LUZ",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/240001679627.webp"
+        },
+        {
+          "id": "alesc-240001605919",
+          "nome": "FERNANDO KRELLING",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605919.webp"
+        },
+        {
+          "id": "alesc-240001614381",
+          "nome": "GERRI DA CONSOLI",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614381.webp"
+        },
+        {
+          "id": "alesc-240001614356",
+          "nome": "IVAN NAATZ",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614356.webp"
+        },
+        {
+          "id": "alesc-240001616203",
+          "nome": "JAIR MIOTTO",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/240001616203.webp"
+        },
+        {
+          "id": "alesc-240001644395",
+          "nome": "JANA GUEDES",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/240001644395.webp"
+        },
+        {
+          "id": "alesc-janice-krasniack",
+          "nome": "Janice Krasniack",
+          "partido": ""
+        },
+        {
+          "id": "alesc-240001614333",
+          "nome": "JEFERSON CARDOZO CANAL ATALAIA",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614333.webp"
+        },
+        {
+          "id": "alesc-240001605920",
+          "nome": "JERRY COMPER",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605920.webp"
+        },
+        {
+          "id": "alesc-240001614350",
+          "nome": "JESSÉ LOPES",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614350.webp"
+        },
+        {
+          "id": "alesc-240001644756",
+          "nome": "ZÉ MILTON",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/240001644756.webp"
+        },
+        {
+          "id": "alesc-240001614390",
+          "nome": "JULIO GARCIA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614390.webp"
+        },
+        {
+          "id": "alesc-240001614277",
+          "nome": "JUNIOR CARDOSO",
+          "partido": "PTB",
+          "fotoUrl": "/fotos/deputados/240001614277.webp"
+        },
+        {
+          "id": "alesc-240001610819",
           "nome": "LUCAS NEVES",
           "partido": "PODE",
           "fotoUrl": "/fotos/deputados/240001610819.webp"
+        },
+        {
+          "id": "alesc-240001679643",
+          "nome": "LUCIANE CARMINATTI",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/240001679643.webp"
+        },
+        {
+          "id": "alesc-240001614339",
+          "nome": "MARCIUS MACHADO",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614339.webp"
+        },
+        {
+          "id": "alesc-240001612502",
+          "nome": "MARCOS VIEIRA",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/240001612502.webp"
+        },
+        {
+          "id": "alesc-240001616186",
+          "nome": "MARCOS DA ROSA",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/240001616186.webp"
+        },
+        {
+          "id": "alesc-240001614375",
+          "nome": "MARIO MOTTA",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614375.webp"
+        },
+        {
+          "id": "alesc-240001610066",
+          "nome": "MARQUITO MARCOS JOSÉ ABREU",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/240001610066.webp"
+        },
+        {
+          "id": "alesc-240001597559",
+          "nome": "MATHEUS CADORIN",
+          "partido": "NOVO",
+          "fotoUrl": "/fotos/deputados/240001597559.webp"
+        },
+        {
+          "id": "alesc-240001614353",
+          "nome": "MAURÍCIO PEIXER",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614353.webp"
+        },
+        {
+          "id": "alesc-240001605913",
+          "nome": "MAURO DE NADAL",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605913.webp"
+        },
+        {
+          "id": "alesc-240001614331",
+          "nome": "MAURICIO ESKUDLARK",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614331.webp"
+        },
+        {
+          "id": "alesc-240001614384",
+          "nome": "NAPOLEÃO BERNARDES",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614384.webp"
+        },
+        {
+          "id": "alesc-240001679646",
+          "nome": "NEODI SARETTA",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/240001679646.webp"
+        },
+        {
+          "id": "alesc-240001614346",
+          "nome": "OSCAR GUTZ",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/240001614346.webp"
+        },
+        {
+          "id": "alesc-240001679648",
+          "nome": "PADRE PEDRO",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/240001679648.webp"
+        },
+        {
+          "id": "alesc-240001644778",
+          "nome": "PEDRÃO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/240001644778.webp"
+        },
+        {
+          "id": "alesc-240001644772",
+          "nome": "PEPÊ COLLAÇO",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/240001644772.webp"
+        },
+        {
+          "id": "alesc-prof-vanessa-da-rosa",
+          "nome": "Profª Vanessa da Rosa",
+          "partido": ""
+        },
+        {
+          "id": "alesc-240001610832",
+          "nome": "RODRIGO FACHINI",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/240001610832.webp"
+        },
+        {
+          "id": "alesc-240001644398",
+          "nome": "RODRIGO MINOTTO",
+          "partido": "PDT",
+          "fotoUrl": "/fotos/deputados/240001644398.webp"
+        },
+        {
+          "id": "alesc-240001679658",
+          "nome": "RODRIGO PREIS",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/240001679658.webp"
+        },
+        {
+          "id": "alesc-240001610226",
+          "nome": "SERGIO MOTTA",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/240001610226.webp"
+        },
+        {
+          "id": "alesc-240001614377",
+          "nome": "SILVIO ALEXANDRE ZANCANARO",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614377.webp"
+        },
+        {
+          "id": "alesc-240001616196",
+          "nome": "REPÓRTER SÉRGIO GUIMARÃES",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/240001616196.webp"
+        },
+        {
+          "id": "alesc-240001610826",
+          "nome": "THIAGO MORASTONI",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/240001610826.webp"
+        },
+        {
+          "id": "alesc-240001605911",
+          "nome": "TIAGO ZILLI",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605911.webp"
+        },
+        {
+          "id": "alesc-240001612510",
+          "nome": "DR. VICENTE",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/240001612510.webp"
+        },
+        {
+          "id": "alesc-240001605921",
+          "nome": "VOLNEI WEBER",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/240001605921.webp"
+        },
+        {
+          "id": "alesc-240001614366",
+          "nome": "ZÉ CARAMORI",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/240001614366.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 59853184.56000001
     },
     {
       "uf": "SP",
       "sigla": "ALESP",
       "nome": "Assembleia Legislativa de São Paulo",
       "slug": "sp",
-      "modelo": "leve",
+      "modelo": "completo",
       "subsidio": 34774.64,
       "assentos": 94,
       "nDeputados": 94,
       "pisoCusto": 3268816.16,
       "deputados": [
         {
-          "id": "ae-sp-250001611431",
-          "nome": "ROGÉRIO NOGUEIRA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611431.webp"
-        },
-        {
-          "id": "ae-sp-250001619311",
-          "nome": "MARINA HELOU",
-          "partido": "REDE",
-          "fotoUrl": "/fotos/deputados/250001619311.webp"
-        },
-        {
-          "id": "ae-sp-250001619328",
-          "nome": "PAULA DA BANCADA FEMINISTA",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/250001619328.webp"
-        },
-        {
-          "id": "ae-sp-250001619350",
-          "nome": "EDIANE MARIA",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/250001619350.webp"
-        },
-        {
-          "id": "ae-sp-250001619401",
-          "nome": "GUILHERME CORTEZ",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/250001619401.webp"
-        },
-        {
-          "id": "ae-sp-250001610528",
-          "nome": "CLARICE GANEM",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/250001610528.webp"
-        },
-        {
-          "id": "ae-sp-250001602142",
-          "nome": "MILTON LEITE FILHO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602142.webp"
-        },
-        {
-          "id": "ae-sp-250001639542",
-          "nome": "JORGE WILSON XERIFE CONSUMIDOR",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639542.webp"
-        },
-        {
-          "id": "ae-sp-250001612280",
-          "nome": "LETÍCIA AGUIAR",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/250001612280.webp"
-        },
-        {
-          "id": "ae-sp-250001611769",
-          "nome": "THAINARA FARIA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611769.webp"
-        },
-        {
-          "id": "ae-sp-250001611798",
-          "nome": "BETH SAHÃO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611798.webp"
-        },
-        {
-          "id": "ae-sp-250001611811",
-          "nome": "EMÍDIO DE SOUZA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611811.webp"
-        },
-        {
-          "id": "ae-sp-250001610113",
-          "nome": "DANI ALONSO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610113.webp"
-        },
-        {
-          "id": "ae-sp-250001610158",
-          "nome": "CARLOS CEZAR",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610158.webp"
-        },
-        {
-          "id": "ae-sp-250001609973",
-          "nome": "CARUSO",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/250001609973.webp"
-        },
-        {
-          "id": "ae-sp-250001610018",
-          "nome": "ITAMAR BORGES",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/250001610018.webp"
-        },
-        {
-          "id": "ae-sp-250001609993",
-          "nome": "ROGÉRIO SANTOS",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/250001609993.webp"
-        },
-        {
-          "id": "ae-sp-250001619320",
-          "nome": "CARLOS GIANNAZI",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/250001619320.webp"
-        },
-        {
-          "id": "ae-sp-250001610539",
-          "nome": "RICARDO FRANÇA",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/250001610539.webp"
-        },
-        {
-          "id": "ae-sp-250001639600",
-          "nome": "ALTAIR MORAES",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639600.webp"
-        },
-        {
-          "id": "ae-sp-250001605013",
-          "nome": "OSEIAS DE MADUREIRA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/250001605013.webp"
-        },
-        {
-          "id": "ae-sp-250001612298",
-          "nome": "DELEGADO OLIM",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/250001612298.webp"
-        },
-        {
-          "id": "ae-sp-250001605044",
-          "nome": "PAULO CORRÊA JR",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/250001605044.webp"
-        },
-        {
-          "id": "ae-sp-250001620599",
-          "nome": "DR VALDOMIRO LOPES",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/250001620599.webp"
-        },
-        {
-          "id": "ae-sp-250001611800",
-          "nome": "PROFESSORA BEBEL",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611800.webp"
-        },
-        {
-          "id": "ae-sp-250001610121",
-          "nome": "BRUNO ZAMBELLI",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610121.webp"
-        },
-        {
-          "id": "ae-sp-250001610193",
-          "nome": "MARCOS DAMASIO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610193.webp"
-        },
-        {
-          "id": "ae-sp-250001610134",
-          "nome": "THIAGO AURICCHIO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610134.webp"
-        },
-        {
-          "id": "ae-sp-250001610167",
-          "nome": "VALERIA BOLSONARO",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610167.webp"
-        },
-        {
-          "id": "ae-sp-250001611505",
-          "nome": "ANA CAROLINA SERRA",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/250001611505.webp"
-        },
-        {
-          "id": "ae-sp-250001611452",
-          "nome": "ANALICE FERNANDES",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611452.webp"
-        },
-        {
-          "id": "ae-sp-250001619379",
-          "nome": "MONICA DO MOVIMENTO PRETAS",
-          "partido": "PSOL",
-          "fotoUrl": "/fotos/deputados/250001619379.webp"
-        },
-        {
-          "id": "ae-sp-250001610496",
-          "nome": "DR EDUARDO NÓBREGA",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/250001610496.webp"
-        },
-        {
-          "id": "ae-sp-250001610498",
-          "nome": "GERSON PESSOA",
-          "partido": "PODE",
-          "fotoUrl": "/fotos/deputados/250001610498.webp"
-        },
-        {
-          "id": "ae-sp-250001602151",
-          "nome": "EDMIR CHEDID",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602151.webp"
-        },
-        {
-          "id": "ae-sp-250001602162",
-          "nome": "SOLANGE FREITAS",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602162.webp"
-        },
-        {
-          "id": "ae-sp-250001620642",
-          "nome": "PROF. CAMILA GODOI",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/250001620642.webp"
-        },
-        {
-          "id": "ae-sp-250001611773",
-          "nome": "DR. JORGE DO CARMO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611773.webp"
-        },
-        {
-          "id": "ae-sp-250001611490",
-          "nome": "MARIA LUCIA AMARY",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611490.webp"
-        },
-        {
-          "id": "ae-sp-250001643626",
-          "nome": "MARCIO NAKASHIMA",
-          "partido": "PDT",
-          "fotoUrl": "/fotos/deputados/250001643626.webp"
-        },
-        {
-          "id": "ae-sp-250001602101",
-          "nome": "RAFAEL SARAIVA",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602101.webp"
-        },
-        {
-          "id": "ae-sp-250001611775",
-          "nome": "MARCIA LIA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611775.webp"
-        },
-        {
-          "id": "ae-sp-250001611768",
-          "nome": "BARBA",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611768.webp"
-        },
-        {
-          "id": "ae-sp-250001611809",
-          "nome": "ANA PERUGINI",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611809.webp"
-        },
-        {
-          "id": "ae-sp-250001611455",
-          "nome": "VINICIUS CAMARINHA",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611455.webp"
-        },
-        {
-          "id": "ae-sp-250001643810",
-          "nome": "DR. ELTON",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/250001643810.webp"
-        },
-        {
-          "id": "ae-sp-250001602177",
-          "nome": "GUTO ZACARIAS",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602177.webp"
-        },
-        {
-          "id": "ae-sp-250001639572",
-          "nome": "RUI ALVES",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639572.webp"
-        },
-        {
-          "id": "ae-sp-250001639573",
-          "nome": "SEBASTIÃO SANTOS",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639573.webp"
-        },
-        {
-          "id": "ae-sp-250001639551",
-          "nome": "VITÃO DO CACHORRÃO",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639551.webp"
-        },
-        {
-          "id": "ae-sp-250001612252",
-          "nome": "CAPITÃO TELHADA",
-          "partido": "PP",
-          "fotoUrl": "/fotos/deputados/250001612252.webp"
-        },
-        {
-          "id": "ae-sp-250001605001",
-          "nome": "MARTA COSTA",
-          "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/250001605001.webp"
-        },
-        {
-          "id": "ae-sp-250001620622",
-          "nome": "ANDRÉA WERNER",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/250001620622.webp"
-        },
-        {
-          "id": "ae-sp-250001620641",
-          "nome": "CAIO FRANÇA",
-          "partido": "PSB",
-          "fotoUrl": "/fotos/deputados/250001620641.webp"
-        },
-        {
-          "id": "ae-sp-250001611759",
-          "nome": "PAULO FIORILO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611759.webp"
-        },
-        {
-          "id": "ae-sp-250001611791",
-          "nome": "DONATO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611791.webp"
-        },
-        {
-          "id": "ae-sp-250001610141",
-          "nome": "CAPITÃO CONTE LOPES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610141.webp"
-        },
-        {
-          "id": "ae-sp-250001610140",
-          "nome": "RODRIGO MORAES",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610140.webp"
-        },
-        {
-          "id": "ae-sp-250001610126",
-          "nome": "PAULO MANSUR",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610126.webp"
-        },
-        {
-          "id": "ae-sp-250001610109",
-          "nome": "GIL DINIZ",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610109.webp"
-        },
-        {
-          "id": "ae-sp-250001610117",
-          "nome": "AGENTE FEDERAL DANILO BALAS",
+          "id": "alesp-1139",
+          "nome": "Agente Federal Danilo Balas",
           "partido": "PL",
           "fotoUrl": "/fotos/deputados/250001610117.webp"
         },
         {
-          "id": "ae-sp-250001610136",
-          "nome": "TENENTE COIMBRA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610136.webp"
+          "id": "alesp-1140",
+          "nome": "Alex Madureira",
+          "partido": "PL"
         },
         {
-          "id": "ae-sp-250001610181",
-          "nome": "MAJOR MECCA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610181.webp"
-        },
-        {
-          "id": "ae-sp-250001610005",
-          "nome": "LEO OLIVEIRA",
-          "partido": "MDB",
-          "fotoUrl": "/fotos/deputados/250001610005.webp"
-        },
-        {
-          "id": "ae-sp-250001611460",
-          "nome": "RAFA ZIMBALDI",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/250001611460.webp"
-        },
-        {
-          "id": "ae-sp-250001602160",
-          "nome": "FELIPE FRANCO",
-          "partido": "UNIÃO",
-          "fotoUrl": "/fotos/deputados/250001602160.webp"
-        },
-        {
-          "id": "ae-sp-250001639574",
-          "nome": "EDNA MACEDO",
+          "id": "alesp-1178",
+          "nome": "Altair Moraes",
           "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639574.webp"
+          "fotoUrl": "/fotos/deputados/250001639600.webp"
         },
         {
-          "id": "ae-sp-250001639557",
-          "nome": "TOMÉ ABDUCH",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639557.webp"
+          "id": "alesp-1201",
+          "nome": "Ana Carolina Serra",
+          "partido": "PSDB",
+          "fotoUrl": "/fotos/deputados/250001611505.webp"
         },
         {
-          "id": "ae-sp-250001639568",
-          "nome": "GILMACI SANTOS",
-          "partido": "REPUBLICANOS",
-          "fotoUrl": "/fotos/deputados/250001639568.webp"
+          "id": "alesp-398",
+          "nome": "Ana Perugini",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611809.webp"
         },
         {
-          "id": "ae-sp-250001605053",
-          "nome": "RAFAEL SILVA",
+          "id": "alesp-363",
+          "nome": "Analice Fernandes",
           "partido": "PSD",
-          "fotoUrl": "/fotos/deputados/250001605053.webp"
+          "fotoUrl": "/fotos/deputados/250001611452.webp"
         },
         {
-          "id": "ae-sp-250001611805",
-          "nome": "RÔMULO FERNANDES",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611805.webp"
+          "id": "alesp-1237",
+          "nome": "André Bueno",
+          "partido": "MDB"
         },
         {
-          "id": "ae-sp-250001611797",
-          "nome": "EDUARDO SUPLICY",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611797.webp"
-        },
-        {
-          "id": "ae-sp-250001611732",
-          "nome": "LUIZ CLAUDIO MARCOLINO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611732.webp"
-        },
-        {
-          "id": "ae-sp-250001611799",
-          "nome": "ENIO TATTO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611799.webp"
-        },
-        {
-          "id": "ae-sp-250001610129",
-          "nome": "ALEX DE MADUREIRA",
+          "id": "alesp-429",
+          "nome": "André do Prado",
           "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610129.webp"
+          "fotoUrl": "/fotos/deputados/250001610161.webp"
         },
         {
-          "id": "ae-sp-250001610201",
-          "nome": "DELEGADA GRACIELA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610201.webp"
+          "id": "alesp-1202",
+          "nome": "Andréa Werner",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/250001620622.webp"
         },
         {
-          "id": "ae-sp-250001610130",
-          "nome": "FABIANA B.",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610130.webp"
-        },
-        {
-          "id": "ae-sp-250001610124",
-          "nome": "LUCAS BOVE",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610124.webp"
-        },
-        {
-          "id": "ae-sp-250001611488",
-          "nome": "CARLÃO PIGNATARI",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611488.webp"
-        },
-        {
-          "id": "ae-sp-250001611444",
-          "nome": "BRUNA FURLAN",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611444.webp"
-        },
-        {
-          "id": "ae-sp-250001611484",
-          "nome": "MAURO BRAGATO",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611484.webp"
-        },
-        {
-          "id": "ae-sp-250001611446",
-          "nome": "CARLA MORANDO",
-          "partido": "PSDB",
-          "fotoUrl": "/fotos/deputados/250001611446.webp"
-        },
-        {
-          "id": "ae-sp-250001611733",
-          "nome": "LUIZ FERNANDO",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611733.webp"
-        },
-        {
-          "id": "ae-sp-250001606292",
-          "nome": "ATILA JACOMUSSI",
-          "partido": "SOLIDARIEDADE",
+          "id": "alesp-494",
+          "nome": "Atila Jacomussi",
+          "partido": "PRD",
           "fotoUrl": "/fotos/deputados/250001606292.webp"
         },
         {
-          "id": "ae-sp-250001610138",
-          "nome": "RICARDO MADALENA",
-          "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610138.webp"
-        },
-        {
-          "id": "ae-sp-250001611434",
-          "nome": "BARROS MUNHOZ",
-          "partido": "PSDB",
+          "id": "alesp-124",
+          "nome": "Barros Munhoz",
+          "partido": "PSD",
           "fotoUrl": "/fotos/deputados/250001611434.webp"
         },
         {
-          "id": "ae-sp-250001611436",
-          "nome": "DALBEN",
-          "partido": "CIDADANIA",
-          "fotoUrl": "/fotos/deputados/250001611436.webp"
+          "id": "alesp-367",
+          "nome": "Beth Sahão",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611798.webp"
         },
         {
-          "id": "ae-sp-250001597775",
-          "nome": "LEO SIQUEIRA",
-          "partido": "NOVO",
-          "fotoUrl": "/fotos/deputados/250001597775.webp"
+          "id": "alesp-1203",
+          "nome": "Bruna Furlan",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001611444.webp"
         },
         {
-          "id": "ae-sp-250001643762",
-          "nome": "HELINHO ZANATTA",
-          "partido": "PSC",
-          "fotoUrl": "/fotos/deputados/250001643762.webp"
+          "id": "alesp-1204",
+          "nome": "Bruno Zambelli",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610121.webp"
         },
         {
-          "id": "ae-sp-250001602098",
-          "nome": "DANIEL SOARES",
+          "id": "alesp-492",
+          "nome": "Caio França",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/250001620641.webp"
+        },
+        {
+          "id": "alesp-1205",
+          "nome": "Capitão Telhada",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/250001612252.webp"
+        },
+        {
+          "id": "alesp-1173",
+          "nome": "Carla Morando",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001611446.webp"
+        },
+        {
+          "id": "alesp-417",
+          "nome": "Carlos Giannazi",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/250001619320.webp"
+        },
+        {
+          "id": "alesp-431",
+          "nome": "Carlão Pignatari",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001611488.webp"
+        },
+        {
+          "id": "alesp-1206",
+          "nome": "Clarice Ganem",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/250001610528.webp"
+        },
+        {
+          "id": "alesp-141",
+          "nome": "Conte Lopes",
+          "partido": "PL"
+        },
+        {
+          "id": "alesp-1207",
+          "nome": "Dani Alonso",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610113.webp"
+        },
+        {
+          "id": "alesp-1168",
+          "nome": "Daniel Soares",
           "partido": "UNIÃO",
           "fotoUrl": "/fotos/deputados/250001602098.webp"
         },
         {
-          "id": "ae-sp-250001611758",
-          "nome": "REIS",
-          "partido": "PT",
-          "fotoUrl": "/fotos/deputados/250001611758.webp"
+          "id": "alesp-1167",
+          "nome": "Delegada Graciela",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610201.webp"
         },
         {
-          "id": "ae-sp-250001611754",
-          "nome": "MAURICI",
+          "id": "alesp-493",
+          "nome": "Delegado Olim",
+          "partido": "PP",
+          "fotoUrl": "/fotos/deputados/250001612298.webp"
+        },
+        {
+          "id": "alesp-1183",
+          "nome": "Dirceu Dalben",
+          "partido": "PSD"
+        },
+        {
+          "id": "alesp-1208",
+          "nome": "Donato",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611791.webp"
+        },
+        {
+          "id": "alesp-1209",
+          "nome": "Dr. Eduardo Nóbrega",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/250001610496.webp"
+        },
+        {
+          "id": "alesp-1210",
+          "nome": "Dr. Elton",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001643810.webp"
+        },
+        {
+          "id": "alesp-1164",
+          "nome": "Dr. Jorge do Carmo",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611773.webp"
+        },
+        {
+          "id": "alesp-1179",
+          "nome": "Dra. Damaris Moura",
+          "partido": "PSDB"
+        },
+        {
+          "id": "alesp-1211",
+          "nome": "Ediane Maria",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/250001619350.webp"
+        },
+        {
+          "id": "alesp-254",
+          "nome": "Edna Macedo",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001639574.webp"
+        },
+        {
+          "id": "alesp-381",
+          "nome": "Edson Giriboni",
+          "partido": "UNIÃO"
+        },
+        {
+          "id": "alesp-1050",
+          "nome": "Eduardo Suplicy",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611797.webp"
+        },
+        {
+          "id": "alesp-327",
+          "nome": "Emídio de Souza",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611811.webp"
+        },
+        {
+          "id": "alesp-372",
+          "nome": "Enio Tatto",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611799.webp"
+        },
+        {
+          "id": "alesp-1213",
+          "nome": "Fabiana Bolsonaro",
+          "partido": "PL"
+        },
+        {
+          "id": "alesp-1214",
+          "nome": "Felipe Franco",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001602160.webp"
+        },
+        {
+          "id": "alesp-2041",
+          "nome": "Fábio Faria de Sá",
+          "partido": "PODE"
+        },
+        {
+          "id": "alesp-1161",
+          "nome": "Gil Diniz Bolsonaro",
+          "partido": "PL"
+        },
+        {
+          "id": "alesp-382",
+          "nome": "Gilmaci Santos",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001639568.webp"
+        },
+        {
+          "id": "alesp-1216",
+          "nome": "Guilherme Cortez",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/250001619401.webp"
+        },
+        {
+          "id": "alesp-1217",
+          "nome": "Guto Zacarias",
+          "partido": "MISSÃO",
+          "fotoUrl": "/fotos/deputados/250001602177.webp"
+        },
+        {
+          "id": "alesp-442",
+          "nome": "Itamar Borges",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/250001610018.webp"
+        },
+        {
+          "id": "alesp-299",
+          "nome": "Jorge Caruso",
+          "partido": "MDB"
+        },
+        {
+          "id": "alesp-484",
+          "nome": "Jorge Wilson Xerife do Consumidor",
+          "partido": "REPUBLICANOS"
+        },
+        {
+          "id": "alesp-445",
+          "nome": "Leci Brandão",
+          "partido": "PCdoB",
+          "fotoUrl": "/fotos/deputados/250001611813.webp"
+        },
+        {
+          "id": "alesp-1219",
+          "nome": "Leonardo Siqueira",
+          "partido": "NOVO"
+        },
+        {
+          "id": "alesp-1158",
+          "nome": "Letícia Aguiar",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001612280.webp"
+        },
+        {
+          "id": "alesp-1220",
+          "nome": "Lucas Bove",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610124.webp"
+        },
+        {
+          "id": "alesp-446",
+          "nome": "Luiz Claudio Marcolino",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611732.webp"
+        },
+        {
+          "id": "alesp-481",
+          "nome": "Luiz Fernando T. Ferreira",
+          "partido": "PT"
+        },
+        {
+          "id": "alesp-200",
+          "nome": "Léo Oliveira",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/250001610005.webp"
+        },
+        {
+          "id": "alesp-1157",
+          "nome": "Major Mecca",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610181.webp"
+        },
+        {
+          "id": "alesp-2042",
+          "nome": "Marcelo Aguiar",
+          "partido": "PL"
+        },
+        {
+          "id": "alesp-1155",
+          "nome": "Marcio Nakashima",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001643626.webp"
+        },
+        {
+          "id": "alesp-479",
+          "nome": "Marcos Damasio",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610193.webp"
+        },
+        {
+          "id": "alesp-347",
+          "nome": "Maria Lúcia Amary",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001611490.webp"
+        },
+        {
+          "id": "alesp-1154",
+          "nome": "Marina Helou",
+          "partido": "PSB",
+          "fotoUrl": "/fotos/deputados/250001619311.webp"
+        },
+        {
+          "id": "alesp-480",
+          "nome": "Marta Costa",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001605001.webp"
+        },
+        {
+          "id": "alesp-1187",
+          "nome": "Maurici",
           "partido": "PT",
           "fotoUrl": "/fotos/deputados/250001611754.webp"
         },
         {
-          "id": "ae-sp-250001611813",
-          "nome": "LECI BRANDÃO",
-          "partido": "PC do B",
-          "fotoUrl": "/fotos/deputados/250001611813.webp"
+          "id": "alesp-75",
+          "nome": "Mauro Bragato",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001611484.webp"
         },
         {
-          "id": "ae-sp-250001610161",
-          "nome": "ANDRÉ DO PRADO",
+          "id": "alesp-415",
+          "nome": "Milton Leite Filho",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001602142.webp"
+        },
+        {
+          "id": "alesp-1153",
+          "nome": "Monica Seixas do Movimento Pretas",
+          "partido": "PSOL"
+        },
+        {
+          "id": "alesp-477",
+          "nome": "Márcia Lia",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611775.webp"
+        },
+        {
+          "id": "alesp-1221",
+          "nome": "Oseias de Madureira",
           "partido": "PL",
-          "fotoUrl": "/fotos/deputados/250001610161.webp"
+          "fotoUrl": "/fotos/deputados/250001605013.webp"
+        },
+        {
+          "id": "alesp-1222",
+          "nome": "Paula da Bancada Feminista",
+          "partido": "PSOL",
+          "fotoUrl": "/fotos/deputados/250001619328.webp"
+        },
+        {
+          "id": "alesp-475",
+          "nome": "Paulo Correa Jr",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001605044.webp"
+        },
+        {
+          "id": "alesp-1152",
+          "nome": "Paulo Fiorilo",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611759.webp"
+        },
+        {
+          "id": "alesp-1223",
+          "nome": "Paulo Mansur",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610126.webp"
+        },
+        {
+          "id": "alesp-1150",
+          "nome": "Professora Bebel",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611800.webp"
+        },
+        {
+          "id": "alesp-2081",
+          "nome": "Profª Camila Godoi",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001620642.webp"
+        },
+        {
+          "id": "alesp-1149",
+          "nome": "Rafa Zimbaldi",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001611460.webp"
+        },
+        {
+          "id": "alesp-1224",
+          "nome": "Rafael Saraiva",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001602101.webp"
+        },
+        {
+          "id": "alesp-280",
+          "nome": "Rafael Silva",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001605053.webp"
+        },
+        {
+          "id": "alesp-1225",
+          "nome": "Reis",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611758.webp"
+        },
+        {
+          "id": "alesp-1226",
+          "nome": "Ricardo França",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/250001610539.webp"
+        },
+        {
+          "id": "alesp-474",
+          "nome": "Ricardo Madalena",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610138.webp"
+        },
+        {
+          "id": "alesp-451",
+          "nome": "Rodrigo Moraes",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610140.webp"
+        },
+        {
+          "id": "alesp-339",
+          "nome": "Rogério Nogueira",
+          "partido": "PSD",
+          "fotoUrl": "/fotos/deputados/250001611431.webp"
+        },
+        {
+          "id": "alesp-1227",
+          "nome": "Rogério Santos",
+          "partido": "MDB",
+          "fotoUrl": "/fotos/deputados/250001609993.webp"
+        },
+        {
+          "id": "alesp-1228",
+          "nome": "Rui Alves",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001639572.webp"
+        },
+        {
+          "id": "alesp-1229",
+          "nome": "Rômulo Fernandes",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611805.webp"
+        },
+        {
+          "id": "alesp-452",
+          "nome": "Sebastião Santos",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001639573.webp"
+        },
+        {
+          "id": "alesp-1230",
+          "nome": "Solange Freitas",
+          "partido": "UNIÃO",
+          "fotoUrl": "/fotos/deputados/250001602162.webp"
+        },
+        {
+          "id": "alesp-1144",
+          "nome": "Tenente Coimbra",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610136.webp"
+        },
+        {
+          "id": "alesp-472",
+          "nome": "Teonilio Barba",
+          "partido": "PT"
+        },
+        {
+          "id": "alesp-1231",
+          "nome": "Thainara Faria",
+          "partido": "PT",
+          "fotoUrl": "/fotos/deputados/250001611769.webp"
+        },
+        {
+          "id": "alesp-1142",
+          "nome": "Thiago Auricchio",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610134.webp"
+        },
+        {
+          "id": "alesp-1232",
+          "nome": "Tomé Abduch",
+          "partido": "REPUBLICANOS",
+          "fotoUrl": "/fotos/deputados/250001639557.webp"
+        },
+        {
+          "id": "alesp-328",
+          "nome": "Valdomiro Lopes",
+          "partido": "PSB"
+        },
+        {
+          "id": "alesp-1141",
+          "nome": "Valeria Bolsonaro",
+          "partido": "PL",
+          "fotoUrl": "/fotos/deputados/250001610167.webp"
+        },
+        {
+          "id": "alesp-1233",
+          "nome": "Vitão do Cachorrão",
+          "partido": "PODE",
+          "fotoUrl": "/fotos/deputados/250001639551.webp"
         }
-      ]
+      ],
+      "totalPeriodo": 108692841.57
     },
     {
       "uf": "SE",
@@ -6476,6 +6913,409 @@
           "fotoUrl": "/fotos/deputados/270001643541.webp"
         }
       ]
+    },
+    {
+      "uf": "PB",
+      "sigla": "ALPB",
+      "nome": "Assembleia Legislativa da Paraíba",
+      "slug": "pb",
+      "modelo": "completo",
+      "subsidio": null,
+      "assentos": 36,
+      "nDeputados": 67,
+      "pisoCusto": null,
+      "deputados": [
+        {
+          "id": "alpb-12731",
+          "nome": "Adriano Galdino",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/89/89_foto_parlamentar_Jq2avFH.jpg"
+        },
+        {
+          "id": "alpb-30541",
+          "nome": "Anderson Monteiro",
+          "partido": "PV",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/157/157_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-556",
+          "nome": "Anísio Maia",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-592",
+          "nome": "Branco Mendes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/66/66_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16714",
+          "nome": "Buba Germano",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-30551",
+          "nome": "Cabo Gilberto Silva",
+          "partido": "PL"
+        },
+        {
+          "id": "alpb-595",
+          "nome": "Caio Roberto",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/116/116_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16715",
+          "nome": "Camila Toscano",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/131/131_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30557",
+          "nome": "Chió",
+          "partido": "PV",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/164/164_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30555",
+          "nome": "Cida Ramos",
+          "partido": "PT",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/156/156_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-616",
+          "nome": "Doda de Tião",
+          "partido": "PTB"
+        },
+        {
+          "id": "alpb-30561",
+          "nome": "Drª Paula",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/166/166_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30545",
+          "nome": "Dr. Erico",
+          "partido": "CIDA"
+        },
+        {
+          "id": "alpb-627",
+          "nome": "Edmilson Soares",
+          "partido": "POD"
+        },
+        {
+          "id": "alpb-30543",
+          "nome": "Eduardo Carneiro",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/158/158_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16717",
+          "nome": "Estela Bezerra",
+          "partido": "PT"
+        },
+        {
+          "id": "alpb-30547",
+          "nome": "Felipe Leitão",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/160/160_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16711",
+          "nome": "Galego Souza",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/134/134_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-658",
+          "nome": "Hervázio Bezerra",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/117/117_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16718",
+          "nome": "Inácio Falcão",
+          "partido": "PCdoB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/141/141_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-34607",
+          "nome": "Drª Jane Panta",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/170/170_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16722",
+          "nome": "Jeová Campos",
+          "partido": "PT"
+        },
+        {
+          "id": "alpb-16723",
+          "nome": "Bosco Carneiro",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/52/52_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-665",
+          "nome": "João Gonçalves",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/59/59_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30549",
+          "nome": "Júnior Araújo",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/161/161_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-675",
+          "nome": "Jutay Meneses",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/122/122_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-12732",
+          "nome": "Manoel Ludgério",
+          "partido": "PSDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/55/55_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30559",
+          "nome": "Moacir Rodrigues",
+          "partido": "PL"
+        },
+        {
+          "id": "alpb-30566",
+          "nome": "Pollyanna Dutra",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-682",
+          "nome": "Raniery Paulino",
+          "partido": "REP"
+        },
+        {
+          "id": "alpb-16726",
+          "nome": "Ricardo Barbosa",
+          "partido": "PSB"
+        },
+        {
+          "id": "alpb-30563",
+          "nome": "Dr. Taciano Diniz",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/167/167_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-687",
+          "nome": "Tião Gomes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/35/35_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-16727",
+          "nome": "Tovar",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/140/140_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30565",
+          "nome": "Del Wallber Virgolino",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/168/168_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-30553",
+          "nome": "Wilson Filho",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/163/163_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47918",
+          "nome": "Chico Mendes",
+          "partido": "PSB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/175/175_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47919",
+          "nome": "Danielle do Vale",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/176/176_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47922",
+          "nome": "Eduardo Brito",
+          "partido": "PSB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/178/178_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47923",
+          "nome": "Fabio Ramalho",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/179/179_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47925",
+          "nome": "Francisca Motta",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/14/14_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47926",
+          "nome": "George Morais",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/180/180_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47928",
+          "nome": "Gilbertinho",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/181/181_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47933",
+          "nome": "Sargento Neto",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/184/184_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47929",
+          "nome": "João Paulo Segundo",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/182/182_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47931",
+          "nome": "Luciano Cartaxo",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/101/101_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47932",
+          "nome": "Michel Henrique",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/183/183_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47921",
+          "nome": "Dr. Romualdo",
+          "partido": "PCdoB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/177/177_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-47934",
+          "nome": "Tanilson Soares",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/185/185_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-49580",
+          "nome": "Silvia Benjamin",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/186/186_foto_parlamentar_DWibhHg.jpeg"
+        },
+        {
+          "id": "alpb-50116",
+          "nome": "Nilson Lacerda",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/187/187_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-50818",
+          "nome": "André Gadelha",
+          "partido": "MDB",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/91/91_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-51753",
+          "nome": "Alexandre de Zezé",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/190/190_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53388",
+          "nome": "Professor Francisco",
+          "partido": "REDE",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/195/195_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53289",
+          "nome": "Airton Pires",
+          "partido": "UNIAO",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/192/192_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53284",
+          "nome": "Juscelino do Peixe",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/194/194_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53389",
+          "nome": "Leonice Lopes",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/193/193_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-53473",
+          "nome": "Tarcisio Jardim",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/197/197_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55107",
+          "nome": "Lucinha Lima",
+          "partido": "PSD",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/198/198_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55108",
+          "nome": "Sargento Rui",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/200/200_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-55991",
+          "nome": "Dinho Papaleguas",
+          "partido": "PSDB"
+        },
+        {
+          "id": "alpb-56534",
+          "nome": "Aron Andrade",
+          "partido": "PP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/202/202_foto_parlamentar.jpg"
+        },
+        {
+          "id": "alpb-6056",
+          "nome": "Márcio Roberto",
+          "partido": "REP",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/76/foto_4.jpg"
+        },
+        {
+          "id": "alpb-59278",
+          "nome": "Cicinho Lima",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/203/foto.jpeg"
+        },
+        {
+          "id": "alpb-60239",
+          "nome": "Félix Araújo",
+          "partido": "REDE",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/204/foto_2.jpg"
+        },
+        {
+          "id": "alpb-63072",
+          "nome": "Dudu Soares",
+          "partido": "SD",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/205/205_foto_parlamentar_0D2KoFS.jpg"
+        },
+        {
+          "id": "alpb-67944",
+          "nome": "Dr. Aledson Moura",
+          "partido": "PL",
+          "fotoUrl": "http://sapl3.al.pb.leg.br/media/sapl/public/parlamentar/206/dr_aledson_moura.jpg"
+        }
+      ],
+      "totalPeriodo": 64675255.17000002
     }
   ]
 }

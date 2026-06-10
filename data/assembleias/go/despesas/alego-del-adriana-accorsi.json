@@ -1,0 +1,55 @@
+[
+  {
+    "id": "alego-del-adriana-accorsi-2023-01-1",
+    "politicoId": "alego-del-adriana-accorsi",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "MAGDA CARDOSO DE OLIVEIRA MARTINS",
+      "cnpjCpf": "40141349115"
+    },
+    "valor": 4500
+  },
+  {
+    "id": "alego-del-adriana-accorsi-2023-01-2",
+    "politicoId": "alego-del-adriana-accorsi",
+    "data": "2023-01-26",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO T - SETE",
+      "cnpjCpf": "01135714000170"
+    },
+    "valor": 7839.7,
+    "valorApresentado": 8499.7
+  },
+  {
+    "id": "alego-del-adriana-accorsi-2023-01-3",
+    "politicoId": "alego-del-adriana-accorsi",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "GONÇALVES E GOMES ADVOGADOS SS",
+      "cnpjCpf": "17909898000118"
+    },
+    "valor": 8500
+  },
+  {
+    "id": "alego-del-adriana-accorsi-2023-01-4",
+    "politicoId": "alego-del-adriana-accorsi",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "DMB MARKETING E MÍDIAS SOCIAIS",
+      "cnpjCpf": "38089684000112"
+    },
+    "valor": 4800
+  }
+]

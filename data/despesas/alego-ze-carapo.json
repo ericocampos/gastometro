@@ -1,0 +1,54 @@
+[
+  {
+    "id": "alego-ze-carapo-2023-01-1",
+    "politicoId": "alego-ze-carapo",
+    "data": "2023-01-20",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação ou fretamento",
+    "fornecedor": {
+      "nome": "TENAZ LOCADORA",
+      "cnpjCpf": "08876018000163"
+    },
+    "valor": 8890
+  },
+  {
+    "id": "alego-ze-carapo-2023-01-2",
+    "politicoId": "alego-ze-carapo",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Veículos",
+    "fornecedor": {
+      "nome": "POSTO TERRA",
+      "cnpjCpf": "09068583000167"
+    },
+    "valor": 940.66
+  },
+  {
+    "id": "alego-ze-carapo-2023-01-3",
+    "politicoId": "alego-ze-carapo",
+    "data": "2023-01-31",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Apoio técnico",
+    "fornecedor": {
+      "nome": "RIBEIRO FURTADO SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "30101725000137"
+    },
+    "valor": 8500
+  },
+  {
+    "id": "alego-ze-carapo-2023-01-4",
+    "politicoId": "alego-ze-carapo",
+    "data": "2023-01-30",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação de atividade parlamentar",
+    "fornecedor": {
+      "nome": "CONEX MIDIA",
+      "cnpjCpf": "10684153000159"
+    },
+    "valor": 7900
+  }
+]

@@ -37,6 +37,12 @@ const rotuloExercicios = (ex: { inicio: string; fim: string | null }[]) =>
 
 const pctAlinhamento = (a: number, b: number): string | null => (a + b === 0 ? null : `${Math.round((a / (a + b)) * 100)}%`)
 
+// fonte oficial do gabinete por casa, para a nota do quadro sem custo (nomes + headcount)
+const FONTE_GABINETE_SEMCUSTO: Record<string, { label: string; url: string }> = {
+  SC: { label: 'servidores da ALESC', url: 'https://transparencia.alesc.sc.gov.br/servidores' },
+  DF: { label: 'relação nominal de deputados e servidores da CLDF', url: 'https://dados.cl.df.gov.br/dataset/relacao-nominal-de-deputados-e-servidores' },
+}
+
 // Selo de validação cruzada da VIAP com o TCE-PB (empenhos de "Indenizações e Restituições", em
 // que o credor é o próprio vereador). 'conferido' = todo reembolso que mostramos consta como
 // empenho pago no TCE; 'divergente' mostra os dois totais (câmara × TCE) e o link da fonte.
@@ -120,6 +126,8 @@ export function PerfilView({
     atualizadoEm?: string
     mesReferencia?: string
     consultas?: ConsultaLotacao[]
+    estimada?: boolean
+    semCusto?: boolean
   }
   alertas: { quantidade: number; temAlta: boolean; temMedia: boolean }
   alertasPorDespesa: Record<string, MarcaAlerta>
@@ -398,6 +406,15 @@ export function PerfilView({
             </p>
           )}
 
+          {politico.casa === 'assembleia' && politico.uf === 'DF' && (
+            <p className="mb-8 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+              <strong className="text-tinta">Cobertura parcial da fonte.</strong>{' '}
+              O dado de 2023 está completo, mas o portal da CLDF publicou 2024 e 2025 de forma parcial
+              (bem menos lançamentos do que o esperado), então o total dos anos recentes pode estar
+              subestimado. Atualizamos automaticamente conforme a fonte oficial completar.
+            </p>
+          )}
+
           <section id="custo" className="mb-10 scroll-mt-[var(--header-h)]">
             {municipalSoDiaria ? (
               <>
@@ -415,18 +432,31 @@ export function PerfilView({
 
           <section id="gabinete" className="mb-10 scroll-mt-[var(--header-h)]">
             <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
-            <Assessores
-              quantidade={assessores.quantidade}
-              folha={assessores.folha}
-              secretarios={assessores.secretarios}
-              verbaGabinete={assessores.verbaGabinete}
-              consultaExataUrl={assessores.consultaExataUrl}
-              atualizadoEm={assessores.atualizadoEm}
-              mesReferencia={assessores.mesReferencia}
-              consultas={assessores.consultas}
-              gabinete={custoCasa.gabinete}
-              casa={politico.casa}
-            />
+            {politico.casa === 'assembleia' && politico.uf === 'MG' ? (
+              <div className="rounded-lg border border-borda bg-superficie p-4 text-sm leading-relaxed text-tinta-suave">
+                Gabinete não detalhado: a folha da ALMG é publicada só por matrícula, sem o nome do servidor
+                (Deliberação da Mesa 2.555/2013), então não dá para vincular os assessores e o custo do gabinete
+                a cada deputado.{' '}
+                <a href="https://www.almg.gov.br/transparencia/prestacao-de-contas/despesa-com-pessoal/folha-de-pagamento/" target="_blank" rel="noopener noreferrer" className="text-marca underline">folha da ALMG ↗</a>{' '}·{' '}
+                <a href="https://www.terra.com.br/noticias/brasil/politica/assembleia-de-mg-esconde-nomes-de-servidores-e-salarios-outras-9-tem-transparencia-apenas-parcial,f9b9d505da82d3c678655fb1152133ba804a3n6v.html" target="_blank" rel="noopener noreferrer" className="text-marca underline">reportagem ↗</a>
+              </div>
+            ) : (
+              <Assessores
+                quantidade={assessores.quantidade}
+                folha={assessores.folha}
+                secretarios={assessores.secretarios}
+                verbaGabinete={assessores.verbaGabinete}
+                consultaExataUrl={assessores.consultaExataUrl}
+                atualizadoEm={assessores.atualizadoEm}
+                mesReferencia={assessores.mesReferencia}
+                estimada={assessores.estimada}
+                semCusto={assessores.semCusto}
+                fonteGabinete={FONTE_GABINETE_SEMCUSTO[politico.uf]}
+                consultas={assessores.consultas}
+                gabinete={custoCasa.gabinete}
+                casa={politico.casa}
+              />
+            )}
           </section>
 
           {/* Emendas e votações são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}

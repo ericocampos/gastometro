@@ -1,0 +1,483 @@
+[
+  {
+    "id": "alece-60001635804-2023-01-1",
+    "politicoId": "alece-60001635804",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2889
+  },
+  {
+    "id": "alece-60001635804-2023-01-2",
+    "politicoId": "alece-60001635804",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 1926
+  },
+  {
+    "id": "alece-60001635804-2023-01-3",
+    "politicoId": "alece-60001635804",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "JOSE WILTON BEZERRA ME",
+      "cnpjCpf": "13284834000118"
+    },
+    "valor": 4100
+  },
+  {
+    "id": "alece-60001635804-2023-01-4",
+    "politicoId": "alece-60001635804",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5712
+  },
+  {
+    "id": "alece-60001635804-2023-01-5",
+    "politicoId": "alece-60001635804",
+    "data": "2023-01-01",
+    "ano": 2023,
+    "mes": 1,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "FENIX TRANSPORTES E SERVICOS EIRELI",
+      "cnpjCpf": "25390672000181"
+    },
+    "valor": 10535
+  },
+  {
+    "id": "alece-60001635804-2023-02-6",
+    "politicoId": "alece-60001635804",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "MARIA L P XIMENES-ME",
+      "cnpjCpf": "26194601000176"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-60001635804-2023-02-7",
+    "politicoId": "alece-60001635804",
+    "data": "2023-02-01",
+    "ano": 2023,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 11000
+  },
+  {
+    "id": "alece-60001635804-2023-11-8",
+    "politicoId": "alece-60001635804",
+    "data": "2023-11-01",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "FENIX TRANSPORTES E SERVICOS EIRELI",
+      "cnpjCpf": "25390672000181"
+    },
+    "valor": 5642
+  },
+  {
+    "id": "alece-60001635804-2023-11-9",
+    "politicoId": "alece-60001635804",
+    "data": "2023-11-01",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Locação de veículo",
+    "fornecedor": {
+      "nome": "FENIX TRANSPORTES E SERVICOS EIRELI",
+      "cnpjCpf": "25390672000181"
+    },
+    "valor": -5642
+  },
+  {
+    "id": "alece-60001635804-2023-11-10",
+    "politicoId": "alece-60001635804",
+    "data": "2023-11-01",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Telefonia",
+    "fornecedor": {
+      "nome": "TELEFONICA BRASIL S.A.",
+      "cnpjCpf": "02558157000162"
+    },
+    "valor": 175.9
+  },
+  {
+    "id": "alece-60001635804-2023-11-11",
+    "politicoId": "alece-60001635804",
+    "data": "2023-11-01",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Saúde",
+    "fornecedor": {
+      "nome": "UNIMED DO CEARA FED. DAS COOPER. DE TRABALHO MEDICO DO ESTADO DO CEARA LTDA",
+      "cnpjCpf": "10395358000114"
+    },
+    "valor": 714.31
+  },
+  {
+    "id": "alece-60001635804-2023-11-12",
+    "politicoId": "alece-60001635804",
+    "data": "2023-11-01",
+    "ano": 2023,
+    "mes": 11,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5712
+  },
+  {
+    "id": "alece-60001635804-2023-12-13",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "MARIA L P XIMENES-ME",
+      "cnpjCpf": "26194601000176"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-60001635804-2023-12-14",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2023-12-15",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2023-12-16",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5712
+  },
+  {
+    "id": "alece-60001635804-2023-12-17",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 15000
+  },
+  {
+    "id": "alece-60001635804-2023-12-18",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 15000
+  },
+  {
+    "id": "alece-60001635804-2023-12-19",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MOREIRA CAMPOS SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+      "cnpjCpf": "41404027000127"
+    },
+    "valor": 11400
+  },
+  {
+    "id": "alece-60001635804-2023-12-20",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2023-12-21",
+    "politicoId": "alece-60001635804",
+    "data": "2023-12-01",
+    "ano": 2023,
+    "mes": 12,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2024-01-22",
+    "politicoId": "alece-60001635804",
+    "data": "2024-01-01",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2024-01-23",
+    "politicoId": "alece-60001635804",
+    "data": "2024-01-01",
+    "ano": 2024,
+    "mes": 1,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2024-02-24",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5703.31
+  },
+  {
+    "id": "alece-60001635804-2024-02-25",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2024-02-26",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Alimentação e refeição",
+    "fornecedor": {
+      "nome": "TICKET SERVIÇOS S/A",
+      "cnpjCpf": "47866934000174"
+    },
+    "valor": 2407.5
+  },
+  {
+    "id": "alece-60001635804-2024-02-27",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Gerenciamento e administração",
+    "fornecedor": {
+      "nome": "TICKET SOLUCOES HDFGT S/A",
+      "cnpjCpf": "03506307000157"
+    },
+    "valor": 5712
+  },
+  {
+    "id": "alece-60001635804-2024-02-28",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "AUDIC CAVALCANTE MOTA DIAS",
+      "cnpjCpf": "90564448320"
+    },
+    "valor": 715.59
+  },
+  {
+    "id": "alece-60001635804-2024-02-29",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "AUDIC CAVALCANTE MOTA DIAS",
+      "cnpjCpf": "90564448320"
+    },
+    "valor": 131.87
+  },
+  {
+    "id": "alece-60001635804-2024-02-30",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "AUDIC CAVALCANTE MOTA DIAS",
+      "cnpjCpf": "90564448320"
+    },
+    "valor": 714.31
+  },
+  {
+    "id": "alece-60001635804-2024-02-31",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Divulgação",
+    "fornecedor": {
+      "nome": "MARIA L P XIMENES-ME",
+      "cnpjCpf": "26194601000176"
+    },
+    "valor": 8000
+  },
+  {
+    "id": "alece-60001635804-2024-02-32",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "MARCELO CASTRO ADVOCACIA-ADVOGADOS ASSOCIADOS",
+      "cnpjCpf": "10648267000143"
+    },
+    "valor": 15000
+  },
+  {
+    "id": "alece-60001635804-2024-02-33",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 8250
+  },
+  {
+    "id": "alece-60001635804-2024-02-34",
+    "politicoId": "alece-60001635804",
+    "data": "2024-02-01",
+    "ano": 2024,
+    "mes": 2,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 13000
+  },
+  {
+    "id": "alece-60001635804-2024-03-35",
+    "politicoId": "alece-60001635804",
+    "data": "2024-03-01",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "Consultoria e assessoria",
+    "fornecedor": {
+      "nome": "GESTPLAN - GESTÃO E PLANEJAMENTO TRIBUTARIO LTDA",
+      "cnpjCpf": "22812777000193"
+    },
+    "valor": 11000
+  },
+  {
+    "id": "alece-60001635804-2024-03-36",
+    "politicoId": "alece-60001635804",
+    "data": "2024-03-01",
+    "ano": 2024,
+    "mes": 3,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "JULIANA DE JESUS CANDEA - ME",
+      "cnpjCpf": "20078133000198"
+    },
+    "valor": 4000
+  },
+  {
+    "id": "alece-60001635804-2024-04-37",
+    "politicoId": "alece-60001635804",
+    "data": "2024-04-01",
+    "ano": 2024,
+    "mes": 4,
+    "categoria": "Outros",
+    "fornecedor": {
+      "nome": "AUDIC CAVALCANTE MOTA DIAS",
+      "cnpjCpf": "90564448320"
+    },
+    "valor": 4124.86
+  }
+]
