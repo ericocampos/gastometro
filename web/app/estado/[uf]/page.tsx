@@ -51,6 +51,19 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
         <p className="mt-3 text-sm text-tinta-suave">
           Federais (Câmara e Senado) e estaduais (Assembleia) de {nome}. Cota mensal da Câmara federal (CEAP): {ceap !== null ? brl(ceap) : 'consultar fonte oficial'}.
         </p>
+        {casaAssembleia && (
+          <p className="mt-3">
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                casaAssembleia.modelo === 'completo' ? 'bg-marca/10 text-marca' : 'border border-borda text-tinta-suave'
+              }`}
+            >
+              {casaAssembleia.modelo === 'completo'
+                ? `${casaAssembleia.sigla}: dados completos · gasto itemizado por deputado`
+                : `${casaAssembleia.sigla}: cobertura parcial · cadastro e subsídio`}
+            </span>
+          </p>
+        )}
       </section>
 
       <section className="mb-12">
