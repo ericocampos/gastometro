@@ -133,11 +133,12 @@ export function montarPatrimonio(parlamentares: ParlamentarLite[], indices: Elei
     for (const b of buscas) {
       let sq: string | undefined
       if (p.casa === 'camara' && p.cpf) sq = b.porCpf.get(CPF(p.cpf))
-      if (!sq) {
-        // fallback (e caminho padrão do senado): nome+UF único entre senadores
+      // match por nome+UF é EXCLUSIVO de senadores (o índice porNomeSenador só tem senadores):
+      // um deputado sem CPF não pode cair aqui, senão herdaria os bens de um senador homônimo.
+      if (!sq && p.casa === 'senado') {
         const chave = `${(p.uf ?? '').toUpperCase()}|${normalizarNome(p.nome)}`
         const cand = b.porNomeSenador.get(chave)
-        if (cand && cand.length === 1) { sq = cand[0]; matchPor = 'nome' }
+        if (cand && cand.length === 1) sq = cand[0]   // único => conservador; ambíguo pula
       }
       if (!sq) continue
       const bens = b.bens.get(sq) ?? { total: 0, porCategoria: {} }

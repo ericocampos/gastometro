@@ -392,7 +392,7 @@ export function PerfilView({
               <CardEixoPerfil
                 href="#patrimonio"
                 rotulo="Patrimônio declarado"
-                valor={brl(declRecente!.total)}
+                valor={declRecente!.total > 0 ? brl(declRecente!.total) : 'Nada declarado'}
                 sub={varPatr
                   ? `${varPatr.absoluto >= 0 ? '+' : ''}${brl(varPatr.absoluto)}${varPatr.percentual != null ? ` (${varPatr.percentual >= 0 ? '+' : ''}${Math.round(varPatr.percentual)}%)` : ''} desde ${varPatr.deAno}`
                   : `declarado em ${declRecente!.ano}`}
@@ -516,7 +516,7 @@ export function PerfilView({
                 <section id="patrimonio" className="mb-10 scroll-mt-[var(--header-h)]">
                   <SecaoTitulo>Patrimônio declarado</SecaoTitulo>
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                    <Estatistica rotulo={`Patrimônio (${declRecente!.ano})`} valor={brl(declRecente!.total)} destaque />
+                    <Estatistica rotulo={`Patrimônio (${declRecente!.ano})`} valor={declRecente!.total > 0 ? brl(declRecente!.total) : 'Nada declarado'} destaque />
                     {varPatr && <Estatistica rotulo={`Em ${varPatr.deAno}`} valor={brl(varPatr.deTotal)} />}
                     {varPatr && (
                       <Estatistica
@@ -534,6 +534,7 @@ export function PerfilView({
                   <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
                     Valores autodeclarados ao TSE na candidatura, nominais (sem correção de inflação). A variação
                     pode ter explicação legítima (poupança, herança, valorização). A gente mostra o dado; quem lê avalia.
+                    {declRecente!.total === 0 && ' A declaração mais recente não informa bens (pode ser que o parlamentar não tenha declarado patrimônio naquela candidatura).'}
                     {patrimonio!.matchPor === 'nome' && ' Senador casado por nome e UF na base do TSE.'}
                   </p>
                 </section>

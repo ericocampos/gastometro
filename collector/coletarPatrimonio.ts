@@ -33,7 +33,7 @@ async function csvUf(dataset: 'consulta_cand' | 'bem_candidato', ano: number, uf
   const csvPath = resolve(rawDir, csvNome)
   if (!existsSync(csvPath)) {
     try { execFileSync('unzip', ['-o', '-j', zipPath, csvNome, '-d', rawDir], { stdio: 'ignore' }) }
-    catch { return '' }
+    catch { console.warn(`  ! ${csvNome} não extraído (UF sem arquivo ou zip corrompido) — pulando`); return '' }
   }
   return existsSync(csvPath) ? readFileSync(csvPath, 'latin1') : ''
 }
