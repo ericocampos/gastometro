@@ -307,6 +307,43 @@ export interface Votacoes {
 export interface ItemComoVotou { id: string; votacao: VotacaoMerito; voto: VotoPolitico }
 export interface ComoVotouDados { resumo: ResumoVotacoesPolitico; itens: ItemComoVotou[] }
 
+export interface PontoPresenca {
+  anoMes: string
+  presencas: number
+  justificadas: number
+  naoJustificadas: number
+  faltas: number
+  totais: number
+}
+export interface PresencaPolitico {
+  casa: 'camara' | 'senado'
+  presencas: number
+  faltas: number
+  faltasJustificadas: number | null
+  faltasNaoJustificadas: number | null
+  sessoesTotais: number
+  serieMensal: PontoPresenca[]
+}
+export interface Presencas {
+  fonte: string
+  atualizadoEm: string
+  anoInicial: number
+  meta: { inicio: string; fim: string; casas: Record<string, { sessoes: number }> }
+  porPolitico: Record<string, PresencaPolitico>
+}
+// linha pronta pro ranking de presença (presença + dados de exibição do político)
+export interface SeriePresenca {
+  politicoId: string
+  nome: string
+  partido: string
+  uf: string
+  casa: 'camara' | 'senado'
+  fotoUrl?: string
+  legislaturas: number[]
+  serieMensal: PontoPresenca[]
+  faltasComMotivo: boolean        // true só p/ Senado (tem justificada/não)
+}
+
 export interface DeputadoLeve { id: string; nome: string; partido: string; fotoUrl?: string }
 export interface ResumoAssembleia {
   uf: string

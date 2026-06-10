@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePresenca, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 import { exerceu } from './denominador'
 import { partidoCanonico } from './partidos'
@@ -162,6 +162,40 @@ export function getVotacoes(): Votacoes | null {
   const lido = existsSync(caminho) ? lerJson<Votacoes>(caminho) : null
   if (process.env.NODE_ENV === 'production') cacheVotacoes = lido
   return lido
+}
+
+// presenca.json é grande (lido no build): cacheia uma vez em produção, igual a votacoes.json
+let cachePresencas: Presencas | null | undefined
+export function getPresencas(): Presencas | null {
+  if (process.env.NODE_ENV === 'production' && cachePresencas !== undefined) return cachePresencas
+  const caminho = resolve(dataDir(), 'presenca.json')
+  const lido = existsSync(caminho) ? lerJson<Presencas>(caminho) : null
+  if (process.env.NODE_ENV === 'production') cachePresencas = lido
+  return lido
+}
+
+// junta a presença por político com os dados de exibição (nome/partido/uf/foto) do agregado
+export function getPresencaParlamentares(): SeriePresenca[] {
+  const pres = getPresencas()
+  if (!pres) return []
+  const { porPolitico } = agregados()
+  const out: SeriePresenca[] = []
+  for (const [id, p] of Object.entries(pres.porPolitico)) {
+    const reg = porPolitico[id]
+    if (!reg) continue        // só quem está no agregado (tem dados de exibição)
+    out.push({
+      politicoId: id,
+      nome: reg.politico.nome,
+      partido: partidoCanonico(reg.politico.partido),
+      uf: reg.politico.uf,
+      casa: p.casa,
+      fotoUrl: reg.politico.fotoUrl,
+      legislaturas: reg.politico.legislaturas,
+      serieMensal: p.serieMensal,
+      faltasComMotivo: p.casa === 'senado',
+    })
+  }
+  return out
 }
 
 export function getMunicipios(): MunicipiosIndice {

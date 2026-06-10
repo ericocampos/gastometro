@@ -2,7 +2,8 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados, PresencaPolitico } from '@/lib/tipos'
+import { resumoPresencaNoPeriodo, custoPorPresenca, type ResumoPresenca } from '@/lib/presenca'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
@@ -108,7 +109,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, presenca = null, salario = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -135,6 +136,8 @@ export function PerfilView({
   emendas?: EmendasPolitico | null
   comoVotou?: ComoVotouDados | null
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
+  presenca?: PresencaPolitico | null
+  salario?: number | null
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -202,6 +205,11 @@ export function PerfilView({
   const temEmendas = !!emendas && emendas.empenhado > 0
   const temVotacoes = !!comoVotou && comoVotou.itens.length > 0
   const temProposicoes = !!perfil && perfil.proposicoes.length > 0
+
+  const resPres = presenca ? resumoPresencaNoPeriodo(presenca.serieMensal, { tipo: 'tudo' }) : null
+  const taxaPres = resPres?.taxa == null ? null : Math.round(resPres.taxa * 100)
+  const custoPres = presenca && salario ? custoPorPresenca({ presencas: resPres!.presencas, mesesComSessao: resPres!.mesesComSessao }, salario) : null
+  const temPresenca = !!presenca && (resPres?.totais ?? 0) > 0
 
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
@@ -362,6 +370,18 @@ export function PerfilView({
                 sub={temVotacoes ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel ao partido` : 'de mérito no período'}
               />
             )}
+            {temPresenca && (
+              <CardEixoPerfil
+                href="#presenca"
+                rotulo="Presença"
+                valor={taxaPres == null ? '—' : `${taxaPres}%`}
+                sub={
+                  presenca!.faltasJustificadas !== null
+                    ? `${presenca!.faltasNaoJustificadas} falta(s) não justificada(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
+                    : `${resPres!.faltas} falta(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
+                }
+              />
+            )}
             {temGabinete && (
               <CardEixoPerfil
                 href="#gabinete"
@@ -459,7 +479,7 @@ export function PerfilView({
             )}
           </section>
 
-          {/* Emendas e votações são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}
+          {/* Emendas, votações e presença são federais; não renderiza para estadual/municipal (não é "sem dados", não se aplica) */}
           {federal && (
             <>
               <section id="emendas" className="mb-10 scroll-mt-[var(--header-h)]">
@@ -470,6 +490,12 @@ export function PerfilView({
                 <SecaoTitulo>Como votou</SecaoTitulo>
                 <ComoVotou dados={comoVotou ?? null} />
               </section>
+              {temPresenca && (
+                <section id="presenca" className="mb-10 scroll-mt-[var(--header-h)]">
+                  <SecaoTitulo>Presença</SecaoTitulo>
+                  <PresencaDetalhe presenca={presenca!} resPres={resPres!} taxaPres={taxaPres} custoPres={custoPres} politicoId={politico.id} />
+                </section>
+              )}
             </>
           )}
 
@@ -609,6 +635,95 @@ function Moradia({ moradia, casa }: { moradia: NonNullable<Politico['moradia']>;
         {detalhe}{' '}
         <a href={fonteUrl} target="_blank" rel="noopener noreferrer" className="text-marca underline">fonte ↗</a>
       </p>
+    </div>
+  )
+}
+
+// Seção de detalhe de presença: totais do mandato, distribuição presenças/faltas, custo/presença.
+// Usado somente em parlamentares federais (camara/senado); para outros passa null e não renderiza.
+function PresencaDetalhe({
+  presenca, resPres, taxaPres, custoPres, politicoId,
+}: {
+  presenca: PresencaPolitico
+  resPres: ResumoPresenca
+  taxaPres: number | null
+  custoPres: number | null
+  politicoId: string
+}) {
+  const senado = presenca.casa === 'senado'
+  return (
+    <div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <Estatistica
+          rotulo="Sessões no período"
+          valor={String(resPres.totais)}
+        />
+        <Estatistica
+          rotulo="Presenças"
+          valor={String(resPres.presencas)}
+          destaque
+        />
+        {senado ? (
+          <>
+            <Estatistica
+              rotulo="Faltas não justificadas"
+              valor={String(resPres.naoJustificadas)}
+            />
+            <Estatistica
+              rotulo="Faltas justificadas"
+              valor={String(resPres.justificadas)}
+            />
+          </>
+        ) : (
+          <Estatistica
+            rotulo="Faltas"
+            valor={String(resPres.faltas)}
+          />
+        )}
+        {taxaPres != null && (
+          <Estatistica
+            rotulo="Taxa de presença"
+            valor={`${taxaPres}%`}
+          />
+        )}
+      </div>
+      <div className="mt-3 rounded-lg border border-borda bg-superficie p-3">
+        <div className="flex items-baseline justify-between gap-3">
+          <span className="text-xs font-semibold uppercase tracking-wider text-tinta-suave">Custo por presença</span>
+          <span className="font-display text-base font-semibold tabular-nums text-tinta">
+            {custoPres == null ? 'não compareceu' : `${brl(custoPres)} por presença`}
+          </span>
+        </div>
+        <p className="mt-1 text-xs leading-relaxed text-tinta-tenue">
+          Calculado como subsídio mensal × meses com sessão, dividido pelo número de presenças registradas.
+          Usa só o subsídio (salário base); não inclui verba indenizatória, gabinete nem auxílios.
+        </p>
+      </div>
+      {senado ? (
+        <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
+          Metodologia (Senado): comparecimento às votações nominais das sessões deliberativas. A
+          classificação das ausências (licença, missão, atividade parlamentar) é o motivo informado
+          pelo próprio Senado, não uma verificação nossa. O documento que comprova cada ausência (o
+          ato ou o atestado) consta no Diário do Senado; as licenças formais do senador (datas e tipo)
+          estão na{' '}
+          <a
+            href={`https://www25.senado.leg.br/web/senadores/senador/-/perfil/${politicoId.replace('senado-', '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-marca underline-offset-2 hover:underline"
+          >
+            ficha oficial do senador
+          </a>
+          .
+        </p>
+      ) : (
+        <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
+          Metodologia (Câmara): comparecimento às sessões deliberativas. O dado aberto da Câmara não
+          informa o motivo da ausência, então as faltas não distinguem justificadas de não
+          justificadas. O denominador considera só as sessões em que o deputado estava em exercício
+          (períodos de licença não são cobrados; o suplente que assumiu entra no lugar).
+        </p>
+      )}
     </div>
   )
 }
