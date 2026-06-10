@@ -57,18 +57,21 @@ function pontoVazio(anoMes: string): PontoPresenca {
   return { anoMes, presencas: 0, justificadas: 0, naoJustificadas: 0, faltas: 0, totais: 0 }
 }
 
+function politicoVazio(casa: Casa): PresencaPolitico {
+  return {
+    casa, presencas: 0, faltas: 0,
+    faltasJustificadas: casa === 'senado' ? 0 : null,
+    faltasNaoJustificadas: casa === 'senado' ? 0 : null,
+    sessoesTotais: 0, serieMensal: [],
+  }
+}
+
 export function agregarPresenca(registros: RegistroPresenca[], idsValidos: Set<string>): Presencas {
   const porPolitico: Record<string, PresencaPolitico> = {}
-  const sessoesPorCasa: Record<string, number> = {}
 
   for (const r of registros) {
     if (!idsValidos.has(r.politicoId)) continue
-    const p = (porPolitico[r.politicoId] ??= {
-      casa: r.casa, presencas: 0, faltas: 0,
-      faltasJustificadas: r.casa === 'senado' ? 0 : null,
-      faltasNaoJustificadas: r.casa === 'senado' ? 0 : null,
-      sessoesTotais: 0, serieMensal: [],
-    })
+    const p = (porPolitico[r.politicoId] ??= politicoVazio(r.casa))
     let ponto = p.serieMensal.find((x) => x.anoMes === r.anoMes)
     if (!ponto) { ponto = pontoVazio(r.anoMes); p.serieMensal.push(ponto) }
 
@@ -87,7 +90,9 @@ export function agregarPresenca(registros: RegistroPresenca[], idsValidos: Set<s
     fonte: 'Câmara dos Deputados e Senado Federal — dados abertos (presença em sessões deliberativas)',
     atualizadoEm: new Date().toISOString().slice(0, 10),
     anoInicial: 2023,
-    meta: { inicio: '', fim: '', casas: Object.fromEntries(Object.entries(sessoesPorCasa).map(([k, v]) => [k, { sessoes: v }])) },
+    // meta.inicio/fim/casas são preenchidos pelo orquestrador (coletarPresenca) após esta agregação:
+    // ele injeta out.meta.casas = { camara: { sessoes: N }, senado: { sessoes: M } }.
+    meta: { inicio: '', fim: '', casas: {} },
     porPolitico,
   }
 }

@@ -54,8 +54,20 @@ describe('agregarPresenca', () => {
     expect(sen.serieMensal.find((p) => p.anoMes === '2025-04')).toEqual({ anoMes: '2025-04', presencas: 0, justificadas: 1, naoJustificadas: 1, faltas: 2, totais: 2 })
   })
 
-  it('meta traz contagem de sessões por casa', () => {
+  it('meta.casas começa vazio (preenchido pelo orquestrador)', () => {
     const out = agregarPresenca(registros, idsValidos)
-    expect(out.meta.casas).toBeDefined()
+    expect(out.meta.casas).toEqual({})
+  })
+
+  it('falta sem motivo no Senado conta como falta, sem entrar nos subtotais', () => {
+    const out = agregarPresenca(
+      [{ politicoId: 'senado-9', casa: 'senado', anoMes: '2025-06', marca: 'falta' }],
+      new Set(['senado-9']),
+    )
+    const sen = out.porPolitico['senado-9']
+    expect(sen.faltas).toBe(1)
+    expect(sen.faltasJustificadas).toBe(0)
+    expect(sen.faltasNaoJustificadas).toBe(0)
+    expect(sen.serieMensal[0]).toEqual({ anoMes: '2025-06', presencas: 0, justificadas: 0, naoJustificadas: 0, faltas: 1, totais: 1 })
   })
 })
