@@ -2,8 +2,9 @@
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados, PresencaPolitico } from '@/lib/tipos'
+import type { Casa, Despesa, Politico, PerfilParlamentar, CustosMandato, CustoCasa, ItemCusto, CustoMunicipio, MarcaAlerta, SecretarioGabinete, ConsultaLotacao, ConferenciaTce, EmendasPolitico, ComoVotouDados, PresencaPolitico, PatrimonioPolitico } from '@/lib/tipos'
 import { resumoPresencaNoPeriodo, custoPorPresenca, type ResumoPresenca } from '@/lib/presenca'
+import { variacao, declaracaoMaisRecente } from '@/lib/patrimonio'
 import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
@@ -109,7 +110,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, presenca = null, salario = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, presenca = null, salario = null, patrimonio = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -138,6 +139,7 @@ export function PerfilView({
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
   presenca?: PresencaPolitico | null
   salario?: number | null
+  patrimonio?: PatrimonioPolitico | null
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -210,6 +212,10 @@ export function PerfilView({
   const taxaPres = resPres?.taxa == null ? null : Math.round(resPres.taxa * 100)
   const custoPres = presenca && salario ? custoPorPresenca({ presencas: resPres!.presencas, mesesComSessao: resPres!.mesesComSessao }, salario) : null
   const temPresenca = !!presenca && (resPres?.totais ?? 0) > 0
+
+  const declRecente = patrimonio ? declaracaoMaisRecente(patrimonio.declaracoes) : null
+  const varPatr = patrimonio ? variacao(patrimonio.declaracoes) : null
+  const temPatrimonio = !!declRecente
 
   const semNada = despesas.length === 0
   const semNoPeriodo = !semNada && ag.total === 0
@@ -382,6 +388,16 @@ export function PerfilView({
                 }
               />
             )}
+            {temPatrimonio && (
+              <CardEixoPerfil
+                href="#patrimonio"
+                rotulo="Patrimônio declarado"
+                valor={brl(declRecente!.total)}
+                sub={varPatr
+                  ? `${varPatr.absoluto >= 0 ? '+' : ''}${brl(varPatr.absoluto)}${varPatr.percentual != null ? ` (${varPatr.percentual >= 0 ? '+' : ''}${Math.round(varPatr.percentual)}%)` : ''} desde ${varPatr.deAno}`
+                  : `declarado em ${declRecente!.ano}`}
+              />
+            )}
             {temGabinete && (
               <CardEixoPerfil
                 href="#gabinete"
@@ -494,6 +510,32 @@ export function PerfilView({
                 <section id="presenca" className="mb-10 scroll-mt-[var(--header-h)]">
                   <SecaoTitulo>Presença</SecaoTitulo>
                   <PresencaDetalhe presenca={presenca!} resPres={resPres!} taxaPres={taxaPres} custoPres={custoPres} politicoId={politico.id} />
+                </section>
+              )}
+              {temPatrimonio && (
+                <section id="patrimonio" className="mb-10 scroll-mt-[var(--header-h)]">
+                  <SecaoTitulo>Patrimônio declarado</SecaoTitulo>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    <Estatistica rotulo={`Patrimônio (${declRecente!.ano})`} valor={brl(declRecente!.total)} destaque />
+                    {varPatr && <Estatistica rotulo={`Em ${varPatr.deAno}`} valor={brl(varPatr.deTotal)} />}
+                    {varPatr && (
+                      <Estatistica
+                        rotulo={`Variação ${varPatr.deAno}→${varPatr.paraAno}`}
+                        valor={`${varPatr.absoluto >= 0 ? '+' : ''}${brl(varPatr.absoluto)}`}
+                        hint={varPatr.percentual != null ? `${varPatr.percentual >= 0 ? '+' : ''}${Math.round(varPatr.percentual)}%` : 'sem base anterior'}
+                      />
+                    )}
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {Object.entries(declRecente!.porCategoria).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).map(([cat, v]) => (
+                      <Estatistica key={cat} rotulo={cat} valor={brl(v)} />
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
+                    Valores autodeclarados ao TSE na candidatura, nominais (sem correção de inflação). A variação
+                    pode ter explicação legítima (poupança, herança, valorização). A gente mostra o dado; quem lê avalia.
+                    {patrimonio!.matchPor === 'nome' && ' Senador casado por nome e UF na base do TSE.'}
+                  </p>
                 </section>
               )}
             </>
