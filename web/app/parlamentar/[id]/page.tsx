@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
-import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas, getCeapPorUf, getVotacoes } from '@/lib/dados'
+import { getParlamentar, getTodosIds, getDespesasParlamentar, getSeriesParlamentares, getPerfil, getCustos, getAssessores, getAlertas, getMunicipios, getEmendas, getCeapPorUf, getVotacoes, getPresencas } from '@/lib/dados'
 import type { MarcaAlerta, ComoVotouDados, ItemComoVotou } from '@/lib/tipos'
 import { PerfilView } from '@/components/PerfilView'
 
@@ -59,6 +59,12 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
           .sort((a, b) => b.votacao.data.localeCompare(a.votacao.data)),
       }
     : null
+  // presença parlamentar: só para camara e senado; usa porPolitico[id]
+  const casa = resumo.politico.casa
+  const presencasData = getPresencas()
+  const presenca = presencasData?.porPolitico[params.id] ?? null
+  const salarioPresenca = (casa === 'camara' || casa === 'senado') ? (getCustos().casas[casa]?.salario ?? null) : null
+
   // teto do gráfico para deputado federal: CEAP da UF dele (varia por estado)
   const tetoCotaUf = getCeapPorUf()?.valores[resumo.politico.uf] ?? null
   const dosAlertas = getAlertas().filter((a) => a.politicoId === params.id)
@@ -85,7 +91,7 @@ export default function PerfilPage({ params }: { params: { id: string } }) {
 
   return (
     <Suspense fallback={null}>
-      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} comoVotou={comoVotou} tetoCotaUf={tetoCotaUf} />
+      <PerfilView politico={resumo.politico} despesas={despesas} series={series} perfil={perfil} custos={custos} municipioCusto={municipioCusto} municipioAtualizadoEm={municipioAtualizadoEm} assessores={assessores} alertas={alertas} alertasPorDespesa={alertasPorDespesa} conferidoTce={resumo.conferidoTce} emendas={emendas} comoVotou={comoVotou} tetoCotaUf={tetoCotaUf} presenca={presenca} salario={salarioPresenca} />
     </Suspense>
   )
 }
