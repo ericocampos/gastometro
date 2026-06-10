@@ -95,6 +95,17 @@ export default function Home() {
             <span className="font-medium text-marca transition-colors group-hover:text-tinta">ver no ranking →</span>
           </Link>
         )}
+        <Link
+          href="/presenca"
+          className="group mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-marca/30 bg-marca/5 px-4 py-3 text-sm transition-colors hover:border-marca"
+        >
+          <span className="rounded-full bg-marca px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">Novo</span>
+          <span className="text-tinta-suave">
+            <strong className="text-tinta">Quem mais e quem menos compareceu</strong>{' '}
+            Frequência dos parlamentares federais nas sessões deliberativas da Câmara e do Senado, com faltas e custo por presença.
+          </span>
+          <span className="font-medium text-marca transition-colors group-hover:text-tinta">ver presença →</span>
+        </Link>
       </section>
 
       <section className="mb-12">

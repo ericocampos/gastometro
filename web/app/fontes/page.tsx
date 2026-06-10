@@ -33,6 +33,24 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Presença em plenário',
+    intro: 'Frequência dos parlamentares federais nas sessões deliberativas da Câmara e do Senado.',
+    fontes: [
+      {
+        oque: 'Câmara dos Deputados (presença)',
+        onde: 'https://dadosabertos.camara.leg.br/',
+        formato: 'JSON (REST)',
+        obs: 'Presença nas sessões deliberativas do plenário, a partir da lista de presença de cada sessão (Dados Abertos da Câmara).',
+      },
+      {
+        oque: 'Senado Federal (presença)',
+        onde: 'https://legis.senado.leg.br/dadosabertos/',
+        formato: 'JSON (REST)',
+        obs: 'O Senado define presença como comparecimento à votação (RISF, art. 13). Medimos pela lista de presença das sessões deliberativas com votação nominal. Sessões deliberativas sem votação nominal não têm lista de presença em dado aberto (constam apenas no Diário do Senado, em PDF).',
+      },
+    ],
+  },
+  {
     casa: 'Assembleia Legislativa da Paraíba',
     intro: 'Cadastro no SAPL + planilhas de verba indenizatória (VIAP).',
     fontes: [
