@@ -128,7 +128,7 @@ describe('RankingView', () => {
 
   it('após marcar o toggle, o zero-spender aparece', () => {
     render(<RankingView series={seriesComZero} />)
-    fireEvent.click(screen.getByRole('checkbox'))
+    fireEvent.click(screen.getByRole('switch'))
     expect(screen.getByText('Ciclana Titular Zero')).toBeInTheDocument()
     // the card renders "sem gastos" for zero-spenders
     expect(screen.getByText('sem gastos')).toBeInTheDocument()
@@ -145,23 +145,25 @@ describe('RankingView', () => {
     expect(valorEl?.textContent).toBe('1')
   })
 
-  it('o label do toggle mostra a contagem de ocultos quando zerosOcultos > 0', () => {
+  it('o label do toggle mostra a contagem de ocultos (badge) quando zerosOcultos > 0', () => {
     render(<RankingView series={seriesComZero} />)
-    // zerosOcultos=1, so the label should contain "(1 ocultos)"
-    expect(screen.getByText(/1 ocultos/)).toBeInTheDocument()
+    // zerosOcultos=1: o switch traz um badge com a contagem no próprio label
+    const label = screen.getByRole('switch').closest('label')!
+    expect(label.textContent).toContain('Incluir quem não gastou')
+    expect(label.textContent).toContain('1')
   })
 
   it('exibe a nota de período quando toggle está ativo e filtro é por ano', () => {
     render(<RankingView series={seriesComZero} />)
     // activate toggle then switch to a year filter
-    fireEvent.click(screen.getByRole('checkbox'))
+    fireEvent.click(screen.getByRole('switch'))
     fireEvent.change(screen.getByLabelText('Período'), { target: { value: 'ano:2024' } })
     expect(screen.getByText(/exercício é apurado por mandato/)).toBeInTheDocument()
   })
 
   it('não exibe a nota de período quando toggle está ativo mas filtro não é por ano', () => {
     render(<RankingView series={seriesComZero} />)
-    fireEvent.click(screen.getByRole('checkbox'))
+    fireEvent.click(screen.getByRole('switch'))
     // default is mandato:57 (not 'ano'), so note should NOT appear
     expect(screen.queryByText(/exercício é apurado por mandato/)).not.toBeInTheDocument()
   })

@@ -156,9 +156,32 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
         <CardContagem rotulo="Não gastaram (R$ 0)" valor={zerosOcultos} cor="#7c3aed" />
         <CardContagem rotulo="Câmara · Senado · Assemb." valor={contagem.camara + contagem.senado + contagem.assembleia} cor="#c87f1a" />
       </div>
-      <label className="mb-2 flex items-center gap-2 text-sm text-tinta-suave">
-        <input type="checkbox" checked={mostrarZeros} onChange={(e) => setMostrarZeros(e.target.checked)} />
-        Incluir quem não gastou (R$ 0){zerosOcultos > 0 ? ` (${zerosOcultos} ocultos)` : ''}
+      <label className="mb-2 inline-flex cursor-pointer select-none items-center gap-2.5 text-sm text-tinta-suave transition-colors hover:text-tinta">
+        <span className="relative inline-flex h-5 w-9 shrink-0 items-center">
+          <input
+            type="checkbox"
+            role="switch"
+            checked={mostrarZeros}
+            onChange={(e) => setMostrarZeros(e.target.checked)}
+            className="peer sr-only"
+          />
+          <span
+            aria-hidden
+            className="absolute inset-0 rounded-full border border-borda bg-superficie-2 transition-colors peer-checked:border-marca peer-checked:bg-marca peer-focus-visible:ring-2 peer-focus-visible:ring-marca/40"
+          />
+          <span
+            aria-hidden
+            className="absolute left-0.5 h-4 w-4 rounded-full bg-tinta-tenue shadow-sm transition-transform duration-200 ease-out peer-checked:translate-x-4 peer-checked:bg-white"
+          />
+        </span>
+        <span>
+          Incluir quem não gastou
+          {zerosOcultos > 0 && (
+            <span className="ml-1 rounded-full bg-superficie-2 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-tinta-suave">
+              {zerosOcultos}
+            </span>
+          )}
+        </span>
       </label>
       {mostrarZeros && periodo.tipo === 'ano' && (
         <p className="mb-4 text-xs text-tinta-tenue">
