@@ -75,7 +75,8 @@ export interface Despesa {
   mes: number
   categoria: string
   fornecedor: { nome: string; cnpjCpf?: string }
-  valor: number
+  valor: number  // o que de fato saiu do erário (líquido/reembolsado)
+  valorApresentado?: number  // valor bruto na nota quando difere do reembolsado (a diferença é a glosa)
   urlDocumento?: string
   numeroNf?: string   // número da nota fiscal (CG publica o número, não o documento)
   descricao?: string  // histórico declarado no empenho (diárias: motivo/destino da viagem)

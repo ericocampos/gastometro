@@ -127,6 +127,9 @@ export function DetalhamentoGastos({
   const temDiarias = casa === 'camara_municipal' && despesas.some((d) => d.numeroEmpenho)
   // ALPB: diárias por deputado (planilha .ods da Assembleia) — têm justificativa/destino, sem empenho
   const temDiariasAlpb = casa === 'assembleia' && despesas.some((d) => d.descricao && !d.fornecedor.nome)
+  // glosa: a nota foi apresentada por um valor e reembolsada por outro (BA/GO/AM trazem bruto×líquido)
+  const apresDif = (d: Despesa) => (d.valorApresentado != null && Math.abs(d.valorApresentado - d.valor) > 0.005 ? d.valorApresentado : null)
+  const temGlosa = despesas.some((d) => apresDif(d) != null)
 
   const marcaDe = (d: Despesa) => alertasPorDespesa?.[d.id]
   const temMarcadas = useMemo(
@@ -211,6 +214,14 @@ export function DetalhamentoGastos({
         </p>
       )}
 
+      {temGlosa && (
+        <p className="mb-3 rounded-md border-l-2 border-amber-500 bg-amber-500/10 px-3 py-2 text-xs leading-relaxed text-tinta-suave">
+          <strong className="text-tinta">Apresentado × reembolsado:</strong> quando o valor da nota difere do
+          que foi efetivamente reembolsado, mostramos o <strong className="text-tinta-suave">reembolsado</strong>{' '}
+          (o que saiu do erário) e o valor apresentado abaixo. A diferença é a glosa (parte não paga).
+        </p>
+      )}
+
       <p className="mb-2 text-xs text-tinta-suave">{filtradas.length} lançamentos</p>
 
       {temMarcadas && (
@@ -241,7 +252,12 @@ export function DetalhamentoGastos({
                 {marca && <MarcaAlertaIcone marca={marca} />}
                 {dataBR(d.data)}
               </span>
-              <span className="font-display text-base font-semibold tabular-nums text-tinta">{brl(d.valor)}</span>
+              <span className="text-right">
+                <span className="block font-display text-base font-semibold tabular-nums text-tinta">{brl(d.valor)}</span>
+                {apresDif(d) != null && (
+                  <span className="block text-[11px] font-normal text-tinta-tenue">de {brl(apresDif(d) as number)} apres.</span>
+                )}
+              </span>
             </div>
             {d.fornecedor.nome
               ? <p className="mt-1 text-sm text-tinta">{d.fornecedor.nome}</p>
@@ -290,7 +306,17 @@ export function DetalhamentoGastos({
                     <span className="block text-xs text-tinta-tenue">{d.fornecedor.cnpjCpf}</span>
                   )}
                 </td>
-                <td className="py-1.5 pr-2 text-right tabular-nums text-tinta">{brl(d.valor)}</td>
+                <td className="py-1.5 pr-2 text-right tabular-nums text-tinta">
+                  {brl(d.valor)}
+                  {apresDif(d) != null && (
+                    <span
+                      className="block text-[11px] font-normal text-tinta-tenue"
+                      title={`Apresentado ${brl(apresDif(d) as number)}, reembolsado ${brl(d.valor)} (glosa ${brl((apresDif(d) as number) - d.valor)})`}
+                    >
+                      de {brl(apresDif(d) as number)} apres.
+                    </span>
+                  )}
+                </td>
                 <td className="py-1.5 whitespace-nowrap"><LinkDoc d={d} portalSenado={portalSenado} casa={casa} politicoId={politicoId} /></td>
               </tr>
               )
