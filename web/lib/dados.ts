@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePresenca, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, Patrimonios, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePresenca, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 import { exerceu } from './denominador'
 import { partidoCanonico } from './partidos'
@@ -161,6 +161,15 @@ export function getVotacoes(): Votacoes | null {
   const caminho = resolve(dataDir(), 'votacoes.json')
   const lido = existsSync(caminho) ? lerJson<Votacoes>(caminho) : null
   if (process.env.NODE_ENV === 'production') cacheVotacoes = lido
+  return lido
+}
+
+let cachePatrimonios: Patrimonios | null | undefined
+export function getPatrimonios(): Patrimonios | null {
+  if (process.env.NODE_ENV === 'production' && cachePatrimonios !== undefined) return cachePatrimonios
+  const caminho = resolve(dataDir(), 'patrimonio.json')
+  const lido = existsSync(caminho) ? lerJson<Patrimonios>(caminho) : null
+  if (process.env.NODE_ENV === 'production') cachePatrimonios = lido
   return lido
 }
 
