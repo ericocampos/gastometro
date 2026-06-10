@@ -25,7 +25,8 @@ export function aplicarRosterCompleto(
   agregados: Agregadosish,
   roster: RosterLeve[],
   casas: CasaCompleta[],
-): { politicos: Politico[]; agregados: Agregadosish } {
+  limiarMatch = 0.9,
+): { politicos: Politico[]; agregados: Agregadosish; puladas: string[] } {
   const porPolitico: Record<string, Resumoish> = {}
   for (const [id, v] of Object.entries(agregados.porPolitico)) if (!ehRoster(v)) porPolitico[id] = v
   const idsRoster = new Set(
@@ -34,10 +35,18 @@ export function aplicarRosterCompleto(
   const politicosBase = politicos.filter((p) => !idsRoster.has(p.id))
 
   const novosPoliticos: Politico[] = []
+  const puladas: string[] = []
   for (const casa of casas) {
     const prefixo = casa.sigla.toLowerCase()
     const prefixoRoster = `ae-${casa.uf.toLowerCase()}-`
     const eleitos = roster.filter((r) => r.id.startsWith(prefixoRoster))
+    if (eleitos.length === 0) continue
+    // Só injeta R$0 onde o roster TSE casa bem com os gastadores (id baseado no sq do TSE e baixa
+    // rotatividade). Match baixo = id interno da casa (MG/SP usam matrícula, não sq) ou rotatividade alta
+    // (CE/DF: o "não-gastou" pode ser quem saiu no meio, não quem exerceu sem gastar) -> pula, com nota.
+    const comGastador = eleitos.filter((e) => porPolitico[`${prefixo}-${e.id.slice(prefixoRoster.length)}`])
+    const taxa = comGastador.length / eleitos.length
+    if (taxa < limiarMatch) { puladas.push(`${casa.uf}(${taxa.toFixed(2)})`); continue }
     for (const e of eleitos) {
       const sq = e.id.slice(prefixoRoster.length)
       const idCompleto = `${prefixo}-${sq}`
@@ -57,6 +66,7 @@ export function aplicarRosterCompleto(
   return {
     politicos: [...politicosBase, ...novosPoliticos],
     agregados: { ...agregados, ranking, porPolitico },
+    puladas,
   }
 }
 
@@ -73,6 +83,7 @@ function main() {
   writeFileSync(resolve(dataDir, 'agregados.json'), JSON.stringify(out.agregados, null, 2))
   const nRoster = Object.values(out.agregados.porPolitico).filter((v) => v.politico.mandato?.origem === 'roster-tse').length
   console.log(`OK: ${nRoster} titulares R$0 (roster TSE) injetados nas casas completo. politicos: ${out.politicos.length}`)
+  if (out.puladas.length) console.log(`  ! puladas (match < limiar; id interno ou rotatividade alta): ${out.puladas.join(', ')}`)
 }
 
 if (process.argv[1] && process.argv[1].endsWith('mesclarRosterCompleto.ts')) main()
