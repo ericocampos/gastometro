@@ -13,6 +13,7 @@
     "coletar:emendas": "tsx collector/coletarEmendas.ts",
     "coletar:votacoes": "tsx collector/coletarVotacoes.ts",
     "coletar:presenca": "tsx collector/coletarPresenca.ts",
+    "coletar:patrimonio": "tsx collector/coletarPatrimonio.ts",
     "regenerar:fornecedores": "tsx collector/regenerarFornecedores.ts",
     "coletar:vereadores": "tsx collector/coletarVereadores.ts",
     "coletar:alpb": "tsx collector/coletarAlpb.ts",
