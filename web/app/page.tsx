@@ -53,6 +53,9 @@ export default function Home() {
   const cadeiras = getCadeirasCamaraUf()
   const panorama = calcularPanorama(series, custos, getAssessores(), pop?.populacao ?? null, cadeiras?.cadeiras ?? null, getAssembleias()?.casas ?? [])
   const gabPct = Math.round((panorama.componentes.find((c) => c.chave === 'gabinete')!.valor / panorama.totalAnual) * 100)
+  // assembleias com gasto itemizado por deputado (modelo completo): alimenta o destaque e a legenda do gráfico
+  const casasCompleto = (getAssembleias()?.casas ?? []).filter((c) => c.modelo === 'completo')
+  const nCompleto = casasCompleto.length
 
   return (
     <div>
@@ -79,6 +82,19 @@ export default function Home() {
             <dd className="font-display text-xl font-semibold tabular-nums text-tinta">{periodoCoberto}</dd>
           </div>
         </dl>
+        {nCompleto > 0 && (
+          <Link
+            href="/ranking"
+            className="group mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-marca/30 bg-marca/5 px-4 py-3 text-sm transition-colors hover:border-marca"
+          >
+            <span className="rounded-full bg-marca px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">Novo</span>
+            <span className="text-tinta-suave">
+              Gasto <strong className="text-tinta">itemizado por deputado</strong> (fornecedor, CPF/CNPJ e categoria) agora em{' '}
+              <strong className="text-tinta">{nCompleto} assembleias estaduais</strong>, além de Câmara e Senado.
+            </span>
+            <span className="font-medium text-marca transition-colors group-hover:text-tinta">ver no ranking →</span>
+          </Link>
+        )}
       </section>
 
       <section className="mb-12">
@@ -120,7 +136,7 @@ export default function Home() {
         <p className="mb-3 text-xs leading-relaxed text-tinta-tenue">
           Só a <strong className="text-tinta-suave">cota</strong> (CEAP/CEAPS/VIAP), empilhada por casa:{' '}
           <strong style={{ color: '#2563eb' }}>Câmara</strong> e <strong style={{ color: '#c87f1a' }}>Senado</strong>{' '}
-          de todo o Brasil, mais <strong style={{ color: '#7c3aed' }}>Assembleia</strong> (VIAP, hoje só na Paraíba),{' '}
+          de todo o Brasil, mais <strong style={{ color: '#7c3aed' }}>Assembleia</strong> (verba indenizatória, em {nCompleto} estados),{' '}
           a partir de <strong className="text-tinta-suave">2023</strong> (legislatura atual).{' '}
           <strong className="text-tinta-suave">{new Date().getFullYear()}</strong> ainda está em andamento.{' '}
           Salário e folha de gabinete <strong className="text-tinta-suave">não entram aqui</strong>: o gabinete não tem

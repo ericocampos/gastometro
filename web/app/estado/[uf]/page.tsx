@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getSeriesParlamentares, getMunicipios, getUfsDisponiveis, getCeapPorUf, getEmendas, getAssembleias, getCustos, getAssessores, getCadeirasCamaraUf, getPopulacaoUf } from '@/lib/dados'
 import { RankingView } from '@/components/RankingView'
 import { SecaoTitulo } from '@/components/SecaoTitulo'
@@ -63,6 +64,13 @@ export default function EstadoPage({ params }: { params: { uf: string } }) {
 
       <section className="mb-12">
         <SecaoTitulo>Ranking de gastos · {uf}</SecaoTitulo>
+        {casaAssembleia?.modelo === 'completo' && (
+          <p className="mb-3 text-xs leading-relaxed text-tinta-tenue">
+            <span className="mr-1.5 rounded-full bg-marca/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-marca">dados completos</span>
+            A {casaAssembleia.sigla} entra aqui com gasto <strong className="text-tinta-suave">itemizado por deputado</strong> (fornecedor, CPF/CNPJ e categoria da verba indenizatória), ao lado da bancada federal.{' '}
+            <Link href="/fontes" className="text-marca hover:underline">Como apuramos →</Link>
+          </p>
+        )}
         <RankingView series={series} />
       </section>
 

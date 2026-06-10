@@ -61,19 +61,10 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
     [rankingPeriodo, casa, partido, mandato],
   )
 
-  // contagem considera só quem efetivamente gastou (exclui suplentes/zerados em qualquer visão)
+  // quem efetivamente gastou no período (o denominador "gastaram"); exclui zerados em qualquer visão
   const conjunto = useMemo(
     () => porCasaPartido.filter((l) => l.total > 0),
     [porCasaPartido],
-  )
-  const contagem = useMemo(
-    () => ({
-      total: conjunto.length,
-      camara: conjunto.filter((l) => l.casa === 'camara').length,
-      senado: conjunto.filter((l) => l.casa === 'senado').length,
-      assembleia: conjunto.filter((l) => l.casa === 'assembleia').length,
-    }),
-    [conjunto],
   )
 
   const filtrados = useMemo(() => {
@@ -150,11 +141,10 @@ export function RankingView({ series }: { series: SerieParlamentar[] }) {
       </div>
 
       {/* contagem reativa — logo abaixo dos filtros, reforçando que reflete o filtro aplicado */}
-      <div className="mb-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="mb-3 grid grid-cols-3 gap-3">
         <CardContagem rotulo="Exerceram no mandato" valor={exerceram} cor="var(--marca)" />
         <CardContagem rotulo="Gastaram no período" valor={gastaram} cor="#2563eb" />
         <CardContagem rotulo="Não gastaram (R$ 0)" valor={zerosOcultos} cor="#7c3aed" />
-        <CardContagem rotulo="Câmara · Senado · Assemb." valor={contagem.camara + contagem.senado + contagem.assembleia} cor="#c87f1a" />
       </div>
       <label className="mb-2 inline-flex cursor-pointer select-none items-center gap-2.5 text-sm text-tinta-suave transition-colors hover:text-tinta">
         <span className="relative inline-flex h-5 w-9 shrink-0 items-center">
