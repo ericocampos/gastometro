@@ -7,6 +7,7 @@ export const MandatoSchema = z.object({
   legislatura: z.number(),
   afastado: z.boolean().optional(),
   exercicios: z.array(z.object({ inicio: z.string(), fim: z.string().nullable() })).optional(),
+  origem: z.literal('roster-tse').optional(), // entrada R$0 sintetizada do roster eleito (titular que não gastou)
 })
 export type MandatoParlamentar = z.infer<typeof MandatoSchema>
 

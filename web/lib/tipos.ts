@@ -7,6 +7,7 @@ export interface MandatoParlamentar {
   legislatura: number
   afastado?: boolean
   exercicios?: { inicio: string; fim: string | null }[]
+  origem?: 'roster-tse' // entrada R$0 sintetizada do roster eleito (titular que não gastou)
 }
 
 export interface Politico {
