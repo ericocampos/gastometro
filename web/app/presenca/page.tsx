@@ -23,6 +23,14 @@ export default function PresencaPage() {
         </p>
       </section>
       <PresencaHub series={series} salarios={salarios} />
+      <p className="mt-8 max-w-2xl text-xs leading-relaxed text-tinta-tenue">
+        Notas de método. No Senado, a distinção entre falta justificada e não justificada é o motivo
+        informado pelo próprio Senado (licença, missão, atividade parlamentar), não uma verificação
+        nossa; o documento que comprova cada ausência consta no Diário do Senado. Na Câmara, o dado
+        aberto não informa o motivo, então as faltas não têm essa distinção, e meses em que o deputado
+        não comparece a nenhuma sessão ficam de fora do cálculo da taxa dele (por isso a frequência da
+        Câmara tende a ficar um pouco mais alta que a do Senado).
+      </p>
     </div>
   )
 }

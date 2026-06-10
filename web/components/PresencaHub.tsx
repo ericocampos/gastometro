@@ -62,6 +62,13 @@ export function PresencaHub({
           return (b.r.taxa ?? 0) - (a.r.taxa ?? 0)
         }
         if (ordem === 'faltas') {
+          // Na visão cruzada, ordena por faltas TOTAIS: "não justificadas" é sempre 0 na Câmara
+          // (o dado aberto não informa o motivo), então usá-la como chave primária enterraria toda
+          // a Câmara. Com uma casa específica selecionada, prioriza as não justificadas.
+          if (casa === 'todas') {
+            const diff = b.r.faltas - a.r.faltas
+            return diff !== 0 ? diff : b.r.naoJustificadas - a.r.naoJustificadas
+          }
           const diff = b.r.naoJustificadas - a.r.naoJustificadas
           return diff !== 0 ? diff : b.r.faltas - a.r.faltas
         }
@@ -121,7 +128,7 @@ export function PresencaHub({
           className={selectClasse}
         >
           <option value="presenca">Mais presentes</option>
-          <option value="faltas">Mais faltas (não justificadas)</option>
+          <option value="faltas">Mais faltas</option>
           <option value="custo">Maior custo por presença</option>
         </select>
 

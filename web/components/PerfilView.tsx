@@ -493,7 +493,7 @@ export function PerfilView({
               {temPresenca && (
                 <section id="presenca" className="mb-10 scroll-mt-[var(--header-h)]">
                   <SecaoTitulo>Presença</SecaoTitulo>
-                  <PresencaDetalhe presenca={presenca!} resPres={resPres!} taxaPres={taxaPres} custoPres={custoPres} />
+                  <PresencaDetalhe presenca={presenca!} resPres={resPres!} taxaPres={taxaPres} custoPres={custoPres} politicoId={politico.id} />
                 </section>
               )}
             </>
@@ -642,12 +642,13 @@ function Moradia({ moradia, casa }: { moradia: NonNullable<Politico['moradia']>;
 // Seção de detalhe de presença: totais do mandato, distribuição presenças/faltas, custo/presença.
 // Usado somente em parlamentares federais (camara/senado); para outros passa null e não renderiza.
 function PresencaDetalhe({
-  presenca, resPres, taxaPres, custoPres,
+  presenca, resPres, taxaPres, custoPres, politicoId,
 }: {
   presenca: PresencaPolitico
   resPres: ResumoPresenca
   taxaPres: number | null
   custoPres: number | null
+  politicoId: string
 }) {
   const senado = presenca.casa === 'senado'
   return (
@@ -698,11 +699,31 @@ function PresencaDetalhe({
           Usa só o subsídio (salário base); não inclui verba indenizatória, gabinete nem auxílios.
         </p>
       </div>
-      <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
-        {senado
-          ? 'Metodologia (Senado): comparecimento às votações nominais. A classificação "justificada/não justificada" segue a definição do próprio Senado Federal.'
-          : 'Metodologia (Câmara): comparecimento às sessões deliberativas. O dado aberto da Câmara não informa o motivo da ausência, então faltas não têm distinção entre justificadas e não justificadas.'}
-      </p>
+      {senado ? (
+        <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
+          Metodologia (Senado): comparecimento às votações nominais das sessões deliberativas. A
+          classificação das ausências (licença, missão, atividade parlamentar) é o motivo informado
+          pelo próprio Senado, não uma verificação nossa. O documento que comprova cada ausência (o
+          ato ou o atestado) consta no Diário do Senado; as licenças formais do senador (datas e tipo)
+          estão na{' '}
+          <a
+            href={`https://www25.senado.leg.br/web/senadores/senador/-/perfil/${politicoId.replace('senado-', '')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-marca underline-offset-2 hover:underline"
+          >
+            ficha oficial do senador
+          </a>
+          .
+        </p>
+      ) : (
+        <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
+          Metodologia (Câmara): comparecimento às sessões deliberativas. O dado aberto da Câmara não
+          informa o motivo da ausência, então as faltas não distinguem justificadas de não
+          justificadas. Meses em que o deputado não comparece a nenhuma sessão não entram no cálculo
+          da taxa dele, então a frequência da Câmara tende a ficar um pouco mais alta que a do Senado.
+        </p>
+      )}
     </div>
   )
 }
