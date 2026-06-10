@@ -97,3 +97,56 @@ export function parseBens(csv: string): Map<string, BensSq> {
   }
   return m
 }
+
+export interface DeclaracaoBens { ano: number; total: number; porCategoria: Record<string, number> }
+export interface PatrimonioPolitico { matchPor: 'cpf' | 'nome'; declaracoes: DeclaracaoBens[] }
+export interface Patrimonios {
+  fonte: string; atualizadoEm: string; eleicoes: number[]
+  porPolitico: Record<string, PatrimonioPolitico>
+}
+
+export interface EleicaoIndex { ano: number; candidatos: CandidatoBens[]; bens: Map<string, BensSq> }
+export interface ParlamentarLite { id: string; casa: 'camara' | 'senado'; nome: string; uf: string; cpf?: string }
+
+// índices auxiliares por eleição: CPF->sq e (UF|nome, cargo=SENADOR)->sq[] (para match conservador)
+function construirBuscas(idx: EleicaoIndex) {
+  const porCpf = new Map<string, string>()
+  const porNomeSenador = new Map<string, string[]>()
+  for (const c of idx.candidatos) {
+    if (c.cpf && c.cpf !== '00000000000') porCpf.set(c.cpf, c.sq)
+    if (c.cargo === 'SENADOR') {
+      const chaves = [...new Set([`${c.uf}|${c.nome}`, `${c.uf}|${c.nomeUrna}`])]
+      for (const chave of chaves) {
+        const arr = porNomeSenador.get(chave) ?? []; arr.push(c.sq); porNomeSenador.set(chave, arr)
+      }
+    }
+  }
+  return { porCpf, porNomeSenador }
+}
+
+export function montarPatrimonio(parlamentares: ParlamentarLite[], indices: EleicaoIndex[]): Record<string, PatrimonioPolitico> {
+  const buscas = indices.map((idx) => ({ ano: idx.ano, bens: idx.bens, ...construirBuscas(idx) }))
+  const out: Record<string, PatrimonioPolitico> = {}
+  for (const p of parlamentares) {
+    const declaracoes: DeclaracaoBens[] = []
+    let matchPor: 'cpf' | 'nome' = p.casa === 'senado' ? 'nome' : 'cpf'
+    for (const b of buscas) {
+      let sq: string | undefined
+      if (p.casa === 'camara' && p.cpf) sq = b.porCpf.get(CPF(p.cpf))
+      if (!sq) {
+        // fallback (e caminho padrão do senado): nome+UF único entre senadores
+        const chave = `${(p.uf ?? '').toUpperCase()}|${normalizarNome(p.nome)}`
+        const cand = b.porNomeSenador.get(chave)
+        if (cand && cand.length === 1) { sq = cand[0]; matchPor = 'nome' }
+      }
+      if (!sq) continue
+      const bens = b.bens.get(sq) ?? { total: 0, porCategoria: {} }
+      declaracoes.push({ ano: b.ano, total: bens.total, porCategoria: bens.porCategoria })
+    }
+    if (declaracoes.length) {
+      declaracoes.sort((a, c) => a.ano - c.ano)
+      out[p.id] = { matchPor, declaracoes }
+    }
+  }
+  return out
+}

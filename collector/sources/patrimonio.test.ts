@@ -76,3 +76,47 @@ describe('parseBens', () => {
     expect(m.get('150000000002')!.porCategoria['Aplicações e investimentos']).toBe(1000.5)
   })
 })
+
+import { montarPatrimonio, type EleicaoIndex, type ParlamentarLite } from './patrimonio.js'
+
+const idx2018: EleicaoIndex = {
+  ano: 2018,
+  candidatos: [
+    { sq: 'A18', cpf: '36607606504', nome: 'JOSE FERREIRA DA SILVA', nomeUrna: 'JOSE FERREIRA', uf: 'PB', cargo: 'DEPUTADO FEDERAL' },
+    { sq: 'S18', cpf: '00000000000', nome: 'MARIA SOUZA', nomeUrna: 'MARIA SOUZA', uf: 'PB', cargo: 'SENADOR' },
+  ],
+  bens: new Map([
+    ['A18', { total: 1000000, porCategoria: { 'Imóveis': 1000000 } }],
+    ['S18', { total: 500000, porCategoria: { 'Imóveis': 500000 } }],
+  ]),
+}
+const idx2022: EleicaoIndex = {
+  ano: 2022,
+  candidatos: [
+    { sq: 'A22', cpf: '36607606504', nome: 'JOSE FERREIRA DA SILVA', nomeUrna: 'JOSE FERREIRA', uf: 'PB', cargo: 'DEPUTADO FEDERAL' },
+  ],
+  bens: new Map([['A22', { total: 2100000, porCategoria: { 'Imóveis': 2100000 } }]]),
+}
+
+const parlamentares: ParlamentarLite[] = [
+  { id: 'camara-1', casa: 'camara', nome: 'José Ferreira', uf: 'PB', cpf: '36607606504' },
+  { id: 'senado-9', casa: 'senado', nome: 'Maria Souza', uf: 'PB' },
+  { id: 'camara-2', casa: 'camara', nome: 'Sem Match', uf: 'SP', cpf: '99999999999' },
+]
+
+describe('montarPatrimonio', () => {
+  it('casa deputado por CPF (2018 e 2022) e senador por nome+UF; omite quem não casa', () => {
+    const out = montarPatrimonio(parlamentares, [idx2018, idx2022])
+    expect(Object.keys(out).sort()).toEqual(['camara-1', 'senado-9'])
+    expect(out['camara-1'].matchPor).toBe('cpf')
+    expect(out['camara-1'].declaracoes.map((d) => [d.ano, d.total])).toEqual([[2018, 1000000], [2022, 2100000]])
+    expect(out['senado-9'].matchPor).toBe('nome')
+    expect(out['senado-9'].declaracoes).toEqual([{ ano: 2018, total: 500000, porCategoria: { 'Imóveis': 500000 } }])
+  })
+
+  it('candidato sem linha de bens vira declaração com total 0 (declarou nada)', () => {
+    const idx: EleicaoIndex = { ano: 2022, candidatos: [{ sq: 'Z', cpf: '12345678901', nome: 'X', nomeUrna: 'X', uf: 'PB', cargo: 'DEPUTADO FEDERAL' }], bens: new Map() }
+    const out = montarPatrimonio([{ id: 'camara-3', casa: 'camara', nome: 'X', uf: 'PB', cpf: '12345678901' }], [idx])
+    expect(out['camara-3'].declaracoes).toEqual([{ ano: 2022, total: 0, porCategoria: {} }])
+  })
+})
