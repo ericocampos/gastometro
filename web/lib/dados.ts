@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, ResumoPolitico, ResumoTotais, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 import { exerceu } from './denominador'
+import { partidoCanonico } from './partidos'
 
 function dataDir(): string {
   return process.env.GASTOMETRO_DATA_DIR ?? resolve(process.cwd(), '..', 'data')
@@ -43,7 +44,7 @@ export function getSeriesParlamentares(): SerieParlamentar[] {
     .map((r) => ({
       politicoId: r.politico.id,
       nome: r.politico.nome,
-      partido: r.politico.partido,
+      partido: partidoCanonico(r.politico.partido),
       uf: r.politico.uf,
       casa: r.politico.casa,
       legislaturas: r.politico.legislaturas,
@@ -69,7 +70,9 @@ export function getResumoTotais(): ResumoTotais {
 }
 
 export function getParlamentar(id: string): ResumoPolitico | null {
-  return agregados().porPolitico[id] ?? null
+  const r = agregados().porPolitico[id]
+  if (!r) return null
+  return { ...r, politico: { ...r.politico, partido: partidoCanonico(r.politico.partido) } }
 }
 
 export function getTodosIds(): string[] {
