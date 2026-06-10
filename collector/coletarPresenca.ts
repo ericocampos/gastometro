@@ -11,7 +11,10 @@ import {
 import {
   ehDeliberativaCamara,
   montarRegistrosCamara,
+  ordenarHistorico,
+  emExercicioNaData,
 } from './sources/presencaCamara.js'
+import type { StatusHistorico } from './sources/presencaCamara.js'
 import { janelasTrimestrais, listarPaginado } from './sources/votacoesCamara.js'
 
 const here = dirname(fileURLToPath(import.meta.url))
@@ -60,12 +63,12 @@ function janelasAnuais(inicio: string, fim: string): { inicio: string; fim: stri
 
 interface PoliticoLite { id: string; casa: string }
 
-async function coletarCamara(fetchJson: (url: string) => Promise<any>): Promise<{ regs: RegistroPresenca[]; sessoes: number }> {
-  // Mapa anoMes -> conjunto de ids dos deputados presentes (para calcular quem estava em exercício)
-  const emExercicioMes = new Map<string, Set<number>>()
-  // Coleta de rosters por sessão para montar os registros depois
-  const rosters: { sessao: { id: number; dataHoraInicio?: string }; presentes: { id: number }[] }[] = []
+// Toda a janela 2023-02..hoje cai na 57ª legislatura (2023-2027); leg 56 terminou em jan/2023.
+const ID_LEGISLATURA = 57
 
+async function coletarCamara(fetchJson: (url: string) => Promise<any>): Promise<{ regs: RegistroPresenca[]; sessoes: number }> {
+  // 1) rosters de PRESENTES por sessão deliberativa
+  const rosters: { sessao: { id: number; dataHoraInicio?: string }; presentes: { id: number }[] }[] = []
   for (const j of janelasTrimestrais(INICIO, FIM)) {
     const lista = await listarPaginado(
       fetchJson,
@@ -73,27 +76,42 @@ async function coletarCamara(fetchJson: (url: string) => Promise<any>): Promise<
     )
     const deliberativas = lista.filter(ehDeliberativaCamara)
     console.log(`  Câmara ${j.inicio}..${j.fim}: ${deliberativas.length} sessões deliberativas`)
-
     for (const ev of deliberativas) {
       const resp = await fetchJson(`${BASE_CAMARA}eventos/${ev.id}/deputados`)
       const presentes: { id: number }[] = resp?.dados ?? []
-      const sessao = { id: ev.id as number, dataHoraInicio: ev.dataHoraInicio as string | undefined }
-      rosters.push({ sessao, presentes })
-
-      // Acumula ids presentes no mês para montar o conjunto "em exercício"
-      const mes = (sessao.dataHoraInicio ?? '').slice(0, 7)
-      if (mes) {
-        const conj = emExercicioMes.get(mes) ?? new Set<number>()
-        for (const d of presentes) conj.add(d.id)
-        emExercicioMes.set(mes, conj)
-      }
+      rosters.push({ sessao: { id: ev.id as number, dataHoraInicio: ev.dataHoraInicio as string | undefined }, presentes })
     }
   }
 
+  // 2) histórico de status de TODO deputado da legislatura (titulares + suplentes que assumiram).
+  // É a fonte do "em exercício" por data: assim um mês 100% ausente vira falta (denominador justo),
+  // e quem estava de licença não é penalizado (a cadeira fica com o suplente, em 'Exercício').
+  const deputadosLeg = await listarPaginado(fetchJson, `${BASE_CAMARA}deputados?idLegislatura=${ID_LEGISLATURA}&itens=100`)
+  console.log(`  Câmara: ${deputadosLeg.length} deputados na legislatura ${ID_LEGISLATURA}; baixando histórico de status...`)
+  const historicos = new Map<number, StatusHistorico[]>()
+  let falhas = 0
+  for (const d of deputadosLeg) {
+    try {
+      const resp = await fetchJson(`${BASE_CAMARA}deputados/${d.id}/historico`)
+      historicos.set(d.id as number, ordenarHistorico((resp?.dados ?? []) as StatusHistorico[]))
+    } catch (e) {
+      // um histórico que falha (ex.: 504 transitório do host) não derruba a coleta inteira:
+      // o deputado fica sem histórico (não entra no denominador de ninguém). Logamos para auditar.
+      falhas += 1
+      console.warn(`  ! histórico falhou para deputado ${d.id}: ${e}`)
+    }
+  }
+  if (falhas) console.warn(`  ! ${falhas} histórico(s) não baixados (deputados sem janela de exercício; rode de novo para completar via cache)`)
+
+  // 3) por sessão, o conjunto em exercício = quem estava em 'Exercício' naquela data
   const regs: RegistroPresenca[] = []
   for (const { sessao, presentes } of rosters) {
-    const mes = (sessao.dataHoraInicio ?? '').slice(0, 7)
-    regs.push(...montarRegistrosCamara(sessao, presentes, emExercicioMes.get(mes) ?? new Set()))
+    const quando = sessao.dataHoraInicio ?? ''
+    const emExercicio = new Set<number>()
+    for (const [id, hist] of historicos) {
+      if (emExercicioNaData(hist, quando)) emExercicio.add(id)
+    }
+    regs.push(...montarRegistrosCamara(sessao, presentes, emExercicio))
   }
 
   return { regs, sessoes: rosters.length }
