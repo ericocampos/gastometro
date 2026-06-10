@@ -19,7 +19,7 @@ export default function PresencaPage() {
           Presença em plenário
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-suave">
-          Quanto cada parlamentar compareceu às sessões deliberativas. Na Câmara medimos o comparecimento às sessões deliberativas do plenário. No Senado, que define presença como comparecimento à votação, medimos pela lista de presença das sessões deliberativas com votação nominal — sessões deliberativas sem votação nominal não têm lista de presença em dado aberto.
+          Quanto cada parlamentar compareceu às sessões deliberativas. Na Câmara medimos o comparecimento às sessões deliberativas do plenário. No Senado, que define presença como comparecimento à votação, medimos pela lista de presença das sessões deliberativas com votação nominal (sessões deliberativas sem votação nominal não têm lista de presença em dado aberto).
         </p>
       </section>
       <PresencaHub series={series} salarios={salarios} />
