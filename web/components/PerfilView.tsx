@@ -720,8 +720,8 @@ function PresencaDetalhe({
         <p className="mt-3 text-xs leading-relaxed text-tinta-tenue">
           Metodologia (Câmara): comparecimento às sessões deliberativas. O dado aberto da Câmara não
           informa o motivo da ausência, então as faltas não distinguem justificadas de não
-          justificadas. Meses em que o deputado não comparece a nenhuma sessão não entram no cálculo
-          da taxa dele, então a frequência da Câmara tende a ficar um pouco mais alta que a do Senado.
+          justificadas. O denominador considera só as sessões em que o deputado estava em exercício
+          (períodos de licença não são cobrados; o suplente que assumiu entra no lugar).
         </p>
       )}
     </div>

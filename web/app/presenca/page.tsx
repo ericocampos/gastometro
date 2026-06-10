@@ -27,9 +27,10 @@ export default function PresencaPage() {
         Notas de método. No Senado, a distinção entre falta justificada e não justificada é o motivo
         informado pelo próprio Senado (licença, missão, atividade parlamentar), não uma verificação
         nossa; o documento que comprova cada ausência consta no Diário do Senado. Na Câmara, o dado
-        aberto não informa o motivo, então as faltas não têm essa distinção, e meses em que o deputado
-        não comparece a nenhuma sessão ficam de fora do cálculo da taxa dele (por isso a frequência da
-        Câmara tende a ficar um pouco mais alta que a do Senado).
+        aberto não informa o motivo, então as faltas não têm essa distinção. Em ambas as casas, o
+        denominador de cada parlamentar considera só as sessões em que ele estava de fato em exercício:
+        quem entrou no meio do mandato é cobrado a partir daí, e quem estava de licença não é cobrado
+        (a cadeira fica com o suplente).
       </p>
     </div>
   )
