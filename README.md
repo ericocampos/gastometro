@@ -1,10 +1,16 @@
 # Gastômetro
 
-Plataforma open source para acompanhar os **gastos de cota parlamentar** de parlamentares
-federais (deputados e senadores), a partir das fontes oficiais de Dados Abertos da Câmara e do
-Senado. É um template **fork-ready**: cada estado configura sua UF e publica a própria instância.
+Plataforma open source para acompanhar o **custo dos parlamentares** (cota, salário e gabinete),
+além de emendas e votações, a partir de fontes oficiais. A cobertura é multinível:
 
-Instância inicial: **Gastômetro PB** — Paraíba.
+- **Federal** — Câmara e Senado, nas **27 UFs** (despesas da cota com nota, gabinete real, votações, emendas).
+- **Estadual** — assembleias legislativas: **10 casas no modelo completo** (gasto itemizado por deputado,
+  com fornecedor e CPF/CNPJ): PB, MG, SP, SC, DF, PE, BA, CE, GO e AM; as demais 17 entram no modelo
+  **leve** (cadastro + subsídio, via TSE), prontas para virarem completo quando a fonte do estado for integrada.
+- **Municipal** — câmaras de vereadores (João Pessoa e Campina Grande completas; ~86 cidades via TCE-PB).
+
+É um template **fork-ready**: cada estado configura sua UF e publica a própria instância. Instância de
+referência: **Gastômetro PB** — Paraíba.
 
 > Os dados são públicos e os indicadores são estatísticos. "Pontos de atenção" **não são
 > acusações de irregularidade**.
@@ -108,6 +114,48 @@ Todas são públicas e oficiais. A coleta filtra pela UF do `config/state.json`.
 
 > A remuneração estadual da CODATA (`api.dadosabertos.codata.pb.gov.br`) é só do **Executivo** (63 órgãos, sem Assembleia) — por isso o gabinete da ALPB vem do arquivo de comissionados da própria Assembleia.
 
+### Demais Assembleias Legislativas (modelo completo)
+
+Além da ALPB, outras **nove assembleias** entram no modelo completo (gasto **itemizado por deputado**, com
+fornecedor e CPF/CNPJ). Cada uma tem um coletor próprio em `collector/coletar{Casa}.ts` + parsers testáveis
+em `collector/sources/{casa}.ts`, e é integrada offline (`npm run integrar:completo -- {uf}`). Foto e
+roster vêm do **TSE 2022** (eleição estadual); o partido prefere o atual da própria casa quando há.
+
+| UF | Casa | Fonte da verba | Formato | Gabinete por deputado |
+|---|---|---|---|---|
+| MG | ALMG | API de verba indenizatória | JSON | sim (foto/roster) · gabinete não por deputado |
+| SP | ALESP | 3 XMLs (verba + gabinete) | XML | **sim, com nomes** (custo pela tabela de vencimentos) |
+| SC | ALESC | CSV anual de gabinetes | CSV (sem CNPJ) | só nomes (custo bloqueado na fonte) |
+| DF | CLDF | API CKAN (datastore) | JSON | só nomes |
+| PE | ALEPE | 3 endpoints PHP (verba) | JSON | **sim, custo real** (servidores + remuneração) |
+| BA | ALBA | lista + detalhe (verba) | HTML + **PDF da nota** | não (folha por lotação administrativa) |
+| CE | ALECE | lista + detalhe (VDP) | HTML | não |
+| GO | ALEGO | API de verba (modelo CEAP) | JSON | não |
+| AM | ALEAM | consulta de cota (form POST) | HTML | não |
+
+> **O que varia por casa.** Nem toda assembleia liga o comissionado a um deputado: onde a folha é por
+> lotação administrativa (ALMG, BA, CE, GO, AM), o **gabinete por deputado é omitido com nota** (sem
+> inventar), em vez de chutar. A BA é a única que publica o **PDF da própria nota fiscal**. Quando o valor
+> apresentado na nota difere do reembolsado (glosa), o detalhamento mostra os dois. O teto da verba
+> **varia por estado** e não há um valor único oficial consolidado, então o "uso do teto" estadual é
+> apresentado como referência aproximada.
+
+### Demais Assembleias Legislativas (modelo leve)
+
+As 17 UFs ainda sem fonte de gasto integrada entram no modelo **leve**: cadastro + subsídio, via roster
+do **TSE 2022** (`coletar:assembleias` → `mesclar:assembleias`). O deputado aparece com nome, partido e
+foto, e a página do estado sinaliza "cobertura parcial". Vira completo quando a fonte oficial do estado
+for integrada.
+
+### Denominador consistente
+
+As listas usam um **denominador fixo por mandato**: aparece todo parlamentar que **exerceu**, com **R$ 0**
+para quem não gastou no período. Quem nunca exerceu (suplente que não assumiu, sem nenhum lançamento) fica
+**fora** — R$ 0 só vale para quem comprovadamente esteve em exercício. Nas casas completo, os titulares
+eleitos que não gastaram entram via roster do TSE (`mesclar:roster-completo`), quando o id casa com
+segurança. A métrica do ranking mostra "Exerceram · Gastaram · Não gastaram (R$ 0)", e os zeros ficam
+colapsados atrás de um botão.
+
 ### Câmara Municipal de João Pessoa (vereadores)
 
 Primeira casa do **nível municipal**. A estrutura é multi-cidade (config por município em `collector/cidades.ts`); a fonte da folha (Elmar) é multi-tenant, então outras cidades da PB entram trocando o `ctx`.
@@ -201,8 +249,12 @@ Documentado para poupar tempo de quem for replicar:
   - Em nenhuma fonte há **CPF** nem **descrição da atividade** de cada pessoa; e comissionados costumam
     ser **dispensados de registro de ponto** (regime especial de frequência), então **não existe dado de
     presença** de servidor para publicar.
-- **Parlamentares com R$ 0** (ex.: suplentes que nunca assumiram) são mantidos, porém **marcados**
-  ("sem gastos") e fora dos cards de contagem.
+- **Denominador consistente:** a lista mostra quem **exerceu** o mandato, com **R$ 0** para quem não
+  gastou no período (colapsado atrás de um botão). Quem nunca exerceu (suplente sem nenhum lançamento)
+  fica **fora** — R$ 0 só vale para quem comprovadamente esteve em exercício.
+- **Siglas de partido** chegam grafadas de formas diferentes por fonte (`UB`/`UNIÃO`, `REP`/`REPUBLICANOS`,
+  `PODE`/`PODEMOS`); normalizamos para uma forma canônica (`web/lib/partidos.ts`), senão o filtro
+  multiplica a mesma legenda.
 
 ---
 
@@ -211,14 +263,15 @@ Documentado para poupar tempo de quem for replicar:
 Ficam em **`config/custos-mandato.json`** (com fontes e data de referência). Valores vigentes em
 **2026-06** — confira e atualize ao forkar:
 
-| Item | Câmara (Deputado) | Senado (Senador) |
-|---|---|---|
-| Salário (subsídio) | R$ 46.366,19/mês (desde fev/2025, Dec. Leg. 172/2022) | igual |
-| Cota | **CEAP — varia por UF** (PB: R$ 47.826,36/mês) | CEAPS = R$ 15.000 fixos + transporte aéreo variável |
-| Verba de gabinete | R$ 165.806,07/mês — até 25 assessores (2026) | sem verba fixa; até 50 comissionados (estrutura variável) |
+| Item | Câmara (Deputado) | Senado (Senador) | Assembleia (Dep. Estadual) |
+|---|---|---|---|
+| Salário (subsídio) | R$ 46.366,19/mês (desde fev/2025, Dec. Leg. 172/2022) | igual | R$ 34.774,64/mês (referência; varia por estado) |
+| Cota | **CEAP — varia por UF** (PB: R$ 54.402,48/mês, reajuste fev/2026) | CEAPS = R$ 15.000 fixos + transporte aéreo variável | verba indenizatória, **teto varia por estado** (≈ referência) |
+| Verba de gabinete | R$ 133.170,54/mês — até 25 secretários | sem verba fixa; até 50 comissionados (estrutura variável) | não divulgada por parlamentar na maioria das casas |
 
-> A cota e a verba de gabinete são as parcelas que mais mudam por UF/ano. O salário é fixo e igual
-> nas duas casas.
+> A cota e a verba de gabinete são as parcelas que mais mudam por UF/ano. O salário federal é fixo e igual
+> nas duas casas. Os valores ficam em `config/custos-mandato.json` (com fonte e data); o de assembleia é
+> uma referência única, já que o teto da verba estadual difere de estado para estado.
 
 ---
 
@@ -252,10 +305,15 @@ quando o parlamentar tem alertas.
 
 ```
 collector/            Coletor (Node + TS, ESM)
-  sources/            Fontes: camara.ts, senado.ts, cota-csv.ts, ceaps-csv.ts
+  sources/            Fontes: camara.ts, senado.ts, cota-csv.ts, ceaps-csv.ts,
+                      assembleias estaduais (almg.ts, alesp.ts, alepe.ts, alego.ts, aleam.ts, …),
+                      tseEleicoes.ts (roster/foto), partidos via web/lib
   enriquecimento/     Perfis (bio + proposições)
   analise/            Analisadores dos pontos de atenção
-  collect.ts          Orquestrador da coleta → /data
+  collect.ts          Orquestrador da coleta federal → /data
+  coletar{Casa}.ts    Um orquestrador por assembleia completo
+  integrarCompleto.ts Integra offline uma casa completo nos agregados
+  mesclarAssembleias.ts / mesclarRosterCompleto.ts  Roster leve e titulares R$ 0 (denominador)
   coletarAssessores.ts  Nº de assessores (Câmara)
   analisar.ts         Gera os alertas → /data/analysis
 config/
@@ -278,9 +336,17 @@ Na raiz (coletor):
 
 | Comando | O que faz |
 |---|---|
-| `npm run collect` | Coleta despesas + perfis (Câmara e Senado) → `/data` |
+| `npm run collect` | Coleta despesas + perfis federais (Câmara e Senado) → `/data` |
+| `npm run gerar:itemizado` | Regera o itemizado federal (rodar **antes** de re-agregar, senão o federal regride) |
 | `npm run coletar:assessores` | Gera `/data/assessores.json` (nº de assessores por deputado) |
+| `npm run coletar:emendas` / `coletar:votacoes` | Emendas ao orçamento / votações nominais |
 | `npm run analisar` | Gera os pontos de atenção → `/data/analysis/alerts.json` |
+| `npm run coletar:alpb` | Assembleia da PB (VIAP + gabinete) |
+| `npm run coletar:assembleias` + `mesclar:assembleias` | Roster leve das 26 UFs (TSE) e mescla nos agregados |
+| `npm run coletar:almg` / `:alesp` / `:alesc` / `:cldf` / `:alepe` / `:alba` / `:alece` / `:alego` / `:aleam` | Assembleias no modelo completo (uma por casa) |
+| `npm run integrar:completo -- {uf}` | Integra offline os dados de uma casa completo nos agregados |
+| `npm run mesclar:roster-completo` | Injeta os titulares R$ 0 das casas completo (denominador) |
+| `npm run coletar:vereadores` / `coletar:orcamento` | Nível municipal (folha por vereador, orçamento por cidade) |
 | `npm test` | Testes do coletor |
 
 Em `web/` (site):
