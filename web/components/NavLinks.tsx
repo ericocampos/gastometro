@@ -9,6 +9,7 @@ const LINKS = [
   { href: '/emendas', rotulo: 'Emendas' },
   { href: '/votacoes', rotulo: 'Votações' },
   { href: '/presenca', rotulo: 'Presença' },
+  { href: '/patrimonio', rotulo: 'Patrimônio' },
   { href: '/municipios', rotulo: 'Municípios' },
   { href: '/comparar', rotulo: 'Comparar' },
   { href: '/fornecedores', rotulo: 'Fornecedores' },
