@@ -1,4 +1,4 @@
-import { getMunicipios, getSeriesParlamentares, getOrcamento, getOrcamentoSlugs } from '@/lib/dados'
+import { getMunicipios, getSeriesParlamentares, getOrcamento, getOrcamentoSlugs, getViapTetoMudancas } from '@/lib/dados'
 import { totalAnualMunicipio } from '@/lib/periodo'
 import { mesAno } from '@/lib/formato'
 import { CustoMandatoMunicipio } from '@/components/CustoMandatoMunicipio'
@@ -18,6 +18,7 @@ export function generateStaticParams() {
 export default function MunicipioPage({ params }: { params: { slug: string } }) {
   const indice = getMunicipios()
   const municipio = indice.cidades.find((c) => c.slug === params.slug)
+  const viapMudanca = getViapTetoMudancas()?.mudancas[params.slug] ?? null
   const orcamento = getOrcamento(params.slug)
 
   if (!municipio && !orcamento) {
@@ -72,7 +73,7 @@ export default function MunicipioPage({ params }: { params: { slug: string } }) 
         <>
           <section className="mb-12">
             <SecaoTitulo>Quanto custa um mandato · por mês</SecaoTitulo>
-            <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} />
+            <CustoMandatoMunicipio municipio={municipio} atualizadoEm={indice.atualizadoEm} viapMudanca={viapMudanca} />
           </section>
 
           {anualCidade.length > 0 && (
