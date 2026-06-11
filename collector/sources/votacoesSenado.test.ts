@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { mapVotoSenado, ehMeritoSenado, normalizarNomeSenador, construirMapaRoster, parseVotacoesOrientacaoBancada } from './votacoesSenado.js'
+import { mapVotoSenado, ehMeritoSenado, normalizarNomeSenador, construirMapaRoster, parseVotacoesOrientacaoBancada, coletarSenado } from './votacoesSenado.js'
 
 describe('mapVotoSenado', () => {
   it('mapeia as siglas de voto', () => {
@@ -125,5 +125,77 @@ describe('parseVotacoesOrientacaoBancada', () => {
     expect(registros[0].orientacaoGoverno).toBeNull()
     expect(registros[0].aprovada).toBeNull()
     expect(registros[0].urlOficial).toBeUndefined()
+  })
+})
+
+describe('coletarSenado (enriquecimento aprovada/URL)', () => {
+  const senadores = [
+    { id: 'senado-7', nome: 'Fulano Um', uf: 'PB' },
+    { id: 'senado-8', nome: 'Beltrano Dois', uf: 'SP' },
+  ]
+  const orient2024 = {
+    votacoes: [
+      { codigoVotacaoSve: 9743, dataInicioVotacao: '2024-02-20T19:00:00', siglaTipoMateria: 'PL', descricaoMateria: 'PL 100', numeroMateria: 100, anoMateria: 2024, descricaoVotacao: 'V principal',
+        qtdVotosSim: 2, qtdVotosNao: 1, qtdVotosAbstencao: 0, qtdObstrucoes: 0,
+        orientacoesLideranca: [{ partido: 'Governo', voto: 'SIM' }],
+        votosParlamentar: [
+          { nomeParlamentar: 'Fulano Um', partido: 'PT', uf: 'PB', voto: 'SIM' },
+          { nomeParlamentar: 'Beltrano Dois', partido: 'PL', uf: 'SP', voto: 'NÃO' },
+        ] },
+      { codigoVotacaoSve: 9748, dataInicioVotacao: '2024-02-20T20:00:00', siglaTipoMateria: 'PL', descricaoMateria: 'PL 100', numeroMateria: 100, anoMateria: 2024, descricaoVotacao: 'V destaque',
+        qtdVotosSim: 1, qtdVotosNao: 2, qtdVotosAbstencao: 0, qtdObstrucoes: 0,
+        orientacoesLideranca: [{ partido: 'Governo', voto: 'NÃO' }],
+        votosParlamentar: [
+          { nomeParlamentar: 'Fulano Um', partido: 'PT', uf: 'PB', voto: 'NÃO' },
+          { nomeParlamentar: 'Beltrano Dois', partido: 'PL', uf: 'SP', voto: 'NÃO' },
+        ] },
+      { codigoVotacaoSve: 9750, dataInicioVotacao: '2024-03-01T10:00:00', siglaTipoMateria: 'PL', descricaoMateria: 'PL 200', numeroMateria: 200, anoMateria: 2024, descricaoVotacao: 'V ambigua',
+        qtdVotosSim: 1, qtdVotosNao: 1, qtdVotosAbstencao: 0, qtdObstrucoes: 0,
+        orientacoesLideranca: [{ partido: 'Governo', voto: 'SIM' }],
+        votosParlamentar: [
+          { nomeParlamentar: 'Fulano Um', partido: 'PT', uf: 'PB', voto: 'SIM' },
+          { nomeParlamentar: 'Beltrano Dois', partido: 'PL', uf: 'SP', voto: 'NÃO' },
+        ] },
+    ],
+  }
+  const lista2024 = [
+    { identificacao: 'PL 100/2024', codigoMateria: 555 },
+    { identificacao: 'PL 200/2024', codigoMateria: 666 },
+  ]
+  // matéria 555: duas votações em 2024-02-20 com placares DISTINTOS -> ambas resolvem
+  const matVot555 = { VotacaoMateria: { Materia: { Votacoes: { Votacao: [
+    { CodigoSessaoVotacao: '1', IndicadorVotacaoSecreta: 'Não', DescricaoResultado: 'Aprovado',
+      SessaoPlenaria: { DataSessao: '2024-02-20' },
+      Votos: { VotoParlamentar: [{ SiglaVoto: 'Sim' }, { SiglaVoto: 'Sim' }, { SiglaVoto: 'Não' }] } },
+    { CodigoSessaoVotacao: '2', IndicadorVotacaoSecreta: 'Não', DescricaoResultado: 'Rejeitado',
+      SessaoPlenaria: { DataSessao: '2024-02-20' },
+      Votos: { VotoParlamentar: [{ SiglaVoto: 'Sim' }, { SiglaVoto: 'Não' }, { SiglaVoto: 'Não' }] } },
+  ] } } } }
+  // matéria 666: duas votações em 2024-03-01 com MESMO placar (1/1) -> colisão -> descartado
+  const matVot666 = { VotacaoMateria: { Materia: { Votacoes: { Votacao: [
+    { CodigoSessaoVotacao: '3', IndicadorVotacaoSecreta: 'Não', DescricaoResultado: 'Aprovado',
+      SessaoPlenaria: { DataSessao: '2024-03-01' },
+      Votos: { VotoParlamentar: [{ SiglaVoto: 'Sim' }, { SiglaVoto: 'Não' }] } },
+    { CodigoSessaoVotacao: '4', IndicadorVotacaoSecreta: 'Não', DescricaoResultado: 'Rejeitado',
+      SessaoPlenaria: { DataSessao: '2024-03-01' },
+      Votos: { VotoParlamentar: [{ SiglaVoto: 'Sim' }, { SiglaVoto: 'Não' }] } },
+  ] } } } }
+  const fakeFetch = async (url: string) => {
+    if (url.includes('orientacaoBancada')) return orient2024
+    if (url.includes('/materia/votacoes/555')) return matVot555
+    if (url.includes('/materia/votacoes/666')) return matVot666
+    if (url.includes('/votacao?ano=')) return lista2024
+    throw new Error('URL inesperada no teste: ' + url)
+  }
+
+  it('resolve aprovada por data+placar, descarta colisão de placar, e monta URL e orientação', async () => {
+    const regs = await coletarSenado(fakeFetch, [2024], senadores, () => {})
+    const by = Object.fromEntries(regs.map((r) => [r.id, r]))
+    expect(by['senado-9743'].aprovada).toBe(true)   // placar 2/1 -> Aprovado
+    expect(by['senado-9748'].aprovada).toBe(false)  // placar 1/2 -> Rejeitado
+    expect(by['senado-9750'].aprovada).toBeNull()   // colisão 1/1 mesmo dia -> descartado
+    expect(by['senado-9743'].urlOficial).toBe('https://www25.senado.leg.br/web/atividade/materias/-/materia/555')
+    expect(by['senado-9743'].orientacaoGoverno).toBe('Sim')
+    expect(by['senado-9748'].orientacaoGoverno).toBe('Não')
   })
 })
