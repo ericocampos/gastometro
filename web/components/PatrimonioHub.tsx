@@ -66,12 +66,14 @@ export function PatrimonioHub({ series }: { series: SeriePatrimonio[] }) {
         </p>
       ) : (
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {linhas.map(({ s, recente, varr }, i) => {
+          {linhas.map(({ s, recente, varr, pctRank }, i) => {
             const cor = s.casa === 'camara' ? '#2563eb' : '#d97706'
             const casaRotulo = s.casa === 'camara' ? 'Câmara' : 'Senado'
             const totalTexto = recente!.total > 0 ? brl(recente!.total) : 'Nada declarado'
+            // o % só aparece quando é "rankável" (base >= piso); base minúscula mostra só o R$,
+            // pra não exibir um +5000% enganoso de quem partiu de quase nada
             const varTexto = varr
-              ? `${varr.absoluto >= 0 ? '+' : ''}${brl(varr.absoluto)}${varr.percentual != null ? ` (${varr.percentual >= 0 ? '+' : ''}${Math.round(varr.percentual)}%)` : ''} desde ${varr.deAno}`
+              ? `${varr.absoluto >= 0 ? '+' : ''}${brl(varr.absoluto)}${pctRank != null ? ` (${pctRank >= 0 ? '+' : ''}${Math.round(pctRank)}%)` : ''} desde ${varr.deAno}`
               : '1ª declaração'
             return (
               <li key={s.politicoId} className="surgir" style={{ animationDelay: `${Math.min(i, 12) * 35}ms` }}>

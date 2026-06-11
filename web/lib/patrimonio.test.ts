@@ -49,6 +49,12 @@ describe('variacaoPercentualRankavel', () => {
   it('retorna null quando só há uma declaração', () => {
     expect(variacaoPercentualRankavel([{ ano: 2022, total: 5000000, porCategoria: {} }])).toBe(null)
   })
+  it('base exatamente no piso (>=) entra', () => {
+    expect(variacaoPercentualRankavel([
+      { ano: 2018, total: 50000, porCategoria: {} },
+      { ano: 2022, total: 100000, porCategoria: {} },
+    ])).toBeCloseTo(100, 5)
+  })
   it('o piso padrão é R$ 50.000', () => {
     expect(PISO_VARIACAO_PCT).toBe(50000)
   })
