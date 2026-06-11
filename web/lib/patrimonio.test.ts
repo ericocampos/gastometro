@@ -29,3 +29,27 @@ describe('variacao', () => {
     expect(v.percentual).toBe(null)
   })
 })
+
+import { variacaoPercentualRankavel, PISO_VARIACAO_PCT } from './patrimonio'
+
+describe('variacaoPercentualRankavel', () => {
+  it('retorna o % quando a base (declaração mais antiga) >= piso', () => {
+    const r = variacaoPercentualRankavel([
+      { ano: 2018, total: 100000, porCategoria: {} },
+      { ano: 2022, total: 1100000, porCategoria: {} },
+    ])
+    expect(r).toBeCloseTo(1000, 5)
+  })
+  it('retorna null quando a base é menor que o piso (corta ruído de base minúscula)', () => {
+    expect(variacaoPercentualRankavel([
+      { ano: 2018, total: 1000, porCategoria: {} },
+      { ano: 2022, total: 51000, porCategoria: {} },
+    ])).toBe(null)
+  })
+  it('retorna null quando só há uma declaração', () => {
+    expect(variacaoPercentualRankavel([{ ano: 2022, total: 5000000, porCategoria: {} }])).toBe(null)
+  })
+  it('o piso padrão é R$ 50.000', () => {
+    expect(PISO_VARIACAO_PCT).toBe(50000)
+  })
+})

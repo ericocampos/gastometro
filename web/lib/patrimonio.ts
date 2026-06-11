@@ -21,3 +21,14 @@ export function variacao(decls: DeclaracaoBens[]): Variacao | null {
   const percentual = de.total > 0 ? (absoluto / de.total) * 100 : null
   return { deAno: de.ano, paraAno: para.ano, deTotal: de.total, paraTotal: para.total, absoluto, percentual }
 }
+
+// Piso de base para o ranking por %: variação percentual só é "rankável" quando a declaração mais
+// antiga tinha pelo menos este valor. Corta o ruído de base minúscula (declarou ~nada e algo depois,
+// gerando % gigante que não mede enriquecimento real).
+export const PISO_VARIACAO_PCT = 50000
+
+export function variacaoPercentualRankavel(decls: DeclaracaoBens[], piso = PISO_VARIACAO_PCT): number | null {
+  const v = variacao(decls)
+  if (!v || v.percentual == null) return null
+  return v.deTotal >= piso ? v.percentual : null
+}
