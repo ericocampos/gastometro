@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { agregarPerfil, totalAnualParlamentar, totalAnualPorCasaParlamentar } from './perfil'
-import type { Despesa } from './tipos'
+import { agregarPerfil, totalAnualParlamentar, totalAnualPorCasaParlamentar, proposicoesNoPeriodo } from './perfil'
+import type { Despesa, ProposicaoResumo } from './tipos'
 
 const d = (ano: number, mes: number, categoria: string, forn: string, valor: number): Despesa => ({
   id: `${ano}-${mes}-${forn}`, politicoId: 'x', data: `${ano}-0${mes}-01`, ano, mes,
@@ -57,5 +57,23 @@ describe('totalAnualPorCasaParlamentar', () => {
   it('deputado federal: o total vai na chave "camara"', () => {
     const r = totalAnualPorCasaParlamentar(despesas, 'camara')
     expect(r[0]).toEqual({ ano: 2022, camara: 100, senado: 0, assembleia: 0, municipal: 0 })
+  })
+})
+
+const props: ProposicaoResumo[] = [
+  { tipo: 'PL', numero: '1', ano: 2023, ementa: 'a' },
+  { tipo: 'PL', numero: '2', ano: 2024, ementa: 'b' },
+  { tipo: 'PEC', numero: '3', ano: 2024, ementa: 'c' },
+]
+
+describe('proposicoesNoPeriodo', () => {
+  it('tudo devolve todas', () => {
+    expect(proposicoesNoPeriodo(props, { tipo: 'tudo' })).toHaveLength(3)
+  })
+  it('filtra por ano', () => {
+    expect(proposicoesNoPeriodo(props, { tipo: 'ano', ano: 2024 }).map((p) => p.numero)).toEqual(['2', '3'])
+  })
+  it('período sem proposições devolve vazio', () => {
+    expect(proposicoesNoPeriodo(props, { tipo: 'ano', ano: 2099 })).toEqual([])
   })
 })
