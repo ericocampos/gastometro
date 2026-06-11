@@ -358,3 +358,22 @@ export interface ResumoAssembleia {
   deputados: DeputadoLeve[]
 }
 export interface AssembleiasIndice { atualizadoEm: string; casas: ResumoAssembleia[] }
+
+export interface DeclaracaoBens { ano: number; total: number; porCategoria: Record<string, number> }
+export interface PatrimonioPolitico { matchPor: 'cpf' | 'nome'; declaracoes: DeclaracaoBens[] }
+export interface SeriePatrimonio {
+  politicoId: string
+  nome: string
+  partido: string
+  uf: string
+  casa: 'camara' | 'senado'
+  fotoUrl?: string
+  matchPor: 'cpf' | 'nome'
+  declaracoes: DeclaracaoBens[]
+}
+export interface Patrimonios {
+  fonte: string
+  atualizadoEm: string
+  eleicoes: number[]
+  porPolitico: Record<string, PatrimonioPolitico>
+}

@@ -51,6 +51,18 @@ const BLOCOS: Bloco[] = [
     ],
   },
   {
+    casa: 'Patrimônio (declaração de bens)',
+    intro: 'Declarações de bens patrimoniais prestadas ao TSE pelos candidatos nas eleições de 2018 e 2022.',
+    fontes: [
+      {
+        oque: 'Bens declarados ao TSE',
+        onde: 'cdn.tse.jus.br/.../bem_candidato e consulta_cand (2018 e 2022)',
+        formato: 'CSV (dados abertos)',
+        obs: 'patrimônio autodeclarado na candidatura, por candidato. Casamos os deputados por CPF (API da Câmara) e os senadores por nome e UF. Valores nominais (sem correção de inflação); mostramos o total, a quebra por categoria e a variação entre as eleições.',
+      },
+    ],
+  },
+  {
     casa: 'Assembleia Legislativa da Paraíba',
     intro: 'Cadastro no SAPL + planilhas de verba indenizatória (VIAP).',
     fontes: [
