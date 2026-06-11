@@ -57,4 +57,18 @@ describe('CustoMandatoMunicipio', () => {
     // total mensal = 7000 + 9600/12 (800) + 8000 = 15800
     expect(screen.getByText(/≈\s*R\$ 15\.800/)).toBeInTheDocument()
   })
+
+  it('com mudança de teto: usa o teto vigente no card e no total, com nota', () => {
+    const cg: Municipio = {
+      ...base, slug: 'campina-grande', nome: 'Campina Grande',
+      custo: { ...base.custo, slug: 'campina-grande', nome: 'Campina Grande', viapTeto: 17000 },
+    }
+    render(<CustoMandatoMunicipio municipio={cg} viapMudanca={{ aPartirDe: 2026, valor: 12000 }} />)
+    // card VIAP mostra o vigente (12.000), não o antigo (17.000)
+    expect(screen.getByText('R$ 12.000')).toBeInTheDocument()
+    // nota da mudança
+    expect(screen.getByText(/passou a R\$ 12\.000\/mês em 2026 \(era R\$ 17\.000\/mês até 2025\)/)).toBeInTheDocument()
+    // total = 26000 + 12000 + 50000 = 88000 (usa o vigente)
+    expect(screen.getByText(/≈\s*R\$ 88\.000/)).toBeInTheDocument()
+  })
 })
