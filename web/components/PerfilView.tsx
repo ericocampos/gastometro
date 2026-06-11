@@ -390,7 +390,7 @@ export function PerfilView({
                 valor={taxaPres == null ? '—' : `${taxaPres}%`}
                 sub={
                   presenca!.faltasJustificadas !== null
-                    ? `${presenca!.faltasNaoJustificadas} falta(s) não justificada(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
+                    ? `${resPres!.naoJustificadas} falta(s) não justificada(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
                     : `${resPres!.faltas} falta(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
                 }
               />
