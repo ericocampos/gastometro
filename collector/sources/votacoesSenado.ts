@@ -1,9 +1,7 @@
 // Parsers do Senado (dados abertos) para votações nominais de mérito.
-// Forma da API confirmada ao vivo: /dadosabertos/votacao?ano= devolve um ARRAY de votações,
-// com a matéria em campos separados (sigla/numero/ementa) e os votos inline.
-// Orientação do governo vem da árvore orientacaoBancada (orientacoesLideranca, partido ===
-// 'Governo') por código. A "orientação do partido" é derivada da maioria do próprio partido
-// (campo siglaPartidoParlamentar dos votos), igual à Câmara.
+// Fonte autoritativa: orientacaoBancada/{ano}0101/{ano}1231.json já traz orientação do bloco
+// "Governo" + votos por senador (nome+UF). Enriquecimento de aprovada/URL vem de votacao?ano=
+// (best-effort) e da API de matéria por matéria (segundo passe).
 import type { Orientacao, RegistroVotacao, VotoSigla } from './votacoes.js'
 import { orientacaoPorMaioria } from './votacoes.js'
 
@@ -40,12 +38,6 @@ export function mapVotoSenado(sigla: string): VotoSigla {
   return '-'   // MIS, P-NRV, LP, e demais ausências/licenças
 }
 
-// "PLP 85/2024" -> 2024 (ano da matéria, que pode diferir do ano da sessão)
-function anoDaIdentificacao(identificacao: string, fallback: number): number {
-  const m = /\/(\d{4})\s*$/.exec(identificacao ?? '')
-  return m ? Number(m[1]) : fallback
-}
-
 function orientacaoDeVoto(voto: string): Orientacao {
   const t = (voto ?? '').trim().toLowerCase()
   if (t === 'sim') return 'Sim'
@@ -53,47 +45,6 @@ function orientacaoDeVoto(voto: string): Orientacao {
   return 'Liberado'   // LIVRE, OBSTRUÇÃO, vazio, etc.
 }
 
-interface VotoSenadoItem { codigoParlamentar?: number; siglaVotoParlamentar?: string; siglaPartidoParlamentar?: string }
-interface VotacaoSenado {
-  codigoVotacaoSve?: number; codigoSessaoVotacao?: number; codigoMateria?: number; dataSessao?: string; votacaoSecreta?: string; resultadoVotacao?: string
-  ano?: number; sigla?: string; numero?: string | number; identificacao?: string
-  descricaoVotacao?: string; ementa?: string; votos?: VotoSenadoItem[]
-}
-
-export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orientacao | null): RegistroVotacao | null {
-  if ((v.votacaoSecreta ?? '').toUpperCase() === 'S') return null
-  if (!ehMeritoSenado(v.sigla ?? '')) return null
-
-  let sim = 0, nao = 0, outros = 0
-  const comPartido = (v.votos ?? []).map((it) => {
-    const voto = mapVotoSenado(it.siglaVotoParlamentar ?? '')
-    if (voto === 'S') sim++; else if (voto === 'N') nao++; else outros++
-    return { politicoId: `senado-${it.codigoParlamentar}`, v: voto, partido: (it.siglaPartidoParlamentar ?? '').trim() }
-  })
-  // orientação do partido = como votou a maioria do próprio partido naquela votação
-  const maioria = orientacaoPorMaioria(comPartido)
-  const votos = comPartido.map((x) => ({ politicoId: x.politicoId, v: x.v, orientacaoPartido: maioria[x.partido] ?? null }))
-
-  // alguns registros vêm com codigoVotacaoSve null; usa o código da sessão de votação como id estável
-  // (senão todos os null colidiriam em "senado-null" e se sobrescreveriam)
-  const cod = v.codigoVotacaoSve ?? (v.codigoSessaoVotacao != null ? `s${v.codigoSessaoVotacao}` : null)
-  if (cod == null) return null
-  return {
-    id: `senado-${cod}`, casa: 'senado', data: (v.dataSessao ?? '').slice(0, 10),
-    proposicao: {
-      tipo: String(v.sigla ?? ''), numero: String(v.numero ?? ''),
-      ano: anoDaIdentificacao(v.identificacao ?? '', Number(v.ano) || 0),
-      ementa: (v.ementa ?? '').trim(),
-    },
-    descricao: (v.descricaoVotacao ?? '').trim(),
-    aprovada: v.resultadoVotacao === 'A' ? true : v.resultadoVotacao === 'R' ? false : null,
-    placar: { sim, nao, outros },
-    orientacaoGoverno,
-    // fonte: página da matéria no Senado (traz a tramitação e as votações)
-    urlOficial: `https://www25.senado.leg.br/web/atividade/materias/-/materia/${v.codigoMateria ?? cod}`,
-    votos,
-  }
-}
 
 export interface LookupsSenado {
   resultado: (sigla: string, num: number, ano: number, data: string, sim: number, nao: number, abst: number) => 'A' | 'R' | undefined
@@ -164,36 +115,75 @@ export function parseVotacoesOrientacaoBancada(
 
 export type FetchJson = (url: string) => Promise<any>
 
-// orientação do governo por código de votação, da árvore orientacaoBancada do período.
-// Forma confirmada: { votacoes: [{ codigoVotacaoSve, orientacoesLideranca: [{ partido, voto }] }] }
-export function parseOrientacoesGoverno(payload: any): Record<string, Orientacao> {
-  const out: Record<string, Orientacao> = {}
-  for (const v of payload?.votacoes ?? []) {
-    const cod = String(v.codigoVotacaoSve ?? '')
-    if (!cod) continue
-    const gov = (v.orientacoesLideranca ?? []).find((o: any) => String(o.partido ?? '').toLowerCase() === 'governo')
-    if (!gov) continue
-    out[cod] = orientacaoDeVoto(gov.voto ?? '')
-  }
-  return out
+function parseIdentificacao(s: string): { sigla: string; num: number; ano: number } | null {
+  const m = /^([A-Z]+)\s+(\d+)\/(\d+)/.exec(s ?? '')
+  return m ? { sigla: m[1], num: Number(m[2]), ano: Number(m[3]) } : null
 }
 
-export async function coletarSenado(fetchJson: FetchJson, anos: number[], log: (m: string) => void): Promise<RegistroVotacao[]> {
+// resolve codigoMateria via API de matéria (cacheada pelo fetchJson); para a URL oficial quando
+// o votacao?ano= não cobre a matéria. Forma confirmada: DetalheMateria.Materia.IdentificacaoMateria.CodigoMateria
+async function resolverCodigoMateria(fetchJson: FetchJson, sigla: string, num: number, ano: number): Promise<number | undefined> {
+  if (!sigla || !num || !ano) return undefined
+  try {
+    const d = await fetchJson(`https://legis.senado.leg.br/dadosabertos/materia/${sigla}/${num}/${ano}`)
+    const cod = d?.DetalheMateria?.Materia?.IdentificacaoMateria?.CodigoMateria
+    return cod != null ? Number(cod) : undefined
+  } catch { return undefined }
+}
+
+export async function coletarSenado(
+  fetchJson: FetchJson,
+  anos: number[],
+  senadores: { id: string; nome: string; uf: string }[],
+  log: (m: string) => void,
+): Promise<RegistroVotacao[]> {
+  const mapaRoster = construirMapaRoster(senadores)
   const registros: RegistroVotacao[] = []
+  let semMatchTotal = 0
+
   for (const ano of anos) {
-    const lista = await fetchJson(`https://legis.senado.leg.br/dadosabertos/votacao?ano=${ano}`)
-    const votacoes: VotacaoSenado[] = Array.isArray(lista) ? lista : (lista?.votacoes ?? [])
-    let orientacoes: Record<string, Orientacao> = {}
+    let orientPayload: { votacoes?: VotacaoOB[] }
     try {
-      const orientPayload = await fetchJson(`https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/${ano}0101/${ano}1231.json`)
-      orientacoes = parseOrientacoesGoverno(orientPayload)
-    } catch { /* sem orientação no ano: segue com governo null */ }
-    let n = 0
-    for (const v of votacoes) {
-      const reg = montarRegistroSenado(v, orientacoes[String(v.codigoVotacaoSve)] ?? null)
-      if (reg) { registros.push(reg); n++ }
+      orientPayload = await fetchJson(`https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/${ano}0101/${ano}1231.json`)
+    } catch (e) { log(`Senado ${ano}: orientacaoBancada falhou (${e}); pulando ano`); continue }
+
+    // mapas best-effort de enriquecimento a partir do votacao?ano=
+    const mapaMateria = new Map<string, number>()         // SIGLA|NUM|ANO -> codigoMateria
+    const mapaResultado = new Map<string, 'A' | 'R'>()    // SIGLA|NUM|ANO|DATA|SIM|NAO|ABST -> resultado
+    try {
+      const lista = await fetchJson(`https://legis.senado.leg.br/dadosabertos/votacao?ano=${ano}`)
+      const arr: any[] = Array.isArray(lista) ? lista : (lista?.votacoes ?? [])
+      for (const it of arr) {
+        const p = parseIdentificacao(String(it.identificacao ?? ''))
+        if (!p) continue
+        if (it.codigoMateria != null) mapaMateria.set(`${p.sigla}|${p.num}|${p.ano}`, Number(it.codigoMateria))
+        const r = it.resultadoVotacao
+        if (r === 'A' || r === 'R') {
+          const data = String(it.dataSessao ?? '').slice(0, 10)
+          mapaResultado.set(`${p.sigla}|${p.num}|${p.ano}|${data}|${it.totalVotosSim}|${it.totalVotosNao}|${it.totalVotosAbstencao}`, r)
+        }
+      }
+    } catch (e) { log(`Senado ${ano}: votacao?ano= falhou (${e}); segue sem enriquecer aprovada/URL`) }
+
+    const lookups: LookupsSenado = {
+      resultado: (sigla, num, ano2, data, sim, nao, abst) =>
+        mapaResultado.get(`${sigla}|${num}|${ano2}|${data}|${sim}|${nao}|${abst}`),
+      codigoMateria: (sigla, num, ano2) => mapaMateria.get(`${sigla}|${num}|${ano2}`),
     }
-    log(`Senado ${ano}: ${n} votações de mérito nominais`)
+    const { registros: regs, semMatch } = parseVotacoesOrientacaoBancada(orientPayload, mapaRoster, lookups)
+
+    // segundo passe (assíncrono): resolve URL faltante via API de matéria
+    for (const reg of regs) {
+      if (reg.urlOficial) continue
+      const cod = await resolverCodigoMateria(fetchJson, reg.proposicao.tipo, Number(reg.proposicao.numero), reg.proposicao.ano)
+      if (cod != null) reg.urlOficial = `https://www25.senado.leg.br/web/atividade/materias/-/materia/${cod}`
+    }
+
+    registros.push(...regs)
+    semMatchTotal += semMatch
+    const comGov = regs.filter((r) => r.orientacaoGoverno != null).length
+    log(`Senado ${ano}: ${regs.length} votações de mérito nominais (${comGov} com orientação do governo)`)
   }
+  if (semMatchTotal > 0) log(`! ${semMatchTotal} votos de senador sem match no roster (descartados)`)
   return registros
 }
