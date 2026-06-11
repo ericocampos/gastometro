@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, Patrimonios, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePresenca, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, Patrimonios, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePatrimonio, SeriePresenca, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 import { exerceu } from './denominador'
 import { partidoCanonico } from './partidos'
@@ -202,6 +202,31 @@ export function getPresencaParlamentares(): SeriePresenca[] {
       legislaturas: reg.politico.legislaturas,
       serieMensal: p.serieMensal,
       faltasComMotivo: p.casa === 'senado',
+    })
+  }
+  return out
+}
+
+// junta o patrimônio por político com os dados de exibição (nome/partido/uf/foto/casa) do agregado
+export function getPatrimonioParlamentares(): SeriePatrimonio[] {
+  const pat = getPatrimonios()
+  if (!pat) return []
+  const { porPolitico } = agregados()
+  const out: SeriePatrimonio[] = []
+  for (const [id, p] of Object.entries(pat.porPolitico)) {
+    const reg = porPolitico[id]
+    if (!reg) continue
+    const casa = reg.politico.casa
+    if (casa !== 'camara' && casa !== 'senado') continue
+    out.push({
+      politicoId: id,
+      nome: reg.politico.nome,
+      partido: partidoCanonico(reg.politico.partido),
+      uf: reg.politico.uf,
+      casa,
+      fotoUrl: reg.politico.fotoUrl,
+      matchPor: p.matchPor,
+      declaracoes: p.declaracoes,
     })
   }
   return out
