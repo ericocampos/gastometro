@@ -120,6 +120,33 @@ function parseIdentificacao(s: string): { sigla: string; num: number; ano: numbe
   return m ? { sigla: m[1], num: Number(m[2]), ano: Number(m[3]) } : null
 }
 
+// resultados oficiais das votações de uma matéria, por data da sessão.
+// materia/votacoes/{cod} -> VotacaoMateria.Materia.Votacoes.Votacao[] (Aprovado/Rejeitado + DataSessao).
+// data -> true (aprovado) | false (rejeitado) | null (ambíguo: 2+ votações na mesma data, ou resultado fora de aprov/rejeit)
+async function resultadosDaMateria(fetchJson: FetchJson, codigoMateria: number): Promise<Map<string, boolean | null>> {
+  const out = new Map<string, boolean | null>()
+  try {
+    const d = await fetchJson(`https://legis.senado.leg.br/dadosabertos/materia/votacoes/${codigoMateria}`)
+    let arr = d?.VotacaoMateria?.Materia?.Votacoes?.Votacao ?? []
+    if (!Array.isArray(arr)) arr = [arr]
+    const porData = new Map<string, string[]>()
+    for (const vt of arr) {
+      if (String(vt?.IndicadorVotacaoSecreta ?? '').toLowerCase().startsWith('s')) continue
+      const data = String(vt?.SessaoPlenaria?.DataSessao ?? '').slice(0, 10)
+      if (!data) continue
+      const lista = porData.get(data) ?? []
+      lista.push(String(vt?.DescricaoResultado ?? ''))
+      porData.set(data, lista)
+    }
+    for (const [data, resultados] of porData) {
+      if (resultados.length !== 1) { out.set(data, null); continue }  // ambíguo: destaques na mesma data
+      const r = resultados[0].toLowerCase()
+      out.set(data, r.startsWith('aprov') ? true : r.startsWith('rejeit') ? false : null)
+    }
+  } catch { /* sem dados: deixa o registro com aprovada null */ }
+  return out
+}
+
 // resolve codigoMateria via API de matéria (cacheada pelo fetchJson); para a URL oficial quando
 // o votacao?ano= não cobre a matéria. Forma confirmada: DetalheMateria.Materia.IdentificacaoMateria.CodigoMateria
 async function resolverCodigoMateria(fetchJson: FetchJson, sigla: string, num: number, ano: number): Promise<number | undefined> {
@@ -147,36 +174,34 @@ export async function coletarSenado(
       orientPayload = await fetchJson(`https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/${ano}0101/${ano}1231.json`)
     } catch (e) { log(`Senado ${ano}: orientacaoBancada falhou (${e}); pulando ano`); continue }
 
-    // mapas best-effort de enriquecimento a partir do votacao?ano=
-    const mapaMateria = new Map<string, number>()         // SIGLA|NUM|ANO -> codigoMateria
-    const mapaResultado = new Map<string, 'A' | 'R'>()    // SIGLA|NUM|ANO|DATA|SIM|NAO|ABST -> resultado
+    // mapa SIGLA|NUM|ANO -> codigoMateria (do votacao?ano=, p/ URL e p/ achar a matéria sem refetch)
+    const mapaMateria = new Map<string, number>()
     try {
       const lista = await fetchJson(`https://legis.senado.leg.br/dadosabertos/votacao?ano=${ano}`)
       const arr: any[] = Array.isArray(lista) ? lista : (lista?.votacoes ?? [])
       for (const it of arr) {
         const p = parseIdentificacao(String(it.identificacao ?? ''))
-        if (!p) continue
-        if (it.codigoMateria != null) mapaMateria.set(`${p.sigla}|${p.num}|${p.ano}`, Number(it.codigoMateria))
-        const r = it.resultadoVotacao
-        if (r === 'A' || r === 'R') {
-          const data = String(it.dataSessao ?? '').slice(0, 10)
-          mapaResultado.set(`${p.sigla}|${p.num}|${p.ano}|${data}|${it.totalVotosSim}|${it.totalVotosNao}|${it.totalVotosAbstencao}`, r)
-        }
+        if (p && it.codigoMateria != null) mapaMateria.set(`${p.sigla}|${p.num}|${p.ano}`, Number(it.codigoMateria))
       }
-    } catch (e) { log(`Senado ${ano}: votacao?ano= falhou (${e}); segue sem enriquecer aprovada/URL`) }
+    } catch (e) { log(`Senado ${ano}: votacao?ano= falhou (${e}); resolvo codigoMateria pela API de matéria`) }
 
     const lookups: LookupsSenado = {
-      resultado: (sigla, num, ano2, data, sim, nao, abst) =>
-        mapaResultado.get(`${sigla}|${num}|${ano2}|${data}|${sim}|${nao}|${abst}`),
+      resultado: () => undefined,                                   // aprovada vem do passe materia/votacoes (abaixo)
       codigoMateria: (sigla, num, ano2) => mapaMateria.get(`${sigla}|${num}|${ano2}`),
     }
     const { registros: regs, semMatch } = parseVotacoesOrientacaoBancada(orientPayload, mapaRoster, lookups)
 
-    // segundo passe (assíncrono): resolve URL faltante via API de matéria
+    // passe assíncrono: resolve URL (codigoMateria) e aprovada (resultado oficial por matéria+data).
+    const resultadosCache = new Map<number, Map<string, boolean | null>>()
     for (const reg of regs) {
-      if (reg.urlOficial) continue
-      const cod = await resolverCodigoMateria(fetchJson, reg.proposicao.tipo, Number(reg.proposicao.numero), reg.proposicao.ano)
-      if (cod != null) reg.urlOficial = `https://www25.senado.leg.br/web/atividade/materias/-/materia/${cod}`
+      const cod = mapaMateria.get(`${reg.proposicao.tipo}|${Number(reg.proposicao.numero)}|${reg.proposicao.ano}`)
+        ?? await resolverCodigoMateria(fetchJson, reg.proposicao.tipo, Number(reg.proposicao.numero), reg.proposicao.ano)
+      if (cod == null) continue
+      if (!reg.urlOficial) reg.urlOficial = `https://www25.senado.leg.br/web/atividade/materias/-/materia/${cod}`
+      let porData = resultadosCache.get(cod)
+      if (!porData) { porData = await resultadosDaMateria(fetchJson, cod); resultadosCache.set(cod, porData) }
+      const ap = porData.get(reg.data)
+      if (ap === true || ap === false) reg.aprovada = ap
     }
 
     registros.push(...regs)
