@@ -9,6 +9,25 @@ import { orientacaoPorMaioria } from './votacoes.js'
 
 const TIPOS_MERITO = new Set(['PEC', 'PL', 'PLP', 'MPV', 'PLV'])
 
+// prefixos de título tratados (já sem acento, em caixa alta): forma abreviada e por extenso.
+// só removidos quando seguidos de "." opcional + espaço (não comem nomes como "Drauzio").
+const PREFIXOS_TITULO = /^(ASTRONAUTA|ASTR|PROFESSORA|PROFESSOR|PROFA|PROF|DOUTORA|DOUTOR|DRA|DR|SENADORA|SENADOR|SEN|DELEGADA|DELEGADO|PASTORA|PASTOR|CORONEL|CEL|CAPITAO)\.?\s+/
+
+export function normalizarNomeSenador(nome: string): string {
+  const base = (nome ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/\s+/g, ' ').trim()
+  return base.replace(PREFIXOS_TITULO, '').trim()
+}
+
+// roster canônico (data/politicos.json, casa=senado): chave normNome|UF -> politicoId (= "senado-{codigoParlamentar}")
+export function construirMapaRoster(senadores: { id: string; nome: string; uf: string }[]): Map<string, string> {
+  const m = new Map<string, string>()
+  for (const s of senadores) {
+    const chave = `${normalizarNomeSenador(s.nome)}|${(s.uf ?? '').toUpperCase()}`
+    if (!m.has(chave)) m.set(chave, s.id)
+  }
+  return m
+}
+
 export function ehMeritoSenado(siglaMateria: string): boolean {
   return TIPOS_MERITO.has((siglaMateria ?? '').trim().toUpperCase())
 }
