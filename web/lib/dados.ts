@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, Patrimonios, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePatrimonio, SeriePresenca, Votacoes } from './tipos'
+import type { Agregados, Alerta, Assessores, AssembleiasIndice, Branding, CadeirasCamaraUf, CeapPorUf, ComparativoOrcamentoCidade, CustosMandato, Despesa, Emendas, FornecedoresTotais, ItemCategoria, ItemFornecedor, ItemRanking, MunicipiosIndice, OrcamentoMunicipio, Patrimonios, PerfilParlamentar, PopulacaoBrasil, PopulacaoUf, Presencas, ResumoPolitico, ResumoTotais, SeriePatrimonio, SeriePresenca, ViapTetoMudancas, Votacoes } from './tipos'
 import type { SerieParlamentar } from './periodo'
 import { exerceu } from './denominador'
 import { partidoCanonico } from './partidos'
@@ -122,6 +122,12 @@ export function getCeapPorUf(): CeapPorUf | null {
   const caminho = process.env.GASTOMETRO_CEAP ?? resolve(process.cwd(), '..', 'config', 'ceap-por-uf.json')
   if (!existsSync(caminho)) return null
   return lerJson<CeapPorUf>(caminho)
+}
+
+export function getViapTetoMudancas(): ViapTetoMudancas | null {
+  const caminho = process.env.GASTOMETRO_VIAP_MUDANCAS ?? resolve(process.cwd(), '..', 'config', 'viap-teto-mudancas.json')
+  if (!existsSync(caminho)) return null
+  return lerJson<ViapTetoMudancas>(caminho)
 }
 
 export function getPopulacaoBrasil(): PopulacaoBrasil | null {

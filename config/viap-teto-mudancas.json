@@ -1,0 +1,7 @@
+{
+  "fonte": "Resoluções 017/2024 e 110/2024 da Câmara Municipal de Campina Grande",
+  "observacao": "Mudanças conhecidas do teto da VIAP por cidade. O valor salvo em municipios.json é o anterior; a partir de aPartirDe vale 'valor'.",
+  "mudancas": {
+    "campina-grande": { "aPartirDe": 2026, "valor": 12000 }
+  }
+}
