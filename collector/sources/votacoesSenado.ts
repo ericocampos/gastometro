@@ -120,28 +120,35 @@ function parseIdentificacao(s: string): { sigla: string; num: number; ano: numbe
   return m ? { sigla: m[1], num: Number(m[2]), ano: Number(m[3]) } : null
 }
 
-// resultados oficiais das votações de uma matéria, por data da sessão.
-// materia/votacoes/{cod} -> VotacaoMateria.Materia.Votacoes.Votacao[] (Aprovado/Rejeitado + DataSessao).
-// data -> true (aprovado) | false (rejeitado) | null (ambíguo: 2+ votações na mesma data, ou resultado fora de aprov/rejeit)
-async function resultadosDaMateria(fetchJson: FetchJson, codigoMateria: number): Promise<Map<string, boolean | null>> {
-  const out = new Map<string, boolean | null>()
+// resultados oficiais das votações de uma matéria, indexados por data|sim|nao (o placar desambigua
+// destaques na mesma data). materia/votacoes/{cod} traz DescricaoResultado + os votos por senador.
+// chave -> true (aprovado) | false (rejeitado). Colisão de chave (placar idêntico no mesmo dia) é
+// descartada pra não arriscar. Resultado fora de aprovado/rejeitado é ignorado.
+async function resultadosDaMateria(fetchJson: FetchJson, codigoMateria: number): Promise<Map<string, boolean>> {
+  const out = new Map<string, boolean>()
+  const ambiguos = new Set<string>()
   try {
     const d = await fetchJson(`https://legis.senado.leg.br/dadosabertos/materia/votacoes/${codigoMateria}`)
     let arr = d?.VotacaoMateria?.Materia?.Votacoes?.Votacao ?? []
     if (!Array.isArray(arr)) arr = [arr]
-    const porData = new Map<string, string[]>()
     for (const vt of arr) {
       if (String(vt?.IndicadorVotacaoSecreta ?? '').toLowerCase().startsWith('s')) continue
       const data = String(vt?.SessaoPlenaria?.DataSessao ?? '').slice(0, 10)
       if (!data) continue
-      const lista = porData.get(data) ?? []
-      lista.push(String(vt?.DescricaoResultado ?? ''))
-      porData.set(data, lista)
-    }
-    for (const [data, resultados] of porData) {
-      if (resultados.length !== 1) { out.set(data, null); continue }  // ambíguo: destaques na mesma data
-      const r = resultados[0].toLowerCase()
-      out.set(data, r.startsWith('aprov') ? true : r.startsWith('rejeit') ? false : null)
+      const r = String(vt?.DescricaoResultado ?? '').toLowerCase()
+      const aprovada = r.startsWith('aprov') ? true : r.startsWith('rejeit') ? false : null
+      if (aprovada === null) continue
+      let vp = vt?.Votos?.VotoParlamentar ?? []
+      if (!Array.isArray(vp)) vp = [vp]
+      let sim = 0, nao = 0
+      for (const p of vp) {
+        const t = String(p?.SiglaVoto ?? '').trim().toUpperCase()
+        if (t === 'SIM') sim++
+        else if (t === 'NÃO' || t === 'NAO') nao++
+      }
+      const chave = `${data}|${sim}|${nao}`
+      if (out.has(chave) || ambiguos.has(chave)) { out.delete(chave); ambiguos.add(chave); continue }
+      out.set(chave, aprovada)
     }
   } catch { /* sem dados: deixa o registro com aprovada null */ }
   return out
@@ -192,7 +199,7 @@ export async function coletarSenado(
     const { registros: regs, semMatch } = parseVotacoesOrientacaoBancada(orientPayload, mapaRoster, lookups)
 
     // passe assíncrono: resolve URL (codigoMateria) e aprovada (resultado oficial por matéria+data).
-    const resultadosCache = new Map<number, Map<string, boolean | null>>()
+    const resultadosCache = new Map<number, Map<string, boolean>>()
     for (const reg of regs) {
       const cod = mapaMateria.get(`${reg.proposicao.tipo}|${Number(reg.proposicao.numero)}|${reg.proposicao.ano}`)
         ?? await resolverCodigoMateria(fetchJson, reg.proposicao.tipo, Number(reg.proposicao.numero), reg.proposicao.ano)
@@ -200,7 +207,7 @@ export async function coletarSenado(
       if (!reg.urlOficial) reg.urlOficial = `https://www25.senado.leg.br/web/atividade/materias/-/materia/${cod}`
       let porData = resultadosCache.get(cod)
       if (!porData) { porData = await resultadosDaMateria(fetchJson, cod); resultadosCache.set(cod, porData) }
-      const ap = porData.get(reg.data)
+      const ap = porData.get(`${reg.data}|${reg.placar.sim}|${reg.placar.nao}`)
       if (ap === true || ap === false) reg.aprovada = ap
     }
 
