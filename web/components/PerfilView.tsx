@@ -13,6 +13,7 @@ import { agregarPerfil, totalAnualPorCasaParlamentar, proposicoesNoPeriodo } fro
 import { comoVotouNoPeriodo } from '@/lib/votacoesPerfil'
 import { emendasNoPeriodo } from '@/lib/emendasPerfil'
 import { corCasa } from '@/lib/custos'
+import { tetoCeapNoAno, tetoViapNoAno, resolverTetoNoPeriodo, type ReajusteCeap, type MudancaViap } from '@/lib/teto'
 import { brl, brlCompacto, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
@@ -112,7 +113,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, presenca = null, salario = null, patrimonio = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, ceapReajuste = null, viapMudanca = null, presenca = null, salario = null, patrimonio = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -139,6 +140,8 @@ export function PerfilView({
   emendas?: EmendasPolitico | null
   comoVotou?: ComoVotouDados | null
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
+  ceapReajuste?: ReajusteCeap | null
+  viapMudanca?: MudancaViap | null
   presenca?: PresencaPolitico | null
   salario?: number | null
   patrimonio?: PatrimonioPolitico | null
@@ -249,7 +252,21 @@ export function PerfilView({
   const cotaRef: ItemCusto = politico.casa === 'camara' && tetoCotaUf != null && tetoCotaUf > 0
     ? { ...custoCasa.cota, valor: tetoCotaUf }
     : custoCasa.cota
-  const tetoCota = !cotaRef.aproximado && cotaRef.valor != null && cotaRef.valor > 0 ? cotaRef.valor : null
+  // teto por período: aplica os breakpoints conhecidos (federal: reajuste fev/2026; municipal: mudança da cidade).
+  // Usa os anos com gasto no período; se não houver, cai no ano do período (ou nos anos de despesa).
+  const anosDoPeriodo = useMemo(() => {
+    const ys = [...new Set(despesasPeriodo.map((d) => d.ano))]
+    return ys.length ? ys : periodo.tipo === 'ano' ? [periodo.ano] : anos
+  }, [despesasPeriodo, periodo, anos])
+  const tetoPer = useMemo(() => {
+    if (cotaRef.aproximado || cotaRef.valor == null || cotaRef.valor <= 0) return null
+    const base = cotaRef.valor
+    if (politico.casa === 'camara') return resolverTetoNoPeriodo(anosDoPeriodo, (a) => tetoCeapNoAno(base, a, ceapReajuste))
+    if (politico.casa === 'camara_municipal') return resolverTetoNoPeriodo(anosDoPeriodo, (a) => tetoViapNoAno(base, a, viapMudanca))
+    return null
+  }, [cotaRef, politico.casa, anosDoPeriodo, ceapReajuste, viapMudanca])
+  const cotaRefPeriodo: ItemCusto = tetoPer ? { ...cotaRef, valor: tetoPer.valor } : cotaRef
+  const tetoCota = !cotaRefPeriodo.aproximado && cotaRefPeriodo.valor != null && cotaRefPeriodo.valor > 0 ? cotaRefPeriodo.valor : null
   const refCota = tetoCota != null
     ? { valor: tetoCota, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
     : undefined
@@ -467,7 +484,7 @@ export function PerfilView({
             ) : (
               <>
                 <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
-                <CotaVsTeto cota={cotaRef} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
+                <CotaVsTeto cota={cotaRefPeriodo} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} tetoMudouNoPeriodo={tetoPer?.mudouNoPeriodo ?? false} anoRefTeto={tetoPer?.anoRef} />
               </>
             )}
             {(politico.casa === 'camara' || politico.casa === 'senado') && politico.moradia && <Moradia moradia={politico.moradia} casa={politico.casa} />}
