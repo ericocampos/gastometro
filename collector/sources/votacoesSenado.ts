@@ -95,6 +95,73 @@ export function montarRegistroSenado(v: VotacaoSenado, orientacaoGoverno: Orient
   }
 }
 
+export interface LookupsSenado {
+  resultado: (sigla: string, num: number, ano: number, data: string, sim: number, nao: number, abst: number) => 'A' | 'R' | undefined
+  codigoMateria: (sigla: string, num: number, ano: number) => number | undefined
+}
+
+interface OrientacaoLideranca { partido?: string; voto?: string }
+interface VotoParlamentarOB { nomeParlamentar?: string; partido?: string; uf?: string; voto?: string }
+interface VotacaoOB {
+  codigoVotacaoSve?: number; descricaoVotacao?: string; dataInicioVotacao?: string
+  siglaTipoMateria?: string; descricaoMateria?: string; numeroMateria?: number; anoMateria?: number
+  qtdVotosSim?: number; qtdVotosNao?: number; qtdVotosAbstencao?: number; qtdObstrucoes?: number
+  orientacoesLideranca?: OrientacaoLideranca[]; votosParlamentar?: VotoParlamentarOB[]
+}
+
+// Fonte autoritativa do Senado: cada votação do orientacaoBancada já traz orientação do bloco
+// "Governo" + votos por senador. Parser PURO: enriquecimento (aprovada/URL) vem de `lookups`.
+export function parseVotacoesOrientacaoBancada(
+  payload: { votacoes?: VotacaoOB[] } | null | undefined,
+  mapaRoster: Map<string, string>,
+  lookups: LookupsSenado,
+): { registros: RegistroVotacao[]; semMatch: number } {
+  const registros: RegistroVotacao[] = []
+  let semMatch = 0
+  for (const v of payload?.votacoes ?? []) {
+    const sigla = String(v.siglaTipoMateria ?? '')
+    if (!ehMeritoSenado(sigla)) continue
+    const vp = v.votosParlamentar ?? []
+    const secretos = vp.filter((p) => String(p.voto ?? '').toUpperCase() === 'SECRETO').length
+    if (vp.length > 0 && secretos > vp.length / 2) continue
+    if (v.codigoVotacaoSve == null) continue
+
+    const data = String(v.dataInicioVotacao ?? '').slice(0, 10)
+    const sim = Number(v.qtdVotosSim ?? 0), nao = Number(v.qtdVotosNao ?? 0), abst = Number(v.qtdVotosAbstencao ?? 0)
+    const outros = abst + Number(v.qtdObstrucoes ?? 0)
+
+    const govItem = (v.orientacoesLideranca ?? []).find((o) => String(o.partido ?? '').toLowerCase() === 'governo')
+    const orientacaoGoverno: Orientacao | null = govItem ? orientacaoDeVoto(govItem.voto ?? '') : null
+
+    const comPartido = vp.map((p) => ({
+      politicoId: mapaRoster.get(`${normalizarNomeSenador(p.nomeParlamentar ?? '')}|${String(p.uf ?? '').toUpperCase()}`),
+      v: mapVotoSenado(p.voto ?? ''),
+      partido: String(p.partido ?? '').trim(),
+    }))
+    // maioria por partido usa TODOS os votos (inclusive sem match no roster), pra refletir o partido inteiro
+    const maioria = orientacaoPorMaioria(comPartido.map((x) => ({ partido: x.partido, v: x.v })))
+    const votos: RegistroVotacao['votos'] = []
+    for (const x of comPartido) {
+      if (!x.politicoId) { semMatch++; continue }
+      votos.push({ politicoId: x.politicoId, v: x.v, orientacaoPartido: maioria[x.partido] ?? null })
+    }
+
+    const num = Number(v.numeroMateria ?? 0), anoMat = Number(v.anoMateria ?? 0)
+    const res = lookups.resultado(sigla, num, anoMat, data, sim, nao, abst)
+    const aprovada = res === 'A' ? true : res === 'R' ? false : null
+    const cod = lookups.codigoMateria(sigla, num, anoMat)
+    const urlOficial = cod != null ? `https://www25.senado.leg.br/web/atividade/materias/-/materia/${cod}` : undefined
+
+    registros.push({
+      id: `senado-${v.codigoVotacaoSve}`, casa: 'senado', data,
+      proposicao: { tipo: sigla, numero: String(v.numeroMateria ?? ''), ano: anoMat, ementa: String(v.descricaoMateria ?? '').trim() },
+      descricao: String(v.descricaoVotacao ?? '').trim(),
+      aprovada, placar: { sim, nao, outros }, orientacaoGoverno, urlOficial, votos,
+    })
+  }
+  return { registros, semMatch }
+}
+
 export type FetchJson = (url: string) => Promise<any>
 
 // orientação do governo por código de votação, da árvore orientacaoBancada do período.
