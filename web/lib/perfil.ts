@@ -1,4 +1,4 @@
-import type { Casa, Despesa, ItemCategoria, ItemFornecedor, PontoMensal } from './tipos'
+import type { Casa, Despesa, ItemCategoria, ItemFornecedor, PontoMensal, ProposicaoResumo } from './tipos'
 import { type Periodo, type TotalAnual, type TotalAnualCasa, anoNoPeriodo } from './periodo'
 
 export interface AgregadoPerfil {
@@ -61,4 +61,8 @@ export function totalAnualPorCasaParlamentar(despesas: Despesa[], casa: Casa): T
     camara: 0, senado: 0, assembleia: 0, municipal: 0,
     [chave]: a.total,
   }))
+}
+
+export function proposicoesNoPeriodo(proposicoes: ProposicaoResumo[], periodo: Periodo): ProposicaoResumo[] {
+  return proposicoes.filter((p) => anoNoPeriodo(p.ano, periodo))
 }

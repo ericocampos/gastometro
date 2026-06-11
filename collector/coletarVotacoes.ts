@@ -37,7 +37,7 @@ function makeFetchJson(throttleMs: number) {
   }
 }
 
-interface PoliticoLite { id: string; casa: string }
+interface PoliticoLite { id: string; casa: string; nome: string; uf: string }
 
 async function main() {
   const politicos = JSON.parse(readFileSync(resolve(dataDir, 'politicos.json'), 'utf-8')) as PoliticoLite[]
@@ -49,7 +49,8 @@ async function main() {
   console.log(`  ${camara.length} votações de mérito (Câmara)`)
 
   console.log('> Coletando votações do Senado...')
-  const senado = await coletarSenado(fetchJson, ANOS_SENADO, (m) => console.log(`  ${m}`))
+  const senadores = politicos.filter((p) => p.casa === 'senado').map((p) => ({ id: p.id, nome: p.nome, uf: p.uf }))
+  const senado = await coletarSenado(fetchJson, ANOS_SENADO, senadores, (m) => console.log(`  ${m}`))
   console.log(`  ${senado.length} votações de mérito (Senado)`)
 
   const votacoes = agregarVotacoes([...camara, ...senado], idsValidos)

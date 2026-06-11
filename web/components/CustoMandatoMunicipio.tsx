@@ -1,5 +1,6 @@
 import type { Municipio } from '@/lib/tipos'
 import { brlInteiro, mesAno, dataBR } from '@/lib/formato'
+import type { MudancaViap } from '@/lib/teto'
 
 const TEAL = '#0f766e'
 
@@ -59,12 +60,14 @@ function Card({
   )
 }
 
-export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: Municipio; atualizadoEm?: string }) {
+export function CustoMandatoMunicipio({ municipio, atualizadoEm, viapMudanca = null }: { municipio: Municipio; atualizadoEm?: string; viapMudanca?: MudancaViap | null }) {
   const { salario, viapTeto, gabineteMedia, temViap, temDiaria, diariaMedia } = municipio.custo
   const viapFonteTce = municipio.custo.viapFonteTce
   // cidade só de diárias: o card do meio mostra diárias (média anual por vereador) em vez de VIAP
   const soDiaria = viapFonteTce && !temViap && temDiaria
-  const gastoMensal = viapFonteTce ? (temViap ? viapTeto : 0) + (diariaMedia ?? 0) / 12 : viapTeto
+  // teto da VIAP vigente: se a cidade tem uma mudança conhecida (config), usa o novo valor; senão o salvo.
+  const viapVigente = viapMudanca ? viapMudanca.valor : viapTeto
+  const gastoMensal = viapFonteTce ? (temViap ? viapVigente : 0) + (diariaMedia ?? 0) / 12 : viapVigente
   const total = salario + gastoMensal + (gabineteMedia ?? 0)
 
   return (
@@ -74,7 +77,7 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
         {soDiaria ? (
           <Card icone={Icones.viap} rotulo="Diárias" valor={brlInteiro(diariaMedia ?? 0)} legenda="Média por vereador · ano" cor={TEAL} />
         ) : (
-          <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapTeto)} legenda={viapFonteTce ? 'Valor fixo mensal por vereador' : 'Teto mensal de reembolso'} cor={TEAL} />
+          <Card icone={Icones.viap} rotulo="VIAP" valor={brlInteiro(viapVigente)} legenda={viapFonteTce ? 'Valor fixo mensal por vereador' : 'Teto mensal de reembolso'} cor={TEAL} />
         )}
         <Card
           icone={Icones.gabinete}
@@ -92,6 +95,12 @@ export function CustoMandatoMunicipio({ municipio, atualizadoEm }: { municipio: 
           destaque
         />
       </div>
+
+      {viapMudanca && !soDiaria && (
+        <p className="mt-3 text-xs text-tinta-tenue">
+          O teto da VIAP passou a {brlInteiro(viapMudanca.valor)}/mês em {viapMudanca.aPartirDe} (era {brlInteiro(viapTeto)}/mês até {viapMudanca.aPartirDe - 1}).
+        </p>
+      )}
 
       <p className="mt-3 text-xs text-tinta-tenue">
         Valores de referência. {viapFonteTce

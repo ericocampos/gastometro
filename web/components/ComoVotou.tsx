@@ -41,11 +41,6 @@ export function ComoVotou({ dados }: { dados: ComoVotouDados | null }) {
       <p className="mt-2 text-[11px] text-tinta-tenue">
         &quot;Com o governo&quot; compara o voto com a orientação oficial do governo na votação. &quot;Fiel ao partido&quot; compara com o que a maioria do próprio partido votou. Não é juízo de valor. Quando o governo liberou a bancada ou o partido se dividiu, a votação não entra no percentual.
       </p>
-      {comGov === null && resumo.total > 0 && (
-        <p className="mt-1 text-[11px] text-tinta-tenue">
-          A orientação oficial do governo hoje está disponível só para a Câmara, então &quot;com o governo&quot; fica sem dados para o Senado.
-        </p>
-      )}
 
       <div className="mt-5">
         <button
@@ -82,7 +77,9 @@ export function ComoVotou({ dados }: { dados: ComoVotouDados | null }) {
                       {it.voto.part === 'infiel' && <Chip texto="contra o partido" tom="vermelho" />}
                     </p>
                   </div>
-                  <a href={it.votacao.urlOficial} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs text-marca underline-offset-2 hover:underline">ver ↗</a>
+                  {it.votacao.urlOficial && (
+                    <a href={it.votacao.urlOficial} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs text-marca underline-offset-2 hover:underline">ver ↗</a>
+                  )}
                 </li>
               ))}
             </ul>

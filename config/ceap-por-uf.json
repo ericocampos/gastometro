@@ -2,6 +2,7 @@
   "fonte": "https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar",
   "atualizadoEm": "2026-06",
   "observacao": "Cota para o Exercício da Atividade Parlamentar (CEAP), valor mensal por UF. Vigência pós-reajuste de 13,75% de fev/2026 (PB = 47.826,36 antiga x 1,1375 = 54.402,48). Varia por UF pela distância de Brasília.",
+  "reajuste": { "aPartirDe": 2026, "fator": 1.1375 },
   "valores": {
     "AC": 57359.87, "AL": 53164.36, "AP": 55929.26, "AM": 56151.46, "BA": 50965.29,
     "CE": 54879.34, "DF": 41612.55, "ES": 49160.15, "GO": 46979.73, "MA": 54537.99,

@@ -6,12 +6,14 @@ import { corCasa } from '@/lib/custos'
 // Salário é fixo/igual a todos e a verba de gabinete não é divulgada por parlamentar — por isso
 // o detalhe foca no que é rastreável: a cota efetivamente gasta.
 export function CotaVsTeto({
-  cota, mediaMensal, salario, casa,
+  cota, mediaMensal, salario, casa, tetoMudouNoPeriodo = false, anoRefTeto,
 }: {
   cota: ItemCusto
   mediaMensal: number
   salario: number
   casa: Casa
+  tetoMudouNoPeriodo?: boolean
+  anoRefTeto?: number
 }) {
   const cor = corCasa(casa)
   const exato = !cota.aproximado && cota.valor != null
@@ -37,6 +39,11 @@ export function CotaVsTeto({
           ? 'A folha do gabinete (acima) é a real do mês; a VIAP é o reembolso mensal rastreado aqui.'
           : 'A verba de gabinete (assessores) não é divulgada por parlamentar nos dados abertos — o custo rastreável aqui é a cota.'}
       </p>
+      {tetoMudouNoPeriodo && anoRefTeto != null && (
+        <p className="mt-2 text-xs text-tinta-tenue">
+          O teto mudou ao longo do período; o cálculo usa o teto de {anoRefTeto}.
+        </p>
+      )}
     </div>
   )
 }

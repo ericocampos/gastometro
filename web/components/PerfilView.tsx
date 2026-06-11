@@ -9,8 +9,11 @@ import {
   type SerieParlamentar, type Periodo,
   parsePeriodoValor, rankingNoPeriodo, resumoNoPeriodo, anoNoPeriodo, pontoNoPeriodo, valorPeriodoPadrao,
 } from '@/lib/periodo'
-import { agregarPerfil, totalAnualPorCasaParlamentar } from '@/lib/perfil'
+import { agregarPerfil, totalAnualPorCasaParlamentar, proposicoesNoPeriodo } from '@/lib/perfil'
+import { comoVotouNoPeriodo } from '@/lib/votacoesPerfil'
+import { emendasNoPeriodo } from '@/lib/emendasPerfil'
 import { corCasa } from '@/lib/custos'
+import { tetoCeapNoAno, tetoViapNoAno, resolverTetoNoPeriodo, type ReajusteCeap, type MudancaViap } from '@/lib/teto'
 import { brl, brlCompacto, dataBR, mesAno } from '@/lib/formato'
 import { SeletorPeriodo } from './SeletorPeriodo'
 import { SecaoTitulo } from './SecaoTitulo'
@@ -110,7 +113,7 @@ function SeloTce({ c, periodo, docPublicada }: { c: ConferenciaTce; periodo: Per
 }
 
 export function PerfilView({
-  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, presenca = null, salario = null, patrimonio = null,
+  politico, despesas, series, perfil, custos, municipioCusto = null, municipioAtualizadoEm, assessores, alertas, alertasPorDespesa, conferidoTce, emendas = null, comoVotou = null, tetoCotaUf = null, ceapReajuste = null, viapMudanca = null, presenca = null, salario = null, patrimonio = null,
 }: {
   politico: Politico
   despesas: Despesa[]
@@ -137,6 +140,8 @@ export function PerfilView({
   emendas?: EmendasPolitico | null
   comoVotou?: ComoVotouDados | null
   tetoCotaUf?: number | null  // CEAP da UF do deputado federal (varia por estado); teto do gráfico
+  ceapReajuste?: ReajusteCeap | null
+  viapMudanca?: MudancaViap | null
   presenca?: PresencaPolitico | null
   salario?: number | null
   patrimonio?: PatrimonioPolitico | null
@@ -198,20 +203,25 @@ export function PerfilView({
 
   const vsMedia = mediaGeral > 0 ? ag.total / mediaGeral : 0
 
+  const cv = useMemo(() => (comoVotou ? comoVotouNoPeriodo(comoVotou, periodo) : null), [comoVotou, periodo])
+  const em = useMemo(() => (emendas ? emendasNoPeriodo(emendas, periodo) : null), [emendas, periodo])
+  const proposicoesPeriodo = useMemo(() => (perfil ? proposicoesNoPeriodo(perfil.proposicoes, periodo) : []), [perfil, periodo])
+
   // cards-resumo por eixo: derivados pela casa (emendas/votações são federais; municipal/estadual não
   // mostra esses cards, em vez de exibi-los vazios — o que pareceria dado faltando)
   const federal = politico.casa === 'camara' || politico.casa === 'senado'
-  const govPct = comoVotou ? pctAlinhamento(comoVotou.resumo.comGoverno, comoVotou.resumo.contraGoverno) : null
-  const fielPct = comoVotou ? pctAlinhamento(comoVotou.resumo.fielPartido, comoVotou.resumo.infielPartido) : null
+  const govPct = cv ? pctAlinhamento(cv.resumo.comGoverno, cv.resumo.contraGoverno) : null
+  const fielPct = cv ? pctAlinhamento(cv.resumo.fielPartido, cv.resumo.infielPartido) : null
   const temGabinete = assessores.quantidade != null || (assessores.folha ?? 0) > 0
   const temEmendas = !!emendas && emendas.empenhado > 0
   const temVotacoes = !!comoVotou && comoVotou.itens.length > 0
   const temProposicoes = !!perfil && perfil.proposicoes.length > 0
 
-  const resPres = presenca ? resumoPresencaNoPeriodo(presenca.serieMensal, { tipo: 'tudo' }) : null
+  const resPres = presenca ? resumoPresencaNoPeriodo(presenca.serieMensal, periodo) : null
+  const resPresMandato = presenca ? resumoPresencaNoPeriodo(presenca.serieMensal, { tipo: 'tudo' }) : null
   const taxaPres = resPres?.taxa == null ? null : Math.round(resPres.taxa * 100)
   const custoPres = presenca && salario ? custoPorPresenca({ presencas: resPres!.presencas, mesesComSessao: resPres!.mesesComSessao }, salario) : null
-  const temPresenca = !!presenca && (resPres?.totais ?? 0) > 0
+  const temPresenca = !!presenca && (resPresMandato?.totais ?? 0) > 0
 
   const declRecente = patrimonio ? declaracaoMaisRecente(patrimonio.declaracoes) : null
   const varPatr = patrimonio ? variacao(patrimonio.declaracoes) : null
@@ -242,7 +252,21 @@ export function PerfilView({
   const cotaRef: ItemCusto = politico.casa === 'camara' && tetoCotaUf != null && tetoCotaUf > 0
     ? { ...custoCasa.cota, valor: tetoCotaUf }
     : custoCasa.cota
-  const tetoCota = !cotaRef.aproximado && cotaRef.valor != null && cotaRef.valor > 0 ? cotaRef.valor : null
+  // teto por período: aplica os breakpoints conhecidos (federal: reajuste fev/2026; municipal: mudança da cidade).
+  // Usa os anos com gasto no período; se não houver, cai no ano do período (ou nos anos de despesa).
+  const anosDoPeriodo = useMemo(() => {
+    const ys = [...new Set(despesasPeriodo.map((d) => d.ano))]
+    return ys.length ? ys : periodo.tipo === 'ano' ? [periodo.ano] : anos
+  }, [despesasPeriodo, periodo, anos])
+  const tetoPer = useMemo(() => {
+    if (cotaRef.aproximado || cotaRef.valor == null || cotaRef.valor <= 0) return null
+    const base = cotaRef.valor
+    if (politico.casa === 'camara') return resolverTetoNoPeriodo(anosDoPeriodo, (a) => tetoCeapNoAno(base, a, ceapReajuste))
+    if (politico.casa === 'camara_municipal') return resolverTetoNoPeriodo(anosDoPeriodo, (a) => tetoViapNoAno(base, a, viapMudanca))
+    return null
+  }, [cotaRef, politico.casa, anosDoPeriodo, ceapReajuste, viapMudanca])
+  const cotaRefPeriodo: ItemCusto = tetoPer ? { ...cotaRef, valor: tetoPer.valor } : cotaRef
+  const tetoCota = !cotaRefPeriodo.aproximado && cotaRefPeriodo.valor != null && cotaRefPeriodo.valor > 0 ? cotaRefPeriodo.valor : null
   const refCota = tetoCota != null
     ? { valor: tetoCota, rotulo: rotuloTeto, cor: corCasa(politico.casa) }
     : undefined
@@ -364,16 +388,16 @@ export function PerfilView({
               <CardEixoPerfil
                 href="#emendas"
                 rotulo="Emendas"
-                valor={temEmendas ? brlCompacto(emendas!.empenhado) : 'Sem emendas'}
-                sub={temEmendas ? `${emendas!.nEmendas} emendas destinadas` : 'no período'}
+                valor={em && em.empenhado > 0 ? brlCompacto(em.empenhado) : 'Sem emendas'}
+                sub={em && em.empenhado > 0 ? `${em.nEmendas} emendas destinadas` : 'no período'}
               />
             )}
             {federal && (
               <CardEixoPerfil
                 href="#votacoes"
                 rotulo="Como votou"
-                valor={temVotacoes ? `${comoVotou!.itens.length} votações` : 'Sem votações'}
-                sub={temVotacoes ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel ao partido` : 'de mérito no período'}
+                valor={cv && cv.itens.length > 0 ? `${cv.itens.length} votações` : 'Sem votações'}
+                sub={cv && cv.itens.length > 0 ? `${govPct ?? 'sem dados'} com o governo · ${fielPct ?? 'sem dados'} fiel ao partido` : 'de mérito no período'}
               />
             )}
             {temPresenca && (
@@ -383,7 +407,7 @@ export function PerfilView({
                 valor={taxaPres == null ? '—' : `${taxaPres}%`}
                 sub={
                   presenca!.faltasJustificadas !== null
-                    ? `${presenca!.faltasNaoJustificadas} falta(s) não justificada(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
+                    ? `${resPres!.naoJustificadas} falta(s) não justificada(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
                     : `${resPres!.faltas} falta(s)${custoPres ? ` · ${brl(custoPres)}/presença` : ''}`
                 }
               />
@@ -407,7 +431,7 @@ export function PerfilView({
               />
             )}
             {temProposicoes && (
-              <CardEixoPerfil href="#proposicoes" rotulo="Proposições" valor={`${perfil!.proposicoes.length}`} sub="apresentadas" />
+              <CardEixoPerfil href="#proposicoes" rotulo="Proposições" valor={`${proposicoesPeriodo.length}`} sub="apresentadas no período" />
             )}
           </div>
 
@@ -460,7 +484,7 @@ export function PerfilView({
             ) : (
               <>
                 <SecaoTitulo>Cota · gasto real × teto</SecaoTitulo>
-                <CotaVsTeto cota={cotaRef} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} />
+                <CotaVsTeto cota={cotaRefPeriodo} mediaMensal={mediaMensal} salario={custoCasa.salario} casa={politico.casa} tetoMudouNoPeriodo={tetoPer?.mudouNoPeriodo ?? false} anoRefTeto={tetoPer?.anoRef} />
               </>
             )}
             {(politico.casa === 'camara' || politico.casa === 'senado') && politico.moradia && <Moradia moradia={politico.moradia} casa={politico.casa} />}
@@ -468,6 +492,7 @@ export function PerfilView({
 
           <section id="gabinete" className="mb-10 scroll-mt-[var(--header-h)]">
             <SecaoTitulo>{politico.casa === 'camara' ? 'Assessores · verba de gabinete' : 'Comissionados · folha do gabinete'}</SecaoTitulo>
+            <p className="mb-3 text-[11px] text-tinta-tenue">Snapshot do mês de referência; não filtra pelo período selecionado.</p>
             {politico.casa === 'assembleia' && politico.uf === 'MG' ? (
               <div className="rounded-lg border border-borda bg-superficie p-4 text-sm leading-relaxed text-tinta-suave">
                 Gabinete não detalhado: a folha da ALMG é publicada só por matrícula, sem o nome do servidor
@@ -500,11 +525,11 @@ export function PerfilView({
             <>
               <section id="emendas" className="mb-10 scroll-mt-[var(--header-h)]">
                 <SecaoTitulo>Emendas</SecaoTitulo>
-                <EmendasParlamentar dados={emendas ?? null} />
+                <EmendasParlamentar dados={em} />
               </section>
               <section id="votacoes" className="mb-10 scroll-mt-[var(--header-h)]">
                 <SecaoTitulo>Como votou</SecaoTitulo>
-                <ComoVotou dados={comoVotou ?? null} />
+                <ComoVotou dados={cv} />
               </section>
               {temPresenca && (
                 <section id="presenca" className="mb-10 scroll-mt-[var(--header-h)]">
@@ -515,6 +540,7 @@ export function PerfilView({
               {temPatrimonio && (
                 <section id="patrimonio" className="mb-10 scroll-mt-[var(--header-h)]">
                   <SecaoTitulo>Patrimônio declarado</SecaoTitulo>
+                  <p className="mb-3 text-[11px] text-tinta-tenue">Declaração por eleição (TSE); não filtra pelo período selecionado.</p>
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                     <Estatistica rotulo={`Patrimônio (${declRecente!.ano})`} valor={declRecente!.total > 0 ? brl(declRecente!.total) : 'Nada declarado'} destaque />
                     {varPatr && <Estatistica rotulo={`Em ${varPatr.deAno}`} valor={brl(varPatr.deTotal)} />}
@@ -606,7 +632,9 @@ export function PerfilView({
         <section id="proposicoes" className="mt-10 scroll-mt-[var(--header-h)]">
           <SecaoTitulo>Proposições apresentadas</SecaoTitulo>
           <div className="rounded-xl border border-borda bg-superficie p-4">
-            <ProposicoesView proposicoes={perfil.proposicoes} />
+            {proposicoesPeriodo.length > 0
+              ? <ProposicoesView proposicoes={proposicoesPeriodo} />
+              : <p className="text-sm text-tinta-suave">Nenhuma proposição apresentada no período.</p>}
           </div>
         </section>
       )}
